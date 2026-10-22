@@ -65,10 +65,6 @@ textarea{resize:vertical;min-height:7.5rem}
 .obvestilo{list-style:none;padding:0;margin:.3rem 0 0}
 .obvestilo li{border-left:6px solid var(--glavna);background:var(--svetlo);padding:.5rem .7rem;margin:0 0 .5rem;border-radius:.3rem;font-size:.92rem}
 .obvestilo strong{color:var(--glavna-temna)}
-.jeziki{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.2rem 0 .2rem}
-.jeziki button{font:inherit;font-size:.85rem;font-weight:700;min-width:2.9rem;min-height:2.5rem;border-radius:.4rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna)}
-.jeziki button[aria-pressed="true"]{background:var(--glavna);color:#fff}
-.jeziki button:disabled{opacity:.5;border-style:dashed}
 .gumb{font:inherit;font-weight:700;font-size:1.05rem;min-height:3.3rem;padding:.6rem 1.2rem;border-radius:.6rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna);cursor:pointer}
 .gumb.glavni{background:var(--glavna);color:#fff}
 .gumb.siroko{width:100%}
@@ -265,8 +261,6 @@ var KORAKI = [
    return '<h1>Dober dan, soseda in sosed!</h1>'+
    '<p style="font-size:1.08rem">Radi bi slišali, <strong>kaj vam je v Savskem naselju všeč</strong> in <strong>kaj bi skupaj izboljšali</strong>. Vsak glas šteje, tudi vaš.</p>'+
    '<p>Anketa je za vse prebivalce od 15. leta. Traja <strong>okoli 8 minut</strong> in je <strong>brez imena</strong>.</p>'+
-   '<div class="jeziki" role="group" aria-label="Jezik"><button type="button" aria-pressed="true">SL</button><button type="button" disabled title="Prevodi pridejo">BHS</button><button type="button" disabled title="Prevodi pridejo">SQ</button><button type="button" disabled title="Prevodi pridejo">EN</button><button type="button" disabled title="Prevodi pridejo">UK</button></div>'+
-   '<p class="namig">Prevodi pridejo kmalu.</p>'+
    '<div class="kartica"><h3>Na kratko o anketi</h3><ul class="obvestilo">'+
    '<li><strong>Kdo sprašuje:</strong> sosedje, neodvisna in nestrankarska pobuda prebivalcev Savskega naselja.</li>'+
    '<li><strong>Zakaj:</strong> da pokažemo, kaj je pri nas dobro in kaj nas res moti, ter to predamo tistim, ki lahko kaj spremenijo: občini, četrtni skupnosti, upravnikom blokov in JSS.</li>'+
