@@ -109,6 +109,9 @@ details.papir summary{font-weight:700;cursor:pointer;color:var(--glavna-temna);m
 .papir img{display:block;width:100%;height:auto;border:1px solid #999}
 .papir .navodilo{font-size:1.05rem;font-weight:700;margin:.4rem 0 .5rem}
 .papir .navodilo-celo{font-size:.95rem;margin:.5rem 0 .2rem}
+.samo-tisk{display:none}
+.samo-zaslon{font-size:.95rem;margin:.4rem 0 .6rem;background:#eef5ef;padding:.6rem .8rem;border-radius:.5rem}
+@media print{.samo-tisk{display:block!important}.samo-zaslon{display:none!important}}
 @media print{
   .glava,.napredek,.navigacija{display:none!important}
   body,main{background:#fff;padding:0}
@@ -309,10 +312,10 @@ var KORAKI = [
    vrste+
    (S.vrste.length<MAX_POLJ?'<button type="button" class="povezava-gumb" id="dodaj-vrsto">+ dodaj še eno</button>':'')+
    '<details class="papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
-   '<p class="navodilo">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
+   '<p class="samo-zaslon">Zemljevid je le za pomoč. Kraj izberete zgoraj pri »Kje?«, kjer je tudi možnost »ne vem / celo naselje«. Povečate ga lahko z dvema prstoma.</p>'+'<p class="navodilo samo-tisk">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
    '<img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj">'+
    '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
-   '<p class="navodilo-celo">☐ Ne vem / velja za celo naselje</p>'+
+   '<p class="navodilo-celo samo-tisk">☐ Ne vem / velja za celo naselje</p>'+
    '<button type="button" class="gumb" id="natisni-papir">Natisni</button>'+
    '</details>';
  }},
@@ -363,7 +366,7 @@ var KORAKI = [
  }},
  {id:'s25b', sklop:'Za 25 do 64 let', pokazi:function(){return skupina()==='odrasli';}, render:function(){
    return glava('Za 25 do 64 let','Dom skupnosti')+
-   vpr('Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2.', check('m25.dom',['srečanja in zbori prebivalcev','prostor za druženje in kavo','vadba in druženje za starejše','prostor za najstnike z mladinskim delavcem','učna pomoč za otroke','delavnica za popravila (kolesa, orodje)','nič od tega'],2))+
+   vpr('Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2.', check('m25.dom',['srečanja in zbori prebivalcev','prostor za druženje in kavo','vadba in druženje za starejše','prostor za najstnike z mladinskim delavcem','učna pomoč za otroke','delavnica za popravila (kolesa, orodje)','nič od tega'],2)+besedilo('m25.domDrugo','Imate svojo idejo? Napišite jo tukaj.'))+
    vpr('Bi se vključili v skupino prebivalcev, ki dogovarja termine v Domu skupnosti?', radio('m25.skupina',['da','morda','ne'],{mreza:true}));
  }},
  /* 15–24 */
@@ -427,7 +430,7 @@ function povzetek(){
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ d('Stopnice otežujejo vsakdan', S.m65.stopnice); d('Vgradnja dvigala', S.m65.dvigalo);} d('Pogrešate klop na poti', S.m65.klop); d('Kje bi klop prav prišla', S.m65.klopKje); d('Do trgovine', S.m65.trgovina); d('Do zdravnika ali lekarne', S.m65.zdravnik); d('Pogovor s kom (dni na teden)', S.m65.pogovor); d('Imate koga poklicati', S.m65.pomoc); }
-  if(g==='odrasli'){ d('Parkiranje ponoči', S.m25.parkiranje); d('Nova prometna ureditev', S.m25.ureditev); d('Otroci v vrtcu ali šoli', S.m25.otroci); if(S.m25.otroci==='da'){ d('Pot v vrtec ali šolo', S.m25.pot); d('Najbolj nevarno', S.m25.potKje);} d('V Domu skupnosti bi uporabljali', seznam(S.m25.dom)); d('Skupina za termine v Domu', S.m25.skupina); }
+  if(g==='odrasli'){ d('Parkiranje ponoči', S.m25.parkiranje); d('Nova prometna ureditev', S.m25.ureditev); d('Otroci v vrtcu ali šoli', S.m25.otroci); if(S.m25.otroci==='da'){ d('Pot v vrtec ali šolo', S.m25.pot); d('Najbolj nevarno', S.m25.potKje);} d('V Domu skupnosti bi uporabljali', seznam(S.m25.dom)); if(S.m25.domDrugo) d('Vaša ideja za Dom', S.m25.domDrugo); d('Skupina za termine v Domu', S.m25.skupina); }
   if(g==='mladi'){ d('Kje se zadržuješ', seznam(S.m15.kje)); d('Kaj manjka', seznam(S.m15.manjka)+(S.m15.drugo?(S.m15.manjka&&S.m15.manjka.length?', ':'')+S.m15.drugo:'')); d('Varnost zvečer', S.m15.varnost); }
   vr.push('<dt style="margin-top:1rem;color:var(--modra-temna)">Sodelovanje (šteto ločeno, brez imena)</dt><dd>'+esc(S.sod.zelja||'ni odgovora')+(biSodeloval()&&S.sod.cas?' · '+esc(S.sod.cas):'')+'</dd>');
   return '<dl>'+vr.join('')+'</dl>';
@@ -600,7 +603,7 @@ function posljiOdgovore(){
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
     o.m65_klop=S.m65.klop; o.m65_klop_kje=S.m65.klopKje; o.m65_trgovina=S.m65.trgovina; o.m65_zdravnik=S.m65.zdravnik; o.m65_pogovor=S.m65.pogovor; o.m65_pomoc=S.m65.pomoc; }
   if(g==='odrasli'){ o.m25_parkiranje=S.m25.parkiranje; o.m25_ureditev=S.m25.ureditev; o.m25_otroci=S.m25.otroci;
-    if(S.m25.otroci==='da'){ o.m25_pot=S.m25.pot; o.m25_pot_kje=S.m25.potKje; } o.m25_dom=sez(S.m25.dom); o.m25_skupina=S.m25.skupina; }
+    if(S.m25.otroci==='da'){ o.m25_pot=S.m25.pot; o.m25_pot_kje=S.m25.potKje; } o.m25_dom=sez(S.m25.dom)+(S.m25.domDrugo?((S.m25.dom&&S.m25.dom.length)?'; ':'')+'ideja: '+S.m25.domDrugo:''); o.m25_skupina=S.m25.skupina; }
   if(g==='mladi'){ o.m15_kje=sez(S.m15.kje); o.m15_manjka=sez(S.m15.manjka); o.m15_drugo=S.m15.drugo; o.m15_varnost=S.m15.varnost; }
   posta('odgovori',o);
 }
