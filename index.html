@@ -329,7 +329,7 @@ var KORAKI = [
  }},
  {id:'bivanje', sklop:'O vas', pokazi:function(){return skupina()!=='otrok';}, render:function(){
    return glava('O vas','Kje in kako živite?')+
-   vpr('Na kateri ulici živite?', izbirnik('ulica', ULICE, '– izberite ulico –'), 'Ulico potrebujemo samo, da vidimo, ali so odgovorili ljudje z vseh koncev naselja. Hišne številke ne sprašujemo.')+
+   vpr('Na kateri ulici živite?', izbirnik('ulica', ULICE, '– izberite ulico –'), 'Podatek o ulici nam pomaga preveriti, ali so v anketi zastopani prebivalci vseh delov naselja. Hišne številke ne zbiramo.')+
    vpr('V stanovanju živite kot:', radio('bivanje',['lastnik ali družinski član lastnika','najemnik pri JSS MOL (neprofitno)','najemnik pri zasebniku','drugo']))+
    vpr('Ima vaš blok (vhod) dvigalo?', radio('dvigalo',['da','ne','ne vem'],{mreza:true}));
  }},
