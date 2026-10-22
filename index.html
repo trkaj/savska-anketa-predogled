@@ -92,6 +92,10 @@ textarea{resize:vertical;min-height:7.5rem}
 .zem .oz{pointer-events:none}
 .zem .oz circle{fill:var(--glavna);stroke:var(--poudarek);stroke-width:7}
 .zem .oz text{fill:#fff;font:800 30px system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-anchor:middle;dominant-baseline:central}
+.povezava-gumb{font:inherit;font-weight:700;background:none;border:none;color:var(--glavna-temna);text-decoration:underline;cursor:pointer;padding:.5rem 0;margin:.2rem 0 .6rem}
+.vrsta .nasl{display:block;font-weight:700;margin:.2rem 0 .35rem}
+.vrsta select{width:100%}
+.natancneje{margin-top:.5rem}.natancneje summary{cursor:pointer;color:var(--glavna-temna);font-size:.9rem;font-weight:600}.natancneje input{margin-top:.4rem;width:100%}
 .zem-opomba{font-size:.75rem;color:#444;margin:.1rem 0 .7rem}
 .izbrana-polja{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .6rem;font-size:.9rem}
 .izbrana-polja .cip{display:inline-flex;align-items:center;gap:.35rem;background:#e4f0e0;border:2px solid var(--glavna);border-radius:2rem;padding:.2rem .7rem .2rem .3rem;font-weight:700}
@@ -154,7 +158,6 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
 </style>
 </head>
 <body>
-<div class="predogled" role="note">PREDOGLED – odgovori se ne shranjujejo</div>
 <header class="glava">
   <div class="okvir">
     <div class="logo">savska<span>.org</span><small>Anketa prebivalcev</small></div>
@@ -217,7 +220,7 @@ var PRI_CEM = ['vsebina in ideje','stiki z občino','iskanje sredstev','komunika
 var CAS = ['enkrat na leto, za dogodek','nekaj ur na mesec','nekaj ur na teden','samo občasno, ko je potrebno'];
 
 var S = {}; // vsi odgovori (samo v pomnilniku brskalnika)
-function nov(){ S = {dobro:[], dobroDrugo:'', izboljsati:'', izbor:[], drugoTema:'', pogostost:{}, polja:[], celo:false, kraj:{}, m65:{}, m25:{}, m15:{}, sod:{}, listek:{}, listekPoslan:false}; }
+function nov(){ S = {dobro:[], dobroDrugo:'', izboljsati:'', izbor:[], drugoTema:'', pogostost:{}, polja:[], celo:false, kraj:{}, vrste:[{}], m65:{}, m25:{}, m15:{}, sod:{}, listek:{}, listekPoslan:false}; }
 nov();
 
 /* ---------- pomočniki ---------- */
@@ -229,7 +232,7 @@ function vpr(naslov, vsebina, namig){
   return '<div class="vprasanje"><span class="nasl">'+naslov+'</span>'+(namig?'<p class="namig">'+namig+'</p>':'')+vsebina+'</div>';
 }
 function radio(k, opts, o){ o=o||{}; var v=get(k), n='r'+(uid++);
-  return '<div class="izbire'+(o.mreza?' mreza':'')+'" role="radiogroup">'+opts.map(function(x){
+  return '<div class="'+(o.cipi?'cipi':'izbire'+(o.mreza?' mreza':''))+'" role="radiogroup">'+opts.map(function(x){
     return '<label class="izbira"><input type="radio" name="'+n+'" data-k="'+k+'" value="'+esc(x)+'"'+(v===x?' checked':'')+(o.rerender?' data-rerender="1"':'')+'><span>'+esc(x)+'</span></label>';
   }).join('')+'</div>'; }
 function check(k, opts, max, o){ o=o||{}; var v=get(k)||[];
@@ -299,24 +302,20 @@ var KORAKI = [
    tz.map(function(t){ return '<div class="tema"><h3>'+esc(imeTeme(t.id))+'</h3>'+radio('pogostost.'+t.id, POGOSTOST, {mreza:true})+'</div>'; }).join('');
  }},
  {id:'zemljevid', sklop:'Za vse', render:function(){
-   var poti=POLJA.map(function(p){ return '<path class="pp" d="'+p.d+'" data-polje-p="'+p.st+'" tabindex="0" role="checkbox" aria-checked="false" aria-label="Polje '+p.st+': '+esc(p.ime)+'"><title>'+p.st+' – '+esc(p.ime)+'</title></path>'; }).join('');
-   var oznake=POLJA.map(function(p){ return '<g class="oz" data-oz="'+p.st+'" hidden><circle cx="'+p.x+'" cy="'+p.y+'" r="30"/><text x="'+p.x+'" y="'+p.y+'">'+p.st+'</text></g>'; }).join('');
-   var vrst=function(p){ return '<label class="izbira"><input type="checkbox" data-polje-cb="'+p.st+'"><span class="st'+(p.raz?' raz':'')+'" aria-hidden="true">'+p.st+'</span><span><span class="sr">Polje '+p.st+': </span>'+esc(p.ime)+'</span></label>'; };
-   return glava('Za vse','Kje v naselju je to?','Tapnite <strong>do 3 polja</strong> na zemljevidu ali jih izberite v seznamu spodaj. Nato povejte, kaj je tam narobe.')+
-   '<div class="stevec" id="polja-stevec" role="status"></div>'+
-   '<div class="zem"><svg viewBox="'+ZEM_VB+'" role="group" aria-label="Zemljevid polj Savskega naselja. Polje izberete s tapom." preserveAspectRatio="xMidYMid meet">'+
-   '<image href="'+ZEM_SLIKA+'" x="0" y="0" width="2480" height="1748" preserveAspectRatio="none"/>'+
-   '<g id="zem-polja">'+poti+'</g><g>'+oznake+'</g></svg></div>'+
-   '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
-   '<p class="sporocilo" id="polja-sporocilo" role="alert"></p>'+
-   '<div class="izbrana-polja" id="izbrana-polja"></div>'+
-   '<label class="izbira celo"><input type="checkbox" id="polja-celo"><span>Ne vem / velja za celo naselje</span></label>'+
-   '<fieldset class="seznam-polj"><legend>Ali izberite s seznama</legend>'+
-   '<p class="podnasl">Savsko naselje</p><div class="izbire">'+POLJA.filter(function(p){return !p.raz;}).map(vrst).join('')+'</div>'+
-   '<p class="podnasl raz">Severno od Linhartove</p><div class="izbire">'+POLJA.filter(function(p){return p.raz;}).map(vrst).join('')+'</div>'+
-   '</fieldset>'+
-   '<div id="kraji"></div>'+
-   '<details class="papir"><summary>Papirna različica (za tisk)</summary>'+
+   var tz=izbrane(); if(!tz.length) tz=TEME;
+   var teme=tz.map(function(t){return imeTeme(t.id);});
+   var kraji=['ne vem / celo naselje'].concat(POLJA.map(function(p){ return p.st+' – '+p.ime; }));
+   var vrste=S.vrste.map(function(v,i){
+     return '<div class="kraj vrsta"><h3><span>'+(S.vrste.length>1?'Problem '+(i+1):'Problem')+'</span>'+(i>0?'<button type="button" class="odstrani" data-odstrani-vrsto="'+i+'">odstrani</button>':'')+'</h3>'+
+       '<span class="nasl">Kaj je problem?</span>'+radio('vrste.'+i+'.tema', teme, {cipi:true})+
+       '<span class="nasl" style="margin-top:.6rem">Kje?</span>'+izbirnik('vrste.'+i+'.polje', kraji, '– izberite kraj –')+
+       '<details class="natancneje"'+(v.opis?' open':'')+'><summary>natančneje (neobvezno)</summary>'+besedilo('vrste.'+i+'.opis','npr. klop pred Linhartovo 84')+'</details>'+
+     '</div>';
+   }).join('');
+   return glava('Za vse','Kaj je problem in kje?','Na kratko: kaj vas moti in kje v naselju. Lahko tudi preskočite.')+
+   vrste+
+   (S.vrste.length<MAX_POLJ?'<button type="button" class="povezava-gumb" id="dodaj-vrsto">+ dodaj še eno</button>':'')+
+   '<details class="papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
    '<p class="navodilo">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
    '<img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj">'+
    '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
@@ -431,8 +430,7 @@ function povzetek(){
   d('Kaj vam je všeč', seznam(S.dobro)+(S.dobroDrugo?(S.dobro.length?' · ':'')+S.dobroDrugo:''));
   d('Kaj bi izboljšali', S.izboljsati);
   d('Najbolj problematično (do 5)', izbrane().map(function(t){ var p=S.pogostost[t.id]; return imeTeme(t.id)+(p?' ('+p.toLowerCase()+')':''); }).join('; '));
-  d('Kraji na zemljevidu', S.celo ? (function(){ var k=S.kraj.celo||{}; return 'ne vem / celo naselje'+(k.tema?' – '+k.tema:'')+(k.opis?' ('+k.opis+')':''); })() :
-    S.polja.map(function(n){ var k=S.kraj[n]||{}; return 'polje '+n+' ('+imePolja(n)+')'+(k.tema?' – '+k.tema:'')+(k.opis?' ('+k.opis+')':''); }).join('; '));
+  d('Problemi in kraji', polniVrste().map(function(v){ return (v.tema||'?')+' – '+(v.polje||'kraj ni izbran')+(v.opis?' ('+v.opis+')':''); }).join('; '));
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ d('Stopnice otežujejo vsakdan', S.m65.stopnice); d('Vgradnja dvigala', S.m65.dvigalo);} d('Pogrešate klop na poti', S.m65.klop); d('Kje bi klop prav prišla', S.m65.klopKje); d('Do trgovine', S.m65.trgovina); d('Do zdravnika ali lekarne', S.m65.zdravnik); d('Pogovor s kom (dni na teden)', S.m65.pogovor); d('Imate koga poklicati', S.m65.pomoc); }
@@ -555,6 +553,8 @@ el.addEventListener('click',function(e){
   var t=e.target.closest('button'); if(!t) return;
   if(t.id==='natisni-papir'){ window.print(); return; }
   if(t.id==='zacni'){ pojdi(1); return; }
+  if(t.id==='dodaj-vrsto'){ if(S.vrste.length<MAX_POLJ){ S.vrste.push({}); izrisi(false); var z=el.querySelectorAll('.vrsta'); if(z.length) z[z.length-1].scrollIntoView({block:'nearest'}); } return; }
+  if(t.hasAttribute('data-odstrani-vrsto')){ S.vrste.splice(+t.getAttribute('data-odstrani-vrsto'),1); if(!S.vrste.length) S.vrste=[{}]; izrisi(false); return; }
   if(t.id==='na-zacetek'||t.id==='znova'){ nov(); STANJE={odgovori:false,sodelovanje:false,listek:false,sporocilo:''}; ZACETEK=Date.now(); trenutni=0; izrisi(true); return; }
   if(t.id==='listek-nazaj'){ pojdiNa('sodelovanje'); return; }
   if(t.id==='listek-preskoci'){ pojdiNa('zahvala'); return; }
@@ -580,6 +580,7 @@ document.querySelectorAll('.velikost button').forEach(function(b){
 var ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbx8fATVa4-cF3Lbuq4kTppmEZxt2OaWB1BBIjA78BPNORA3RfciRfSVC4iq82W-8BPs/exec';
 var STANJE = {odgovori:false, sodelovanje:false, listek:false, sporocilo:''};
 var ZACETEK = Date.now();
+function polniVrste(){ return (S.vrste||[]).filter(function(v){ return v&&(v.tema||v.polje||v.opis); }).slice(0,MAX_POLJ); }
 function sez(a){ return (a||[]).join('; '); }
 function posta(tip, polja){
   if(!ENDPOINT_URL) return;
@@ -597,10 +598,10 @@ function posljiOdgovore(){
   var o={dobro:sez(S.dobro), dobro_drugo:S.dobroDrugo, izboljsati:S.izboljsati,
     izbor:sez(S.izbor.map(imeTeme)), drugo_tema:S.drugoTema};
   TEME.forEach(function(t){ o['pogostost_'+t.id]=S.pogostost[t.id]; });
-  var kljuci=S.celo?['celo']:S.polja.slice(0,MAX_POLJ);
-  o.polja=S.celo?'celo naselje':sez(S.polja.map(String));
-  kljuci.forEach(function(k,i){ var kr=S.kraj[k]||{}, n=i+1;
-    o['kraj'+n+'_polje']=(k==='celo')?'celo naselje':(k+' – '+imePolja(k)); o['kraj'+n+'_tema']=kr.tema; o['kraj'+n+'_opis']=kr.opis; });
+  var vr=polniVrste();
+  o.polja=sez(vr.map(function(v){ return v.polje? (v.polje.indexOf('ne vem')===0?'celo naselje':v.polje.split(' – ')[0]) : ''; }).filter(Boolean));
+  vr.forEach(function(v,i){ var n=i+1;
+    o['kraj'+n+'_polje']=v.polje&&v.polje.indexOf('ne vem')===0?'celo naselje':v.polje; o['kraj'+n+'_tema']=v.tema; o['kraj'+n+'_opis']=v.opis; });
   o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna;
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
