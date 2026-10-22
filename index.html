@@ -397,7 +397,7 @@ var KORAKI = [
  {id:'zahvala', brezNav:true, pokazi:function(){return skupina()!=='otrok';}, render:function(){
    return '<div class="zahvala-glava"><div class="kljukica" aria-hidden="true">✓</div></div>'+
    '<h2 tabindex="-1" style="text-align:center">Hvala, ker ste si vzeli čas!</h2>'+
-   '<p style="text-align:center">Rezultate bomo objavili na savska.org in v Domu skupnosti <span class="manjka">[kdaj]</span>.</p>'+
+   '<p style="text-align:center">Ko bo anketa zaključena, bomo rezultate objavili na savska.org in v Domu skupnosti.</p>'+
    (S.listekPoslan?'<p class="ok">'+(ENDPOINT_URL?'Modri listek je shranjen ločeno od vaših odgovorov.':'Modri listek: v pravi anketi bi se shranil ločeno od vaših odgovorov.')+'</p>':'')+
    (ENDPOINT_URL ? '<p class="ok" style="text-align:center" id="stanje-posiljanja">'+esc(STANJE.sporocilo||'Vaši odgovori so bili poslani. Hvala!')+'</p>' : '<p class="zgled-trak" style="text-align:center">Predogled: nič ni bilo poslano. Povzetek je viden samo na tej napravi.</p>')+
    '<div class="kartica"><details class="povzetek" open><summary>Vaši odgovori (povzetek)</summary>'+povzetek()+'</details></div>'+
@@ -413,7 +413,7 @@ function modriListek(){
   '<p>Pustite nam kontakt, da vas lahko povabimo, ko bo kaj za postoriti.</p>'+
   '<p class="locen"><strong>Ločeno od ankete.</strong> Vaši odgovori v anketi ostanejo brez imena. Ta listek se shrani posebej, v drugo tabelo, in ga z anketo ni mogoče povezati.</p>'+
   '<div class="prenos"><strong>Pri čem:</strong> '+(pc.length?esc(pc.join(', ')):'<span class="prazno">ni izbrano</span>')+'<br><strong>Čas:</strong> '+(S.sod.cas?esc(S.sod.cas):'<span class="prazno">ni izbrano</span>')+'</div>'+
-  '<label class="polje-nasl" for="l-ime">Ime ali vzdevek</label><input type="text" id="l-ime" data-k="listek.ime" value="'+esc(S.listek.ime||'')+'">'+
+  '<label class="polje-nasl" for="l-ime">Ime ali vzdevek <span class="namig">(neobvezno)</span></label><input type="text" id="l-ime" data-k="listek.ime" value="'+esc(S.listek.ime||'')+'">'+
   '<label class="polje-nasl" for="l-kontakt">E-pošta ali telefon</label><input type="text" id="l-kontakt" data-k="listek.kontakt" value="'+esc(S.listek.kontakt||'')+'">'+
   '<div style="margin-top:.9rem">'+vpr('Kako naj vas obveščamo?', check('listek.kako',['e-pošta','SMS ali Viber','telefonski klic']))+'</div>'+
   '<label class="izbira soglasje"><input type="checkbox" data-k="listek.soglasje" value="da"'+((S.listek.soglasje||[]).length?' checked':'')+'><span>Soglašam, da upravljavec Rok Terkaj (terkaj@gmail.com, 051 367 363) te podatke uporablja samo za vabila k sodelovanju in obvestila, jih ne posreduje nikomur, hrani največ 24 mesecev od zadnjega stika in jih na mojo zahtevo izbriše. Pritožba: Informacijski pooblaščenec.</span></label>'+
@@ -616,8 +616,8 @@ function posljiSodelovanje(){
 }
 function posljiListek(){
   if(STANJE.listek) return; STANJE.listek=true;
-  /* Ime se namenoma NE pošilja (anketa ne hrani imen). */
-  posta('listek',{kontakt:S.listek.kontakt, kako:sez(S.listek.kako), pricem:sez(S.sod.pricem), soglasje:sez(S.listek.soglasje)});
+  /* Ime ali vzdevek (neobvezno) gre samo v zavihek Prostovoljci, nikoli v odgovore. */
+  posta('listek',{ime:S.listek.ime, kontakt:S.listek.kontakt, kako:sez(S.listek.kako), pricem:sez(S.sod.pricem), soglasje:sez(S.listek.soglasje)});
 }
 izrisi(false);
 })();
