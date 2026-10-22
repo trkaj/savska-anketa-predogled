@@ -378,11 +378,11 @@ var KORAKI = [
    var da=biSodeloval();
    return '<div class="ok" style="margin:0 0 .9rem">✓ Vaši odgovori so oddani. Hvala!</div>'+
    '<span class="locen-znak">Prijazno vabilo · ločeno od ankete</span><h2 tabindex="-1">Bi sodelovali pri izboljšavah v soseski?</h2>'+
-   '<p>Marsikaj lahko naredimo sami, sosedje skupaj. Vsaka pomoč šteje, tudi ena ura na leto.</p>'+
+   '<p>Veliko lahko naredimo tudi sami, če stopimo skupaj. Vsaka pomoč šteje – tudi ena ura na leto.</p>'+
    vpr('Bi sodelovali?', radio('sod.zelja',['da','mogoče','ne zdaj'],{mreza:true,rerender:true}))+
    (da ? vpr('Pri čem bi radi pomagali? Izberite, kar velja.', check('sod.pricem', PRI_CEM))+
          vpr('Koliko časa bi imeli?', radio('sod.cas', CAS)) : '')+
-   '<p class="locen"><strong>Kaj se shrani:</strong> brez imena in ločeno od vaših odgovorov štejemo samo, ali bi sodelovali in koliko časa imate. '+
+   '<p class="locen"><strong>Katere podatke zbiramo:</strong> zabeležimo le, ali bi sodelovali pri izboljšavah in koliko časa bi jim lahko namenili. Te podatke zbiramo brez imena in ločeno od drugih odgovorov v anketi. '+
    (da?'Kar izberete pri »pri čem«, shranimo samo, če v naslednjem koraku izpolnite modri listek.':'')+'</p>';
  }},
  {id:'listek', brezNav:true, pokazi:function(){return skupina()!=='otrok'&&biSodeloval();}, render:function(){ return modriListek(); }},
