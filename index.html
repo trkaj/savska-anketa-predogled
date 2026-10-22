@@ -272,18 +272,18 @@ var KORAKI = [
    '<button type="button" class="gumb glavni siroko" id="zacni">Začnimo →</button>';
  }},
  {id:'dobro', sklop:'Za vse', render:function(){
-   return glava('Za vse','Kaj vam je v Savskem naselju všeč?','Kaj je pri nas dobro? Izberite, kar velja, ali napišite s svojimi besedami.')+
+   return glava('Za vse','Kaj vam je v Savskem naselju všeč?','Kaj vam je pri nas všeč in kaj bi pohvalili? Izberite poljubno število odgovorov ali dodajte svojega.')+
    vpr('Hitre izbire', check('dobro', DOBRO, 0, {cipi:true}), 'Izberete lahko poljubno število.')+
    vpr('Kaj še?', besedilo('dobroDrugo','npr. Poleti se otroci igrajo zunaj do večera.',3));
  }},
  {id:'izboljsati', sklop:'Za vse', render:function(){
-   return glava('Za vse','Kaj bi v Savskem izboljšali?','Kaj vas moti? Napišite s svojimi besedami, čisto na kratko ali bolj podrobno.')+
-   '<div class="topel">Ni pravih ali napačnih odgovorov. Prav to, kar opazite vsak dan, nam najbolj pomaga.</div>'+
-   vpr('Vaš odgovor', besedilo('izboljsati','npr. Ni kje sesti na poti do trgovine …',5),'Seznam tem pride šele v naslednjem koraku, zato da najprej slišimo vaše besede.');
+   return glava('Za vse','Kaj bi v Savskem izboljšali?','Kaj vas moti ali kaj bi si želeli drugače? Opišite s svojimi besedami – na kratko ali podrobneje.')+
+   '<div class="topel">Ni pravih ali napačnih odgovorov. Pomembno je, kako vi doživljate življenje v naselju in kaj opažate v vsakdanjem življenju.</div>'+
+   vpr('Vaš odgovor', besedilo('izboljsati','npr. Ni kje sesti na poti do trgovine …',5),'Najprej želimo slišati vaše mnenje, zato vas prosimo, da svoje opažanje opišete s svojimi besedami. Teme, na katere se lahko nanaša, boste izbrali v naslednjem koraku.');
  }},
  {id:'izbor', sklop:'Za vse', render:function(){
    var drugo=S.izbor.indexOf('drugo')>-1;
-   return glava('Za vse','Kaj je v Savskem najbolj problematično?','Izberite <strong>do 5 stvari</strong>, ki se vam zdijo najbolj pereče.')+
+   return glava('Za vse','Kaj bi bilo v Savskem naselju najbolj nujno izboljšati?','Izberite <strong>do 5 težav</strong>, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše.')+
    '<div class="stevec'+(S.izbor.length>=MAX_TEM?' polno':'')+'" id="stevec" role="status">'+stevecHTML()+'</div>'+
    check('izbor', TEME, MAX_TEM)+
    '<div id="drugo-polje"'+(drugo?'':' hidden')+'>'+vpr('Kaj drugega?', besedilo('drugoTema','napišite na kratko'))+'</div>';
@@ -335,7 +335,7 @@ var KORAKI = [
  }},
  {id:'enosmerna', sklop:'Za vse', pokazi:function(){return skupina()!=='otrok';}, render:function(){
    return glava('Za vse','Promet na vaši ulici')+
-   vpr('Bi podprli enosmerni promet na svoji ulici?', radio('enosmerna',['da','ne','ne vem']), 'Odgovor ni uradni podpis. Pomaga nam videti, kaj o tem mislijo stanovalci posameznih ulic.');
+   vpr('Bi podprli enosmerni promet na svoji ulici?', radio('enosmerna',['da','ne','ne vem']), 'Vaš odgovor ne pomeni uradne zaveze. Pomaga nam razumeti, kako stanovalci posameznih ulic gledajo na uvedbo enosmernega prometa.');
  }},
  /* 65+ */
  {id:'s65a', sklop:'Za 65 let in več', pokazi:function(){return skupina()==='starejsi';}, render:function(){
