@@ -270,9 +270,9 @@ var KORAKI = [
    '<li><strong>Brez imena:</strong> ne sprašujemo po imenu, naslovu ali hišni številki.</li>'+
    '<li><strong>Objava:</strong> rezultate objavimo samo skupaj, po ulicah, na savska.org in v Domu skupnosti.</li>'+
    '<li><strong>Vsako vprašanje lahko preskočite.</strong></li>'+
-   '<li><strong>Upravljavec in kontakt:</strong> <span class="manjka">[upravljavec še ni določen]</span></li>'+
+   '<li><strong>Upravljavec in kontakt:</strong> Rok Terkaj, terkaj@gmail.com, 051 367 363</li>'+
    '</ul></div>'+
-   '<p class="namig">Raje na papirju ali po telefonu? Pokličite <span class="manjka">[telefon, ure]</span>.</p>'+
+   '<p class="namig">Raje na papirju ali po telefonu? Pokličite ali pošljite SMS na 051 367 363.</p>'+
    '<button type="button" class="gumb glavni siroko" id="zacni">Začnimo →</button>';
  }},
  {id:'dobro', sklop:'Za vse', render:function(){
@@ -416,7 +416,7 @@ function modriListek(){
   '<label class="polje-nasl" for="l-ime">Ime ali vzdevek</label><input type="text" id="l-ime" data-k="listek.ime" value="'+esc(S.listek.ime||'')+'">'+
   '<label class="polje-nasl" for="l-kontakt">E-pošta ali telefon</label><input type="text" id="l-kontakt" data-k="listek.kontakt" value="'+esc(S.listek.kontakt||'')+'">'+
   '<div style="margin-top:.9rem">'+vpr('Kako naj vas obveščamo?', check('listek.kako',['e-pošta','SMS ali Viber','telefonski klic']))+'</div>'+
-  '<label class="izbira soglasje"><input type="checkbox" data-k="listek.soglasje" value="da"'+((S.listek.soglasje||[]).length?' checked':'')+'><span>Soglašam, da <span class="manjka">[upravljavec še ni določen]</span> te podatke uporablja samo za vabila k sodelovanju in obvestila, jih ne posreduje nikomur, hrani največ 24 mesecev od zadnjega stika in jih na mojo zahtevo izbriše. Pritožba: Informacijski pooblaščenec.</span></label>'+
+  '<label class="izbira soglasje"><input type="checkbox" data-k="listek.soglasje" value="da"'+((S.listek.soglasje||[]).length?' checked':'')+'><span>Soglašam, da upravljavec Rok Terkaj (terkaj@gmail.com, 051 367 363) te podatke uporablja samo za vabila k sodelovanju in obvestila, jih ne posreduje nikomur, hrani največ 24 mesecev od zadnjega stika in jih na mojo zahtevo izbriše. Pritožba: Informacijski pooblaščenec.</span></label>'+
   '<p class="sporocilo" id="listek-napaka"></p>'+
   '<p class="namig">V pravi anketi se listek odpre na ločenem spletnem naslovu, brez povezave z vašimi odgovori.</p>'+
   '<button type="button" class="gumb moder siroko" id="poslji-listek">Pošlji modri listek</button>'+
