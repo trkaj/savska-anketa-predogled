@@ -110,6 +110,8 @@ details.papir summary{font-weight:700;cursor:pointer;color:var(--glavna-temna);m
 .papir .navodilo{font-size:1.05rem;font-weight:700;margin:.4rem 0 .5rem}
 .papir .navodilo-celo{font-size:.95rem;margin:.5rem 0 .2rem}
 .samo-tisk{display:none}
+.zem-klik{position:relative}.zem-klik svg{position:absolute;inset:0;width:100%;height:100%}.zem-klik path{fill:transparent;stroke:none;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0)}.zem-klik path.on{fill:rgba(20,110,60,.35);stroke:#0b5d2e;stroke-width:8}
+@media print{.zem-klik svg{display:none}}
 .samo-zaslon{font-size:.95rem;margin:.4rem 0 .6rem;background:#eef5ef;padding:.6rem .8rem;border-radius:.5rem}
 @media print{.samo-tisk{display:block!important}.samo-zaslon{display:none!important}}
 @media print{
@@ -311,9 +313,9 @@ var KORAKI = [
    return glava('Za vse','Kaj je problem in kje?','Na kratko: kaj vas moti in kje v naselju. Lahko tudi preskočite.')+
    vrste+
    (S.vrste.length<MAX_POLJ?'<button type="button" class="povezava-gumb" id="dodaj-vrsto">+ dodaj še eno</button>':'')+
-   '<details class="papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
-   '<p class="samo-zaslon">Zemljevid je le za pomoč. Kraj izberete zgoraj pri »Kje?«, kjer je tudi možnost »ne vem / celo naselje«. Povečate ga lahko z dvema prstoma.</p>'+'<p class="navodilo samo-tisk">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
-   '<img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj">'+
+   '<details class="papir"'+(S.zemOdprt?' open':'')+' id="zem-papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
+   '<p class="samo-zaslon">Dotaknite se polja na zemljevidu in kraj se izbere zgoraj pri »Kje?«. Tam je tudi možnost »ne vem / celo naselje«.</p>'+'<p class="navodilo samo-tisk">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
+   '<div class="zem-klik"><img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj"><svg viewBox="0 0 2480 1748" aria-hidden="true">'+POLJA.map(function(p){ var on=S.vrste.some(function(v){return v.polje&&v.polje.indexOf(p.st+' – ')===0;}); return '<path data-zem-polje="'+p.st+'" class="'+(on?'on':'')+'" d="'+p.d+'"/>'; }).join('')+'</svg></div>'+
    '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
    '<p class="navodilo-celo samo-tisk">☐ Ne vem / velja za celo naselje</p>'+
    '<button type="button" class="gumb" id="natisni-papir">Natisni</button>'+
@@ -544,7 +546,11 @@ el.addEventListener('change',function(e){
   } else set(k,t.value);
 });
 el.addEventListener('input',function(e){ var t=e.target, k=t.getAttribute('data-k'); if(k&&(t.tagName==='TEXTAREA'||t.type==='text')) set(k,t.value); });
+document.addEventListener('toggle',function(e){ if(e.target&&e.target.id==='zem-papir') S.zemOdprt=e.target.open; },true);
 el.addEventListener('click',function(e){
+  var zp=e.target.closest('[data-zem-polje]'); if(zp){ var st=+zp.getAttribute('data-zem-polje'), val=st+' – '+imePolja(st);
+    var ix=-1; for(var j=0;j<S.vrste.length;j++){ if(S.vrste[j].polje===val){ix=j;break;} } if(ix<0) for(j=0;j<S.vrste.length;j++){ if(!S.vrste[j].polje){ix=j;break;} } if(ix<0) ix=S.vrste.length-1;
+    S.vrste[ix].polje=val; S.zemOdprt=true; izrisi(false); var vr=el.querySelectorAll('.vrsta')[ix]; if(vr) vr.scrollIntoView({block:'center',behavior:'smooth'}); return; }
   var pp=e.target.closest('[data-polje-p]'); if(pp){ preklopiPolje(+pp.getAttribute('data-polje-p')); return; }
   var t=e.target.closest('button'); if(!t) return;
   if(t.id==='natisni-papir'){ window.print(); return; }
