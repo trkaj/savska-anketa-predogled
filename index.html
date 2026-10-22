@@ -259,7 +259,7 @@ var KORAKI = [
  {id:'uvod', brezNav:true, render:function(){
    return '<h1>Dober dan, soseda in sosed!</h1>'+
    '<p style="font-size:1.08rem">Radi bi slišali, <strong>kaj vam je v Savskem naselju všeč</strong> in <strong>kaj bi skupaj izboljšali</strong>. Vsak glas šteje, tudi vaš.</p>'+
-   '<p>Anketa je za vse prebivalce od 15. leta. Traja <strong>okoli 8 minut</strong> in je <strong>brez imena</strong>.</p>'+
+   '<p>Anketa je za vse prebivalce od 15. leta. Traja <strong>okoli 8 minut</strong> in je <strong>anonimna</strong>.</p>'+
    '<div class="kartica"><h3>Na kratko o anketi</h3><ul class="obvestilo">'+
    '<li><strong>Kdo sprašuje:</strong> sosedje, neodvisna in civilna pobuda prebivalcev Savskega naselja.</li>'+
    '<li><strong>Zakaj:</strong> da pokažemo, kaj je pri nas dobro in kaj nas res moti ter to predamo tistim, ki lahko kaj spremenijo: občini, četrtni skupnosti, upravnikom blokov in JSS.</li>'+
@@ -403,7 +403,7 @@ function modriListek(){
   '<span class="sklop" style="background:#fff;color:var(--modra-temna)">Modri listek · neobvezno</span>'+
   '<h2 id="modri-nasl" tabindex="-1">Super, veseli bomo vaše pomoči!</h2>'+
   '<p>Pustite nam kontakt, da vas lahko povabimo, ko bo kaj za postoriti.</p>'+
-  '<p class="locen"><strong>Ločeno od ankete.</strong> Vaši odgovori v anketi ostanejo brez imena. Ta listek se shrani posebej, v drugo tabelo, in ga z anketo ni mogoče povezati.</p>'+
+  '<p class="locen"><strong>Ločeno od ankete.</strong> Vaši odgovori v anketi ostanejo anonimni. Ta listek se shrani posebej, v drugo tabelo, in ga z anketo ni mogoče povezati.</p>'+
   '<div class="prenos"><strong>Pri čem:</strong> '+(pc.length?esc(pc.join(', ')):'<span class="prazno">ni izbrano</span>')+'<br><strong>Čas:</strong> '+(S.sod.cas?esc(S.sod.cas):'<span class="prazno">ni izbrano</span>')+'</div>'+
   '<label class="polje-nasl" for="l-ime">Ime ali vzdevek <span class="namig">(neobvezno)</span></label><input type="text" id="l-ime" data-k="listek.ime" value="'+esc(S.listek.ime||'')+'">'+
   '<label class="polje-nasl" for="l-kontakt">E-pošta ali telefon</label><input type="text" id="l-kontakt" data-k="listek.kontakt" value="'+esc(S.listek.kontakt||'')+'">'+
@@ -456,7 +456,7 @@ function osveziPolja(){
   document.getElementById('izbrana-polja').innerHTML=S.polja.map(function(x){ return '<span class="cip"><span class="st" aria-hidden="true">'+x+'</span>'+esc(imePolja(x))+'</span>'; }).join('');
   document.getElementById('kraji').innerHTML = S.celo ? krajHTML('celo','Ne vem / celo naselje') :
     (S.polja.map(function(x){ return krajHTML(x,'Polje '+x+': '+esc(imePolja(x))); }).join('') ||
-     '<p class="namig">Opisujete kraj, ne sebe, zato anketa ostane brez imena. Če ne želite označiti, kar nadaljujte.</p>');
+     '<p class="namig">Opisujete kraj, ne sebe, zato anketa ostane anonimna. Če ne želite označiti, kar nadaljujte.</p>');
 }
 function preklopiPolje(x){
   var i=S.polja.indexOf(x), msg=document.getElementById('polja-sporocilo');
