@@ -173,6 +173,7 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
 </div>
 <main>
   <div class="okvir" id="vsebina" aria-live="polite"></div>
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"><label for="hp-stran">Pustite prazno</label><input type="text" id="hp-stran" name="spletna_stran" tabindex="-1" autocomplete="off"></div>
 </main>
 <nav class="navigacija" id="navigacija" hidden>
   <div class="okvir">
@@ -397,8 +398,8 @@ var KORAKI = [
    return '<div class="zahvala-glava"><div class="kljukica" aria-hidden="true">✓</div></div>'+
    '<h2 tabindex="-1" style="text-align:center">Hvala, ker ste si vzeli čas!</h2>'+
    '<p style="text-align:center">Rezultate bomo objavili na savska.org in v Domu skupnosti <span class="manjka">[kdaj]</span>.</p>'+
-   (S.listekPoslan?'<p class="ok">Modri listek: v pravi anketi bi se shranil ločeno od vaših odgovorov.</p>':'')+
-   '<p class="zgled-trak" style="text-align:center">Predogled: nič ni bilo poslano. Povzetek je viden samo na tej napravi.</p>'+
+   (S.listekPoslan?'<p class="ok">'+(ENDPOINT_URL?'Modri listek je shranjen ločeno od vaših odgovorov.':'Modri listek: v pravi anketi bi se shranil ločeno od vaših odgovorov.')+'</p>':'')+
+   (ENDPOINT_URL ? '<p class="ok" style="text-align:center" id="stanje-posiljanja">'+esc(STANJE.sporocilo||'Vaši odgovori so bili poslani. Hvala!')+'</p>' : '<p class="zgled-trak" style="text-align:center">Predogled: nič ni bilo poslano. Povzetek je viden samo na tej napravi.</p>')+
    '<div class="kartica"><details class="povzetek" open><summary>Vaši odgovori (povzetek)</summary>'+povzetek()+'</details></div>'+
    '<button type="button" class="gumb siroko" id="znova">Začni znova (predogled)</button>';
  }}
@@ -510,6 +511,9 @@ function izrisi(fokus){
   if(fokus){ window.scrollTo(0,0); var h=el.querySelector('h2,h1'); if(h&&h.focus) h.focus({preventScroll:true}); }
 }
 function pojdi(smer){
+  if(smer>0){ var _k=KORAKI[trenutni], _nx=naslednji();
+    if(_nx&&_nx.id==='sodelovanje') posljiOdgovore();
+    if(_k.id==='sodelovanje') posljiSodelovanje(); }
   var i=trenutni+smer;
   while(i>=0&&i<KORAKI.length&&KORAKI[i].pokazi&&!KORAKI[i].pokazi()) i+=smer;
   if(i<0||i>=KORAKI.length) return;
@@ -551,12 +555,12 @@ el.addEventListener('click',function(e){
   var t=e.target.closest('button'); if(!t) return;
   if(t.id==='natisni-papir'){ window.print(); return; }
   if(t.id==='zacni'){ pojdi(1); return; }
-  if(t.id==='na-zacetek'||t.id==='znova'){ nov(); trenutni=0; izrisi(true); return; }
+  if(t.id==='na-zacetek'||t.id==='znova'){ nov(); STANJE={odgovori:false,sodelovanje:false,listek:false,sporocilo:''}; ZACETEK=Date.now(); trenutni=0; izrisi(true); return; }
   if(t.id==='listek-nazaj'){ pojdiNa('sodelovanje'); return; }
   if(t.id==='listek-preskoci'){ pojdiNa('zahvala'); return; }
   if(t.id==='poslji-listek'){
     if(!(S.listek.soglasje||[]).length){ document.getElementById('listek-napaka').textContent='Za pošiljanje potrdite soglasje.'; return; }
-    S.listekPoslan=true; pojdiNa('zahvala'); return; }
+    S.listekPoslan=true; posljiListek(); pojdiNa('zahvala'); return; }
   var o=t.getAttribute('data-odstrani');
   if(o){ if(o==='celo') preklopiCelo(false); else preklopiPolje(+o); }
 });
@@ -571,6 +575,50 @@ document.querySelectorAll('.velikost button').forEach(function(b){
     document.querySelectorAll('.velikost button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
   });
 });
+/* ---------- pošiljanje v Google Sheets (Apps Script) ----------
+   Dokler je ENDPOINT_URL prazen, anketa deluje kot predogled in ne pošlje ničesar. */
+var ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbx8fATVa4-cF3Lbuq4kTppmEZxt2OaWB1BBIjA78BPNORA3RfciRfSVC4iq82W-8BPs/exec';
+var STANJE = {odgovori:false, sodelovanje:false, listek:false, sporocilo:''};
+var ZACETEK = Date.now();
+function sez(a){ return (a||[]).join('; '); }
+function posta(tip, polja){
+  if(!ENDPOINT_URL) return;
+  var p=new URLSearchParams();
+  p.append('tip',tip); p.append('kanal','splet');
+  p.append('spletna_stran',(document.getElementById('hp-stran')||{}).value||'');
+  p.append('cas_izpolnjevanja_s',String(Math.round((Date.now()-ZACETEK)/1000)));
+  Object.keys(polja).forEach(function(k){ var v=polja[k]; if(v!=null&&v!=='') p.append(k,String(v)); });
+  fetch(ENDPOINT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:p.toString(),keepalive:true})
+    .catch(function(){ STANJE.sporocilo='Pošiljanje ni uspelo (ni povezave?). Prosimo, poskusite znova pozneje ali izpolnite papirno anketo.';
+      var s=document.getElementById('stanje-posiljanja'); if(s){ s.textContent=STANJE.sporocilo; s.className='sporocilo'; } });
+}
+function posljiOdgovore(){
+  if(STANJE.odgovori) return; STANJE.odgovori=true;
+  var o={dobro:sez(S.dobro), dobro_drugo:S.dobroDrugo, izboljsati:S.izboljsati,
+    izbor:sez(S.izbor.map(imeTeme)), drugo_tema:S.drugoTema};
+  TEME.forEach(function(t){ o['pogostost_'+t.id]=S.pogostost[t.id]; });
+  var kljuci=S.celo?['celo']:S.polja.slice(0,MAX_POLJ);
+  o.polja=S.celo?'celo naselje':sez(S.polja.map(String));
+  kljuci.forEach(function(k,i){ var kr=S.kraj[k]||{}, n=i+1;
+    o['kraj'+n+'_polje']=(k==='celo')?'celo naselje':(k+' – '+imePolja(k)); o['kraj'+n+'_tema']=kr.tema; o['kraj'+n+'_opis']=kr.opis; });
+  o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna;
+  var g=skupina();
+  if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
+    o.m65_klop=S.m65.klop; o.m65_klop_kje=S.m65.klopKje; o.m65_trgovina=S.m65.trgovina; o.m65_zdravnik=S.m65.zdravnik; o.m65_pogovor=S.m65.pogovor; o.m65_pomoc=S.m65.pomoc; }
+  if(g==='odrasli'){ o.m25_parkiranje=S.m25.parkiranje; o.m25_ureditev=S.m25.ureditev; o.m25_otroci=S.m25.otroci;
+    if(S.m25.otroci==='da'){ o.m25_pot=S.m25.pot; o.m25_pot_kje=S.m25.potKje; } o.m25_dom=sez(S.m25.dom); o.m25_skupina=S.m25.skupina; }
+  if(g==='mladi'){ o.m15_kje=sez(S.m15.kje); o.m15_manjka=sez(S.m15.manjka); o.m15_drugo=S.m15.drugo; o.m15_varnost=S.m15.varnost; }
+  posta('odgovori',o);
+}
+function posljiSodelovanje(){
+  if(STANJE.sodelovanje||!S.sod.zelja) return; STANJE.sodelovanje=true;
+  posta('sodelovanje',{sod_zelja:S.sod.zelja, sod_cas:biSodeloval()?S.sod.cas:''});
+}
+function posljiListek(){
+  if(STANJE.listek) return; STANJE.listek=true;
+  /* Ime se namenoma NE pošilja (anketa ne hrani imen). */
+  posta('listek',{kontakt:S.listek.kontakt, kako:sez(S.listek.kako), pricem:sez(S.sod.pricem), soglasje:sez(S.listek.soglasje)});
+}
 izrisi(false);
 })();
 </script>
