@@ -167,6 +167,18 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
 body[data-korak="uvod"] .logo-glava{display:none}
 .logo-tisk{height:70px;width:auto;margin:0 auto .4rem}
 @media print{.logo-tisk{display:block!important}}
+.naziv{margin-top:.35rem;font-size:.85rem;font-weight:700;color:var(--glavna-temna)}
+.naziv b{background:var(--poudarek,#f4c430);color:#1b3a1b;border-radius:1rem;padding:.05rem .55rem}
+.naziv-obvestilo{position:fixed;left:50%;top:.8rem;transform:translate(-50%,-150%);z-index:50;background:#1b4d2e;color:#fff;font-weight:700;padding:.6rem 1rem;border-radius:2rem;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .35s;max-width:92vw;text-align:center}
+.naziv-obvestilo.vidno{transform:translate(-50%,0)}
+.naziv-koncni{position:relative;text-align:center;margin:.4rem 0 1rem;padding:1rem;border-radius:1rem;background:#fff8dc;border:2px solid var(--poudarek,#f4c430);overflow:hidden}
+.naziv-koncni .napis{font-size:1.05rem;font-weight:700}
+.naziv-koncni.velik .napis{font-size:1.6rem;color:var(--glavna-temna)}
+.naziv-koncni .nm{font-size:.85rem;display:block;font-weight:600;opacity:.8}
+.konfeti i{position:absolute;top:-10px;width:8px;height:14px;border-radius:2px;animation:konf 2.4s ease-in forwards;opacity:.9}
+@keyframes konf{to{transform:translateY(240px) rotate(540deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.konfeti{display:none}.naziv-obvestilo{transition:none}}
+@media print{.naziv,.naziv-obvestilo,.naziv-koncni{display:none!important}}
 </style>
 </head>
 <body>
@@ -184,8 +196,10 @@ body[data-korak="uvod"] .logo-glava{display:none}
   <div class="okvir">
     <div class="napredek-napis"><span id="napredek-sklop"></span><span id="napredek-st"></span></div>
     <div class="vrstica" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Napredek ankete"><div id="napredek-vrstica" style="width:0"></div></div>
+    <div class="naziv" id="naziv"></div>
   </div>
 </div>
+<div class="naziv-obvestilo" id="naziv-obvestilo" role="status" aria-live="polite"></div>
 <main>
   <img class="logo-tisk samo-tisk" src="logo.png" alt="Savsko naselje">
   <div class="okvir" id="vsebina" aria-live="polite"></div>
@@ -512,9 +526,24 @@ var el=document.getElementById('vsebina');
 var BREZ_STEVCA=['uvod','otroci','sodelovanje','listek','zahvala'];
 function vidni(){ return KORAKI.filter(function(k){ return !k.pokazi||k.pokazi(); }); }
 function naslednji(){ for(var i=trenutni+1;i<KORAKI.length;i++){ if(!KORAKI[i].pokazi||KORAKI[i].pokazi()) return KORAKI[i]; } return null; }
+/* igrifikacija: samo v brskalniku, nič se ne pošilja */
+var NAZIVI=[[0,'Neznanec'],[15,'Novi sosed'],[40,'Dober sosed'],[65,'Zaveden Savčan / Savčanka']];
+var nazivMax=-1, konfetiBil=false;
+function nazivZa(p){ var n=0; for(var i=0;i<NAZIVI.length;i++) if(p>=NAZIVI[i][0]) n=i; return n; }
+function obvesti(t){ var o=document.getElementById('naziv-obvestilo'); o.textContent=t; o.classList.add('vidno'); clearTimeout(obvesti.t); obvesti.t=setTimeout(function(){o.classList.remove('vidno');},2800); }
+function koncniNaziv(velik){
+  var h='<div class="naziv-koncni'+(velik?' velik':'')+'"><span class="nm">Vaš naziv</span><div class="napis">Pravi Savčan / Savčanka! 🎉</div>';
+  if(velik||!konfetiBil){ var b=['#f4c430','#2e7d32','#e57373','#64b5f6','#ffb74d']; h+='<div class="konfeti" aria-hidden="true">';
+    for(var i=0;i<28;i++) h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;background:'+b[i%5]+';animation-delay:'+(Math.random()*.8).toFixed(2)+'s"></i>';
+    h+='</div>'; konfetiBil=true; }
+  return h+'</div>';
+}
 function izrisi(fokus){
   var k=KORAKI[trenutni];
   el.innerHTML=k.render();
+  if(STANJE.odgovori&&(k.id==='sodelovanje'||k.id==='listek'||k.id==='zahvala')){
+    var prvic=nazivMax<4; el.insertAdjacentHTML('afterbegin',koncniNaziv(k.id==='zahvala'));
+    if(prvic){ nazivMax=4; obvesti('Zdaj ste Pravi Savčan / Savčanka! 🎉'); } }
   document.body.setAttribute('data-korak',k.id);
   if(k.id==='zemljevid') osveziPolja();
   var v=vidni().filter(function(x){return BREZ_STEVCA.indexOf(x.id)<0;});
@@ -527,6 +556,10 @@ function izrisi(fokus){
     nap.querySelector('[role=progressbar]').setAttribute('aria-valuenow',pct);
     document.getElementById('napredek-st').textContent='Korak '+(idx+1)+' od '+skupaj;
     document.getElementById('napredek-sklop').textContent=k.sklop||'';
+    var ni=nazivZa(Math.round(idx/(skupaj)*100));
+    if(ni<nazivMax&&nazivMax<4) ni=nazivMax;
+    document.getElementById('naziv').innerHTML='Vaš naziv: <b>'+NAZIVI[ni][1]+'</b>';
+    if(ni>nazivMax){ if(nazivMax>=0) obvesti('Zdaj ste '+NAZIVI[ni][1]+'!'); nazivMax=ni; }
   } else nap.hidden=true;
   document.getElementById('navigacija').hidden=!!k.brezNav;
   document.getElementById('nazaj').hidden=!!k.brezNazaj;
@@ -588,7 +621,7 @@ el.addEventListener('click',function(e){
   if(t.id==='zacni'){ pojdi(1); return; }
   if(t.id==='dodaj-vrsto'){ if(S.vrste.length<MAX_POLJ){ S.vrste.push({}); izrisi(false); var z=el.querySelectorAll('.vrsta'); if(z.length) z[z.length-1].scrollIntoView({block:'nearest'}); } return; }
   if(t.hasAttribute('data-odstrani-vrsto')){ S.vrste.splice(+t.getAttribute('data-odstrani-vrsto'),1); if(!S.vrste.length) S.vrste=[{}]; izrisi(false); return; }
-  if(t.id==='na-zacetek'||t.id==='znova'){ nov(); STANJE={odgovori:false,sodelovanje:false,listek:false,sporocilo:''}; ZACETEK=Date.now(); trenutni=0; izrisi(true); return; }
+  if(t.id==='na-zacetek'||t.id==='znova'){ nov(); nazivMax=-1; konfetiBil=false; STANJE={odgovori:false,sodelovanje:false,listek:false,sporocilo:''}; ZACETEK=Date.now(); trenutni=0; izrisi(true); return; }
   if(t.id==='listek-nazaj'){ pojdiNa('sodelovanje'); return; }
   if(t.id==='listek-preskoci'){ pojdiNa('zahvala'); return; }
   if(t.id==='poslji-listek'){
