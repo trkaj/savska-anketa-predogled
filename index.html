@@ -137,6 +137,7 @@ details.papir summary{font-weight:700;cursor:pointer;color:var(--glavna-temna);m
 .diploma canvas{width:100%;height:auto;border:1px solid #ddd;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.12);background:#fffdf5}
 .diploma label{display:block;text-align:left;margin:.6rem 0 .3rem;font-weight:600}
 .diploma input{width:100%;box-sizing:border-box;padding:.6rem;font-size:1rem;border:1px solid #bbb;border-radius:6px}
+.spol-izbira{display:flex;gap:.5rem;margin:.3rem 0 .2rem}.spol-izbira button{flex:1;padding:.6rem;font-size:1rem;border:2px solid #2e7d32;border-radius:6px;background:#fff;color:#1b5e20;cursor:pointer}.spol-izbira button[aria-pressed="true"]{background:#2e7d32;color:#fff;font-weight:700}
 .diploma .ios-slika img{width:100%;margin-top:.6rem;border:1px solid #ddd}
 .deli-gumbi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:.6rem 0}
 .deli-gumbi a,.deli-gumbi button{display:block;text-align:center;text-decoration:none;box-sizing:border-box}
@@ -767,8 +768,9 @@ var DELI_URL='https://trkaj.github.io/savska-anketa-predogled/';
 var DELI_TXT='Izpolnite anketo prebivalcev Savskega naselja: ';
 function diplomaHtml(){
   var e=encodeURIComponent, t=DELI_TXT+DELI_URL;
-  return '<div class="diploma"><canvas id="diploma-platno" width="1600" height="1131" role="img" aria-label="Diploma – Pravi Savčan / Savčanka"></canvas>'+
-  '<label for="dipl-ime">Ime na diplomi (neobvezno)</label><input id="dipl-ime" type="search" autocomplete="off" maxlength="40" placeholder="Pravi Savčan / Savčanka">'+
+  return '<div class="diploma"><canvas id="diploma-platno" width="1600" height="1131" role="img" aria-label="Diploma – Čisto pravi Savčan / Čisto prava Savčanka"></canvas>'+
+  '<div class="dipl-spol-nasl" id="dipl-spol-nasl" style="text-align:left;margin:.6rem 0 0;font-weight:600">Na diplomi naj piše (neobvezno)</div><div class="spol-izbira" role="group" aria-labelledby="dipl-spol-nasl"><button type="button" id="spol-m" data-spol="m" aria-pressed="'+(SPOL==='m')+'">Savčan</button><button type="button" id="spol-z" data-spol="z" aria-pressed="'+(SPOL==='z')+'">Savčanka</button></div>'+
+  '<label for="dipl-ime">Ime na diplomi (neobvezno)</label><input id="dipl-ime" type="search" autocomplete="off" maxlength="40" placeholder="npr. Ana ali Marko">'+
   '<button type="button" class="gumb siroko" id="prenesi-diplomo" style="margin-top:.6rem">Prenesi diplomo (JPG)</button><div class="ios-slika" id="ios-slika"></div></div>'+
   '<p class="topla-zahvala">Hvala, ker ste si vzeli čas za Savsko naselje! 💚</p>'+
   '<div class="kartica deli-razdelek"><h3>Vam je bila anketa všeč? Delite jo naprej</h3><p>Več sosedov kot sodeluje, močnejši je naš glas.</p><div class="deli-gumbi">'+
@@ -780,9 +782,22 @@ function diplomaHtml(){
   '<button type="button" class="gumb" id="kopiraj-povezavo">Kopiraj povezavo</button>'+
   '<button type="button" class="gumb" id="natisni-papir">Natisni papirno anketo</button></div></div>';
 }
+var SPOL=''; /* izbira Savčan/Savčanka je samo lokalna, se ne pošilja in ne shranjuje */
+function nazivDipl(){ return SPOL==='m'?'Čisto pravi Savčan':SPOL==='z'?'Čisto prava Savčanka':'Čisto pravi Savčan / Čisto prava Savčanka'; }
 var LOGO=new Image(); LOGO.src='logo.png'; LOGO.onload=function(){ narisiDiplomo(); };
 function blok(c,x,y,w,h,b){ c.fillStyle=b; c.fillRect(x,y-h,w,h); c.fillStyle='rgba(255,255,255,.75)';
   for(var yy=y-h+12;yy<y-18;yy+=22) for(var xx=x+8;xx<x+w-12;xx+=18) c.fillRect(xx,yy,9,11); }
+function stolpnica(c,x,y,w,fasada,okvir){ var nad=14, eh=19, h=nad*eh+30; c.fillStyle=fasada; c.fillRect(x,y-h,w,h);
+  c.fillStyle='#8d8d8d'; c.fillRect(x-6,y-h-8,w+12,10); c.fillStyle='#bdbdbd'; c.fillRect(x+w*.3,y-h-22,w*.4,14);
+  for(var i=0;i<nad;i++){ var yy=y-h+16+i*eh; for(var k=0;k<4;k++){ var xx=x+6+k*(w-12)/4, ww=(w-12)/4-6;
+      c.fillStyle='#5f7d95'; c.fillRect(xx,yy,ww,eh-8); c.fillStyle='rgba(255,255,255,.35)'; c.fillRect(xx,yy,ww*.4,eh-8);
+      c.fillStyle=okvir; c.fillRect(xx-1,yy+eh-8,ww+2,4); } }
+  c.strokeStyle='rgba(0,0,0,.12)'; c.lineWidth=1; for(var v=x+w/4;v<x+w;v+=w/4){ c.beginPath(); c.moveTo(v,y-h); c.lineTo(v,y); c.stroke(); }
+  c.fillStyle='#424242'; c.fillRect(x+w/2-10,y-24,20,24); }
+function blokB(c,x,y,w,nad,fasada,balkon){ var eh=24, h=nad*eh+14; c.fillStyle=fasada; c.fillRect(x,y-h,w,h); c.fillStyle='#9e9e9e'; c.fillRect(x-4,y-h-6,w+8,7);
+  for(var i=0;i<nad;i++){ var yy=y-h+10+i*eh; for(var xx=x+8,k=0;xx<x+w-22;xx+=30,k++){
+      c.fillStyle='#5f7d95'; c.fillRect(xx,yy,18,eh-10);
+      if(k%3===1){ c.fillStyle=balkon; c.fillRect(xx-4,yy+eh-14,26,8); c.strokeStyle='rgba(0,0,0,.25)'; c.strokeRect(xx-4,yy+eh-14,26,8); } } } }
 function drevo(c,x,y,r){ c.fillStyle='#6d4c41'; c.fillRect(x-5,y-r*1.2,10,r*1.2); c.fillStyle='#2e7d32'; c.beginPath(); c.arc(x,y-r*1.5,r,0,7); c.fill(); c.fillStyle='#43a047'; c.beginPath(); c.arc(x-r*.4,y-r*1.7,r*.6,0,7); c.fill(); }
 function kuzek(c,x,y){ c.fillStyle='#a1662f'; c.beginPath(); c.ellipse(x,y-28,34,18,0,0,7); c.fill(); c.beginPath(); c.arc(x+34,y-48,16,0,7); c.fill();
   c.fillStyle='#6d3f17'; c.beginPath(); c.ellipse(x+26,y-52,6,12,.5,0,7); c.fill(); c.fillRect(x-24,y-16,7,16); c.fillRect(x+16,y-16,7,16);
@@ -790,21 +805,22 @@ function kuzek(c,x,y){ c.fillStyle='#a1662f'; c.beginPath(); c.ellipse(x,y-28,34
   c.fillStyle='#000'; c.beginPath(); c.arc(x+39,y-52,2.5,0,7); c.fill(); c.beginPath(); c.arc(x+49,y-46,3,0,7); c.fill(); }
 function narisiDiplomo(){
   var cv=document.getElementById('diploma-platno'); if(!cv) return; var c=cv.getContext('2d'), W=1600, H=1131;
-  var inp=document.getElementById('dipl-ime'), ime=(inp&&inp.value.trim())||'Pravi Savčan / Savčanka';
+  var inp=document.getElementById('dipl-ime'), ime=(inp&&inp.value.trim())||nazivDipl();
   var g=c.createLinearGradient(0,0,W,H); g.addColorStop(0,'#fffdf2'); g.addColorStop(1,'#fdf3d6'); c.fillStyle=g; c.fillRect(0,0,W,H);
   c.strokeStyle='#2e7d32'; c.lineWidth=18; c.strokeRect(30,30,W-60,H-60);
   c.strokeStyle='#f4c430'; c.lineWidth=6; c.strokeRect(62,62,W-124,H-124);
   c.setLineDash([4,12]); c.strokeStyle='#8bc34a'; c.lineWidth=4; c.strokeRect(84,84,W-168,H-168); c.setLineDash([]);
   [[62,62],[W-62,62],[62,H-62],[W-62,H-62]].forEach(function(p){ c.fillStyle='#2e7d32'; c.beginPath(); c.arc(p[0],p[1],26,0,7); c.fill(); c.fillStyle='#f4c430'; c.beginPath(); c.arc(p[0],p[1],13,0,7); c.fill(); });
   if(LOGO.complete&&LOGO.naturalWidth) c.drawImage(LOGO,W/2-80,110,160,160);
-  c.textAlign='center'; c.fillStyle='#1b5e20'; c.font='bold 76px Georgia, "Times New Roman", serif'; c.fillText('Diploma – Pravi Savčan / Savčanka',W/2,350);
+  c.textAlign='center'; c.fillStyle='#1b5e20'; var nsl='Diploma – '+nazivDipl(), nf=76; c.font='bold '+nf+'px Georgia, "Times New Roman", serif'; while(c.measureText(nsl).width>W-260&&nf>40){ nf-=2; c.font='bold '+nf+'px Georgia, "Times New Roman", serif'; } c.fillText(nsl,W/2,350);
   c.fillStyle='#444'; c.font='italic 36px Georgia, serif'; c.fillText('podeljuje se',W/2,430);
   var fs=90; c.font='bold '+fs+'px Georgia, serif'; while(c.measureText(ime).width>W-360&&fs>40){ fs-=4; c.font='bold '+fs+'px Georgia, serif'; }
   c.fillStyle='#b8860b'; c.fillText(ime,W/2,540); c.strokeStyle='#b8860b'; c.lineWidth=3; c.beginPath(); c.moveTo(W/2-450,570); c.lineTo(W/2+450,570); c.stroke();
   c.fillStyle='#333'; c.font='40px Georgia, serif'; c.fillText('za sodelovanje v anketi Savskega naselja',W/2,640);
   var d=new Date(); c.font='32px Georgia, serif'; c.fillText(d.getDate()+'. '+(d.getMonth()+1)+'. '+d.getFullYear(),W/2,700);
-  var y=930; c.fillStyle='#c5e1a5'; c.fillRect(110,y,W-220,8);
-  blok(c,160,y,90,170,'#f4c430'); blok(c,265,y,70,230,'#2e7d32'); drevo(c,390,y,45); blok(c,1180,y,80,210,'#8bc34a'); blok(c,1275,y,95,160,'#f4c430'); drevo(c,1430,y,40); drevo(c,470,y,32); kuzek(c,1080,y);
+  var y=930; c.fillStyle='#a5d6a7'; c.fillRect(100,y-6,W-200,14); c.fillStyle='#c5e1a5'; c.fillRect(100,y,W-200,8);
+  stolpnica(c,120,y,92,'#e6e4df','#c9c6bf'); blokB(c,225,y,190,5,'#d9d4cc','#b5543c'); stolpnica(c,1150,y,92,'#ece9e3','#d18a5a'); blokB(c,1255,y,230,4,'#cfcac1','#c9c4ba'); stolpnica(c,1390,y,80,'#e3dfd7','#b5543c');
+  drevo(c,200,y,30); drevo(c,390,y,45); drevo(c,470,y,32); drevo(c,1240,y,36); drevo(c,1430,y,40); kuzek(c,1080,y);
   c.fillStyle='#e57373'; c.font='40px serif'; c.fillText('♥',580,y-20);
   c.fillStyle='#1b5e20'; c.font='bold 30px Georgia, serif'; c.fillText('Neodvisna in civilna pobuda prebivalcev Savskega naselja',W/2,1010);
 }
@@ -815,11 +831,12 @@ function prenesiDiplomo(){
   try{ if(window.File&&navigator.canShare&&ios){ var b=atob(url.split(',')[1]), u=new Uint8Array(b.length); for(var i=0;i<b.length;i++) u[i]=b.charCodeAt(i);
       var f=new File([u],ime,{type:'image/jpeg'}); if(navigator.canShare({files:[f]})){ navigator.share({files:[f],title:'Diploma'}).catch(function(){}); ok=true; } } }catch(e){}
   if(!ok){ var a=document.createElement('a'); a.href=url; a.download=ime; document.body.appendChild(a); a.click(); a.remove(); }
-  if(ios){ var r=document.getElementById('ios-slika'); r.innerHTML='<p>Če se prenos ni začel: pridržite prst na sliki in izberite »Shrani sliko«.</p><img alt="Diploma – Pravi Savčan / Savčanka" src="'+url+'">'; }
+  if(ios){ var r=document.getElementById('ios-slika'); r.innerHTML='<p>Če se prenos ni začel: pridržite prst na sliki in izberite »Shrani sliko«.</p><img alt="Diploma – '+nazivDipl()+'" src="'+url+'">'; }
 }
 el.addEventListener('input',function(e){ if(e.target.id==='dipl-ime'){ narisiDiplomo(); var r=document.getElementById('ios-slika'); if(r) r.innerHTML=''; } });
 el.addEventListener('click',function(e){ var t=e.target.closest('button'); if(!t) return;
-  if(t.id==='prenesi-diplomo') prenesiDiplomo();
+  if(t.getAttribute('data-spol')){ SPOL=(SPOL===t.getAttribute('data-spol'))?'':t.getAttribute('data-spol'); ['m','z'].forEach(function(q){ var b=document.getElementById('spol-'+q); if(b) b.setAttribute('aria-pressed',SPOL===q?'true':'false'); }); var cv=document.getElementById('diploma-platno'); if(cv) cv.setAttribute('aria-label','Diploma – '+nazivDipl()); narisiDiplomo(); var r=document.getElementById('ios-slika'); if(r) r.innerHTML=''; }
+  else if(t.id==='prenesi-diplomo') prenesiDiplomo();
   else if(t.id==='deli-native') navigator.share({title:'Anketa Savskega naselja',text:DELI_TXT,url:DELI_URL}).catch(function(){});
   else if(t.id==='kopiraj-povezavo'){ var done=function(){ obvesti('Povezava je kopirana.'); };
     if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(DELI_URL).then(done,function(){ prompt('Kopirajte povezavo:',DELI_URL); }); else prompt('Kopirajte povezavo:',DELI_URL); } });
