@@ -363,7 +363,7 @@ var KORAKI = [
    vpr('Koliko vozil (avtomobilov) je v vašem gospodinjstvu?', radio('vozilaSt',['0','1','2','3 ali več']))+
    vpr('Ali imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne']))+
    vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{rerender:true}))+
-   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €'])):'');
+   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Ne želim odgovoriti'])):'');
  }},
  {id:'starost', sklop:'O vas', render:function(){
    return glava('O vas','Koliko ste stari?','Glede na starost vam pokažemo še nekaj kratkih vprašanj.')+radio('starost', STAROSTI);
