@@ -341,6 +341,14 @@ var KORAKI = [
    return glava('Za vse','Čistilni četrtek')+
    vpr('Ali podpirate Čistilni četrtek, ko bi prebivalci skupaj in prostovoljno očistili Savsko naselje?', radio('cetrtek',['Da, podpiram','Morda','Ne']), 'Neobvezno.');
  }},
+ {id:'vozila', sklop:'Za vse', render:function(){
+   var g=S.garaza==='Da'||S.garaza==='Morda';
+   return glava('Za vse','Vozila in parkiranje','Vsa vprašanja so neobvezna.')+
+   vpr('Koliko vozil (avtomobilov) je v vašem gospodinjstvu?', radio('vozilaSt',['0','1','2','3 ali več']))+
+   vpr('Ali imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne']))+
+   vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{rerender:true}))+
+   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €'])):'');
+ }},
  {id:'starost', sklop:'O vas', render:function(){
    return glava('O vas','Koliko ste stari?','Glede na starost vam pokažemo še nekaj kratkih vprašanj.')+radio('starost', STAROSTI);
  }},
@@ -451,6 +459,7 @@ function povzetek(){
   d('Najbolj problematično (do 5)', izbrane().map(function(t){ var p=S.pogostost[t.id]; return imeTeme(t.id)+(p?' ('+p.toLowerCase()+')':''); }).join('; '));
   d('Problemi in kraji', polniVrste().map(function(v){ return (v.tema||'?')+' – '+(v.polje||'kraj ni izbran')+(v.opis?' ('+v.opis+')':''); }).join('; '));
   d('Čistilni četrtek', S.cetrtek);
+  d('Vozila v gospodinjstvu', S.vozilaSt); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') d('Cena garaže (nakup)', S.garazaCena);
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ d('Stopnice otežujejo vsakdan', S.m65.stopnice); d('Vgradnja dvigala', S.m65.dvigalo);} d('Pogrešate klop na poti', S.m65.klop); d('Kje bi klop prav prišla', S.m65.klopKje); d('Do trgovine', S.m65.trgovina); d('Do zdravnika ali lekarne', S.m65.zdravnik); d('Pogovor s kom (dni na teden)', S.m65.pogovor); d('Imate koga poklicati', S.m65.pomoc); }
@@ -627,7 +636,7 @@ function posljiOdgovore(){
   o.polja=sez(vr.map(function(v){ return v.polje? (v.polje.indexOf('ne vem')===0?'celo naselje':v.polje.split(' – ')[0]) : ''; }).filter(Boolean));
   vr.forEach(function(v,i){ var n=i+1;
     o['kraj'+n+'_polje']=v.polje&&v.polje.indexOf('ne vem')===0?'celo naselje':v.polje; o['kraj'+n+'_tema']=v.tema; o['kraj'+n+'_opis']=v.opis; });
-  o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek;
+  o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek; o.vozila_st=S.vozilaSt; o.parkiranje_tezave=S.parkTez; o.garaza_zelja=S.garaza; o.garaza_cena=(S.garaza==='Da'||S.garaza==='Morda')?S.garazaCena:'';
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
     o.m65_klop=S.m65.klop; o.m65_klop_kje=S.m65.klopKje; o.m65_trgovina=S.m65.trgovina; o.m65_zdravnik=S.m65.zdravnik; o.m65_pogovor=S.m65.pogovor; o.m65_pomoc=S.m65.pomoc; }
