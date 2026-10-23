@@ -462,6 +462,13 @@ function modriListek(){
   '<label class="polje-nasl" for="l-kontakt">E-pošta ali telefon</label><input type="text" id="l-kontakt" data-k="listek.kontakt" value="'+esc(S.listek.kontakt||'')+'">'+
   '<div style="margin-top:.9rem">'+vpr('Kako naj vas obveščamo?', check('listek.kako',['e-pošta','SMS ali Viber','telefonski klic']))+'</div>'+
   '<label class="izbira soglasje"><input type="checkbox" data-k="listek.soglasje" value="da"'+((S.listek.soglasje||[]).length?' checked':'')+'><span>Soglašam, da upravljavec Rok Terkaj (terkaj@gmail.com, 051 367 363) te podatke uporablja samo za vabila k sodelovanju in obvestila, jih ne posreduje nikomur, hrani največ 24 mesecev od zadnjega stika in jih na mojo zahtevo izbriše. Pritožba: Informacijski pooblaščenec.</span></label>'+
+  '<fieldset class="locen" id="naslov-del" style="margin-top:1rem"><legend><strong>Poštni naslov (neobvezno)</strong></legend>'+
+  '<p class="namig">Naslov potrebujemo samo, če želite, da vam obvestila ali tiskano gradivo prinesemo na dom. Če tega ne želite, ta del preskočite.</p>'+
+  '<label class="polje-nasl" for="l-ulica">Ulica in hišna številka</label><input type="text" id="l-ulica" autocomplete="address-line1" data-k="listek.ulica" value="'+esc(S.listek.ulica||'')+'">'+
+  '<label class="polje-nasl" for="l-stan">Številka stanovanja in nadstropje <span class="namig">(neobvezno)</span></label><input type="text" id="l-stan" autocomplete="address-line2" data-k="listek.stanovanje" value="'+esc(S.listek.stanovanje||'')+'">'+
+  '<label class="izbira"><input type="checkbox" data-k="listek.dostava" value="da"'+((S.listek.dostava||[]).length?' checked':'')+'><span>Prinesite mi obvestila na dom</span></label>'+
+  '<label class="izbira soglasje"><input type="checkbox" id="l-sogl-naslov" data-k="listek.soglasjeNaslov" value="da"'+((S.listek.soglasjeNaslov||[]).length?' checked':'')+'><span>Dovolim, da upravljavec Rok Terkaj moj poštni naslov uporabi samo za to, da mi obvestila osebno prinese na dom. Naslova ne bo dal nikomur drugemu; prostovoljec, ki raznaša, dobi le naslove na svoji poti. Naslov bo izbrisan, ko to privolitev prekličem, sicer najpozneje 24 mesecev po zadnjem stiku. To privolitev dajem posebej in neodvisno od zgornje.</span></label>'+
+  '<p class="namig">Brez te potrditve naslova ne pošljemo in ga ne shranimo.</p></fieldset>'+
   '<p class="namig">Listek lahko izpolnijo osebe od 15. leta, mlajši s soglasjem staršev. Soglasje lahko kadar koli prekličete. Več: <button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://trkaj.github.io/savska-anketa-predogled/#zasebnost</span></p>'+
   '<p class="sporocilo" id="listek-napaka"></p>'+
   '<p class="namig">V pravi anketi se listek odpre na ločenem spletnem naslovu, brez povezave z vašimi odgovori.</p>'+
@@ -697,17 +704,26 @@ function posljiSodelovanje(){
 function posljiListek(){
   if(STANJE.listek) return; STANJE.listek=true;
   /* Ime ali vzdevek (neobvezno) gre samo v zavihek Prostovoljci, nikoli v odgovore. */
-  posta('listek',{ime:S.listek.ime, kontakt:S.listek.kontakt, kako:sez(S.listek.kako), pricem:sez(S.sod.pricem), soglasje:sez(S.listek.soglasje)});
+  var o={ime:S.listek.ime, kontakt:S.listek.kontakt, kako:sez(S.listek.kako), pricem:sez(S.sod.pricem), soglasje:sez(S.listek.soglasje)};
+  /* Poštni naslov gre zraven SAMO s posebno privolitvijo (6(1)(a)); sicer se ne pošlje nič od tega. */
+  if((S.listek.soglasjeNaslov||[]).length && (S.listek.ulica||'').trim()){
+    o.naslov_ulica=S.listek.ulica.trim(); o.naslov_stanovanje=(S.listek.stanovanje||'').trim(); o.dostava_na_dom=(S.listek.dostava||[]).length?'da':''; o.soglasje_naslov='da'; }
+  posta('listek',o);
 }
 /* ---------- Zasebnost ---------- */
-var ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="namig">Verzija 1.0, 23. 10. 2026</p>'+
+var ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="namig">Verzija 1.1, 23. 10. 2026</p>'+
  '<h3>Kdo je upravljavec</h3><p>Rok Terkaj, fizična oseba, koordinator neodvisne in civilne pobude prebivalcev Savskega naselja; terkaj@gmail.com, 051 367 363.</p>'+
  '<h3>Zakaj zbiramo podatke</h3><p>Da zberemo mnenja in predloge prebivalcev o naselju in jih zbirno predstavimo na zboru prebivalcev, ČS Bežigrad in MOL. Podlaga je zakoniti interes (točka (f) 6(1) Splošne uredbe). Za modri listek je podlaga vaša privolitev (točka (a) 6(1)). Če si premislite, nam samo pišite.</p>'+
- '<h3>Česa ne zbiramo</h3><p>Ne zbiramo imen, naslovov, hišnih številk ali IP-naslovov. Ulica in starostna skupina sta samo za preverjanje, ali so zastopani vsi deli naselja in vse generacije. Rezultate objavimo samo zbirno, ulice z manj kot 10 odgovori združimo.</p>'+
+ '<h3>Česa ne zbiramo</h3><p>V anketi ne sprašujemo po imenih, naslovih, hišnih številkah in ne beležimo IP-naslovov (poštni naslov lahko prostovoljno vpišete le na modrem listku, glejte spodaj). Ulica in starostna skupina sta samo za preverjanje, ali so zastopani vsi deli naselja in vse generacije. Rezultate objavimo samo zbirno, ulice z manj kot 10 odgovori združimo.</p>'+
  '<h3>Katere storitve uporabljamo</h3><p>Odgovori se shranijo v Googlovo preglednico (Apps Script), stran pa teče na GitHubu.</p>'+
  '<h3>Kako dolgo hranimo</h3><ul><li>Surove odgovore največ 12 mesecev po koncu ankete, nato jih izbrišemo; ostanejo samo zbirni rezultati.</li><li>Kontakte s listka hranimo največ 24 mesecev od zadnjega stika. Če nam pišete, jih izbrišemo prej.</li><li>Enkrat letno preverimo, ali je hramba še potrebna, in to zapišemo (43. člen ZVOP-2).</li><li>Papirne obrazce po vnosu uničimo.</li></ul>'+
  '<h3>Kaj lahko zahtevate</h3><p>Lahko vprašate, kaj imamo o vas, in zahtevate popravek ali izbris, ugovarjate ali umaknete privolitev. Dovolj je sporočilo na terkaj@gmail.com. Če niste zadovoljni, se lahko obrnete na Informacijskega pooblaščenca (www.ip-rs.si).</p>'+
  '<h3>Modri listek</h3><p>Za osebe od 15. leta; mlajši s soglasjem staršev.</p>'+
+ '<h3>Poštni naslov in dostava na dom</h3><p>Na modrem listku lahko neobvezno vpišete ulico s hišno številko (po želji še stanovanje in nadstropje), če želite, da vam obvestila prinesemo osebno. Za to potrebujemo vašo posebno privolitev (točka (a) 6(1) Splošne uredbe), ki je ločena od privolitve za kontakt; brez nje se naslov iz obrazca sploh ne pošlje.</p><ul>'+
+ '<li>Ne sprašujemo po poštni številki in kraju, saj dostavljamo samo v Savskem naselju v Ljubljani.</li>'+
+ '<li>Naslov je shranjen samo v zavihku s kontakti prostovoljcev, ločeno od anonimnih odgovorov ankete in brez kakršne koli povezave z njimi.</li>'+
+ '<li>Do celotnega seznama dostopa le upravljavec. Prostovoljec, ki raznaša obvestila, dobi samo naslove na svoji poti, brez vaših odgovorov ali drugih podatkov.</li>'+
+ '<li>Naslova ne posredujemo nikomur. Izbrišemo ga, ko privolitev prekličete (dovolj je sporočilo na terkaj@gmail.com ali 051 367 363), sicer najpozneje 24 mesecev po zadnjem stiku.</li></ul>'+
  '<button type="button" class="gumb glavni siroko" id="zasebnost-zapri">Zapri</button>';
 var zOkno=document.createElement('dialog'); zOkno.id='zasebnost-okno'; zOkno.setAttribute('aria-label','Zasebnost'); zOkno.innerHTML=ZASEBNOST; document.body.appendChild(zOkno);
 function odpriZasebnost(){ if(!zOkno.open){ if(zOkno.showModal) zOkno.showModal(); else zOkno.setAttribute('open',''); } var h=zOkno.querySelector('h2'); if(h) h.focus(); }
