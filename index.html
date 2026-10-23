@@ -235,6 +235,7 @@ var TEME = [
   {id:'osamljenost', ime:'Osamljenost starejših'},
   {id:'druzenje',    ime:'Premalo druženja za starejše'},
   {id:'koledar',     ime:'Ni preglednega koledarja dogodkov in aktivnosti'},
+  {id:'zrak',        ime:'Slab zrak / onesnaženost zraka'},
   {id:'drugo',       ime:'Drugo'}
 ];
 var MAX_TEM = 5;
@@ -358,12 +359,14 @@ var KORAKI = [
    vpr('Ali podpirate Čistilni četrtek, ko bi vsi prebivalci skupaj in prostovoljno enkrat na teden očistili Savsko naselje?', radio('cetrtek',['Da, podpiram','Morda','Ne']), 'Neobvezno.');
  }},
  {id:'vozila', sklop:'Za vse', render:function(){
-   var g=S.garaza==='Da'||S.garaza==='Morda';
-   return glava('Za vse','Vozila in parkiranje','Vsa vprašanja so neobvezna.')+
-   vpr('Koliko vozil (avtomobilov) je v vašem gospodinjstvu?', radio('vozilaSt',['0','1','2','3 ali več']))+
-   vpr('Ali imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne']))+
-   vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{rerender:true}))+
-   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Ne želim odgovoriti'])):'');
+   var avto=S.vozilaSt&&S.vozilaSt!=='0', g=avto&&(S.garaza==='Da'||S.garaza==='Morda');
+   return glava('Za vse','Vozila, parkiranje in promet','Vsa vprašanja so neobvezna.')+
+   vpr('Koliko vozil (avtomobilov) je v vašem gospodinjstvu?', radio('vozilaSt',['0','1','2','3 ali več'],{mreza:true,rerender:true}), 'Če izberete 0, vprašanj o parkiranju ne prikažemo.')+
+   (avto?vpr('Kje najpogosteje parkirate ponoči?', radio('m25.parkiranje',['na urejenem parkirišču ob bloku','na ulici','v garaži ali na najetem mestu','kjer najdem prostor, tudi na zelenici ali pločniku']))+
+     vpr('Kako pogosto imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne'],{mreza:true}))+
+     vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{mreza:true,rerender:true})):'')+
+   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Ne želim odgovoriti'])):'')+
+   vpr('Kako ste zadovoljni z novo prometno ureditvijo v naselju?', radio('m25.ureditev',['Super je','Je v redu','Slabo','Katastrofa','Ne vem'],{mreza:true}));
  }},
  {id:'starost', sklop:'O vas', render:function(){
    return glava('O vas','Koliko ste stari?','Glede na starost vam pokažemo še nekaj kratkih vprašanj.')+radio('starost', STAROSTI);
@@ -403,9 +406,7 @@ var KORAKI = [
  }},
  /* 25–64 */
  {id:'s25a', sklop:'Za 25 do 64 let', pokazi:function(){return skupina()==='odrasli';}, render:function(){
-   return glava('Za 25 do 64 let','Parkiranje, promet, vrtec in šola')+
-   vpr('Kje najpogosteje parkirate ponoči?', radio('m25.parkiranje',['na urejenem parkirišču ob bloku','na ulici','v garaži ali na najetem mestu','kjer najdem prostor, tudi na zelenici ali pločniku','nimam avtomobila']))+
-   vpr('Kako ste zadovoljni z novo prometno ureditvijo?', radio('m25.ureditev',['Super je','Je v redu','Slabo','Katastrofa','Ne vem'],{mreza:true}))+
+   return glava('Za 25 do 64 let','Vrtec in šola')+
    vpr('Imate otroke v vrtcu ali osnovni šoli?', radio('m25.otroci',['da','ne'],{mreza:true,rerender:true}))+
    (S.m25.otroci==='da' ? vpr('Kako varna je pot v vrtec ali šolo?', radio('m25.pot',['zelo varna','kar varna','ne preveč varna','nevarna'],{mreza:true}))+
      vpr('Kje je na tej poti najbolj nevarno?', besedilo('m25.potKje','npr. prehod na Topniški pri šoli')) : '');
@@ -431,7 +432,10 @@ var KORAKI = [
    vpr('Bi sodelovali?', radio('sod.zelja',['da','mogoče','ne zdaj'],{mreza:true,rerender:true}))+
    (da ? vpr('Pri čem bi radi pomagali? Izberite, kar velja.', check('sod.pricem', PRI_CEM))+
          vpr('Koliko časa bi imeli?', radio('sod.cas', CAS)) : '')+
-   '<p class="locen"><strong>Katere podatke zbiramo:</strong> zabeležimo le, ali bi sodelovali pri izboljšavah in koliko časa bi jim lahko namenili. Te podatke zbiramo brez imena in ločeno od drugih odgovorov v anketi. '+
+   '<h3 style="margin-top:1.2rem">Obveščenost</h3>'+
+   vpr('Ali spremljate seje Četrtne skupnosti Bežigrad?', radio('sod.sejeCs',['Redno','Občasno','Ne, a bi želel(a)','Ne'],{mreza:true}))+
+   vpr('Ali ste obveščeni o spremembah OPPN (občinskega podrobnega prostorskega načrta) za Savsko naselje?', radio('sod.oppn',['Da, dobro','Delno','Ne, a bi želel(a)','Ne'],{mreza:true}))+
+   '<p class="locen"><strong>Katere podatke zbiramo:</strong> zabeležimo le, ali bi sodelovali pri izboljšavah, koliko časa bi jim lahko namenili in kako ste obveščeni o sejah ČS in OPPN. Te podatke zbiramo brez imena in ločeno od drugih odgovorov v anketi. '+
    (da?'Kar izberete pri »pri čem«, shranimo samo, če v naslednjem koraku izpolnite modri listek.':'')+'</p>';
  }},
  {id:'listek', brezNav:true, pokazi:function(){return skupina()!=='otrok'&&biSodeloval();}, render:function(){ return modriListek(); }},
@@ -475,13 +479,15 @@ function povzetek(){
   d('Najbolj problematično (do 5)', izbrane().map(function(t){ var p=S.pogostost[t.id]; return imeTeme(t.id)+(p?' ('+p.toLowerCase()+')':''); }).join('; '));
   d('Problemi in kraji', polniVrste().map(function(v){ return (v.tema||'?')+' – '+(v.polje||'kraj ni izbran')+(v.opis?' ('+v.opis+')':''); }).join('; '));
   d('Čistilni četrtek', S.cetrtek);
-  d('Vozila v gospodinjstvu', S.vozilaSt); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') d('Cena garaže (nakup)', S.garazaCena);
+  var avto=S.vozilaSt&&S.vozilaSt!=='0';
+  d('Vozila v gospodinjstvu', S.vozilaSt); if(avto){ d('Parkiranje ponoči', S.m25.parkiranje); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') d('Cena garaže (nakup)', S.garazaCena); } d('Nova prometna ureditev', S.m25.ureditev);
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ d('Stopnice otežujejo vsakdan', S.m65.stopnice); d('Vgradnja dvigala', S.m65.dvigalo);} d('Pogrešate klop na poti', S.m65.klop); d('Kje bi klop prav prišla', S.m65.klopKje); d('Do trgovine', S.m65.trgovina); d('Do zdravnika ali lekarne', S.m65.zdravnik); d('Pogovor s kom (dni na teden)', S.m65.pogovor); d('Imate koga poklicati', S.m65.pomoc); }
-  if(g==='odrasli'){ d('Parkiranje ponoči', S.m25.parkiranje); d('Nova prometna ureditev', S.m25.ureditev); d('Otroci v vrtcu ali šoli', S.m25.otroci); if(S.m25.otroci==='da'){ d('Pot v vrtec ali šolo', S.m25.pot); d('Najbolj nevarno', S.m25.potKje);} d('V Domu skupnosti bi uporabljali', seznam(S.m25.dom)); if(S.m25.domDrugo) d('Vaša ideja za Dom', S.m25.domDrugo); d('Skupina za termine v Domu', S.m25.skupina); }
+  if(g==='odrasli'){ d('Otroci v vrtcu ali šoli', S.m25.otroci); if(S.m25.otroci==='da'){ d('Pot v vrtec ali šolo', S.m25.pot); d('Najbolj nevarno', S.m25.potKje);} d('V Domu skupnosti bi uporabljali', seznam(S.m25.dom)); if(S.m25.domDrugo) d('Vaša ideja za Dom', S.m25.domDrugo); d('Skupina za termine v Domu', S.m25.skupina); }
   if(g==='mladi'){ d('Kje se zadržuješ', seznam(S.m15.kje)); d('Kaj manjka', seznam(S.m15.manjka)+(S.m15.drugo?(S.m15.manjka&&S.m15.manjka.length?', ':'')+S.m15.drugo:'')); d('Varnost zvečer', S.m15.varnost); }
   vr.push('<dt style="margin-top:1rem;color:var(--modra-temna)">Sodelovanje (šteto ločeno, brez imena)</dt><dd>'+esc(S.sod.zelja||'ni odgovora')+(biSodeloval()&&S.sod.cas?' · '+esc(S.sod.cas):'')+'</dd>');
+  d('Spremljate seje ČS Bežigrad', S.sod.sejeCs); d('Obveščenost o spremembah OPPN', S.sod.oppn);
   return '<dl>'+vr.join('')+'</dl>';
 }
 
@@ -674,18 +680,19 @@ function posljiOdgovore(){
   o.polja=sez(vr.map(function(v){ return v.polje? (v.polje.indexOf('ne vem')===0?'celo naselje':v.polje.split(' – ')[0]) : ''; }).filter(Boolean));
   vr.forEach(function(v,i){ var n=i+1;
     o['kraj'+n+'_polje']=v.polje&&v.polje.indexOf('ne vem')===0?'celo naselje':v.polje; o['kraj'+n+'_tema']=v.tema; o['kraj'+n+'_opis']=v.opis; });
-  o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek; o.vozila_st=S.vozilaSt; o.parkiranje_tezave=S.parkTez; o.garaza_zelja=S.garaza; o.garaza_cena=(S.garaza==='Da'||S.garaza==='Morda')?S.garazaCena:'';
+  o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek; o.vozila_st=S.vozilaSt; var avto=S.vozilaSt&&S.vozilaSt!=='0';
+  o.m25_parkiranje=avto?S.m25.parkiranje:''; o.parkiranje_tezave=avto?S.parkTez:''; o.garaza_zelja=avto?S.garaza:''; o.garaza_cena=(avto&&(S.garaza==='Da'||S.garaza==='Morda'))?S.garazaCena:''; o.m25_ureditev=S.m25.ureditev;
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
     o.m65_klop=S.m65.klop; o.m65_klop_kje=S.m65.klopKje; o.m65_trgovina=S.m65.trgovina; o.m65_zdravnik=S.m65.zdravnik; o.m65_pogovor=S.m65.pogovor; o.m65_pomoc=S.m65.pomoc; }
-  if(g==='odrasli'){ o.m25_parkiranje=S.m25.parkiranje; o.m25_ureditev=S.m25.ureditev; o.m25_otroci=S.m25.otroci;
+  if(g==='odrasli'){ o.m25_otroci=S.m25.otroci;
     if(S.m25.otroci==='da'){ o.m25_pot=S.m25.pot; o.m25_pot_kje=S.m25.potKje; } o.m25_dom=sez(S.m25.dom)+(S.m25.domDrugo?((S.m25.dom&&S.m25.dom.length)?'; ':'')+'ideja: '+S.m25.domDrugo:''); o.m25_skupina=S.m25.skupina; }
   if(g==='mladi'){ o.m15_kje=sez(S.m15.kje); o.m15_manjka=sez(S.m15.manjka); o.m15_drugo=S.m15.drugo; o.m15_varnost=S.m15.varnost; }
   posta('odgovori',o);
 }
 function posljiSodelovanje(){
-  if(STANJE.sodelovanje||!S.sod.zelja) return; STANJE.sodelovanje=true;
-  posta('sodelovanje',{sod_zelja:S.sod.zelja, sod_cas:biSodeloval()?S.sod.cas:''});
+  if(STANJE.sodelovanje||!(S.sod.zelja||S.sod.sejeCs||S.sod.oppn)) return; STANJE.sodelovanje=true;
+  posta('sodelovanje',{sod_zelja:S.sod.zelja, sod_cas:biSodeloval()?S.sod.cas:'', seje_cs:S.sod.sejeCs, oppn_obvescenost:S.sod.oppn});
 }
 function posljiListek(){
   if(STANJE.listek) return; STANJE.listek=true;
