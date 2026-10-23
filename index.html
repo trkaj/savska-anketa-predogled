@@ -818,8 +818,8 @@ function narisiDiplomo(){
   c.fillStyle='#333'; c.font='40px Georgia, serif'; c.fillText('za sodelovanje v anketi Savskega naselja',W/2,640);
   var d=new Date(); c.font='32px Georgia, serif'; c.fillText(d.getDate()+'. '+(d.getMonth()+1)+'. '+d.getFullYear(),W/2,700);
   var y=930; c.fillStyle='#a5d6a7'; c.fillRect(100,y-6,W-200,14); c.fillStyle='#c5e1a5'; c.fillRect(100,y,W-200,8);
-  stolpnica(c,120,y,92,'#e6e4df','#c9c6bf'); blokB(c,225,y,190,5,'#d9d4cc','#b5543c'); stolpnica(c,1150,y,92,'#ece9e3','#d18a5a'); blokB(c,1255,y,230,4,'#cfcac1','#c9c4ba'); stolpnica(c,1390,y,80,'#e3dfd7','#b5543c');
-  drevo(c,200,y,30); drevo(c,390,y,45); drevo(c,470,y,32); drevo(c,1240,y,36); drevo(c,1430,y,40); kuzek(c,1080,y);
+  stolpnica(c,120,y,92,'#e6e4df','#c9c6bf'); blokB(c,225,y,190,5,'#d9d4cc','#b5543c'); blokB(c,1255,y,230,4,'#cfcac1','#c9c4ba'); stolpnica(c,1390,y,80,'#e3dfd7','#b5543c');
+  c.fillStyle='#7cb342'; c.beginPath(); c.moveTo(560,y); c.bezierCurveTo(650,y-150,950,y-150,1040,y); c.closePath(); c.fill(); c.fillStyle='#9ccc65'; c.beginPath(); c.moveTo(620,y); c.bezierCurveTo(700,y-105,900,y-105,980,y); c.closePath(); c.fill(); drevo(c,700,y-70,30); drevo(c,800,y-108,38); drevo(c,905,y-62,28); c.fillStyle='#33691e'; c.font='italic bold 28px Georgia, serif'; c.fillText('Savski hrib',800,y-12); drevo(c,200,y,30); drevo(c,390,y,45); drevo(c,470,y,32); drevo(c,1240,y,36); drevo(c,1430,y,40); kuzek(c,1080,y);
   c.fillStyle='#e57373'; c.font='40px serif'; c.fillText('♥',580,y-20);
   c.fillStyle='#1b5e20'; c.font='bold 30px Georgia, serif'; c.fillText('Neodvisna in civilna pobuda prebivalcev Savskega naselja',W/2,1010);
 }
