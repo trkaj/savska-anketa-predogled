@@ -160,12 +160,19 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
 .locen-znak{display:inline-block;font-size:.75rem;font-weight:700;padding:.15rem .6rem;border-radius:1rem;background:var(--modra);color:var(--modra-temna);margin-bottom:.3rem}
 .prenos{background:#fff;border-radius:.5rem;padding:.5rem .7rem;font-size:.9rem;margin:.2rem 0 .6rem}
 .povezava{font:inherit;font-weight:700;background:none;border:none;color:var(--glavna-temna);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:.6rem;width:100%;min-height:3rem}
+.logo-uvod{display:block;margin:.4rem auto .8rem;height:140px;width:auto;max-width:100%}
+@media(min-width:700px){.logo-uvod{height:170px}}
+.logo-glava{height:40px;width:40px;border-radius:.3rem;background:#fff;margin-right:.5rem}
+.glava .okvir>.logo-glava+.logo{margin-right:auto}
+body[data-korak="uvod"] .logo-glava{display:none}
+.logo-tisk{height:70px;width:auto;margin:0 auto .4rem}
+@media print{.logo-tisk{display:block!important}}
 </style>
 </head>
 <body>
 <header class="glava">
   <div class="okvir">
-    <div class="logo">savska<span>.org</span><small>Anketa prebivalcev</small></div>
+    <img class="logo-glava" src="logo.png" alt="Savsko naselje" width="40" height="40"><div class="logo">savska<span>.org</span><small>Anketa prebivalcev</small></div>
     <div class="velikost" role="group" aria-label="Velikost pisave">
       <button type="button" data-vel="1" aria-pressed="true" aria-label="Običajna pisava">A</button>
       <button type="button" data-vel="2" aria-pressed="false" aria-label="Večja pisava">A+</button>
@@ -180,6 +187,7 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
   </div>
 </div>
 <main>
+  <img class="logo-tisk samo-tisk" src="logo.png" alt="Savsko naselje">
   <div class="okvir" id="vsebina" aria-live="polite"></div>
   <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"><label for="hp-stran">Pustite prazno</label><input type="text" id="hp-stran" name="spletna_stran" tabindex="-1" autocomplete="off"></div>
 </main>
@@ -195,7 +203,7 @@ details.povzetek summary{font-weight:700;cursor:pointer;color:var(--glavna-temna
 'use strict';
 
 /* ---------- podatki ---------- */
-var DOBRO = ['prijazni sosedje','zelenje in drevesa','blizu središča mesta','mir','trgovine in storitve blizu','šola in vrtec','igrišča in športni park','avtobusne povezave'];
+var DOBRO = ['prijazni sosedje','zelenje in drevesa','blizu središča mesta','mir','trgovine in storitve blizu','šola in vrtec','igrišča in športni park','avtobusne povezave','sprehodi s kužki','občutek varnosti'];
 var TEME = [
   {id:'promet',      ime:'Promet skozi naselje'},
   {id:'parkiranje',  ime:'Parkiranje'},
@@ -267,7 +275,7 @@ function stevecHTML(){ var n=S.izbor.length, p=''; for(var i=0;i<MAX_TEM;i++) p+
 /* ---------- koraki ---------- */
 var KORAKI = [
  {id:'uvod', brezNav:true, render:function(){
-   return '<h1>Dober dan, soseda in sosed!</h1>'+
+   return '<img class="logo-uvod" src="logo.png" alt="Savsko naselje" width="400" height="400"><h1>Dober dan, soseda in sosed!</h1>'+
    '<p style="font-size:1.08rem">Radi bi slišali, <strong>kaj vam je v Savskem naselju všeč</strong> in <strong>kaj bi skupaj izboljšali</strong>. Vsak glas šteje, tudi vaš.</p>'+
    '<p>Anketa je za vse prebivalce od 15. leta. Traja <strong>okoli 8 minut</strong> in je <strong>anonimna</strong>.</p>'+
    '<div class="kartica"><h3>Na kratko o anketi</h3><ul class="obvestilo">'+
@@ -284,11 +292,11 @@ var KORAKI = [
  }},
  {id:'dobro', sklop:'Za vse', render:function(){
    return glava('Za vse','Kaj vam je v Savskem naselju všeč?','Kaj vam je pri nas všeč in kaj bi pohvalili? Izberite poljubno število odgovorov ali dodajte svojega.')+
-   vpr('Hitre izbire', check('dobro', DOBRO, 0, {cipi:true}), 'Izberete lahko poljubno število.')+
-   vpr('Kaj še?', besedilo('dobroDrugo','npr. Poleti se otroci igrajo zunaj do večera.',3));
+   vpr('Napišite s svojimi besedami', besedilo('dobroDrugo','npr. Poleti se otroci igrajo zunaj do večera.',3))+
+   vpr('Hitre izbire', check('dobro', DOBRO, 0, {cipi:true}), 'Izberete lahko poljubno število.');
  }},
  {id:'izboljsati', sklop:'Za vse', render:function(){
-   return glava('Za vse','Kaj bi v Savskem izboljšali?','Kaj vas moti ali kaj bi si želeli drugače? Opišite s svojimi besedami – na kratko ali podrobneje.')+
+   return glava('Za vse','Kaj bi v Savskem izboljšali in kaj pogrešate?','Kaj vas moti, kaj pogrešate ali kaj bi si želeli drugače? Opišite s svojimi besedami – na kratko ali podrobneje.')+
    '<div class="topel">Ni pravih ali napačnih odgovorov. Pomembno je, kako vi doživljate življenje v naselju in kaj opažate v vsakdanjem življenju.</div>'+
    vpr('Vaš odgovor', besedilo('izboljsati','npr. Ni kje sesti na poti do trgovine …',5),'Najprej želimo slišati vaše mnenje, zato vas prosimo, da svoje opažanje opišete s svojimi besedami. Teme, na katere se lahko nanaša, boste izbrali v naslednjem koraku.');
  }},
@@ -433,7 +441,7 @@ function povzetek(){
   function d(n,v){ vr.push('<dt>'+esc(n)+'</dt><dd>'+(v&&String(v).length?esc(v):'<span class="prazno">ni odgovora</span>')+'</dd>'); }
   function seznam(a){ return (a&&a.length)?a.join(', '):''; }
   d('Kaj vam je všeč', seznam(S.dobro)+(S.dobroDrugo?(S.dobro.length?' · ':'')+S.dobroDrugo:''));
-  d('Kaj bi izboljšali', S.izboljsati);
+  d('Kaj bi izboljšali in kaj pogrešate', S.izboljsati);
   d('Najbolj problematično (do 5)', izbrane().map(function(t){ var p=S.pogostost[t.id]; return imeTeme(t.id)+(p?' ('+p.toLowerCase()+')':''); }).join('; '));
   d('Problemi in kraji', polniVrste().map(function(v){ return (v.tema||'?')+' – '+(v.polje||'kraj ni izbran')+(v.opis?' ('+v.opis+')':''); }).join('; '));
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
