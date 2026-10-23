@@ -345,7 +345,7 @@ var KORAKI = [
    return glava('Za vse','Kaj je problem in kje?','Na kratko: kaj vas moti in kje v naselju. Lahko tudi preskočite.')+
    vrste+
    (S.vrste.length<MAX_POLJ?'<button type="button" class="povezava-gumb" id="dodaj-vrsto">+ dodaj še eno</button>':'')+
-   '<details class="papir"'+(S.zemOdprt?' open':'')+' id="zem-papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
+   '<details class="papir"'+(S.zemOdprt!==false?' open':'')+' id="zem-papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
    '<p class="samo-zaslon">Dotaknite se polja na zemljevidu in kraj se izbere zgoraj pri »Kje?«. Tam je tudi možnost »ne vem / celo naselje«.</p>'+'<p class="navodilo samo-tisk">Kje v naselju je to? Obkrožite do 3 številke.</p>'+
    '<div class="zem-klik"><img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj"><svg viewBox="0 0 2480 1748" aria-hidden="true">'+POLJA.map(function(p){ var on=S.vrste.some(function(v){return v.polje&&v.polje.indexOf(p.st+' – ')===0;}); return '<path data-zem-polje="'+p.st+'" class="'+(on?'on':'')+'" d="'+p.d+'"/>'; }).join('')+'</svg></div>'+
    '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
@@ -355,7 +355,7 @@ var KORAKI = [
  }},
  {id:'cetrtek', sklop:'Za vse', render:function(){
    return glava('Za vse','Čistilni četrtek')+
-   vpr('Ali podpirate Čistilni četrtek, ko bi prebivalci skupaj in prostovoljno očistili Savsko naselje?', radio('cetrtek',['Da, podpiram','Morda','Ne']), 'Neobvezno.');
+   vpr('Ali podpirate Čistilni četrtek, ko bi vsi prebivalci skupaj in prostovoljno enkrat na teden očistili Savsko naselje?', radio('cetrtek',['Da, podpiram','Morda','Ne']), 'Neobvezno.');
  }},
  {id:'vozila', sklop:'Za vse', render:function(){
    var g=S.garaza==='Da'||S.garaza==='Morda';
