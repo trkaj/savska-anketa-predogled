@@ -245,6 +245,7 @@ var TEME = [
   {id:'druzenje',    ime:'Več druženja za starejše'},
   {id:'koledar',     ime:'Skupen koledar dogodkov in aktivnosti'},
   {id:'zrak',        ime:'Slab zrak / onesnaženost zraka'},
+  {id:'zdravstvo',   ime:'Dostop do zdravstvenih storitev'},
   {id:'drugo',       ime:'Drugo'}
 ];
 var MAX_TEM = 5;
@@ -264,7 +265,7 @@ var CAS = ['enkrat na leto, za dogodek','nekaj ur na mesec','nekaj ur na teden',
 var ZBORI=['Redno','Občasno','Glasujem pisno (glasovnice v nabiralniku)','Ne, ker ne vem zanje','Ne','Sem najemnik(-ca)'];
 var OVIRE=['boljše obveščanje','obvestilo na oglasni deski v vhodu','primernejša ura','krajši zbori','spletna udeležba','glasovanje na daljavo / e-glasovanje','drugo'];
 var S = {}; // vsi odgovori (samo v pomnilniku brskalnika)
-function nov(){ S = {dobro:[], dobroDrugo:'', izboljsati:'', izbor:[], drugoTema:'', pogostost:{}, polja:[], celo:false, kraj:{}, vrste:[{}], m65:{}, m25:{}, m15:{}, sod:{}, upr:{}, listek:{}, listekPoslan:false}; }
+function nov(){ S = {dobro:[], dobroDrugo:'', izboljsati:'', izbor:[], drugoTema:'', pogostost:{}, polja:[], celo:false, kraj:{}, vrste:[{}], m65:{}, m25:{}, m15:{}, sod:{}, upr:{}, zdr:{}, listek:{}, listekPoslan:false}; }
 nov();
 
 /* ---------- pomočniki ---------- */
@@ -394,6 +395,12 @@ var KORAKI = [
    vpr('Ali bi bili pripravljeni biti predstavnik/-ca vhoda?', radio('upr.predstavnik',['Da','Morda','Ne'],{mreza:true,rerender:true}))+
    (pr?'<p class="locen">Hvala! Da anketa ostane anonimna, kontakta tu ne zbiramo. Po oddaji ankete vas povabimo na ločen <strong>modri listek</strong> (kontaktni obrazec), ki z odgovori ni povezan.</p>':'');
  }},
+ {id:'zdravstvo', sklop:'Za vse', pokazi:function(){return skupina()!=='otrok';}, render:function(){
+  return glava('Za vse','Zdravstvo','Vsa vprašanja so neobvezna. Sprašujemo samo o dostopu, ne o boleznih ali politiki.')+
+  vpr('Kako ste zadovoljni z dostopom do zdravstvenih storitev v bližini?', radio('zdr.ocena',['1','2','3','4','5','Ne uporabljam'],{mreza:true}), '1 = zelo slabo, 5 = zelo dobro.')+
+  vpr('Kaj vam najbolj manjka?', check('zdr.manjka',['Osebni zdravnik','Pediater','Zobozdravnik','Specialisti','Urgenca / dežurna služba','Stopnice ali manjkajoče dvigalo','Nič']), 'Izberete lahko več odgovorov.')+
+  vpr('Ali vam dostop do zdravnika otežujejo stopnice ali manjkajoče dvigalo?', radio('zdr.dvigalo',['Da','Ne','Ne zadeva me'],{mreza:true}));
+}},
  {id:'starost', sklop:'O vas', render:function(){
    return glava('O vas','Koliko ste stari?','Glede na starost vam pokažemo še nekaj kratkih vprašanj.')+radio('starost', STAROSTI);
  }},
@@ -517,6 +524,7 @@ function povzetek(){
   d('Vozila v gospodinjstvu', S.vozilaSt); if(avto){ d('Parkiranje ponoči', S.m25.parkiranje); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') d('Cena garaže (nakup)', S.garazaCena); } d('Nova prometna ureditev', S.m25.ureditev);
   var U=S.upr; d('Veste, kdo je upravnik', U.poznam); if(U.poznam!=='Ne'){ d('Upravnik: odzivnost', U.odzivnost); d('Upravnik: vzdrževanje in čistoča', U.vzdrzevanje); d('Upravnik: stroški', U.stroski); d('Upravnik: obveščanje', U.obvescanje); }
   d('Veste, koga pokličete ob okvari', U.hisnik); d('Udeležba na zborih', U.zbori); if(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)') d('Kaj bi pomagalo pri udeležbi', seznam(U.ovire)); d('Predstavnik/-ca vhoda', U.predstavnik);
+  var Z=S.zdr; d('Zdravstvo: ocena dostopa', Z.ocena); d('Zdravstvo: kaj manjka', seznam(Z.manjka)); d('Zdravstvo: stopnice/dvigalo otežujejo dostop', Z.dvigalo);
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ d('Stopnice otežujejo vsakdan', S.m65.stopnice); d('Vgradnja dvigala', S.m65.dvigalo);} d('Pogrešate klop na poti', S.m65.klop); d('Kje bi klop prav prišla', S.m65.klopKje); d('Do trgovine', S.m65.trgovina); d('Do zdravnika ali lekarne', S.m65.zdravnik); d('Pogovor s kom (dni na teden)', S.m65.pogovor); d('Imate koga poklicati', S.m65.pomoc); }
@@ -720,6 +728,7 @@ function posljiOdgovore(){
   o.m25_parkiranje=avto?S.m25.parkiranje:''; o.parkiranje_tezave=avto?S.parkTez:''; o.garaza_zelja=avto?S.garaza:''; o.garaza_cena=(avto&&(S.garaza==='Da'||S.garaza==='Morda'))?S.garazaCena:''; o.m25_ureditev=S.m25.ureditev;
   var U=S.upr, pz=U.poznam!=='Ne'; o.upravnik_poznam=U.poznam; o.upr_odzivnost=pz?U.odzivnost:''; o.upr_vzdrzevanje=pz?U.vzdrzevanje:''; o.upr_stroski=pz?U.stroski:''; o.upr_obvescanje=pz?U.obvescanje:'';
   o.hisnik_poznam=U.hisnik; o.zbori_udelezba=U.zbori; o.zbori_ovire=(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)')?sez(U.ovire):''; o.predstavnik_vhoda=U.predstavnik;
+  o.zdr_ocena=S.zdr.ocena; o.zdr_manjka=sez(S.zdr.manjka); o.zdr_dvigalo=S.zdr.dvigalo;
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }
     o.m65_klop=S.m65.klop; o.m65_klop_kje=S.m65.klopKje; o.m65_trgovina=S.m65.trgovina; o.m65_zdravnik=S.m65.zdravnik; o.m65_pogovor=S.m65.pogovor; o.m65_pomoc=S.m65.pomoc; }
