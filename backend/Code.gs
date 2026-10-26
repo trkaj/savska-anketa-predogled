@@ -26,7 +26,8 @@ var STOLPCI = {
       'kraj3_polje','kraj3_tema','kraj3_opis',
       'kraj4_polje','kraj4_tema','kraj4_opis',
       'kraj5_polje','kraj5_tema','kraj5_opis',
-      'starost','ulica','bivanje','dvigalo','enosmerna','cistilni_cetrtek','vozila_st','parkiranje_tezave','garaza_zelja','garaza_cena',
+      'starost','ulica','bivanje','dvigalo','enosmerna','cistilni_cetrtek','vozila_st','parkiranje_tezave','garaza_zelja','garaza_cena','prevoz_dnevni',
+      'storitve_manjka','storitve_drugo','ohladitev',
       'upravnik_poznam','upr_odzivnost','upr_vzdrzevanje','upr_stroski','upr_obvescanje','hisnik_poznam','zbori_udelezba','zbori_ovire','predstavnik_vhoda',
       'zdr_ocena','zdr_manjka','zdr_dvigalo',
       'm65_stopnice','m65_dvigalo','m65_klop','m65_klop_kje','m65_trgovina','m65_zdravnik','m65_pogovor','m65_pomoc',
@@ -151,6 +152,10 @@ function dopolniSifrant_(ss, zavihek, stolpec) {
   sif.appendRow([zavihek, stolpec].concat(opis));
 }
 var SIFRANT_NOVO = {
+  'Odgovori.prevoz_dnevni': ['Najpogostejše prevozno sredstvo za vsakodnevne poti', 'Peš / Kolo / JPP (avtobus) / Avto / Drugo', '', 'vozila'],
+  'Odgovori.storitve_manjka': ['Katere storitve v bližini pogrešate', 'Banka; Pošta; Trgovina; Lekarna; Drugo', '', 'storitve'],
+  'Odgovori.storitve_drugo': ['Storitve – drugo (prosto)', 'prosto besedilo', '', 'storitve'],
+  'Odgovori.ohladitev': ['Kam se greste v soseski poleti ohlajat', 'Park / Dom skupnosti / Ob Savi / Nikamor / Drugo: …', '', 'storitve'],
   'Prostovoljci.ime': ['Ime ali vzdevek (neobvezno; OSEBNI PODATEK – samo ta zavihek)', 'prosto besedilo', '', 'modri listek'],
   'Prostovoljci.naslov_ulica': ['Ulica in hišna številka (OSEBNI PODATEK; samo s soglasje_naslov; dostop samo upravljavec)', 'prosto besedilo', '', 'modri listek'],
   'Prostovoljci.naslov_stanovanje': ['Št. stanovanja in nadstropje (neobvezno; OSEBNI PODATEK)', 'prosto besedilo', '', 'modri listek'],
