@@ -415,7 +415,7 @@ var KORAKI = [
    var ohl=S.ohladitev==='Drugo';
    return glava('Za vse','Storitve v bližini in ohladitev','Vsa vprašanja so neobvezna.')+
    vpr('Katere storitve v bližini pogrešate?', check('storitveManjka',['Banka','Pošta','Trgovina','Lekarna','Drugo'])+besedilo('storitveDrugo','Če drugo – na kratko'), 'Izberete lahko več odgovorov.')+
-   vpr('Kam se greste v soseski poleti ohlajat?', radio('ohladitev',['Park / senca pod drevesi','Dom skupnosti','Ob Savi','Nikamor / ne zadeva me','Drugo'],{cipi:true,rerender:true}), 'Neobvezno.')+
+   vpr('Kam se greste v soseski poleti ohlajat?', radio('ohladitev',['Park / senca pod drevesi','Dom skupnosti','Ob Savi','Sem doma','Ven iz Ljubljane','Nikamor / ne zadeva me','Drugo'],{cipi:true,rerender:true}), 'Neobvezno.')+
    (ohl?vpr('Kam drugam?', besedilo('ohladitevDrugo','napišite na kratko')):'');
  }},
  {id:'upravnik', sklop:'Za vse', render:function(){

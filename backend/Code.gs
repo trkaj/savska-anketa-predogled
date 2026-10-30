@@ -156,7 +156,7 @@ var SIFRANT_NOVO = {
   'Odgovori.storitve_manjka': ['Katere storitve v bližini pogrešate', 'Banka; Pošta; Trgovina; Lekarna; Drugo', '', 'storitve'],
   'Odgovori.storitve_drugo': ['Storitve – drugo (prosto)', 'prosto besedilo', '', 'storitve'],
   'Odgovori.cistilni_cetrtek': ['Podpora čistilnim akcijam (Čistilni četrtek)', 'Da, 1-krat na mesec / teden / leto / Drugo: … / Ne podpiram', '', 'za vse'],
-  'Odgovori.ohladitev': ['Kam se greste v soseski poleti ohlajat', 'Park / Dom skupnosti / Ob Savi / Nikamor / Drugo: …', '', 'storitve'],
+  'Odgovori.ohladitev': ['Kam se greste v soseski poleti ohlajat', 'Park / Dom skupnosti / Ob Savi / Sem doma / Ven iz Ljubljane / Nikamor / Drugo: …', '', 'storitve'],
   'Prostovoljci.ime': ['Ime ali vzdevek (neobvezno; OSEBNI PODATEK – samo ta zavihek)', 'prosto besedilo', '', 'modri listek'],
   'Prostovoljci.naslov_ulica': ['Ulica in hišna številka (OSEBNI PODATEK; samo s soglasje_naslov; dostop samo upravljavec)', 'prosto besedilo', '', 'modri listek'],
   'Prostovoljci.naslov_stanovanje': ['Št. stanovanja in nadstropje (neobvezno; OSEBNI PODATEK)', 'prosto besedilo', '', 'modri listek'],
