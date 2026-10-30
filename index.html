@@ -110,8 +110,8 @@ details.papir summary{font-weight:700;cursor:pointer;color:var(--glavna-temna);m
 .papir .navodilo{font-size:1.05rem;font-weight:700;margin:.4rem 0 .5rem}
 .papir .navodilo-celo{font-size:.95rem;margin:.5rem 0 .2rem}
 .samo-tisk{display:none}
-.zem-klik{position:relative}.zem-klik svg{position:absolute;inset:0;width:100%;height:100%}.zem-klik path{fill:transparent;stroke:none;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0)}.zem-klik path.on{fill:rgba(20,110,60,.22);stroke:#0b5d2e;stroke-width:6}.zem-klik path.akt{fill:rgba(244,196,48,.45);stroke:#b07800;stroke-width:12}.zem-klik .ozn{pointer-events:none}.zem-klik .ozn circle{fill:#0b5d2e;stroke:#fff;stroke-width:6}.zem-klik .ozn.akt circle{fill:#b07800}.zem-klik .ozn text{fill:#fff;font:700 52px sans-serif;text-anchor:middle;dominant-baseline:central}
-.vrsta .stv{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;border-radius:50%;background:#0b5d2e;color:#fff;font-size:.85em;margin-right:.4em}.vrsta.akt{border-color:#b07800;box-shadow:0 0 0 3px rgba(244,196,48,.6)}.vrsta.akt .stv{background:#b07800}.oznaci-zem{font:inherit;font-size:1rem;margin:.5rem 0 .2rem;padding:.45rem .8rem;border:2px solid #0b5d2e;background:#fff;color:#0b5d2e;border-radius:.4rem;font-weight:700;cursor:pointer;min-height:44px}.vrsta.akt .oznaci-zem{background:#f4c430;border-color:#b07800;color:#3a2a00}.zem-zdaj{position:sticky;top:0;z-index:2;background:#fff7d6;border:2px solid #b07800;border-radius:.4rem;padding:.5rem .7rem;margin:.4rem 0;font-weight:700}
+.zem-klik{position:relative}.zem-klik svg{position:absolute;inset:0;width:100%;height:100%}.zem-klik path{fill:transparent;stroke:none;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0)}.zem-klik path.on{fill:rgba(20,110,60,.22);stroke:#0b5d2e;stroke-width:6}.zem-klik path.akt{fill:rgba(244,196,48,.45);stroke:#b07800;stroke-width:12}.zem-klik .ozn{cursor:pointer}.zem-klik .ozn circle{fill:#0b5d2e;stroke:#fff;stroke-width:6}.zem-klik .ozn.akt circle{fill:#b07800}.zem-klik .ozn text{fill:#fff;font:700 52px sans-serif;text-anchor:middle;dominant-baseline:central}
+.vrsta .stv{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;border-radius:50%;background:#0b5d2e;color:#fff;font-size:.85em;margin-right:.4em}.vrsta.akt{border-color:#b07800;box-shadow:0 0 0 3px rgba(244,196,48,.6)}.vrsta.akt .stv{background:#b07800}.oznaci-zem{font:inherit;font-size:1rem;margin:.5rem 0 .2rem;padding:.45rem .8rem;border:2px solid #0b5d2e;background:#fff;color:#0b5d2e;border-radius:.4rem;font-weight:700;cursor:pointer;min-height:44px}.vrsta.akt .oznaci-zem{background:#f4c430;border-color:#b07800;color:#3a2a00}.zem-zdaj{position:sticky;top:0;z-index:2;background:#fff7d6;border:2px solid #b07800;border-radius:.4rem;padding:.45rem .6rem;margin:.4rem 0;font-weight:700}.zem-zetoni{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.35rem}.zeton{font:inherit;font-size:.95rem;min-height:40px;padding:.3rem .65rem;border-radius:2rem;border:2px solid #0b5d2e;background:#fff;color:#0b5d2e;font-weight:700;cursor:pointer}.zeton.akt{background:#f4c430;border-color:#b07800;color:#3a2a00}@media (max-width:480px){.zem-zdaj{font-size:.9rem;padding:.35rem .45rem}.zeton{font-size:.85rem;min-height:36px;padding:.2rem .5rem}.zem-zetoni{gap:.25rem}}.zem-potrd{display:block;font-weight:400;font-size:.9rem;margin-top:.3rem;color:#0b5d2e}.vrsta h3{cursor:pointer}.pobrisi-kraj{font:inherit;font-size:.9rem;margin-left:.5rem;background:none;border:none;color:#a33;text-decoration:underline;cursor:pointer;min-height:44px}
 @media print{.oznaci-zem,.zem-zdaj,.zem-klik .ozn{display:none}}
 @media print{.zem-klik svg{display:none}}
 .samo-zaslon{font-size:.95rem;margin:.4rem 0 .6rem;background:#eef5ef;padding:.6rem .8rem;border-radius:.5rem}
@@ -373,14 +373,16 @@ var KORAKI = [
      return '<div class="kraj vrsta'+(i===akt?' akt':'')+'" data-vrsta="'+i+'"><h3><span><span class="stv" aria-hidden="true">'+(i+1)+'</span>'+esc(v.tema||('Težava '+(i+1)))+'</span></h3>'+
        '<span class="nasl">Kje?</span>'+izbirnik('vrste.'+i+'.polje', kraji, '– izberite kraj –')+
        '<details class="natancneje"'+(v.opis?' open':'')+'><summary>natančneje (neobvezno)</summary>'+besedilo('vrste.'+i+'.opis','npr. klop pred Linhartovo 84')+'</details>'+
-       '<button type="button" class="oznaci-zem" data-oznaci="'+i+'" aria-pressed="'+(i===akt?'true':'false')+'">'+(i===akt?'✔ Označujete na zemljevidu':'Označi na zemljevidu')+'</button>'+
+       '<button type="button" class="oznaci-zem" data-oznaci="'+i+'" aria-pressed="'+(i===akt?'true':'false')+'">'+(i===akt?'✔ Označujete na zemljevidu':'Označi na zemljevidu')+'</button>'+(v.polje?'<button type="button" class="pobrisi-kraj" data-pobrisi="'+i+'">pobriši kraj</button>':'')+
      '</div>';
    }).join('');
    return glava('Za vse','Kje so te težave?','Za težave, ki ste jih izbrali, označite kraj. Tema je že izbrana – tu samo kje. Lahko tudi preskočite.')+
    vrste+
    '<details class="papir"'+(S.zemOdprt!==false?' open':'')+' id="zem-papir"><summary>Pokaži zemljevid s številkami krajev (tudi za tisk)</summary>'+
    '<p class="samo-zaslon">Pri težavi pritisnite »Označi na zemljevidu«, nato se dotaknite polja – kraj se zapiše samo tej težavi. Številke v krogcih kažejo, katera težava je kje. Pri »Kje?« je tudi možnost »ne vem / celo naselje«.</p>'+
-   (akt>-1?'<p class="zem-zdaj samo-zaslon" id="zem-zdaj" aria-live="polite">Zdaj označujete: '+(akt+1)+' – '+esc(S.vrste[akt].tema||('Težava '+(akt+1)))+'</p>':'')+'<p class="navodilo samo-tisk">Kje v naselju je to? Ob vsako težavo zgoraj zapišite številko polja z zemljevida (lahko različno za vsako).</p>'+
+   (akt>-1?'<div class="zem-zdaj samo-zaslon" id="zem-zdaj"><span aria-live="polite">Zdaj označujete: '+(akt+1)+' – '+esc(S.vrste[akt].tema||('Težava '+(akt+1)))+'</span>'+
+     '<div class="zem-zetoni" role="group" aria-label="Izberite težavo za označevanje">'+S.vrste.map(function(v,i){ return '<button type="button" class="zeton'+(i===akt?' akt':'')+'" data-oznaci="'+i+'" data-ostani="1" aria-pressed="'+(i===akt?'true':'false')+'">'+(i+1)+' '+esc(kratkoTema(v.tema||('Težava '+(i+1))))+(v.polje?' ✓':'')+'</button>'; }).join('')+'</div>'+
+     (zemPotrd?'<span class="zem-potrd" role="status">'+esc(zemPotrd)+'</span>':'')+'</div>':'')+'<p class="navodilo samo-tisk">Kje v naselju je to? Ob vsako težavo zgoraj zapišite številko polja z zemljevida (lahko različno za vsako).</p>'+
 '<div class="zem-klik"><img src="'+ZEM_SLIKA+'" alt="Zemljevid Savskega naselja z oštevilčenimi polji od 1 do 18 in seznamom imen polj"><svg viewBox="0 0 2480 1748" aria-hidden="true">'+POLJA.map(function(p){ var on=S.vrste.some(function(v){return v.polje&&v.polje.indexOf(p.st+' – ')===0;}); var ak=akt>-1&&S.vrste[akt].polje&&S.vrste[akt].polje.indexOf(p.st+' – ')===0; return '<path data-zem-polje="'+p.st+'" class="'+(on?'on':'')+(ak?' akt':'')+'" d="'+p.d+'"/>'; }).join('')+zemOznake(akt)+'</svg></div>'+
    '<p class="zem-opomba">Osnutek, meje so orientacijske.</p>'+
    '<p class="navodilo-celo samo-tisk">☐ Ne vem / velja za celo naselje</p>'+
@@ -563,14 +565,16 @@ function povzetek(){
 }
 
 /* ---------- več težav na zemljevidu: aktivna kartica (ni v payloadu) ---------- */
-var zemAkt=null;
+var zemAkt=null, zemPotrd='';
+function zemIzrisi(){ var y=window.scrollY; izrisi(false); window.scrollTo(0,y); }
+function kratkoTema(t){ t=String(t); return t.length<=14?t:t.split(/[ \/(,]/)[0]; }
 function zemAktivna(){ var n=S.vrste.length; if(zemAkt!==null&&zemAkt<n) return zemAkt;
   for(var i=0;i<n;i++) if(!S.vrste[i].polje) return i; return n?0:-1; }
 function zemOznake(akt){ var po={}, h='';
   S.vrste.forEach(function(v,i){ var m=v.polje&&/^(\d+) – /.exec(v.polje); if(m){ (po[m[1]]=po[m[1]]||[]).push(i); } });
-  POLJA.forEach(function(p){ var l=po[p.st]; if(!l) return; var r=40, w=(l.length-1)*(2*r+8);
-    l.forEach(function(i,k){ var cx=p.x-w/2+k*(2*r+8), cy=p.y+70;
-      h+='<g class="ozn'+(i===akt?' akt':'')+'"><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'"/><text x="'+cx+'" y="'+cy+'">'+(i+1)+'</text></g>'; }); });
+  POLJA.forEach(function(p){ var l=po[p.st]; if(!l) return; var r=40;
+    l.forEach(function(i,k){ var cx=p.x+85+k*(2*r+8), cy=p.y-75;
+      h+='<g class="ozn'+(i===akt?' akt':'')+'" data-oznaci="'+i+'" data-ostani="1"><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'"/><text x="'+cx+'" y="'+cy+'">'+(i+1)+'</text></g>'; }); });
   return h; }
 
 /* ---------- polja na zemljevidu ---------- */
@@ -710,10 +714,11 @@ el.addEventListener('click',function(e){
     var ix=zemAktivna(); if(ix<0) return;
     S.vrste[ix].polje=val; S.zemOdprt=true;
     var nx=-1; for(var j=1;j<=S.vrste.length;j++){ var q=(ix+j)%S.vrste.length; if(!S.vrste[q].polje){nx=q;break;} }
-    zemAkt = nx>-1 ? nx : ix; izrisi(false);
-    var vr=el.querySelector('[data-vrsta="'+ix+'"]'); if(vr) vr.scrollIntoView({block:'center',behavior:'smooth'}); return; }
-  var oz=e.target.closest('[data-oznaci]'); if(oz){ zemAkt=+oz.getAttribute('data-oznaci'); S.zemOdprt=true; izrisi(false);
-    var zz=document.getElementById('zem-zdaj')||el.querySelector('.zem-klik'); if(zz) zz.scrollIntoView({block:'start',behavior:'smooth'}); return; }
+    zemAkt = nx>-1 ? nx : ix; zemPotrd=kratkoTema(S.vrste[ix].tema||('Težava '+(ix+1)))+' → polje '+st; zemIzrisi(); return; }
+  var oz=e.target.closest('[data-oznaci]'); if(oz){ zemAkt=+oz.getAttribute('data-oznaci'); zemPotrd=''; S.zemOdprt=true; zemIzrisi();
+    if(!oz.hasAttribute('data-ostani')){ var zz=document.getElementById('zem-zdaj')||el.querySelector('.zem-klik'); if(zz) zz.scrollIntoView({block:'start'}); } return; }
+  var pb=e.target.closest('[data-pobrisi]'); if(pb){ var pi=+pb.getAttribute('data-pobrisi'); S.vrste[pi].polje=''; zemAkt=pi; zemPotrd=''; zemIzrisi(); return; }
+  var hv=e.target.closest('.vrsta h3'); if(hv){ zemAkt=+hv.parentNode.getAttribute('data-vrsta'); zemPotrd=''; zemIzrisi(); return; }
   var pp=e.target.closest('[data-polje-p]'); if(pp){ preklopiPolje(+pp.getAttribute('data-polje-p')); return; }
   var t=e.target.closest('button'); if(!t) return;
   if(t.id==='natisni-papir'){ window.print(); return; }
