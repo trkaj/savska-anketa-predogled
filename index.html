@@ -342,14 +342,12 @@ var KORAKI = [
    vpr('Napišite s svojimi besedami', besedilo('dobroDrugo','npr. Poleti se otroci igrajo zunaj do večera.',3))+
    vpr('Hitre izbire', check('dobro', DOBRO, 0, {cipi:true}), 'Izberete lahko poljubno število.');
  }},
- {id:'izboljsati', sklop:'Za vse', render:function(){
-   return glava('Za vse','Kaj bi v Savskem izboljšali in kaj pogrešate?','Kaj vas moti, kaj pogrešate ali kaj bi si želeli drugače? Opišite s svojimi besedami – na kratko ali podrobneje.')+
-   '<div class="topel">Ni pravih ali napačnih odgovorov. Pomembno je, kako vi doživljate življenje v naselju in kaj opažate v vsakdanjem življenju.</div>'+
-   vpr('Vaš odgovor', besedilo('izboljsati','npr. Ni kje sesti na poti do trgovine …',5),'Najprej želimo slišati vaše mnenje, zato vas prosimo, da svoje opažanje opišete s svojimi besedami. Teme, na katere se lahko nanaša, boste izbrali v naslednjem koraku.');
- }},
  {id:'izbor', sklop:'Za vse', render:function(){
    var drugo=S.izbor.indexOf('drugo')>-1;
-   return glava('Za vse','Kaj bi bilo v Savskem naselju najbolj nujno izboljšati?','Izberite <strong>do 5 težav</strong>, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše.')+
+   return glava('Za vse','Kaj bi v Savskem izboljšali in kaj pogrešate?','Najprej s svojimi besedami opišite, kaj vas moti, kaj pogrešate ali kaj bi si želeli drugače. Spodaj nato izberite še do 5 težav.')+
+   '<div class="topel">Ni pravih ali napačnih odgovorov. Pomembno je, kako vi doživljate življenje v naselju in kaj opažate v vsakdanjem življenju.</div>'+
+   vpr('Napišite s svojimi besedami', besedilo('izboljsati','npr. Ni kje sesti na poti do trgovine …',5),'Na kratko ali podrobneje.')+
+   '<h3 class="podnaslov">Kaj bi bilo najbolj nujno izboljšati?</h3><p>Izberite <strong>do 5 težav</strong>, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše.</p>'+
    '<div class="stevec'+(S.izbor.length>=MAX_TEM?' polno':'')+'" id="stevec" role="status">'+stevecHTML()+'</div>'+
    check('izbor', TEME, MAX_TEM)+
    '<div id="drugo-polje"'+(drugo?'':' hidden')+'>'+vpr('Kaj drugega?', besedilo('drugoTema','napišite na kratko'))+'</div>';
