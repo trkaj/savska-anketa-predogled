@@ -421,7 +421,7 @@ var KORAKI = [
  {id:'upravnik', sklop:'Za vse', render:function(){
    var pozna=S.upr.poznam!=='Ne', zb=S.upr.zbori, ov=zb&&zb!=='Redno'&&zb!=='Sem najemnik(-ca)', pr=S.upr.predstavnik==='Da'||S.upr.predstavnik==='Morda';
    var VR=[['odzivnost','Odzivnost'],['vzdrzevanje','Vzdrževanje in čistoča'],['stroski','Stroški'],['obvescanje','Obveščanje']];
-   return glava('Za vse','Upravnik in zbori','Vsa vprašanja so neobvezna. Ne sprašujemo po imenu upravnika.')+
+   return glava('Za vse','Upravnik in zbori v vašem vhodu in bloku/stolpnici','Vsa vprašanja so neobvezna. Ne sprašujemo po imenu upravnika.')+
    vpr('Ali veste, kdo je upravnik vašega bloka?', radio('upr.poznam',['Da','Ne'],{mreza:true,rerender:true}))+
    (pozna?vpr('Kako ste zadovoljni z upravnikom?', VR.map(function(r){ return '<div class="tema"><h3>'+r[1]+'</h3>'+radio('upr.'+r[0],['Zelo','Kar','Malo','Sploh ne','Ne vem'],{mreza:true})+'</div>'; }).join('')):'')+
    vpr('Ali veste, kdo je vaš hišnik oz. koga pokličete ob nujni okvari (npr. puščanje vode)?', radio('upr.hisnik',['Da','Ne'],{mreza:true}))+
