@@ -7,7 +7,7 @@
  *   Sodelovanje  – »Bi sodelovali?«, »Koliko časa« ter obveščenost (seje_cs, oppn_obvescenost) (ločeno, brez povezave z odgovori)
  *   Prostovoljci – modri listek: kontakt (e-pošta ali telefon), način obveščanja, pri čem, soglasje,
  *                  neobvezno ime ali vzdevek (samo v tem zavihku),
- *                  neobvezen poštni naslov za dostavo (samo s posebnim soglasjem_naslov; brez poštne številke)
+ *                  neobvezen poštni naslov za dostavo (samo s posebnim soglasjem_naslov; brez poštne številke)  [NEUPORABLJENO od 30. 10. 2026]
  *
  * Zasebnost: skripta NE shranjuje IP naslovov (Apps Script jih niti ne posreduje),
  * brskalnika ali drugih metapodatkov. Ime/vzdevek z modrega listka gre samo v zavihek Prostovoljci.
@@ -70,6 +70,7 @@ function doPost(e) {
     if (p.tip === 'listek') {
       if (!p.kontakt) return odgovor_(false, 'manjka kontakt');
       if (p.soglasje !== 'da') return odgovor_(false, 'manjka soglasje');
+      // NEUPORABLJENO od 30. 10. 2026: spletna anketa poštnega naslova ne pošilja več (obvestila samo digitalno). Ohranjeno zaradi združljivosti.
       // Poštni naslov samo s posebno privolitvijo 6(1)(a); brez nje naslovna polja zavržemo.
       if (p.soglasje_naslov !== 'da' || !p.naslov_ulica) {
         p.naslov_ulica = ''; p.naslov_stanovanje = ''; p.dostava_na_dom = ''; p.soglasje_naslov = '';
