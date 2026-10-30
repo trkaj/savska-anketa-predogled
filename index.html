@@ -314,8 +314,8 @@ function skupina(){ var s=S.starost;
   if(s==='25–34'||s==='35–49'||s==='50–64') return 'odrasli';
   if(s==='65–74'||s==='75 ali več') return 'starejsi';
   return null; }
-function gCena(){ return S.garazaCena==='Drugo'?('Drugo: '+(S.garazaCenaDrugo||'')).trim():(S.garazaCena||''); }
-function gNajem(){ return S.garazaNajem==='Drugo'?('Drugo: '+(S.garazaNajemDrugo||'')).trim():(S.garazaNajem||''); }
+function gCena(){ return (S.garazaCena||'').trim(); }
+function gNajem(){ return (S.garazaNajem||'').trim(); }
 function brezDvigala(){ return S.dvigalo!=='da'; }
 function predstavnik(){ return S.upr.predstavnik==='Da'||S.upr.predstavnik==='Morda'; }
 function zeliListek(){ return biSodeloval()||predstavnik(); }
@@ -404,10 +404,8 @@ var KORAKI = [
    (avto?vpr('Kje najpogosteje parkirate ponoči?', radio('m25.parkiranje',['na urejenem parkirišču ob bloku','na ulici','v garaži ali na najetem mestu','kjer najdem prostor, tudi na zelenici ali pločniku']))+
      vpr('Kako pogosto imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne'],{mreza:true}))+
      vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{mreza:true,rerender:true})):'')+
-   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Drugo','Ne želim odgovoriti'],{rerender:true}))+
-     (S.garazaCena==='Drugo'?vpr('Drugo – opišite sami (znesek ali pogoji nakupa):', besedilo('garazaCenaDrugo','npr. 15.000 € ali na obroke')):'')+
-     vpr('Koliko bi bili pripravljeni plačati za najem (mesečno)?', radio('garazaNajem',['Le brezplačno','do 30 €','30–50 €','50–80 €','80–120 €','več kot 120 €','Drugo','Ne želim odgovoriti'],{rerender:true}), 'Najemnina na mesec.')+
-     (S.garazaNajem==='Drugo'?vpr('Drugo – opišite sami (znesek €/mesec ali pogoji najema):', besedilo('garazaNajemDrugo','npr. 60 €/mesec')):''):'')+
+   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', besedilo('garazaCena','npr. 15.000 € ali na obroke'), 'Neobvezno. Vpišite znesek ali pogoje.')+
+     vpr('Koliko bi bili pripravljeni plačati za najem (mesečno)?', besedilo('garazaNajem','npr. 60 €/mesec'), 'Neobvezno. Vpišite mesečni znesek ali pogoje.'):'')+
    vpr('Kako ste zadovoljni z novo prometno ureditvijo v naselju?', radio('m25.ureditev',['Super je','Je v redu','Slabo','Katastrofa','Ne vem'],{mreza:true}))+
     vpr('Katero prevozno sredstvo najpogosteje uporabljate za vsakodnevne poti?', radio('prevozDnevni',['Peš','Kolo','JPP (avtobus)','Avto','Drugo'],{mreza:true}), 'Neobvezno.');
  }},
