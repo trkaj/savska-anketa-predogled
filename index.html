@@ -314,6 +314,8 @@ function skupina(){ var s=S.starost;
   if(s==='25–34'||s==='35–49'||s==='50–64') return 'odrasli';
   if(s==='65–74'||s==='75 ali več') return 'starejsi';
   return null; }
+function gCena(){ return S.garazaCena==='Drugo'?('Drugo: '+(S.garazaCenaDrugo||'')).trim():(S.garazaCena||''); }
+function gNajem(){ return S.garazaNajem==='Drugo'?('Drugo: '+(S.garazaNajemDrugo||'')).trim():(S.garazaNajem||''); }
 function brezDvigala(){ return S.dvigalo!=='da'; }
 function predstavnik(){ return S.upr.predstavnik==='Da'||S.upr.predstavnik==='Morda'; }
 function zeliListek(){ return biSodeloval()||predstavnik(); }
@@ -402,7 +404,10 @@ var KORAKI = [
    (avto?vpr('Kje najpogosteje parkirate ponoči?', radio('m25.parkiranje',['na urejenem parkirišču ob bloku','na ulici','v garaži ali na najetem mestu','kjer najdem prostor, tudi na zelenici ali pločniku']))+
      vpr('Kako pogosto imate težave s parkiranjem?', radio('parkTez',['Pogosto','Včasih','Ne'],{mreza:true}))+
      vpr('Bi želeli garažo ali garažno mesto?', radio('garaza',['Da','Morda','Ne'],{mreza:true,rerender:true})):'')+
-   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Ne želim odgovoriti'])):'')+
+   (g?vpr('Koliko bi bili zanjo pripravljeni plačati (nakup)?', radio('garazaCena',['Le brezplačno','do 5.000 €','5.000–10.000 €','10.000–20.000 €','20.000–30.000 €','30.000–40.000 €','več kot 40.000 €','Drugo','Ne želim odgovoriti'],{rerender:true}))+
+     (S.garazaCena==='Drugo'?vpr('Drugo – opišite sami (znesek ali pogoji nakupa):', besedilo('garazaCenaDrugo','npr. 15.000 € ali na obroke')):'')+
+     vpr('Koliko bi bili pripravljeni plačati za najem (mesečno)?', radio('garazaNajem',['Le brezplačno','do 30 €','30–50 €','50–80 €','80–120 €','več kot 120 €','Drugo','Ne želim odgovoriti'],{rerender:true}), 'Najemnina na mesec.')+
+     (S.garazaNajem==='Drugo'?vpr('Drugo – opišite sami (znesek €/mesec ali pogoji najema):', besedilo('garazaNajemDrugo','npr. 60 €/mesec')):''):'')+
    vpr('Kako ste zadovoljni z novo prometno ureditvijo v naselju?', radio('m25.ureditev',['Super je','Je v redu','Slabo','Katastrofa','Ne vem'],{mreza:true}))+
     vpr('Katero prevozno sredstvo najpogosteje uporabljate za vsakodnevne poti?', radio('prevozDnevni',['Peš','Kolo','JPP (avtobus)','Avto','Drugo'],{mreza:true}), 'Neobvezno.');
  }},
@@ -550,7 +555,7 @@ function povzetek(){
   d('Težave in kraji', polniVrste().map(function(v){ return (v.tema||'?')+' – '+(v.polje||'kraj ni izbran')+(v.opis?' ('+v.opis+')':''); }).join('; '));
   d('Čistilni četrtek', S.cetrtek==='Drugo:'?('Drugo: '+(S.cetrtekDrugo||'')):S.cetrtek);
   var avto=S.vozilaSt&&S.vozilaSt!=='0';
-  d('Vozila v gospodinjstvu', S.vozilaSt); if(avto){ d('Parkiranje ponoči', S.m25.parkiranje); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') d('Cena garaže (nakup)', S.garazaCena); } d('Nova prometna ureditev', S.m25.ureditev); d('Dnevni prevoz', S.prevozDnevni); d('Storitve, ki jih pogrešate', seznam(S.storitveManjka)+(S.storitveDrugo?(S.storitveManjka&&S.storitveManjka.length?', ':'')+S.storitveDrugo:'')); d('Ohladitev poleti', S.ohladitev==='Drugo'&&S.ohladitevDrugo?('Drugo: '+S.ohladitevDrugo):S.ohladitev);
+  d('Vozila v gospodinjstvu', S.vozilaSt); if(avto){ d('Parkiranje ponoči', S.m25.parkiranje); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') { d('Cena garaže (nakup)', gCena()); d('Cena garaže (najem, mesečno)', gNajem()); } } d('Nova prometna ureditev', S.m25.ureditev); d('Dnevni prevoz', S.prevozDnevni); d('Storitve, ki jih pogrešate', seznam(S.storitveManjka)+(S.storitveDrugo?(S.storitveManjka&&S.storitveManjka.length?', ':'')+S.storitveDrugo:'')); d('Ohladitev poleti', S.ohladitev==='Drugo'&&S.ohladitevDrugo?('Drugo: '+S.ohladitevDrugo):S.ohladitev);
   var U=S.upr; d('Veste, kdo je upravnik', U.poznam); if(U.poznam!=='Ne'){ d('Upravnik: odzivnost', U.odzivnost); d('Upravnik: vzdrževanje in čistoča', U.vzdrzevanje); d('Upravnik: stroški', U.stroski); d('Upravnik: obveščanje', U.obvescanje); }
   d('Veste, koga pokličete ob okvari', U.hisnik); d('Udeležba na zborih', U.zbori); if(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)') d('Kaj bi pomagalo pri udeležbi', seznam(U.ovire)); d('Predstavnik/-ca vhoda', U.predstavnik);
   var Z=S.zdr; d('Zdravstvo: ocena dostopa', Z.ocena); d('Zdravstvo: kaj manjka', seznam(Z.manjka));
@@ -774,15 +779,15 @@ function posljiOdgovore(){
   vr.forEach(function(v,i){ var n=i+1;
     o['kraj'+n+'_polje']=v.polje&&v.polje.indexOf('ne vem')===0?'celo naselje':v.polje; o['kraj'+n+'_tema']=v.tema; o['kraj'+n+'_opis']=v.opis; });
   o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek==='Drugo:'?('Drugo: '+(S.cetrtekDrugo||'')).trim():S.cetrtek; o.vozila_st=S.vozilaSt; var avto=S.vozilaSt&&S.vozilaSt!=='0';
-  o.m25_parkiranje=avto?S.m25.parkiranje:''; o.parkiranje_tezave=avto?S.parkTez:''; o.garaza_zelja=avto?S.garaza:''; o.garaza_cena=(avto&&(S.garaza==='Da'||S.garaza==='Morda'))?S.garazaCena:''; o.m25_ureditev=S.m25.ureditev; o.prevoz_dnevni=S.prevozDnevni;
+  o.m25_parkiranje=avto?S.m25.parkiranje:''; o.parkiranje_tezave=avto?S.parkTez:''; o.garaza_zelja=avto?S.garaza:''; var gg=avto&&(S.garaza==='Da'||S.garaza==='Morda'); o.garaza_cena=gg?gCena():''; o.garaza_najem=gg?gNajem():''; o.m25_ureditev=S.m25.ureditev; o.prevoz_dnevni=S.prevozDnevni;
   o.storitve_manjka=sez(S.storitveManjka); o.storitve_drugo=S.storitveDrugo; o.ohladitev=S.ohladitev==='Drugo'&&S.ohladitevDrugo?('Drugo: '+S.ohladitevDrugo):S.ohladitev;
   var U=S.upr, pz=U.poznam!=='Ne'; o.upravnik_poznam=U.poznam; o.upr_odzivnost=pz?U.odzivnost:''; o.upr_vzdrzevanje=pz?U.vzdrzevanje:''; o.upr_stroski=pz?U.stroski:''; o.upr_obvescanje=pz?U.obvescanje:'';
   o.hisnik_poznam=U.hisnik; o.zbori_udelezba=U.zbori; o.zbori_ovire=(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)')?sez(U.ovire):''; o.predstavnik_vhoda=U.predstavnik;
   o.zdr_ocena=S.zdr.ocena; o.zdr_manjka=sez(S.zdr.manjka); o.zdr_dvigalo='';
-  // ZAČASNO (do Deploya novega Code.gs): stari backend ne pozna stolpcev prevoz_dnevni/storitve_manjka/storitve_drugo/ohladitev
+  // ZAČASNO (do Deploya novega Code.gs): stari backend ne pozna stolpcev prevoz_dnevni/storitve_manjka/storitve_drugo/ohladitev/garaza_najem
   // in jih zavrže, zato jih zapakiramo še v vedno prazen stolpec zdr_dvigalo. Pravi ključi se pošiljajo naprej.
   var np=[]; if(o.prevoz_dnevni) np.push('prevoz='+o.prevoz_dnevni); if(o.storitve_manjka) np.push('storitve='+o.storitve_manjka);
-  if(o.storitve_drugo) np.push('storitve_drugo='+o.storitve_drugo); if(o.ohladitev) np.push('ohladitev='+o.ohladitev);
+  if(o.storitve_drugo) np.push('storitve_drugo='+o.storitve_drugo); if(o.ohladitev) np.push('ohladitev='+o.ohladitev); if(o.garaza_najem) np.push('garaza_najem='+o.garaza_najem);
   if(np.length) o.zdr_dvigalo='[nova polja] '+np.join(' | ');
   var g=skupina();
   if(g==='starejsi'){ if(brezDvigala()){ o.m65_stopnice=S.m65.stopnice; o.m65_dvigalo=S.m65.dvigalo; }

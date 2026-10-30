@@ -26,7 +26,7 @@ var STOLPCI = {
       'kraj3_polje','kraj3_tema','kraj3_opis',
       'kraj4_polje','kraj4_tema','kraj4_opis',
       'kraj5_polje','kraj5_tema','kraj5_opis',
-      'starost','ulica','bivanje','dvigalo','enosmerna','cistilni_cetrtek','vozila_st','parkiranje_tezave','garaza_zelja','garaza_cena','prevoz_dnevni',
+      'starost','ulica','bivanje','dvigalo','enosmerna','cistilni_cetrtek','vozila_st','parkiranje_tezave','garaza_zelja','garaza_cena','garaza_najem','prevoz_dnevni',
       'storitve_manjka','storitve_drugo','ohladitev',
       'upravnik_poznam','upr_odzivnost','upr_vzdrzevanje','upr_stroski','upr_obvescanje','hisnik_poznam','zbori_udelezba','zbori_ovire','predstavnik_vhoda',
       'zdr_ocena','zdr_manjka','zdr_dvigalo',
