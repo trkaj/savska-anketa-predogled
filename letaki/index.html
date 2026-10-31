@@ -28,9 +28,17 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 .blok.karta{margin:0 0 10px;border-radius:0;padding:14px 14px 14px}
 .leg span{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #333;vertical-align:-2px;margin:0 4px 0 10px}
 .mal{font-size:15px;color:#444}
+.trak{height:30px;background:#e4e4e4;border-radius:15px;overflow:hidden;margin:8px 0}.trak div{height:100%;background:#2e9e5b;transition:width .6s}
+#stevec .vel{font-size:22px;font-weight:800;color:#063a23;margin:0}
+.lv{display:flex;align-items:center;gap:10px;padding:9px 6px;border-bottom:1px solid #eee}.lv .m{width:34px;font-size:22px;text-align:center;font-weight:800}
+.lv .v{flex:1;font-weight:700;overflow:hidden;text-overflow:ellipsis}.lv .n{font-weight:800;font-size:20px}.lv .zn{font-size:13px;color:#0a5232;display:block;font-weight:400}
+.lv.jaz{background:#fff4c2;border-radius:8px}
+.citat{font-size:21px;font-style:italic;line-height:1.4;margin:6px 0;color:#063a23}.avtor{text-align:right;color:#444;margin:0 0 14px}
 </style></head><body>
 <header><h1>Letaki Savske ankete</h1><p>Kdo nese letake na kateri naslov</p></header>
 
+<div class="blok" id="stevec"><p class="mal">Nalagam …</p></div>
+<div class="blok" id="lestvica" style="display:none"></div>
 <div class="blok" id="jaz"></div>
 <div class="blok" id="moji" style="display:none"></div>
 
@@ -94,18 +102,58 @@ function naslov(i){const s=st(i),v=VH[i];let h='<h2>'+esc(v.u+' '+v.n)+'</h2>';
   '<textarea id="opomba" rows="2" maxlength="200"></textarea><button class="r siroko" onclick="akcija(['+i+'],\'opomba\')">Shrani opombo</button><button class="s siroko" onclick="zapri()">Zapri</button>';
  document.getElementById('oknoVsebina').innerHTML=h;document.getElementById('okno').style.display='flex'}
 function zapri(){document.getElementById('okno').style.display='none'}
+const CITATI=[
+['Nikoli ne dvomite, da lahko majhna skupina premišljenih, zavzetih ljudi spremeni svet. Pravzaprav je to edino, kar ga je kdaj spremenilo.','Margaret Mead'],
+['Sami zmoremo tako malo, skupaj tako veliko.','Helen Keller'],
+['Bodi sprememba, ki si jo želiš videti v svetu.','pripisano Mahatmi Gandhiju'],
+['Najboljši način, da najdeš sebe, je, da se izgubiš v služenju drugim.','pripisano Mahatmi Gandhiju'],
+['Vsak je lahko velik, ker vsak lahko služi.','Martin Luther King ml.'],
+['Najbolj vztrajno in nujno vprašanje življenja je: kaj delaš za druge?','Martin Luther King ml.'],
+['Mesta lahko vsem nekaj ponudijo le zato in le takrat, ko jih ustvarjajo vsi.','Jane Jacobs'],
+['Delaj dobro tam, kjer si; ti drobni koščki dobrega skupaj preplavijo svet.','Desmond Tutu'],
+['Majhna dejanja, pomnožena z milijoni ljudi, lahko spremenijo svet.','Howard Zinn'],
+['Dobro, ki ga zagotovimo zase, je negotovo, dokler ga ne zagotovimo za vse.','Jane Addams'],
+['Poišči tiste, ki pomagajo. Vedno boš našel ljudi, ki pomagajo.','Fred Rogers (po besedah njegove mame)'],
+['Bi bil moj sosed?','Fred Rogers'],
+['Čudovito je, da nikomur ni treba čakati niti trenutka, preden začne izboljševati svet.','Anne Frank'],
+['Prostovoljci nimajo nujno časa; imajo srce.','Elizabeth Andrew'],
+['Vsi ne moremo delati velikih stvari. Lahko pa delamo majhne stvari z veliko ljubeznijo.','pripisano Materi Tereziji'],
+['Resnično srečni bodo tisti, ki bodo iskali in našli, kako služiti.','Albert Schweitzer'],
+['Nobeno dejanje prijaznosti, še tako majhno, ni nikoli zaman.','Ezop'],
+['Pot tisočih milj se začne s prvim korakom.','Lao Ce'],
+['Če hočeš iti hitro, pojdi sam. Če hočeš priti daleč, pojdi skupaj.','afriški pregovor'],
+['Kjer je volja, je tudi pot.','slovenski pregovor'],
+['Zrno do zrna pogača, kamen do kamna palača.','slovenski pregovor'],
+['V slogi je moč.','slovenski pregovor'],
+['Več glav več ve.','slovenski pregovor'],
+['Kdor hitro da, dvakrat da.','slovenski pregovor'],
+['Brez muje se še čevelj ne obuje.','slovenski pregovor'],
+['Dober sosed je boljši kot daljni brat.','slovenski pregovor']
+];
+const ZNACKE=[[30,'🏆 Mojster naselja'],[15,'⭐ Ulični as'],[5,'📬 Raznašalec'],[1,'👣 Prvi korak']];
+const znacka=n=>(ZNACKE.find(z=>n>=z[0])||[0,''])[1];
+function razdelilci(){const c={};Object.values(stanje).forEach(x=>{const r=(x.r||'').trim();if(!r||/^da$/i.test(r))return;const k=r.toLowerCase();(c[k]=c[k]||{v:r,n:0}).n++});return c}
+const mojeSt=()=>ime?((razdelilci()[ime.trim().toLowerCase()]||{}).n||0):0;
+function lestvica(){const b=document.getElementById('lestvica');const t=Object.values(razdelilci()).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10);
+ b.style.display='block';if(!t.length){b.innerHTML='<h2>Lestvica raznašalcev</h2><p class="mal">Še nihče ni označil razdeljenih vhodov. Bodi prvi! 👣</p>';return}const M=['🥇','🥈','🥉'];
+ b.innerHTML='<h2>Lestvica raznašalcev</h2>'+t.map((x,i)=>'<div class="lv'+(ime&&x.v.toLowerCase()==ime.trim().toLowerCase()?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'<span class="zn">'+znacka(x.n)+'</span></span><span class="n">'+x.n+'</span></div>').join('')}
+function stevec(){const n=VH.length||173,v=Object.values(stanje),d=v.filter(x=>x.s=='razdeljeno').length,p=v.filter(x=>x.s=='prevzeto').length,pc=Math.round(d*100/n);
+ document.getElementById('stevec').innerHTML='<p class="vel">Skupaj smo razdelili '+d+' od '+n+' vhodov</p><div class="trak"><div style="width:'+pc+'%"></div></div><p class="mal" style="margin:0"><b>'+pc+' %</b> razdeljeno · še vzetih (nerazdeljenih) '+p+'</p>'}
+function citat(predZn){const c=CITATI[Math.floor(Math.random()*CITATI.length)],n=mojeSt(),z=znacka(n);
+ document.getElementById('oknoVsebina').innerHTML='<h2>🎉 Bravo!</h2><p class="citat">»'+esc(c[0])+'«</p><p class="avtor">— '+esc(c[1])+'</p><p><b>Razdelil si '+n+' '+(n==1?'vhod':n==2?'vhoda':n<5?'vhode':'vhodov')+'. Hvala!</b></p>'+(z&&z!=predZn?'<p>Nova značka: <b>'+z+'</b></p>':'')+'<button class="z siroko" onclick="zapri()">Naprej</button>';
+ document.getElementById('okno').style.display='flex'}
 async function akcija(ids,a){
  if(!ime){zapri();obv('Najprej zgoraj vpiši vzdevek ali začetnice.');window.scrollTo({top:0,behavior:'smooth'});return}
  const op=a=='opomba'?(document.getElementById('opomba')||{}).value||'':'';
  if(a=='opomba'&&!op.trim()){obv('Najprej napiši opombo.');return}
- zapri();obv('Shranjujem …',0);let ok=0,zad='';
+ zapri();obv('Shranjujem …',0);let ok=0,zad='';const predZn=znacka(mojeSt());
  for(const i of ids){try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:a,ulica:VH[i].u,st:VH[i].n,kdo:ime,opomba:op})});
   const j=await r.json();zad=j.sporocilo;if(j.ok){ok++;const s=Object.assign({},st(i));
    if(a=='prevzemi')s.p=ime;if(a=='razdeljeno'){s.r=ime;if(!s.p)s.p=ime}if(a=='sprosti'){s.p='';s.r=''}if(a=='opomba')s.o=(s.o?s.o+' | ':'')+ime+': '+op.trim();
    s.s=s.r?'razdeljeno':s.p?'prevzeto':'prosto';stanje[VH[i].k]=s}}catch(e){zad='Ni povezave. Poskusi znova.'}
   if(ids.length>1)obv('Shranjujem … '+ok+'/'+ids.length,0)}
- obv(ids.length>1?'Shranjeno '+ok+' od '+ids.length+'.':zad);osvezi();setTimeout(nalozi,6000)}
-function osvezi(){jaz();moji();ulice();
+ obv(ids.length>1?'Shranjeno '+ok+' od '+ids.length+'.':zad);osvezi();if(a=='razdeljeno'&&ok){document.getElementById('obv').style.display='none';citat(predZn)}setTimeout(nalozi,6000)}
+function osvezi(){jaz();moji();ulice();lestvica();stevec();
  tocke.forEach((m,i)=>m.setStyle({fillColor:BARVA[st(i).s]}));
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
