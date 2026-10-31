@@ -106,10 +106,11 @@ const nalozenaPoglavja=Promise.race([fetch(SKRIPT+'?akcija=poglavja&t='+Date.now
 const ekKljuc=()=>'letaki_ekipa:'+(ime||'').trim().toLowerCase();
 function ekipaGet(){let v=localStorage.getItem(ekKljuc());if(v===null)v=localStorage.getItem('letaki_ekipa')||'';return v.trim()}
 function ekipaUI(uredi){const b=document.getElementById('ekBox');if(!b)return;const v=ekipaGet();
- if(v&&!uredi){b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b id="ekOk">✓ Ekipa: '+esc(v)+' · '+clanov((clani()[malo(v)]||{size:1}).size)+'</b><button class="s" onclick="ekipaUI(1)">Spremeni</button></div>';return}
+ if(v&&!uredi){b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b id="ekOk">✓ Ekipa: '+esc(v)+' · '+clanov((clani()[malo(v)]||{size:1}).size)+'</b><button class="s" onclick="obdrziMesto(()=>ekipaUI(1))">Spremeni</button></div>';return}
  b.innerHTML='<label class="mal" for="ekipa" style="display:block">Ekipa (neobvezno, npr. Majaronova, Družina K.)</label><div style="display:flex;gap:8px"><input id="ekipa" maxlength="30" placeholder="brez ekipe" style="flex:1" value="'+esc(v)+'" onkeydown="if(event.key==\'Enter\'){event.preventDefault();potrdiEkipo()}"><button class="s" onclick="potrdiEkipo()">Potrdi ekipo</button></div>';
  if(uredi)document.getElementById('ekipa').focus()}
-function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);ekipaUI();lestvica();ekipeSeznam();obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
+function obdrziMesto(fn){const j=document.getElementById('jaz'),y=j.getBoundingClientRect().top;fn();const d=j.getBoundingClientRect().top-y;if(Math.abs(d)>1)window.scrollBy(0,d)}
+function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);obdrziMesto(()=>{ekipaUI();lestvica();ekipeSeznam()});obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
 function clanov(n){return n+' '+(n%100==1?'član':n%100==2?'člana':n%100==3||n%100==4?'člani':'članov')}
 function clani(){const o={};ekipeData().forEach(t=>o[malo(t.v)]={size:Object.keys(t.m).length});return o}
 function clani_old(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
