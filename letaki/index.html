@@ -42,6 +42,10 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 .proslava{text-align:center}.proslava .vel{font-size:28px;font-weight:800;color:#063a23;margin:10px 0}
 #diplPlatno{width:100%;height:auto;border:1px solid #ddd;border-radius:6px;background:#fffdf5}
 .citat{font-size:21px;font-style:italic;line-height:1.4;margin:6px 0;color:#063a23}.avtor{text-align:right;color:#444;margin:0 0 14px}
+details.ek{border-bottom:1px solid #e3e3e3}details.ek summary{list-style:none;display:flex;gap:8px;align-items:center;padding:10px 2px;cursor:pointer;font-size:18px}
+details.ek summary::-webkit-details-marker{display:none}details.ek summary .v{flex:1;font-weight:700}details.ek summary .c{color:#555;font-size:15px}
+details.ek summary:after{content:'▸';color:#888}details.ek[open] summary:after{content:'▾'}details.ek.jaz summary{background:#fff4c2;border-radius:8px}
+.clan{display:flex;justify-content:space-between;padding:6px 14px;font-size:16px;border-top:1px dashed #eee}
 </style></head><body>
 <header><h1 id="glava">Razdeljevanje v Savskem naselju</h1><p id="podglava">Kdo nese gradivo na kateri naslov</p></header>
 <nav class="pogl" id="poglavja"></nav>
@@ -59,6 +63,8 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 
 <div class="blok karta"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
 <p id="povzetek" class="mal"></p><div id="map"></div><p style="margin:10px 0 0"><b>🖨 Natisni zemljevid</b> <span class="mal">(A4 ležeče)</span></p><div style="display:flex;gap:8px"><button class="s" style="flex:1" onclick="tisk('barvno')">Barvno</button><button class="s" style="flex:1" onclick="tisk('cb')">Črno-belo</button></div></div>
+
+<div class="blok" id="ekipeBlok"><h2>Ekipe</h2><div id="ekipeSez"></div></div>
 
 <p class="mal" style="padding:0 16px 30px">Težave? Pokliči ali pošlji SMS na 070 205 595. Vse je zapisano tudi v <a id="tabela" href="#">tabeli</a>.</p>
 
@@ -103,10 +109,20 @@ function ekipaUI(uredi){const b=document.getElementById('ekBox');if(!b)return;co
  if(v&&!uredi){b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b id="ekOk">✓ Ekipa: '+esc(v)+' · '+clanov((clani()[malo(v)]||{size:1}).size)+'</b><button class="s" onclick="ekipaUI(1)">Spremeni</button></div>';return}
  b.innerHTML='<label class="mal" for="ekipa" style="display:block">Ekipa (neobvezno, npr. Majaronova, Družina K.)</label><div style="display:flex;gap:8px"><input id="ekipa" maxlength="30" placeholder="brez ekipe" style="flex:1" value="'+esc(v)+'" onkeydown="if(event.key==\'Enter\'){event.preventDefault();potrdiEkipo()}"><button class="s" onclick="potrdiEkipo()">Potrdi ekipo</button></div>';
  if(uredi)document.getElementById('ekipa').focus()}
-function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);ekipaUI();lestvica();obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
+function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);ekipaUI();lestvica();ekipeSeznam();obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
 function clanov(n){return n+' '+(n%100==1?'član':n%100==2?'člana':n%100==3||n%100==4?'člani':'članov')}
-function clani(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
+function clani(){const o={};ekipeData().forEach(t=>o[malo(t.v)]={size:Object.keys(t.m).length});return o}
+function clani_old(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
  const e=malo(ekipaGet());if(e&&ime){(m[e]=m[e]||new Set()).add(malo(ime))}return m}
+function ekipeData(){const T={},add=(t,v,d)=>{v=(v||'').trim();if(!v||malo(v)=='da')return;const m=t.m[malo(v)]=t.m[malo(v)]||{v,d:0};m.d+=d};
+ Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e),t=T[k]=T[k]||{v:x.e.trim(),n:0,m:{}};if(x.s=='razdeljeno'){t.n++;add(t,x.r||x.p,1)}else add(t,x.p,0)});
+ const e=ekipaGet();if(e&&ime){const t=T[malo(e)]=T[malo(e)]||{v:e,n:0,m:{}};add(t,ime,0)}
+ return Object.values(T).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl'))}
+function ekipeHTML(list,medalje){const M=['🥇','🥈','🥉'],me=malo(ekipaGet());return list.map((t,i)=>{const cl=Object.values(t.m).sort((a,b)=>b.d-a.d||a.v.localeCompare(b.v,'sl'));
+ return '<details class="ek'+(me&&malo(t.v)==me?' jaz':'')+'"><summary>'+(medalje?'<span>'+(M[i]||(i+1)+'.')+'</span>':'')+'<span class="v">'+esc(t.v)+'</span><span class="c">'+clanov(cl.length)+' · razdeljenih '+t.n+'</span></summary>'+
+ cl.map(c=>'<div class="clan"><span>'+esc(c.v)+'</span><span>'+c.d+'</span></div>').join('')+'</details>'}).join('')}
+function ekipeSeznam(){const b=document.getElementById('ekipeSez');if(!b)return;if(!imaStolpce){b.innerHTML='<p class="mal">Ekipe se pokažejo, ko je posodobljen skript.</p>';return}
+ const l=ekipeData();b.innerHTML=l.length?'<p class="mal">Klikni ekipo za seznam članov (število = razdeljeni vhodi).</p>'+ekipeHTML(l):'<p class="mal">Še ni ekip – vpiši ime ekipe zgoraj.</p>'}
 function tisk(n){window.open('tisk.html?p='+encodeURIComponent(P.id)+'&nacin='+n+'&natisni=1','_blank')}
 function izberiPoglavje(id){try{localStorage.setItem('letaki_poglavje',id+'|'+POGLAVJA.length)}catch(e){}location.search='?p='+encodeURIComponent(id)}
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
@@ -219,9 +235,7 @@ const lokZakl=id=>{try{return JSON.parse(localStorage.getItem((id||P.id)+':letak
 function lestvica(){const b=document.getElementById('lestvica');b.style.display='block';const M=['🥇','🥈','🥉'];
  let h='<h2>Lestvica raznašalcev</h2><div class="zav"><button class="'+(zavihek=='os'?'ak':'')+'" onclick="zavihek=\'os\';lestvica()">'+esc(P.st+'. poglavje · '+P.naslov)+'</button><button class="'+(zavihek=='ek'?'ak':'')+'" onclick="zavihek=\'ek\';lestvica()">Ekipe</button></div>';
  if(zavihek=='ek'){if(!imaStolpce){b.innerHTML=h+'<p class="mal">Ekipe začnejo šteti, ko je posodobljen skript.</p>';return}
-  const c={};Object.values(stanje).forEach(x=>{if(x.s!='razdeljeno'||!x.e)return;const k=malo(x.e);(c[k]=c[k]||{v:x.e,n:0}).n++});
-  const t=Object.values(c).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10),me=malo(ekipaGet()),C=clani();
-  b.innerHTML=h+(t.length?'<div class="lv mal"><span class="m"></span><span class="v">Ekipa</span><span class="n" style="min-width:52px">Člani</span><span class="n">Razd.</span></div>'+t.map((x,i)=>'<div class="lv'+(me&&malo(x.v)==me?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'</span><span class="n" style="min-width:52px">'+((C[malo(x.v)]||{size:0}).size)+'</span><span class="n">'+x.n+'</span></div>').join(''):'<p class="mal">Še nobena ekipa nima razdeljenih vhodov. Vpiši ekipo zgoraj!</p>');return}
+  const l=ekipeData().filter(t=>t.n).slice(0,10);b.innerHTML=h+(l.length?ekipeHTML(l,1):'<p class="mal">Še nobena ekipa nima razdeljenih vhodov. Vpiši ekipo zgoraj!</p>');return}
  const t=Object.values(razdelilci()).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10);
  if(!t.length){b.innerHTML=h+'<p class="mal">Še nihče ni označil razdeljenih vhodov. Bodi prvi! 👣</p>';return}
  b.innerHTML=h+t.map((x,i)=>'<div class="lv'+(ime&&malo(x.v)==malo(ime)?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'<span class="zn">'+znackeOsebe(malo(x.v)).join(' · ')+'</span></span><span class="n">'+x.n+'</span></div>').join('')}
@@ -274,7 +288,7 @@ async function akcija(ids,a){if(ZAKLJ)return;
   if(noveP.length){proslava(esc(noveP.join(', '))+(noveP.length>1?' so pokrite! 🎉':' je pokrita! 🎉'),'Razdelil si zadnji vhod. Dobil si značko <b>🏁 Zaključevalec</b>!<br><br><button class="r" onclick="citat(\''+predZn.replace(/'/g,'')+'\')">Pokaži moj citat</button>')}
   else if(!mejniki())citat(predZn)}
  setTimeout(nalozi,6000)}
-function osvezi(){jaz();moji();ulice();lestvica();stevec();zbirkaGumb();if(ZAKLJ)['jaz','moji','uliceBlok'].forEach(i=>document.getElementById(i).style.display='none');
+function osvezi(){jaz();moji();ulice();lestvica();ekipeSeznam();stevec();zbirkaGumb();if(ZAKLJ)['jaz','moji','uliceBlok'].forEach(i=>document.getElementById(i).style.display='none');
  tocke.forEach((m,i)=>{const x=st(i),v=VH[i];m.setStyle({fillColor:BARVA[x.s]});m.setTooltipContent(esc(v.u+' '+v.n+(x.s=='razdeljeno'?' · razdelil '+x.r:x.p?' · rezerviral '+x.p:'')))});
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
