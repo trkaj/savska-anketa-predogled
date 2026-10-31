@@ -54,12 +54,12 @@ function izris(vrstice){
    const s=vs.length&&vs.every(v=>v.da)?'razdeljeno':vs.some(v=>v.kdo)?'prevzeto':'prosto';
    return{color:'#063a23',weight:1.5,fillColor:barva(s),fillOpacity:.6}},
   onEachFeature:(f,l)=>{const vs=po[f.properties.st];
-   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+(v.kdo?v.kdo+(v.da?' ✅':''):'<i>prosto</i>')).join('<br>')||''));
+   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+(v.da?'razdeljeno ✅':v.kdo?'prevzeto':'<i>prosto</i>')).join('<br>')||''));
    l.bindTooltip(String(f.properties.st),{permanent:true,direction:'center',className:''})}}).addTo(map);
  const n=vrstice.length,p=vrstice.filter(v=>v.kdo).length,d=vrstice.filter(v=>v.da).length;
  document.getElementById('povzetek').innerHTML='<b>Prevzeto '+p+' od '+n+', razdeljeno '+d+'</b>';
- document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Kdo</th><th>Razdeljeno</th></tr>'+
-  vrstice.map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+(v.kdo||'–')+'</td><td>'+(v.da?'✅':'')+'</td></tr>').join('')+'</table>';
+ document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Stanje</th></tr>'+
+  vrstice.map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+(v.da?'razdeljeno ✅':v.kdo?'prevzeto':'prosto')+'</td></tr>').join('')+'</table>';
 }
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function nalozi(){
