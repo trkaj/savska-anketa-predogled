@@ -24,13 +24,14 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 #obv{position:fixed;left:10px;right:10px;bottom:10px;background:#063a23;color:#fff;padding:14px;border-radius:12px;font-weight:700;display:none;z-index:2000;text-align:center}
 #okno{position:fixed;inset:0;background:#0007;display:none;z-index:1500;align-items:flex-end;justify-content:center}
 #okno .blok{width:100%;max-width:520px;margin:0;border-radius:16px 16px 0 0;max-height:90vh;overflow:auto}
-#map{height:55vh;min-height:320px;border-radius:12px}
+#map{height:72vh;min-height:380px;border-radius:0;margin:0 -14px -14px}
+.blok.karta{margin:0 0 10px;border-radius:0;padding:14px 14px 14px}
 .leg span{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #333;vertical-align:-2px;margin:0 4px 0 10px}
 .mal{font-size:15px;color:#444}
 </style></head><body>
 <header><h1>Letaki Savske ankete</h1><p>Kdo nese letake na kateri naslov</p></header>
 
-<div class="blok"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
+<div class="blok karta"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
 <p id="povzetek" class="mal"></p><div id="map"></div></div>
 
 <div class="blok" id="jaz"></div>
@@ -113,14 +114,14 @@ async function nalozi(){try{const t=await (await fetch(CSV+'&t='+Date.now())).te
  const ns={};parseCSV(t).slice(1).forEach(x=>{if(!x[0])return;const p=(x[2]||'').trim();let r=(x[3]||'').trim();if(/^(da|ja|x|✅)$/i.test(r))r=p||'da';if(!jeRaz(r))r='';
   ns[norm(x[0])+'|'+norm(x[1])]={p,r,o:(x[4]||'').trim(),s:r?'razdeljeno':p?'prevzeto':'prosto'}});
  stanje=ns;osvezi()}catch(e){}}
-const map=L.map('map',{zoomSnap:.25});
+const map=L.map('map',{zoomSnap:.25,renderer:L.canvas({tolerance:7})});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
 Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([v,meja])=>{
  VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
  const ring=meja.map(c=>[c[1],c[0]]);
  L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
  L.polygon(ring,{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);
- tocke=VH.map((x,i)=>L.circleMarker(x.ll,{radius:8,color:'#333',weight:1,fillColor:BARVA.prosto,fillOpacity:.95}).on('click',()=>naslov(i)).bindTooltip(x.u+' '+x.n,{direction:'top'}).addTo(map));
- const b=L.latLngBounds(ring);map.fitBounds(b,{padding:[8,8]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
+ tocke=VH.map((x,i)=>L.circleMarker(x.ll,{radius:5,color:'#222',weight:1,fillColor:BARVA.prosto,fillOpacity:.95}).on('click',()=>naslov(i)).bindTooltip(x.u+' '+x.n,{direction:'top'}).addTo(map));
+ const b=L.latLngBounds(ring);map.fitBounds(b,{padding:[2,2]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
  osvezi();nalozi();setInterval(nalozi,60000)});
 </script></body></html>
