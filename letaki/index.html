@@ -1,0 +1,73 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Letaki ankete – kaj je že pokrito</title>
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#111}
+header{background:#0a5232;color:#fff;padding:10px 14px}header h1{margin:0;font-size:19px}
+header p{margin:4px 0 0;font-size:14px}header a{color:#ffd84d;font-weight:700}
+#stanje{font-size:14px;padding:8px 14px;background:#f3f6f1;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.k{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid #555}
+#map{height:62vh;min-height:360px}
+#seznam{padding:8px 14px 24px}#seznam table{border-collapse:collapse;width:100%;font-size:14px}
+#seznam td,#seznam th{border-bottom:1px solid #ddd;padding:6px 4px;text-align:left}
+.st{font-weight:700;color:#063a23}.napaka{color:#7a1f00;font-weight:600}
+</style></head><body>
+<header><h1>Letaki ankete – kaj je že pokrito</h1>
+<p>Vpiši se v <a id="tabela" href="#">tabelo</a>, zemljevid se osveži sam.</p></header>
+<div id="stanje"><span><span class="k" style="background:#bbb"></span>prosto</span><span><span class="k" style="background:#ffd84d"></span>prevzeto</span><span><span class="k" style="background:#2e9e5b"></span>razdeljeno</span><span id="povzetek"></span></div>
+<div id="map"></div>
+<div id="seznam"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const SHEET='1ELfFyY5O-UxguptOQYwFl9dj7dTx4qpTBERhO48UUww';
+document.getElementById('tabela').href='https://docs.google.com/spreadsheets/d/'+SHEET+'/edit';
+const CSV='https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv';
+// vrstica tabele (ulica + številke) -> polja na zemljevidu
+const POLJA={
+'Belokranjska|1–6':[10],'Belokranjska|7–27 (lihe)':[12,8],'Belokranjska|8–14 (sode)':[9],
+'Endliherjeva|2–16 (sode)':[9,12],'Endliherjeva|7–19 (lihe)':[8],
+'Fabianijeva|11–15':[13],'Fabianijeva|17–35 (lihe)':[7],'Fabianijeva|35a–47':[2],
+'Knobleharjeva|1–11':[12],'Knobleharjeva|13–27 (lihe)':[9],'Knobleharjeva|18–24 (sode)':[10,3],
+'Linhartova|60–68':[1,2],'Linhartova|70–78':[3],'Linhartova|80–88':[4],'Linhartova|90–104':[5],
+'Luize Pesjakove|2–22 (sode)':[12,8],'Luize Pesjakove|9–19 (lihe)':[13,14,15],
+'Majaronova|1–19 (lihe)':[14],'Majaronova|2–28 (sode)':[15,16],
+'Matjaževa|1–11':[6],'Matjaževa|13–17':[1],'Mislejeva|3':[4],
+'Savska|1–15':[11],'Savska|17–31':[11],'Šerkova|1–13':[14],'Topniška|43–45':[16]};
+const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
+function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
+ if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
+ else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
+ if(f||row.length){row.push(f);r.push(row)}return r}
+const jeDa=s=>/^(da|ja|✅|✔|x|razdeljeno|opravljeno)/i.test((s||'').trim());
+const map=L.map('map',{zoomSnap:.25});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+let sloj,polja;
+const barva=s=>s=='razdeljeno'?'#2e9e5b':s=='prevzeto'?'#ffd84d':'#bbb';
+function izris(vrstice){
+ const po={};polja.features.forEach(f=>po[f.properties.st]=[]);
+ vrstice.forEach(v=>(POLJA[v.kljuc]||[]).forEach(st=>po[st]&&po[st].push(v)));
+ if(sloj)sloj.remove();
+ sloj=L.geoJSON(polja,{style:f=>{const vs=po[f.properties.st];
+   const s=vs.length&&vs.every(v=>v.da)?'razdeljeno':vs.some(v=>v.kdo)?'prevzeto':'prosto';
+   return{color:'#063a23',weight:1.5,fillColor:barva(s),fillOpacity:.6}},
+  onEachFeature:(f,l)=>{const vs=po[f.properties.st];
+   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+(v.kdo?v.kdo+(v.da?' ✅':''):'<i>prosto</i>')).join('<br>')||''));
+   l.bindTooltip(String(f.properties.st),{permanent:true,direction:'center',className:''})}}).addTo(map);
+ const n=vrstice.length,p=vrstice.filter(v=>v.kdo).length,d=vrstice.filter(v=>v.da).length;
+ document.getElementById('povzetek').innerHTML='<b>Prevzeto '+p+' od '+n+', razdeljeno '+d+'</b>';
+ document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Kdo</th><th>Razdeljeno</th></tr>'+
+  vrstice.map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+(v.kdo||'–')+'</td><td>'+(v.da?'✅':'')+'</td></tr>').join('')+'</table>';
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function nalozi(){
+ try{const t=await (await fetch(CSV+'&t='+Date.now())).text();
+  if(t.trim().startsWith('<'))throw 0;
+  const r=parseCSV(t).slice(1).filter(x=>x[0]&&x[0].trim());
+  izris(r.map(x=>({ulica:esc(norm(x[0])),st:esc(norm(x[1])),kljuc:norm(x[0])+'|'+norm(x[1]),kdo:esc((x[2]||'').trim()),da:jeDa(x[3])})));
+ }catch(e){izris([]);document.getElementById('seznam').innerHTML='<p class="napaka">Tabele trenutno ni mogoče prebrati. Lastnik mora tabelo deliti z »Vsi, ki imajo povezavo«.</p>'}
+}
+fetch('polja.json').then(r=>r.json()).then(g=>{polja=g;const b=L.geoJSON(g).getBounds();map.fitBounds(b,{padding:[10,10]});map.setMaxBounds(b.pad(0.6));map.setMinZoom(map.getZoom()-1);nalozi();setInterval(nalozi,60000)});
+</script></body></html>
