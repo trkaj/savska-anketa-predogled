@@ -43,7 +43,7 @@ function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i
  if(f||row.length){row.push(f);r.push(row)}return r}
 const jeDa=s=>/^(da|ja|✅|✔|x|razdeljeno|opravljeno)/i.test((s||'').trim());
 const map=L.map('map',{zoomSnap:.25});
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
 let sloj,polja;
 const barva=s=>s=='razdeljeno'?'#2e9e5b':s=='prevzeto'?'#ffd84d':'#bbb';
 function izris(vrstice){
@@ -69,5 +69,10 @@ async function nalozi(){
   izris(r.map(x=>({ulica:esc(norm(x[0])),st:esc(norm(x[1])),kljuc:norm(x[0])+'|'+norm(x[1]),kdo:esc((x[2]||'').trim()),da:jeDa(x[3])})));
  }catch(e){izris([]);document.getElementById('seznam').innerHTML='<p class="napaka">Tabele trenutno ni mogoče prebrati. Lastnik mora tabelo deliti z »Vsi, ki imajo povezavo«.</p>'}
 }
-fetch('polja.json').then(r=>r.json()).then(g=>{polja=g;const b=L.geoJSON(g).getBounds();map.fitBounds(b,{padding:[10,10]});map.setMaxBounds(b.pad(0.6));map.setMinZoom(map.getZoom()-1);nalozi();setInterval(nalozi,60000)});
+Promise.all([fetch('polja.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([g,meja])=>{polja=g;
+ const svet=[[-90,-180],[-90,180],[90,180],[90,-180]];
+ L.polygon([svet,meja.map(c=>[c[1],c[0]])],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
+ L.polygon(meja.map(c=>[c[1],c[0]]),{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);
+ const b=L.geoJSON(g).getBounds();map.fitBounds(b,{padding:[8,8]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
+ nalozi();setInterval(nalozi,60000)});
 </script></body></html>
