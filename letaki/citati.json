@@ -1,0 +1,1462 @@
+[
+{
+"id": 1,
+"besedilo": "Kjer je volja, je tudi pot.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 2,
+"besedilo": "Zrno do zrna pogača, kamen do kamna palača.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 3,
+"besedilo": "V slogi je moč.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 4,
+"besedilo": "Več glav več ve.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 5,
+"besedilo": "Kdor hitro da, dvakrat da.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 6,
+"besedilo": "Brez muje se še čevelj ne obuje.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 7,
+"besedilo": "Dober sosed je boljši kot daljni brat.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 8,
+"besedilo": "Vaja dela mojstra.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 9,
+"besedilo": "Kdor zgodaj vstaja, mu kruha ostaja.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 10,
+"besedilo": "Počasi se daleč pride.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 11,
+"besedilo": "Lepa beseda lepo mesto najde.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 12,
+"besedilo": "Kakor si boš postlal, tako boš spal.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 13,
+"besedilo": "Česar se Janezek nauči, to Janez zna.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 14,
+"besedilo": "Dobro delo se samo hvali.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 15,
+"besedilo": "Prijatelja spoznaš v nesreči.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 16,
+"besedilo": "Ena lastovka še ne prinese pomladi.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 17,
+"besedilo": "Kdor išče, ta najde.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 18,
+"besedilo": "Kar lahko storiš danes, ne odlašaj na jutri.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 19,
+"besedilo": "Brez dela ni jela.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 20,
+"besedilo": "Konec dober, vse dobro.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 21,
+"besedilo": "Ljubo doma, kdor ga ima.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 22,
+"besedilo": "Pametnejši odneha.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 23,
+"besedilo": "Dobra volja je najbolja.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 24,
+"besedilo": "Kuj železo, dokler je vroče.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 25,
+"besedilo": "Bolje pozno kot nikoli.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 26,
+"besedilo": "Obljuba dela dolg.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 27,
+"besedilo": "Vsak začetek je težak.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 28,
+"besedilo": "Kakor ti meni, tako jaz tebi.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 29,
+"besedilo": "Kar se mlado navadi, se staro rado drži.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 30,
+"besedilo": "Kdor ne gre naprej, gre nazaj.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 31,
+"besedilo": "Kdor ima potrpljenje, ima vse.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 32,
+"besedilo": "Dvakrat meri, enkrat odreži.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 33,
+"besedilo": "Delo človeka krasi.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 34,
+"besedilo": "Jutro je pametnejše od večera.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 35,
+"besedilo": "Tudi Rim ni bil zgrajen v enem dnevu.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 36,
+"besedilo": "Z lepo besedo prideš povsod.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 37,
+"besedilo": "Kar seješ, to žanješ.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 38,
+"besedilo": "Kdor trdo dela, mehko spi.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 39,
+"besedilo": "Če hočeš iti hitro, pojdi sam. Če hočeš priti daleč, pojdi skupaj.",
+"avtor": "afriški pregovor"
+},
+{
+"id": 40,
+"besedilo": "Za vzgojo otroka je potrebna cela vas.",
+"avtor": "afriški pregovor"
+},
+{
+"id": 41,
+"besedilo": "Ko pajki združijo mreže, lahko ujamejo leva.",
+"avtor": "etiopski pregovor"
+},
+{
+"id": 42,
+"besedilo": "Palice v snopu so nezlomljive.",
+"avtor": "kenijski pregovor"
+},
+{
+"id": 43,
+"besedilo": "Malo po malo se napolni posoda.",
+"avtor": "svahilski pregovor"
+},
+{
+"id": 44,
+"besedilo": "Enotnost je moč, razdor je slabost.",
+"avtor": "svahilski pregovor"
+},
+{
+"id": 45,
+"besedilo": "Človek je človek po drugih ljudeh.",
+"avtor": "zulujski izrek (ubuntu)"
+},
+{
+"id": 46,
+"besedilo": "Človek je človeku zdravilo.",
+"avtor": "senegalski pregovor"
+},
+{
+"id": 47,
+"besedilo": "Ena roka ne more ploskati.",
+"avtor": "afriški pregovor"
+},
+{
+"id": 48,
+"besedilo": "Mnogo majhnih ljudi, ki na mnogo majhnih krajih naredijo mnogo majhnih stvari, lahko spremeni obličje sveta.",
+"avtor": "afriški pregovor"
+},
+{
+"id": 49,
+"besedilo": "Modrost je kot baobab: en sam človek je ne more objeti.",
+"avtor": "ganski pregovor"
+},
+{
+"id": 50,
+"besedilo": "Padeš sedemkrat, vstaneš osemkrat.",
+"avtor": "japonski pregovor"
+},
+{
+"id": 51,
+"besedilo": "Ena prijazna beseda lahko ogreje tri zimske mesece.",
+"avtor": "japonski pregovor"
+},
+{
+"id": 52,
+"besedilo": "Vizija brez dejanj je sanjarjenje, dejanje brez vizije je mora.",
+"avtor": "japonski pregovor"
+},
+{
+"id": 53,
+"besedilo": "Prah, ki se nabira, postane gora.",
+"avtor": "japonski pregovor"
+},
+{
+"id": 54,
+"besedilo": "Ko piješ vodo, se spomni na tiste, ki so izkopali vodnjak.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 55,
+"besedilo": "Najboljši čas za sajenje drevesa je bil pred dvajsetimi leti. Drugi najboljši čas je zdaj.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 56,
+"besedilo": "Bolje prižgati svečo kot preklinjati temo.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 57,
+"besedilo": "Kdor premika gore, začne z odnašanjem drobnih kamnov.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 58,
+"besedilo": "Daljna voda ne pogasi bližnjega ognja.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 59,
+"besedilo": "Kdor vpraša, je bedak pet minut; kdor ne vpraša, ostane bedak za vedno.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 60,
+"besedilo": "Ena nit ne naredi vrvi, eno drevo ne naredi gozda.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 61,
+"besedilo": "Vrtnice ostane nekaj vonja na roki, ki jo podari.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 62,
+"besedilo": "Ko je veter sprememb močan, eni gradijo zidove, drugi mline.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 63,
+"besedilo": "Povej mi in bom pozabil, pokaži mi in si bom zapomnil, vključi me in bom razumel.",
+"avtor": "kitajski pregovor"
+},
+{
+"id": 64,
+"besedilo": "Kdor pomaga drugim čez reko, tudi sam pride na drugi breg.",
+"avtor": "indijski pregovor"
+},
+{
+"id": 65,
+"besedilo": "Kapljica za kapljico se napolni jezero.",
+"avtor": "indijski pregovor"
+},
+{
+"id": 66,
+"besedilo": "Najprej izberi soseda, potem hišo.",
+"avtor": "arabski pregovor"
+},
+{
+"id": 67,
+"besedilo": "Roka v roki je močnejša od pesti.",
+"avtor": "arabski pregovor"
+},
+{
+"id": 68,
+"besedilo": "Kdor ima zdravje, ima upanje; kdor ima upanje, ima vse.",
+"avtor": "arabski pregovor"
+},
+{
+"id": 69,
+"besedilo": "Ne kupuj hiše, kupi soseda.",
+"avtor": "turški pregovor"
+},
+{
+"id": 70,
+"besedilo": "Nobena pot ni dolga, če imaš dobro družbo.",
+"avtor": "turški pregovor"
+},
+{
+"id": 71,
+"besedilo": "Z mojo košaro in tvojo košaro bodo ljudje siti.",
+"avtor": "maorski pregovor"
+},
+{
+"id": 72,
+"besedilo": "Obrni se k soncu in sence bodo padle za tabo.",
+"avtor": "maorski pregovor"
+},
+{
+"id": 73,
+"besedilo": "Ljudje živimo v zavetju drug drugega.",
+"avtor": "irski pregovor"
+},
+{
+"id": 74,
+"besedilo": "Dober začetek je pol dela.",
+"avtor": "irski pregovor"
+},
+{
+"id": 75,
+"besedilo": "Mnogo drobtin naredi hlebec.",
+"avtor": "škotski pregovor"
+},
+{
+"id": 76,
+"besedilo": "Mnogo rok olajša delo.",
+"avtor": "angleški pregovor"
+},
+{
+"id": 77,
+"besedilo": "Dobra dejanja so najboljša molitev.",
+"avtor": "angleški pregovor"
+},
+{
+"id": 78,
+"besedilo": "Dobri sosedje so dobra ograja zase.",
+"avtor": "angleški pregovor"
+},
+{
+"id": 79,
+"besedilo": "Deljeno veselje je dvojno veselje, deljena bolečina je pol bolečine.",
+"avtor": "nemški pregovor"
+},
+{
+"id": 80,
+"besedilo": "Ko gradiš hišo, si najprej izberi soseda.",
+"avtor": "nemški pregovor"
+},
+{
+"id": 81,
+"besedilo": "Ni slabega vremena, le slaba oblačila.",
+"avtor": "norveški pregovor"
+},
+{
+"id": 82,
+"besedilo": "Sisu – vztrajaj, ko se zdi, da ne gre več.",
+"avtor": "finski pregovor"
+},
+{
+"id": 83,
+"besedilo": "Ptica po ptica gradi svoje gnezdo.",
+"avtor": "francoski pregovor"
+},
+{
+"id": 84,
+"besedilo": "Kdor gre počasi, gre varno, in kdor gre varno, pride daleč.",
+"avtor": "francoski pregovor"
+},
+{
+"id": 85,
+"besedilo": "Kdor ima prijatelja, ima zaklad.",
+"avtor": "španski pregovor"
+},
+{
+"id": 86,
+"besedilo": "Družba gre naprej, ko starci sadijo drevesa, v senci katerih ne bodo nikoli sedeli.",
+"avtor": "grški pregovor"
+},
+{
+"id": 87,
+"besedilo": "Ne imej sto rubljev, imej sto prijateljev.",
+"avtor": "ruski pregovor"
+},
+{
+"id": 88,
+"besedilo": "Z vsega sveta po niti – golemu srajca.",
+"avtor": "ruski pregovor"
+},
+{
+"id": 89,
+"besedilo": "Kjer ni dela, ni kolačev.",
+"avtor": "poljski pregovor"
+},
+{
+"id": 90,
+"besedilo": "Brez dela ni kolačev.",
+"avtor": "češki pregovor"
+},
+{
+"id": 91,
+"besedilo": "Sloga kuću gradi, nesloga je razgrađuje – sloga hišo gradi, nesloga jo podira.",
+"avtor": "srbski pregovor"
+},
+{
+"id": 92,
+"besedilo": "Tko rano rani, dvije sreće grabi – kdor zgodaj vstane, dve sreči ujame.",
+"avtor": "hrvaški pregovor"
+},
+{
+"id": 93,
+"besedilo": "Dobar komšija je bolji od rođenog brata – dober sosed je boljši od rodnega brata.",
+"avtor": "bosanski pregovor"
+},
+{
+"id": 94,
+"besedilo": "Kapka po kapka – vir. Kaplja za kapljo – tolmun.",
+"avtor": "makedonski pregovor"
+},
+{
+"id": 95,
+"besedilo": "Kdor reši eno življenje, reši ves svet.",
+"avtor": "judovski pregovor"
+},
+{
+"id": 96,
+"besedilo": "Če nisem jaz zase, kdo bo zame? In če sem samo zase, kaj sem? In če ne zdaj, kdaj?",
+"avtor": "judovski pregovor"
+},
+{
+"id": 97,
+"besedilo": "Tudi list papirja je lažje dvigniti, če ga primeta dva.",
+"avtor": "korejski pregovor"
+},
+{
+"id": 98,
+"besedilo": "Mitakuye oyasin – vsi smo povezani.",
+"avtor": "indijanski pregovor (Lakota)"
+},
+{
+"id": 99,
+"besedilo": "Zemlje nismo podedovali od prednikov, izposojamo si jo od svojih otrok.",
+"avtor": "indijanski pregovor"
+},
+{
+"id": 100,
+"besedilo": "Kaplja dolbe kamen ne s silo, ampak s pogostim padanjem.",
+"avtor": "latinski pregovor"
+},
+{
+"id": 101,
+"besedilo": "Zdrav duh v zdravem telesu.",
+"avtor": "latinski pregovor"
+},
+{
+"id": 102,
+"besedilo": "Kdor dobro začne, je opravil pol dela.",
+"avtor": "Horacij"
+},
+{
+"id": 103,
+"besedilo": "Nikoli ne dvomite, da lahko majhna skupina premišljenih, zavzetih ljudi spremeni svet. Pravzaprav je to edino, kar ga je kdaj spremenilo.",
+"avtor": "Margaret Mead"
+},
+{
+"id": 104,
+"besedilo": "Sami zmoremo tako malo, skupaj tako veliko.",
+"avtor": "Helen Keller"
+},
+{
+"id": 105,
+"besedilo": "Sem le eden, a vendar sem eden. Ne morem narediti vsega, a lahko naredim nekaj.",
+"avtor": "Helen Keller"
+},
+{
+"id": 106,
+"besedilo": "Optimizem je vera, ki vodi k dosežkom. Brez upanja in zaupanja ni mogoče storiti ničesar.",
+"avtor": "Helen Keller"
+},
+{
+"id": 107,
+"besedilo": "Svet ne napreduje le z mogočnimi sunki junakov, ampak tudi z drobnimi sunki vsakega poštenega delavca.",
+"avtor": "Helen Keller"
+},
+{
+"id": 108,
+"besedilo": "Življenje je drzna pustolovščina ali pa nič.",
+"avtor": "Helen Keller"
+},
+{
+"id": 109,
+"besedilo": "Bodi sprememba, ki si jo želiš videti v svetu.",
+"avtor": "pripisano Mahatmi Gandhiju"
+},
+{
+"id": 110,
+"besedilo": "Najboljši način, da najdeš sebe, je, da se izgubiš v služenju drugim.",
+"avtor": "pripisano Mahatmi Gandhiju"
+},
+{
+"id": 111,
+"besedilo": "Moč ne prihaja iz telesne zmogljivosti, ampak iz nezlomljive volje.",
+"avtor": "Mahatma Gandhi"
+},
+{
+"id": 112,
+"besedilo": "Vsak je lahko velik, ker vsak lahko služi.",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 113,
+"besedilo": "Najbolj vztrajno in nujno vprašanje življenja je: kaj delaš za druge?",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 114,
+"besedilo": "Teme ne more pregnati tema, to zmore le svetloba.",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 115,
+"besedilo": "Naredi prvi korak v zaupanju. Ni ti treba videti vsega stopnišča, samo prvo stopnico.",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 116,
+"besedilo": "Če ne moreš leteti, teci; če ne moreš teči, hodi; če ne moreš hoditi, se plazi – a karkoli že delaš, se premikaj naprej.",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 117,
+"besedilo": "Pravi čas, da narediš prav, je vedno.",
+"avtor": "Martin Luther King ml."
+},
+{
+"id": 118,
+"besedilo": "Mesta lahko vsem nekaj ponudijo le zato in le takrat, ko jih ustvarjajo vsi.",
+"avtor": "Jane Jacobs"
+},
+{
+"id": 119,
+"besedilo": "Ulice in njihovi pločniki so najpomembnejši javni prostori mesta.",
+"avtor": "Jane Jacobs"
+},
+{
+"id": 120,
+"besedilo": "Ulica mora imeti oči, ki pripadajo tistim, ki jo imajo za svoj dom.",
+"avtor": "Jane Jacobs"
+},
+{
+"id": 121,
+"besedilo": "Ni logike, ki bi jo lahko vsilili mestu; ljudje so tisti, ki ga ustvarijo.",
+"avtor": "Jane Jacobs"
+},
+{
+"id": 122,
+"besedilo": "Delaj dobro tam, kjer si; ti drobni koščki dobrega skupaj preplavijo svet.",
+"avtor": "Desmond Tutu"
+},
+{
+"id": 123,
+"besedilo": "Upanje je sposobnost videti, da obstaja svetloba kljub vsej temi.",
+"avtor": "Desmond Tutu"
+},
+{
+"id": 124,
+"besedilo": "Moja človečnost je povezana z vašo, saj smo lahko ljudje le skupaj.",
+"avtor": "Desmond Tutu"
+},
+{
+"id": 125,
+"besedilo": "Majhna dejanja, pomnožena z milijoni ljudi, lahko spremenijo svet.",
+"avtor": "Howard Zinn"
+},
+{
+"id": 126,
+"besedilo": "Ni nam treba delati velikih junaških dejanj, da sodelujemo pri procesu sprememb.",
+"avtor": "Howard Zinn"
+},
+{
+"id": 127,
+"besedilo": "Dobro, ki ga zagotovimo zase, je negotovo, dokler ga ne zagotovimo za vse.",
+"avtor": "Jane Addams"
+},
+{
+"id": 128,
+"besedilo": "Delovanje je res edini medij za izražanje etike.",
+"avtor": "Jane Addams"
+},
+{
+"id": 129,
+"besedilo": "Poišči tiste, ki pomagajo. Vedno boš našel ljudi, ki pomagajo.",
+"avtor": "Fred Rogers (po besedah njegove mame)"
+},
+{
+"id": 130,
+"besedilo": "Bi bil moj sosed?",
+"avtor": "Fred Rogers"
+},
+{
+"id": 131,
+"besedilo": "Vsi imamo posebne načine, kako lahko svetu povemo, da nam je mar.",
+"avtor": "Fred Rogers"
+},
+{
+"id": 132,
+"besedilo": "Na svetu ni ničesar, kar bi bolj želel kot to, da bi bili vsi sosedje.",
+"avtor": "Fred Rogers"
+},
+{
+"id": 133,
+"besedilo": "Čudovito je, da nikomur ni treba čakati niti trenutka, preden začne izboljševati svet.",
+"avtor": "Anne Frank"
+},
+{
+"id": 134,
+"besedilo": "Nihče še ni obubožal zato, ker je dajal.",
+"avtor": "Anne Frank"
+},
+{
+"id": 135,
+"besedilo": "Kljub vsemu še vedno verjamem, da so ljudje v srcu zares dobri.",
+"avtor": "Anne Frank"
+},
+{
+"id": 136,
+"besedilo": "Prostovoljci nimajo nujno časa; imajo srce.",
+"avtor": "Elizabeth Andrew"
+},
+{
+"id": 137,
+"besedilo": "Vsi ne moremo delati velikih stvari. Lahko pa delamo majhne stvari z veliko ljubeznijo.",
+"avtor": "pripisano Materi Tereziji"
+},
+{
+"id": 138,
+"besedilo": "Če ne morete nahraniti sto ljudi, nahranite enega.",
+"avtor": "Mati Terezija"
+},
+{
+"id": 139,
+"besedilo": "Sama ne morem spremeniti sveta, lahko pa vržem kamen v vodo, ki bo naredil mnogo valov.",
+"avtor": "Mati Terezija"
+},
+{
+"id": 140,
+"besedilo": "Resnično srečni bodo tisti, ki bodo iskali in našli, kako služiti.",
+"avtor": "Albert Schweitzer"
+},
+{
+"id": 141,
+"besedilo": "Zgled ni glavna stvar pri vplivanju na druge. Je edina stvar.",
+"avtor": "Albert Schweitzer"
+},
+{
+"id": 142,
+"besedilo": "Včasih naša luč ugasne, a jo znova prižge iskra drugega človeka.",
+"avtor": "Albert Schweitzer"
+},
+{
+"id": 143,
+"besedilo": "Nobeno dejanje prijaznosti, še tako majhno, ni nikoli zaman.",
+"avtor": "Ezop"
+},
+{
+"id": 144,
+"besedilo": "Pot tisočih milj se začne s prvim korakom.",
+"avtor": "Lao Ce"
+},
+{
+"id": 145,
+"besedilo": "Dobrota v besedah ustvarja zaupanje, dobrota v mislih globino, dobrota v dajanju ljubezen.",
+"avtor": "Lao Ce"
+},
+{
+"id": 146,
+"besedilo": "Ni pomembno, kako počasi greš, dokler se ne ustaviš.",
+"avtor": "Konfucij"
+},
+{
+"id": 147,
+"besedilo": "Kjer koli greš, pojdi z vsem srcem.",
+"avtor": "Konfucij"
+},
+{
+"id": 148,
+"besedilo": "Vrlina ni nikoli osamljena; vedno ima sosede.",
+"avtor": "Konfucij"
+},
+{
+"id": 149,
+"besedilo": "Kdor želi uspeti sam, naj pomaga drugim do uspeha.",
+"avtor": "Konfucij"
+},
+{
+"id": 150,
+"besedilo": "Človek je po naravi družbeno bitje.",
+"avtor": "Aristotel"
+},
+{
+"id": 151,
+"besedilo": "Celota je več kot vsota delov.",
+"avtor": "Aristotel"
+},
+{
+"id": 152,
+"besedilo": "Smo to, kar vedno znova počnemo. Odličnost torej ni dejanje, ampak navada.",
+"avtor": "Aristotel"
+},
+{
+"id": 153,
+"besedilo": "Kjer je človek, tam je priložnost za dobroto.",
+"avtor": "Seneka"
+},
+{
+"id": 154,
+"besedilo": "Ni zato, ker so stvari težke, da si ne upamo; zato, ker si ne upamo, so težke.",
+"avtor": "Seneka"
+},
+{
+"id": 155,
+"besedilo": "Dokler živimo, dokler smo med ljudmi, gojimo človečnost.",
+"avtor": "Seneka"
+},
+{
+"id": 156,
+"besedilo": "Ne razlagaj svoje filozofije. Udejanji jo.",
+"avtor": "Epiktet"
+},
+{
+"id": 157,
+"besedilo": "Dobrota je edina naložba, ki nikoli ne propade.",
+"avtor": "Henry David Thoreau"
+},
+{
+"id": 158,
+"besedilo": "Ni dovolj biti marljiv; tudi mravlje so. Vprašanje je: za kaj si marljiv?",
+"avtor": "Henry David Thoreau"
+},
+{
+"id": 159,
+"besedilo": "Ena izmed najlepših nagrad v življenju je, da noben človek ne more iskreno pomagati drugemu, ne da bi pomagal tudi sebi.",
+"avtor": "Ralph Waldo Emerson"
+},
+{
+"id": 160,
+"besedilo": "Edini način, da imaš prijatelja, je, da si prijatelj.",
+"avtor": "Ralph Waldo Emerson"
+},
+{
+"id": 161,
+"besedilo": "Vedeti, da je vsaj eno življenje lažje zadihalo, ker si živel – to je uspeh.",
+"avtor": "Ralph Waldo Emerson"
+},
+{
+"id": 162,
+"besedilo": "Vsi mislijo, da bi spremenili svet, nihče pa ne pomisli, da bi spremenil sebe.",
+"avtor": "Lev Tolstoj"
+},
+{
+"id": 163,
+"besedilo": "Najpomembnejši čas je zdaj, najpomembnejši človek je tisti, ki je pred teboj, najpomembnejše delo je delati dobro.",
+"avtor": "Lev Tolstoj"
+},
+{
+"id": 164,
+"besedilo": "Bistvo je očem nevidno. Prav vidi samo srce.",
+"avtor": "Antoine de Saint-Exupéry"
+},
+{
+"id": 165,
+"besedilo": "Če hočeš zgraditi ladjo, ne zbiraj ljudi, da bi nabirali les, ampak jih nauči hrepeneti po prostranem morju.",
+"avtor": "Antoine de Saint-Exupéry"
+},
+{
+"id": 166,
+"besedilo": "Biti človek pomeni čutiti odgovornost.",
+"avtor": "Antoine de Saint-Exupéry"
+},
+{
+"id": 167,
+"besedilo": "Če želite, da so drugi srečni, izkazujte sočutje. Če želite biti srečni sami, izkazujte sočutje.",
+"avtor": "dalajlama"
+},
+{
+"id": 168,
+"besedilo": "Če mislite, da ste premajhni, da bi kaj spremenili, poskusite spati s komarjem.",
+"avtor": "dalajlama"
+},
+{
+"id": 169,
+"besedilo": "Bodi prijazen, kadar je le mogoče. Mogoče je vedno.",
+"avtor": "dalajlama"
+},
+{
+"id": 170,
+"besedilo": "Ljudje bodo pozabili, kaj ste rekli, pozabili, kaj ste storili, nikoli pa ne bodo pozabili, kako ste se ob vas počutili.",
+"avtor": "Maya Angelou"
+},
+{
+"id": 171,
+"besedilo": "Vsi smo eno, ne glede na barvo, vero ali poreklo.",
+"avtor": "Maya Angelou"
+},
+{
+"id": 172,
+"besedilo": "Spoznala sem, da si mora človek prizadevati biti mavrica v oblaku nekoga drugega.",
+"avtor": "Maya Angelou"
+},
+{
+"id": 173,
+"besedilo": "Malim stvarem, ki jih ljudje počnejo, se pravi napredek.",
+"avtor": "Wangari Maathai"
+},
+{
+"id": 174,
+"besedilo": "Dokler ne kopljete luknje, ne posadite drevesa, ga ne zalijete in poskrbite, da preživi, niste naredili ničesar. Samo govorite.",
+"avtor": "Wangari Maathai"
+},
+{
+"id": 175,
+"besedilo": "Samo življenje, živeto za druge, je vredno življenje.",
+"avtor": "Albert Einstein"
+},
+{
+"id": 176,
+"besedilo": "Nasprotje ljubezni ni sovraštvo, ampak brezbrižnost.",
+"avtor": "Elie Wiesel"
+},
+{
+"id": 177,
+"besedilo": "Ko ne moremo več spremeniti okoliščin, smo izzvani, da spremenimo sebe.",
+"avtor": "Viktor Frankl"
+},
+{
+"id": 178,
+"besedilo": "Malo daš, ko daješ od svojega imetja. Resnično daš, ko daš sebe.",
+"avtor": "Kahlil Gibran"
+},
+{
+"id": 179,
+"besedilo": "Spal sem in sanjal, da je življenje veselje. Zbudil sem se in videl, da je življenje služenje. Delal sem in glej, služenje je bilo veselje.",
+"avtor": "Rabindranath Tagore"
+},
+{
+"id": 180,
+"besedilo": "Včeraj sem bil pameten, zato sem hotel spremeniti svet. Danes sem moder, zato spreminjam sebe.",
+"avtor": "Rumi"
+},
+{
+"id": 181,
+"besedilo": "Kar iščeš, išče tebe.",
+"avtor": "Rumi"
+},
+{
+"id": 182,
+"besedilo": "Prijaznost je jezik, ki ga gluhi slišijo in slepi vidijo.",
+"avtor": "Mark Twain"
+},
+{
+"id": 183,
+"besedilo": "Skrivnost napredovanja je v tem, da začneš.",
+"avtor": "Mark Twain"
+},
+{
+"id": 184,
+"besedilo": "Služenje drugim je najemnina, ki jo plačaš za svoje mesto na Zemlji.",
+"avtor": "Muhammad Ali"
+},
+{
+"id": 185,
+"besedilo": "Začni tam, kjer si. Uporabi, kar imaš. Naredi, kar lahko.",
+"avtor": "Arthur Ashe"
+},
+{
+"id": 186,
+"besedilo": "Moč ekipe je vsak posamezen član. Moč vsakega člana je ekipa.",
+"avtor": "Phil Jackson"
+},
+{
+"id": 187,
+"besedilo": "Talent zmaguje tekme, timsko delo in inteligenca pa prvenstva.",
+"avtor": "Michael Jordan"
+},
+{
+"id": 188,
+"besedilo": "Posamezno smo ena kaplja. Skupaj smo ocean.",
+"avtor": "Ryunosuke Satoro"
+},
+{
+"id": 189,
+"besedilo": "Enotnost je moč. Kjer sta timsko delo in sodelovanje, je mogoče doseči čudovite stvari.",
+"avtor": "Mattie Stepanek"
+},
+{
+"id": 190,
+"besedilo": "Priti skupaj je začetek, ostati skupaj je napredek, delati skupaj je uspeh.",
+"avtor": "pripisano Henryju Fordu"
+},
+{
+"id": 191,
+"besedilo": "Če nekomu, kot si ti, ni prav strašansko mar, se ne bo nič izboljšalo. Prav nič.",
+"avtor": "Dr. Seuss (Lorax)"
+},
+{
+"id": 192,
+"besedilo": "Odločiti se moramo le, kaj bomo storili s časom, ki nam je dan.",
+"avtor": "J. R. R. Tolkien"
+},
+{
+"id": 193,
+"besedilo": "Celo najmanjša oseba lahko spremeni tok prihodnosti.",
+"avtor": "J. R. R. Tolkien"
+},
+{
+"id": 194,
+"besedilo": "Ne morete preživeti niti dneva, ne da bi vplivali na svet okoli sebe. Kar počnete, šteje.",
+"avtor": "Jane Goodall"
+},
+{
+"id": 195,
+"besedilo": "Šele ko razumemo, nam bo mar. Šele ko nam bo mar, bomo pomagali.",
+"avtor": "Jane Goodall"
+},
+{
+"id": 196,
+"besedilo": "Ljudje govorijo o množicah, a vse se začne pri enem človeku.",
+"avtor": "Dorothy Day"
+},
+{
+"id": 197,
+"besedilo": "Pozornost je najredkejša in najčistejša oblika velikodušnosti.",
+"avtor": "Simone Weil"
+},
+{
+"id": 198,
+"besedilo": "Ljubezen je dejavna skrb za življenje in rast tistega, kar ljubimo.",
+"avtor": "Erich Fromm"
+},
+{
+"id": 199,
+"besedilo": "Moč nastane med ljudmi, ko delujejo skupaj, in izgine v trenutku, ko se razidejo.",
+"avtor": "Hannah Arendt"
+},
+{
+"id": 200,
+"besedilo": "Vse resnično življenje je srečanje.",
+"avtor": "Martin Buber"
+},
+{
+"id": 201,
+"besedilo": "Resnična velikodušnost do prihodnosti je v tem, da vse daš sedanjosti.",
+"avtor": "Albert Camus"
+},
+{
+"id": 202,
+"besedilo": "Lepota bo rešila svet.",
+"avtor": "Fjodor Dostojevski"
+},
+{
+"id": 203,
+"besedilo": "Vsak bi moral narediti vse, kar more, na koščku zemlje, ki mu je dan.",
+"avtor": "Anton Pavlovič Čehov"
+},
+{
+"id": 204,
+"besedilo": "Nihče ni nekoristen na tem svetu, če olajša breme drugemu.",
+"avtor": "Charles Dickens"
+},
+{
+"id": 205,
+"besedilo": "Najprej življenje, potem prostori, nato stavbe – obratno nikoli ne deluje.",
+"avtor": "Jan Gehl"
+},
+{
+"id": 206,
+"besedilo": "Dobro mesto je kot dobra zabava: ljudje ostanejo dlje, kot so nameravali.",
+"avtor": "Jan Gehl"
+},
+{
+"id": 207,
+"besedilo": "Ljudi najbolj privlačijo drugi ljudje.",
+"avtor": "William H. Whyte"
+},
+{
+"id": 208,
+"besedilo": "Mesto je predvsem prostor srečevanja.",
+"avtor": "Lewis Mumford"
+},
+{
+"id": 209,
+"besedilo": "Če načrtuješ mesto za avtomobile in promet, dobiš avtomobile in promet. Če ga načrtuješ za ljudi in prostore, dobiš ljudi in prostore.",
+"avtor": "Fred Kent (Project for Public Spaces)"
+},
+{
+"id": 210,
+"besedilo": "Žive naj vsi narodi, ki hrepene dočakat dan, da koder sonce hodi, prepir iz sveta bo pregnan.",
+"avtor": "France Prešeren (Zdravljica)"
+},
+{
+"id": 211,
+"besedilo": "Da rojak prost bo vsak, ne vrag, le sosed bo mejak!",
+"avtor": "France Prešeren (Zdravljica)"
+},
+{
+"id": 212,
+"besedilo": "Kaj bi rad, Ciciban? Rad bi videl ves svet!",
+"avtor": "Oton Župančič (Ciciban)"
+},
+{
+"id": 213,
+"besedilo": "Opazil sem, da ljudje redko sedijo križem rok in čakajo, da se jim stvari zgodijo. Gredo ven in jih ustvarijo.",
+"avtor": "Leonardo da Vinci"
+},
+{
+"id": 214,
+"besedilo": "Znanje ni dovolj, uporabiti ga moramo. Volja ni dovolj, delovati moramo.",
+"avtor": "Leonardo da Vinci"
+},
+{
+"id": 215,
+"besedilo": "Naša največja slabost je v tem, da odnehamo. Najzanesljivejši način za uspeh je, da poskusimo še enkrat.",
+"avtor": "Thomas Edison"
+},
+{
+"id": 216,
+"besedilo": "Kako začeti? Nehaj govoriti in začni delati.",
+"avtor": "Walt Disney"
+},
+{
+"id": 217,
+"besedilo": "Pogumnejši si, kot verjameš, močnejši, kot se zdi, in pametnejši, kot misliš.",
+"avtor": "A. A. Milne"
+},
+{
+"id": 218,
+"besedilo": "Ne sodi dneva po žetvi, ki jo pobereš, ampak po semenih, ki jih poseješ.",
+"avtor": "Robert Louis Stevenson"
+},
+{
+"id": 219,
+"besedilo": "Ni ga dejanja prijaznosti, ki bi bilo premajhno.",
+"avtor": "Oscar Wilde"
+},
+{
+"id": 220,
+"besedilo": "Velike stvari so narejene iz niza majhnih stvari, ki jih združimo.",
+"avtor": "Vincent van Gogh"
+},
+{
+"id": 221,
+"besedilo": "Kaj bi bilo življenje, če ne bi imeli poguma kaj poskusiti?",
+"avtor": "Vincent van Gogh"
+},
+{
+"id": 222,
+"besedilo": "Ko boš starejši, boš odkril, da imaš dve roki: eno, da pomagaš sebi, in drugo, da pomagaš drugim.",
+"avtor": "Audrey Hepburn"
+},
+{
+"id": 223,
+"besedilo": "Vedno sem se spraševala, zakaj nekdo nekaj ne naredi. Potem sem ugotovila, da sem jaz ta nekdo.",
+"avtor": "Lily Tomlin"
+},
+{
+"id": 224,
+"besedilo": "Če želiš dvigniti sebe, dvigni nekoga drugega.",
+"avtor": "Booker T. Washington"
+},
+{
+"id": 225,
+"besedilo": "Nihče ne more vsega, vsak pa lahko nekaj.",
+"avtor": "Maya Angelou"
+},
+{
+"id": 226,
+"besedilo": "Kdor ima zakaj živeti, prenese skoraj vsak kako.",
+"avtor": "Viktor Frankl"
+},
+{
+"id": 227,
+"besedilo": "Tisoče sveč lahko prižgemo z ene same sveče, pa se njeno življenje ne skrajša. Sreča se nikoli ne zmanjša, če jo delimo.",
+"avtor": "pripisano Budi"
+},
+{
+"id": 228,
+"besedilo": "Smo tukaj, da se prebudimo iz iluzije svoje ločenosti.",
+"avtor": "Thich Nhat Hanh"
+},
+{
+"id": 229,
+"besedilo": "Prepogosto podcenjujemo moč dotika, nasmeha, prijazne besede, poslušajočega ušesa ali najmanjšega dejanja skrbi.",
+"avtor": "Leo Buscaglia"
+},
+{
+"id": 230,
+"besedilo": "Svet ima dovolj za potrebe vsakogar, ne pa za pohlep vsakogar.",
+"avtor": "Mahatma Gandhi"
+},
+{
+"id": 231,
+"besedilo": "Ko se sami počutimo nemočne, si dajmo moč drug drugemu.",
+"avtor": "Desmond Tutu"
+},
+{
+"id": 232,
+"besedilo": "Nič velikega ni bilo nikoli doseženo brez navdušenja.",
+"avtor": "Ralph Waldo Emerson"
+},
+{
+"id": 233,
+"besedilo": "Pojdi samozavestno v smer svojih sanj.",
+"avtor": "Henry David Thoreau"
+},
+{
+"id": 234,
+"besedilo": "Deluj, kot da to, kar delaš, šteje. Šteje.",
+"avtor": "William James"
+},
+{
+"id": 235,
+"besedilo": "Sem le eden, a sem eden. Ne morem vsega, lahko pa nekaj. In ker ne morem vsega, ne bom zavrnil tistega, kar lahko.",
+"avtor": "Edward Everett Hale"
+},
+{
+"id": 236,
+"besedilo": "Ne smemo, da bi nas majhnost naših dejanj odvrnila; mnogo majhnih dejanj skupaj premakne svet.",
+"avtor": "Marian Wright Edelman"
+},
+{
+"id": 237,
+"besedilo": "Ko enkrat začne družbena sprememba, je ni mogoče obrniti nazaj.",
+"avtor": "Cesar Chavez"
+},
+{
+"id": 238,
+"besedilo": "Vsak trenutek je priložnost za organiziranje, vsak človek je potencialni aktivist.",
+"avtor": "Dolores Huerta"
+},
+{
+"id": 239,
+"besedilo": "Nikoli se ne bi smeli bati, ko delamo, kar je prav.",
+"avtor": "Rosa Parks"
+},
+{
+"id": 240,
+"besedilo": "Ljubezen je dejanje, ne zgolj občutek.",
+"avtor": "Bell Hooks"
+},
+{
+"id": 241,
+"besedilo": "Upanje nikoli ne pronica od zgoraj navzdol. Vedno raste od spodaj navzgor.",
+"avtor": "Studs Terkel"
+},
+{
+"id": 242,
+"besedilo": "Najpomembnejše delo je skrbeti za kraj, kjer živiš.",
+"avtor": "Wendell Berry"
+},
+{
+"id": 243,
+"besedilo": "Upanje je sekira, s katero razbiješ vrata v nujnem primeru.",
+"avtor": "Rebecca Solnit"
+},
+{
+"id": 244,
+"besedilo": "Hej, otroci, vsaj eno pravilo poznam: hudiča, moraš biti prijazen.",
+"avtor": "Kurt Vonnegut"
+},
+{
+"id": 245,
+"besedilo": "Tukaj smo, da drug drugemu pomagamo skozi to, kar koli že to je.",
+"avtor": "Kurt Vonnegut"
+},
+{
+"id": 246,
+"besedilo": "Človek je edino bitje, ki zmore in mora biti odgovorno za druge.",
+"avtor": "John Steinbeck"
+},
+{
+"id": 247,
+"besedilo": "Sposobnost skrbi je tisto, kar daje življenju globok pomen.",
+"avtor": "Pablo Casals"
+},
+{
+"id": 248,
+"besedilo": "Življenje je kot vožnja s kolesom. Da ohraniš ravnotežje, se moraš premikati.",
+"avtor": "Albert Einstein"
+},
+{
+"id": 249,
+"besedilo": "Če sem videl dlje, je to zato, ker sem stal na ramenih velikanov.",
+"avtor": "Isaac Newton"
+},
+{
+"id": 250,
+"besedilo": "Ne moremo upati, da bomo zgradili boljši svet, ne da bi izboljšali posameznike. Vsak mora delati za svojo izboljšavo in hkrati nositi del odgovornosti za vse človeštvo.",
+"avtor": "Marie Curie"
+},
+{
+"id": 251,
+"besedilo": "V življenju se ničesar ni treba bati, le razumeti je treba.",
+"avtor": "Marie Curie"
+},
+{
+"id": 252,
+"besedilo": "Za majhna bitja, kot smo mi, je prostranost znosna le z ljubeznijo.",
+"avtor": "Carl Sagan"
+},
+{
+"id": 253,
+"besedilo": "Ljudje varujejo, kar imajo radi.",
+"avtor": "Jacques-Yves Cousteau"
+},
+{
+"id": 254,
+"besedilo": "Prihodnost človeštva in pravzaprav vsega življenja na zemlji je odvisna od nas.",
+"avtor": "David Attenborough"
+},
+{
+"id": 255,
+"besedilo": "Eden otrok, en učitelj, ena knjiga in eno pero lahko spremenijo svet.",
+"avtor": "Malala Yousafzai"
+},
+{
+"id": 256,
+"besedilo": "Ko ves svet molči, postane močan že en sam glas.",
+"avtor": "Malala Yousafzai"
+},
+{
+"id": 257,
+"besedilo": "Morda so trenutki, ko smo nemočni preprečiti krivico, nikoli pa ne sme biti trenutka, ko je ne bi skušali preprečiti.",
+"avtor": "Elie Wiesel"
+},
+{
+"id": 258,
+"besedilo": "Kjer je ljubezen, je življenje.",
+"avtor": "Mahatma Gandhi"
+},
+{
+"id": 259,
+"besedilo": "Kar moramo naučiti delati, se naučimo z delanjem.",
+"avtor": "Aristotel"
+},
+{
+"id": 260,
+"besedilo": "Sreča je, ko se priprava sreča s priložnostjo.",
+"avtor": "Seneka"
+},
+{
+"id": 261,
+"besedilo": "Prijatelj, ki zna molčati z nami v uri obupa, je prijatelj, ki mu je mar.",
+"avtor": "Henri Nouwen"
+},
+{
+"id": 262,
+"besedilo": "Ljudje potrebujejo ne le pridobiti stvari, ampak predvsem svobodo, da jih naredijo sami.",
+"avtor": "Ivan Illich"
+},
+{
+"id": 263,
+"besedilo": "Biti človek pomeni biti povezan z drugimi.",
+"avtor": "Jean Vanier"
+},
+{
+"id": 264,
+"besedilo": "Nihče ne izobražuje nikogar, nihče se ne izobražuje sam; ljudje se izobražujejo med seboj.",
+"avtor": "Paulo Freire"
+},
+{
+"id": 265,
+"besedilo": "Najpogostejši način, kako se ljudje odpovejo svoji moči, je, da mislijo, da je nimajo.",
+"avtor": "Alice Walker"
+},
+{
+"id": 266,
+"besedilo": "Če si svoboden, moraš osvoboditi koga drugega. Če imaš moč, moraš opolnomočiti koga drugega.",
+"avtor": "Toni Morrison"
+},
+{
+"id": 267,
+"besedilo": "Vsega, s čimer se soočimo, ne moremo spremeniti, ničesar pa ne moremo spremeniti, dokler se s tem ne soočimo.",
+"avtor": "James Baldwin"
+},
+{
+"id": 268,
+"besedilo": "Upiranje in spremembe se pogosto začnejo v umetnosti.",
+"avtor": "Ursula K. Le Guin"
+},
+{
+"id": 269,
+"besedilo": "Ena stvar je, da si dober. Druga je, da delaš dobro.",
+"avtor": "Terry Pratchett"
+},
+{
+"id": 270,
+"besedilo": "Bodi pogumen. Poskusi stvari.",
+"avtor": "Neil Gaiman"
+},
+{
+"id": 271,
+"besedilo": "Življenje nikoli ni neznosno zaradi okoliščin, temveč le zaradi pomanjkanja smisla.",
+"avtor": "Viktor Frankl"
+},
+{
+"id": 272,
+"besedilo": "Glava, srce in roka – učimo se z vsemi tremi.",
+"avtor": "Johann Heinrich Pestalozzi"
+},
+{
+"id": 273,
+"besedilo": "Nikoli ne pomagaj otroku pri nalogi, za katero čuti, da jo zmore sam.",
+"avtor": "Maria Montessori"
+},
+{
+"id": 274,
+"besedilo": "Otrok ni bodoč človek – že danes je človek.",
+"avtor": "Janusz Korczak"
+},
+{
+"id": 275,
+"besedilo": "Kdor želi delati dobro, trka na vrata; kdor ljubi, najde vrata odprta.",
+"avtor": "Rabindranath Tagore"
+},
+{
+"id": 276,
+"besedilo": "Delo je ljubezen, ki je postala vidna.",
+"avtor": "Kahlil Gibran"
+},
+{
+"id": 277,
+"besedilo": "Ljubiti ne pomeni gledati drug drugega, ampak skupaj gledati v isto smer.",
+"avtor": "Antoine de Saint-Exupéry"
+},
+{
+"id": 278,
+"besedilo": "Čeprav je svet poln trpljenja, je poln tudi premagovanja trpljenja.",
+"avtor": "Helen Keller"
+},
+{
+"id": 279,
+"besedilo": "Ko vidiš dobrega človeka, ga skušaj posnemati.",
+"avtor": "Konfucij"
+},
+{
+"id": 280,
+"besedilo": "Prijatelj je ena duša v dveh telesih.",
+"avtor": "Aristotel (po Diogenu Laertskem)"
+},
+{
+"id": 281,
+"besedilo": "Ni pomembno, kaj se ti zgodi, ampak kako se na to odzoveš.",
+"avtor": "Epiktet"
+},
+{
+"id": 282,
+"besedilo": "Naš glavni namen v tem življenju je pomagati drugim.",
+"avtor": "dalajlama"
+},
+{
+"id": 283,
+"besedilo": "Uspeh je, da imaš rad sebe, rad to, kar delaš, in rad način, kako to delaš.",
+"avtor": "Maya Angelou"
+},
+{
+"id": 284,
+"besedilo": "Ne moreš prečkati morja, če samo stojiš in strmiš v vodo.",
+"avtor": "Rabindranath Tagore"
+},
+{
+"id": 285,
+"besedilo": "Kdor pozna druge, je pameten; kdor pozna sebe, je razsvetljen.",
+"avtor": "Lao Ce"
+},
+{
+"id": 286,
+"besedilo": "Ulica je reka življenja v mestu.",
+"avtor": "William H. Whyte"
+},
+{
+"id": 287,
+"besedilo": "Po jutru se dan pozna.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 288,
+"besedilo": "Kdor vztraja, zmaga.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 289,
+"besedilo": "Upanje umre zadnje.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 290,
+"besedilo": "Iz malega raste veliko.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 291,
+"besedilo": "Za dežjem pride sonce.",
+"avtor": "slovenski pregovor"
+},
+{
+"id": 292,
+"besedilo": "Ko učimo, se učimo.",
+"avtor": "Seneka"
+}
+]

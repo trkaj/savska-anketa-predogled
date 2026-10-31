@@ -41,6 +41,7 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 <div class="blok" id="lestvica" style="display:none"></div>
 <div class="blok" id="jaz"></div>
 <div class="blok" id="moji" style="display:none"></div>
+<div class="blok" id="zbirkaBlok" style="display:none"></div>
 
 <div class="blok"><h2>Izberi ulico</h2><div id="ulice"></div>
 <div id="ulica" style="display:none"><h2 id="ulicaIme" style="margin-top:14px"></h2>
@@ -130,6 +131,15 @@ const CITATI=[
 ['Brez muje se še čevelj ne obuje.','slovenski pregovor'],
 ['Dober sosed je boljši kot daljni brat.','slovenski pregovor']
 ];
+let CIT=CITATI.map(c=>({besedilo:c[0],avtor:c[1]}));
+fetch('citati.json').then(r=>r.json()).then(j=>{if(Array.isArray(j)&&j.length){CIT=j;if(VH.length)zbirkaGumb()}}).catch(()=>{});
+const zbKljuc=()=>'letaki_zbirka_'+ime.trim().toLowerCase();
+function zbirka(){try{return JSON.parse(localStorage.getItem(zbKljuc())||'[]')}catch(e){return []}}
+function zbirkaGumb(){const b=document.getElementById('zbirkaBlok');if(!ime){b.style.display='none';return}const z=zbirka();b.style.display='block';
+ b.innerHTML='<button class="r siroko" style="margin:0" onclick="odpriZbirko()">📖 Moja zbirka citatov ('+z.length+' od '+CIT.length+')</button>'}
+function odpriZbirko(){const z=zbirka();const m={};CIT.forEach(c=>m[c.besedilo]=c);
+ document.getElementById('oknoVsebina').innerHTML='<h2>📖 Moja zbirka citatov ('+z.length+' od '+CIT.length+')</h2>'+(z.length?z.map((t,i)=>'<div style="border-bottom:1px solid #eee;padding:8px 0"><i>»'+esc(t)+'«</i><div class="mal" style="text-align:right">— '+esc((m[t]||{}).avtor||'')+'</div></div>').join(''):'<p class="mal">Še nimaš citatov. Za vsak razdeljen vhod (»Razdelil sem«) dobiš novega!</p>')+'<button class="s siroko" onclick="zapri()">Zapri</button>';
+ document.getElementById('okno').style.display='flex'}
 const ZNACKE=[[30,'🏆 Mojster naselja'],[15,'⭐ Ulični as'],[5,'📬 Raznašalec'],[1,'👣 Prvi korak']];
 const znacka=n=>(ZNACKE.find(z=>n>=z[0])||[0,''])[1];
 function razdelilci(){const c={};Object.values(stanje).forEach(x=>{const r=(x.r||'').trim();if(!r||/^da$/i.test(r))return;const k=r.toLowerCase();(c[k]=c[k]||{v:r,n:0}).n++});return c}
@@ -139,8 +149,9 @@ function lestvica(){const b=document.getElementById('lestvica');const t=Object.v
  b.innerHTML='<h2>Lestvica raznašalcev</h2>'+t.map((x,i)=>'<div class="lv'+(ime&&x.v.toLowerCase()==ime.trim().toLowerCase()?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'<span class="zn">'+znacka(x.n)+'</span></span><span class="n">'+x.n+'</span></div>').join('')}
 function stevec(){const n=VH.length||173,v=Object.values(stanje),d=v.filter(x=>x.s=='razdeljeno').length,p=v.filter(x=>x.s=='prevzeto').length,pc=Math.round(d*100/n);
  document.getElementById('stevec').innerHTML='<p class="vel">Skupaj smo razdelili '+d+' od '+n+' vhodov</p><div class="trak"><div style="width:'+pc+'%"></div></div><p class="mal" style="margin:0"><b>'+pc+' %</b> razdeljeno · še vzetih (nerazdeljenih) '+p+'</p>'}
-function citat(predZn){const c=CITATI[Math.floor(Math.random()*CITATI.length)],n=mojeSt(),z=znacka(n);
- document.getElementById('oknoVsebina').innerHTML='<h2>🎉 Bravo!</h2><p class="citat">»'+esc(c[0])+'«</p><p class="avtor">— '+esc(c[1])+'</p><p><b>Razdelil si '+n+' '+(n==1?'vhod':n==2?'vhoda':n<5?'vhode':'vhodov')+'. Hvala!</b></p>'+(z&&z!=predZn?'<p>Nova značka: <b>'+z+'</b></p>':'')+'<button class="z siroko" onclick="zapri()">Naprej</button>';
+function citat(predZn){const z0=zbirka(),ima=new Set(z0),nove=CIT.filter(c=>!ima.has(c.besedilo)),izb=nove.length?nove:CIT,cc=izb[Math.floor(Math.random()*izb.length)],c=[cc.besedilo,cc.avtor],n=mojeSt(),z=znacka(n);
+ if(nove.length){z0.push(cc.besedilo);try{localStorage.setItem(zbKljuc(),JSON.stringify(z0))}catch(e){}}zbirkaGumb();
+ document.getElementById('oknoVsebina').innerHTML='<h2>🎉 Bravo!</h2><p class="citat">»'+esc(c[0])+'«</p><p class="avtor">— '+esc(c[1])+'</p><p><b>Razdelil si '+n+' '+(n==1?'vhod':n==2?'vhoda':n<5?'vhode':'vhodov')+'. Hvala!</b></p>'+'<p>'+(nove.length?'📖 Nov citat v tvoji zbirki! '+z0.length+' od '+CIT.length:'📖 Zbral si vse citate! ('+CIT.length+')')+'</p>'+(z&&z!=predZn?'<p>Nova značka: <b>'+z+'</b></p>':'')+'<button class="z siroko" onclick="zapri()">Naprej</button>';
  document.getElementById('okno').style.display='flex'}
 async function akcija(ids,a){
  if(!ime){zapri();obv('Najprej zgoraj vpiši vzdevek ali začetnice.');window.scrollTo({top:0,behavior:'smooth'});return}
@@ -153,7 +164,7 @@ async function akcija(ids,a){
    s.s=s.r?'razdeljeno':s.p?'prevzeto':'prosto';stanje[VH[i].k]=s}}catch(e){zad='Ni povezave. Poskusi znova.'}
   if(ids.length>1)obv('Shranjujem … '+ok+'/'+ids.length,0)}
  obv(ids.length>1?'Shranjeno '+ok+' od '+ids.length+'.':zad);osvezi();if(a=='razdeljeno'&&ok){document.getElementById('obv').style.display='none';citat(predZn)}setTimeout(nalozi,6000)}
-function osvezi(){jaz();moji();ulice();lestvica();stevec();
+function osvezi(){jaz();moji();ulice();lestvica();stevec();zbirkaGumb();
  tocke.forEach((m,i)=>m.setStyle({fillColor:BARVA[st(i).s]}));
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
