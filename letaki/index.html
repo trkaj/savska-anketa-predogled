@@ -50,8 +50,6 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 <div class="blok" id="jaz"></div>
 <div class="blok" id="moji" style="display:none"></div>
 <div class="blok" id="zbirkaBlok" style="display:none"></div>
-<div class="blok" id="foto"><a class="r siroko" id="fotoGumb" style="display:block;text-align:center;text-decoration:none;padding:12px;border-radius:10px;font-weight:700">📷 Pošlji fotografijo z razdeljevanja</a>
-<p class="mal" style="margin:8px 0 0">Odpre se e-pošta. Prosimo: brez obrazov in brez imen na nabiralnikih. S pošiljanjem dovoliš objavo v skupini Savčan. Nič se ne nalaga na to stran.</p></div>
 
 <div class="blok"><h2>Izberi ulico</h2><div id="ulice"></div>
 <div id="ulica" style="display:none"><h2 id="ulicaIme" style="margin-top:14px"></h2>
@@ -233,7 +231,7 @@ async function akcija(ids,a){
   if(noveP.length){proslava(esc(noveP.join(', '))+(noveP.length>1?' so pokrite! 🎉':' je pokrita! 🎉'),'Razdelil si zadnji vhod. Dobil si značko <b>🏁 Zaključevalec</b>!<br><br><button class="r" onclick="citat(\''+predZn.replace(/'/g,'')+'\')">Pokaži moj citat</button>')}
   else if(!mejniki())citat(predZn)}
  setTimeout(nalozi,6000)}
-function osvezi(){jaz();moji();ulice();lestvica();stevec();zbirkaGumb();fotoLink();
+function osvezi(){jaz();moji();ulice();lestvica();stevec();zbirkaGumb();
  tocke.forEach((m,i)=>m.setStyle({fillColor:BARVA[st(i).s]}));
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
