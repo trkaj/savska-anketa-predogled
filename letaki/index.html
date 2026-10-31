@@ -58,7 +58,7 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 <button class="g siroko" id="vseProste"></button><div id="stevilke"></div></div></div>
 
 <div class="blok karta"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
-<p id="povzetek" class="mal"></p><div id="map"></div></div>
+<p id="povzetek" class="mal"></p><div id="map"></div><p style="margin:10px 0 0"><b>🖨 Natisni zemljevid</b> <span class="mal">(A4 ležeče)</span></p><div style="display:flex;gap:8px"><button class="s" style="flex:1" onclick="tisk('barvno')">Barvno</button><button class="s" style="flex:1" onclick="tisk('cb')">Črno-belo</button></div></div>
 
 <p class="mal" style="padding:0 16px 30px">Težave? Pokliči ali pošlji SMS na 070 205 595. Vse je zapisano tudi v <a id="tabela" href="#">tabeli</a>.</p>
 
@@ -97,6 +97,17 @@ initPoglavje();
 const nalozenaPoglavja=Promise.race([fetch(SKRIPT+'?akcija=poglavja&t='+Date.now()).then(r=>r.json()).then(j=>{
  if(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length){POGLAVJA=j.poglavja.filter(p=>p&&p.id).map(p=>({id:String(p.id),st:+p.st||1,naslov:String(p.naslov||''),opis:String(p.opis||''),zavihek:String(p.zavihek||''),od:String(p.od||''),stanje:p.stanje=='aktivno'?'aktivno':'zaključeno'})).sort((a,b)=>a.st-b.st);initPoglavje()}}),new Promise(r=>setTimeout(r,6000))]).catch(e=>console.warn('poglavja',e));
 // izbira se zapomni, dokler ne pride novo poglavje – takrat vsi privzeto vidijo najnovejše aktivno
+const ekKljuc=()=>'letaki_ekipa:'+(ime||'').trim().toLowerCase();
+function ekipaGet(){let v=localStorage.getItem(ekKljuc());if(v===null)v=localStorage.getItem('letaki_ekipa')||'';return v.trim()}
+function ekipaUI(uredi){const b=document.getElementById('ekBox');if(!b)return;const v=ekipaGet();
+ if(v&&!uredi){b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b id="ekOk">✓ Ekipa: '+esc(v)+' · '+clanov((clani()[malo(v)]||{size:1}).size)+'</b><button class="s" onclick="ekipaUI(1)">Spremeni</button></div>';return}
+ b.innerHTML='<label class="mal" for="ekipa" style="display:block">Ekipa (neobvezno, npr. Majaronova, Družina K.)</label><div style="display:flex;gap:8px"><input id="ekipa" maxlength="30" placeholder="brez ekipe" style="flex:1" value="'+esc(v)+'" onkeydown="if(event.key==\'Enter\'){event.preventDefault();potrdiEkipo()}"><button class="s" onclick="potrdiEkipo()">Potrdi ekipo</button></div>';
+ if(uredi)document.getElementById('ekipa').focus()}
+function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);ekipaUI();lestvica();obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
+function clanov(n){return n+' '+(n%100==1?'član':n%100==2?'člana':n%100==3||n%100==4?'člani':'članov')}
+function clani(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
+ const e=malo(ekipaGet());if(e&&ime){(m[e]=m[e]||new Set()).add(malo(ime))}return m}
+function tisk(n){window.open('tisk.html?p='+encodeURIComponent(P.id)+'&nacin='+n+'&natisni=1','_blank')}
 function izberiPoglavje(id){try{localStorage.setItem('letaki_poglavje',id+'|'+POGLAVJA.length)}catch(e){}location.search='?p='+encodeURIComponent(id)}
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -112,7 +123,7 @@ const jeMoj=i=>ime&&st(i).p.toLowerCase()==ime.toLowerCase();
 function obv(t,ms){const o=document.getElementById('obv');o.textContent=t;o.style.display='block';clearTimeout(obv.t);if(ms!==0)obv.t=setTimeout(()=>o.style.display='none',ms||3500)}
 function jaz(){const b=document.getElementById('jaz');
  if(!ime){b.innerHTML='<h2>1. Kdo si?</h2><p class="mal">Vpiši samo vzdevek ali začetnice, ne pravega imena. Telefon si ga zapomni.</p><input id="ime" placeholder="npr. Sosed7 ali A. K." maxlength="30"><button class="g siroko" onclick="shraniIme()">Naprej</button>';}
- else b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Živjo, '+esc(ime)+'!</b><button class="s" onclick="ime=\'\';localStorage.removeItem(\'vzdevek\');osvezi()">Nisem jaz</button></div><label class="mal" for="ekipa" style="display:block;margin-top:10px">Ekipa (neobvezno, npr. Majaronova, Družina K.)</label><input id="ekipa" maxlength="30" placeholder="brez ekipe" value="'+esc(localStorage.getItem('letaki_ekipa')||'')+'" onchange="localStorage.setItem(\'letaki_ekipa\',this.value.trim());lestvica()">';}
+ else b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Živjo, '+esc(ime)+'!</b><button class="s" onclick="ime=\'\';localStorage.removeItem(\'vzdevek\');osvezi()">Nisem jaz</button></div><div id="ekBox" style="margin-top:10px"></div>';ekipaUI()}
 function shraniIme(){const v=document.getElementById('ime').value.trim();if(!v){obv('Vpiši vzdevek ali začetnice.');return}ime=v;localStorage.setItem('vzdevek',v);osvezi()}
 function moji(){const b=document.getElementById('moji');const m=VH.map((v,i)=>i).filter(jeMoj);
  if(!ime||!m.length){b.style.display='none';return}b.style.display='block';
@@ -209,8 +220,8 @@ function lestvica(){const b=document.getElementById('lestvica');b.style.display=
  let h='<h2>Lestvica raznašalcev</h2><div class="zav"><button class="'+(zavihek=='os'?'ak':'')+'" onclick="zavihek=\'os\';lestvica()">'+esc(P.st+'. poglavje · '+P.naslov)+'</button><button class="'+(zavihek=='ek'?'ak':'')+'" onclick="zavihek=\'ek\';lestvica()">Ekipe</button></div>';
  if(zavihek=='ek'){if(!imaStolpce){b.innerHTML=h+'<p class="mal">Ekipe začnejo šteti, ko je posodobljen skript.</p>';return}
   const c={};Object.values(stanje).forEach(x=>{if(x.s!='razdeljeno'||!x.e)return;const k=malo(x.e);(c[k]=c[k]||{v:x.e,n:0}).n++});
-  const t=Object.values(c).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10),me=malo(localStorage.getItem('letaki_ekipa'));
-  b.innerHTML=h+(t.length?t.map((x,i)=>'<div class="lv'+(me&&malo(x.v)==me?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'</span><span class="n">'+x.n+'</span></div>').join(''):'<p class="mal">Še nobena ekipa nima razdeljenih vhodov. Vpiši ekipo zgoraj!</p>');return}
+  const t=Object.values(c).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10),me=malo(ekipaGet()),C=clani();
+  b.innerHTML=h+(t.length?'<div class="lv mal"><span class="m"></span><span class="v">Ekipa</span><span class="n" style="min-width:52px">Člani</span><span class="n">Razd.</span></div>'+t.map((x,i)=>'<div class="lv'+(me&&malo(x.v)==me?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'</span><span class="n" style="min-width:52px">'+((C[malo(x.v)]||{size:0}).size)+'</span><span class="n">'+x.n+'</span></div>').join(''):'<p class="mal">Še nobena ekipa nima razdeljenih vhodov. Vpiši ekipo zgoraj!</p>');return}
  const t=Object.values(razdelilci()).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl')).slice(0,10);
  if(!t.length){b.innerHTML=h+'<p class="mal">Še nihče ni označil razdeljenih vhodov. Bodi prvi! 👣</p>';return}
  b.innerHTML=h+t.map((x,i)=>'<div class="lv'+(ime&&malo(x.v)==malo(ime)?' jaz':'')+'"><span class="m">'+(M[i]||(i+1)+'.')+'</span><span class="v">'+esc(x.v)+'<span class="zn">'+znackeOsebe(malo(x.v)).join(' · ')+'</span></span><span class="n">'+x.n+'</span></div>').join('')}
@@ -250,7 +261,7 @@ async function akcija(ids,a){if(ZAKLJ)return;
  if(!ime){zapri();obv('Najprej zgoraj vpiši vzdevek ali začetnice.');window.scrollTo({top:0,behavior:'smooth'});return}
  const op=a=='opomba'?(document.getElementById('opomba')||{}).value||'':'';
  if(a=='opomba'&&!op.trim()){obv('Najprej napiši opombo.');return}
- zapri();obv('Shranjujem …',0);let ok=0,zad='';const predZn=znacka(mojeSt()),ekipa=(localStorage.getItem('letaki_ekipa')||'').trim().slice(0,30);
+ {const e=document.getElementById('ekipa');if(e&&e.value.trim()&&e.value.trim()!=ekipaGet()){obv('Potrdi ekipo (ali izbriši ime) pred pošiljanjem.',1);e.focus();return}}zapri();obv('Shranjujem …',0);let ok=0,zad='';const predZn=znacka(mojeSt()),ekipa=ekipaGet().slice(0,30);
  const pokrita=u=>VH.every((v,i)=>v.u!=u||st(i).s=='razdeljeno'),ulA=[...new Set(ids.map(i=>VH[i].u))],predP=ulA.filter(pokrita);
  for(const i of ids){try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:a,poglavje:P.id,ulica:VH[i].u,st:VH[i].n,kdo:ime,opomba:op,ekipa:ekipa,cas:new Date().toISOString()})});
   const j=await r.json();zad=j.sporocilo;if(j.ok){ok++;const s=Object.assign({},st(i));

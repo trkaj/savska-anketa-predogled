@@ -1,0 +1,73 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Tisk zemljevida – letaki</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+@page{size:A4 landscape;margin:8mm}
+body{margin:0;font-family:system-ui,sans-serif;color:#111;background:#fff}
+#kontrole{background:#0a5232;color:#fff;padding:12px;font-size:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#kontrole button,#kontrole select{font-size:18px;padding:10px 14px;border-radius:10px;border:0}
+#kontrole button{background:#ffd84d;cursor:pointer}
+#list{width:281mm;margin:8px auto;display:flex;flex-direction:column;height:192mm;box-sizing:border-box}
+#glava{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #063a23;padding-bottom:4px}
+#glava h1{margin:0;font-size:20pt;color:#063a23}#glava .d{font-size:11pt}
+#map{flex:1;margin:4px 0;border:1px solid #888}
+#noga{display:flex;justify-content:space-between;align-items:center;font-size:9.5pt;gap:10px}
+.leg{display:flex;gap:14px;align-items:center;font-size:11pt}.leg svg{vertical-align:middle;margin-right:4px}
+.leaflet-control-container{display:none}
+.ime{background:#fff;border:1px solid #333;border-radius:3px;padding:0 2px;font-size:8px;box-shadow:none;color:#000}
+.ime:before{display:none}
+body.cb .leaflet-tile-pane{filter:grayscale(1) contrast(.9) brightness(1.08)}
+@media print{#kontrole{display:none}#list{margin:0;width:100%;height:190mm}}
+</style></head><body>
+<div id="kontrole"><select id="nacin" onchange="nastaviNacin()"><option value="barvno">Barvno</option><option value="cb">Črno-belo</option></select>
+<span id="imenaOpc" style="display:none"><label><input type="checkbox" id="imena" onchange="narisi()"> vzdevki pri rezerviranih</label></span>
+<button onclick="natisni()">🖨 Natisni</button><a href="./" style="color:#fff">Nazaj</a><span id="stanjeT"></span></div>
+<div id="list"><div id="glava"><h1 id="naslov">Zemljevid razdeljevanja</h1><span class="d" id="datum"></span></div>
+<div id="map"></div>
+<div id="noga"><div class="leg" id="leg"></div><div>Neodvisna pobuda prebivalcev Savskega naselja, ni povezana z nobeno listo ali kandidatom.</div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const SHEET='12I4SGnEltzkDz9gi7KAxZhPlZJfR4VJh3HH9SVhokPM';
+const SKRIPT='https://script.google.com/macros/s/AKfycbw1885AEWkP3HCtg7dWEFYgQWxBJ0vlH4-tYmljBP2MKqVvwfljmgTEKfe7utxCJCTL/exec';
+const Q=new URLSearchParams(location.search);
+const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
+ if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
+ if(f||row.length){row.push(f);r.push(row)}return r}
+const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'');
+// admin (?admin=1) lahko vklopi vzdevke pri rezerviranih; privzeto brez imen
+if(Q.get('admin')=='1')document.getElementById('imenaOpc').style.display='';
+if(Q.get('admin')=='1'&&Q.get('imena')=='1')document.getElementById('imena').checked=true;
+document.getElementById('nacin').value=Q.get('nacin')=='cb'?'cb':'barvno';
+document.getElementById('datum').textContent='Stanje: '+new Date().toLocaleString('sl-SI',{timeZone:'Europe/Ljubljana',day:'numeric',month:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const map=L.map('map',{zoomSnap:.1,zoomControl:false,attributionControl:false,preferCanvas:false}).setView([46.0705,14.5185],16);
+const ploscice=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,crossOrigin:true}).addTo(map);
+let VH=[],ST={},sloj=L.layerGroup().addTo(map),ring=null,pripravljeno=false;
+// oblike: poln krog = razdeljeno, kolobar = rezervirano, majhen prazen krog = prosto
+const SLOG={barvno:{razdeljeno:{radius:5,color:'#0a5232',weight:1,fillColor:'#2e9e5b',fillOpacity:1},rezervirano:{radius:5,color:'#c79a00',weight:3,fillColor:'#fff',fillOpacity:1},prosto:{radius:3.5,color:'#555',weight:1,fillColor:'#fff',fillOpacity:1}},
+ cb:{razdeljeno:{radius:5,color:'#000',weight:1,fillColor:'#000',fillOpacity:1},rezervirano:{radius:5,color:'#000',weight:2.5,fillColor:'#fff',fillOpacity:1},prosto:{radius:3.5,color:'#000',weight:.8,fillColor:'#fff',fillOpacity:1}}};
+const nacin=()=>document.getElementById('nacin').value;
+function ikona(s){const o=SLOG[nacin()][s],r=o.radius+o.weight/2;return '<svg width="16" height="16"><circle cx="8" cy="8" r="'+o.radius+'" fill="'+o.fillColor+'" stroke="'+o.color+'" stroke-width="'+o.weight+'"/></svg>'}
+function narisi(){if(!VH.length)return;sloj.clearLayers();const imena=document.getElementById('imena').checked&&Q.get('admin')=='1';const c={razdeljeno:0,rezervirano:0,prosto:0};
+ VH.forEach(v=>{const x=ST[v.k]||{},s=x.r?'razdeljeno':x.p?'rezervirano':'prosto';c[s]++;const m=L.circleMarker(v.ll,SLOG[nacin()][s]).addTo(sloj);
+  if(imena&&s=='rezervirano')m.bindTooltip(esc(x.p),{permanent:true,direction:'right',offset:[4,0],className:'ime'})});
+ document.getElementById('leg').innerHTML=['razdeljeno','rezervirano','prosto'].map(s=>'<span>'+ikona(s)+s+' ('+c[s]+')</span>').join('')}
+function nastaviNacin(){document.body.className=nacin()=='cb'?'cb':'';narisi()}
+function ploscicePripravljene(){return new Promise(res=>{let t=setTimeout(res,8000);const ok=()=>{clearTimeout(t);setTimeout(res,300)};if(!ploscice._loading)ok();else ploscice.once('load',ok)})}
+async function pripravi(){map.invalidateSize();if(ring)map.fitBounds(L.latLngBounds(ring),{padding:[6,6]});await ploscicePripravljene()}
+async function natisni(){document.getElementById('stanjeT').textContent=' Pripravljam …';await pripravi();document.getElementById('stanjeT').textContent='';window.print()}
+window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitBounds(L.latLngBounds(ring),{padding:[6,6]})});
+(async()=>{let PG=[{id:'p1-anketa',st:1,naslov:'Savska anketa',zavihek:''}];
+ try{const j=await Promise.race([fetch(SKRIPT+'?akcija=poglavja').then(r=>r.json()),new Promise((_,r)=>setTimeout(r,6000))]);if(j&&j.ok&&j.poglavja&&j.poglavja.length)PG=j.poglavja}catch(e){}
+ const P=PG.find(p=>p.id==Q.get('p'))||PG.filter(p=>p.stanje!='zaključeno').pop()||PG[PG.length-1];
+ document.getElementById('naslov').textContent=P.st+'. poglavje: '+P.naslov+' – zemljevid razdeljevanja';document.title=document.getElementById('naslov').textContent;
+ const [v,meja,t]=await Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);
+ VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
+ if(t&&!t.trim().startsWith('<'))parseCSV(t).slice(1).forEach(x=>{if(!x[0])return;let r=(x[3]||'').trim();if(/^ne$/i.test(r))r='';ST[norm(x[0])+'|'+norm(x[1])]={p:(x[2]||'').trim(),r}});
+ ring=meja.map(c=>[c[1],c[0]]);
+ L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:.55,interactive:false}).addTo(map);
+ L.polygon(ring,{color:'#000',weight:2.5,fill:false,interactive:false}).addTo(map);
+ nastaviNacin();await pripravi();pripravljeno=true;window.tiskPripravljen=true;
+ if(Q.get('natisni')=='1')window.print()})();
+</script></body></html>
