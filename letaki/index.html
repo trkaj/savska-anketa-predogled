@@ -12,18 +12,24 @@ header p{margin:4px 0 0;font-size:14px}header a{color:#ffd84d;font-weight:700}
 .k{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid #555}
 #map{height:62vh;min-height:360px}
 #seznam{padding:8px 14px 24px}#seznam table{border-collapse:collapse;width:100%;font-size:14px}
+#iskanje{display:flex;gap:8px;padding:10px 14px;flex-wrap:wrap;background:#fff;border-bottom:1px solid #ddd}#iskanje input{font-size:16px;padding:8px;border:1px solid #999;border-radius:6px;flex:1;min-width:140px}
+button{font-size:14px;padding:6px 10px;border-radius:6px;border:0;cursor:pointer;font-weight:700}.vz{background:#0a5232;color:#fff}.rz{background:#2e9e5b;color:#fff}.sp{background:#eee;color:#333}
+#obv{padding:0 14px;font-weight:700;color:#063a23;min-height:0}
 #seznam td,#seznam th{border-bottom:1px solid #ddd;padding:6px 4px;text-align:left}
 .st{font-weight:700;color:#063a23}.napaka{color:#7a1f00;font-weight:600}
 </style></head><body>
 <header><h1>Letaki ankete – kaj je že pokrito</h1>
-<p>Vpiši se v <a id="tabela" href="#">tabelo</a>, zemljevid se osveži sam.</p></header>
+<p>Poišči ulico, vpiši vzdevek in klikni <b>Vzamem</b>. Zapis gre v <a id="tabela" href="#">tabelo</a>.</p></header>
 <div id="stanje"><span><span class="k" style="background:#bbb"></span>prosto</span><span><span class="k" style="background:#ffd84d"></span>prevzeto</span><span><span class="k" style="background:#2e9e5b"></span>razdeljeno</span><span id="povzetek"></span></div>
+<div id="iskanje"><input id="vzdevek" placeholder="Tvoj vzdevek ali začetnice" maxlength="30" autocomplete="nickname"><input id="isci" placeholder="Išči ulico …" type="search"></div><div id="obv"></div>
 <div id="map"></div>
 <div id="seznam"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const SHEET='1ELfFyY5O-UxguptOQYwFl9dj7dTx4qpTBERhO48UUww';
 document.getElementById('tabela').href='https://docs.google.com/spreadsheets/d/'+SHEET+'/edit';
+const SKRIPT='';// URL uvedbe Apps Scripta (…/exec)
+if(!SKRIPT)document.querySelector('header p').innerHTML='Vpiši se v <a href="https://docs.google.com/spreadsheets/d/'+SHEET+'/edit">tabelo</a>, zemljevid se osveži sam.';
 const CSV='https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1';
 // vrstica tabele (ulica + številke) -> polja na zemljevidu
 const POLJA={
@@ -44,7 +50,22 @@ function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i
 const jeDa=s=>/^(da|ja|✅|✔|x|razdeljeno|opravljeno)/i.test((s||'').trim());
 const map=L.map('map',{zoomSnap:.25});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
-let sloj,polja;
+let sloj,polja,zadnje=[];
+const stanje=v=>v.da?'razdeljeno ✅':v.kdo?'prevzeto':'prosto';
+const gumbi=v=>!SKRIPT?'':v.da?'':v.kdo?'<button class="rz" onclick="akcija(\''+v.id+'\',\'razdeljeno\')">Razdeljeno</button> <button class="sp" onclick="akcija(\''+v.id+'\',\'sprosti\')">Sprosti</button>':'<button class="vz" onclick="akcija(\''+v.id+'\',\'prevzemi\')">Vzamem</button>';
+const vz=document.getElementById('vzdevek');vz.value=localStorage.getItem('vzdevek')||'';vz.oninput=()=>localStorage.setItem('vzdevek',vz.value.trim());
+document.getElementById('isci').oninput=()=>tabela();
+function obv(t){const o=document.getElementById('obv');o.textContent=t;o.style.padding=t?'8px 14px':'0 14px'}
+async function akcija(id,a){const v=zadnje[id],kdo=vz.value.trim();
+ if(!kdo){obv('Najprej zgoraj vpiši vzdevek ali začetnice.');vz.focus();return}
+ if(a=='sprosti'&&!confirm('Res sprostim '+v.u+' '+v.s+'?'))return;
+ obv('Shranjujem …');
+ try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:a,ulica:v.u,st:v.s,kdo})});
+  const j=await r.json();obv(j.sporocilo);}catch(e){obv('Shranjeno, tabela se bo osvežila v nekaj sekundah.')}
+ map.closePopup();setTimeout(nalozi,1500);setTimeout(nalozi,6000)}
+function tabela(){const q=norm(document.getElementById('isci').value).toLowerCase();
+ document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Stanje</th><th></th></tr>'+
+  zadnje.filter(v=>!q||(v.ulica+' '+v.st).toLowerCase().includes(q)).map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+stanje(v)+'</td><td>'+gumbi(v)+'</td></tr>').join('')+'</table>'}
 const barva=s=>s=='razdeljeno'?'#2e9e5b':s=='prevzeto'?'#ffd84d':'#bbb';
 function izris(vrstice){
  const po={};polja.features.forEach(f=>po[f.properties.st]=[]);
@@ -54,19 +75,18 @@ function izris(vrstice){
    const s=vs.length&&vs.every(v=>v.da)?'razdeljeno':vs.some(v=>v.kdo)?'prevzeto':'prosto';
    return{color:'#063a23',weight:1.5,fillColor:barva(s),fillOpacity:.6}},
   onEachFeature:(f,l)=>{const vs=po[f.properties.st];
-   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+(v.da?'razdeljeno ✅':v.kdo?'prevzeto':'<i>prosto</i>')).join('<br>')||''));
+   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+stanje(v)+' '+gumbi(v)).join('<br>')||''));
    l.bindTooltip(String(f.properties.st),{permanent:true,direction:'center',className:''})}}).addTo(map);
  const n=vrstice.length,p=vrstice.filter(v=>v.kdo).length,d=vrstice.filter(v=>v.da).length;
  document.getElementById('povzetek').innerHTML='<b>Prevzeto '+p+' od '+n+', razdeljeno '+d+'</b>';
- document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Stanje</th></tr>'+
-  vrstice.map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+(v.da?'razdeljeno ✅':v.kdo?'prevzeto':'prosto')+'</td></tr>').join('')+'</table>';
+ zadnje=vrstice;tabela();
 }
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function nalozi(){
  try{const t=await (await fetch(CSV+'&t='+Date.now())).text();
   if(t.trim().startsWith('<'))throw 0;
   const r=parseCSV(t).slice(1).filter(x=>x[0]&&x[0].trim());
-  izris(r.map(x=>({ulica:esc(norm(x[0])),st:esc(norm(x[1])),kljuc:norm(x[0])+'|'+norm(x[1]),kdo:esc((x[2]||'').trim()),da:jeDa(x[3])})));
+  izris(r.map((x,i)=>({id:i,u:norm(x[0]),s:norm(x[1]),ulica:esc(norm(x[0])),st:esc(norm(x[1])),kljuc:norm(x[0])+'|'+norm(x[1]),kdo:esc((x[2]||'').trim()),da:jeDa(x[3])})));
  }catch(e){izris([]);document.getElementById('seznam').innerHTML='<p class="napaka">Tabele trenutno ni mogoče prebrati. Lastnik mora tabelo deliti z »Vsi, ki imajo povezavo«.</p>'}
 }
 Promise.all([fetch('polja.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([g,meja])=>{polja=g;
