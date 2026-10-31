@@ -63,9 +63,9 @@ const st=i=>stanje[VH[i].k]||{s:'prosto',p:'',r:'',o:''};
 const jeMoj=i=>ime&&st(i).p.toLowerCase()==ime.toLowerCase();
 function obv(t,ms){const o=document.getElementById('obv');o.textContent=t;o.style.display='block';clearTimeout(obv.t);if(ms!==0)obv.t=setTimeout(()=>o.style.display='none',ms||3500)}
 function jaz(){const b=document.getElementById('jaz');
- if(!ime){b.innerHTML='<h2>1. Kdo si?</h2><p class="mal">Vpiši ime ali vzdevek. Telefon si ga zapomni.</p><input id="ime" placeholder="npr. Ana ali A. K." maxlength="30"><button class="g siroko" onclick="shraniIme()">Naprej</button>';}
+ if(!ime){b.innerHTML='<h2>1. Kdo si?</h2><p class="mal">Vpiši samo vzdevek ali začetnice, ne pravega imena. Telefon si ga zapomni.</p><input id="ime" placeholder="npr. Sosed7 ali A. K." maxlength="30"><button class="g siroko" onclick="shraniIme()">Naprej</button>';}
  else b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Živjo, '+esc(ime)+'!</b><button class="s" onclick="ime=\'\';localStorage.removeItem(\'vzdevek\');osvezi()">Nisem jaz</button></div>';}
-function shraniIme(){const v=document.getElementById('ime').value.trim();if(!v){obv('Vpiši ime ali vzdevek.');return}ime=v;localStorage.setItem('vzdevek',v);osvezi()}
+function shraniIme(){const v=document.getElementById('ime').value.trim();if(!v){obv('Vpiši vzdevek ali začetnice.');return}ime=v;localStorage.setItem('vzdevek',v);osvezi()}
 function moji(){const b=document.getElementById('moji');const m=VH.map((v,i)=>i).filter(jeMoj);
  if(!ime||!m.length){b.style.display='none';return}b.style.display='block';
  const ost=m.filter(i=>st(i).s!='razdeljeno');
@@ -93,7 +93,7 @@ function naslov(i){const s=st(i),v=VH[i];let h='<h2>'+esc(v.u+' '+v.n)+'</h2>';
  document.getElementById('oknoVsebina').innerHTML=h;document.getElementById('okno').style.display='flex'}
 function zapri(){document.getElementById('okno').style.display='none'}
 async function akcija(ids,a){
- if(!ime){zapri();obv('Najprej zgoraj vpiši svoje ime ali vzdevek.');window.scrollTo({top:0,behavior:'smooth'});return}
+ if(!ime){zapri();obv('Najprej zgoraj vpiši vzdevek ali začetnice.');window.scrollTo({top:0,behavior:'smooth'});return}
  const op=a=='opomba'?(document.getElementById('opomba')||{}).value||'':'';
  if(a=='opomba'&&!op.trim()){obv('Najprej napiši opombo.');return}
  zapri();obv('Shranjujem …',0);let ok=0,zad='';
