@@ -1,7 +1,7 @@
 <!doctype html><html lang="sl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Letaki ankete – kaj je že pokrito</title>
+<title>Letaki ankete – kateri vhodi so pokriti</title>
 <link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -9,90 +9,87 @@
 header{background:#0a5232;color:#fff;padding:10px 14px}header h1{margin:0;font-size:19px}
 header p{margin:4px 0 0;font-size:14px}header a{color:#ffd84d;font-weight:700}
 #stanje{font-size:14px;padding:8px 14px;background:#f3f6f1;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.k{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid #555}
-#map{height:62vh;min-height:360px}
-#seznam{padding:8px 14px 24px}#seznam table{border-collapse:collapse;width:100%;font-size:14px}
-#iskanje{display:flex;gap:8px;padding:10px 14px;flex-wrap:wrap;background:#fff;border-bottom:1px solid #ddd}#iskanje input{font-size:16px;padding:8px;border:1px solid #999;border-radius:6px;flex:1;min-width:140px}
-button{font-size:14px;padding:6px 10px;border-radius:6px;border:0;cursor:pointer;font-weight:700}.vz{background:#0a5232;color:#fff}.rz{background:#2e9e5b;color:#fff}.sp{background:#eee;color:#333}
-#obv{padding:0 14px;font-weight:700;color:#063a23;min-height:0}
-#seznam td,#seznam th{border-bottom:1px solid #ddd;padding:6px 4px;text-align:left}
-.st{font-weight:700;color:#063a23}.napaka{color:#7a1f00;font-weight:600}
+.k{display:inline-block;width:13px;height:13px;border-radius:50%;vertical-align:-2px;margin-right:4px;border:1px solid #333}
+#iskanje{display:flex;gap:8px;padding:10px 14px;flex-wrap:wrap;border-bottom:1px solid #ddd}
+#iskanje input{font-size:16px;padding:8px;border:1px solid #999;border-radius:6px;flex:1;min-width:140px}
+#obv{font-weight:700;color:#063a23;padding:0 14px}
+#map{height:60vh;min-height:360px}
+button{font-size:14px;padding:6px 10px;border-radius:6px;border:0;cursor:pointer;font-weight:700}
+.vz{background:#0a5232;color:#fff}.rz{background:#2e9e5b;color:#fff}.sp{background:#eee;color:#333}
+#seznam{padding:6px 14px 30px}.ul{margin:14px 0 4px;font-size:16px;color:#063a23}
+.vh{display:inline-flex;align-items:center;gap:6px;margin:3px;padding:4px 6px 4px 10px;border-radius:8px;border:1px solid #bbb;background:#fff;font-size:15px}
+.vh.prevzeto{background:#fff4c2;border-color:#d9b400}.vh.razdeljeno{background:#dff3e6;border-color:#2e9e5b}
+.vh b{min-width:26px}.vh button{padding:4px 8px;font-size:13px}
+.vsi{font-size:13px;margin-left:8px;background:#e6efe9;color:#063a23;padding:3px 8px}
+.napaka{color:#7a1f00;font-weight:600}
 </style></head><body>
-<header><h1>Letaki ankete – kaj je že pokrito</h1>
-<p>Poišči ulico, vpiši vzdevek in klikni <b>Vzamem</b>. Zapis gre v <a id="tabela" href="#">tabelo</a>.</p></header>
-<div id="stanje"><span><span class="k" style="background:#bbb"></span>prosto</span><span><span class="k" style="background:#ffd84d"></span>prevzeto</span><span><span class="k" style="background:#2e9e5b"></span>razdeljeno</span><span id="povzetek"></span></div>
-<div id="iskanje"><input id="vzdevek" placeholder="Tvoj vzdevek ali začetnice" maxlength="30" autocomplete="nickname"><input id="isci" placeholder="Išči ulico …" type="search"></div><div id="obv"></div>
+<header><h1>Letaki ankete – kateri vhodi so pokriti</h1>
+<p>Vpiši vzdevek, poišči svoj vhod in klikni <b>Vzamem</b>. Zapis gre v <a id="tabela" href="#">tabelo</a>.</p></header>
+<div id="stanje"><span><span class="k" style="background:#c9c9c9"></span>prosto</span><span><span class="k" style="background:#ffd84d"></span>prevzeto</span><span><span class="k" style="background:#2e9e5b"></span>razdeljeno</span><span id="povzetek"></span></div>
+<div id="iskanje"><input id="vzdevek" placeholder="Tvoj vzdevek ali začetnice" maxlength="30" autocomplete="nickname"><input id="isci" placeholder="Išči ulico ali hišno številko …" type="search"></div>
+<div id="obv"></div>
 <div id="map"></div>
 <div id="seznam"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const SHEET='1ELfFyY5O-UxguptOQYwFl9dj7dTx4qpTBERhO48UUww';
+const SKRIPT='https://script.google.com/macros/s/AKfycbx4kPkxsr8lGadd8bYONl9YwV5B6elslSeiyznei8JmUrfrs-CuwrUWY5Qo93pRFPEG1A/exec';
 document.getElementById('tabela').href='https://docs.google.com/spreadsheets/d/'+SHEET+'/edit';
-const SKRIPT='https://script.google.com/macros/s/AKfycbx4kPkxsr8lGadd8bYONl9YwV5B6elslSeiyznei8JmUrfrs-CuwrUWY5Qo93pRFPEG1A/exec';// URL uvedbe Apps Scripta (…/exec)
-if(!SKRIPT)document.querySelector('header p').innerHTML='Vpiši se v <a href="https://docs.google.com/spreadsheets/d/'+SHEET+'/edit">tabelo</a>, zemljevid se osveži sam.';
 const CSV='https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1';
-// vrstica tabele (ulica + številke) -> polja na zemljevidu
-const POLJA={
-'Belokranjska|1–6':[10],'Belokranjska|7–27 (lihe)':[12,8],'Belokranjska|8–14 (sode)':[9],
-'Endliherjeva|2–16 (sode)':[9,12],'Endliherjeva|7–19 (lihe)':[8],
-'Fabianijeva|11–15':[13],'Fabianijeva|17–35 (lihe)':[7],'Fabianijeva|35a–47':[2],
-'Knobleharjeva|1–11':[12],'Knobleharjeva|13–27 (lihe)':[9],'Knobleharjeva|18–24 (sode)':[10,3],
-'Linhartova|60–68':[1,2],'Linhartova|70–78':[3],'Linhartova|80–88':[4],'Linhartova|90–104':[5],
-'Luize Pesjakove|2–22 (sode)':[12,8],'Luize Pesjakove|9–19 (lihe)':[13,14,15],
-'Majaronova|1–19 (lihe)':[14],'Majaronova|2–28 (sode)':[15,16],
-'Matjaževa|1–11':[6],'Matjaževa|13–17':[1],'Mislejeva|3':[4],
-'Savska|1–15':[11],'Savska|17–31':[11],'Šerkova|1–13':[14],'Topniška|43–45':[16]};
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
  if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
  else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
  if(f||row.length){row.push(f);r.push(row)}return r}
 const jeDa=s=>/^(da|ja|✅|✔|x|razdeljeno|opravljeno)/i.test((s||'').trim());
+const BARVA={prosto:'#c9c9c9',prevzeto:'#ffd84d',razdeljeno:'#2e9e5b'};
+let VH=[],tocke=[],stanje={};
 const map=L.map('map',{zoomSnap:.25});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
-let sloj,polja,zadnje=[];
-const stanje=v=>v.da?'razdeljeno ✅':v.kdo?'prevzeto':'prosto';
-const gumbi=v=>!SKRIPT?'':v.da?'':v.kdo?'<button class="rz" onclick="akcija(\''+v.id+'\',\'razdeljeno\')">Razdeljeno</button> <button class="sp" onclick="akcija(\''+v.id+'\',\'sprosti\')">Sprosti</button>':'<button class="vz" onclick="akcija(\''+v.id+'\',\'prevzemi\')">Vzamem</button>';
-const vz=document.getElementById('vzdevek');vz.value=localStorage.getItem('vzdevek')||'';vz.oninput=()=>localStorage.setItem('vzdevek',vz.value.trim());
-document.getElementById('isci').oninput=()=>tabela();
+const vz=document.getElementById('vzdevek');vz.value=localStorage.getItem('vzdevek')||'';vz.oninput=()=>{localStorage.setItem('vzdevek',vz.value.trim());seznam()};
+document.getElementById('isci').oninput=()=>seznam();
 function obv(t){const o=document.getElementById('obv');o.textContent=t;o.style.padding=t?'8px 14px':'0 14px'}
-async function akcija(id,a){const v=zadnje[id],kdo=vz.value.trim();
- if(!kdo){obv('Najprej zgoraj vpiši vzdevek ali začetnice.');vz.focus();return}
- if(a=='sprosti'&&!confirm('Res sprostim '+v.u+' '+v.s+'?'))return;
- obv('Shranjujem …');
- try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:a,ulica:v.u,st:v.s,kdo})});
-  const j=await r.json();obv(j.sporocilo);}catch(e){obv('Shranjeno, tabela se bo osvežila v nekaj sekundah.')}
- map.closePopup();setTimeout(nalozi,1500);setTimeout(nalozi,6000)}
-function tabela(){const q=norm(document.getElementById('isci').value).toLowerCase();
- document.getElementById('seznam').innerHTML='<table><tr><th>Ulica</th><th>Številke</th><th>Stanje</th><th></th></tr>'+
-  zadnje.filter(v=>!q||(v.ulica+' '+v.st).toLowerCase().includes(q)).map(v=>'<tr><td class="st">'+v.ulica+'</td><td>'+v.st+'</td><td>'+stanje(v)+'</td><td>'+gumbi(v)+'</td></tr>').join('')+'</table>'}
-const barva=s=>s=='razdeljeno'?'#2e9e5b':s=='prevzeto'?'#ffd84d':'#bbb';
-function izris(vrstice){
- const po={};polja.features.forEach(f=>po[f.properties.st]=[]);
- vrstice.forEach(v=>(POLJA[v.kljuc]||[]).forEach(st=>po[st]&&po[st].push(v)));
- if(sloj)sloj.remove();
- sloj=L.geoJSON(polja,{style:f=>{const vs=po[f.properties.st];
-   const s=vs.length&&vs.every(v=>v.da)?'razdeljeno':vs.some(v=>v.kdo)?'prevzeto':'prosto';
-   return{color:'#063a23',weight:1.5,fillColor:barva(s),fillOpacity:.6}},
-  onEachFeature:(f,l)=>{const vs=po[f.properties.st];
-   l.bindPopup('<b>'+f.properties.ime+'</b><br>'+(vs.map(v=>v.ulica+' '+v.st+': '+stanje(v)+' '+gumbi(v)).join('<br>')||''));
-   l.bindTooltip(String(f.properties.st),{permanent:true,direction:'center',className:''})}}).addTo(map);
- const n=vrstice.length,p=vrstice.filter(v=>v.kdo).length,d=vrstice.filter(v=>v.da).length;
- document.getElementById('povzetek').innerHTML='<b>Prevzeto '+p+' od '+n+', razdeljeno '+d+'</b>';
- zadnje=vrstice;tabela();
-}
-const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st=i=>stanje[VH[i].k]||{s:'prosto',kdo:''};
+const moj=i=>{const k=vz.value.trim().toLowerCase();return k&&st(i).kdo.toLowerCase()==k};
+function gumbi(i){const s=st(i);
+ if(s.s=='prosto')return '<button class="vz" onclick="akcija(['+i+'],\'prevzemi\')">Vzamem</button>';
+ if(s.s=='prevzeto'&&moj(i))return '<button class="rz" onclick="akcija(['+i+'],\'razdeljeno\')">Razdeljeno</button><button class="sp" onclick="akcija(['+i+'],\'sprosti\')">✕</button>';
+ return ''}
+function popup(i){const s=st(i);return '<b>'+esc(VH[i].u+' '+VH[i].n)+'</b><br>'+s.s+(s.s=='razdeljeno'?' ✅':'')+'<br>'+gumbi(i)}
+function izris(){
+ tocke.forEach((m,i)=>{const s=st(i).s;m.setStyle({fillColor:BARVA[s]});if(m.isPopupOpen())m.setPopupContent(popup(i))});
+ const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
+ document.getElementById('povzetek').innerHTML='<b>Prevzetih '+p+' od '+n+' vhodov, razdeljenih '+d+'</b>';
+ seznam()}
+function seznam(){const q=norm(document.getElementById('isci').value).toLowerCase();let h='',ul='';
+ const vidni=VH.map((v,i)=>i).filter(i=>!q||(VH[i].u+' '+VH[i].n).toLowerCase().includes(q));
+ vidni.forEach(i=>{const v=VH[i];if(v.u!=ul){if(ul)h+='</div>';ul=v.u;
+   const pr=vidni.filter(j=>VH[j].u==ul&&st(j).s=='prosto');
+   h+='<h3 class="ul">'+esc(ul)+(pr.length>1?'<button class="vsi" onclick="akcija(['+pr.join(',')+'],\'prevzemi\')">Vzamem vse proste ('+pr.length+')</button>':'')+'</h3><div>'}
+  const s=st(i).s;h+='<span class="vh '+s+'"><b>'+esc(v.n)+'</b>'+(s=='razdeljeno'?'✅':'')+gumbi(i)+'</span>'});
+ document.getElementById('seznam').innerHTML=h+(ul?'</div>':'<p>Ni zadetkov.</p>')}
+async function akcija(ids,a){const kdo=vz.value.trim();
+ if(!kdo){obv('Najprej zgoraj vpiši vzdevek ali začetnice.');vz.focus();window.scrollTo(0,0);return}
+ if(a=='sprosti'&&!confirm('Res sprostim '+VH[ids[0]].u+' '+VH[ids[0]].n+'?'))return;
+ if(ids.length>3&&!confirm('Vzameš '+ids.length+' vhodov na ulici '+VH[ids[0]].u+'?'))return;
+ obv('Shranjujem …');let ok=0,zad='';
+ for(const i of ids){try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:a,ulica:VH[i].u,st:VH[i].n,kdo})});
+  const j=await r.json();zad=j.sporocilo;if(j.ok){ok++;stanje[VH[i].k]={s:a=='prevzemi'?'prevzeto':a=='razdeljeno'?'razdeljeno':'prosto',kdo:a=='sprosti'?'':kdo}}}catch(e){zad='Povezava ni uspela, poskusi znova.'}
+  if(ids.length>1)obv('Shranjujem … '+ok+'/'+ids.length)}
+ obv(ids.length>1?'Vzeto '+ok+' od '+ids.length+' vhodov.':zad);izris();setTimeout(nalozi,5000)}
 async function nalozi(){
- try{const t=await (await fetch(CSV+'&t='+Date.now())).text();
-  if(t.trim().startsWith('<'))throw 0;
-  const r=parseCSV(t).slice(1).filter(x=>x[0]&&x[0].trim());
-  izris(r.map((x,i)=>({id:i,u:norm(x[0]),s:norm(x[1]),ulica:esc(norm(x[0])),st:esc(norm(x[1])),kljuc:norm(x[0])+'|'+norm(x[1]),kdo:esc((x[2]||'').trim()),da:jeDa(x[3])})));
- }catch(e){izris([]);document.getElementById('seznam').innerHTML='<p class="napaka">Tabele trenutno ni mogoče prebrati. Lastnik mora tabelo deliti z »Vsi, ki imajo povezavo«.</p>'}
-}
-Promise.all([fetch('polja.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([g,meja])=>{polja=g;
- const svet=[[-90,-180],[-90,180],[90,180],[90,-180]];
- L.polygon([svet,meja.map(c=>[c[1],c[0]])],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
- L.polygon(meja.map(c=>[c[1],c[0]]),{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);
- const b=L.geoJSON(g).getBounds();map.fitBounds(b,{padding:[8,8]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
- nalozi();setInterval(nalozi,60000)});
+ try{const t=await (await fetch(CSV+'&t='+Date.now())).text();if(t.trim().startsWith('<'))throw 0;
+  const ns={};parseCSV(t).slice(1).forEach(x=>{if(!x[0])return;const kdo=(x[2]||'').trim();
+   ns[norm(x[0])+'|'+norm(x[1])]={s:jeDa(x[3])?'razdeljeno':kdo?'prevzeto':'prosto',kdo}});
+  stanje=ns;izris();
+ }catch(e){document.getElementById('seznam').innerHTML='<p class="napaka">Tabele trenutno ni mogoče prebrati.</p>'}}
+Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([v,meja])=>{
+ VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
+ const ring=meja.map(c=>[c[1],c[0]]);
+ L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
+ L.polygon(ring,{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);
+ tocke=VH.map((x,i)=>L.circleMarker(x.ll,{radius:7,color:'#333',weight:1,fillColor:BARVA.prosto,fillOpacity:.95}).bindPopup(()=>popup(i)).bindTooltip(x.n,{direction:'top',offset:[0,-6]}).addTo(map));
+ const b=L.latLngBounds(ring);map.fitBounds(b,{padding:[8,8]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
+ izris();nalozi();setInterval(nalozi,60000)});
 </script></body></html>
