@@ -43,7 +43,7 @@ function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i
  if(f||row.length){row.push(f);r.push(row)}return r}
 const jeDa=s=>/^(da|ja|✅|✔|x|razdeljeno|opravljeno)/i.test((s||'').trim());
 const map=L.map('map',{zoomSnap:.25});
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
 let sloj,polja;
 const barva=s=>s=='razdeljeno'?'#2e9e5b':s=='prevzeto'?'#ffd84d':'#bbb';
 function izris(vrstice){
