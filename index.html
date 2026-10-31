@@ -441,9 +441,11 @@ var KORAKI = [
  }},
  {id:'upravnik', sklop:'Za vse', render:function(){
    var pozna=S.upr.poznam!=='Ne', zb=S.upr.zbori, ov=zb&&zb!=='Redno'&&zb!=='Sem najemnik(-ca)', pr=S.upr.predstavnik==='Da'||S.upr.predstavnik==='Morda';
+   var UPRAVNIKI=['SPL','UVG','Tevis','Želva','DOMO','Emona Plus','Habit','Practic','Upso','MAG DOM','Primus projekt','Drugo','Ne vem'];
    var VR=[['odzivnost','Odzivnost'],['vzdrzevanje','Vzdrževanje in čistoča'],['stroski','Stroški'],['obvescanje','Obveščanje']];
-   return glava('Za vse','Upravnik in zbori v vašem vhodu in bloku/stolpnici','Vsa vprašanja so neobvezna. Ne sprašujemo po imenu upravnika.')+
+   return glava('Za vse','Upravnik in zbori v vašem vhodu in bloku/stolpnici','Vsa vprašanja so neobvezna.')+
    vpr('Ali veste, kdo je upravnik vašega bloka?', radio('upr.poznam',['Da','Ne'],{mreza:true,rerender:true}))+
+   (pozna?vpr('Kdo je upravnik vašega bloka?', radio('upr.ime',UPRAVNIKI,{mreza:true,rerender:true})+(S.upr.ime==='Drugo'?besedilo('upr.ime_drugo','Ime upravnika'):''), 'Neobvezno.'):'')+
    (pozna?vpr('Kako ste zadovoljni z upravnikom?', VR.map(function(r){ return '<div class="tema"><h3>'+r[1]+'</h3>'+radio('upr.'+r[0],['Zelo','Kar','Malo','Sploh ne','Ne vem'],{mreza:true})+'</div>'; }).join('')):'')+
    vpr('Ali veste, kdo je vaš hišnik oz. koga pokličete ob nujni okvari (npr. puščanje vode)?', radio('upr.hisnik',['Da','Ne'],{mreza:true}))+
    vpr('Ali se udeležujete zborov etažnih lastnikov (vhoda ali bloka)?', radio('upr.zbori',ZBORI,{rerender:true}))+
@@ -571,7 +573,7 @@ function povzetek(){
   d('Čistilni četrtek', S.cetrtek==='Drugo:'?('Drugo: '+(S.cetrtekDrugo||'')):S.cetrtek);
   var avto=S.vozilaSt&&S.vozilaSt!=='0';
   d('Vozila v gospodinjstvu', S.vozilaSt); if(avto){ d('Parkiranje ponoči', S.m25.parkiranje); d('Težave s parkiranjem', S.parkTez); d('Želja po garaži', S.garaza); if(S.garaza==='Da'||S.garaza==='Morda') { d('Cena garaže (nakup)', gCena()); d('Cena garaže (najem, mesečno)', gNajem()); } } d('Nova prometna ureditev', S.m25.ureditev); d('Dnevni prevoz', gPrevoz()); d('Storitve, ki jih pogrešate', seznam(S.storitveManjka)+(S.storitveDrugo?(S.storitveManjka&&S.storitveManjka.length?', ':'')+S.storitveDrugo:'')); d('Ohladitev poleti', S.ohladitev==='Drugo'&&S.ohladitevDrugo?('Drugo: '+S.ohladitevDrugo):S.ohladitev);
-  var U=S.upr; d('Veste, kdo je upravnik', U.poznam); if(U.poznam!=='Ne'){ d('Upravnik: odzivnost', U.odzivnost); d('Upravnik: vzdrževanje in čistoča', U.vzdrzevanje); d('Upravnik: stroški', U.stroski); d('Upravnik: obveščanje', U.obvescanje); }
+  var U=S.upr; d('Veste, kdo je upravnik', U.poznam); if(U.poznam!=='Ne'){ d('Upravnik', U.ime==='Drugo'?'Drugo: '+(U.ime_drugo||''):U.ime); d('Upravnik: odzivnost', U.odzivnost); d('Upravnik: vzdrževanje in čistoča', U.vzdrzevanje); d('Upravnik: stroški', U.stroski); d('Upravnik: obveščanje', U.obvescanje); }
   d('Veste, koga pokličete ob okvari', U.hisnik); d('Udeležba na zborih', U.zbori); if(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)') d('Kaj bi pomagalo pri udeležbi', seznam(U.ovire)); d('Predstavnik/-ca vhoda', U.predstavnik);
   var Z=S.zdr; d('Zdravstvo: ocena dostopa', Z.ocena); d('Zdravstvo: kaj manjka', seznam(zdrManjka()));
   d('Starost', S.starost); d('Ulica', S.ulica); d('Stanovanje', S.bivanje); d('Dvigalo v bloku', S.dvigalo); d('Enosmerni promet na vaši ulici', S.enosmerna);
@@ -798,7 +800,7 @@ function posljiOdgovore(){
   o.starost=S.starost; o.ulica=S.ulica; o.bivanje=S.bivanje; o.dvigalo=S.dvigalo; o.enosmerna=S.enosmerna; o.cistilni_cetrtek=S.cetrtek==='Drugo:'?('Drugo: '+(S.cetrtekDrugo||'')).trim():S.cetrtek; o.vozila_st=S.vozilaSt; var avto=S.vozilaSt&&S.vozilaSt!=='0';
   o.m25_parkiranje=avto?S.m25.parkiranje:''; o.parkiranje_tezave=avto?S.parkTez:''; o.garaza_zelja=avto?S.garaza:''; var gg=avto&&(S.garaza==='Da'||S.garaza==='Morda'); o.garaza_cena=gg?gCena():''; o.garaza_najem=gg?gNajem():''; o.m25_ureditev=S.m25.ureditev; o.prevoz_dnevni=gPrevoz();
   o.storitve_manjka=sez(S.storitveManjka); o.storitve_drugo=S.storitveDrugo; o.ohladitev=S.ohladitev==='Drugo'&&S.ohladitevDrugo?('Drugo: '+S.ohladitevDrugo):S.ohladitev;
-  var U=S.upr, pz=U.poznam!=='Ne'; o.upravnik_poznam=U.poznam; o.upr_odzivnost=pz?U.odzivnost:''; o.upr_vzdrzevanje=pz?U.vzdrzevanje:''; o.upr_stroski=pz?U.stroski:''; o.upr_obvescanje=pz?U.obvescanje:'';
+  var U=S.upr, pz=U.poznam!=='Ne'; o.upravnik_poznam=U.poznam; o.upravnik_ime=pz?(U.ime==='Drugo'?('Drugo: '+(U.ime_drugo||'')):(U.ime||'')):''; o.upr_odzivnost=pz?U.odzivnost:''; o.upr_vzdrzevanje=pz?U.vzdrzevanje:''; o.upr_stroski=pz?U.stroski:''; o.upr_obvescanje=pz?U.obvescanje:'';
   o.hisnik_poznam=U.hisnik; o.zbori_udelezba=U.zbori; o.zbori_ovire=(U.zbori&&U.zbori!=='Redno'&&U.zbori!=='Sem najemnik(-ca)')?sez(U.ovire):''; o.predstavnik_vhoda=U.predstavnik;
   o.zdr_ocena=S.zdr.ocena; o.zdr_manjka=sez(zdrManjka()); o.zdr_dvigalo='';
   var g=skupina();
