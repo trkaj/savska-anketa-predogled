@@ -123,7 +123,11 @@ function zapusti(){if(!ime)return;nastaviEkipo('','ekipeBlok')}
 async function naloziEkipe(){try{const j=await (await fetch(SKRIPT+'?akcija=ekipe&poglavje='+encodeURIComponent(P.id)+'&t='+Date.now())).json();
  if(!(j&&j.ok&&+j.razlicica>=6&&Array.isArray(j.clani)))return;
  SRV=j.clani.filter(c=>c&&c.kdo&&c.ekipa).map(c=>({kdo:String(c.kdo).slice(0,30),ekipa:String(c.ekipa).slice(0,30)}));
- if(ime&&localStorage.getItem(ekKljuc())===null){const m=SRV.find(c=>malo(c.kdo)==malo(ime));if(m)localStorage.setItem(ekKljuc(),m.ekipa)}}catch(e){}}
+ if(!ime)return;const m=SRV.find(c=>malo(c.kdo)==malo(ime)),lok=ekipaGet();
+ if(!lok){if(localStorage.getItem(ekKljuc())===null&&m)localStorage.setItem(ekKljuc(),m.ekipa);return}
+ // ekipa, potrjena pred v6 (samo na telefonu): enkrat na nalaganje tiho pošlji na strežnik
+ if(!naloziEkipe.poslano&&(!m||malo(m.ekipa)!=malo(lok))){naloziEkipe.poslano=1;SRV=SRV.filter(c=>malo(c.kdo)!=malo(ime));SRV.push({kdo:ime,ekipa:lok});
+  fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:'ekipa',poglavje:P.id,kdo:ime,ekipa:lok.slice(0,30),cas:new Date().toISOString()})}).catch(()=>{})}}catch(e){}}
 function clanov(n){return n+' '+(n%100==1?'član':n%100==2?'člana':n%100==3||n%100==4?'člani':'članov')}
 function clani(){const o={};ekipeData().forEach(t=>o[malo(t.v)]={size:Object.keys(t.m).length});return o}
 function clani_old(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
