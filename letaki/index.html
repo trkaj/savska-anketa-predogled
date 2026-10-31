@@ -30,6 +30,9 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 </style></head><body>
 <header><h1>Letaki Savske ankete</h1><p>Kdo nese letake na kateri naslov</p></header>
 
+<div class="blok"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
+<p id="povzetek" class="mal"></p><div id="map"></div></div>
+
 <div class="blok" id="jaz"></div>
 <div class="blok" id="moji" style="display:none"></div>
 
@@ -38,8 +41,6 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 <p class="mal">Klikni številko. Rumeno je že vzeto, zeleno je razdeljeno.</p>
 <button class="g siroko" id="vseProste"></button><div id="stevilke"></div></div></div>
 
-<div class="blok"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
-<p id="povzetek" class="mal"></p><div id="map"></div></div>
 <p class="mal" style="padding:0 16px 30px">Težave? Pokliči ali pošlji SMS na 070 205 595. Vse je zapisano tudi v <a id="tabela" href="#">tabeli</a>.</p>
 
 <div id="okno" onclick="if(event.target==this)zapri()"><div class="blok" id="oknoVsebina"></div></div>
