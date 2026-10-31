@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Savska anketa za mlade raziskovalce (osnutek)</title>
+<link rel="icon" href="../favicon.png">
+<style>
+:root{--glavna:#0a5232;--glavna-temna:#063a23;--poudarek:#ffd84d;--svetlo:#f3f6f1;--zgled:#fff3c4;--modra:#dce7ff;--modra-temna:#0b2a6b;--opozorilo:#7a1f00;--besedilo:#111;--rob:#5b5b5b}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--besedilo);background:var(--svetlo);font-size:19px;line-height:1.45}
+header{background:var(--glavna);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px}
+header img{width:44px;height:44px;border-radius:8px;background:#fff}
+header h1{font-size:1.15rem;margin:0}
+main{max-width:640px;margin:0 auto;padding:14px}
+.predogled{background:var(--zgled);border:2px dashed #b08a00;border-radius:12px;padding:10px 12px;font-weight:600;margin-bottom:12px}
+.karta{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 8px #0002;margin-bottom:14px}
+h2{color:var(--glavna-temna);font-size:1.35rem;margin:.2em 0 .5em}
+.napredek{height:12px;background:#dfe7dc;border-radius:8px;overflow:hidden;margin:6px 0 14px}
+.napredek div{height:100%;background:var(--glavna);width:0;transition:width .3s}
+.izbire{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.izbire.ena{grid-template-columns:1fr}
+.izb{display:flex;align-items:center;gap:10px;min-height:60px;padding:10px 12px;border:2px solid #c9d3c5;border-radius:14px;background:#fff;font-size:1.05rem;cursor:pointer;text-align:left;font-family:inherit;color:inherit}
+.izb .em{font-size:1.7rem}
+.izb[aria-pressed=true]{border-color:var(--glavna);background:#e4f2e8;box-shadow:inset 0 0 0 2px var(--glavna)}
+.smeski{display:flex;gap:8px;justify-content:space-between}
+.smeski .izb{flex:1;flex-direction:column;justify-content:center;gap:2px;font-size:.85rem;text-align:center}
+.smeski .izb .em{font-size:2.4rem}
+label.kljukica{display:flex;gap:12px;align-items:flex-start;padding:12px;border:2px solid var(--glavna);border-radius:14px;background:#e4f2e8;font-weight:600;cursor:pointer}
+label.kljukica input{width:30px;height:30px;flex:none;margin:0}
+input[type=text],textarea,select{width:100%;font:inherit;padding:12px;border:2px solid #c9d3c5;border-radius:12px;background:#fff;margin-top:6px}
+textarea{min-height:96px}
+.gumbi{display:flex;gap:10px;margin-top:16px}
+.g{flex:1;min-height:58px;font:inherit;font-weight:700;font-size:1.1rem;border:0;border-radius:14px;cursor:pointer}
+.g.naprej{background:var(--glavna);color:#fff}.g.nazaj{background:#e1e6df;color:#222}
+.g:disabled{opacity:.45;cursor:not-allowed}
+.namig{color:#444;font-size:.92rem}
+details{background:var(--modra);border-radius:12px;padding:10px 12px;margin-top:12px}
+details summary{font-weight:700;color:var(--modra-temna);cursor:pointer}
+details p,details li{font-size:.95rem}
+.napaka{color:var(--opozorilo);font-weight:600;min-height:1.2em}
+canvas{width:100%;height:auto;border-radius:10px;box-shadow:0 2px 8px #0003}
+footer{text-align:center;font-size:.85rem;color:#444;padding:18px 14px 30px}
+.skrito{display:none}
+.hp{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<header><img src="../logo.png" alt=""><h1>🔍 Mladi raziskovalci Savskega naselja</h1></header>
+<main>
+<div id="predogled" class="predogled skrito">👀 Predogled – odgovor se ne shrani.</div>
+<div class="napredek"><div id="napr"></div></div>
+<div id="koraki"></div>
+<input class="hp" id="hp-stran" tabindex="-1" autocomplete="off" aria-hidden="true">
+</main>
+<footer>Neodvisna pobuda prebivalcev Savskega naselja, ni povezana z nobeno listo ali kandidatom.</footer>
+<script>
+/* Oddaja: ločen Apps Script endpoint (zavihek »Junior«). Dokler je prazen, je stran samo predogled. */
+var SKRIPT = '';
+var KRAJI = [
+ ['🏫','Pri šoli OŠ Savsko naselje in vrtcu','OŠ Savsko naselje, vrtec, Fabianijeva 17–35'],
+ ['⚽','Filipovo igrišče, Savski hrib (Mislejeva)','Mislejeva: Filipovo igrišče, Savski hrib, otok športa'],
+ ['🏃','Športni park Savsko naselje (Topniška)','ŠP Savsko naselje, Topniška 35, M. Mikuža 16–20'],
+ ['🎪','PLAC in ŠD Zarja (Linhartova)','PLAC in ŠD Zarja (Linhartova 43)'],
+ ['📚','Pri knjižnici in Domu (Knobleharjeva)','Dom Belokranjska 6, knjižnica, Knobleharjeva 18'],
+ ['🛒','Pri Mercatorju in zelenici (Knobleharjeva)','Mercator Knobleharjeva 27, Endliherjeva 6–16, zelenica'],
+ ['🛍️','Savska cesta s trgovinami','Savska 1–31: trgovine, vrtec Mavrica'],
+ ['🏠','Šerkec (Šerkova)','Šerkec: Šerkova 1–13, Mercator L. Pesjakove 11'],
+ ['🏡','Nizke hiše (Belokranjska, Pesjakove)','Belokranjska 7–27, L. Pesjakove 2–16 (nizke hiše)'],
+ ['🌳','Med bloki ob Linhartovi','Linhartova 60–66, Matjaževa 13–17 (vogal Topniška)'],
+ ['🅿️','Pri garažah (Topniška, Majaronova)','Topniška 43–45, garaže, Majaronova 2–12'],
+ ['🚦','Ob Šmartinski (Majaronova)','Majaronova 14–28 ob Šmartinski'],
+ ['🏢','Endliherjeva','Endliherjeva 7–19'],
+ ['❓','Drugje / ne vem','drugo']
+];
+var KORAKI = [
+ {id:'start'},
+ {id:'starost',nas:'🎂 Koliko si star/a?',tip:'ena',izb:[['🧒','8–10 let'],['👦','11–12 let'],['🧑','13–14 let']],obv:true,
+  dod:'<p class="namig">Tvoja šola in razred (neobvezno, brez imena):</p><input type="text" id="sola" maxlength="60" placeholder="npr. OŠ Savsko naselje, 5. razred">'},
+ {id:'igra',nas:'🛝 Kje se najraje igraš ali družiš?',namig:'Izberi, kolikor želiš.',tip:'vec',izb:[['🛝','Na igrišču'],['🏀','Na košu ali nogometnem igrišču'],['🏫','Pri šoli'],['🌳','Na zelenici med bloki'],['🏠','Doma ali pri prijatelju'],['📚','V knjižnici'],['🛹','Na PLAC-u'],['🚲','S kolesom ali skirojem po naselju']],drugo:true},
+ {id:'manjka',nas:'🧩 Kaj ti v naselju manjka?',namig:'Izberi, kolikor želiš.',tip:'vec',izb:[['🛝','Igrišče'],['🏀','Koš'],['⚽','Nogometni gol'],['🤝','Prostor za druženje'],['🪑','Klopi'],['🌳','Senca, drevesa'],['🚰','Pitnik'],['🚲','Kolesarska pot'],['🛹','Prostor za skiro/rolko'],['🚻','Javno stranišče'],['💡','Več luči zvečer'],['🗑️','Več košev za smeti']],drugo:true},
+ {id:'pot',nas:'🎒 Kako se počutiš na poti v šolo?',tip:'smeski',izb:[['😀','Super'],['🙂','V redu'],['😐','Tako tako'],['😟','Ne dobro'],['😨','Strah me je']],
+  dod:'<p class="namig">Je kje, kjer se ne počutiš varno? Opiši kraj (neobvezno):</p><textarea id="nevarno" maxlength="400" placeholder="npr. prehod čez cesto pri …"></textarea>'},
+ {id:'vsec',nas:'💚 Kaj ti je v naselju najbolj všeč?',namig:'Izberi, kolikor želiš.',tip:'vec',izb:[['👫','Prijatelji'],['🌳','Zelenje in drevesa'],['🛝','Igrišča'],['🏫','Šola blizu'],['🤫','Mir'],['🐶','Živali'],['🛒','Trgovine blizu'],['⚽','Šport']],drugo:true},
+ {id:'kraji',nas:'📍 Tvoj najljubši in najmanj ljub kraj',
+  dod:'<p><b>😍 Najljubši kraj:</b></p><select id="kraj_naj"></select><p><b>😕 Najmanj ljub kraj:</b></p><select id="kraj_najmanj"></select><p class="namig">Zakaj ti ni všeč? (neobvezno)</p><input type="text" id="kraj_zakaj" maxlength="200">'},
+ {id:'zelja',nas:'🪄 Ena čarobna želja za naselje',namig:'Če bi lahko imel/a čarobno palico, kaj bi spremenil/a ali dodal/a?',dod:'<textarea id="zelja_t" maxlength="500" placeholder="Želim si …"></textarea>'},
+ {id:'pomoc',nas:'🙋 Bi rad/a pomagal/a pri kakšni akciji v naselju?',namig:'Npr. čistilna akcija, risanje s kredo, sajenje rož – vedno skupaj s starši.',tip:'ena',izb:[['👍','Da'],['🤔','Mogoče'],['👎','Ne']]},
+ {id:'konec'}
+];
+var S={vec:{},ena:{}}, K=0, ZAC=Date.now(), POSLANO=false;
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function izbHtml(k){
+ var cls=k.tip==='smeski'?'smeski':'izbire'+(k.izb.length<=3?' ena':'');
+ var h='<div class="'+cls+'" role="group">';
+ k.izb.forEach(function(x,i){var on=k.tip==='vec'?(S.vec[k.id]||[]).indexOf(x[1])>=0:S.ena[k.id]===x[1];
+  h+='<button type="button" class="izb" aria-pressed="'+on+'" onclick="klik(\''+k.id+'\','+i+')"><span class="em">'+x[0]+'</span><span>'+esc(x[1])+'</span></button>'});
+ h+='</div>';
+ if(k.drugo)h+='<p class="namig">Drugo:</p><input type="text" id="drugo_'+k.id+'" maxlength="200">';
+ return h}
+function klik(id,i){var k=KORAKI.filter(function(x){return x.id===id})[0],v=k.izb[i][1];
+ if(k.tip==='vec'){var a=S.vec[id]=S.vec[id]||[],j=a.indexOf(v);j<0?a.push(v):a.splice(j,1)}else S.ena[id]=v;
+ shraniPolja();izris()}
+var POLJA_IN=['sola','nevarno','kraj_naj','kraj_najmanj','kraj_zakaj','zelja_t','drugo_igra','drugo_manjka','drugo_vsec','soglasje','vzdevek'];
+var VR={};
+function shraniPolja(){POLJA_IN.forEach(function(id){var e=document.getElementById(id);if(e)VR[id]=e.type==='checkbox'?e.checked:e.value})}
+function obnoviPolja(){POLJA_IN.forEach(function(id){var e=document.getElementById(id);if(e&&VR[id]!=null){if(e.type==='checkbox')e.checked=VR[id];else e.value=VR[id]}})}
+function izris(){
+ var k=KORAKI[K],h='<section class="karta">';
+ document.getElementById('napr').style.width=Math.round(K/(KORAKI.length-1)*100)+'%';
+ if(k.id==='start'){
+  h+='<h2>👋 Živijo, mladi raziskovalec, mlada raziskovalka!</h2>'+
+  '<p>Odrasli v naselju sprašujejo, kaj si mislijo sosedje. Zdaj želimo slišati tudi <b>tebe</b>. Kje se rad/a igraš? Kaj ti manjka? Kje te je strah?</p>'+
+  '<p>🙈 <b>Ne napiši svojega imena, naslova, telefona ali e-pošte.</b> Tega ne potrebujemo.</p>'+
+  '<p>Ni pravilnih in napačnih odgovorov. Vsako vprašanje lahko preskočiš. Kadarkoli lahko nehaš.</p>'+
+  '<label class="kljukica"><input type="checkbox" id="soglasje" onchange="shraniPolja();izris()"> <span>👨‍👩‍👧 Starš ali skrbnik ve za to anketo in se strinja.</span></label>'+
+  '<details><summary>Za starše in skrbnike</summary>'+
+  '<p><b>Kdo zbira odgovore?</b> Upravljavec podatkov je Rok Trkaj Terkaj (fizična oseba), v okviru neodvisne pobude prebivalcev Savskega naselja.</p>'+
+  '<p><b>Zakaj?</b> Da pri predlogih za ureditev naselja (igrišča, poti v šolo, prostori za druženje) upoštevamo tudi mnenje otrok. Rezultate objavimo samo skupno (npr. »40 % otrok bi si želelo pitnik«), nikoli posamezne odgovore z opisi, po katerih bi bilo mogoče prepoznati otroka.</p>'+
+  '<p><b>Kaj se zbira?</b> Samo odgovori na vprašanja in datum oddaje. Imen, naslovov, e-pošt ali telefonov ne zbiramo. Starostna skupina in neobvezna šola/razred služita le za skupne primerjave. Vzdevek za diplomo ostane na otrokovi napravi in se ne pošlje.</p>'+
+  '<p><b>Pravna podlaga:</b> privolitev (čl. 6(1)(a) in 8 GDPR; ZVOP-2 – za otroke, mlajše od 15 let, je potrebna privolitev starša ali skrbnika).</p>'+
+  '<p><b>Hramba:</b> do konca projekta, najdlje do 31. 12. 2027, nato se odgovori izbrišejo; ostanejo le skupni rezultati.</p>'+
+  '<p><b>Vaše pravice:</b> dostop, izbris, umik privolitve, pritožba pri Informacijskem pooblaščencu (ip-rs.si). Ker odgovori niso povezani z imenom, jih bomo poiskali po opisu, ki ga navedete (datum, starost, šola).</p>'+
+  '<p><b>Kontakt:</b> savskonaselje1@gmail.com, 070 205 595.</p></details>';
+ } else if(k.id==='konec'){
+  h+='<h2>🎉 Hvala, raziskovalec, raziskovalka!</h2><p id="stanje">'+(SKRIPT?'Tvoji odgovori so poslani. 💚':'👀 Predogled – odgovor se ne shrani.')+'</p>'+
+  '<p>Za nagrado si lahko narediš <b>diplomo mladega raziskovalca naselja</b>. Vpiši vzdevek (neobvezno). Vzdevek se <b>ne pošlje</b> nikamor, ostane samo na tej napravi.</p>'+
+  '<input type="text" id="vzdevek" maxlength="24" placeholder="Vzdevek (npr. Sova)" oninput="shraniPolja();risiDiplomo()">'+
+  '<p></p><canvas id="dipl" width="1600" height="1131"></canvas>'+
+  '<div class="gumbi"><a class="g naprej" id="prenos" download="diploma-mladi-raziskovalec.png" style="display:flex;align-items:center;justify-content:center;text-decoration:none">⬇️ Prenesi diplomo</a></div>';
+ } else {
+  h+='<h2>'+k.nas+'</h2>'+(k.namig?'<p class="namig">'+k.namig+'</p>':'')+(k.izb?izbHtml(k):'')+(k.dod||'');
+ }
+ h+='<p class="napaka" id="napaka"></p>';
+ if(k.id!=='konec')h+='<div class="gumbi">'+(K>0?'<button class="g nazaj" onclick="nazaj()">⬅️ Nazaj</button>':'')+
+  '<button class="g naprej" id="naprej" onclick="naprej()"'+(k.id==='start'&&!VR.soglasje?' disabled':'')+'>'+(K===KORAKI.length-2?'Oddaj ✅':K===0?'Začnimo! 🚀':'Naprej ➡️')+'</button></div>';
+ h+='</section>';
+ document.getElementById('koraki').innerHTML=h;
+ if(k.id==='kraji'){['kraj_naj','kraj_najmanj'].forEach(function(id){var s=document.getElementById(id);
+  s.innerHTML='<option value="">– izberi –</option>'+KRAJI.map(function(x){return '<option value="'+esc(x[2])+'">'+x[0]+' '+esc(x[1])+'</option>'}).join('')})}
+ obnoviPolja();
+ if(k.id==='konec'){risiDiplomo()}
+}
+function naprej(){shraniPolja();var k=KORAKI[K];
+ if(k.id==='start'&&!VR.soglasje){document.getElementById('napaka').textContent='Prosimo, najprej vprašaj starša ali skrbnika. 🙂';return}
+ if(k.obv&&!S.ena[k.id]){document.getElementById('napaka').textContent='Izberi svojo starost. 🙂';return}
+ if(K===KORAKI.length-2)poslji();
+ K++;izris();window.scrollTo(0,0)}
+function nazaj(){shraniPolja();if(K>0){K--;izris();window.scrollTo(0,0)}}
+function z(a,d){a=(a||[]).slice();if(d)a.push('Drugo: '+d);return a.join('; ')}
+function poslji(){
+ if(POSLANO)return;POSLANO=true;
+ var o={tip:'junior',kanal:'splet',soglasje_stars:VR.soglasje?'da':'',starost:(S.ena.starost||'').replace(' let',''),sola_razred:VR.sola,
+  igra:z(S.vec.igra,VR.drugo_igra),manjka:z(S.vec.manjka,VR.drugo_manjka),pot_v_solo:S.ena.pot,nevarno_kje:VR.nevarno,
+  vsec:z(S.vec.vsec,VR.drugo_vsec),kraj_najljubsi:VR.kraj_naj,kraj_najmanj:VR.kraj_najmanj,kraj_najmanj_zakaj:VR.kraj_zakaj,
+  zelja:VR.zelja_t,pomoc:S.ena.pomoc,cas_izpolnjevanja_s:String(Math.round((Date.now()-ZAC)/1000)),
+  spletna_stran:document.getElementById('hp-stran').value};
+ if(!SKRIPT){console.log('Predogled – odgovor se ne shrani:',o);return}
+ var p=new URLSearchParams();Object.keys(o).forEach(function(k){if(o[k])p.append(k,o[k])});
+ fetch(SKRIPT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:p.toString(),keepalive:true})
+  .catch(function(){var s=document.getElementById('stanje');if(s)s.textContent='Pošiljanje ni uspelo (ni povezave?). Poskusi znova pozneje.'})}
+var LOGO=new Image();LOGO.onload=function(){if(KORAKI[K].id==='konec')risiDiplomo()};LOGO.src='../logo.png';
+function risiDiplomo(){var cv=document.getElementById('dipl');if(!cv)return;var c=cv.getContext('2d');
+ var ime=(document.getElementById('vzdevek').value||'').trim()||'mladi raziskovalec';
+ c.fillStyle='#fffdf5';c.fillRect(0,0,1600,1131);c.strokeStyle='#0a5232';c.lineWidth=18;c.strokeRect(40,40,1520,1051);c.strokeStyle='#ffd84d';c.lineWidth=6;c.strokeRect(72,72,1456,987);
+ if(LOGO.complete&&LOGO.naturalWidth)c.drawImage(LOGO,730,100,140,140*LOGO.naturalHeight/LOGO.naturalWidth);
+ c.textAlign='center';c.fillStyle='#063a23';c.font='bold 70px Georgia,serif';c.fillText('Diploma mladega raziskovalca naselja',800,330);
+ c.font='34px system-ui,sans-serif';c.fillStyle='#333';c.fillText('Ta diploma potrjuje, da je',800,410);
+ c.font='bold 88px Georgia,serif';c.fillStyle='#0a5232';c.fillText(ime.slice(0,24),800,520);c.fillStyle='#ffd84d';c.fillRect(500,548,600,8);
+ c.font='38px system-ui,sans-serif';c.fillStyle='#222';c.fillText('raziskal(a) Savsko naselje in povedal(a), kaj si želijo otroci',800,620);
+ c.font='60px system-ui,sans-serif';c.fillText('🔍 🛝 🌳 🚲 💚',800,720);
+ c.font='30px system-ui,sans-serif';c.fillStyle='#444';c.fillText('Ljubljana, '+new Date().toLocaleDateString('sl-SI',{timeZone:'Europe/Ljubljana'}),800,800);
+ c.font='italic 28px system-ui,sans-serif';c.fillText('Hvala, ker pomagaš, da bo naše naselje še boljše!',800,860);
+ c.font='22px system-ui,sans-serif';c.fillStyle='#555';c.fillText('Neodvisna pobuda prebivalcev Savskega naselja, ni povezana z nobeno listo ali kandidatom.',800,1010);
+ try{document.getElementById('prenos').href=cv.toDataURL('image/png')}catch(e){}}
+if(!SKRIPT)document.getElementById('predogled').classList.remove('skrito');
+izris();
+</script>
+</body>
+</html>
