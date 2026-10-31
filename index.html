@@ -337,7 +337,7 @@ var KORAKI = [
    '<li><strong>Objava:</strong> objavili bomo le skupne rezultate, združene po ulicah, in sicer na savska.org ter v Domu skupnosti. Posameznih odgovorov ne bomo objavljali.</li>'+
    '<li><strong>Odgovarjanje je prostovoljno:</strong> katero koli vprašanje lahko preskočite.</li>'+
    '</ul></div>'+
-   '<p class="namig">'+'<button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://trkaj.github.io/savska-anketa-predogled/#zasebnost</span>'+'</p>'+
+   '<p class="namig">'+'<button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://anketa.savska.org/#zasebnost</span>'+'</p>'+
    '<p class="namig">Raje na papirju ali po telefonu? Pokličite ali pošljite SMS na <a href="tel:+38670205595">070 205 595</a>.</p>'+
    '<button type="button" class="gumb glavni siroko" id="zacni">Začnimo →</button>';
  }},
@@ -530,7 +530,7 @@ function modriListek(){
   '<label class="polje-nasl" for="l-kontakt">E-pošta ali telefon</label><input type="text" id="l-kontakt" data-k="listek.kontakt" value="'+esc(S.listek.kontakt||'')+'">'+
   '<div style="margin-top:.9rem">'+vpr('Kako naj vas obveščamo?', check('listek.kako',['e-pošta','SMS ali Viber','telefonski klic']))+'</div>'+
   '<label class="izbira soglasje"><input type="checkbox" data-k="listek.soglasje" value="da"'+((S.listek.soglasje||[]).length?' checked':'')+'><span>Soglašam, da upravljavec Rok Terkaj (<a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>) te podatke uporablja samo za vabila k sodelovanju in obvestila, jih ne posreduje nikomur, hrani največ 24 mesecev od zadnjega stika in jih na mojo zahtevo izbriše. Pritožba: Informacijski pooblaščenec.</span></label>'+
-  '<p class="namig">Listek lahko izpolnijo osebe od 15. leta, mlajši s soglasjem staršev. Soglasje lahko kadar koli prekličete. Več: <button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://trkaj.github.io/savska-anketa-predogled/#zasebnost</span></p>'+
+  '<p class="namig">Listek lahko izpolnijo osebe od 15. leta, mlajši s soglasjem staršev. Soglasje lahko kadar koli prekličete. Več: <button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://anketa.savska.org/#zasebnost</span></p>'+
   '<p class="sporocilo" id="listek-napaka"></p>'+
   '<p class="namig">V pravi anketi se listek odpre na ločenem spletnem naslovu, brez povezave z vašimi odgovori.</p>'+
   '<button type="button" class="gumb moder siroko" id="poslji-listek">Pošlji modri listek</button>'+
@@ -815,7 +815,7 @@ document.addEventListener('click',function(e){ if(e.target.closest('[data-zasebn
 window.addEventListener('hashchange',function(){ if(location.hash==='#zasebnost') odpriZasebnost(); });
 if(location.hash==='#zasebnost') odpriZasebnost();
 /* DIPLOMA: ime se uporablja samo lokalno za risanje, se ne pošilja in ne shranjuje */
-var DELI_URL='https://trkaj.github.io/savska-anketa-predogled/';
+var DELI_URL='https://anketa.savska.org/';
 var DELI_TXT='Izpolnite anketo prebivalcev Savskega naselja: ';
 function diplomaHtml(){
   var e=encodeURIComponent, t=DELI_TXT+DELI_URL;
