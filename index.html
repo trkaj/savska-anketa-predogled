@@ -61,6 +61,9 @@ main{padding:1rem 0 7rem}
 .vprasanje{margin:0 0 1.3rem}
 .vprasanje > .nasl{display:block;font-weight:700;font-size:1.08rem;line-height:1.35;margin:0 0 .5rem}
 .namig{font-size:.85rem;color:#333;margin:.2rem 0 .6rem}
+.papir-gumbi{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin:.4rem 0 0}
+.papir-gumbi a.gumb{text-decoration:none;min-height:2.75rem;display:inline-flex;align-items:center}
+.papir-gumbi a.povezava{min-height:2.75rem;display:inline-flex;align-items:center}
 .sklop{display:inline-block;font-size:.75rem;font-weight:700;padding:.15rem .6rem;border-radius:1rem;background:#e2ece0;color:var(--glavna-temna);margin-bottom:.3rem}
 .izbire{display:flex;flex-direction:column;gap:.5rem}
 .izbire.mreza{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
@@ -355,7 +358,9 @@ var KORAKI = [
    '<li><strong>Odgovarjanje je prostovoljno:</strong> katero koli vprašanje lahko preskočite.</li>'+
    '</ul></div>'+
    '<p class="namig">'+'<button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://anketa.savska.org/#zasebnost</span>'+'</p>'+
-   '<p class="namig">Raje na papirju ali po telefonu? Pokličite ali pošljite SMS na <a href="tel:+38670205595">070 205 595</a>.</p>'+
+   '<div class="kartica papir-prenos" role="region" aria-labelledby="papir-nasl"><h3 id="papir-nasl">Raje na papirju?</h3>'+
+   '<p>Natisnite anketo ali jo prenesite v Wordu in jo izpolnite. Izpolnjeno anketo fotografirajte ali skenirajte in pošljite na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>. Za pomoč pokličite ali pošljite SMS na <a href="tel:+38670205595">070 205 595</a>.</p>'+
+   '<p class="papir-gumbi"><a class="gumb glavni" href="savska-anketa-papir.pdf" download="savska-anketa-papir.pdf" type="application/pdf">Natisni anketo (PDF)</a> <a class="povezava" href="savska-anketa-papir.docx" download="savska-anketa-papir.docx">ali prenesi v Wordu (DOCX)</a></p></div>'+
    '<button type="button" class="gumb glavni siroko" id="zacni">Začnimo →</button>';
  }},
  {id:'dobro', sklop:'Za vse', render:function(){
