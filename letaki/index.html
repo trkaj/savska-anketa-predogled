@@ -45,7 +45,7 @@ button{font-size:18px;padding:12px 16px;border-radius:10px;border:0;cursor:point
 details.ek{border-bottom:1px solid #e3e3e3}details.ek summary{list-style:none;display:flex;gap:8px;align-items:center;padding:10px 2px;cursor:pointer;font-size:18px}
 details.ek summary::-webkit-details-marker{display:none}details.ek summary .v{flex:1;font-weight:700}details.ek summary .c{color:#555;font-size:15px}
 details.ek summary:after{content:'▸';color:#888}details.ek[open] summary:after{content:'▾'}details.ek.jaz summary{background:#fff4c2;border-radius:8px}
-.clan{display:flex;justify-content:space-between;padding:6px 14px;font-size:16px;border-top:1px dashed #eee}
+.ekGumb{text-align:right;padding:8px 14px}.clan{display:flex;justify-content:space-between;padding:6px 14px;font-size:16px;border-top:1px dashed #eee}
 </style></head><body>
 <header><h1 id="glava">Razdeljevanje v Savskem naselju</h1><p id="podglava">Kdo nese gradivo na kateri naslov</p></header>
 <nav class="pogl" id="poglavja"></nav>
@@ -109,8 +109,21 @@ function ekipaUI(uredi){const b=document.getElementById('ekBox');if(!b)return;co
  if(v&&!uredi){b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b id="ekOk">✓ Ekipa: '+esc(v)+' · '+clanov((clani()[malo(v)]||{size:1}).size)+'</b><button class="s" onclick="obdrziMesto(()=>ekipaUI(1))">Spremeni</button></div>';return}
  b.innerHTML='<label class="mal" for="ekipa" style="display:block">Ekipa (neobvezno, npr. Majaronova, Družina K.)</label><div style="display:flex;gap:8px"><input id="ekipa" maxlength="30" placeholder="brez ekipe" style="flex:1" value="'+esc(v)+'" onkeydown="if(event.key==\'Enter\'){event.preventDefault();potrdiEkipo()}"><button class="s" onclick="potrdiEkipo()">Potrdi ekipo</button></div>';
  if(uredi)document.getElementById('ekipa').focus()}
-function obdrziMesto(fn){const j=document.getElementById('jaz'),y=j.getBoundingClientRect().top;fn();const d=j.getBoundingClientRect().top-y;if(Math.abs(d)>1)window.scrollBy(0,d)}
-function potrdiEkipo(){const v=document.getElementById('ekipa').value.trim().slice(0,30);localStorage.setItem(ekKljuc(),v);obdrziMesto(()=>{ekipaUI();lestvica();ekipeSeznam()});obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0)}
+function obdrziMesto(fn,id){const j=document.getElementById(id||'jaz'),y=j.getBoundingClientRect().top;fn();const d=j.getBoundingClientRect().top-y;if(Math.abs(d)>1)window.scrollBy(0,d)}
+function potrdiEkipo(){nastaviEkipo(document.getElementById('ekipa').value)}
+// v6: člani ekip na strežniku (SRV=null → skript še v5, deluje samo lokalno)
+let SRV=null;
+function nastaviEkipo(v,sidro){v=String(v||'').trim().replace(/\s+/g,' ').slice(0,30);if(!ime){obv('Najprej se predstavi – vpiši vzdevek zgoraj.',1);return}const prej=ekipaGet();
+ localStorage.setItem(ekKljuc(),v);
+ if(SRV){SRV=SRV.filter(c=>malo(c.kdo)!=malo(ime));if(v)SRV.push({kdo:ime,ekipa:v})}
+ obdrziMesto(()=>{ekipaUI();lestvica();ekipeSeznam(v||(sidro?prej:''))},sidro);obv(v?'Ekipa potrjena: '+v:'Brez ekipe.',0);
+ try{fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:'ekipa',poglavje:P.id,kdo:ime,ekipa:v,cas:new Date().toISOString()})}).catch(()=>{})}catch(e){}}
+function pridruzi(b){nastaviEkipo(b.dataset.e,'ekipeBlok')}
+function zapusti(){if(!ime)return;nastaviEkipo('','ekipeBlok')}
+async function naloziEkipe(){try{const j=await (await fetch(SKRIPT+'?akcija=ekipe&poglavje='+encodeURIComponent(P.id)+'&t='+Date.now())).json();
+ if(!(j&&j.ok&&+j.razlicica>=6&&Array.isArray(j.clani)))return;
+ SRV=j.clani.filter(c=>c&&c.kdo&&c.ekipa).map(c=>({kdo:String(c.kdo).slice(0,30),ekipa:String(c.ekipa).slice(0,30)}));
+ if(ime&&localStorage.getItem(ekKljuc())===null){const m=SRV.find(c=>malo(c.kdo)==malo(ime));if(m)localStorage.setItem(ekKljuc(),m.ekipa)}}catch(e){}}
 function clanov(n){return n+' '+(n%100==1?'član':n%100==2?'člana':n%100==3||n%100==4?'člani':'članov')}
 function clani(){const o={};ekipeData().forEach(t=>o[malo(t.v)]={size:Object.keys(t.m).length});return o}
 function clani_old(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e);m[k]=m[k]||new Set();[x.r,x.p].forEach(v=>{v=malo(v);if(v&&v!='da')m[k].add(v)})});
@@ -118,12 +131,14 @@ function clani_old(){const m={};Object.values(stanje).forEach(x=>{if(!x.e)return
 function ekipeData(){const T={},add=(t,v,d)=>{v=(v||'').trim();if(!v||malo(v)=='da')return;const m=t.m[malo(v)]=t.m[malo(v)]||{v,d:0};m.d+=d};
  Object.values(stanje).forEach(x=>{if(!x.e)return;const k=malo(x.e),t=T[k]=T[k]||{v:x.e.trim(),n:0,m:{}};if(x.s=='razdeljeno'){t.n++;add(t,x.r||x.p,1)}else add(t,x.p,0)});
  const e=ekipaGet();if(e&&ime){const t=T[malo(e)]=T[malo(e)]||{v:e,n:0,m:{}};add(t,ime,0)}
+ if(SRV)SRV.forEach(c=>{if(ime&&malo(c.kdo)==malo(ime))return;const k=malo(c.ekipa),t=T[k]=T[k]||{v:c.ekipa.trim(),n:0,m:{}};add(t,c.kdo,0)});
  return Object.values(T).sort((a,b)=>b.n-a.n||a.v.localeCompare(b.v,'sl'))}
-function ekipeHTML(list,medalje){const M=['🥇','🥈','🥉'],me=malo(ekipaGet());return list.map((t,i)=>{const cl=Object.values(t.m).sort((a,b)=>b.d-a.d||a.v.localeCompare(b.v,'sl'));
- return '<details class="ek'+(me&&malo(t.v)==me?' jaz':'')+'"><summary>'+(medalje?'<span>'+(M[i]||(i+1)+'.')+'</span>':'')+'<span class="v">'+esc(t.v)+'</span><span class="c">'+clanov(cl.length)+' · razdeljenih '+t.n+'</span></summary>'+
- cl.map(c=>'<div class="clan"><span>'+esc(c.v)+'</span><span>'+c.d+'</span></div>').join('')+'</details>'}).join('')}
-function ekipeSeznam(){const b=document.getElementById('ekipeSez');if(!b)return;if(!imaStolpce){b.innerHTML='<p class="mal">Ekipe se pokažejo, ko je posodobljen skript.</p>';return}
- const l=ekipeData();b.innerHTML=l.length?'<p class="mal">Klikni ekipo za seznam članov (število = razdeljeni vhodi).</p>'+ekipeHTML(l):'<p class="mal">Še ni ekip – vpiši ime ekipe zgoraj.</p>'}
+function ekipeHTML(list,medalje,odpri){const M=['🥇','🥈','🥉'],me=malo(ekipaGet());return list.map((t,i)=>{const cl=Object.values(t.m).sort((a,b)=>b.d-a.d||a.v.localeCompare(b.v,'sl'));
+ const moja=me&&malo(t.v)==me;
+ return '<details class="ek'+(moja?' jaz':'')+'"'+(odpri&&malo(odpri)==malo(t.v)?' open':'')+'><summary>'+(medalje?'<span>'+(M[i]||(i+1)+'.')+'</span>':'')+'<span class="v">'+esc(t.v)+'</span><span class="c">'+clanov(cl.length)+' · razdeljenih '+t.n+'</span></summary>'+
+ cl.map(c=>'<div class="clan"><span>'+esc(c.v)+'</span><span>'+c.d+'</span></div>').join('')+(medalje?'':'<div class="ekGumb">'+(moja?'<button class="s" onclick="zapusti()">Zapusti ekipo</button>':'<button class="s" data-e="'+esc(t.v)+'" onclick="pridruzi(this)">Pridruži se</button>')+'</div>')+'</details>'}).join('')}
+function ekipeSeznam(odpri){const b=document.getElementById('ekipeSez');if(!b)return;if(!imaStolpce){b.innerHTML='<p class="mal">Ekipe se pokažejo, ko je posodobljen skript.</p>';return}
+ const l=ekipeData();b.innerHTML=l.length?'<p class="mal">Klikni ekipo za seznam članov (število = razdeljeni vhodi).</p>'+ekipeHTML(l,0,odpri):'<p class="mal">Še ni ekip – vpiši ime ekipe zgoraj.</p>'}
 function tisk(n){window.open('tisk.html?p='+encodeURIComponent(P.id)+'&nacin='+n+'&natisni=1','_blank')}
 function izberiPoglavje(id){try{localStorage.setItem('letaki_poglavje',id+'|'+POGLAVJA.length)}catch(e){}location.search='?p='+encodeURIComponent(id)}
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
@@ -214,7 +229,7 @@ function razdelilci(vr){const c={};(vr||Object.values(stanje)).forEach(x=>{const
 const mojeSt=()=>ime?((razdelilci()[ime.trim().toLowerCase()]||{}).n||0):0;
 let zavihek='os',imaStolpce=false,nalozeno=false,stanjePo={},imaPo={};
 const mojeVse=()=>ime?((razdelilci(vseVrstice())[malo(ime)]||{}).n||0):0;
-const malo=x=>(x||'').trim().toLowerCase();
+const malo=x=>String(x||'').trim().replace(/\s+/g,' ').toLowerCase();
 function casLj(v){v=(v||'').trim();if(!v)return null;let m;
  if(m=v.match(/^Date\((\d+),(\d+),(\d+)(?:,(\d+))?(?:,(\d+))?/))return{y:+m[1],mo:+m[2]+1,d:+m[3],h:+(m[4]||0),mi:+(m[5]||0)};
  if(m=v.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})(?:\D+(\d{1,2}):(\d{2}))?/))return{y:+m[3],mo:+m[2],d:+m[1],h:+(m[4]||0),mi:+(m[5]||0)};
@@ -302,7 +317,7 @@ let ostaliNalozeni=0;
 async function nalozi(){try{const t=await (await fetch(CSV+'&t='+Date.now())).text();const {ns,ima}=preberi(t);imaStolpce=ima;imaPo[P.id]=ima;
  // druga poglavja (za »Vsa poglavja« in skupne značke); zaključena se ne spreminjajo, zato jih naložimo enkrat
  await Promise.all(POGLAVJA.filter(p=>p.id!=P.id&&(p.stanje=='aktivno'||!stanjePo[p.id])).map(p=>fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()).then(t=>{const x=preberi(t);stanjePo[p.id]=x.ns;imaPo[p.id]=x.ima}).catch(e=>console.warn('poglavje',p.id,e))));
- stanje=ns;stanjePo[P.id]=ns;nalozeno=true;osvezi();if(document.getElementById('okno').style.display!='flex')mejniki()}catch(e){console.warn(e)}}
+ await naloziEkipe();stanje=ns;stanjePo[P.id]=ns;nalozeno=true;osvezi();if(document.getElementById('okno').style.display!='flex')mejniki()}catch(e){console.warn(e)}}
 const map=L.map('map',{zoomSnap:.25,renderer:L.canvas({tolerance:7})});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
 Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json()),nalozenaPoglavja]).then(([v,meja])=>{
