@@ -1,0 +1,64 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Letaki – urejanje poglavij</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;font-size:19px;background:#f3f5f2;color:#111}
+header{background:#0a5232;color:#fff;padding:14px 16px}header h1{margin:0;font-size:24px}header p{margin:4px 0 0;opacity:.9;font-size:16px}
+.blok{background:#fff;margin:12px auto;padding:14px;border-radius:14px;max-width:690px;box-shadow:0 1px 3px #0002}
+h2{margin:0 0 10px;font-size:21px;color:#063a23}
+input,textarea{width:100%;box-sizing:border-box;font-size:19px;padding:12px;border:2px solid #bbb;border-radius:10px;margin:4px 0 10px;font-family:inherit}
+button{font-size:19px;padding:13px 16px;border:0;border-radius:10px;cursor:pointer;margin:4px 0}
+.g{background:#0a5232;color:#fff}.z{background:#2e9e5b;color:#fff}.s{background:#e4e4e4;color:#222}.r{background:#ffd84d;color:#222}
+.siroko{width:100%}.mal{font-size:16px;color:#555}
+.pog{border-top:1px solid #ddd;padding:12px 0}.pog:first-of-type{border-top:0}
+.pog b{font-size:20px}.zn{display:inline-block;font-size:14px;padding:2px 8px;border-radius:20px;margin-left:6px}
+.ak{background:#d8f2e1;color:#0a5232}.zk{background:#eee;color:#555}
+.vr{display:flex;gap:6px;flex-wrap:wrap}.vr button{flex:1;min-width:120px}
+#obv{position:fixed;left:10px;right:10px;bottom:14px;background:#063a23;color:#fff;padding:14px;border-radius:12px;font-size:18px;display:none;text-align:center;z-index:9}
+#obv.nap{background:#a8261b}
+</style></head><body>
+<header><h1>Letaki – urejanje poglavij</h1><p>Samo za skrbnika. Prostovoljci tega ne potrebujejo.</p></header>
+<div class="blok" id="prijava"><h2>Prijava</h2>
+<label>Admin geslo<input type="password" id="geslo" autocomplete="current-password" onkeydown="if(event.key=='Enter')prijava()"></label>
+<button class="g siroko" onclick="prijava()">Prijava</button>
+<p class="mal">Geslo ostane samo v tem zavihku brskalnika, dokler ga ne zapreš.</p></div>
+<div id="vsebina" style="display:none">
+<div class="blok"><h2>Poglavja</h2><div id="seznam"><p class="mal">Nalagam …</p></div></div>
+<div class="blok"><h2>Novo poglavje</h2>
+<p class="mal">Skript naredi nov zavihek v tabeli z vsemi 173 vhodi in prazno evidenco. Novo poglavje se prostovoljcem odpre samo.</p>
+<label>Naslov<input id="nNaslov" maxlength="60" placeholder="npr. Vabilo na zbor"></label>
+<label>Kratek opis<input id="nOpis" maxlength="120" placeholder="npr. Letaki z vabilom na zbor stanovalcev"></label>
+<button class="z siroko" onclick="novo()">➕ Ustvari poglavje</button></div>
+<div class="blok"><a href="https://docs.google.com/spreadsheets/d/12I4SGnEltzkDz9gi7KAxZhPlZJfR4VJh3HH9SVhokPM/edit" target="_blank" rel="noopener">📄 Odpri tabelo</a> · <a href="../">Javna stran letakov</a>
+<button class="s siroko" onclick="odjava()">Odjava</button></div>
+</div>
+<div id="obv"></div>
+<script>
+const SHEET='12I4SGnEltzkDz9gi7KAxZhPlZJfR4VJh3HH9SVhokPM';
+const SKRIPT='https://script.google.com/macros/s/AKfycbw1885AEWkP3HCtg7dWEFYgQWxBJ0vlH4-tYmljBP2MKqVvwfljmgTEKfe7utxCJCTL/exec';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let PG=[];const geslo=()=>sessionStorage.getItem('letaki_admin')||'';
+function obv(t,nap,ms){const o=document.getElementById('obv');o.textContent=t;o.className=nap?'nap':'';o.style.display='block';clearTimeout(obv.t);if(ms!==0)obv.t=setTimeout(()=>o.style.display='none',ms||4000)}
+async function klic(o){obv('Pošiljam …',0,0);try{const r=await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({geslo:geslo(),kdo:'admin'},o))});
+ const j=await r.json();if(!j||(!j.ok&&!j.sporocilo))throw 0;obv(j.sporocilo||'OK',!j.ok);return j}
+ catch(e){obv('Skript ne odgovarja ali še ni nameščena različica 4. Poskusi znova.',1,6000);return {ok:false}}}
+async function prijava(){const g=document.getElementById('geslo').value;if(!g){obv('Vpiši geslo.',1);return}sessionStorage.setItem('letaki_admin',g);
+ const j=await klic({akcija:'admin_preveri'});if(!j.ok){sessionStorage.removeItem('letaki_admin');return}document.getElementById('geslo').value='';pokazi(j.poglavja)}
+function odjava(){sessionStorage.removeItem('letaki_admin');location.reload()}
+const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'');
+function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
+ if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
+ if(f||row.length){row.push(f);r.push(row)}return r}
+function pokazi(ps){if(ps)PG=ps;document.getElementById('prijava').style.display='none';document.getElementById('vsebina').style.display='block';
+ document.getElementById('seznam').innerHTML=PG.length?PG.map((p,i)=>'<div class="pog"><b>'+p.st+'. poglavje · '+esc(p.naslov)+'</b><span class="zn '+(p.stanje=='aktivno'?'ak':'zk')+'">'+(p.stanje=='aktivno'?'aktivno':'zaključeno')+'</span>'+
+  '<div class="mal">'+esc(p.opis||'')+'</div><div class="mal">Zavihek: '+esc(p.zavihek)+' · od '+esc(p.od||'')+' · <span id="st_'+i+'">razdeljeno …</span> · <a href="../?p='+encodeURIComponent(p.id)+'" target="_blank">poglej</a></div>'+
+  '<div class="vr"><button class="s" onclick="uredi('+i+')">✏️ Uredi</button>'+(p.stanje=='aktivno'?'<button class="r" onclick="stanje('+i+',\'zakljuci_poglavje\')">✓ Zaključi</button>':'<button class="z" onclick="stanje('+i+',\'odpri_poglavje\')">↺ Ponovno odpri</button>')+'</div><div id="ur_'+i+'"></div></div>').join(''):'<p class="mal">Ni poglavij.</p>';
+ PG.forEach((p,i)=>fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()).then(t=>{if(t.trim().startsWith('<'))throw 0;const rows=parseCSV(t).slice(1).filter(x=>x[0]);
+  document.getElementById('st_'+i).textContent='razdeljeno '+rows.filter(x=>(x[3]||'').trim()&&!/^ne$/i.test(x[3].trim())).length+' od '+rows.length}).catch(()=>{document.getElementById('st_'+i).textContent='števca ni mogoče prebrati'}))}
+function uredi(i){const p=PG[i],b=document.getElementById('ur_'+i);if(b.innerHTML){b.innerHTML='';return}
+ b.innerHTML='<label>Naslov<input id="uN'+i+'" maxlength="60" value="'+esc(p.naslov)+'"></label><label>Kratek opis<input id="uO'+i+'" maxlength="120" value="'+esc(p.opis||'')+'"></label><button class="g siroko" onclick="shraniUr('+i+')">Shrani</button>'}
+async function shraniUr(i){const j=await klic({akcija:'uredi_poglavje',id:PG[i].id,naslov:document.getElementById('uN'+i).value.trim(),opis:document.getElementById('uO'+i).value.trim()});if(j.ok)pokazi(j.poglavja)}
+async function stanje(i,a){const p=PG[i];if(!confirm(a=='zakljuci_poglavje'?'Zaključim »'+p.naslov+'«? Prostovoljci bodo videli samo pregled.':'Ponovno odprem »'+p.naslov+'«?'))return;const j=await klic({akcija:a,id:p.id});if(j.ok)pokazi(j.poglavja)}
+async function novo(){const n=document.getElementById('nNaslov').value.trim(),o=document.getElementById('nOpis').value.trim();if(!n){obv('Vpiši naslov poglavja.',1);return}
+ if(!confirm('Ustvarim novo poglavje »'+n+'«?'))return;const j=await klic({akcija:'novo_poglavje',naslov:n,opis:o});if(j.ok){document.getElementById('nNaslov').value='';document.getElementById('nOpis').value='';pokazi(j.poglavja)}}
+if(geslo())klic({akcija:'admin_preveri'}).then(j=>{if(j.ok)pokazi(j.poglavja);else sessionStorage.removeItem('letaki_admin')});
+</script></body></html>
