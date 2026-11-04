@@ -47,7 +47,7 @@ function render(){
       <label for="v-${q.id}">Povezava do videa (neobvezno, največ 2 min)</label>
       <input type="url" id="v-${q.id}" name="v-${q.id}" placeholder="https://youtu.be/… ali Drive / Vimeo" inputmode="url">
       <p class="msg vmsg" aria-live="polite"></p></div>`).join('');
-    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${graf(s.id)}${qs}</section>`);
+    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
   document.querySelectorAll('input[type=url]').forEach(i=>i.addEventListener('blur',()=>vcheck(i)));

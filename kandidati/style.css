@@ -25,3 +25,5 @@ button.pri{background:var(--y);border-color:var(--y);color:#000;font-weight:700}
 .rv{border-top:1px solid #dde;padding:8px 0}.rv b{color:var(--g)}
 footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
 .graf{margin:6px 0 14px;padding:10px;background:var(--y2);border-radius:8px}.graf img{width:100%;height:auto;display:block;background:#fff;border-radius:6px}.gq{font-size:.92rem;font-weight:600;color:var(--g);margin-bottom:6px}.vir{margin:6px 0 0}
+
+.opis{margin:4px 0 10px;line-height:1.45}.cit{margin:0 0 14px}.cit blockquote{margin:4px 0;padding:6px 10px;border-left:4px solid var(--y);font-style:italic;background:#fafaf5}

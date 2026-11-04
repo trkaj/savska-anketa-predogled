@@ -27,7 +27,9 @@
      "id": "obvescanje-5",
      "besedilo": "Ali se zavežete, da bo svet ČS od začetka mandata prebivalce Savskega naselja vsaj enkrat na mesec obveščal o pobudah, sklepih in odgovorih MOL, ki se tičejo naselja (tudi na oglasnih deskah)?"
     }
-   ]
+   ],
+   "opis": "V anketi ni posebnega vprašanja o obveščanju iz ČS, podobna težava pa se kaže pri upravnikih: obveščanje je »malo« ali »sploh ne« dobro za 112 od 251 (45 %). Udeležbo na zborih bi olajšali glasovanje na daljavo (34) in spletna udeležba (32).",
+   "citati": []
   },
   {
    "id": "parkiranje",
@@ -42,6 +44,11 @@
      "id": "parkiranje-2",
      "besedilo": "Ali se zavežete, da boste do konca leta 2027 dali pobudo MOL za preizkus parkiranja za stanovalce, pripravljen skupaj z lastniki in upravniki?"
     }
+   ],
+   "opis": "Parkiranje je med temami izbralo 238 od 306 (78 %). Težave s parkiranjem ima »pogosto« 133 od 270, ponoči pa 72 od 283 parkira, kjer najde prostor, tudi na zelenici ali pločniku.",
+   "citati": [
+    "Ni pločnika, ker so avtomobili parkirani nanj.",
+    "Več površin za sprehajanje, ki niso med avti in ob parkiriščih."
    ]
   },
   {
@@ -57,6 +64,11 @@
      "id": "storitve-2",
      "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da pregleda prazne prostore v svoji lasti v naselju, primerne za pošto, bankomat ali pekarno?"
     }
+   ],
+   "opis": "Pošto pogreša 205 od 256 (80 %), banko 147 od 256 (57 %). Pod »drugo« največkrat navajajo pekarno.",
+   "citati": [
+    "V naselju ni več pošte.",
+    "Banko smo včasih imeli, zdaj je ni več."
    ]
   },
   {
@@ -72,6 +84,10 @@
      "id": "promet-2",
      "besedilo": "Ali se zavežete, da boste do začetka šolskega leta 2027/28 dali pobudo MOL za varne prehode in umirjanje prometa ob šoli in vrtcu?"
     }
+   ],
+   "opis": "Z novo prometno ureditvijo ni zadovoljnih 167 od 236 (71 %). Pot otrok v šolo in vrtec je za 52 od 96 staršev »ne preveč varna« ali »nevarna«.",
+   "citati": [
+    "Prehodi čez Luize Pesjakove – avti drvijo, ne ustavljajo niti otrokom."
    ]
   },
   {
@@ -87,6 +103,10 @@
      "id": "varnost-2",
      "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL za redne obhode in hitro odstranjevanje igel na mestih, ki jih navajajo prebivalci, in o odgovoru poročali?"
     }
+   ],
+   "opis": "Varnost je med temami izbralo 113 od 306 (37 %). Med njimi jo 29 občuti skoraj vsak dan, 18 vsak teden.",
+   "citati": [
+    "Preveč droge (prodajanja, uživanja in smeti)."
    ]
   },
   {
@@ -102,6 +122,10 @@
      "id": "klopi-2",
      "besedilo": "Ali se zavežete, da boste lastnikom in upravnikom, ki želijo klop na zemljišču ob bloku, v prvem letu mandata ponudili pomoč z informacijami (npr. vzorec sklepa zbora lastnikov)?"
     }
+   ],
+   "opis": "Več klopi si želi 110 od 306 (36 %). Kot mesta navajajo okolico stolpnic, pot do trgovin, igrišča in mesta v senci.",
+   "citati": [
+    "Predvsem okrog stolpnic pogrešam klopce, sploh poleti v senci."
    ]
   },
   {
@@ -117,6 +141,11 @@
      "id": "cistoca-2",
      "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL za pogostejše praznjenje košev, nadzor pasjih iztrebkov in označen prostor za pse?"
     }
+   ],
+   "opis": "Čistočo je izbralo 94 od 306; 58 od 92 jih to moti skoraj vsak dan. Skupno čistilno akcijo podpira 269 od 306 (88 %).",
+   "citati": [
+    "Smeti po naselju, polni in odprti smetnjaki …",
+    "Več zabojnikov za pasje iztrebke in vrečke za pobiranje iztrebkov."
    ]
   },
   {
@@ -132,6 +161,10 @@
      "id": "zelenje-2",
      "besedilo": "Ali se zavežete, da boste prebivalce vključili pri izbiri mest za nova drevesa, preden jih predlagate v plan malih del 2028–2029?"
     }
+   ],
+   "opis": "Drevesa in zelenice je izbralo 70 od 306 (23 %). Med njimi 40 od 66 kaj moti skoraj vsak dan.",
+   "citati": [
+    "Nadomeščanje dreves po tem, ko kakšnega požagajo."
    ]
   },
   {
@@ -147,6 +180,10 @@
      "id": "dom-2",
      "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL, da objavi načrt in rok obnove stavbe na Belokranjski 6, ter objavili urnik doma?"
     }
+   ],
+   "opis": "Dom skupnosti je med temami izbralo 70 od 306. Najpogosteje bi uporabljali prostor za druženje in kavo (82), vadbo za starejše (74) in delavnico za popravila (68).",
+   "citati": [
+    "Manjka dogodkov, ki bi nas sosede povezovali."
    ]
   },
   {
@@ -162,6 +199,10 @@
      "id": "zrak-2",
      "besedilo": "Ali se zavežete, da boste pritožbe prebivalcev zaradi hrupa (železnica, glavne ceste) zbirali in jih vsaj enkrat na leto posredovali MOL, prebivalcem pa poročali o odgovorih?"
     }
+   ],
+   "opis": "Boljši zrak je izbralo 67 od 306. Zrak jih skoraj vsak dan moti 50 od 66, hrup 44 od 50.",
+   "citati": [
+    "Hrup! Predvsem hrup iz železniške postaje."
    ]
   },
   {
@@ -177,6 +218,11 @@
      "id": "mladi-2",
      "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih od MOL pridobili in objavili podatek, ali je obnova igral med Savsko, Linhartovo in Mislejevo izvedena (v proračunu je bila načrtovana, izvedba ni potrjena)?"
     }
+   ],
+   "opis": "Igrišča in prostor za mlade je izbralo 55 od 306 (18 %). Mladi (majhen vzorec) najpogosteje odgovorijo, da se v naselju ne zadržujejo, pogrešajo pa prostor pod streho.",
+   "citati": [
+    "Šolsko igrišče zaprto z ograjo … šola je vedno bila središče dogajanja.",
+    "Kakšen prostor za mlade bi bil potreben."
    ]
   },
   {
@@ -192,7 +238,9 @@
      "id": "upravniki-2",
      "besedilo": "Ali se zavežete, da bo ČS vsaj enkrat na leto sklicala srečanje z upravniki v naselju, prvo do konca leta 2027?"
     }
-   ]
+   ],
+   "opis": "Upravnik je »malo« ali »sploh ne« odziven za 122 od 253 (48 %). Na zbore lastnikov redno hodi polovica, brez dvigala živi 91 od 294 (31 %).",
+   "citati": []
   },
   {
    "id": "maladela",
@@ -219,7 +267,9 @@
      "id": "maladela-5",
      "besedilo": "Ali se zavežete, da bo ČS v prvih 6 mesecih začela javno voditi seznam pobud iz naselja s stanjem sprejeto / izvedeno / zavrnjeno (z razlogom) in ga posodabljala vsaj vsake 3 mesece?"
     }
-   ]
+   ],
+   "opis": "Več predlogov iz ankete je opreme, ki je lahko del malih del: klopi je izbralo 110, čistočo in koše 94, drevesa 70, igrišča 55 od 306.",
+   "citati": []
   }
  ]
 }
