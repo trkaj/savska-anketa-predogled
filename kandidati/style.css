@@ -1,0 +1,26 @@
+:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b}
+*{box-sizing:border-box}body{margin:0;font:17px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f2;color:var(--t)}
+.hd{background:var(--g);color:#fff;display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:6px solid var(--y)}
+.hd img{border-radius:8px;background:#fff}.hd h1{margin:0;font-size:1.35rem;color:var(--y)}.hd p{margin:2px 0 0;font-size:.9rem}
+main{max-width:760px;margin:auto;padding:12px}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px #0002}
+h2{color:var(--g);margin-top:0;font-size:1.2rem}h3{color:var(--g2);font-size:1.05rem}
+.intro{border-left:6px solid var(--y)}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input[type=text],input:not([type]),input[type=email],input[type=url],textarea{width:100%;padding:10px;border:2px solid #9aa;border-radius:8px;font:inherit}
+textarea{min-height:110px}
+input:focus,textarea:focus,button:focus{outline:3px solid var(--y);outline-offset:2px}
+.q{border-top:1px solid #dde;padding-top:12px;margin-top:12px}.q p.qt{font-weight:600;margin:0 0 6px}
+.radios{display:flex;gap:8px;flex-wrap:wrap;border:0;padding:0;margin:0}.radios label{font-weight:500;margin:0;padding:8px 14px;border:2px solid var(--g2);border-radius:999px;cursor:pointer}
+.radios input{accent-color:var(--g2)}.radios label:has(input:checked){background:var(--g2);color:#fff}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+button{font:inherit;padding:10px 16px;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;min-height:44px}
+button.pri{background:var(--y);border-color:var(--y);color:#000;font-weight:700}
+.mic[aria-pressed=true]{background:#c62828;color:#fff;border-color:#c62828}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.small{font-size:.88rem;color:#444}.msg{color:#a00;font-weight:600}.ok{color:var(--g2)}
+.cnt.over{color:#a00;font-weight:700}
+.pick label{font-weight:500}.chk{font-weight:500}
+.warn{background:#ffe08a;border:2px solid #b07800;padding:12px;margin:12px;border-radius:8px;font-weight:600}
+.rv{border-top:1px solid #dde;padding:8px 0}.rv b{color:var(--g)}
+footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
