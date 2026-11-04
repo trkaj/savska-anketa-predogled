@@ -8,7 +8,8 @@ const CONFIG = {
 };
 const $ = s => document.querySelector(s);
 const ph = s => !s || /\[.*\]/.test(s);
-let Q = null, state = {};
+let Q = null, G = {}, state = {};
+const NVSEH = 313; // vseh oddanih anket v izvozu
 const words = t => (t.trim().match(/\S+/g) || []).length;
 const VIDEO_RE = /^https:\/\/(www\.)?(youtube\.com\/(watch\?v=|shorts\/)[\w-]{6,}|youtu\.be\/[\w-]{6,}|drive\.google\.com\/(file\/d\/|open\?id=)[\w-]+|vimeo\.com\/\d+)/i;
 
@@ -20,6 +21,7 @@ async function init(){
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
   Q = await (await fetch('questions.json')).json();
+  try{G=await (await fetch('grafi/grafi.json')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore();
@@ -45,12 +47,16 @@ function render(){
       <label for="v-${q.id}">Povezava do videa (neobvezno, največ 2 min)</label>
       <input type="url" id="v-${q.id}" name="v-${q.id}" placeholder="https://youtu.be/… ali Drive / Vimeo" inputmode="url">
       <p class="msg vmsg" aria-live="polite"></p></div>`).join('');
-    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${qs}</section>`);
+    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${graf(s.id)}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
   document.querySelectorAll('input[type=url]').forEach(i=>i.addEventListener('blur',()=>vcheck(i)));
   setupMic();
 }
+function graf(id){const g=G[id];if(!g)return '';
+  return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
+  <img src="${g.slika}" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <p class="small vir">Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}${g.pobude!=null?` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`:''}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function vcheck(i){const m=i.closest('.q').querySelector('.vmsg');const v=i.value.trim();const ok=!v||VIDEO_RE.test(v);
   m.textContent=ok?'':'Prosimo, vpišite povezavo YouTube, Google Drive ali Vimeo (začne se s https://).';i.setAttribute('aria-invalid',!ok);return ok}

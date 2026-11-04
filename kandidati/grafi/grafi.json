@@ -1,0 +1,123 @@
+{
+ "parkiranje": {
+  "slika": "grafi/parkiranje.png",
+  "vprasanje": "Kaj bi bilo najbolj nujno izboljšati? Izberite do 5 težav, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše.",
+  "stevilka": 2,
+  "moznosti": "14 tem + Drugo (do 5 izbir)",
+  "n": 306,
+  "opomba": "",
+  "izbor": "",
+  "alt": "Kaj bi bilo najbolj nujno izboljšati? Izberite do 5 težav, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše. – Parkiranje: 238/306; niso izbrali: 68/306",
+  "pobude": 202
+ },
+ "storitve": {
+  "slika": "grafi/storitve.png",
+  "vprasanje": "Katere storitve v bližini pogrešate? (lahko več)",
+  "stevilka": 7,
+  "moznosti": "Pošta / Banka / Trgovina / Lekarna / Drugo",
+  "n": 256,
+  "opomba": "Možnih je več odgovorov, zato vsota presega 100 %.",
+  "izbor": "",
+  "alt": "Katere storitve v bližini pogrešate? (lahko več) – Pošta: 205/256; Banka: 147/256; Trgovina: 19/256; Lekarna: 25/256; Drugo: 35/256",
+  "pobude": 0
+ },
+ "promet": {
+  "slika": "grafi/promet.png",
+  "vprasanje": "Kako ste zadovoljni z novo prometno ureditvijo v naselju?",
+  "stevilka": 6,
+  "moznosti": "Super je / Je v redu / Slabo / Katastrofa / Ne vem",
+  "n": 236,
+  "opomba": "Odgovori »Ne vem« (37) niso v osnovi. »Slabo« ali »Katastrofa«: 167/236 (70,8 %).",
+  "izbor": "",
+  "alt": "Kako ste zadovoljni z novo prometno ureditvijo v naselju? – Super je: 8/236; Je v redu: 61/236; Slabo: 92/236; Katastrofa: 75/236",
+  "pobude": 225
+ },
+ "varnost": {
+  "slika": "grafi/varnost.png",
+  "vprasanje": "Kako pogosto vas to prizadene? (tema »Igle in droge, občutek varnosti«)",
+  "stevilka": 3,
+  "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
+  "n": 113,
+  "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
+  "izbor": "Temo »Igle in droge, občutek varnosti« je med do 5 težavami (vprašanje 2) izbralo 113/306 (36,9 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Igle in droge, občutek varnosti«) – Skoraj vsak dan: 29/113; Vsak teden: 18/113; Nekajkrat na mesec: 44/113; Redko: 22/113",
+  "pobude": 13
+ },
+ "klopi": {
+  "slika": "grafi/klopi.png",
+  "vprasanje": "Kako pogosto vas to prizadene? (tema »Več klopi«)",
+  "stevilka": 3,
+  "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
+  "n": 106,
+  "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
+  "izbor": "Temo »Več klopi« je med do 5 težavami (vprašanje 2) izbralo 110/306 (35,9 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Več klopi«) – Skoraj vsak dan: 24/106; Vsak teden: 35/106; Nekajkrat na mesec: 33/106; Redko: 14/106",
+  "pobude": 22
+ },
+ "cistoca": {
+  "slika": "grafi/cistoca.png",
+  "vprasanje": "Ali podpirate čistilne akcije (Čistilni četrtek), ko bi vsi prebivalci skupaj očistili Savsko naselje?",
+  "stevilka": 5,
+  "moznosti": "Da, podpiram 1-krat na mesec / Da, podpiram 1-krat na teden / Da, podpiram 1-krat na leto / Drugo: … / Ne podpiram",
+  "n": 306,
+  "opomba": "",
+  "izbor": "Temo »Čistoča in pasji iztrebki« je med do 5 težavami (vprašanje 2) izbralo 94/306 (30,7 %).",
+  "alt": "Ali podpirate čistilne akcije (Čistilni četrtek), ko bi vsi prebivalci skupaj očistili Savsko naselje? – Da, podpiram 1-krat na mesec: 184/306; Da, podpiram 1-krat na teden: 14/306; Da, podpiram 1-krat na leto: 71/306; Drugo: 26/306; Ne podpiram: 11/306",
+  "pobude": 136
+ },
+ "zelenje": {
+  "slika": "grafi/zelenje.png",
+  "vprasanje": "Kako pogosto vas to prizadene? (tema »Drevesa in zelenice«)",
+  "stevilka": 3,
+  "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
+  "n": 66,
+  "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
+  "izbor": "Temo »Drevesa in zelenice« je med do 5 težavami (vprašanje 2) izbralo 70/306 (22,9 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Drevesa in zelenice«) – Skoraj vsak dan: 40/66; Vsak teden: 14/66; Nekajkrat na mesec: 9/66; drugo: 3/66",
+  "pobude": 224
+ },
+ "dom": {
+  "slika": "grafi/dom.png",
+  "vprasanje": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2.",
+  "stevilka": 14,
+  "moznosti": "prostor za druženje in kavo / vadba in druženje za starejše / delavnica za popravila (kolesa, orodje) / srečanja in zbori prebivalcev / prostor za najstnike z mladinskim delavcem / učna pomoč za otroke / nič od tega",
+  "n": 248,
+  "opomba": "Vprašanje za starostno skupino 25–64 let; največ 2 izbiri, zato vsota presega 100 %.",
+  "izbor": "",
+  "alt": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2. – prostor za druženje in kavo: 82/248; vadba in druženje za starejše: 74/248; delavnica za popravila (kolesa, orodje): 68/248; srečanja in zbori prebivalcev: 57/248; prostor za najstnike z mladinskim delavcem: 53/248; učna pomoč za otroke: 31/248; nič od tega: 26/248",
+  "pobude": 6
+ },
+ "zrak": {
+  "slika": "grafi/zrak.png",
+  "vprasanje": "Kako pogosto vas to prizadene? (tema »Boljši zrak«)",
+  "stevilka": 3,
+  "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
+  "n": 66,
+  "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
+  "izbor": "Temo »Boljši zrak« je med do 5 težavami (vprašanje 2) izbralo 67/306 (21,9 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Boljši zrak«) – Skoraj vsak dan: 50/66; Vsak teden: 7/66; Nekajkrat na mesec: 8/66; drugo: 1/66",
+  "pobude": 28
+ },
+ "mladi": {
+  "slika": "grafi/mladi.png",
+  "vprasanje": "Kako pogosto vas to prizadene? (tema »Igrišča in prostor za mlade«)",
+  "stevilka": 3,
+  "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
+  "n": 54,
+  "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
+  "izbor": "Temo »Igrišča in prostor za mlade« je med do 5 težavami (vprašanje 2) izbralo 55/306 (18,0 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Igrišča in prostor za mlade«) – Skoraj vsak dan: 20/54; Vsak teden: 18/54; Nekajkrat na mesec: 9/54; Redko: 7/54",
+  "pobude": 89
+ },
+ "upravniki": {
+  "slika": "grafi/upravniki.png",
+  "vprasanje": "Kako ste zadovoljni z upravnikom? – Odzivnost",
+  "stevilka": 8,
+  "moznosti": "Zelo / Kar / Malo / Sploh ne / Ne vem",
+  "n": 253,
+  "opomba": "Odgovarjali so tisti, ki vedo, kdo je upravnik njihovega bloka.",
+  "izbor": "",
+  "alt": "Kako ste zadovoljni z upravnikom? – Odzivnost – Zelo: 21/253; Kar: 87/253; Malo: 57/253; Sploh ne: 65/253; Ne vem: 23/253",
+  "pobude": 55
+ }
+}
