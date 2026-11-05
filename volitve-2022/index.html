@@ -109,7 +109,7 @@
 #savsko-story .ss-evidence-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
 #savsko-story .ss-source-link{font-size:12px}
 #savsko-story .ss-comparison-value small{display:block;font-size:12px;font-weight:400;color:var(--muted-foreground);white-space:nowrap}
-#savsko-story .ss-compare-all{width:100%;max-width:1010px;min-width:0}
+#savsko-story .ss-compare-all{width:100%;max-width:1010px;min-width:0;overflow-x:auto}
 #savsko-story .ss-compare-all .form-label{display:inline-block;margin-right:9px}
 #savsko-story .ss-compare-all .form-select{padding-top:6px;padding-bottom:6px}
 #savsko-story .ss-compare-detail{margin:21px 0 30px}
@@ -477,11 +477,12 @@ function comparisonTable() {
     <td><span class="ss-result-number">${rawLink(i, p(local[i],localValid))}</span><small>${whole(local[i])}</small></td>
     <td><span class="ss-result-number">${sourceLink('district',p(district[i],districtValid),`Uradni izid za celotno ČS · ${names[i]}`)}</span><small>${whole(district[i])}</small></td>
     <td class="ss-diff">${delta(i)}</td>
+    <td>${seats[i] ? `<span class="ss-result-number">${sourceLink('seats', whole(seats[i]), `Mandati · ${names[i]}`)}</span>` : '0'}</td>
   </tr>`).join('');
   return `<table class="ss-summary"><caption class="ss-reader">Deleži veljavnih glasov in število glasov. Razlika je Savsko minus celotna ČS, v odstotnih točkah.</caption>
-    <thead><tr><th scope="col">Lista</th><th scope="col">Savsko<small>3 volišča</small></th><th scope="col">ČS Bežigrad<small>vsa volišča</small></th><th scope="col">Razlika<small>odst. točke</small></th></tr></thead>
+    <thead><tr><th scope="col">Lista</th><th scope="col">Savsko<small>3 volišča</small></th><th scope="col">ČS Bežigrad<small>vsa volišča</small></th><th scope="col">Razlika<small>odst. točke</small></th><th scope="col">Mandati<small>izvoljeni</small></th></tr></thead>
     <tbody>${rows}</tbody></table>
-    <p class="ss-table-key">Ob deležu je število glasov. Klik na savski delež pokaže tri volišča, klik na delež ČS odpre uradni izid.</p>`;
+    <p class="ss-table-key">Ob deležu je število glasov. Klik na savski delež pokaže tri volišča, klik na delež ČS odpre uradni izid. Mandati so za celotno četrt; imena izvoljenih so v prizoru »Kdo je bil izvoljen?«.</p>`;
 }
 function districtDetail(i) {
   const rows = barRow(rawLink(i, 'Savsko · tri volišča'),local[i],localValid) +
@@ -518,8 +519,8 @@ function dataTable() {
     <thead><tr><th scope="col">Lista</th>${heads}<th scope="col">Savsko<small>seštevek</small></th><th scope="col">Celotna ČS<small>glasovi</small></th><th scope="col">Mandati<small>celotna ČS</small></th></tr></thead>
     <tbody>${rows}</tbody><tfoot>${totals}</tfoot></table></div>
     <h3>Izvoljeni v svet ČS Bežigrad leta 2022</h3>
-    <div class="table-responsive"><table class="table ss-person-table"><thead><tr><th scope="col">Ime in priimek</th><th scope="col">Lista</th></tr></thead>
-    <tbody>${elected.map(person=>`<tr><th scope="row">${electedLink(person)}</th><td>${names[person.party]}</td></tr>`).join('')}</tbody></table></div>
+    <div class="table-responsive"><table class="table ss-person-table"><thead><tr><th scope="col">Ime in priimek</th><th scope="col">Lista</th><th scope="col">Savsko<small>lista</small></th><th scope="col">ČS Bežigrad<small>lista</small></th></tr></thead>
+    <tbody>${elected.map(person=>`<tr><th scope="row">${electedLink(person)}</th><td>${names[person.party]}</td><td>${p(local[person.party],localValid)}<small>${whole(local[person.party])}</small></td><td>${p(district[person.party],districtValid)}<small>${whole(district[person.party])}</small></td></tr>`).join('')}</tbody></table></div>
     <details class="ss-area-note"><summary>Kateri izvoljeni so imeli ob volitvah naslov v okolišu OŠ Savsko naselje?</summary>
     <p>Naslovi treh izvoljenih sodijo v šolski okoliš OŠ Savsko naselje. To so Đorđe Berak (Gibanje Svoboda), Zala Metlika (Levica) in Klemen Traven (SDS). Za to primerjavo smo uporabili naslove iz poročila za leto 2022 in objavljeni seznam ulic s hišnimi številkami. Vseh 17 članov sveta je bilo izvoljenih v eni volilni enoti za celotno četrt.</p>
     <p class="ss-ref-list">${sourceLink('report','Uradni list · razdelek IV')} ${sourceLink('areaList')}</p></details>`;
@@ -609,12 +610,12 @@ const story = [
   {
     tag: "09 / IZVOLJENI",
     title: "Kdo je bil izvoljen?",
-    sub: "Vseh 17 izvoljenih članic in članov sveta ČS Bežigrad · klik na ime odpre uradni izid.",
+    sub: "Vseh 17 izvoljenih članic in članov sveta ČS Bežigrad. Ob imenu je, kako je njihova lista dobila na Savskem in v celotni ČS.",
     caption: "Članstvo ob izvolitvi 20. novembra 2022.",
     scope: "district",
     refs: ["elected1", "elected2", "report"],
-    note: "Seznam je razvrščen po listah. Vsako ime je povezano s stranjo občinskega izpisa, na kateri je oseba navedena. Morebitne poznejše spremembe članstva sodijo v zgodovino mandata.",
-    render: () => `<div class="ss-names">${elected.map((x,j)=>`<div class="ss-name" style="--delay:${j*75}ms"><span class="ss-name-number">${String(j+1).padStart(2,'0')}</span><div class="ss-person"><span>${electedLink(x)}</span><span class="text-small">${names[x.party]}</span></div></div>`).join('')}</div>`
+    note: "Seznam je razvrščen po listah. Vsako ime je povezano s stranjo občinskega izpisa, na kateri je oseba navedena. Ob imenu je delež liste na treh savskih voliščih in v celotni ČS. Morebitne poznejše spremembe članstva sodijo v zgodovino mandata.",
+    render: () => `<div class="ss-names">${elected.map((x,j)=>`<div class="ss-name" style="--delay:${j*75}ms"><span class="ss-name-number">${String(j+1).padStart(2,'0')}</span><div class="ss-person"><span>${electedLink(x)}</span><span class="text-small">${names[x.party]}</span><span class="text-small">${p(local[x.party], localValid)} na Savskem · ${p(district[x.party], districtValid)} v celotni ČS</span></div></div>`).join('')}</div>`
   },
   {
     tag: "10 / POVZETEK",
