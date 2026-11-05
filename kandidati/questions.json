@@ -308,6 +308,32 @@
    ],
    "opis": "Več predlogov iz ankete je opreme, ki je lahko del malih del: klopi je izbralo 128, čistočo in koše 108, drevesa 84, igrišča 63 od 350.",
    "citati": []
+  },
+  {
+   "id": "zakaj",
+   "naslov": "Zakaj glasovati za vas",
+   "enaka": true,
+   "obvezno": true,
+   "opis": "Ta sklop je za vse liste enak in ni med petimi prioritetnimi temami.",
+   "vprasanja": [
+    {
+     "id": "zakaj-1",
+     "tip": "besedilo",
+     "besedilo": "Zakaj naj prebivalka ali prebivalec Savskega naselja glasuje prav za vašo listo?",
+     "polje": "Vaš odgovor"
+    },
+    {
+     "id": "zakaj-2",
+     "tip": "besedilo",
+     "besedilo": "Kaj lahko prebivalci Savskega naselja pričakujejo prav od vas, če boste izvoljeni?",
+     "polje": "Vaš odgovor"
+    },
+    {
+     "id": "zakaj-3",
+     "besedilo": "Če ne boste izvoljeni v svet ČS, se boste še vseeno trudili za Savsko naselje — in kaj boste naredili?",
+     "polje": "Kaj boste naredili"
+    }
+   ]
   }
  ]
 }

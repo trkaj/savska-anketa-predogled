@@ -18,8 +18,8 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105x')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105x')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105y')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105y')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore(); setupGrafZoom();
@@ -30,6 +30,7 @@ async function init(){
   $('#prenesiT').onclick = ()=>dl(toTxt(payload()),'txt','text/plain');
 }
 
+function jeEnaka(s){return s.id==='obvescanje'||!!s.enaka;}
 function uniquePrios(){
   return [...new Set([...document.querySelectorAll('input.priobox:checked')].map(b=>b.dataset.s).filter(Boolean))];
 }
@@ -70,7 +71,7 @@ function renderLestvica(){
   const el=$('#lestvica'); if(!el) return;
   let tema=0;
   const rows=Q.sekcije.map(s=>{
-    const numbered=s.id!=='obvescanje';
+    const numbered=!jeEnaka(s);
     if(numbered) tema++;
     const ime=numbered?`${tema}. tema ${esc(s.naslov)}`:esc(s.naslov);
     if(!numbered){
@@ -84,21 +85,22 @@ function render(){
   renderLestvica();
   const sek=$('#sekcije'); let tema=0;
   Q.sekcije.forEach(s=>{
-    const numbered=s.id!=='obvescanje';
+    const numbered=!jeEnaka(s);
     if(numbered) tema++;
     const naslov=numbered
       ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
       : `<h2>${esc(s.naslov)}</h2>`;
-    const prio=s.id==='obvescanje'
-      ? `<p class="obv-tema">Ta tema je za vse liste enaka, zato ni med petimi prioritetnimi temami. Prosimo, da nanjo odgovorite v celoti.</p>`
+    const prio=jeEnaka(s)
+      ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med petimi prioritetnimi temami. Prosimo, da nanj odgovorite v celoti.</p>`
       : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
       const polje=q.polje||'Razlaga zaveze (kako in do kdaj, lasten predlog, …)';
       const razlaga=q.razlaga||'';
+      const radios=q.tip==='besedilo'?'':`<fieldset class="radios" aria-labelledby="t-${q.id}"><legend class="small">Odgovor</legend>
+        ${['Da','Ne','Delno'].map(v=>`<label><input type="radio" name="r-${q.id}" value="${v}"> ${v}</label>`).join('')}</fieldset>`;
       return `<div class="q" data-q="${q.id}">
       <p class="qt" id="t-${q.id}">${i+1}. ${esc(q.besedilo)}</p>
-      <fieldset class="radios" aria-labelledby="t-${q.id}"><legend class="small">Odgovor</legend>
-        ${['Da','Ne','Delno'].map(v=>`<label><input type="radio" name="r-${q.id}" value="${v}"> ${v}</label>`).join('')}</fieldset>
+      ${radios}
       <label for="x-${q.id}">${esc(polje)}</label>
       ${razlaga?`<p class="small razlaga">${esc(razlaga)}</p>`:''}
       <textarea id="x-${q.id}" name="x-${q.id}" aria-describedby="c-${q.id}"></textarea>
@@ -144,7 +146,7 @@ function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img class="gz" src="${g.slika}?v=20261105x" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
+  <img class="gz" src="${g.slika}?v=20261105y" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
@@ -197,16 +199,16 @@ function validate(){
   const c=collect(),e=[];
   if(!c.lista)e.push('Vpišite ime liste.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
-  if(c.prioritet.includes('obvescanje')) e.push('Obveščanje ni med prioritetnimi temami — je enako za vse liste.');
+  if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med prioritetnimi temami — sta enaka za vse liste.');
   if(c.prioritet.length!==5)e.push('Označite 5 prioritetnih tem (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
-  pset.add('obvescanje');
+  Q.sekcije.filter(jeEnaka).forEach(s=>pset.add(s.id));
   let manj=0,prazno=0,dolg=0;
   Q.sekcije.forEach(s=>{
     if(!pset.has(s.id)) return;
     s.vprasanja.forEach(q=>{
       const a=c.odg[q.id];
-      if(!a.odgovor) manj++;
+      if(q.tip!=='besedilo' && !a.odgovor) manj++;
       if(!String(a.besedilo||'').trim()) prazno++;
       if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed) dolg++;
     });
