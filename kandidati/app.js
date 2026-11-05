@@ -18,8 +18,8 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105f')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105f')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105g')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105g')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore();
@@ -64,7 +64,9 @@ function render(){
     const naslov=numbered
       ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
       : `<h2>${esc(s.naslov)}</h2>`;
-    const prio=`<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
+    const prio=s.id==='obvescanje'
+      ? `<p class="obv-tema">Ta tema je za vse liste enaka, zato ni med petimi prioritetnimi temami. Prosimo, da nanjo odgovorite v celoti.</p>`
+      : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
       const polje=q.polje||'Razlaga zaveze (kako in do kdaj)';
       const razlaga=q.razlaga||'';
@@ -89,7 +91,7 @@ function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img src="${g.slika}?v=20261105f" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <img src="${g.slika}?v=20261105g" alt="${esc(g.alt)}" loading="lazy" width="704">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
@@ -142,8 +144,10 @@ function validate(){
   const c=collect(),e=[];
   if(!c.lista)e.push('Vpišite ime liste.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
+  if(c.prioritet.includes('obvescanje')) e.push('Obveščanje ni med prioritetnimi temami — je enako za vse liste.');
   if(c.prioritet.length!==5)e.push('Označite 5 prioritetnih tem (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
+  pset.add('obvescanje');
   let manj=0,prazno=0,dolg=0;
   Q.sekcije.forEach(s=>{
     if(!pset.has(s.id)) return;
@@ -154,8 +158,8 @@ function validate(){
       if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed) dolg++;
     });
   });
-  if(manj)e.push(`Pri ${manj} vprašanjih na prioritetnih temah še ni izbran odgovor Da / Ne / Delno.`);
-  if(prazno)e.push(`Pri ${prazno} vprašanjih na prioritetnih temah še manjka razlaga, kako in do kdaj.`);
+  if(manj)e.push(`Pri ${manj} obveznih vprašanjih (obveščanje ali prioritetne teme) še ni izbran odgovor Da / Ne / Delno.`);
+  if(prazno)e.push(`Pri ${prazno} obveznih vprašanjih (obveščanje ali prioritetne teme) še manjka razlaga zaveze (kako in do kdaj).`);
   if(dolg)e.push(`${dolg} odgovorov je daljših od ${CONFIG.maxBesed} besed.`);
   const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
   if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
