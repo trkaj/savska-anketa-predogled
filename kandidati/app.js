@@ -18,11 +18,11 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105p')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105p')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105q')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105q')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
-  render(); restore();
+  render(); restore(); setupGrafZoom();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=true;$('#oddaj').textContent='Oddaja bo odprta kmalu';}
@@ -112,11 +112,38 @@ function render(){
   setupMic();
   syncPrio();
 }
+
+function setupGrafZoom(){
+  let box = $('#grafzoom');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'grafzoom';
+    box.hidden = true;
+    box.setAttribute('role','dialog');
+    box.setAttribute('aria-modal','true');
+    box.setAttribute('aria-label','Povečan graf');
+    box.innerHTML = '<img alt="">';
+    document.body.appendChild(box);
+    const close = () => { box.hidden = true; box.querySelector('img').removeAttribute('src'); };
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if(e.key==='Escape' && !box.hidden) close(); });
+  }
+  const open = src => {
+    const im = box.querySelector('img');
+    im.src = src.src;
+    im.alt = src.alt || 'Povečan graf';
+    box.hidden = false;
+  };
+  document.querySelectorAll('.graf img').forEach(el => {
+    el.addEventListener('click', () => open(el));
+    el.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(el); } });
+  });
+}
 function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img src="${g.slika}?v=20261105p" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <img class="gz" src="${g.slika}?v=20261105q" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){

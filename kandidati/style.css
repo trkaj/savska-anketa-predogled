@@ -24,7 +24,7 @@ button.pri{background:var(--y);border-color:var(--y);color:#000;font-weight:700}
 .warn{background:#ffe08a;border:2px solid #b07800;padding:12px;margin:12px;border-radius:8px;font-weight:600}
 .rv{border-top:1px solid #dde;padding:8px 0}.rv b{color:var(--g)}
 footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
-.graf{margin:6px 0 14px;padding:10px;background:var(--y2);border-radius:8px}.graf img{width:100%;height:auto;display:block;background:#fff;border-radius:6px}.gq{font-size:.92rem;font-weight:600;color:var(--g);margin-bottom:6px}.vir{margin:6px 0 0}
+.graf{margin:6px 0 14px;padding:10px;background:var(--y2);border-radius:8px}.graf img{width:100%;height:auto;display:block;background:#fff;border-radius:6px;cursor:zoom-in}.graf img:focus{outline:3px solid var(--g);outline-offset:2px}.gq{font-size:.92rem;font-weight:600;color:var(--g);margin-bottom:6px}.vir{margin:6px 0 0}
 
 .opis{margin:4px 0 10px;line-height:1.45}.cit{margin:0 0 14px}.cit blockquote{margin:4px 0;padding:6px 10px;border-left:4px solid var(--y);font-style:italic;background:#fafaf5}
 
@@ -48,3 +48,7 @@ h2 .tema-lab{font-weight:650;font-size:1.05rem;color:var(--g2);margin-right:.35r
 #lestvica a:hover{text-decoration:underline}
 #lestvica .lez-enaka{opacity:.95}
 html{scroll-behavior:smooth}
+
+#grafzoom{position:fixed;inset:0;z-index:80;background:rgba(11,61,36,.88);display:flex;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+#grafzoom[hidden]{display:none}
+#grafzoom img{max-width:min(1200px,100%);max-height:100%;width:auto;height:auto;background:#fff;border-radius:8px;box-shadow:0 8px 32px #0006;cursor:zoom-out}
