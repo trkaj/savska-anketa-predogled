@@ -124,11 +124,11 @@
   "vprasanje": "Kako spremljate seje ČS Bežigrad, kako ste obveščeni o spremembah OPPN in ali bi sodelovali pri skupnih stvareh?",
   "stevilka": "—",
   "moznosti": "seje / OPPN / sodelovanje / obveščanje upravnika",
-  "n": 204,
-  "opomba": "Podatki o sejah, OPPN in sodelovanju so iz ločenega dela ankete (n = 204 / 203 / 233) in niso povezani z ostalimi odgovori. Upravnik: iz glavne ankete, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
+  "n": 276,
+  "opomba": "Podatki o sejah, OPPN in sodelovanju so iz ločenega dela ankete (n = 276 / 277 / 322) in niso povezani z ostalimi odgovori. Upravnik: iz glavne ankete, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
   "izbor": "",
-  "alt": "Obveščanje in komunikacija s ČS Bežigrad – seje ČS ne spremlja 151 od 204 (74 %) – seje: redno 6/204, občasno 47/204, ne a bi želel 29/204, ne 122/204; OPPN dobro 9/203; sodelovanje da+mogoče 176/233; upravnik malo+sploh ne 126/285",
-  "vir": "Vir: ločen del Savske ankete o spremljanju sej ČS, obveščenosti o OPPN in pripravljenosti za sodelovanje (n = 204 / 203 / 233). Upravnik: vprašanje o obveščanju upravnika, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
+  "alt": "Obveščanje in komunikacija s ČS Bežigrad – seje ČS ne spremlja 204 od 276 (74 %) – seje: redno 9/276, občasno 63/276, ne a bi želel 41/276, ne 163/276; OPPN dobro 9/277; sodelovanje da+mogoče 238/322; upravnik malo+sploh ne 126/285",
+  "vir": "Vir: ločen del Savske ankete o spremljanju sej ČS, obveščenosti o OPPN in pripravljenosti za sodelovanje (n = 276 / 277 / 322). Upravnik: vprašanje o obveščanju upravnika, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
   "pobude": 2
  }
 }
