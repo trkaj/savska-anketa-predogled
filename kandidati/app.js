@@ -18,8 +18,8 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105g')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105g')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105h')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105h')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore();
@@ -30,33 +30,58 @@ async function init(){
   $('#prenesiT').onclick = ()=>dl(toTxt(payload()),'txt','text/plain');
 }
 
+function uniquePrios(){
+  return [...new Set([...document.querySelectorAll('input.priobox:checked')].map(b=>b.dataset.s).filter(Boolean))];
+}
 function onFormChange(ev){
   if(ev.target && ev.target.classList.contains('priobox')){
-    const boxes=[...document.querySelectorAll('input.priobox')];
-    const n=boxes.filter(b=>b.checked).length;
-    if(n>5){ev.target.checked=false;}
+    const id=ev.target.dataset.s, on=ev.target.checked;
+    document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=on);
+    if(uniquePrios().length>5){
+      document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=false);
+    }
     syncPrio();
   }
   save();
 }
 
 function syncPrio(){
-  const boxes=[...document.querySelectorAll('input.priobox')];
-  const n=boxes.filter(b=>b.checked).length;
+  const selected=uniquePrios();
+  const n=selected.length;
   const el=$('#priost');
   if(el){
     el.textContent='Prioritetne teme: '+n+' / 5';
     el.classList.toggle('ok', n===5);
     el.classList.toggle('over', n>5);
   }
-  boxes.forEach(b=>{
+  document.querySelectorAll('input.priobox').forEach(b=>{
     b.disabled=!b.checked && n>=5;
-    const sek=b.closest('.sek');
-    if(sek) sek.classList.toggle('prio-on', b.checked);
+  });
+  document.querySelectorAll('.sek').forEach(sek=>{
+    sek.classList.toggle('prio-on', selected.includes(sek.dataset.s));
+  });
+  document.querySelectorAll('#lestvica li').forEach(li=>{
+    const b=li.querySelector('input.priobox');
+    li.classList.toggle('prio-on', !!(b&&b.checked));
   });
 }
 
+function renderLestvica(){
+  const el=$('#lestvica'); if(!el) return;
+  let tema=0;
+  const rows=Q.sekcije.map(s=>{
+    const numbered=s.id!=='obvescanje';
+    if(numbered) tema++;
+    const ime=numbered?`${tema}. tema ${esc(s.naslov)}`:esc(s.naslov);
+    if(!numbered){
+      return `<li class="lez-enaka"><a href="#sek-${s.id}">${ime}</a> <span class="small">za vse enaka</span></li>`;
+    }
+    return `<li><input type="checkbox" class="priobox" data-s="${s.id}" id="lp-${s.id}" aria-label="Prioriteta: ${esc(s.naslov)}"> <a href="#sek-${s.id}">${ime}</a></li>`;
+  }).join('');
+  el.innerHTML=`<h2>Pregled tem</h2><p class="small">Označite 5 prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
+}
 function render(){
+  renderLestvica();
   const sek=$('#sekcije'); let tema=0;
   Q.sekcije.forEach(s=>{
     const numbered=s.id!=='obvescanje';
@@ -81,7 +106,7 @@ function render(){
         <span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div>
       <p class="small micmsg" aria-live="polite"></p></div>`;
     }).join('');
-    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
+    sek.insertAdjacentHTML('beforeend',`<section class="card sek" id="sek-${s.id}" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
   setupMic();
@@ -91,7 +116,7 @@ function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img src="${g.slika}?v=20261105g" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <img src="${g.slika}?v=20261105h" alt="${esc(g.alt)}" loading="lazy" width="704">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
@@ -113,8 +138,8 @@ function setupMic(){
 
 function collect(){
   const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
+  o.prioritet = uniquePrios();
   Q.sekcije.forEach(s=>{
-    if($('#p-'+s.id)&&$('#p-'+s.id).checked) o.prioritet.push(s.id);
     s.vprasanja.forEach(q=>{
       const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
       o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
@@ -126,7 +151,7 @@ function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stri
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
 function restore(){
   $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
-  (state.prioritet||[]).forEach(id=>{const b=$('#p-'+id);if(b)b.checked=true});
+  (state.prioritet||[]).forEach(id=>{document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=true)});
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
     const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)}});
