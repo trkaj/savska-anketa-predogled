@@ -425,8 +425,10 @@ const sources = {
   zupanCity: { url: pdfRoot + 'Izid-glasovanja-za-zupana-po-st.pdf', label: 'MOL · župan, celotna MOL' },
   zupanFmf: { url: 'https://volitve.fmf.uni-lj.si/lv2022/1335.html', label: 'FMF UL · župan MOL' },
   msP13: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=13', label: 'MOL · mestni svet 01-021, str. 13' },
-  msP14: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=14', label: 'MOL · mestni svet 01-022, str. 14' },
-  msP15: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=15', label: 'MOL · mestni svet 01-023, str. 15' },
+  msP14: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=13', label: 'MOL · mestni svet 01-022, str. 13–14' },
+  msP14b: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=14', label: 'MOL · mestni svet 01-022, glasovi, str. 14' },
+  msP15: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=14', label: 'MOL · mestni svet 01-023, str. 14–15' },
+  msP15b: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=15', label: 'MOL · mestni svet 01-023, konec, str. 15' },
   msCity: { url: pdfRoot + 'Izid-glasovanja-MS.pdf', label: 'MOL · mestni svet, celotna MOL' },
   msFmf: { url: 'https://volitve.fmf.uni-lj.si/lv2022/ljubljana.html', label: 'FMF UL · mestni svet MOL' },
 
@@ -644,11 +646,11 @@ function barRowFull(label, votes, total) {
 }
 function raceDelta(localVotes, localTotal, cityVotes, cityTotal) {
   const value = pct(localVotes, localTotal) - pct(cityVotes, cityTotal);
-  return (value < 0 ? '−' : value > 0 ? '+' : '') + f(Math.abs(value));
+  return (value < 0 ? '−' : value > 0 ? '+' : '') + f(Math.abs(value)) + ' o. t.';
 }
 function raceComparisonTable(opts) {
   const { names, localVotes, localTotal, cityVotes, cityTotal, firstLabel, citySource, cityTitle, districtVotes, districtTotal } = opts;
-  const order = names.map((_, i) => i).filter(i => localVotes[i] > 0).sort((a, b) => localVotes[b] - localVotes[a]);
+  const order = names.map((_, i) => i).filter(i => localVotes[i] > 0 || cityVotes[i] > 0 || (districtVotes && districtVotes[i] > 0)).sort((a, b) => localVotes[b] - localVotes[a] || cityVotes[b] - cityVotes[a]);
   const rows = order.map(i => `<tr>
     <th scope="row">${names[i]}</th>
     <td><span class="ss-result-number">${p(localVotes[i], localTotal)}</span><small>${whole(localVotes[i])}</small></td>
@@ -758,7 +760,7 @@ const mayorStory = [
     tag: "ŽUPAN / 03",
     title: "Savsko naselje,<br>Bežigrad in MOL",
     sub: "Deleži od 992 veljavnih glasov na treh savskih voliščih, 8.769 na 28 rednih voliščih v ČS Bežigrad in 88.439 v celotni MOL.",
-    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za župana so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem.",
+    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za župana so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razlika je izražena v odstotnih točkah (Savsko − MOL) in izračunana pred zaokroževanjem.",
     scope: "mayor",
     refs: ["zupanP9", "zupanP10", "zupanCity", "zupanFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Nataši Sukič in dr. Jasminki Dedić, največja negativna pri Alešu Primcu.",
@@ -784,7 +786,7 @@ const msStory = [
     sub: "Volitve v Mestni svet MOL · 20. november 2022 · volišča 01-021, 01-022 in 01-023",
     caption: "Sešteli smo iste tri volišča na OŠ Savsko naselje, Matjaževa 4. Linhartova 1 v ta seštevek ne sodi.",
     scope: "council",
-    refs: ["msP13", "msP14", "msP15"],
+    refs: ["msP13", "msP14", "msP14b", "msP15", "msP15b"],
     note: "Oddanih glasovnic je bilo 999, enako kot pri volitvah v svet četrti in za župana. Neveljavnih je bilo 18, veljavnih 981.",
     render: () => `<div class="ss-finale"><div class="ss-final-facts"><div class="ss-final-fact"><h2>999</h2><span>oddanih glasovnic na treh voliščih</span></div><div class="ss-final-fact"><h2>981</h2><span>veljavnih glasov za mestni svet</span></div><div class="ss-final-fact"><h2>18</h2><span>neveljavnih glasovnic</span></div></div></div>`
   },
@@ -794,7 +796,7 @@ const msStory = [
     sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih.",
     caption: "Liste so razvrščene po številu glasov. Imena so iz uradnega izpisa. Dobra država na teh treh voliščih ni dobila glasu.",
     scope: "council",
-    refs: ["msP13", "msP14", "msP15"],
+    refs: ["msP13", "msP14", "msP14b", "msP15", "msP15b"],
     note: "Lista Zorana Jankovića je dobila 398 glasov, Gibanje Svoboda 162, Levica 117 in SDS 81.",
     render: () => `<div class="ss-compare">${rankedBars(msNames, msLocal, msValid)}<p class="ss-compare-caption">Lestvica prikazuje delež od 981 veljavnih glasov za mestni svet. Dobra država (0 glasov) ni prikazana.</p></div>`
   },
@@ -802,9 +804,9 @@ const msStory = [
     tag: "MESTNI SVET / 03",
     title: "Savsko naselje,<br>Bežigrad in MOL",
     sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih, 8.722 na 28 rednih voliščih v ČS Bežigrad in 88.103 v celotni MOL.",
-    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za mestni svet so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
+    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za mestni svet so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razlika je izražena v odstotnih točkah (Savsko − MOL) in izračunana pred zaokroževanjem. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
     scope: "council",
-    refs: ["msP13", "msP14", "msP15", "msCity", "msFmf"],
+    refs: ["msP13", "msP14", "msP14b", "msP15", "msP15b", "msCity", "msFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Listi Zorana Jankovića, največja negativna pri SDS.",
     render: () => `<div class="ss-compare-all">${raceComparisonTable({
       names: msNames,
