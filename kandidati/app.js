@@ -67,7 +67,7 @@ async function init(){
   $('#rok').textContent = CONFIG.rok;
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
-  if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
+  if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Spletna oddaja bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in jih s pregleda pošljete na savskonaselje1@gmail.com.';}
   Q = await (await fetch('questions.json?v=20261105ag')).json();
   try{G=await (await fetch('grafi/grafi.json?v=20261105ag')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
@@ -75,7 +75,7 @@ async function init(){
   fillListe(); render(); restore(); setupGrafZoom(); setupZasebnost();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
-  $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=true;$('#oddaj').textContent='Oddaja bo odprta kmalu';}
+  $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
   $('#prenesiJ').onclick = ()=>dl(JSON.stringify(payload(),null,2),'json','application/json');
   $('#prenesiT').onclick = ()=>dl(toTxt(payload()),'txt','text/plain');
 }
@@ -299,6 +299,23 @@ function review(){
   $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.listaStevilka?p.listaStevilka+'. '+p.lista:p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>Prioritetne teme:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Predstavitev ekipe, liste ali stranke</b><br>${esc(p.predstavitev)}</div>`:'')+
     p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
+}
+
+function posljiMail(){
+  const e=validate();prikaziNapake(e);if(e.length)return;
+  const p=payload();
+  const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:(p.lista||'lista');
+  const link='https://anketa.savska.org/kandidati/';
+  dl(JSON.stringify(p,null,2),'json','application/json');
+  setTimeout(function(){ dl(toTxt(p),'txt','text/plain'); }, 250);
+  const sub='Zaveze kandidatne liste: '+oznaka;
+  const body='Pozdravljeni,\n\npovezava do obrazca: '+link+'\nLista: '+oznaka+'\nE-naslov: '+(p.email||'')+'\n\nProsimo, da v priponko dodate pravkar preneseni datoteki (JSON in txt) z odgovori.\n';
+  const s=$('#status');
+  s.className='ok';
+  s.textContent='Prenesli sta se kopiji odgovorov in odprlo se je okno pošte za savskonaselje1@gmail.com. V priponko dodajte preneseni datoteki.';
+  setTimeout(function(){
+    location.href='mailto:savskonaselje1@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  }, 400);
 }
 async function submit(){
   const s=$('#status');
