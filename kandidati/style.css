@@ -52,3 +52,10 @@ html{scroll-behavior:smooth}
 #grafzoom{position:fixed;inset:0;z-index:80;background:rgba(11,61,36,.88);display:flex;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
 #grafzoom[hidden]{display:none}
 #grafzoom img{max-width:min(1200px,100%);max-height:100%;width:auto;height:auto;background:#fff;border-radius:8px;box-shadow:0 8px 32px #0006;cursor:zoom-out}
+
+button.povezava{display:inline;padding:0;border:0;background:none;color:var(--g);font:inherit;font-weight:650;text-decoration:underline;cursor:pointer;min-height:0}
+#zasebnost-okno{max-width:40rem;width:calc(100% - 1.5rem);max-height:90vh;overflow:auto;border:none;border-radius:.7rem;padding:1.1rem 1.2rem;box-shadow:0 8px 30px rgba(0,0,0,.3);color:var(--t)}
+#zasebnost-okno::backdrop{background:rgba(0,0,0,.45)}
+#zasebnost-okno h2{margin-top:0}
+#zasebnost-okno h3{font-size:1rem;margin:.9rem 0 .2rem}
+#zasebnost-okno p,#zasebnost-okno li{font-size:.95rem}
