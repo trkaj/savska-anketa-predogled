@@ -18,8 +18,8 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105i')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105i')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105j')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105j')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore();
@@ -116,7 +116,7 @@ function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img src="${g.slika}?v=20261105i" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <img src="${g.slika}?v=20261105j" alt="${esc(g.alt)}" loading="lazy" width="704">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
@@ -160,7 +160,7 @@ function restore(){
 function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)||{}).naslov||id;
   const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,prioritet:c.prioritet.map(ime),odgovori:[]};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,sklop:s.naslov,prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
-function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddaje}\n\n`+
+function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj): ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
   a.download=`odgovori-${(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
@@ -193,7 +193,7 @@ function validate(){
 function review(){
   const e=validate();$('#err').innerHTML=e.map(esc).join('<br>');if(e.length)return;
   const p=payload();
-  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>Prioritetne teme:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Kratka predstavitev</b><br>${esc(p.predstavitev)}</div>`:'')+
+  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>Prioritetne teme:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Predstavitev ekipe, liste ali stranke</b><br>${esc(p.predstavitev)}</div>`:'')+
     p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
 }
