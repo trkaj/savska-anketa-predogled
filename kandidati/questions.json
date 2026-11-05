@@ -48,9 +48,9 @@
     },
     {
      "id": "parkiranje-2",
-     "besedilo": "Ali ste za to, da se parkiranje v Savskem naselju uredi?",
+     "besedilo": "Ali se kot člani sveta ČS zavežete, da boste v prvem letu skupaj z MOL, etažnimi lastniki in upravniki pripravili časovnico ureditve parkiranja v Savskem naselju — popis površin, predlog režima, uskladitev lastništva in obvestilo prebivalcem — s parkirnim režimom, ki stanovalcem zagotovi prednost na javnih parkirnih površinah in hkrati prepreči parkiranje na pločnikih ter zelenicah?",
      "polje": "Razlaga zaveze (kako in do kdaj)",
-     "razlaga": "Opišite tudi strategijo, kako bi v svojem mandatu rešili parkirišča v Savskem naselju."
+     "razlaga": "V razlagi zaveze navedite, kateri korak naredite do kdaj."
     }
    ],
    "opis": "Parkiranje je med temami izbralo 273 od 350 (78 %). Težave s parkiranjem ima »pogosto« 156 od 309, ponoči pa 87 od 322 parkira, kjer najde prostor, tudi na zelenici ali pločniku.",
@@ -194,12 +194,12 @@
    "vprasanja": [
     {
      "id": "dom-1",
-     "besedilo": "Ali se zavežete, da bo ČS v prvem letu mandata iz svojih sredstev organizirala program v domu skupnosti po željah iz ankete (druženje, vadba za starejše, delavnica popravil)?",
+     "besedilo": "Ali se kot člani sveta ČS zavežete, da boste v prvem letu pregledali, kateri prostori v Savskem naselju so na voljo za skupne dejavnosti, in da boste uredili prostore v domu skupnosti za souporabo prebivalcev?",
      "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "dom-2",
-     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL, da objavi načrt in rok obnove stavbe na Belokranjski 6, ter objavili urnik doma?",
+     "besedilo": "Ali se zavežete, da boste v prvem letu dali pobudo MOL, da objavi načrt in rok obnove stavbe na Belokranjski 6, ter da bo urnik doma skupnosti dosegljiv prebivalkam in prebivalcem za souporabo?",
      "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
