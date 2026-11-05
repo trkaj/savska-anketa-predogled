@@ -7,7 +7,7 @@ main{max-width:760px;margin:auto;padding:12px}
 h2{color:var(--g);margin-top:0;font-size:1.2rem}h3{color:var(--g2);font-size:1.05rem}
 .intro{border-left:6px solid var(--y)}
 label{display:block;font-weight:600;margin:10px 0 4px}
-input[type=text],input:not([type]),input[type=email],input[type=url],textarea{width:100%;padding:10px;border:2px solid #9aa;border-radius:8px;font:inherit}
+input[type=text],input:not([type]),input[type=email],input[type=url],select,textarea{width:100%;padding:10px;border:2px solid #9aa;border-radius:8px;font:inherit}
 textarea{min-height:110px}
 input:focus,textarea:focus,button:focus{outline:3px solid var(--y);outline-offset:2px}
 .q{border-top:1px solid #dde;padding-top:12px;margin-top:12px}.q p.qt{font-weight:600;margin:0 0 6px}
