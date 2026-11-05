@@ -220,8 +220,9 @@
     },
     {
      "id": "zrak-2",
-     "besedilo": "Ali se zavežete, da boste pritožbe prebivalcev zaradi hrupa (železnica, glavne ceste) zbirali in jih vsaj enkrat na leto posredovali MOL, prebivalcem pa poročali o odgovorih?",
-     "polje": "Razlaga zaveze (kako in do kdaj)"
+     "besedilo": "Ali ste za to, da se hrup v Savskem naselju (železnica, glavne ceste) uredi?",
+     "polje": "Razlaga zaveze (kako in do kdaj)",
+     "razlaga": "Opišite, kako bi to rešili in se tega lotili v soseskah, ter do kdaj."
     }
    ],
    "opis": "Boljši zrak je izbralo 74 od 350. Zrak jih skoraj vsak dan moti 55 od 73, hrup 48 od 56.",
