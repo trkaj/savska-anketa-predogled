@@ -37,7 +37,7 @@ h2 .tema-lab{font-weight:650;font-size:1.05rem;color:var(--g2);margin-right:.35r
 .prio input{width:20px;height:20px;accent-color:var(--g);flex:none}
 .sek.prio-on{outline:3px solid var(--y);outline-offset:2px}
 .razlaga{margin:-2px 0 6px;color:#444}
-.obv-tema{background:var(--y2);padding:8px 12px;border-radius:8px;margin:0 0 12px;font-weight:600;color:var(--g)}
+.obv-tema{background:var(--g);padding:8px 12px;border-radius:8px;margin:0 0 12px;font-weight:600;color:#fff}
 
 #lestvica ol{list-style:none;padding:0;margin:8px 0 0}
 #lestvica li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #dde}
