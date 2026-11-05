@@ -70,7 +70,7 @@ function setupMic(){
 }
 
 function collect(){
-  const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),soglasje:$('#soglasje').checked,odg:{}};
+  const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,odg:{}};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>{
     const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
     o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
@@ -78,15 +78,15 @@ function collect(){
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
 function restore(){
-  $('#lista').value=state.lista||'';$('#email').value=state.email||'';$('#soglasje').checked=!!state.soglasje;
+  $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
     const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)}});
 }
 function active(){return Q.sekcije} // vse sekcije so obvezne (brez izbire tem)
-function payload(){const c=collect();const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,soglasje:c.soglasje,odgovori:[]};
+function payload(){const c=collect();const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,odgovori:[]};
   active().forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,sklop:s.naslov,vprasanje:q.besedilo,...c.odg[q.id]})));return out}
-function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nČas: ${p.casOddaje}\n\n`+
+function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nKako in do kdaj: ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
   a.download=`odgovori-${(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
@@ -99,6 +99,8 @@ function validate(){
   active().forEach(s=>s.vprasanja.forEach(q=>{const a=c.odg[q.id];if(!a.odgovor)manj++;if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed)dolg++}));
   if(manj)e.push(`Pri ${manj} vprašanjih še ni izbran odgovor Da / Ne / Delno.`);
   if(dolg)e.push(`${dolg} odgovorov je daljših od ${CONFIG.maxBesed} besed.`);
+  const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
+  if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
   if(!c.soglasje)e.push('Potrdite soglasje za objavo.');
   return e}
 function review(){

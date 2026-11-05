@@ -15,7 +15,7 @@
 <li>Odgovore objavimo <b>dobesedno in v celoti na spletu, vse naenkrat</b>, liste po <b>abecednem redu</b>. Na vhodih bo natisnjen kratek povzetek odgovorov vsake liste.</li>
 <li>Liste, ki ne odgovorijo, navedemo nevtralno (»odgovora nismo prejeli«).</li>
 <li>Objava: skupina Savsko naselje, <b>savska.org</b> in natisnjeno na vhodih blokov do <b>13. 11. 2026</b>.</li>
-<li>Pisni odgovor brez omejitve dolžine.</li>
+<li>Pisni odgovor brez omejitve dolžine. Neobvezno lahko priložite <b>fotografijo</b> ali <b>video pozdrav</b> posameznika ali skupine (povezava).</li>
 </ul>
 <p>Vprašanja in pomoč: <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · <a href="tel:+38670205595">070 205 595</a></p>
 <p class="small">Narek z mikrofonom deluje <b>samo v vašem brskalniku</b> – zvoka ne shranjujemo in ne pošiljamo nam. Odgovori se sproti shranjujejo le v tej napravi, dokler jih ne oddate.</p>
@@ -28,8 +28,17 @@
 <p class="small">E-naslov uporabimo samo za potrditev prejema in morebitna vprašanja; ne objavimo ga.</p>
 </section>
 <div id="sekcije"></div>
+<section class="card">
+<h2>Fotografija ali video pozdrav</h2>
+<p>Neobvezno. Če želite, priložite povezavo do fotografije ali kratkega video pozdrava posameznika ali skupine (YouTube, Google Drive ali Vimeo).</p>
+<label for="foto">Fotografija (povezava)</label>
+<input id="foto" name="foto" type="url" inputmode="url" placeholder="https://…" autocomplete="off">
+<label for="videoPozdrav">Video pozdrav posameznika ali skupine (povezava)</label>
+<input id="videoPozdrav" name="videoPozdrav" type="url" inputmode="url" placeholder="https://youtu.be/… ali Drive / Vimeo" autocomplete="off">
+<p class="msg" id="prilogeMsg" aria-live="polite"></p>
+</section>
 <section class="card"><h2>Soglasje</h2>
-<label class="chk"><input type="checkbox" id="soglasje" required> Soglašamo, da se odgovori objavijo skupaj z imenom liste.</label>
+<label class="chk"><input type="checkbox" id="soglasje" required> Soglašamo, da se odgovori ter morebitna fotografija in video pozdrav objavijo skupaj z imenom liste.</label>
 <div class="btns"><button type="button" id="pregled" class="pri">Preglej odgovore</button><button type="button" id="prenesiJ">Prenesi kopijo (JSON)</button><button type="button" id="prenesiT">Prenesi kopijo (TXT)</button></div>
 <p id="err" class="msg" role="alert"></p><p id="saved" class="small" aria-live="polite"></p>
 </section>
