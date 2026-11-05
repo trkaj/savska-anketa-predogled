@@ -645,6 +645,20 @@ function raceDelta(localVotes, localTotal, cityVotes, cityTotal) {
   const value = pct(localVotes, localTotal) - pct(cityVotes, cityTotal);
   return (value < 0 ? '−' : value > 0 ? '+' : '') + f(Math.abs(value));
 }
+function raceComparisonTable(opts) {
+  const { names, localVotes, localTotal, cityVotes, cityTotal, firstLabel, citySource, cityTitle } = opts;
+  const order = names.map((_, i) => i).filter(i => localVotes[i] > 0).sort((a, b) => localVotes[b] - localVotes[a]);
+  const rows = order.map(i => `<tr>
+    <th scope="row">${names[i]}</th>
+    <td><span class="ss-result-number">${p(localVotes[i], localTotal)}</span><small>${whole(localVotes[i])}</small></td>
+    <td><span class="ss-result-number">${sourceLink(citySource, p(cityVotes[i], cityTotal), `${cityTitle} · ${names[i]}`)}</span><small>${whole(cityVotes[i])}</small></td>
+    <td class="ss-diff">${raceDelta(localVotes[i], localTotal, cityVotes[i], cityTotal)}</td>
+  </tr>`).join('');
+  return `<table class="ss-summary"><caption class="ss-reader">Deleži veljavnih glasov in število glasov. Razlika je Savsko minus celotna MOL, v odstotnih točkah.</caption>
+    <thead><tr><th scope="col">${firstLabel}</th><th scope="col">Savsko<small>3 volišča</small></th><th scope="col">Celotna MOL<small>vsa volišča</small></th><th scope="col">Razlika<small>odst. točke</small></th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <p class="ss-table-key">Ob deležu je število glasov. Klik na delež MOL odpre uradni izid za celotno občino.</p>`;
+}
 function raceLinks(here) {
   const items = [];
   if (here !== 'mayor') items.push(`<button type="button" class="btn btn-primary" data-go-chapter="mayor">Kako je glasovalo za župana</button>`);
@@ -737,21 +751,21 @@ const mayorStory = [
   {
     tag: "ŽUPAN / 03",
     title: "Savsko naselje<br>in celotna MOL",
-    sub: "Primerjava deležev na treh savskih voliščih in v celotni mestni občini.",
-    caption: "V celotni MOL je bilo 88.439 veljavnih glasov za župana. Razliko izračunamo pred zaokroževanjem.",
+    sub: "Deleži od 992 veljavnih glasov na treh savskih voliščih in 88.439 v celotni MOL.",
+    caption: "Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem.",
     scope: "mayor",
     refs: ["zupanP9", "zupanP10", "zupanCity", "zupanFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Nataši Sukič in dr. Jasminki Dedić, največja negativna pri Alešu Primcu.",
-    render: () => {
-      const order = mayorNames.map((_, i) => i).filter(i => mayorLocal[i] > 0).sort((a, b) => mayorLocal[b] - mayorLocal[a]);
-      const rows = order.map(i => `<div class="ss-comparison-row">
-        <span class="ss-bar-label">${mayorNames[i]}</span>
-        <div class="ss-track" aria-hidden="true"><div class="ss-fill" style="--width:${pct(mayorLocal[i], mayorValid)}%"></div></div>
-        <span class="ss-comparison-value">${p(mayorLocal[i], mayorValid)}<small>MOL ${p(mayorCity[i], mayorCityValid)} · ${raceDelta(mayorLocal[i], mayorValid, mayorCity[i], mayorCityValid)}</small></span>
-      </div>`).join('');
-      const stations = mayorStations.map(s => barRowFull(s.id, s.v[0], s.valid)).join('');
-      return `<div class="ss-compare">${rows}<p class="ss-compare-caption">Zoran Janković po voliščih:</p>${stations}${raceLinks('mayor')}</div>`;
-    }
+    render: () => `<div class="ss-compare-all">${raceComparisonTable({
+      names: mayorNames,
+      localVotes: mayorLocal,
+      localTotal: mayorValid,
+      cityVotes: mayorCity,
+      cityTotal: mayorCityValid,
+      firstLabel: 'Kandidat',
+      citySource: 'zupanCity',
+      cityTitle: 'Uradni izid za celotno MOL'
+    })}${raceLinks('mayor')}</div>`
   }
 ];
 
@@ -779,20 +793,21 @@ const msStory = [
   {
     tag: "MESTNI SVET / 03",
     title: "Savsko naselje<br>in celotna MOL",
-    sub: "Primerjava deležev na treh savskih voliščih in v celotni mestni občini.",
-    caption: "V celotni MOL je bilo 88.103 veljavnih glasov za mestni svet. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
+    sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih in 88.103 v celotni MOL.",
+    caption: "Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
     scope: "council",
     refs: ["msP13", "msP14", "msP15", "msCity", "msFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Listi Zorana Jankovića, največja negativna pri SDS.",
-    render: () => {
-      const order = msNames.map((_, i) => i).filter(i => msLocal[i] > 0).sort((a, b) => msLocal[b] - msLocal[a]);
-      const rows = order.map(i => `<div class="ss-comparison-row">
-        <span class="ss-bar-label">${msNames[i]}</span>
-        <div class="ss-track" aria-hidden="true"><div class="ss-fill" style="--width:${pct(msLocal[i], msValid)}%"></div></div>
-        <span class="ss-comparison-value">${p(msLocal[i], msValid)}<small>MOL ${p(msCity[i], msCityValid)} · ${raceDelta(msLocal[i], msValid, msCity[i], msCityValid)}</small></span>
-      </div>`).join('');
-      return `<div class="ss-compare">${rows}${raceLinks('ms')}</div>`;
-    }
+    render: () => `<div class="ss-compare-all">${raceComparisonTable({
+      names: msNames,
+      localVotes: msLocal,
+      localTotal: msValid,
+      cityVotes: msCity,
+      cityTotal: msCityValid,
+      firstLabel: 'Lista',
+      citySource: 'msCity',
+      cityTitle: 'Uradni izid za celotno MOL'
+    })}${raceLinks('ms')}</div>`
   }
 ];
 
