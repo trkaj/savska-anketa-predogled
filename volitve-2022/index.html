@@ -147,6 +147,9 @@
 #savsko-story .ss-compare-detail .ss-bar-label{font-size:15px}
 #savsko-story .ss-method{font-size:14px;line-height:1.55;margin:9px 0}
 #savsko-story .ss-data-foot{font-size:12px;margin:20px 0;color:var(--muted-foreground)}
+#savsko-story .ss-survey-foot{text-align:center;margin:10px 0 28px;font-size:16px}
+#savsko-story .ss-survey-foot a{color:var(--primary);font-weight:700}
+#savsko-story #ss-survey{text-decoration:none}
 #savsko-story #ss-title:focus:not(:focus-visible),#savsko-story #ss-data-heading:focus:not(:focus-visible){outline:none}
 @media(max-width:720px){
   #savsko-story .ss-summary td small{display:block;margin:0;min-width:0;font-size:11px}
@@ -301,7 +304,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   #savsko-story .ss-summary th, #savsko-story .ss-summary td { padding: 4px 2px; }
   #savsko-story .ss-raw-table th:first-child { background: #fff; }
 }
-@media print { .ss-header, .ss-nav { display:none!important; } #savsko-story .ss-stage { break-inside:avoid; } }
+@media print { .ss-header, .ss-nav, .ss-survey-foot { display:none!important; } #savsko-story .ss-stage { break-inside:avoid; } }
 </style>
 </head><body class="ss-presentation"><div id="savsko-story" class="ss-wrap">
  <header class="ss-header">
@@ -321,7 +324,9 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   <button class="btn" id="ss-prev" type="button"><span aria-hidden="true">←</span> Nazaj</button>
   <span id="ss-position" aria-live="polite" aria-atomic="true"></span>
   <button class="btn btn-primary" id="ss-next" type="button">Naprej <span aria-hidden="true">→</span></button>
+  <a class="btn btn-primary" id="ss-survey" href="https://anketa.savska.org/" hidden>Reši anketo</a>
  </nav>
+ <p class="ss-survey-foot"><a href="https://anketa.savska.org/">Reši anketo</a></p>
  <section id="ss-data" hidden aria-label="Viri in pregled podatkov">
   <div class="ss-list-heading"><h2 id="ss-data-heading" tabindex="-1">Glasovi po voliščih</h2><a href="#ss-title" class="ss-reference-close" id="ss-close-data">Zapri podatke</a></div>
   <p class="ss-method">Na volitvah v svet ČS Bežigrad 20. novembra 2022 je bil sedež volišč 61-021, 61-022 in 61-023 na OŠ Savsko naselje, Matjaževa ulica 4. »Savsko« pomeni seštevek teh treh rednih volišč. Predčasni in poštni glasovi so zajeti v rezultatu celotne četrti.</p>
@@ -331,7 +336,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   <h3>Kako smo preverili izid</h3>
   <p class="ss-method">Za vsako od devetih list smo sešteli vseh 30 vnosov občinske volilne komisije ter rezultat primerjali s končnim poročilom v Uradnem listu. Vsota znaša 10.210 veljavnih glasov. Deleže računamo iz glasov istega območja. Razliko Savsko − ČS računamo iz nezaokroženih deležev in jo nato zaokrožimo na dve decimalki.</p>
   <p id="ss-extra-refs" class="ss-ref-list text-small"></p>
-  <p class="ss-data-foot">Preverjeno 5. novembra 2026 · volilni izid z dne 20. novembra 2022.</p>
+  <p class="ss-data-foot">Preverjeno 5. novembra 2026 · volilni izid z dne 20. novembra 2022. · <a href="https://anketa.savska.org/">Reši anketo</a></p>
  </section>
 </div>
 
@@ -613,7 +618,9 @@ function draw(animate = true) {
   stage.innerHTML = current.render();
   $('ss-position').textContent = `${scene + 1} / ${story.length}`;
   $('ss-prev').disabled = scene === 0;
-  $('ss-next').disabled = scene === story.length - 1;
+  const last = scene === story.length - 1;
+  $('ss-next').hidden = last;
+  $('ss-survey').hidden = !last;
   const localSelect = $('ss-party');
   if (localSelect) localSelect.onchange = () => {
     activeParty = Number(localSelect.value);
