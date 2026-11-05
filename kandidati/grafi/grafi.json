@@ -84,7 +84,8 @@
   "opomba": "Vprašanje za starostno skupino 25–64 let; največ 2 izbiri, zato vsota presega 100 %.",
   "izbor": "",
   "alt": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2. – prostor za druženje in kavo: 99/282; vadba in druženje za starejše: 82/282; delavnica za popravila (kolesa, orodje): 76/282; srečanja in zbori prebivalcev: 66/282; prostor za najstnike z mladinskim delavcem: 57/282; učna pomoč za otroke: 35/282; nič od tega: 28/282",
-  "pobude": 6
+  "pobude": 6,
+  "skrij_vir": true
  },
  "zrak": {
   "slika": "grafi/zrak.png",
