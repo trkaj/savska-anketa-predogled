@@ -9,23 +9,28 @@
    "vprasanja": [
     {
      "id": "obvescanje-1",
-     "besedilo": "Prenos in posnetki sej: Ali boste kot svet ČS sklenili, da se seje snemajo ali prenašajo v živo (vsaj zvočni posnetek) in da je na voljo vsaj magnetogram oziroma prepis, ter poiskali sredstva in rešitev, skladno z varstvom osebnih podatkov?"
+     "besedilo": "Prenos in posnetki sej: Ali boste kot svet ČS sklenili, da se seje snemajo ali prenašajo v živo (vsaj zvočni posnetek) in da je na voljo vsaj magnetogram oziroma prepis, ter poiskali sredstva in rešitev, skladno z varstvom osebnih podatkov?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "obvescanje-2",
-     "besedilo": "Jasni zapisniki in povzetki: Ali boste zagotovili, da bodo v zapisnikih jasno zapisani predlogi in glavni argumenti ter da bo v 3 dneh po vsaki seji objavljen kratek povzetek?"
+     "besedilo": "Jasni zapisniki in povzetki: Ali boste zagotovili, da bodo v zapisnikih jasno zapisani predlogi in glavni argumenti ter da bo v 3 dneh po vsaki seji objavljen kratek povzetek?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "obvescanje-3",
-     "besedilo": "Sprotno obveščanje: Ali boste kot svet ČS odprli lastne družbene kanale, dali pobudo, da se naročanje na novice MOL uredi po ČS, in s pomočjo upravnikov in predstavnikov vhodov obveščali tudi prek oglasnih desk in tiskanih obvestil, s soglasjem prejemnikov?"
+     "besedilo": "Sprotno obveščanje: Ali boste kot svet ČS odprli lastne družbene kanale, dali pobudo, da se naročanje na novice MOL uredi po ČS, in s pomočjo upravnikov in predstavnikov vhodov obveščali tudi prek oglasnih desk in tiskanih obvestil, s soglasjem prejemnikov?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "obvescanje-4",
-     "besedilo": "Vključevanje pred sejo: Ali boste zagotovili, da sta dnevni red in gradivo objavljena vsaj 7 dni pred sejo, da je na seji čas za vprašanja občanov in da svet občasno zaseda v naselju?"
+     "besedilo": "Vključevanje pred sejo: Ali boste zagotovili, da sta dnevni red in gradivo objavljena vsaj 7 dni pred sejo, da je na seji čas za vprašanja občanov in da svet občasno zaseda v naselju?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "obvescanje-5",
-     "besedilo": "Odgovor na pobude in OPPN: Ali boste zagotovili, da vsak, ki da pobudo ČS, dobi odgovor v določenem roku, da bo javen seznam pobud z njihovim stanjem in da boste prebivalce o spremembah OPPN obveščali že v fazi priprave, ne šele ob javni razgrnitvi?"
+     "besedilo": "Odgovor na pobude in OPPN: Ali boste zagotovili, da vsak, ki da pobudo ČS, dobi odgovor v določenem roku, da bo javen seznam pobud z njihovim stanjem in da boste prebivalce o spremembah OPPN obveščali že v fazi priprave, ne šele ob javni razgrnitvi?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Seje ČS Bežigrad ne spremlja 151 od 204 (74 %). O spremembah OPPN je dobro obveščenih le 9 od 203 (4 %). Pri skupnih stvareh bi sodelovalo ali morda sodelovalo 176 od 233 (76 %). Za primerjavo: upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %). Udeležbo na zborih bi olajšali glasovanje na daljavo (36) in spletna udeležba (35).",
@@ -38,13 +43,14 @@
    "vprasanja": [
     {
      "id": "parkiranje-1",
-     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da javno pojasni, katera parkirišča v naselju so v lasti MOL in katera na zemljiščih etažnih lastnikov?"
+     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da javno pojasni, katera parkirišča v naselju so v lasti MOL in katera na zemljiščih etažnih lastnikov?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "parkiranje-2",
      "besedilo": "Ali ste za to, da se parkiranje v Savskem naselju uredi?",
-     "polje": "Kako bi v svojem mandatu rešili parkirišča v Savskem naselju? Opišite svojo strategijo.",
-     "razlaga": "Opišite strategijo in povejte, kako in do kdaj jo boste uresničili."
+     "polje": "Razlaga zaveze (kako in do kdaj)",
+     "razlaga": "Opišite tudi strategijo, kako bi v svojem mandatu rešili parkirišča v Savskem naselju."
     }
    ],
    "opis": "Parkiranje je med temami izbralo 273 od 350 (78 %). Težave s parkiranjem ima »pogosto« 156 od 309, ponoči pa 87 od 322 parkira, kjer najde prostor, tudi na zelenici ali pločniku.",
@@ -60,11 +66,13 @@
    "vprasanja": [
     {
      "id": "storitve-1",
-     "besedilo": "Ali se zavežete, da se bo svet ČS v prvih 3 mesecih s podatki iz ankete pisno obrnil na Pošto Slovenije in banke ter njihov odgovor objavil?"
+     "besedilo": "Ali se zavežete, da se bo svet ČS v prvih 3 mesecih s podatki iz ankete pisno obrnil na Pošto Slovenije in banke ter njihov odgovor objavil?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "storitve-2",
-     "besedilo": "Ali se zavežete, da bodo objekti in prostori v Savskem naselju najprej namenjeni potrebam prebivalcev naselja (na primer pošti, bankomatu ali pekarni), da boste pregledali, kateri prostori so prosti, in da se boste o tem uskladili s civilno družbo?"
+     "besedilo": "Ali se zavežete, da bodo objekti in prostori v Savskem naselju najprej namenjeni potrebam prebivalcev naselja (na primer pošti, bankomatu ali pekarni), da boste pregledali, kateri prostori so prosti, in da se boste o tem uskladili s civilno družbo?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Pošto pogreša 230 od 293 (78 %), banko 175 od 293 (60 %). Pod »drugo« največkrat navajajo pekarno.",
@@ -80,11 +88,13 @@
    "vprasanja": [
     {
      "id": "promet-1",
-     "besedilo": "Ali se zavežete, da boste v prvem letu mandata dali pobudo MOL za strokovno prometno presojo naselja in da bo MOL variante (tudi enosmerne ulice) predstavil prebivalcem, preden odloči?"
+     "besedilo": "Ali se zavežete, da boste v prvem letu mandata dali pobudo MOL za strokovno prometno presojo naselja in da bo MOL variante (tudi enosmerne ulice) predstavil prebivalcem, preden odloči?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "promet-2",
-     "besedilo": "Ali se zavežete, da boste do začetka šolskega leta 2027/28 dali pobudo MOL za varne prehode in umirjanje prometa ob šoli in vrtcu?"
+     "besedilo": "Ali se zavežete, da boste do začetka šolskega leta 2027/28 dali pobudo MOL za varne prehode in umirjanje prometa ob šoli in vrtcu?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Z novo prometno ureditvijo ni zadovoljnih 194 od 272 (71 %). Pot otrok v šolo in vrtec je za 58 od 107 staršev »ne preveč varna« ali »nevarna«.",
@@ -99,11 +109,13 @@
    "vprasanja": [
     {
      "id": "varnost-1",
-     "besedilo": "Ali se zavežete, da bo svet ČS vsaj dvakrat na leto sklical srečanje s policijo, Mestnim redarstvom in prebivalci, prvo v 6 mesecih?"
+     "besedilo": "Ali se zavežete, da bo svet ČS vsaj dvakrat na leto sklical srečanje s policijo, Mestnim redarstvom in prebivalci, prvo v 6 mesecih?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "varnost-2",
-     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL za redne obhode in hitro odstranjevanje igel na mestih, ki jih navajajo prebivalci, in o odgovoru poročali?"
+     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL za redne obhode in hitro odstranjevanje igel na mestih, ki jih navajajo prebivalci, in o odgovoru poročali?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Varnost je med temami izbralo 129 od 350 (37 %). Med njimi jo 33 občuti skoraj vsak dan, 23 vsak teden.",
@@ -118,11 +130,13 @@
    "vprasanja": [
     {
      "id": "klopi-1",
-     "besedilo": "Ali se zavežete, da boste pred rokom poziva za mala dela 2028–2029 prebivalce javno povabili, da predlagajo mesta za nove klopi (tudi v senci in ob poteh za starejše)?"
+     "besedilo": "Ali se zavežete, da boste pred rokom poziva za mala dela 2028–2029 prebivalce javno povabili, da predlagajo mesta za nove klopi (tudi v senci in ob poteh za starejše)?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "klopi-2",
-     "besedilo": "Ali se zavežete, da boste lastnikom in upravnikom, ki želijo klop na zemljišču ob bloku, v prvem letu mandata ponudili pomoč z informacijami (npr. vzorec sklepa zbora lastnikov)?"
+     "besedilo": "Ali se zavežete, da boste lastnikom in upravnikom, ki želijo klop na zemljišču ob bloku, v prvem letu mandata ponudili pomoč z informacijami (npr. vzorec sklepa zbora lastnikov)?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Več klopi si želi 128 od 350 (37 %). Kot mesta navajajo okolico stolpnic, pot do trgovin, igrišča in mesta v senci.",
@@ -137,11 +151,13 @@
    "vprasanja": [
     {
      "id": "cistoca-1",
-     "besedilo": "Ali se zavežete, da bo svet ČS od pomladi 2027 vsaj dvakrat na leto organiziral čistilno akcijo v naselju v dogovoru z Voka Snago?"
+     "besedilo": "Ali se zavežete, da bo svet ČS od pomladi 2027 vsaj dvakrat na leto organiziral čistilno akcijo v naselju v dogovoru z Voka Snago?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "cistoca-2",
-     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL za pogostejše praznjenje košev, nadzor pasjih iztrebkov in označen prostor za pse?"
+     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL za pogostejše praznjenje košev, nadzor pasjih iztrebkov in označen prostor za pse?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Čistočo je izbralo 108 od 350; 64 od 105 jih to moti skoraj vsak dan. Skupno čistilno akcijo podpira 308 od 351 (88 %).",
@@ -157,11 +173,13 @@
    "vprasanja": [
     {
      "id": "zelenje-1",
-     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da za vsako posekano drevo na javni površini v naselju zasadi novo in prebivalce o poseku obvesti vnaprej?"
+     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da pregleda drevesa v naselju (katera so zdrava, katera ne in katera so primerna za posek), predvidi nove zasaditve, za vsako posekano drevo na javni površini zasadi novo in prebivalce o poseku obvesti vnaprej?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "zelenje-2",
-     "besedilo": "Ali se zavežete, da boste prebivalce vključili pri izbiri mest za nova drevesa, preden jih predlagate v plan malih del 2028–2029?"
+     "besedilo": "Ali se zavežete, da boste prebivalce vključili pri izbiri mest za nova drevesa, preden jih predlagate v plan malih del 2028–2029?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Drevesa in zelenice je izbralo 84 od 350 (24 %). Med njimi 49 od 80 kaj moti skoraj vsak dan.",
@@ -176,11 +194,13 @@
    "vprasanja": [
     {
      "id": "dom-1",
-     "besedilo": "Ali se zavežete, da bo ČS v prvem letu mandata iz svojih sredstev organizirala program v domu skupnosti po željah iz ankete (druženje, vadba za starejše, delavnica popravil)?"
+     "besedilo": "Ali se zavežete, da bo ČS v prvem letu mandata iz svojih sredstev organizirala program v domu skupnosti po željah iz ankete (druženje, vadba za starejše, delavnica popravil)?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "dom-2",
-     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL, da objavi načrt in rok obnove stavbe na Belokranjski 6, ter objavili urnik doma?"
+     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL, da objavi načrt in rok obnove stavbe na Belokranjski 6, ter objavili urnik doma?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Dom skupnosti je med temami izbralo 83 od 350. Najpogosteje bi uporabljali prostor za druženje in kavo (99), vadbo za starejše (82) in delavnico za popravila (76).",
@@ -195,11 +215,13 @@
    "vprasanja": [
     {
      "id": "zrak-1",
-     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL za meritve zraka in hrupa v naselju ter za objavo rezultatov?"
+     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL za meritve zraka in hrupa v naselju ter za objavo rezultatov?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "zrak-2",
-     "besedilo": "Ali se zavežete, da boste pritožbe prebivalcev zaradi hrupa (železnica, glavne ceste) zbirali in jih vsaj enkrat na leto posredovali MOL, prebivalcem pa poročali o odgovorih?"
+     "besedilo": "Ali se zavežete, da boste pritožbe prebivalcev zaradi hrupa (železnica, glavne ceste) zbirali in jih vsaj enkrat na leto posredovali MOL, prebivalcem pa poročali o odgovorih?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Boljši zrak je izbralo 74 od 350. Zrak jih skoraj vsak dan moti 55 od 73, hrup 48 od 56.",
@@ -214,11 +236,13 @@
    "vprasanja": [
     {
      "id": "mladi-1",
-     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL in šoli za popoldansko odprtost šolskega igrišča ter za prostor pod streho za mlade?"
+     "besedilo": "Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL in šoli za popoldansko odprtost šolskega igrišča ter za prostor pod streho za mlade?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "mladi-2",
-     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih od MOL pridobili in objavili podatek, ali je obnova igral med Savsko, Linhartovo in Mislejevo izvedena (v proračunu je bila načrtovana, izvedba ni potrjena)?"
+     "besedilo": "Ali se zavežete, da boste v prvih 3 mesecih od MOL pridobili in objavili podatek, ali je obnova igral med Savsko, Linhartovo in Mislejevo izvedena (v proračunu je bila načrtovana, izvedba ni potrjena)?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Igrišča in prostor za mlade je izbralo 63 od 350 (18 %). Mladi (majhen vzorec) najpogosteje odgovorijo, da se v naselju ne zadržujejo, pogrešajo pa prostor pod streho.",
@@ -234,11 +258,13 @@
    "vprasanja": [
     {
      "id": "upravniki-1",
-     "besedilo": "Ali se zavežete, da boste v prvem letu mandata dali pobudo MOL za sofinanciranje dvigal v blokih brez dvigala?"
+     "besedilo": "Ali se zavežete, da boste v prvem letu mandata dali pobudo MOL za sofinanciranje dvigal v blokih brez dvigala?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "upravniki-2",
-     "besedilo": "Ali se zavežete, da bo ČS vsaj enkrat na leto sklicala srečanje z upravniki v naselju, prvo do konca leta 2027?"
+     "besedilo": "Ali se zavežete, da bo ČS vsaj enkrat na leto sklicala srečanje z upravniki v naselju, prvo do konca leta 2027?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Upravnik je »malo« ali »sploh ne« odziven za 137 od 288 (48 %). Na zbore lastnikov redno hodi polovica, brez dvigala živi 105 od 334 (31 %).",
@@ -251,23 +277,28 @@
    "vprasanja": [
     {
      "id": "maladela-1",
-     "besedilo": "Ali se zavežete, da boste za plan malih del 2028–2029 predlagali predloge iz ankete (npr. klopi, koši za smeti in pasje iztrebke, drevesa za senco, oprema igrišč, kolesarska stojala)? Pod »Kako in do kdaj« napišite, katere predloge in kje."
+     "besedilo": "Ali se zavežete, da boste za plan malih del 2028–2029 predlagali predloge iz ankete (npr. klopi, koši za smeti in pasje iztrebke, drevesa za senco, oprema igrišč, kolesarska stojala)? Pod »Kako in do kdaj« napišite, katere predloge in kje.",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "maladela-2",
-     "besedilo": "Ali se zavežete, da boste prebivalce in upravnike v naselju o pozivu za mala dela 2028–2029 obvestili vsaj 3 tedne pred rokom (oglasne deske, e-obvestila, družbena omrežja)?"
+     "besedilo": "Ali se zavežete, da boste prebivalce in upravnike v naselju o pozivu za mala dela 2028–2029 obvestili vsaj 3 tedne pred rokom (oglasne deske, e-obvestila, družbena omrežja)?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "maladela-3",
-     "besedilo": "Ali se zavežete, da boste za predloge na zemljiščih, ki niso v lasti MOL (med bloki, v postopku ZVEtL), lastnikom in upravnikom pomagali z informacijami in v prvem letu dali pobudo MOL, da pojasni stanje teh zemljišč?"
+     "besedilo": "Ali se zavežete, da boste za predloge na zemljiščih, ki niso v lasti MOL (med bloki, v postopku ZVEtL), lastnikom in upravnikom pomagali z informacijami in v prvem letu dali pobudo MOL, da pojasni stanje teh zemljišč?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "maladela-4",
-     "besedilo": "Ali se zavežete, da bo ČS od začetka mandata sprejemala prijave poškodb s fotografijo in lokacijo, jih posredovala MOL in prijavitelju sporočila, ko je popravljeno?"
+     "besedilo": "Ali se zavežete, da bo ČS od začetka mandata sprejemala prijave poškodb s fotografijo in lokacijo, jih posredovala MOL in prijavitelju sporočila, ko je popravljeno?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     },
     {
      "id": "maladela-5",
-     "besedilo": "Ali se zavežete, da bo ČS v prvih 6 mesecih začela javno voditi seznam pobud iz naselja s stanjem sprejeto / izvedeno / zavrnjeno (z razlogom) in ga posodabljala vsaj vsake 3 mesece?"
+     "besedilo": "Ali se zavežete, da bo ČS v prvih 6 mesecih začela javno voditi seznam pobud iz naselja s stanjem sprejeto / izvedeno / zavrnjeno (z razlogom) in ga posodabljala vsaj vsake 3 mesece?",
+     "polje": "Razlaga zaveze (kako in do kdaj)"
     }
    ],
    "opis": "Več predlogov iz ankete je opreme, ki je lahko del malih del: klopi je izbralo 128, čistočo in koše 108, drevesa 84, igrišča 63 od 350.",
