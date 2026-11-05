@@ -646,16 +646,17 @@ function raceDelta(localVotes, localTotal, cityVotes, cityTotal) {
   return (value < 0 ? '−' : value > 0 ? '+' : '') + f(Math.abs(value));
 }
 function raceComparisonTable(opts) {
-  const { names, localVotes, localTotal, cityVotes, cityTotal, firstLabel, citySource, cityTitle } = opts;
+  const { names, localVotes, localTotal, cityVotes, cityTotal, firstLabel, citySource, cityTitle, districtVotes, districtTotal } = opts;
   const order = names.map((_, i) => i).filter(i => localVotes[i] > 0).sort((a, b) => localVotes[b] - localVotes[a]);
   const rows = order.map(i => `<tr>
     <th scope="row">${names[i]}</th>
     <td><span class="ss-result-number">${p(localVotes[i], localTotal)}</span><small>${whole(localVotes[i])}</small></td>
+    <td><span class="ss-result-number">${p(districtVotes[i], districtTotal)}</span><small>${whole(districtVotes[i])}</small></td>
     <td><span class="ss-result-number">${sourceLink(citySource, p(cityVotes[i], cityTotal), `${cityTitle} · ${names[i]}`)}</span><small>${whole(cityVotes[i])}</small></td>
     <td class="ss-diff">${raceDelta(localVotes[i], localTotal, cityVotes[i], cityTotal)}</td>
   </tr>`).join('');
   return `<table class="ss-summary"><caption class="ss-reader">Deleži veljavnih glasov in število glasov. Razlika je Savsko minus celotna MOL, v odstotnih točkah.</caption>
-    <thead><tr><th scope="col">${firstLabel}</th><th scope="col">Savsko<small>3 volišča</small></th><th scope="col">Celotna MOL<small>vsa volišča</small></th><th scope="col">Razlika<small>odst. točke</small></th></tr></thead>
+    <thead><tr><th scope="col">${firstLabel}</th><th scope="col">Savsko<small>3 volišča</small></th><th scope="col">ČS Bežigrad<small>28 volišč</small></th><th scope="col">Celotna MOL<small>vsa volišča</small></th><th scope="col">Razlika<small>odst. točke</small></th></tr></thead>
     <tbody>${rows}</tbody></table>
     <p class="ss-table-key">Ob deležu je število glasov. Klik na delež MOL odpre uradni izid za celotno občino.</p>`;
 }
@@ -713,6 +714,8 @@ const mayorCast = mayorStations.reduce((sum, s) => sum + s.cast, 0);
 const mayorInvalid = mayorCast - mayorValid;
 const mayorCity = [54680, 6148, 8495, 1431, 5033, 2796, 2823, 5552, 1481];
 const mayorCityValid = 88439;
+const mayorBezigrad = [5491, 517, 999, 166, 446, 336, 210, 457, 147];
+const mayorBezigradValid = 8769;
 
 const msNames = ['KSU – Krščanski socialisti', 'Lista Šport za zdravje', 'Slovenska demokratska stranka – SDS', 'Državljansko gibanje Resni.ca', 'Slovenska ljudska stranka', 'Lista kolesarjev in pešcev', 'VESNA – zelena stranka', 'Slovenska nacionalna stranka – SNS', 'Glas za otroke in družine', 'Socialni demokrati', 'Levica', 'Piratska stranka Slovenije', 'Dobra država', 'Nova Slovenija – krščanski demokrati', 'Gibanje Svoboda', 'Zeleni Slovenije in Konkretno', 'Lista Zorana Jankovića'];
 const msStations = [
@@ -726,6 +729,8 @@ const msCast = msStations.reduce((sum, s) => sum + s.cast, 0);
 const msInvalid = msCast - msValid;
 const msCity = [220, 2359, 10662, 791, 2098, 1550, 3286, 272, 2295, 3572, 8190, 1721, 270, 4007, 14064, 578, 32168];
 const msCityValid = 88103;
+const msBezigrad = [26, 232, 882, 78, 156, 204, 398, 29, 188, 332, 979, 217, 8, 312, 1424, 44, 3213];
+const msBezigradValid = 8722;
 
 const mayorStory = [
   {
@@ -750,9 +755,9 @@ const mayorStory = [
   },
   {
     tag: "ŽUPAN / 03",
-    title: "Savsko naselje<br>in celotna MOL",
-    sub: "Deleži od 992 veljavnih glasov na treh savskih voliščih in 88.439 v celotni MOL.",
-    caption: "Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem.",
+    title: "Savsko naselje,<br>Bežigrad in MOL",
+    sub: "Deleži od 992 veljavnih glasov na treh savskih voliščih, 8.769 na 28 rednih voliščih v ČS Bežigrad in 88.439 v celotni MOL.",
+    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za župana so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem.",
     scope: "mayor",
     refs: ["zupanP9", "zupanP10", "zupanCity", "zupanFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Nataši Sukič in dr. Jasminki Dedić, največja negativna pri Alešu Primcu.",
@@ -760,6 +765,8 @@ const mayorStory = [
       names: mayorNames,
       localVotes: mayorLocal,
       localTotal: mayorValid,
+      districtVotes: mayorBezigrad,
+      districtTotal: mayorBezigradValid,
       cityVotes: mayorCity,
       cityTotal: mayorCityValid,
       firstLabel: 'Kandidat',
@@ -792,9 +799,9 @@ const msStory = [
   },
   {
     tag: "MESTNI SVET / 03",
-    title: "Savsko naselje<br>in celotna MOL",
-    sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih in 88.103 v celotni MOL.",
-    caption: "Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
+    title: "Savsko naselje,<br>Bežigrad in MOL",
+    sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih, 8.722 na 28 rednih voliščih v ČS Bežigrad in 88.103 v celotni MOL.",
+    caption: "ČS Bežigrad je seštevek 28 rednih volišč v četrti (01-001 do 01-028). Predčasni in poštni glasovi za mestni svet so šteti na ravni MOL, zato v ta stolpec niso všteti. Celotna MOL vključuje tudi tri savska volišča. Razliko (Savsko − MOL) izračunamo pred zaokroževanjem. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
     scope: "council",
     refs: ["msP13", "msP14", "msP15", "msCity", "msFmf"],
     note: "Največja pozitivna razlika do mestnega povprečja je pri Listi Zorana Jankovića, največja negativna pri SDS.",
@@ -802,6 +809,8 @@ const msStory = [
       names: msNames,
       localVotes: msLocal,
       localTotal: msValid,
+      districtVotes: msBezigrad,
+      districtTotal: msBezigradValid,
       cityVotes: msCity,
       cityTotal: msCityValid,
       firstLabel: 'Lista',
