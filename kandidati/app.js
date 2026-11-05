@@ -1,6 +1,6 @@
 // Savsko naselje · anketa – odgovori kandidatnih list
 const CONFIG = {
-  endpoint: '', // TODO: URL spletne aplikacije Apps Script
+  endpoint: 'https://script.google.com/macros/s/AKfycbw0rHVWyMBTwv3VhaZIwMczxN2Kw6dpHNWjcmUeCJiOPGLxDPRcJXSgXj2dcZl6m-t1/exec',
   rok: 'nedelja, 8. 11. 2026, ob 12.00',
   upravljavec: 'Rok Terkaj, savskonaselje1@gmail.com, 070 205 595',
   maxBesed: 0, // 0 = brez omejitve besed (odločitev Rok, 4. 11. 2026)
@@ -318,12 +318,16 @@ function posljiMail(){
   }, 400);
 }
 async function submit(){
+  const e=validate();prikaziNapake(e);if(e.length)return;
   const s=$('#status');
   if(ph(CONFIG.endpoint)||ph(CONFIG.upravljavec)){s.textContent='Oddaja bo odprta kmalu. Medtem lahko prenesete kopijo svojih odgovorov.';return}
+  const p=payload();
+  dl(JSON.stringify(p,null,2),'json','application/json');
+  setTimeout(function(){ dl(toTxt(p),'txt','text/plain'); }, 250);
   $('#oddaj').disabled=true;s.textContent='Pošiljam …';
-  try{const r=await fetch(CONFIG.endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload())});
+  try{const r=await fetch(CONFIG.endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)});
     const j=await r.json();if(!j.ok)throw new Error(j.error||'napaka');
-    s.className='ok';s.textContent='Hvala! Odgovore smo prejeli. Potrditev bomo poslali na vaš e-naslov.';localStorage.removeItem(CONFIG.storageKey);
-  }catch(err){$('#oddaj').disabled=false;s.textContent='Oddaja ni uspela. Poskusite znova ali prenesite kopijo in jo pošljite na savskonaselje1@gmail.com.'}
+    s.className='ok';s.textContent='Hvala! Odgovore smo prejeli na savskonaselje1@gmail.com in prenesli kopiji JSON ter txt.';localStorage.removeItem(CONFIG.storageKey);
+  }catch(err){$('#oddaj').disabled=false;s.textContent='Oddaja ni uspela. Preneseni datoteki lahko pošljete na savskonaselje1@gmail.com.'}
 }
 init();
