@@ -4,7 +4,7 @@ const CONFIG = {
   rok: 'nedelja, 8. 11. 2026, ob 12.00',
   upravljavec: '', // TODO: ime, naslov, kontakt upravljavca
   maxBesed: 0, // 0 = brez omejitve besed (odločitev Rok, 4. 11. 2026)
-  storageKey: 'savska-odgovori-v3'
+  storageKey: 'savska-odgovori-v4'
 };
 const $ = s => document.querySelector(s);
 const ph = s => !s || /\[.*\]/.test(s);
@@ -18,39 +18,79 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json')).json();
-  try{G=await (await fetch('grafi/grafi.json')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105d')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105d')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   render(); restore();
-  $('#f').addEventListener('input', save); $('#f').addEventListener('change', save);
+  $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=true;$('#oddaj').textContent='Oddaja bo odprta kmalu';}
   $('#prenesiJ').onclick = ()=>dl(JSON.stringify(payload(),null,2),'json','application/json');
   $('#prenesiT').onclick = ()=>dl(toTxt(payload()),'txt','text/plain');
 }
 
+function onFormChange(ev){
+  if(ev.target && ev.target.classList.contains('priobox')){
+    const boxes=[...document.querySelectorAll('input.priobox')];
+    const n=boxes.filter(b=>b.checked).length;
+    if(n>5){ev.target.checked=false;}
+    syncPrio();
+  }
+  save();
+}
+
+function syncPrio(){
+  const boxes=[...document.querySelectorAll('input.priobox')];
+  const n=boxes.filter(b=>b.checked).length;
+  const el=$('#priost');
+  if(el){
+    el.textContent='Prioritetne teme: '+n+' / 5';
+    el.classList.toggle('ok', n===5);
+    el.classList.toggle('over', n>5);
+  }
+  boxes.forEach(b=>{
+    b.disabled=!b.checked && n>=5;
+    const sek=b.closest('.sek');
+    if(sek) sek.classList.toggle('prio-on', b.checked);
+  });
+}
+
 function render(){
-  const sek=$('#sekcije'); let nq=0;
+  const sek=$('#sekcije'); let tema=0;
   Q.sekcije.forEach(s=>{
-    const qs=s.vprasanja.map((q)=>`<div class="q" data-q="${q.id}">
-      <p class="qt" id="t-${q.id}">${++nq}. ${esc(q.besedilo)}</p>
+    const numbered=s.id!=='obvescanje';
+    if(numbered) tema++;
+    const naslov=numbered
+      ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
+      : `<h2>${esc(s.naslov)}</h2>`;
+    const prio=`<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
+    const qs=s.vprasanja.map((q,i)=>{
+      const polje=q.polje||'Kako in do kdaj';
+      const razlaga=q.razlaga||'Na kratko opišite, kako boste to uresničili in do katerega roka.';
+      return `<div class="q" data-q="${q.id}">
+      <p class="qt" id="t-${q.id}">${i+1}. ${esc(q.besedilo)}</p>
       <fieldset class="radios" aria-labelledby="t-${q.id}"><legend class="small">Odgovor</legend>
         ${['Da','Ne','Delno'].map(v=>`<label><input type="radio" name="r-${q.id}" value="${v}"> ${v}</label>`).join('')}</fieldset>
-      <label for="x-${q.id}">Kako in do kdaj</label>
+      <label for="x-${q.id}">${esc(polje)}</label>
+      <p class="small razlaga">${esc(razlaga)}</p>
       <textarea id="x-${q.id}" name="x-${q.id}" aria-describedby="c-${q.id}"></textarea>
       <div class="row"><button type="button" class="mic" aria-pressed="false" data-t="x-${q.id}">🎤 Narekuj</button>
         <span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div>
-      <p class="small micmsg" aria-live="polite"></p></div>`).join('');
-    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
+      <p class="small micmsg" aria-live="polite"></p></div>`;
+    }).join('');
+    sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
   setupMic();
+  syncPrio();
 }
 function graf(id){const g=G[id];if(!g)return '';
+  let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
+  if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img src="${g.slika}" alt="${esc(g.alt)}" loading="lazy" width="704">
-  <p class="small vir">Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}${g.pobude!=null?` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`:''}</p></figure>`}
+  <img src="${g.slika}?v=20261105d" alt="${esc(g.alt)}" loading="lazy" width="704">
+  <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -70,24 +110,31 @@ function setupMic(){
 }
 
 function collect(){
-  const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,odg:{}};
-  Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>{
-    const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
-    o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
-  }));return o}
+  const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
+  Q.sekcije.forEach(s=>{
+    if($('#p-'+s.id)&&$('#p-'+s.id).checked) o.prioritet.push(s.id);
+    s.vprasanja.forEach(q=>{
+      const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
+      o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
+    });
+  });
+  return o;
+}
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
 function restore(){
   $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
+  (state.prioritet||[]).forEach(id=>{const b=$('#p-'+id);if(b)b.checked=true});
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
     const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)}});
+  syncPrio();
 }
-function active(){return Q.sekcije} // vse sekcije so obvezne (brez izbire tem)
-function payload(){const c=collect();const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,odgovori:[]};
-  active().forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,sklop:s.naslov,vprasanje:q.besedilo,...c.odg[q.id]})));return out}
-function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddaje}\n\n`+
-  p.odgovori.map(a=>`[${a.sklop}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nKako in do kdaj: ${a.besedilo||'—'}\n`).join('\n')}
+function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)||{}).naslov||id;
+  const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,prioritet:c.prioritet.map(ime),odgovori:[]};
+  Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,sklop:s.naslov,prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
+function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddaje}\n\n`+
+  p.odgovori.map(a=>`[${a.sklop}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nKako in do kdaj: ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
   a.download=`odgovori-${(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
 
@@ -95,9 +142,20 @@ function validate(){
   const c=collect(),e=[];
   if(!c.lista)e.push('Vpišite ime liste.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
-  let manj=0,dolg=0;
-  active().forEach(s=>s.vprasanja.forEach(q=>{const a=c.odg[q.id];if(!a.odgovor)manj++;if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed)dolg++}));
-  if(manj)e.push(`Pri ${manj} vprašanjih še ni izbran odgovor Da / Ne / Delno.`);
+  if(c.prioritet.length!==5)e.push('Označite 5 prioritetnih tem (zdaj '+c.prioritet.length+').');
+  const pset=new Set(c.prioritet);
+  let manj=0,prazno=0,dolg=0;
+  Q.sekcije.forEach(s=>{
+    if(!pset.has(s.id)) return;
+    s.vprasanja.forEach(q=>{
+      const a=c.odg[q.id];
+      if(!a.odgovor) manj++;
+      if(!String(a.besedilo||'').trim()) prazno++;
+      if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed) dolg++;
+    });
+  });
+  if(manj)e.push(`Pri ${manj} vprašanjih na prioritetnih temah še ni izbran odgovor Da / Ne / Delno.`);
+  if(prazno)e.push(`Pri ${prazno} vprašanjih na prioritetnih temah še manjka razlaga, kako in do kdaj.`);
   if(dolg)e.push(`${dolg} odgovorov je daljših od ${CONFIG.maxBesed} besed.`);
   const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
   if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
@@ -106,8 +164,8 @@ function validate(){
 function review(){
   const e=validate();$('#err').innerHTML=e.map(esc).join('<br>');if(e.length)return;
   const p=payload();
-  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}</p>`+
-    p.odgovori.map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b><br>Odgovor: ${esc(a.odgovor)}<br>${esc(a.besedilo||'—')}</div>`).join('');
+  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>Prioritetne teme:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+
+    p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
 }
 async function submit(){

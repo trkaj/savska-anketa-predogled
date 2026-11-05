@@ -27,3 +27,13 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
 .graf{margin:6px 0 14px;padding:10px;background:var(--y2);border-radius:8px}.graf img{width:100%;height:auto;display:block;background:#fff;border-radius:6px}.gq{font-size:.92rem;font-weight:600;color:var(--g);margin-bottom:6px}.vir{margin:6px 0 0}
 
 .opis{margin:4px 0 10px;line-height:1.45}.cit{margin:0 0 14px}.cit blockquote{margin:4px 0;padding:6px 10px;border-left:4px solid var(--y);font-style:italic;background:#fafaf5}
+
+h2 .nr{font-size:1.85rem;font-weight:800;letter-spacing:-.02em;margin-right:.4rem}
+h2 .tema-lab{font-weight:650;font-size:1.05rem;color:var(--g2);margin-right:.35rem}
+#priost{position:sticky;top:8px;z-index:6;background:var(--g);color:#fff;padding:10px 14px;border-radius:8px;margin:8px 0 4px;font-weight:700;text-align:center;box-shadow:0 2px 8px #0003}
+#priost.ok{background:var(--g2)}
+#priost.over{background:#8a1c1c}
+.prio{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-weight:600;color:var(--g)}
+.prio input{width:20px;height:20px;accent-color:var(--g);flex:none}
+.sek.prio-on{outline:3px solid var(--y);outline-offset:2px}
+.razlaga{margin:-2px 0 6px;color:#444}

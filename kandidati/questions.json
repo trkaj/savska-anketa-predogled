@@ -28,7 +28,7 @@
      "besedilo": "Odgovor na pobude in OPPN: Ali boste zagotovili, da vsak, ki da pobudo ČS, dobi odgovor v določenem roku, da bo javen seznam pobud z njihovim stanjem in da boste prebivalce o spremembah OPPN obveščali že v fazi priprave, ne šele ob javni razgrnitvi?"
     }
    ],
-   "opis": "V anketi ni posebnega vprašanja o obveščanju iz ČS, podobna težava pa se kaže pri upravnikih: obveščanje je »malo« ali »sploh ne« dobro za 126 od 285 (44 %). Udeležbo na zborih bi olajšali glasovanje na daljavo (36) in spletna udeležba (35).",
+   "opis": "Seje ČS Bežigrad ne spremlja 151 od 204 (74 %). O spremembah OPPN je dobro obveščenih le 9 od 203 (4 %). Pri skupnih stvareh bi sodelovalo ali morda sodelovalo 176 od 233 (76 %). Za primerjavo: upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %). Udeležbo na zborih bi olajšali glasovanje na daljavo (36) in spletna udeležba (35).",
    "citati": []
   },
   {
@@ -42,7 +42,9 @@
     },
     {
      "id": "parkiranje-2",
-     "besedilo": "Ali se zavežete, da boste do konca leta 2027 dali pobudo MOL za preizkus parkiranja za stanovalce, pripravljen skupaj z lastniki in upravniki?"
+     "besedilo": "Ali ste za to, da se parkiranje v Savskem naselju uredi?",
+     "polje": "Kako bi v svojem mandatu rešili parkirišča v Savskem naselju? Opišite svojo strategijo.",
+     "razlaga": "Opišite strategijo in povejte, kako in do kdaj jo boste uresničili."
     }
    ],
    "opis": "Parkiranje je med temami izbralo 273 od 350 (78 %). Težave s parkiranjem ima »pogosto« 156 od 309, ponoči pa 87 od 322 parkira, kjer najde prostor, tudi na zelenici ali pločniku.",
