@@ -14,12 +14,12 @@ const words = t => (t.trim().match(/\S+/g) || []).length;
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 
-const ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="small">Verzija 1.2, 5. 11. 2026</p>'+
+const ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="small">Verzija 1.3, 5. 11. 2026</p>'+
  '<h3>Kdo je upravljavec</h3><p>Rok Terkaj, fizična oseba, koordinator neodvisne in civilne pobude prebivalcev Savskega naselja; <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>.</p>'+
  '<h3>Kaj zbiramo in zakaj</h3><p>Od kandidatnih list zbiramo ime liste, e-naslov za potrditev, odgovore na vprašanja, kratko predstavitev ekipe, liste ali stranke ter neobvezno povezavo do fotografije ali video pozdrava. Namen je, da prebivalci Savskega naselja pred volitvami v svet ČS Bežigrad 15. 11. 2026 vidijo zaveze list. Podlaga je vaša privolitev (točka (a) 6(1) Splošne uredbe).</p>'+
  '<h3>Kaj objavimo</h3><p>Odgovore, predstavitev in morebitno fotografijo ali video pozdrav objavimo skupaj z imenom liste, dobesedno in v celoti, vse naenkrat, liste v vrstnem redu uradnega seznama za volilno enoto 01: na spletni strani Savsko naselje (savska.org), v skupini Savsko naselje, v Facebook skupinah Savčan, Savc in Civilna iniciativa Savsko naselje, po e-pošti prostovoljcev, ki jih imamo, in tistih, ki so želeli biti obveščeni, ter na vhodih blokov, do 12. 11. 2026. E-naslova liste ne objavimo — uporabimo ga samo za potrditev prejema in morebitna vprašanja.</p>'+
  '<h3>Česa ne zbiramo</h3><p>Ne prosimo za osebna imena kandidatov, domače naslove ali telefonske številke. Imena kandidatov bomo po potrebi kasneje vzeli iz javne predstavitve kandidatk in kandidatov ČS Bežigrad, kjer so že objavljena. Narek z mikrofonom ostane v vašem brskalniku; zvoka ne shranjujemo in ne pošiljamo nam. Dokler odgovorov ne oddate, ostanejo samo v tej napravi.</p>'+
- '<h3>Avtorske pravice</h3><p>Avtorske pravice fotografij in videoposnetkov urejate sami. Z oddajo in soglasjem dovolite njihovo objavo na zgoraj navedenih mestih.</p>'+
+ '<h3>Avtorske pravice</h3><p>Avtorske pravice fotografij in videoposnetkov urejate sami. Z pregledom odgovorov in pošiljanjem se zavežete, da imajo fotografije in videoposnetki pravice urejene in podeljene Civilni iniciativi za objavo na mestih, navedenih na začetku obrazca.</p>'+
  '<h3>Katere storitve uporabljamo</h3><p>Stran teče na GitHubu. Ko bo oddaja odprta, se odgovori shranijo v Googlovo preglednico, ki jo ureja upravljavec.</p>'+
  '<h3>Kako dolgo hranimo</h3><ul><li>E-naslov hranimo, dokler potrdimo prejem in uredimo objavo, največ 12 mesecev; nato ga izbrišemo.</li><li>Objavljeni odgovori, predstavitev in povezave ostanejo javno, ker so zaveze liste prebivalcem.</li><li>Enkrat letno preverimo, ali je hramba še potrebna, in to zapišemo (43. člen ZVOP-2).</li></ul>'+
  '<h3>Kaj lahko zahtevate</h3><p>Lahko vprašate, kaj imamo o vas, in zahtevate popravek ali izbris neobjavljenih podatkov (na primer e-naslova), ugovarjate ali umaknete privolitev pred objavo. Dovolj je sporočilo na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>. Če niste zadovoljni, se lahko obrnete na Informacijskega pooblaščenca (www.ip-rs.si).</p>'+
@@ -68,8 +68,8 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Oddaja odgovorov bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in prenesete kopijo.';}
-  Q = await (await fetch('questions.json?v=20261105ad')).json();
-  try{G=await (await fetch('grafi/grafi.json?v=20261105ad')).json()}catch(e){G={}}
+  Q = await (await fetch('questions.json?v=20261105ae')).json();
+  try{G=await (await fetch('grafi/grafi.json?v=20261105ae')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
   fillListe(); render(); restore(); setupGrafZoom(); setupZasebnost();
@@ -196,7 +196,7 @@ function graf(id){const g=G[id];if(!g)return '';
   let vir = g.vir ? esc(g.vir) : `Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}`;
   if(g.pobude!=null) vir += ` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`;
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
-  <img class="gz" src="${g.slika}?v=20261105ad" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
+  <img class="gz" src="${g.slika}?v=20261105ae" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
