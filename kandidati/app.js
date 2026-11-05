@@ -245,13 +245,13 @@ function tipSklopa(s, prioritet){
 }
 function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)||{}).naslov||id;
   const meta=listaMeta(c.lista);
-  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:c.lista,listaStevilka:meta?meta.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
+  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:c.lista,listaStevilka:meta?meta.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:!!($('#testOddaja')&&$('#testOddaja').checked),prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
-  return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
+  return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj, lasten predlog, …): ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
-  a.download=`odgovori-${(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
+  a.download=`odgovori-${(payload().test?'TEST-':'')+(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
 
 function validate(){
   const c=collect(),e=[];
@@ -308,7 +308,7 @@ function posljiMail(){
   const link='https://anketa.savska.org/kandidati/';
   dl(JSON.stringify(p,null,2),'json','application/json');
   setTimeout(function(){ dl(toTxt(p),'txt','text/plain'); }, 250);
-  const sub='Zaveze kandidatne liste: '+oznaka;
+  const sub=(p.test?'PREIZKUS – ':'')+'Zaveze kandidatne liste: '+oznaka;
   const body='Pozdravljeni,\n\npovezava do obrazca: '+link+'\nLista: '+oznaka+'\nE-naslov: '+(p.email||'')+'\n\nProsimo, da v priponko dodate pravkar preneseni datoteki (JSON in txt) z odgovori.\n';
   const s=$('#status');
   s.className='ok';
