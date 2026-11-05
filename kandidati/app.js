@@ -9,10 +9,8 @@ const CONFIG = {
 const $ = s => document.querySelector(s);
 const ph = s => !s || /\[.*\]/.test(s);
 let Q = null, G = {}, state = {};
-const NVSEH = 313; // vseh oddanih anket v izvozu
+const NVSEH = 359; // veljavnih anket v izvozu 5. 11. 2026 (1 test izločen)
 const words = t => (t.trim().match(/\S+/g) || []).length;
-const VIDEO_RE = /^https:\/\/(www\.)?(youtube\.com\/(watch\?v=|shorts\/)[\w-]{6,}|youtu\.be\/[\w-]{6,}|drive\.google\.com\/(file\/d\/|open\?id=)[\w-]+|vimeo\.com\/\d+)/i;
-
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 async function init(){
@@ -43,14 +41,10 @@ function render(){
       <textarea id="x-${q.id}" name="x-${q.id}" aria-describedby="c-${q.id}"></textarea>
       <div class="row"><button type="button" class="mic" aria-pressed="false" data-t="x-${q.id}">🎤 Narekuj</button>
         <span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div>
-      <p class="small micmsg" aria-live="polite"></p>
-      <label for="v-${q.id}">Povezava do videa (neobvezno, največ 2 min)</label>
-      <input type="url" id="v-${q.id}" name="v-${q.id}" placeholder="https://youtu.be/… ali Drive / Vimeo" inputmode="url">
-      <p class="msg vmsg" aria-live="polite"></p></div>`).join('');
+      <p class="small micmsg" aria-live="polite"></p></div>`).join('');
     sek.insertAdjacentHTML('beforeend',`<section class="card sek" data-s="${s.id}"><h2>${esc(s.naslov)}</h2>${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
-  document.querySelectorAll('input[type=url]').forEach(i=>i.addEventListener('blur',()=>vcheck(i)));
   setupMic();
 }
 function graf(id){const g=G[id];if(!g)return '';
@@ -58,9 +52,6 @@ function graf(id){const g=G[id];if(!g)return '';
   <img src="${g.slika}" alt="${esc(g.alt)}" loading="lazy" width="704">
   <p class="small vir">Vir: Savska anketa, vprašanje ${g.stevilka} »${esc(g.vprasanje)}«; možnosti: ${esc(g.moznosti)}; n = ${g.n}/${NVSEH} odgovorov.${g.opomba?' '+esc(g.opomba):''}${g.izbor?' '+esc(g.izbor):''}${g.pobude!=null?` MOL je za to temo prejel ${g.pobude} pobud (portal Pobude meščanov).`:''}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
-function vcheck(i){const m=i.closest('.q').querySelector('.vmsg');const v=i.value.trim();const ok=!v||VIDEO_RE.test(v);
-  m.textContent=ok?'':'Prosimo, vpišite povezavo YouTube, Google Drive ali Vimeo (začne se s https://).';i.setAttribute('aria-invalid',!ok);return ok}
-
 function setupMic(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   document.querySelectorAll('.mic').forEach(b=>{
@@ -82,7 +73,7 @@ function collect(){
   const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),soglasje:$('#soglasje').checked,odg:{}};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>{
     const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
-    o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value,video:$('#v-'+q.id).value.trim()};
+    o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
   }));return o}
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
@@ -90,13 +81,13 @@ function restore(){
   $('#lista').value=state.lista||'';$('#email').value=state.email||'';$('#soglasje').checked=!!state.soglasje;
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
-    const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)} const v=$('#v-'+id);if(v)v.value=a.video||'';});
+    const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)}});
 }
 function active(){return Q.sekcije} // vse sekcije so obvezne (brez izbire tem)
 function payload(){const c=collect();const out={casOddaje:new Date().toISOString(),lista:c.lista,email:c.email,soglasje:c.soglasje,odgovori:[]};
   active().forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,sklop:s.naslov,vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){return `Savsko naselje · anketa – odgovori liste\nLista: ${p.lista}\nE-naslov: ${p.email}\nČas: ${p.casOddaje}\n\n`+
-  p.odgovori.map(a=>`[${a.sklop}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nKako in do kdaj: ${a.besedilo||'—'}\nVideo: ${a.video||'—'}\n`).join('\n')}
+  p.odgovori.map(a=>`[${a.sklop}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nKako in do kdaj: ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
   a.download=`odgovori-${(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
 
@@ -104,18 +95,17 @@ function validate(){
   const c=collect(),e=[];
   if(!c.lista)e.push('Vpišite ime liste.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
-  let manj=0,dolg=0,vid=0;
-  active().forEach(s=>s.vprasanja.forEach(q=>{const a=c.odg[q.id];if(!a.odgovor)manj++;if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed)dolg++;if(!vcheck($('#v-'+q.id)))vid++}));
+  let manj=0,dolg=0;
+  active().forEach(s=>s.vprasanja.forEach(q=>{const a=c.odg[q.id];if(!a.odgovor)manj++;if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed)dolg++}));
   if(manj)e.push(`Pri ${manj} vprašanjih še ni izbran odgovor Da / Ne / Delno.`);
   if(dolg)e.push(`${dolg} odgovorov je daljših od ${CONFIG.maxBesed} besed.`);
-  if(vid)e.push(`${vid} povezav do videa ni veljavnih.`);
   if(!c.soglasje)e.push('Potrdite soglasje za objavo.');
   return e}
 function review(){
   const e=validate();$('#err').innerHTML=e.map(esc).join('<br>');if(e.length)return;
   const p=payload();
   $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}</p>`+
-    p.odgovori.map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b><br>Odgovor: ${esc(a.odgovor)}<br>${esc(a.besedilo||'—')}${a.video?'<br>Video: '+esc(a.video):''}</div>`).join('');
+    p.odgovori.map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b><br>Odgovor: ${esc(a.odgovor)}<br>${esc(a.besedilo||'—')}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
 }
 async function submit(){
