@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kako je glasovalo Savsko naselje? · Volitve 2022</title>
-<meta name="description" content="Izidi za tri savska volišča na volitvah v svet ČS Bežigrad leta 2022. Primerjava s celotno četrtjo, izvoljeni svetniki in povezave do uradnih zapisnikov.">
+<html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kako je glasovalo Savsko naselje leta 2022</title>
+<meta name="description" content="Izidi za tri savska volišča na volitvah 2022: svet ČS Bežigrad, župan in mestni svet MOL. Primerjava s celotno četrtjo in povezave do uradnih zapisnikov.">
 <meta name="theme-color" content="#0a5232">
-<meta property="og:title" content="Kako je glasovalo Savsko naselje? · Volitve 2022">
-<meta property="og:description" content="Izidi za tri savska volišča na volitvah v svet ČS Bežigrad leta 2022. Primerjava s celotno četrtjo, izvoljeni svetniki in povezave do uradnih zapisnikov.">
+<meta property="og:title" content="Kako je glasovalo Savsko naselje leta 2022">
+<meta property="og:description" content="Izidi za tri savska volišča na volitvah 2022: svet ČS Bežigrad, župan in mestni svet MOL. Primerjava s celotno četrtjo in povezave do uradnih zapisnikov.">
 <meta property="og:locale" content="sl_SI">
 <meta property="og:type" content="website">
 
@@ -147,6 +147,10 @@
 #savsko-story .ss-compare-detail .ss-bar-label{font-size:15px}
 #savsko-story .ss-method{font-size:14px;line-height:1.55;margin:9px 0}
 #savsko-story .ss-data-foot{font-size:12px;margin:20px 0;color:var(--muted-foreground)}
+#savsko-story .ss-more-races{margin:22px 0 4px}
+#savsko-story .ss-more-lead{font-size:16px;line-height:1.45;margin:0 0 12px}
+#savsko-story .ss-more-actions{display:flex;flex-wrap:wrap;gap:10px}
+#savsko-story .ss-more-actions .btn{cursor:pointer}
 #savsko-story .ss-survey-foot{text-align:center;margin:10px 0 28px;font-size:16px}
 #savsko-story .ss-survey-foot a{color:var(--primary);font-weight:700}
 #savsko-story #ss-survey{text-decoration:none}
@@ -326,7 +330,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   <button class="btn btn-primary" id="ss-next" type="button">Naprej <span aria-hidden="true">→</span></button>
   <a class="btn btn-primary" id="ss-survey" href="https://anketa.savska.org/" hidden>Reši anketo 2026</a>
  </nav>
- <p class="ss-survey-foot"><a href="https://anketa.savska.org/">Reši anketo 2026</a></p>
+ <p class="ss-survey-foot">Kako je glasovalo Savsko naselje leta 2022</p>
  <section id="ss-data" hidden aria-label="Viri in pregled podatkov">
   <div class="ss-list-heading"><h2 id="ss-data-heading" tabindex="-1">Glasovi po voliščih</h2><a href="#ss-title" class="ss-reference-close" id="ss-close-data">Zapri podatke</a></div>
   <p class="ss-method">Na volitvah v svet ČS Bežigrad 20. novembra 2022 je bil sedež volišč 61-021, 61-022 in 61-023 na OŠ Savsko naselje, Matjaževa ulica 4. »Savsko« pomeni seštevek teh treh rednih volišč. Predčasni in poštni glasovi so zajeti v rezultatu celotne četrti.</p>
@@ -336,7 +340,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   <h3>Kako smo preverili izid</h3>
   <p class="ss-method">Za vsako od devetih list smo sešteli vseh 30 vnosov občinske volilne komisije ter rezultat primerjali s končnim poročilom v Uradnem listu. Vsota znaša 10.210 veljavnih glasov. Deleže računamo iz glasov istega območja. Razliko Savsko − ČS računamo iz nezaokroženih deležev in jo nato zaokrožimo na dve decimalki.</p>
   <p id="ss-extra-refs" class="ss-ref-list text-small"></p>
-  <p class="ss-data-foot">Preverjeno 5. novembra 2026 · volilni izid z dne 20. novembra 2022. · <a href="https://anketa.savska.org/">Reši anketo 2026</a></p>
+  <p class="ss-data-foot">Preverjeno 5. novembra 2026 · volilni izid z dne 20. novembra 2022.</p>
  </section>
 </div>
 
@@ -388,7 +392,9 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scopes = {
   local: 'Tri redna volišča na OŠ Savsko naselje · volitve v svet ČS Bežigrad, 20. 11. 2022',
   district: 'Celotna ČS Bežigrad · volitve v svet četrtne skupnosti, 20. 11. 2022',
-  both: 'Volitve v svet ČS Bežigrad · 20. 11. 2022'
+  both: 'Volitve v svet ČS Bežigrad · 20. 11. 2022',
+  mayor: 'Tri redna volišča na OŠ Savsko naselje · volitve župana MOL, 20. 11. 2022',
+  council: 'Tri redna volišča na OŠ Savsko naselje · volitve v mestni svet MOL, 20. 11. 2022'
 };
 
 const pdfRoot = 'https://www.ljubljana.si/assets/Uploads/';
@@ -405,6 +411,16 @@ const sources = {
   report: { url: 'https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2022-01-3808/porocilo-o-izidu-rednih-volitev-clanov-sveta-cetrtne-skupnosti-bezigrad', label: 'Uradni list · končno poročilo' },
   fmf: { url: 'https://volitve.fmf.uni-lj.si/lv2022/1339.html', label: 'FMF UL · kontrolni izračun' },
   areas: { url: pdfRoot + 'Sklep-o-dolocitvi-sedezev-in-obmocij-volisc-v-MOL.pdf#page=1', label: 'MOL · sedeži volišč, str. 1' },
+  zupanP9: { url: pdfRoot + 'Izid-glasovanja-za-zupana-po-voliscih.pdf#page=9', label: 'MOL · župan 01-021 in 01-022, str. 9' },
+  zupanP10: { url: pdfRoot + 'Izid-glasovanja-za-zupana-po-voliscih.pdf#page=10', label: 'MOL · župan 01-023, str. 10' },
+  zupanCity: { url: pdfRoot + 'Izid-glasovanja-za-zupana-po-st.pdf', label: 'MOL · župan, celotna MOL' },
+  zupanFmf: { url: 'https://volitve.fmf.uni-lj.si/lv2022/1335.html', label: 'FMF UL · župan MOL' },
+  msP13: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=13', label: 'MOL · mestni svet 01-021, str. 13' },
+  msP14: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=14', label: 'MOL · mestni svet 01-022, str. 14' },
+  msP15: { url: pdfRoot + 'Izid-glasovanja-po-voliscih-MS.pdf#page=15', label: 'MOL · mestni svet 01-023, str. 15' },
+  msCity: { url: pdfRoot + 'Izid-glasovanja-MS.pdf', label: 'MOL · mestni svet, celotna MOL' },
+  msFmf: { url: 'https://volitve.fmf.uni-lj.si/lv2022/ljubljana.html', label: 'FMF UL · mestni svet MOL' },
+
   areaList: { url: 'https://www.ossavskonaselje.si/solski-okolis/', label: 'OŠ Savsko naselje · šolski okoliš' }
 };
 function sourceLink(key, label, description) {
@@ -503,7 +519,7 @@ function dataTable() {
 const story = [
   {
     tag: "01 / NAŠ KVART",
-    title: "Kako je glasovalo Savsko naselje?",
+    title: "Kako je glasovalo Savsko naselje leta 2022",
     sub: "Glasovanje za svet ČS Bežigrad · 20. november 2022",
     caption: "Sešteli smo glasove treh rednih volišč na Matjaževi 4. Predčasni in poštni glasovi so všteti v izid celotne četrti.",
     scope: "local",
@@ -599,14 +615,168 @@ const story = [
     scope: "both",
     refs: ["p9", "p10", "report"],
     note: "Pri volilni udeležbi primerjamo število volivcev, ki so glasovali, s številom upravičencev. Uradno poročilo ta podatek objavlja za celotno ČS Bežigrad.",
-    render: () => `<div class="ss-finale"><div class="ss-final-facts"><div class="ss-final-fact"><h2>999</h2><span>oddanih glasovnic na treh voliščih</span></div><div class="ss-final-fact"><h2>973</h2><span>veljavnih glasov za izračun deležev</span></div><div class="ss-final-fact"><h2>17</h2><span>mandatov za celotno ČS Bežigrad</span></div><details class="ss-turnout"><summary>Volilna udeležba</summary><p>V celotni ČS je glasovalo <strong>10.410 od 25.565</strong> upravičencev (${p(10410,25565)}). Komisija je za svet ČS naštela 10.409 oddanih glasovnic. ${sourceLink('report','Uradni list · I in II')}</p></details></div></div>`
+    render: () => `<div class="ss-finale"><div class="ss-final-facts"><div class="ss-final-fact"><h2>999</h2><span>oddanih glasovnic na treh voliščih</span></div><div class="ss-final-fact"><h2>973</h2><span>veljavnih glasov za izračun deležev</span></div><div class="ss-final-fact"><h2>17</h2><span>mandatov za celotno ČS Bežigrad</span></div><details class="ss-turnout"><summary>Volilna udeležba</summary><p>V celotni ČS je glasovalo <strong>10.410 od 25.565</strong> upravičencev (${p(10410,25565)}). Komisija je za svet ČS naštela 10.409 oddanih glasovnic. ${sourceLink('report','Uradni list · I in II')}</p></details></div>${raceLinks('cs')}</div>`
   },
 ];
 
+let chapter = 'cs';
+function currentStory() {
+  if (chapter === 'mayor') return mayorStory;
+  if (chapter === 'ms') return msStory;
+  return story;
+}
+function barRowFull(label, votes, total) {
+  return `<div class="ss-comparison-row">
+    <span class="ss-bar-label">${label}</span>
+    <div class="ss-track" aria-hidden="true"><div class="ss-fill" style="--width:${pct(votes, total)}%"></div></div>
+    <span class="ss-comparison-value">${p(votes,total)}<small>${whole(votes)} / ${whole(total)}</small></span>
+  </div>`;
+}
+function raceDelta(localVotes, localTotal, cityVotes, cityTotal) {
+  const value = pct(localVotes, localTotal) - pct(cityVotes, cityTotal);
+  return (value < 0 ? '−' : value > 0 ? '+' : '') + f(Math.abs(value));
+}
+function raceLinks(here) {
+  const items = [];
+  if (here !== 'mayor') items.push(`<button type="button" class="btn btn-primary" data-go-chapter="mayor">Kako je glasovalo za župana</button>`);
+  if (here !== 'ms') items.push(`<button type="button" class="btn${here === 'cs' ? ' btn-primary' : ''}" data-go-chapter="ms">Kako je glasovalo za mestni svet</button>`);
+  if (here !== 'cs') items.push(`<button type="button" class="btn" data-go-chapter="cs">Nazaj na svet četrti</button>`);
+  const lead = here === 'cs'
+    ? 'Poglejmo še, kako je Savsko naselje leta 2022 glasovalo za župana in mestni svet.'
+    : 'Ista tri volišča na OŠ Savsko naselje, Matjaževa 4. Linhartova 1 v ta seštevek ne sodi.';
+  return `<div class="ss-more-races"><p class="ss-more-lead">${lead}</p><div class="ss-more-actions">${items.join('')}</div></div>`;
+}
+function rankedBars(names, votes, total) {
+  return names.map((name, i) => ({name, votes: votes[i]}))
+    .filter(row => row.votes > 0)
+    .sort((a, b) => b.votes - a.votes)
+    .map(row => barRowFull(row.name, row.votes, total))
+    .join('');
+}
+function goChapter(name) {
+  chapter = name;
+  scene = name === 'cs' ? story.length - 1 : 0;
+  $('ss-data').hidden = true;
+  $('ss-sources').setAttribute('aria-expanded', 'false');
+  draw();
+  root.scrollIntoView({block:'start', behavior:'instant'});
+}
+
+const mayorNames = ['Zoran Janković', 'Aleš Primc', 'Nataša Sukič', 'Jasmin Feratović', 'dr. Tina Bregant', 'dr. Jasminka Dedić', 'Mojca Sojar', 'Igor Horvat', 'mag. Tomaž Ogrin'];
+const mayorStations = [
+  {id:'01-021', cast:242, valid:241, v:[146,18,27,2,9,16,4,13,6]},
+  {id:'01-022', cast:381, valid:378, v:[237,10,47,9,18,30,4,15,8]},
+  {id:'01-023', cast:376, valid:373, v:[247,15,46,10,13,12,6,17,7]}
+];
+const mayorLocal = mayorNames.map((_, i) => mayorStations.reduce((sum, s) => sum + s.v[i], 0));
+const mayorValid = mayorStations.reduce((sum, s) => sum + s.valid, 0);
+const mayorCast = mayorStations.reduce((sum, s) => sum + s.cast, 0);
+const mayorInvalid = mayorCast - mayorValid;
+const mayorCity = [54680, 6148, 8495, 1431, 5033, 2796, 2823, 5552, 1481];
+const mayorCityValid = 88439;
+
+const msNames = ['KSU – Krščanski socialisti', 'Lista Šport za zdravje', 'Slovenska demokratska stranka – SDS', 'Državljansko gibanje Resni.ca', 'Slovenska ljudska stranka', 'Lista kolesarjev in pešcev', 'VESNA – zelena stranka', 'Slovenska nacionalna stranka – SNS', 'Glas za otroke in družine', 'Socialni demokrati', 'Levica', 'Piratska stranka Slovenije', 'Dobra država', 'Nova Slovenija – krščanski demokrati', 'Gibanje Svoboda', 'Zeleni Slovenije in Konkretno', 'Lista Zorana Jankovića'];
+const msStations = [
+  {id:'01-021', cast:242, valid:241, v:[2,2,23,3,1,7,12,1,5,8,26,4,0,9,40,1,97]},
+  {id:'01-022', cast:381, valid:371, v:[1,6,24,3,4,13,25,0,6,13,53,13,0,5,57,3,145]},
+  {id:'01-023', cast:376, valid:369, v:[3,5,34,2,3,11,20,0,7,8,38,8,0,8,65,1,156]}
+];
+const msLocal = msNames.map((_, i) => msStations.reduce((sum, s) => sum + s.v[i], 0));
+const msValid = msStations.reduce((sum, s) => sum + s.valid, 0);
+const msCast = msStations.reduce((sum, s) => sum + s.cast, 0);
+const msInvalid = msCast - msValid;
+const msCity = [220, 2359, 10662, 791, 2098, 1550, 3286, 272, 2295, 3572, 8190, 1721, 270, 4007, 14064, 578, 32168];
+const msCityValid = 88103;
+
+const mayorStory = [
+  {
+    tag: "ŽUPAN / 01",
+    title: "Kako je glasovalo<br>za župana?",
+    sub: "Volitve župana MOL · 20. november 2022 · volišča 01-021, 01-022 in 01-023",
+    caption: "Sešteli smo iste tri volišča na OŠ Savsko naselje, Matjaževa 4. Linhartova 1 v ta seštevek ne sodi.",
+    scope: "mayor",
+    refs: ["zupanP9", "zupanP10"],
+    note: "Oddanih glasovnic je bilo 999, enako kot pri volitvah v svet četrti. Neveljavnih je bilo 7, veljavnih 992.",
+    render: () => `<div class="ss-finale"><div class="ss-final-facts"><div class="ss-final-fact"><h2>999</h2><span>oddanih glasovnic na treh voliščih</span></div><div class="ss-final-fact"><h2>992</h2><span>veljavnih glasov za župana</span></div><div class="ss-final-fact"><h2>7</h2><span>neveljavnih glasovnic</span></div></div></div>`
+  },
+  {
+    tag: "ŽUPAN / 02",
+    title: "Kdo je dobil<br>največ glasov?",
+    sub: "Deleži od 992 veljavnih glasov na treh savskih voliščih.",
+    caption: "Kandidati so razvrščeni po številu glasov. Imena so iz uradnega izpisa.",
+    scope: "mayor",
+    refs: ["zupanP9", "zupanP10"],
+    note: "Zoran Janković je na treh voliščih dobil 630 glasov. Sledila je Nataša Sukič s 120 glasovi.",
+    render: () => `<div class="ss-compare">${rankedBars(mayorNames, mayorLocal, mayorValid)}<p class="ss-compare-caption">Lestvica prikazuje delež od 992 veljavnih glasov za župana.</p></div>`
+  },
+  {
+    tag: "ŽUPAN / 03",
+    title: "Savsko naselje<br>in celotna MOL",
+    sub: "Primerjava deležev na treh savskih voliščih in v celotni mestni občini.",
+    caption: "V celotni MOL je bilo 88.439 veljavnih glasov za župana. Razliko izračunamo pred zaokroževanjem.",
+    scope: "mayor",
+    refs: ["zupanP9", "zupanP10", "zupanCity", "zupanFmf"],
+    note: "Največja pozitivna razlika do mestnega povprečja je pri Nataši Sukič in dr. Jasminki Dedić, največja negativna pri Alešu Primcu.",
+    render: () => {
+      const order = mayorNames.map((_, i) => i).filter(i => mayorLocal[i] > 0).sort((a, b) => mayorLocal[b] - mayorLocal[a]);
+      const rows = order.map(i => `<div class="ss-comparison-row">
+        <span class="ss-bar-label">${mayorNames[i]}</span>
+        <div class="ss-track" aria-hidden="true"><div class="ss-fill" style="--width:${pct(mayorLocal[i], mayorValid)}%"></div></div>
+        <span class="ss-comparison-value">${p(mayorLocal[i], mayorValid)}<small>MOL ${p(mayorCity[i], mayorCityValid)} · ${raceDelta(mayorLocal[i], mayorValid, mayorCity[i], mayorCityValid)}</small></span>
+      </div>`).join('');
+      const stations = mayorStations.map(s => barRowFull(s.id, s.v[0], s.valid)).join('');
+      return `<div class="ss-compare">${rows}<p class="ss-compare-caption">Zoran Janković po voliščih:</p>${stations}${raceLinks('mayor')}</div>`;
+    }
+  }
+];
+
+const msStory = [
+  {
+    tag: "MESTNI SVET / 01",
+    title: "Kako je glasovalo<br>za mestni svet?",
+    sub: "Volitve v Mestni svet MOL · 20. november 2022 · volišča 01-021, 01-022 in 01-023",
+    caption: "Sešteli smo iste tri volišča na OŠ Savsko naselje, Matjaževa 4. Linhartova 1 v ta seštevek ne sodi.",
+    scope: "council",
+    refs: ["msP13", "msP14", "msP15"],
+    note: "Oddanih glasovnic je bilo 999, enako kot pri volitvah v svet četrti in za župana. Neveljavnih je bilo 18, veljavnih 981.",
+    render: () => `<div class="ss-finale"><div class="ss-final-facts"><div class="ss-final-fact"><h2>999</h2><span>oddanih glasovnic na treh voliščih</span></div><div class="ss-final-fact"><h2>981</h2><span>veljavnih glasov za mestni svet</span></div><div class="ss-final-fact"><h2>18</h2><span>neveljavnih glasovnic</span></div></div></div>`
+  },
+  {
+    tag: "MESTNI SVET / 02",
+    title: "Kako so se razdelili<br>glasovi po listah?",
+    sub: "Deleži od 981 veljavnih glasov na treh savskih voliščih.",
+    caption: "Liste so razvrščene po številu glasov. Imena so iz uradnega izpisa. Dobra država na teh treh voliščih ni dobila glasu.",
+    scope: "council",
+    refs: ["msP13", "msP14", "msP15"],
+    note: "Lista Zorana Jankovića je dobila 398 glasov, Gibanje Svoboda 162, Levica 117 in SDS 81.",
+    render: () => `<div class="ss-compare">${rankedBars(msNames, msLocal, msValid)}<p class="ss-compare-caption">Lestvica prikazuje delež od 981 veljavnih glasov za mestni svet. Dobra država (0 glasov) ni prikazana.</p></div>`
+  },
+  {
+    tag: "MESTNI SVET / 03",
+    title: "Savsko naselje<br>in celotna MOL",
+    sub: "Primerjava deležev na treh savskih voliščih in v celotni mestni občini.",
+    caption: "V celotni MOL je bilo 88.103 veljavnih glasov za mestni svet. Mandati se delijo na ravni celotne občine, ne po teh treh voliščih.",
+    scope: "council",
+    refs: ["msP13", "msP14", "msP15", "msCity", "msFmf"],
+    note: "Največja pozitivna razlika do mestnega povprečja je pri Listi Zorana Jankovića, največja negativna pri SDS.",
+    render: () => {
+      const order = msNames.map((_, i) => i).filter(i => msLocal[i] > 0).sort((a, b) => msLocal[b] - msLocal[a]);
+      const rows = order.map(i => `<div class="ss-comparison-row">
+        <span class="ss-bar-label">${msNames[i]}</span>
+        <div class="ss-track" aria-hidden="true"><div class="ss-fill" style="--width:${pct(msLocal[i], msValid)}%"></div></div>
+        <span class="ss-comparison-value">${p(msLocal[i], msValid)}<small>MOL ${p(msCity[i], msCityValid)} · ${raceDelta(msLocal[i], msValid, msCity[i], msCityValid)}</small></span>
+      </div>`).join('');
+      return `<div class="ss-compare">${rows}${raceLinks('ms')}</div>`;
+    }
+  }
+];
+
+
 function draw(animate = true) {
-  const current = story[scene];
-  root.dataset.scene = String(scene);
-  $('ss-opening-mark').hidden = scene !== 0;
+  const scenes = currentStory();
+  const current = scenes[scene];
+  root.dataset.scene = chapter === 'cs' ? String(scene) : 'extra';
+  $('ss-opening-mark').hidden = !(chapter === 'cs' && scene === 0);
   $('ss-eyebrow').textContent = current.tag;
   $('ss-title').innerHTML = current.title.replaceAll('<br>', ' ');
   $('ss-subtitle').textContent = current.sub;
@@ -616,11 +786,15 @@ function draw(animate = true) {
   $('ss-note').textContent = current.note;
   stage.className = 'ss-stage' + (animate && !reduced ? ' ss-motion' : '');
   stage.innerHTML = current.render();
-  $('ss-position').textContent = `${scene + 1} / ${story.length}`;
-  $('ss-prev').disabled = scene === 0;
-  const last = scene === story.length - 1;
+  const label = chapter === 'mayor' ? 'Župan · ' : chapter === 'ms' ? 'Mestni svet · ' : '';
+  $('ss-position').textContent = `${label}${scene + 1} / ${scenes.length}`;
+  $('ss-prev').disabled = chapter === 'cs' && scene === 0;
+  const last = scene === scenes.length - 1;
   $('ss-next').hidden = last;
   $('ss-survey').hidden = !last;
+  stage.querySelectorAll('[data-go-chapter]').forEach(btn => {
+    btn.onclick = () => goChapter(btn.dataset.goChapter);
+  });
   const localSelect = $('ss-party');
   if (localSelect) localSelect.onchange = () => {
     activeParty = Number(localSelect.value);
@@ -635,8 +809,14 @@ function draw(animate = true) {
   };
 }
 function move(offset) {
+  const scenes = currentStory();
   const next = scene + offset;
-  if (next < 0 || next >= story.length) return;
+  if (next >= scenes.length) return;
+  if (next < 0) {
+    if (chapter === 'cs') return;
+    goChapter('cs');
+    return;
+  }
   scene = next;
   $('ss-data').hidden = true;
   $('ss-sources').setAttribute('aria-expanded', 'false');
