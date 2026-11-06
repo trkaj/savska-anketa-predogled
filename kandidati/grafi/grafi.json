@@ -25,10 +25,10 @@
   "vprasanje": "Kako ste zadovoljni z novo prometno ureditvijo v naselju?",
   "stevilka": 6,
   "moznosti": "Super je / Je v redu / Slabo / Katastrofa / Ne vem",
-  "n": 298,
-  "opomba": "Odgovori »Ne vem« (47) niso v osnovi grafa (n = 298). Skupaj z »Ne vem« je odgovorov 345; »Slabo« ali »Katastrofa«: 214/345 (62,0 %). Na grafu (brez »Ne vem«): 214/298 (71,8 %).",
+  "n": 345,
+  "opomba": "»Slabo« ali »Katastrofa«: 214/345 (62 %).",
   "izbor": "",
-  "alt": "Kako ste zadovoljni z novo prometno ureditvijo v naselju? – Super je: 10/298; Je v redu: 74/298; Slabo: 118/298; Katastrofa: 96/298",
+  "alt": "Kako ste zadovoljni z novo prometno ureditvijo v naselju? – Super je: 10/345; Je v redu: 74/345; Slabo: 118/345; Katastrofa: 96/345; Ne vem: 47/345",
   "pobude": 225
  },
  "varnost": {
