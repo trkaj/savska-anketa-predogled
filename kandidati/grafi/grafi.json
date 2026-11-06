@@ -4,10 +4,10 @@
   "vprasanje": "Kaj bi bilo najbolj nujno izboljšati? Izberite do 5 težav, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše.",
   "stevilka": 2,
   "moznosti": "14 tem + Drugo (do 5 izbir)",
-  "n": 350,
+  "n": 382,
   "opomba": "",
   "izbor": "",
-  "alt": "Kaj bi bilo najbolj nujno izboljšati? Izberite do 5 težav, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše. – Parkiranje: 273/350; niso izbrali: 77/350",
+  "alt": "Kaj bi bilo najbolj nujno izboljšati? Izberite do 5 težav, ki vas najbolj motijo oziroma se vam zdijo najpomembnejše. – Parkiranje: 298/382; niso izbrali: 84/382",
   "pobude": 202
  },
  "storitve": {
@@ -15,20 +15,20 @@
   "vprasanje": "Katere storitve v bližini pogrešate? (lahko več)",
   "stevilka": 7,
   "moznosti": "Pošta / Banka / Trgovina / Lekarna / Drugo",
-  "n": 293,
+  "n": 321,
   "opomba": "Možnih je več odgovorov, zato vsota presega 100 %.",
   "izbor": "",
-  "alt": "Katere storitve v bližini pogrešate? (lahko več) – Pošta: 230/293; Banka: 175/293; Trgovina: 22/293; Lekarna: 26/293; Drugo: 39/293"
+  "alt": "Katere storitve v bližini pogrešate? (lahko več) – Pošta: 249/321; Banka: 194/321; Trgovina: 26/321; Lekarna: 28/321; Drugo: 42/321"
  },
  "promet": {
   "slika": "grafi/promet.png",
   "vprasanje": "Kako ste zadovoljni z novo prometno ureditvijo v naselju?",
   "stevilka": 6,
   "moznosti": "Super je / Je v redu / Slabo / Katastrofa / Ne vem",
-  "n": 272,
-  "opomba": "Odgovori »Ne vem« (42) niso v osnovi. »Slabo« ali »Katastrofa«: 194/272 (71,3 %).",
+  "n": 298,
+  "opomba": "Odgovori »Ne vem« (47) niso v osnovi grafa (n = 298). Skupaj z »Ne vem« je odgovorov 345; »Slabo« ali »Katastrofa«: 214/345 (62,0 %). Na grafu (brez »Ne vem«): 214/298 (71,8 %).",
   "izbor": "",
-  "alt": "Kako ste zadovoljni z novo prometno ureditvijo v naselju? – Super je: 9/272; Je v redu: 69/272; Slabo: 106/272; Katastrofa: 88/272",
+  "alt": "Kako ste zadovoljni z novo prometno ureditvijo v naselju? – Super je: 10/298; Je v redu: 74/298; Slabo: 118/298; Katastrofa: 96/298",
   "pobude": 225
  },
  "varnost": {
@@ -36,10 +36,10 @@
   "vprasanje": "Kako pogosto vas to prizadene? (tema »Igle in droge, občutek varnosti«)",
   "stevilka": 3,
   "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
-  "n": 129,
+  "n": 143,
   "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
-  "izbor": "Temo »Igle in droge, občutek varnosti« je med do 5 težavami (vprašanje 2) izbralo 129/350 (36,9 %).",
-  "alt": "Kako pogosto vas to prizadene? (tema »Igle in droge, občutek varnosti«) – Skoraj vsak dan: 33/129; Vsak teden: 23/129; Nekajkrat na mesec: 47/129; Redko: 26/129",
+  "izbor": "Temo »Igle in droge, občutek varnosti« je med do 5 težavami (vprašanje 2) izbralo 143/382 (37,4 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Igle in droge, občutek varnosti«) – Skoraj vsak dan: 38/143; Vsak teden: 27/143; Nekajkrat na mesec: 50/143; Redko: 28/143",
   "pobude": 13
  },
  "klopi": {
@@ -47,10 +47,10 @@
   "vprasanje": "Kako pogosto vas to prizadene? (tema »Več klopi«)",
   "stevilka": 3,
   "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
-  "n": 124,
+  "n": 136,
   "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
-  "izbor": "Temo »Več klopi« je med do 5 težavami (vprašanje 2) izbralo 128/350 (36,6 %).",
-  "alt": "Kako pogosto vas to prizadene? (tema »Več klopi«) – Skoraj vsak dan: 30/124; Vsak teden: 39/124; Nekajkrat na mesec: 41/124; Redko: 14/124",
+  "izbor": "Temo »Več klopi« je med do 5 težavami (vprašanje 2) izbralo 140/382 (36,6 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Več klopi«) – Skoraj vsak dan: 34/136; Vsak teden: 41/136; Nekajkrat na mesec: 45/136; Redko: 16/136",
   "pobude": 22
  },
  "cistoca": {
@@ -58,10 +58,10 @@
   "vprasanje": "Ali podpirate čistilne akcije (Čistilni četrtek), ko bi vsi prebivalci skupaj očistili Savsko naselje?",
   "stevilka": 5,
   "moznosti": "Da, podpiram 1-krat na mesec / Da, podpiram 1-krat na teden / Da, podpiram 1-krat na leto / Drugo: … / Ne podpiram",
-  "n": 351,
+  "n": 386,
   "opomba": "",
-  "izbor": "Temo »Čistoča in pasji iztrebki« je med do 5 težavami (vprašanje 2) izbralo 108/350 (30,9 %).",
-  "alt": "Ali podpirate čistilne akcije (Čistilni četrtek), ko bi vsi prebivalci skupaj očistili Savsko naselje? – Da, podpiram 1-krat na mesec: 209/351; Da, podpiram 1-krat na teden: 18/351; Da, podpiram 1-krat na leto: 81/351; Drugo: 28/351; Ne podpiram: 15/351",
+  "izbor": "Temo »Čistoča in pasji iztrebki« je med do 5 težavami (vprašanje 2) izbralo 117/382 (30,6 %).",
+  "alt": "Ali podpirate čistilne akcije (Čistilni četrtek), ko bi vsi prebivalci skupaj očistili Savsko naselje? – Da, podpiram 1-krat na mesec: 230/386; Da, podpiram 1-krat na teden: 19/386; Da, podpiram 1-krat na leto: 91/386; Drugo: 30/386; Ne podpiram: 16/386",
   "pobude": 136
  },
  "zelenje": {
@@ -69,10 +69,10 @@
   "vprasanje": "Kako pogosto vas to prizadene? (tema »Drevesa in zelenice«)",
   "stevilka": 3,
   "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
-  "n": 80,
+  "n": 85,
   "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
-  "izbor": "Temo »Drevesa in zelenice« je med do 5 težavami (vprašanje 2) izbralo 84/350 (24,0 %).",
-  "alt": "Kako pogosto vas to prizadene? (tema »Drevesa in zelenice«) – Skoraj vsak dan: 49/80; Vsak teden: 17/80; Nekajkrat na mesec: 11/80; drugo: 3/80",
+  "izbor": "Temo »Drevesa in zelenice« je med do 5 težavami (vprašanje 2) izbralo 89/382 (23,3 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Drevesa in zelenice«) – Skoraj vsak dan: 50/85; Vsak teden: 19/85; Nekajkrat na mesec: 12/85; drugo: 4/85",
   "pobude": 224
  },
  "dom": {
@@ -80,22 +80,21 @@
   "vprasanje": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2.",
   "stevilka": 14,
   "moznosti": "prostor za druženje in kavo / vadba in druženje za starejše / delavnica za popravila (kolesa, orodje) / srečanja in zbori prebivalcev / prostor za najstnike z mladinskim delavcem / učna pomoč za otroke / nič od tega",
-  "n": 282,
+  "n": 305,
   "opomba": "Vprašanje za starostno skupino 25–64 let; največ 2 izbiri, zato vsota presega 100 %.",
   "izbor": "",
-  "alt": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2. – prostor za druženje in kavo: 99/282; vadba in druženje za starejše: 82/282; delavnica za popravila (kolesa, orodje): 76/282; srečanja in zbori prebivalcev: 66/282; prostor za najstnike z mladinskim delavcem: 57/282; učna pomoč za otroke: 35/282; nič od tega: 28/282",
-  "pobude": 6,
-  "skrij_vir": true
+  "alt": "Kaj bi v Domu skupnosti najpogosteje uporabljali vi ali kdo v vašem gospodinjstvu? Izberite največ 2. – prostor za druženje in kavo: 109/305; vadba in druženje za starejše: 89/305; delavnica za popravila (kolesa, orodje): 81/305; srečanja in zbori prebivalcev: 71/305; prostor za najstnike z mladinskim delavcem: 61/305; učna pomoč za otroke: 38/305; nič od tega: 31/305",
+  "pobude": 6
  },
  "zrak": {
   "slika": "grafi/zrak.png",
   "vprasanje": "Kako pogosto vas to prizadene? (tema »Boljši zrak«)",
   "stevilka": 3,
   "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
-  "n": 73,
+  "n": 78,
   "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
-  "izbor": "Temo »Boljši zrak« je med do 5 težavami (vprašanje 2) izbralo 74/350 (21,1 %).",
-  "alt": "Kako pogosto vas to prizadene? (tema »Boljši zrak«) – Skoraj vsak dan: 55/73; Vsak teden: 7/73; Nekajkrat na mesec: 10/73; drugo: 1/73",
+  "izbor": "Temo »Boljši zrak« je med do 5 težavami (vprašanje 2) izbralo 80/382 (20,9 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Boljši zrak«) – Skoraj vsak dan: 59/78; Vsak teden: 8/78; Nekajkrat na mesec: 10/78; drugo: 1/78",
   "pobude": 28
  },
  "mladi": {
@@ -103,10 +102,10 @@
   "vprasanje": "Kako pogosto vas to prizadene? (tema »Igrišča in prostor za mlade«)",
   "stevilka": 3,
   "moznosti": "Skoraj vsak dan / Vsak teden / Nekajkrat na mesec / Redko",
-  "n": 62,
+  "n": 69,
   "opomba": "Odgovarjali so le tisti, ki so temo izbrali v vprašanju 2.",
-  "izbor": "Temo »Igrišča in prostor za mlade« je med do 5 težavami (vprašanje 2) izbralo 63/350 (18,0 %).",
-  "alt": "Kako pogosto vas to prizadene? (tema »Igrišča in prostor za mlade«) – Skoraj vsak dan: 23/62; Vsak teden: 21/62; Nekajkrat na mesec: 11/62; Redko: 7/62",
+  "izbor": "Temo »Igrišča in prostor za mlade« je med do 5 težavami (vprašanje 2) izbralo 70/382 (18,3 %).",
+  "alt": "Kako pogosto vas to prizadene? (tema »Igrišča in prostor za mlade«) – Skoraj vsak dan: 27/69; Vsak teden: 22/69; Nekajkrat na mesec: 11/69; Redko: 9/69",
   "pobude": 89
  },
  "upravniki": {
@@ -114,10 +113,10 @@
   "vprasanje": "Kako ste zadovoljni z upravnikom? – Odzivnost",
   "stevilka": 8,
   "moznosti": "Zelo / Kar / Malo / Sploh ne / Ne vem",
-  "n": 288,
+  "n": 315,
   "opomba": "Odgovarjali so tisti, ki vedo, kdo je upravnik njihovega bloka.",
   "izbor": "",
-  "alt": "Kako ste zadovoljni z upravnikom? – Odzivnost – Zelo: 23/288; Kar: 101/288; Malo: 67/288; Sploh ne: 70/288; Ne vem: 27/288",
+  "alt": "Kako ste zadovoljni z upravnikom? – Odzivnost – Zelo: 24/315; Kar: 109/315; Malo: 73/315; Sploh ne: 79/315; Ne vem: 30/315",
   "pobude": 55
  },
  "obvescanje": {
@@ -126,10 +125,10 @@
   "stevilka": "—",
   "moznosti": "seje / OPPN / sodelovanje / obveščanje upravnika",
   "n": 276,
-  "opomba": "Podatki o sejah, OPPN in sodelovanju so iz ločenega dela ankete (n = 276 / 277 / 322) in niso povezani z ostalimi odgovori. Upravnik: iz glavne ankete, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
+  "opomba": "Podatki o sejah, OPPN in sodelovanju so iz ločenega dela ankete (n = 276 / 277 / 322) in niso povezani z ostalimi odgovori. Upravnik: iz glavne ankete, presek 6. 11. 2026 ob 06.20, n = 310/394. Upravnik obvešča »malo« ali »sploh ne« dobro za 141 od 310 (45 %).",
   "izbor": "",
-  "alt": "Obveščanje in komunikacija s ČS Bežigrad – seje ČS ne spremlja 204 od 276 (74 %) – seje: redno 9/276, občasno 63/276, ne a bi želel 41/276, ne 163/276; OPPN dobro 9/277; sodelovanje da+mogoče 238/322; upravnik malo+sploh ne 126/285",
-  "vir": "Vir: ločen del Savske ankete o spremljanju sej ČS, obveščenosti o OPPN in pripravljenosti za sodelovanje (n = 276 / 277 / 322). Upravnik: vprašanje o obveščanju upravnika, n = 285/359. Upravnik obvešča »malo« ali »sploh ne« dobro za 126 od 285 (44 %).",
+  "alt": "Obveščanje in komunikacija s ČS Bežigrad – seje ČS ne spremlja 204 od 276 (74 %) – seje: redno 9/276, občasno 63/276, ne a bi želel 41/276, ne 163/276; OPPN dobro 9/277; sodelovanje da+mogoče 238/322; upravnik malo+sploh ne 141/310",
+  "vir": "Vir: ločen del Savske ankete o spremljanju sej ČS, obveščenosti o OPPN in pripravljenosti za sodelovanje (n = 276 / 277 / 322). Upravnik: vprašanje o obveščanju upravnika, n = 310/394 (presek 6. 11. 2026 ob 06.20). Upravnik obvešča »malo« ali »sploh ne« dobro za 141 od 310 (45 %).",
   "pobude": 2
  }
 }
