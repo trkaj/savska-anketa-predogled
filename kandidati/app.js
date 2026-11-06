@@ -1,7 +1,7 @@
 // Savsko naselje · anketa – odgovori kandidatnih list
 const CONFIG = {
   endpoint: 'https://script.google.com/macros/s/AKfycbw0rHVWyMBTwv3VhaZIwMczxN2Kw6dpHNWjcmUeCJiOPGLxDPRcJXSgXj2dcZl6m-t1/exec',
-  rok: 'ponedeljek, 9. 11. 2026, ob polnoči',
+  rok: 'torek, 10. 11. 2026, ob polnoči',
   upravljavec: 'Rok Terkaj, savskonaselje1@gmail.com, 070 205 595',
   maxBesed: 0, // 0 = brez omejitve besed (odločitev Rok, 4. 11. 2026)
   storageKey: 'savska-odgovori-v5'
