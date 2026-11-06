@@ -13,13 +13,10 @@ input:focus,textarea:focus,button:focus{outline:3px solid var(--y);outline-offse
 .q{border-top:1px solid #dde;padding-top:12px;margin-top:12px}.q p.qt{font-weight:600;margin:0 0 6px}
 .radios{display:flex;gap:8px;flex-wrap:wrap;border:0;padding:0;margin:0}.radios label{font-weight:500;margin:0;padding:8px 14px;border:2px solid var(--g2);border-radius:999px;cursor:pointer}
 .radios input{accent-color:var(--g2)}.radios label:has(input:checked){background:var(--g2);color:#fff}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
 button{font:inherit;padding:10px 16px;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;min-height:44px}
 button.pri{background:var(--y);border-color:var(--y);color:#000;font-weight:700}
-.mic[aria-pressed=true]{background:#c62828;color:#fff;border-color:#c62828}
 .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .small{font-size:.88rem;color:#444}.msg{color:#a00;font-weight:600}.ok{color:var(--g2)}
-.cnt.over{color:#a00;font-weight:700}
 .pick label{font-weight:500}.chk{font-weight:500}
 .warn{background:#ffe08a;border:2px solid #b07800;padding:12px;margin:12px;border-radius:8px;font-weight:600}
 .rv{border-top:1px solid #dde;padding:8px 0}.rv b{color:var(--g)}
@@ -79,6 +76,4 @@ button.povezava{display:inline;padding:0;border:0;background:none;color:var(--g)
 #sek-obvescanje .radios label:has(input:checked){background:var(--y);color:var(--g);border-color:var(--y)}
 #sek-obvescanje textarea, #sek-obvescanje input:not([type]), #sek-obvescanje input[type=text], #sek-obvescanje input[type=email], #sek-obvescanje input[type=url]{background:#fff;color:var(--t);border-color:#fff}
 #sek-obvescanje button:not(.pri){background:transparent;color:#fff;border-color:#fff}
-#sek-obvescanje .mic[aria-pressed=true]{background:#c62828;color:#fff;border-color:#c62828}
 #sek-obvescanje .cit blockquote{background:rgba(255,255,255,.08);border-left-color:var(--y);color:#fff}
-#sek-obvescanje .cnt.over{color:#ffd54a}

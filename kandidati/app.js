@@ -3,21 +3,19 @@ const CONFIG = {
   endpoint: 'https://script.google.com/macros/s/AKfycbw0rHVWyMBTwv3VhaZIwMczxN2Kw6dpHNWjcmUeCJiOPGLxDPRcJXSgXj2dcZl6m-t1/exec',
   rok: 'do torka, 10. 11. 2026, do 24.00',
   upravljavec: 'Rok Terkaj, savskonaselje1@gmail.com, 070 205 595',
-  maxBesed: 0, // 0 = brez omejitve besed (odločitev Rok, 4. 11. 2026)
-  storageKey: 'savska-odgovori-v5'
+  storageKey: 'savska-odgovori-v7-'+((new URLSearchParams(location.search).get('l')||'').slice(0,6))
 };
 const $ = s => document.querySelector(s);
 const ph = s => !s || /\[.*\]/.test(s);
 let Q = null, G = {}, state = {};
 const NVSEH = 394; // veljavnih anket v izvozu 6. 11. 2026 ob 6.20 (1 test izločen); izbor tem od 382
-const words = t => (t.trim().match(/\S+/g) || []).length;
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 
 const ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="small">Verzija 1.4, 5. 11. 2026</p>'+
  '<h3>Kdo je upravljavec</h3><p>Rok Terkaj, fizična oseba, koordinator neodvisne in civilne pobude prebivalcev Savskega naselja; <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>.</p>'+
  '<h3>Kaj zbiramo in zakaj</h3><p>Od kandidatnih list zbiramo ime liste, e-naslov za potrditev, odgovore na vprašanja, kratko predstavitev ekipe, liste ali stranke ter neobvezno povezavo do fotografije ali video pozdrava. Namen je, da prebivalci Savskega naselja pred volitvami v svet ČS Bežigrad 15. 11. 2026 vidijo zaveze list. Podlaga je vaša privolitev (točka (a) 6(1) Splošne uredbe).</p>'+
- '<h3>Kaj objavimo</h3><p>Odgovore in povzetke odgovorov, predstavitev in morebitno fotografijo ali video pozdrav objavimo skupaj z imenom liste v celoti, liste v vrstnem redu uradnega seznama za volilno enoto 01: na spletni strani savska.org, v skupini Savsko naselje, v Facebook skupinah Savčan, Savc in Civilna iniciativa Savsko naselje, po e-pošti prostovoljcev, ki jih imamo, in tistih, ki so želeli biti obveščeni, ter na vhodih blokov, od 11. 11. 2026. E-naslova liste ne objavimo — uporabimo ga samo za potrditev prejema in morebitna vprašanja.</p>'+
+ '<h3>Kaj objavimo</h3><p>Odgovore in povzetke odgovorov, predstavitev in morebitno fotografijo ali video pozdrav objavimo skupaj z imenom liste v celoti, liste v vrstnem redu uradnega seznama za volilno enoto 01: na spletni strani <a href="https://anketa.savska.org">savska.org</a>, po naših socialnih omrežjih, po e-pošti prostovoljcev, ki jih imamo, in tistih, ki so želeli biti obveščeni, ter na vhodih blokov, od 11. 11. 2026. E-naslova liste ne objavimo — uporabimo ga samo za potrditev prejema in morebitna vprašanja.</p>'+
  '<h3>Česa ne zbiramo</h3><p>Ne prosimo za osebna imena kandidatov, domače naslove ali telefonske številke. Imena kandidatov bomo po potrebi kasneje vzeli iz javne predstavitve kandidatk in kandidatov ČS Bežigrad, kjer so že objavljena. Dokler odgovorov ne oddate, ostanejo samo v tej napravi.</p>'+
  '<h3>Avtorske pravice</h3><p>Avtorske pravice fotografij in videoposnetkov urejate sami. Z pregledom odgovorov in pošiljanjem se zavežete, da imajo fotografije in videoposnetki pravice urejene in podeljene Civilni iniciativi za objavo za namene uporabe, kot so v teh pogojih zasebnosti.</p>'+
  '<h3>Katere storitve uporabljamo</h3><p>Stran teče na GitHubu. Ko bo oddaja odprta, se odgovori shranijo v Googlovo preglednico, ki jo ureja upravljavec.</p>'+
@@ -38,29 +36,27 @@ function setupZasebnost(){
 }
 
 
-const LISTE = [
-  {n:1, ime:'Gibanje Svoboda'},
-  {n:2, ime:'Slovenska ljudska stranka'},
-  {n:3, ime:'Demokrati. Anžeta Logarja'},
-  {n:4, ime:'Pirati'},
-  {n:5, ime:'Levica'},
-  {n:6, ime:'Prerod – stranka Vladimirja Prebiliča'},
-  {n:7, ime:'Slovenska demokratska stranka – SDS'},
-  {n:8, ime:'Vesna – zelena stranka'},
-  {n:9, ime:'Nova Slovenija in Fokus'},
-  {n:10, ime:'Socialni demokrati'},
-  {n:11, ime:'Cilj – Bežigrad'},
-  {n:12, ime:'Stranka Straža – katoliška narodna stranka'},
-  {n:13, ime:'Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa'},
-  {n:14, ime:'Državljansko gibanje Resni.ca'},
-  {n:15, ime:'Lista Zorana Jankovića'}
-];
-function fillListe(){
-  const sel=$('#lista');
-  if(!sel || sel.tagName!=='SELECT') return;
-  sel.innerHTML='<option value="">Izberite listo</option>'+LISTE.map(x=>`<option value="${esc(x.ime)}" data-n="${x.n}">${x.n}. ${esc(x.ime)}</option>`).join('');
+let LISTA=null, TOKEN='';
+function skrijObrazec(){
+  $('#brezTokena').hidden=false; $('#f').hidden=true; $('#review').hidden=true; $('#oddaj').disabled=true;
+  return false;
 }
-function listaMeta(ime){return LISTE.find(x=>x.ime===ime)||null}
+async function fillListe(){
+  TOKEN=(new URLSearchParams(location.search).get('l')||'').trim();
+  if(!TOKEN) return skrijObrazec();
+  try{
+    const r=await fetch(CONFIG.endpoint+'?action=lista&l='+encodeURIComponent(TOKEN));
+    const j=await r.json();
+    if(!j || !j.ok || !j.ime) return skrijObrazec();
+    LISTA={n:j.n, ime:j.ime};
+    const el=$('#lista');
+    if(el) el.textContent=LISTA.n+'. '+LISTA.ime;
+    return true;
+  }catch(err){
+    return skrijObrazec();
+  }
+}
+function listaMeta(){return LISTA}
 function casLj(){return new Date().toLocaleString('sl-SI',{timeZone:'Europe/Ljubljana',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})+' (Europe/Ljubljana)'}
 
 async function init(){
@@ -72,12 +68,11 @@ async function init(){
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
-  fillListe(); render(); restore(); setupGrafZoom(); setupZasebnost();
+  if(!await fillListe()) return;
+  render(); restore(); setupGrafZoom(); setupZasebnost();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
-  $('#prenesiJ').onclick = ()=>dl(JSON.stringify(payload(),null,2),'json','application/json');
-  $('#prenesiT').onclick = ()=>dl(toTxt(payload()),'txt','text/plain');
 }
 
 function jeEnaka(s){return s.id==='obvescanje'||!!s.enaka;}
@@ -161,12 +156,10 @@ function render(){
       ${radios}
       <label for="x-${q.id}">${esc(polje)}</label>
       ${razlaga?`<p class="small razlaga">${esc(razlaga)}</p>`:''}
-      <textarea id="x-${q.id}" name="x-${q.id}"></textarea>
-      </div>`;
+      <textarea id="x-${q.id}" name="x-${q.id}"></textarea></div>`;
     }).join('');
     sek.insertAdjacentHTML('beforeend',`<section class="card sek" id="sek-${s.id}" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
-  document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
   syncPrio();
 }
 
@@ -203,9 +196,8 @@ function graf(id){const g=G[id];if(!g)return '';
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
   <img class="gz" src="${g.slika}?v=20261106a" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
-function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2))||$('#c-'+t.id);if(!c)return;const m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function collect(){
-  const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),predstavitev:($('#predstavitev')||{}).value?$('#predstavitev').value.trim():'',foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
+  const o={lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',email:$('#email').value.trim(),predstavitev:($('#predstavitev')||{}).value?$('#predstavitev').value.trim():'',foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
   o.prioritet = uniquePrios();
   Q.sekcije.forEach(s=>{
     s.vprasanja.forEach(q=>{
@@ -218,11 +210,11 @@ function collect(){
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
 function restore(){
-  $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#predstavitev')){$('#predstavitev').value=state.predstavitev||'';count($('#predstavitev'));}if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
+  $('#email').value=state.email||'';if($('#predstavitev')){$('#predstavitev').value=state.predstavitev||'';}if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
   (state.prioritet||[]).forEach(id=>{document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=true)});
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
-    const t=$('#x-'+id);if(t){t.value=a.besedilo||'';count(t)}});
+    const t=$('#x-'+id);if(t){t.value=a.besedilo||''}});
   syncPrio();
 }
 function tipSklopa(s, prioritet){
@@ -233,24 +225,21 @@ function tipSklopa(s, prioritet){
 }
 function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)||{}).naslov||id;
   const meta=listaMeta(c.lista);
-  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:c.lista,listaStevilka:meta?meta.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:!!($('#testOddaja')&&$('#testOddaja').checked),prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
+  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',listaStevilka:LISTA?LISTA.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:!!($('#testOddaja')&&$('#testOddaja').checked),prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
   return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj, lasten predlog, …): ${a.besedilo||'—'}\n`).join('\n')}
-function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
-  a.download=`odgovori-${(payload().test?'TEST-':'')+(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
 
 function validate(){
   const c=collect(),e=[];
-  if(!c.lista || !listaMeta(c.lista))e.push('Izberite listo s uradnega seznama za volilno enoto 01.');
+  if(!LISTA)e.push('Obrazec odprite prek povezave iz e-pošte.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
   if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med 5 prioritetami — sta enaka za vse liste.');
   if(c.prioritet.length!==5)e.push('Označite 5 prioritet (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
   Q.sekcije.filter(jeEnaka).forEach(s=>pset.add(s.id));
   const manjkajo=[];
-  let dolg=0;
   Q.sekcije.forEach(s=>{
     if(!pset.has(s.id)) return;
     s.vprasanja.forEach((q,i)=>{
@@ -259,11 +248,9 @@ function validate(){
         const txt=String(q.besedilo||'').replace(/\s+/g,' ');
         manjkajo.push({id:q.id,label:s.naslov+' · '+(i+1)+'. '+(txt.length>80?txt.slice(0,77)+'…':txt)});
       }
-      if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed) dolg++;
     });
   });
   if(manjkajo.length) e.push({text:'Pri '+manjkajo.length+' obveznih vprašanjih (obveščanje ali 5 prioritet) še ni izbran odgovor Da / Ne / Delno.',links:manjkajo});
-  if(dolg)e.push(dolg+' odgovorov je daljših od '+CONFIG.maxBesed+' besed.');
   const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
   if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
   if(!c.soglasje)e.push('Potrdite soglasje za objavo.');
@@ -293,14 +280,12 @@ function posljiMail(){
   const e=validate();prikaziNapake(e);if(e.length)return;
   const p=payload();
   const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:(p.lista||'lista');
-  const link='https://anketa.savska.org/kandidati/';
-  dl(JSON.stringify(p,null,2),'json','application/json');
-  setTimeout(function(){ dl(toTxt(p),'txt','text/plain'); }, 250);
+  const link='https://anketa.savska.org/kandidati/?l='+encodeURIComponent(TOKEN);
   const sub=(p.test?'PREIZKUS – ':'')+'Zaveze kandidatne liste: '+oznaka;
-  const body='Pozdravljeni,\n\npovezava do obrazca: '+link+'\nLista: '+oznaka+'\nE-naslov: '+(p.email||'')+'\n\nProsimo, da v priponko dodate pravkar preneseni datoteki (JSON in txt) z odgovori.\n';
+  const body='Pozdravljeni,\n\npovezava do obrazca: '+link+'\nLista: '+oznaka+'\nE-naslov: '+(p.email||'')+'\n\nOdgovori:\n\n'+toTxt(p);
   const s=$('#status');
   s.className='ok';
-  s.textContent='Prenesli sta se kopiji odgovorov in odprlo se je okno pošte za savskonaselje1@gmail.com. V priponko dodajte preneseni datoteki.';
+  s.textContent='Odprlo se je okno pošte za savskonaselje1@gmail.com z vašimi odgovori. Sporočilo pošljite.';
   setTimeout(function(){
     location.href='mailto:savskonaselje1@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
   }, 400);
@@ -308,14 +293,12 @@ function posljiMail(){
 async function submit(){
   const e=validate();prikaziNapake(e);if(e.length)return;
   const s=$('#status');
-  if(ph(CONFIG.endpoint)||ph(CONFIG.upravljavec)){s.textContent='Oddaja bo odprta kmalu. Medtem lahko prenesete kopijo svojih odgovorov.';return}
+  if(ph(CONFIG.endpoint)||ph(CONFIG.upravljavec)){s.textContent='Oddaja bo odprta kmalu. Odgovori ostanejo shranjeni v tej napravi.';return}
   const p=payload();
-  dl(JSON.stringify(p,null,2),'json','application/json');
-  setTimeout(function(){ dl(toTxt(p),'txt','text/plain'); }, 250);
   $('#oddaj').disabled=true;s.textContent='Pošiljam …';
   try{const r=await fetch(CONFIG.endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)});
     const j=await r.json();if(!j.ok)throw new Error(j.error||'napaka');
-    s.className='ok';s.textContent='Hvala! Odgovore smo prejeli na savskonaselje1@gmail.com in prenesli kopiji JSON ter txt.';localStorage.removeItem(CONFIG.storageKey);
-  }catch(err){$('#oddaj').disabled=false;s.textContent='Oddaja ni uspela. Preneseni datoteki lahko pošljete na savskonaselje1@gmail.com.'}
+    s.className='ok';s.textContent='Hvala! Odgovore smo prejeli.';localStorage.removeItem(CONFIG.storageKey);
+  }catch(err){$('#oddaj').disabled=false;s.textContent='Oddaja ni uspela. Poskusite znova ali pišite na savskonaselje1@gmail.com ali 070 205 595.'}
 }
 init();
