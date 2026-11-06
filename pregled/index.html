@@ -1,57 +1,121 @@
 <!DOCTYPE html>
-<html lang="sl"><head><meta charset="utf-8">
+<html lang="sl">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Pregled rezultatov Savske ankete za novinarje in predstavnike ČS Bežigrad. Presek 6. 11. 2026 ob 06.20, N = 394.">
-<link rel="icon" type="image/png" href="../favicon.png">
-<title>Savska anketa – pregled za novinarje in liste</title>
+<title>Savska anketa – pregled za novinarje in predstavnike kandidatnih list</title>
+<meta name="description" content="Vmesni presek Savske ankete, 6. 11. 2026 ob 06.20 (Europe/Ljubljana), N = 394. Pregled za novinarje in predstavnike kandidatnih list za svet ČS Bežigrad.">
+<meta name="theme-color" content="#0b3d24">
+<meta property="og:title" content="Savska anketa – pregled za novinarje in liste">
+<meta property="og:description" content="Vmesni presek 6. 11. 2026 ob 06.20, N = 394. Odgovori prebivalcev Savskega naselja za predstavnike ČS in medije.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:url" content="https://anketa.savska.org/pregled/">
+<link rel="icon" href="/favicon.png">
 <style>
-@page { size:A4; margin:12mm 12mm 15mm;
-  @bottom-left{content:"Savska anketa · N = 394 · 6. 11. 2026 ob 06.20 (Europe/Ljubljana)";font-family:'DejaVu Sans',sans-serif;font-size:7.5pt;color:#666}
-  @bottom-right{content:counter(page);font-family:'DejaVu Sans',sans-serif;font-size:8pt;color:#0b3d24}
+:root { color-scheme: light; }
+html { background: #f7faf8; }
+body {
+  font-family: "Source Sans 3", "Segoe UI", "DejaVu Sans", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  background: #fff;
 }
-body{font-family:'DejaVu Sans',sans-serif;font-size:9.2pt;line-height:1.35;color:#1a1a1a;margin:0}
-.cover{border-top:8px solid #0b3d24;border-bottom:4px solid #f5c400;padding:6px 0 10px;margin-bottom:10px;display:flex;gap:12px;align-items:center}
-.logo{width:42px;height:42px}
-h1{font-size:15.5pt;color:#0b3d24;margin:0 0 2px;line-height:1.2}
-.h1sub{font-size:10pt;color:#333;margin:0}
-.badge{display:inline-block;background:#f5c400;color:#0b3d24;font-weight:bold;font-size:8pt;padding:2px 7px;margin-top:4px}
-.meta{font-size:8.2pt;color:#444;margin:6px 0 8px}
-.kpi{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
-.kpi>div{flex:1 1 18%;min-width:88px;background:#f4f7f5;border-left:4px solid #f5c400;padding:5px 7px}
-.kpi span{display:block;font-size:13pt;font-weight:bold;color:#0b3d24}
-.kpi small{font-size:7.2pt;color:#444;line-height:1.2}
-h2{font-size:11.5pt;color:#0b3d24;margin:12px 0 5px;border-bottom:2px solid #f5c400;padding-bottom:2px;page-break-after:avoid}
-h3{font-size:9.5pt;color:#0b3d24;margin:8px 0 3px;page-break-after:avoid}
-p{margin:3px 0 5px}
-blockquote{margin:3px 0;padding:4px 8px;background:#f3f8f4;border-left:3px solid #0b3d24;font-size:8.1pt;color:#222;font-style:italic;page-break-inside:avoid}
-table{border-collapse:collapse;width:100%;margin:3px 0 8px;font-size:8pt;page-break-inside:avoid}
-th{background:#0b3d24;color:#fff;text-align:left;padding:2px 5px}
-td{border-bottom:1px solid #dde5df;padding:2px 5px;vertical-align:top}
-tr:nth-child(even) td{background:#f7faf8}
-td.num{text-align:right;white-space:nowrap}
-.barrow{display:flex;align-items:center;gap:5px;margin:1px 0;font-size:7.7pt;page-break-inside:avoid}
-.barlab{width:36%;min-width:100px}
-.bartrack{flex:1;background:#e8eee9;height:10px;border-radius:2px;overflow:hidden}
-.barfill{height:100%;background:#0b3d24}
-.barn{width:70px;text-align:right;color:#333;white-space:nowrap}
-.two{display:flex;gap:12px}
-.two>div{flex:1}
-.note{font-size:8pt;color:#555;background:#fffbeb;border:1px solid #f5c400;padding:5px 7px;margin:6px 0 10px}
-.footcontact{margin-top:14px;padding-top:6px;border-top:1px solid #ccc;font-size:8pt;color:#555}
-ul{margin:3px 0 6px 16px;padding:0} li{margin:1px 0}
+.webar { font-size: 0.92rem; margin: 0 0 1rem; }
+.webar a { color: #0b3d24; }
+.cover {
+  border-top: 8px solid #0b3d24;
+  border-bottom: 4px solid #f5c400;
+  padding: 0.6rem 0 0.85rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+}
+.logo { width: 52px; height: 52px; }
+h1 { font-size: 1.7rem; color: #0b3d24; margin: 0 0 0.15rem; line-height: 1.2; }
+.h1sub { font-size: 1.05rem; color: #333; margin: 0; }
+.badge {
+  display: inline-block;
+  background: #f5c400;
+  color: #0b3d24;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.2rem 0.55rem;
+  margin-top: 0.4rem;
+}
+.meta { font-size: 0.95rem; color: #444; margin: 0.7rem 0 0.85rem; }
+.kpi { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0 1.1rem; }
+.kpi > div {
+  flex: 1 1 28%;
+  min-width: 8.5rem;
+  background: #f4f7f5;
+  border-left: 4px solid #f5c400;
+  padding: 0.45rem 0.6rem;
+}
+.kpi span { display: block; font-size: 1.35rem; font-weight: 700; color: #0b3d24; }
+.kpi small { font-size: 0.8rem; color: #444; line-height: 1.25; }
+h2 {
+  font-size: 1.25rem;
+  color: #0b3d24;
+  margin: 1.4rem 0 0.45rem;
+  border-bottom: 2px solid #f5c400;
+  padding-bottom: 0.15rem;
+}
+h3 { font-size: 1.05rem; color: #0b3d24; margin: 0.9rem 0 0.35rem; }
+p { margin: 0.35rem 0 0.55rem; }
+blockquote {
+  margin: 0.35rem 0;
+  padding: 0.45rem 0.75rem;
+  background: #f3f8f4;
+  border-left: 3px solid #0b3d24;
+  font-size: 0.98rem;
+  color: #222;
+  font-style: italic;
+}
+table { border-collapse: collapse; width: 100%; margin: 0.35rem 0 0.8rem; font-size: 0.92rem; }
+th { background: #0b3d24; color: #fff; text-align: left; padding: 0.3rem 0.45rem; }
+td { border-bottom: 1px solid #dde5df; padding: 0.3rem 0.45rem; vertical-align: top; }
+tr:nth-child(even) td { background: #f7faf8; }
+td.num { text-align: right; white-space: nowrap; }
+.barrow { display: flex; align-items: center; gap: 0.45rem; margin: 0.15rem 0; font-size: 0.9rem; }
+.barlab { width: 38%; min-width: 7.5rem; }
+.bartrack { flex: 1; background: #e8eee9; height: 0.7rem; border-radius: 2px; overflow: hidden; }
+.barfill { height: 100%; background: #0b3d24; }
+.barn { width: 5.5rem; text-align: right; color: #333; white-space: nowrap; }
+.two { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.two > div { flex: 1 1 16rem; }
+.note {
+  font-size: 0.95rem;
+  color: #444;
+  background: #fffbeb;
+  border: 1px solid #f5c400;
+  padding: 0.55rem 0.7rem;
+  margin: 0.6rem 0 1rem;
+}
+.footcontact { margin-top: 1.6rem; padding-top: 0.6rem; border-top: 1px solid #ccc; font-size: 0.92rem; color: #555; }
+ul { margin: 0.35rem 0 0.7rem 1.2rem; padding: 0; }
+li { margin: 0.15rem 0; }
+img { max-width: 100%; height: auto; }
+@media (max-width: 640px) {
+  .barlab { width: 42%; min-width: 0; }
+  .barn { width: auto; }
+  .kpi > div { flex: 1 1 42%; }
+}
+</style>
+</head>
+<body>
+<p class="webar"><a href="savska-anketa-pregled.pdf">Prenesi pregled v PDF</a> · <a href="/">Anketa</a> · <a href="/kandidati/">Obrazec za liste</a></p>
 
-@media screen {
-  body{max-width:52rem;margin:1.25rem auto 3rem;padding:0 1rem;font-size:11pt;line-height:1.45}
-  .dl{margin:0 0 12px;font-size:10pt}
-  .dl a{color:#0b3d24;font-weight:700}
-}
-</style></head><body>
 <div class="cover"><img class="logo" src="logo.png" alt=""><div>
 <h1>Savska anketa</h1>
 <p class="h1sub">Pregled za novinarje in predstavnike kandidatnih list</p>
 <span class="badge">PRESEK 6. 11. 2026 ob 06.20 (Europe/Ljubljana) · anketa do 14. 11. · liste do 9. 11. ob polnoči</span>
 </div></div>
-<p class="dl">Prenos: <a href="savska-anketa-pregled.pdf">pregled v PDF</a></p>
 <p class="meta">Presek: <strong>6. 11. 2026 ob 06.20 (Europe/Ljubljana)</strong> · Veljavnih oddaj: <strong>N = 394</strong> (izločen 1 testni zapis) · Z izborom teme: <strong>382</strong><br>
 Ni uradni dokument MOL ali ČS Bežigrad. To je <strong>vmesni presek</strong>: anketo med prebivalci še zbiramo do <strong>14. 11. 2026</strong>; rok za odgovore kandidatnih list je ponedeljek, <strong>9. 11. 2026 ob polnoči</strong>.</p>
 <div class="note"><strong>Kako brati ta pregled.</strong> To <em>niso</em> odgovori kandidatnih list. Gre za odgovore prebivalcev, ki so sami izpolnili anketo. Vzorec <strong>še ni reprezentativen</strong> – niti za vse prebivalce Savskega naselja, kaj šele za Ljubljano. Ankete še zbiramo; cilj je priti do <strong>1.000 odgovorov</strong> v različnih starostnih skupinah, da dobimo čim boljšo sliko. Spodaj so tudi <strong>resnični citati idej</strong> iz ankete.</div>
@@ -189,4 +253,6 @@ Ni uradni dokument MOL ali ČS Bežigrad. To je <strong>vmesni presek</strong>: 
 <li>Brez ocen institucij, župana ali kandidatnih list; brez imen list.</li>
 </ul>
 <p class="footcontact">Kontakt za anketo: savskonaselje1@gmail.com · 070 205 595</p>
-</body></html>
+
+</body>
+</html>
