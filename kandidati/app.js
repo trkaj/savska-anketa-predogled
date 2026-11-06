@@ -129,7 +129,7 @@ function renderLestvica(){
     }
     return `<li><input type="checkbox" class="priobox" data-s="${s.id}" id="lp-${s.id}" aria-label="Prioriteta: ${esc(s.naslov)}"> <a href="#sek-${s.id}">${ime}</a></li>`;
   }).join('');
-  el.innerHTML=`<h2>Pregled tem</h2><p class="small">Označite 5 prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
+  el.innerHTML=`<h2>Pregled tem</h2><p class="small">Označite pet prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
 }
 function render(){
   renderLestvica();
@@ -142,7 +142,7 @@ function render(){
       : `<h2>${esc(s.naslov)}</h2>`;
     const prio=jeEnaka(s)
       ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med petimi prioritetnimi temami. Prosimo, da nanj odgovorite v celoti.</p>`
-      : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
+      : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših pet prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
       const polje=q.polje||'Razlaga zaveze (neobvezno: kako in do kdaj, lasten predlog, …)';
       const razlaga=q.razlaga||'';
@@ -258,7 +258,7 @@ function validate(){
   if(!c.lista || !listaMeta(c.lista))e.push('Izberite listo s uradnega seznama za volilno enoto 01.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
   if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med prioritetnimi temami — sta enaka za vse liste.');
-  if(c.prioritet.length!==5)e.push('Označite 5 prioritetnih tem (zdaj '+c.prioritet.length+').');
+  if(c.prioritet.length!==5)e.push('Označite pet prioritetnih tem (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
   Q.sekcije.filter(jeEnaka).forEach(s=>pset.add(s.id));
   const manjkajo=[];
