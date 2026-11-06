@@ -9,7 +9,7 @@ const CONFIG = {
 const $ = s => document.querySelector(s);
 const ph = s => !s || /\[.*\]/.test(s);
 let Q = null, G = {}, state = {};
-const NVSEH = 359; // veljavnih anket v izvozu 5. 11. 2026 (1 test izločen)
+const NVSEH = 388; // veljavnih anket v izvozu 5. 11. 2026 ob 22.00 (1 test izločen); izbor tem od 376
 const words = t => (t.trim().match(/\S+/g) || []).length;
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
