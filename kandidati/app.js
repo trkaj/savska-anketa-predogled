@@ -18,7 +18,7 @@ const ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="small">Verzija 1.4, 5
  '<h3>Kdo je upravljavec</h3><p>Rok Terkaj, fizična oseba, koordinator neodvisne in civilne pobude prebivalcev Savskega naselja; <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>.</p>'+
  '<h3>Kaj zbiramo in zakaj</h3><p>Od kandidatnih list zbiramo ime liste, e-naslov za potrditev, odgovore na vprašanja, kratko predstavitev ekipe, liste ali stranke ter neobvezno povezavo do fotografije ali video pozdrava. Namen je, da prebivalci Savskega naselja pred volitvami v svet ČS Bežigrad 15. 11. 2026 vidijo zaveze list. Podlaga je vaša privolitev (točka (a) 6(1) Splošne uredbe).</p>'+
  '<h3>Kaj objavimo</h3><p>Odgovore in povzetke odgovorov, predstavitev in morebitno fotografijo ali video pozdrav objavimo skupaj z imenom liste v celoti, liste v vrstnem redu uradnega seznama za volilno enoto 01: na spletni strani savska.org, v skupini Savsko naselje, v Facebook skupinah Savčan, Savc in Civilna iniciativa Savsko naselje, po e-pošti prostovoljcev, ki jih imamo, in tistih, ki so želeli biti obveščeni, ter na vhodih blokov, od 11. 11. 2026. E-naslova liste ne objavimo — uporabimo ga samo za potrditev prejema in morebitna vprašanja.</p>'+
- '<h3>Česa ne zbiramo</h3><p>Ne prosimo za osebna imena kandidatov, domače naslove ali telefonske številke. Imena kandidatov bomo po potrebi kasneje vzeli iz javne predstavitve kandidatk in kandidatov ČS Bežigrad, kjer so že objavljena. Narek z mikrofonom ostane v vašem brskalniku; zvoka ne shranjujemo in ne pošiljamo nam. Dokler odgovorov ne oddate, ostanejo samo v tej napravi.</p>'+
+ '<h3>Česa ne zbiramo</h3><p>Ne prosimo za osebna imena kandidatov, domače naslove ali telefonske številke. Imena kandidatov bomo po potrebi kasneje vzeli iz javne predstavitve kandidatk in kandidatov ČS Bežigrad, kjer so že objavljena. Dokler odgovorov ne oddate, ostanejo samo v tej napravi.</p>'+
  '<h3>Avtorske pravice</h3><p>Avtorske pravice fotografij in videoposnetkov urejate sami. Z pregledom odgovorov in pošiljanjem se zavežete, da imajo fotografije in videoposnetki pravice urejene in podeljene Civilni iniciativi za objavo za namene uporabe, kot so v teh pogojih zasebnosti.</p>'+
  '<h3>Katere storitve uporabljamo</h3><p>Stran teče na GitHubu. Ko bo oddaja odprta, se odgovori shranijo v Googlovo preglednico, ki jo ureja upravljavec.</p>'+
  '<h3>Kako dolgo hranimo</h3><ul><li>E-naslov hranimo, dokler potrdimo prejem in uredimo objavo, največ 12 mesecev; nato ga izbrišemo.</li><li>Objavljeni odgovori, predstavitev in povezave ostanejo javno, ker so zaveze liste prebivalcem.</li><li>Enkrat letno preverimo, ali je hramba še potrebna, in to zapišemo (43. člen ZVOP-2).</li></ul>'+
@@ -162,14 +162,11 @@ function render(){
       <label for="x-${q.id}">${esc(polje)}</label>
       ${razlaga?`<p class="small razlaga">${esc(razlaga)}</p>`:''}
       <textarea id="x-${q.id}" name="x-${q.id}" aria-describedby="c-${q.id}"></textarea>
-      <div class="row"><button type="button" class="mic" aria-pressed="false" data-t="x-${q.id}">🎤 Narekuj</button>
-        <span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div>
-      <p class="small micmsg" aria-live="polite"></p></div>`;
+      <div class="row"><span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div></div>`;
     }).join('');
     sek.insertAdjacentHTML('beforeend',`<section class="card sek" id="sek-${s.id}" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
   document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>count(t)));
-  setupMic();
   syncPrio();
 }
 
@@ -207,23 +204,6 @@ function graf(id){const g=G[id];if(!g)return '';
   <img class="gz" src="${g.slika}?v=20261106a" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
 function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2))||$('#c-'+t.id);if(!c)return;const m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
-function setupMic(){
-  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  document.querySelectorAll('.mic').forEach(b=>{
-    const msg=b.closest('.q').querySelector('.micmsg');
-    if(!SR){b.onclick=()=>msg.textContent='Vaš brskalnik ne podpira nareka. Odgovor lahko vtipkate ali uporabite narek na tipkovnici telefona.';return}
-    let rec=null;
-    b.onclick=()=>{
-      if(rec){rec.stop();return}
-      const t=$('#'+b.dataset.t); rec=new SR(); rec.lang='sl-SI'; rec.continuous=true; rec.interimResults=false;
-      rec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++) if(e.results[i].isFinal){t.value=(t.value?t.value.trimEnd()+' ':'')+e.results[i][0].transcript.trim();count(t);save()}};
-      rec.onerror=e=>{msg.textContent=e.error==='not-allowed'?'Dostop do mikrofona ni dovoljen. Dovolite ga v nastavitvah brskalnika ali odgovor vtipkajte.':'Narek se je ustavil. Poskusite znova ali odgovor vtipkajte.'};
-      rec.onend=()=>{rec=null;b.setAttribute('aria-pressed','false');b.textContent='🎤 Narekuj'};
-      try{rec.start();b.setAttribute('aria-pressed','true');b.textContent='⏹ Ustavi narek';msg.textContent='Poslušam … (zvok ostane v brskalniku)'}catch(e){rec=null;msg.textContent='Nareka ni bilo mogoče zagnati.'}
-    };
-  });
-}
-
 function collect(){
   const o={lista:$('#lista').value.trim(),email:$('#email').value.trim(),predstavitev:($('#predstavitev')||{}).value?$('#predstavitev').value.trim():'',foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
   o.prioritet = uniquePrios();
