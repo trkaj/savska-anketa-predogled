@@ -58,8 +58,67 @@ h2 {
 h3 { font-size: 1.05rem; color: #0b3d24; margin: 0.9rem 0 0.35rem; }
 p { margin: 0.35rem 0 0.55rem; }
 a { color: #0b3d24; }
-ol.koraki, ol.navodila { padding-left: 1.3rem; }
-ol.koraki li, ol.navodila li, ul li { margin: 0.35rem 0; }
+ul li { margin: 0.35rem 0; }
+ol.koraki, ol.navodila {
+  list-style: none;
+  padding: 0.15rem 0 0;
+  margin: 0.7rem 0 1.2rem;
+  counter-reset: korak;
+}
+ol.koraki li, ol.navodila li {
+  position: relative;
+  margin: 0;
+  padding: 0 0 1.15rem 2.65rem;
+  min-height: 1.75rem;
+}
+ol.koraki li:last-child,
+ol.navodila li:last-child { padding-bottom: 0; }
+ol.koraki li::before,
+ol.navodila li::before {
+  content: counter(korak);
+  counter-increment: korak;
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  border: 2px solid #0b3d24;
+  background: #fff;
+  color: #0b3d24;
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  z-index: 1;
+}
+ol.koraki li::after,
+ol.navodila li::after {
+  content: "";
+  position: absolute;
+  left: 0.78rem;
+  top: 1.8rem;
+  bottom: 0;
+  width: 2px;
+  background: #dde6e0;
+}
+ol.koraki li:last-child::after,
+ol.navodila li:last-child::after { display: none; }
+ol.navodila li strong {
+  display: block;
+  color: #1a1a1a;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0.18rem 0 0.2rem;
+}
+ol.navodila li span {
+  display: block;
+  color: #555;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
 .klicaj {
   display: flex;
   gap: 0.75rem;
@@ -204,12 +263,12 @@ ol.koraki li, ol.navodila li, ul li { margin: 0.35rem 0; }
 <h2>Navodila za odgovore list</h2>
 <p>Ta pregled dopolnjuje obrazec na <a href="https://anketa.savska.org/kandidati/">anketa.savska.org/kandidati</a> – tam so vprašanja, tukaj ozadje in pravila.</p>
 <ol class="navodila">
-<li><strong>Preglejte spletni pregled ankete.</strong> Na <a href="https://anketa.savska.org/pregled/">anketa.savska.org/pregled</a> za vsako temo poglejte, kaj so povedali prebivalci.</li>
-<li><strong>Odgovorite na prvo vprašanje – za vse.</strong> Prvo vprašanje je za vse liste, ker gre za obveščanje in komunikacijo s ČS.</li>
-<li><strong>Označite 5 prioritet.</strong> Nanje odgovorite v celoti; na ostale ste vabljeni. Če imate čas in voljo, jih lahko napišete tudi več, a 5 prioritet naj bo izbranih.</li>
-<li><strong>Pri vsakem vprašanju izberite Da, Ne ali Delno.</strong> To je obvezno; razlaga zaveze ni obvezna, je pa dobrodošla.</li>
-<li><strong>Dodajte kratko predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad.</strong> Fotografija ali video pozdrav posameznika ali skupine sta neobvezna; na njem lahko pozdravite volivce ali poveste, zakaj ste se pridružili projektu. Avtorske pravice uredite sami.</li>
-<li><strong>Oddajte do torka, 10. 11. 2026, ob polnoči.</strong> Odgovore objavimo 11. 11. 2026; tisk in razdeljevanje pred volilnim molkom 14. 11. 2026 ob 00.00.</li>
+<li><strong>Preglejte spletni pregled ankete</strong><span>Na <a href="https://anketa.savska.org/pregled/">anketa.savska.org/pregled</a> za vsako temo poglejte, kaj so povedali prebivalci.</span></li>
+<li><strong>Odgovorite na prvo vprašanje – za vse</strong><span>Prvo vprašanje je za vse liste, ker gre za obveščanje in komunikacijo s ČS.</span></li>
+<li><strong>Označite 5 prioritet</strong><span>Nanje odgovorite v celoti; na ostale ste vabljeni. Če imate čas in voljo, jih lahko napišete tudi več, a 5 prioritet naj bo izbranih.</span></li>
+<li><strong>Pri vsakem vprašanju izberite Da, Ne ali Delno</strong><span>To je obvezno; razlaga zaveze ni obvezna, je pa dobrodošla.</span></li>
+<li><strong>Dodajte kratko predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</strong><span>Fotografija ali video pozdrav posameznika ali skupine sta neobvezna; na njem lahko pozdravite volivce ali poveste, zakaj ste se pridružili projektu. Avtorske pravice uredite sami.</span></li>
+<li><strong>Oddajte do torka, 10. 11. 2026, ob polnoči</strong><span>Odgovore objavimo 11. 11. 2026; tisk in razdeljevanje pred volilnim molkom 14. 11. 2026 ob 00.00.</span></li>
 </ol>
 <ul>
 <li>Odgovore objavimo v celoti na spletu 11. 11. 2026, v uradnem vrstnem redu list za volilno enoto 01.</li>
