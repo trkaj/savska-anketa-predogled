@@ -60,13 +60,39 @@ p { margin: 0.35rem 0 0.55rem; }
 a { color: #0b3d24; }
 ol.koraki, ol.navodila { padding-left: 1.3rem; }
 ol.koraki li, ol.navodila li, ul li { margin: 0.35rem 0; }
-.note {
-  background: #f4f7f5;
-  border-left: 4px solid #f5c400;
-  padding: 0.7rem 0.85rem;
+.klicaj {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
   margin: 0.9rem 0 1.1rem;
+  color: #0b3d24;
 }
-.note.warn { border-left-color: #c48a00; }
+.klicaj.info { background: #e7f0ea; }
+.klicaj.warn { background: #fff6d6; }
+.klicaj-icon {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-top: 0.12rem;
+}
+.klicaj.info .klicaj-icon { background: #0b3d24; color: #f5c400; }
+.klicaj.warn .klicaj-icon { background: #f5c400; color: #0b3d24; }
+.klicaj-body { flex: 1; min-width: 0; }
+.klicaj-body strong {
+  display: block;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+.klicaj-body p { margin: 0; }
 .next {
   margin: 1.6rem 0 0.4rem;
   padding: 1rem 1rem 1.15rem;
@@ -118,7 +144,13 @@ ol.koraki li, ol.navodila li, ul li { margin: 0.35rem 0; }
 
 <p>To branje je prvi korak. Ko ga preberete, pojdite na <a href="https://anketa.savska.org/pregled/">pregled ankete</a> — to je korak 2. Šele nato odprite obrazec zavez.</p>
 
-<div class="note"><strong>Kje začeti.</strong> Najprej ta uvod, nato pregled ankete na <a href="https://anketa.savska.org/pregled/">anketa.savska.org/pregled</a>, šele potem obrazec na <a href="https://anketa.savska.org/kandidati/">anketa.savska.org/kandidati</a>. Tako boste ob vsaki temi vedeli, kaj so prebivalci povedali.</div>
+<div class="klicaj info">
+<span class="klicaj-icon" aria-hidden="true">i</span>
+<div class="klicaj-body">
+<strong>Kje začeti</strong>
+<p>Najprej preberite ta uvod, nato pregled ankete na <a href="https://anketa.savska.org/pregled/">anketa.savska.org/pregled</a>, šele potem odprite obrazec. Tako boste ob vsaki temi vedeli, kaj so prebivalci povedali.</p>
+</div>
+</div>
 
 <h2>Kaj je to in zakaj</h2>
 <p>Savska anketa (<a href="https://anketa.savska.org/">anketa.savska.org</a>) je neodvisna, nestrankarska pobuda prebivalcev Savskega naselja. Zbira, kaj ljudem v soseski je všeč, kaj bi izboljšali in katere težave jih najbolj prizadenejo. To ni dokument Mestne občine Ljubljana ali Četrtne skupnosti Bežigrad.</p>
@@ -159,7 +191,13 @@ ol.koraki li, ol.navodila li, ul li { margin: 0.35rem 0; }
 <tr><th>Cilj</th><td>približno 1.000 odgovorov v različnih starostnih skupinah</td></tr>
 <tr><th>Rok za prebivalce</th><td>zbiranje teče naprej tudi po volitvah, da bo slika jasnejša; pred volitvami (14. 11. 2026) jih želimo čim več</td></tr>
 </table>
-<div class="note warn"><strong>Vzorec še ni reprezentativen.</strong> Zbiranje še teče. Odstotki kažejo, kaj so povedali tisti, ki so anketo izpolnili, ne celotno naselje. Največ odgovorov je v starosti 35–49 let (44 %), najmanj nad 75 let (3 %).</div>
+<div class="klicaj warn">
+<span class="klicaj-icon" aria-hidden="true">!</span>
+<div class="klicaj-body">
+<strong>Vzorec še ni reprezentativen</strong>
+<p>Zbiranje še teče. Odstotki kažejo, kaj so povedali tisti, ki so anketo izpolnili, ne celotno naselje. Največ odgovorov je v starosti 35–49 let (44 %), najmanj nad 75 let (3 %).</p>
+</div>
+</div>
 
 <h2>Navodila za odgovore list</h2>
 <p>Ta pregled dopolnjuje obrazec na <a href="https://anketa.savska.org/kandidati/">anketa.savska.org/kandidati</a> – tam so vprašanja, tukaj ozadje in pravila.</p>
