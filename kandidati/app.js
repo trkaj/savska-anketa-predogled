@@ -101,7 +101,9 @@ function syncPrio(){
   const n=selected.length;
   const el=$('#priost');
   if(el){
-    el.textContent='✋5️⃣ Prioritetne teme: '+n+' / 5';
+    const names=selected.map(id=>{const s=(Q&&Q.sekcije||[]).find(x=>x.id===id);return s?s.naslov:id;});
+    const slots=[1,2,3,4,5].map(i=>names[i-1]?`${i}. ${names[i-1]}`:`${i}. —`).join(' · ');
+    el.innerHTML='<span class="priost-head">✋ Prioritetne teme: '+n+' / 5</span><span class="priost-list">'+slots+'</span>';
     el.classList.toggle('ok', n===5);
     el.classList.toggle('over', n>5);
   }
@@ -114,6 +116,12 @@ function syncPrio(){
   document.querySelectorAll('#lestvica li').forEach(li=>{
     const b=li.querySelector('input.priobox');
     li.classList.toggle('prio-on', !!(b&&b.checked));
+    let badge=li.querySelector('.prio-nr');
+    if(b&&b.checked){
+      const nr=selected.indexOf(b.dataset.s)+1;
+      if(!badge){badge=document.createElement('span');badge.className='prio-nr';li.appendChild(badge);}
+      badge.textContent=String(nr);
+    } else if(badge){badge.remove();}
   });
 }
 
@@ -129,7 +137,7 @@ function renderLestvica(){
     }
     return `<li><input type="checkbox" class="priobox" data-s="${s.id}" id="lp-${s.id}" aria-label="Prioriteta: ${esc(s.naslov)}"> <a href="#sek-${s.id}">${ime}</a></li>`;
   }).join('');
-  el.innerHTML=`<h2>Pregled tem</h2><p class="small">✋5️⃣ Označite pet prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
+  el.innerHTML=`<h2>Pregled tem</h2><p class="small">✋ Označite pet prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
 }
 function render(){
   renderLestvica();
@@ -198,7 +206,7 @@ function graf(id){const g=G[id];if(!g)return '';
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
   <img class="gz" src="${g.slika}?v=20261106a" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
-function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2)),m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
+function count(t){const n=words(t.value),c=$('#c-'+t.id.slice(2))||$('#c-'+t.id);if(!c)return;const m=CONFIG.maxBesed;c.textContent=m?`${n} / ${m} besed`:`${n} besed`;c.classList.toggle('over',!!m&&n>m)}
 function setupMic(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   document.querySelectorAll('.mic').forEach(b=>{
@@ -230,7 +238,7 @@ function collect(){
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
   $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
 function restore(){
-  $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#predstavitev'))$('#predstavitev').value=state.predstavitev||'';if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
+  $('#lista').value=state.lista||'';$('#email').value=state.email||'';if($('#predstavitev')){$('#predstavitev').value=state.predstavitev||'';count($('#predstavitev'));}if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
   (state.prioritet||[]).forEach(id=>{document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=true)});
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;

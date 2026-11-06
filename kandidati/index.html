@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="sl"><head>
 <meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Savsko naselje · anketa – odgovori list</title><link rel="stylesheet" href="style.css?v=20261105ag"><link rel="icon" href="logo.png"></head>
+<title>Savsko naselje · anketa – odgovori list</title><link rel="stylesheet" href="style.css?v=20261106q"><link rel="icon" href="logo.png"></head>
 <body>
 <header class="hd"><img src="logo.png" alt="Logotip Savsko naselje" width="56" height="56"><div><h1>Savsko naselje · anketa</h1><p>Zaveze kandidatnih list · volitve v svet ČS Bežigrad, 15. 11. 2026</p></div></header>
 <div id="cfgwarn" class="warn" hidden role="alert"></div>
@@ -9,7 +9,7 @@
 <section class="card intro">
 <h2>Pozdravljeni!</h2>
 <p>Vsem kandidatnim listam smo v petek, 6. 11. 2026, poslali <b>enaka vprašanja</b>. Izhajajo iz ankete prebivalcev Savskega naselja.</p>
-<p>Tema <b>Obveščanje in komunikacija s ČS</b> je za vse liste enaka — nanjo odgovorite vsi. Nato <b>✋5️⃣ označite 5 prioritet</b>, ki vas najbolj zanimajo. Če imate čas in voljo, jih lahko napišete tudi več, a pet prioritet naj bo izbranih. Nanje odgovorite v celoti. Na ostala vprašanja ste vljudno vabljeni. Na koncu sta še sklop <b>Zakaj glasovati za vas</b> in vprašanje, kaj boste naredili, če niste izvoljeni — tudi nanju odgovorite vsi. Vsak odgovor razumemo kot zavezo vaše liste.</p>
+<p>Tema <b>Obveščanje in komunikacija s ČS</b> je za vse liste enaka — nanjo odgovorite vsi. Nato <b>✋ označite 5 prioritet</b>, ki vas najbolj zanimajo. Če imate čas in voljo, jih lahko napišete tudi več, a pet prioritet naj bo izbranih. Nanje odgovorite v celoti. Na ostala vprašanja ste vljudno vabljeni. Na koncu sta še sklop <b>Zakaj glasovati za vas</b> in vprašanje, kaj boste naredili, če niste izvoljeni — tudi nanju odgovorite vsi. Vsak odgovor razumemo kot zavezo vaše liste.</p>
 <p>Rok za odgovore je <b id="rok">torek, 10. 11. 2026, ob polnoči</b>.</p>
 <ul>
 <li>Odgovore objavimo <b>v celoti na spletu</b>, liste v <b>vrstnem redu uradnega seznama</b> za volilno enoto 01. Vaše odgovore in povzetke odgovorov damo tudi na <b>vhode</b> in objavimo na spletni strani <a href="https://savska.org">savska.org</a>, po e-pošti prostovoljcev, ki jih imamo, in tistih, ki so želeli biti obveščeni, od <b>11. 11. 2026</b>.</li>
@@ -31,7 +31,12 @@
 <h2>Predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</h2>
 <p>Na kratko predstavite ekipo, listo ali stranko na ravni ČS Bežigrad: kdo ste, katera so vaša načela in za kaj se zavzemate. Dovolj je nekaj stavkov.</p>
 <label for="predstavitev">Kratka predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</label>
+<div class="q" id="q-predstavitev">
 <textarea id="predstavitev" name="predstavitev" rows="5" placeholder="Kdo ste kot ekipa, lista ali stranka na ravni ČS Bežigrad, katera so vaša načela in za kaj se zavzemate …"></textarea>
+<div class="row"><button type="button" class="mic" aria-pressed="false" data-t="predstavitev">🎤 Narekuj</button>
+  <span class="small cnt" id="c-predstavitev" aria-live="polite">0 besed</span></div>
+<p class="small micmsg" aria-live="polite"></p>
+</div>
 <p>Neobvezno lahko priložite tudi fotografijo ali video pozdrav posameznika ali skupine (povezava) kot vaš pozdrav bodočim volivcem, na katerem jih pozdravite ali poveste zakaj ste se pridružili projektu (YouTube, Google Drive ali Vimeo). Avtorske pravice fotografij in videoposnetkov urejate sami. Z pregledom odgovorov in pošiljanjem se zavežete, da imajo fotografije in videoposnetki pravice urejene in podeljene Civilni iniciativi za objavo za namene uporabe, kot so v pogojih zasebnosti.</p>
 <label for="foto">Fotografija (povezava)</label>
 <input id="foto" name="foto" type="url" inputmode="url" placeholder="https://…" autocomplete="off">
@@ -39,7 +44,7 @@
 <input id="videoPozdrav" name="videoPozdrav" type="url" inputmode="url" placeholder="https://youtu.be/… ali Drive / Vimeo" autocomplete="off">
 <p class="msg" id="prilogeMsg" aria-live="polite"></p>
 </section>
-<p id="priost" aria-live="polite">✋5️⃣ Prioritetne teme: 0 / 5</p>
+<p id="priost" aria-live="polite"><span class="priost-head">✋ Prioritetne teme: 0 / 5</span><span class="priost-list">1. — · 2. — · 3. — · 4. — · 5. —</span></p>
 <nav id="lestvica" class="card" aria-label="Pregled tem"></nav>
 <div id="sekcije"></div>
 <section class="card"><h2>Soglasje</h2>
@@ -54,4 +59,4 @@
 <div class="btns"><button type="button" id="nazaj">Nazaj na urejanje</button><button type="button" id="oddaj" class="pri">Oddaj odgovore</button></div><p id="status" class="msg" role="status"></p></section>
 </main>
 <footer>Savsko naselje · neodvisna pobuda prebivalcev · savskonaselje1@gmail.com · 070 205 595 · <button type="button" class="povezava" data-zasebnost>Zasebnost</button></footer>
-<script src="app.js?v=20261106p"></script></body></html>
+<script src="app.js?v=20261106q"></script></body></html>
