@@ -161,8 +161,8 @@ function render(){
       ${radios}
       <label for="x-${q.id}">${esc(polje)}</label>
       ${razlaga?`<p class="small razlaga">${esc(razlaga)}</p>`:''}
-      <textarea id="x-${q.id}" name="x-${q.id}" aria-describedby="c-${q.id}"></textarea>
-      <div class="row"><span class="small cnt" id="c-${q.id}" aria-live="polite">0 besed</span></div></div>`;
+      <textarea id="x-${q.id}" name="x-${q.id}"></textarea>
+      </div>`;
     }).join('');
     sek.insertAdjacentHTML('beforeend',`<section class="card sek" id="sek-${s.id}" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
