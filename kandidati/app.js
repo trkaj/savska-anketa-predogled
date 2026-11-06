@@ -101,7 +101,7 @@ function syncPrio(){
   const n=selected.length;
   const el=$('#priost');
   if(el){
-    el.textContent='Prioritetne teme: '+n+' / 5';
+    el.textContent='✋5️⃣ Prioritetne teme: '+n+' / 5';
     el.classList.toggle('ok', n===5);
     el.classList.toggle('over', n>5);
   }
@@ -129,7 +129,7 @@ function renderLestvica(){
     }
     return `<li><input type="checkbox" class="priobox" data-s="${s.id}" id="lp-${s.id}" aria-label="Prioriteta: ${esc(s.naslov)}"> <a href="#sek-${s.id}">${ime}</a></li>`;
   }).join('');
-  el.innerHTML=`<h2>Pregled tem</h2><p class="small">Označite pet prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
+  el.innerHTML=`<h2>Pregled tem</h2><p class="small">✋5️⃣ Označite pet prioritetnih tem. Ista kljukica velja tudi pri temi spodaj, kjer je krajši opis.</p><ol>${rows}</ol>`;
 }
 function render(){
   renderLestvica();
