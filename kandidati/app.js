@@ -149,8 +149,8 @@ function render(){
       ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
       : `<h2>${esc(s.naslov)}</h2>`;
     const prio=jeEnaka(s)
-      ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med petimi prioritetnimi temami. Prosimo, da nanj odgovorite v celoti.</p>`
-      : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših pet prioritet</label>`;
+      ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Prosimo, da nanj odgovorite v celoti.</p>`
+      : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
       const polje=q.polje||'Razlaga zaveze (neobvezno: kako in do kdaj, lasten predlog, …)';
       const razlaga=q.razlaga||'';
@@ -256,7 +256,7 @@ function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)
   const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:c.lista,listaStevilka:meta?meta.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:!!($('#testOddaja')&&$('#testOddaja').checked),prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
-  return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\nPrioritetne teme: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
+  return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj, lasten predlog, …): ${a.besedilo||'—'}\n`).join('\n')}
 function dl(txt,ext,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type+';charset=utf-8'}));
   a.download=`odgovori-${(payload().test?'TEST-':'')+(collect().lista||'lista').replace(/[^\wčšžČŠŽ-]+/g,'_')}.${ext}`;a.click();URL.revokeObjectURL(a.href)}
@@ -265,8 +265,8 @@ function validate(){
   const c=collect(),e=[];
   if(!c.lista || !listaMeta(c.lista))e.push('Izberite listo s uradnega seznama za volilno enoto 01.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email))e.push('Vpišite veljaven e-naslov.');
-  if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med prioritetnimi temami — sta enaka za vse liste.');
-  if(c.prioritet.length!==5)e.push('Označite pet prioritetnih tem (zdaj '+c.prioritet.length+').');
+  if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med 5 prioritetami — sta enaka za vse liste.');
+  if(c.prioritet.length!==5)e.push('Označite 5 prioritet (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
   Q.sekcije.filter(jeEnaka).forEach(s=>pset.add(s.id));
   const manjkajo=[];
@@ -282,7 +282,7 @@ function validate(){
       if(CONFIG.maxBesed&&words(a.besedilo)>CONFIG.maxBesed) dolg++;
     });
   });
-  if(manjkajo.length) e.push({text:'Pri '+manjkajo.length+' obveznih vprašanjih (obveščanje ali prioritetne teme) še ni izbran odgovor Da / Ne / Delno.',links:manjkajo});
+  if(manjkajo.length) e.push({text:'Pri '+manjkajo.length+' obveznih vprašanjih (obveščanje ali 5 prioritet) še ni izbran odgovor Da / Ne / Delno.',links:manjkajo});
   if(dolg)e.push(dolg+' odgovorov je daljših od '+CONFIG.maxBesed+' besed.');
   const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
   if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
@@ -304,7 +304,7 @@ function prikaziNapake(e){
 function review(){
   const e=validate();prikaziNapake(e);if(e.length)return;
   const p=payload();
-  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.listaStevilka?p.listaStevilka+'. '+p.lista:p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>Prioritetne teme:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</b><br>${esc(p.predstavitev)}</div>`:'')+
+  $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.listaStevilka?p.listaStevilka+'. '+p.lista:p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>5 prioritet:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</b><br>${esc(p.predstavitev)}</div>`:'')+
     p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
 }
