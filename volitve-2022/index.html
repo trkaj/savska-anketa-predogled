@@ -570,17 +570,7 @@ const story = [
     render: () => `<div class="ss-results"><div class="ss-towers" role="img" aria-label="${order.map(i=>names[i]+' '+local[i]).join(', ')}">${order.map((i,j)=>`<div class="ss-tower"><div class="ss-tower-space" style="--bar-height:${local[i]/400*100}%"><span class="ss-votes text-small">${local[i]}</span><div class="ss-column" style="--bar-height:${local[i]/400*100}%;--delay:${j*100}ms"></div></div><div class="ss-column-label"><span class="text-small">${short[i]}</span></div></div>`).join('')}</div><div class="ss-tower-legend text-small"><span>LZJ = Lista Zorana Jankovića</span><span>GS = Gibanje Svoboda</span><span>LKP = Lista kolesarjev in pešcev</span></div></div>`
   },
   {
-    tag: "05 / DELEŽ GLASOV",
-    title: "Največ glasov.<br>Tudi več kot polovica?",
-    sub: "Lista Zorana Jankovića · 365 od 973 veljavnih glasov",
-    caption: "Lista Zorana Jankovića je dobila 365 glasov. Preostalih osem list jih je skupaj dobilo 608.",
-    scope: "local",
-    refs: ["p9", "p10"],
-    note: "Črtkana črta pri 50 % označuje polovico vseh veljavnih glasov. Preostalih osem list je skupaj prejelo 608 glasov.",
-    render: () => `<div class="ss-half"><div class="ss-half-track" role="img" aria-label="LZJ 37,51 odstotka, vse druge liste skupaj 62,49 odstotka"><div class="ss-half-fill"></div><div class="ss-half-line" id="ss-half-line"><span class="text-small">50 % / POLOVICA</span></div></div><div class="ss-half-labels"><div><h2>37,51 %</h2><span class="text-small">LZJ · 365 glasov</span></div><div><h2>62,49 %</h2><span class="text-small">druge liste skupaj · 608</span></div></div></div>`
-  },
-  {
-    tag: "06 / GLASOVI PO VOLIŠČIH",
+    tag: "05 / GLASOVI PO VOLIŠČIH",
     title: "Kako se razlikujejo<br>tri volišča?",
     sub: "Izberi listo za prikaz njenega rezultata na vsakem volišču.",
     caption: "Na vseh treh voliščih je bila prva Lista Zorana Jankovića, drugo pa Gibanje Svoboda.",
@@ -590,7 +580,7 @@ const story = [
     render: () => stationComparison()
   },
   {
-    tag: "07 / PRIMERJAVA",
+    tag: "06 / PRIMERJAVA",
     title: "Savsko naselje in ČS Bežigrad",
     sub: "Deleži od 973 veljavnih glasov na treh savskih voliščih in 10.210 v celotni četrti.",
     caption: "Celotna ČS vključuje tudi tri savska volišča. Razliko (Savsko − ČS) izračunamo pred zaokroževanjem.",
@@ -600,7 +590,7 @@ const story = [
     render: () => districtComparison()
   },
   {
-    tag: "08 / MANDATI",
+    tag: "07 / MANDATI",
     title: "17 stolov.<br>Za celotno četrt.",
     sub: "Razdelitev 17 mandatov sveta ČS Bežigrad",
     caption: "LZJ 7 · Gibanje Svoboda 4 · Levica 2 · SDS 2 · VESNA 1 · NSi 1.",
@@ -610,7 +600,7 @@ const story = [
     render: () => `<div class="ss-chairs-scene"><div class="ss-pool"><span>10.210 veljavnih glasov</span><span aria-hidden="true">→</span><span>17 mandatov</span></div><div class="ss-chairs" role="img" aria-label="17 sedežev: LZJ 7, GS 4, Levica 2, SDS 2, VESNA 1 in NSi 1">${seatOrder.map((i,j)=>`<div class="ss-chair text-small" style="--delay:${j*160}ms">${short[i]}</div>`).join('')}</div><div class="ss-tower-legend text-small"><span>Mandat = mesto v svetu.</span><span>SD, LKP in SLS: 0 mandatov.</span></div></div>`
   },
   {
-    tag: "09 / IZVOLJENI",
+    tag: "08 / IZVOLJENI",
     title: "Kdo je bil izvoljen?",
     sub: "Vseh 17 izvoljenih članic in članov sveta ČS Bežigrad. Ob imenu je, kako je njihova lista dobila na Savskem in v celotni ČS.",
     caption: "Članstvo ob izvolitvi 20. novembra 2022.",
@@ -620,7 +610,7 @@ const story = [
     render: () => `<div class="ss-names">${elected.map((x,j)=>`<div class="ss-name" style="--delay:${j*75}ms"><span class="ss-name-number">${String(j+1).padStart(2,'0')}</span><div class="ss-person"><span>${electedLink(x)}</span><span class="text-small">${names[x.party]}</span><span class="text-small">${p(local[x.party], localValid)} na Savskem · ${p(district[x.party], districtValid)} v celotni ČS</span></div></div>`).join('')}</div>`
   },
   {
-    tag: "10 / POVZETEK",
+    tag: "09 / POVZETEK",
     title: "Od glasovnic<br>do sveta četrti.",
     sub: "Savska volišča in celotna ČS Bežigrad",
     caption: "999 oddanih in 973 veljavnih glasovnic na treh voliščih. 17 mandatov za celotno četrt.",
