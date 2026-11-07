@@ -64,7 +64,7 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Spletna oddaja bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in jih s pregleda pošljete na savskonaselje1@gmail.com.';}
-  Q = await (await fetch('questions.json?v=20261107o')).json();
+  Q = await (await fetch('questions.json?v=20261107p')).json();
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
@@ -147,7 +147,9 @@ function render(){
       ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
       : `<h2>${esc(s.naslov)}</h2>`;
     const prio=jeEnaka(s)
-      ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Prosimo, da nanj odgovorite v celoti.</p>`
+      ? (s.id==='zakaj'
+        ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Ni obvezen.</p>`
+        : `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Prosimo, da nanj odgovorite v celoti.</p>`)
       : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
       const polje=q.polje||'Razlaga zaveze (neobvezno: kako in do kdaj, lasten predlog, …)';
@@ -256,7 +258,7 @@ function validate(){
   if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med 5 prioritetami — sta enaka za vse liste.');
   if(c.prioritet.length!==5)e.push('Označite 5 prioritet (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
-  Q.sekcije.filter(jeEnaka).forEach(s=>pset.add(s.id));
+  Q.sekcije.filter(s=>jeEnaka(s)&&s.id!=='zakaj').forEach(s=>pset.add(s.id));
   const manjkajo=[];
   Q.sekcije.forEach(s=>{
     if(!pset.has(s.id)) return;

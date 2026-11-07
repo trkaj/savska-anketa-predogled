@@ -288,8 +288,7 @@
       "id": "zakaj",
       "naslov": "Zakaj glasovati za vas",
       "enaka": true,
-      "obvezno": true,
-      "opis": "Ta sklop je za vse liste enak in ni med petimi prioritetnimi temami.",
+      "obvezno": false,
       "vprasanja": [
         {
           "id": "zakaj-1",
