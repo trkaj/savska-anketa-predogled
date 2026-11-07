@@ -285,20 +285,6 @@
       "citati": []
     },
     {
-      "id": "predlog",
-      "naslov": "Lasten predlog",
-      "enaka": true,
-      "obvezno": false,
-      "vprasanja": [
-        {
-          "id": "predlog-1",
-          "tip": "besedilo",
-          "besedilo": "Lasten predlog (kako bi se vi lotili problematike?)",
-          "polje": "Vaš predlog"
-        }
-      ]
-    },
-    {
       "id": "zakaj",
       "naslov": "Zakaj glasovati za vas",
       "enaka": true,

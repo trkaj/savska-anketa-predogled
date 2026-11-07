@@ -64,7 +64,7 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Spletna oddaja bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in jih s pregleda pošljete na savskonaselje1@gmail.com.';}
-  Q = await (await fetch('questions.json?v=20261107x')).json();
+  Q = await (await fetch('questions.json?v=20261107y')).json();
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
@@ -156,12 +156,16 @@ function render(){
       const razlaga=q.razlaga||'';
       const radios=q.tip==='besedilo'?'':`<fieldset class="radios" aria-labelledby="t-${q.id}"><legend class="small">Odgovor</legend>
         ${['Da','Ne','Delno'].map(v=>`<label><input type="radio" name="r-${q.id}" value="${v}"> ${v}</label>`).join('')}</fieldset>`;
+      const predlog=(s.id!=='zakaj' && q.tip!=='besedilo')
+        ? `<label for="y-${q.id}">Lasten predlog (kako bi se vi lotili problematike?)</label>
+      <textarea id="y-${q.id}" name="y-${q.id}"></textarea>` : '';
       return `<div class="q" id="q-${q.id}" data-q="${q.id}">
       <p class="qt" id="t-${q.id}">${i+1}. ${esc(q.besedilo)}</p>
       ${radios}
       <label for="x-${q.id}">${esc(polje)}</label>
       ${razlaga?`<p class="small razlaga">${esc(razlaga)}</p>`:''}
-      <textarea id="x-${q.id}" name="x-${q.id}"></textarea></div>`;
+      <textarea id="x-${q.id}" name="x-${q.id}"></textarea>
+      ${predlog}</div>`;
     }).join('');
     sek.insertAdjacentHTML('beforeend',`<section class="card sek" id="sek-${s.id}" data-s="${s.id}">${naslov}${prio}${s.opis?`<p class="opis">${esc(s.opis)}</p>`:''}${graf(s.id)}${(s.citati||[]).length?`<div class="cit"><p class="small">Iz odgovorov prebivalcev:</p>${s.citati.map(c=>`<blockquote>»${esc(c)}«</blockquote>`).join('')}</div>`:''}${qs}</section>`);
   });
@@ -220,7 +224,9 @@ function collect(){
   Q.sekcije.forEach(s=>{
     s.vprasanja.forEach(q=>{
       const r=document.querySelector(`input[name="r-${q.id}"]:checked`);
-      o.odg[q.id]={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
+      const rec={odgovor:r?r.value:'',besedilo:$('#x-'+q.id).value};
+      const y=$('#y-'+q.id); if(y) rec.predlog=y.value;
+      o.odg[q.id]=rec;
     });
   });
   return o;
@@ -233,7 +239,8 @@ function restore(){
   (state.prioritet||[]).forEach(id=>{document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=true)});
   Object.entries(state.odg||{}).forEach(([id,a])=>{
     const r=document.querySelector(`input[name="r-${id}"][value="${a.odgovor}"]`);if(r)r.checked=true;
-    const t=$('#x-'+id);if(t){t.value=a.besedilo||''}});
+    const t=$('#x-'+id);if(t){t.value=a.besedilo||''}
+    const y=$('#y-'+id);if(y){y.value=a.predlog||''}});
   syncPrio();
 }
 function tipSklopa(s, prioritet){
@@ -249,7 +256,7 @@ function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
   return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
-  p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj): ${a.besedilo||'—'}\n`).join('\n')}
+  p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj): ${a.besedilo||'—'}\n`+(('predlog' in a)?`Lasten predlog (kako bi se vi lotili problematike?): ${a.predlog||'—'}\n`:'')).join('\n')}
 
 
 function imeDatoteke(p){
@@ -311,7 +318,7 @@ function review(){
   const e=validate();prikaziNapake(e);if(e.length)return;
   const p=payload();
   $('#revBody').innerHTML=`<p><b>Lista:</b> ${esc(p.listaStevilka?p.listaStevilka+'. '+p.lista:p.lista)}<br><b>E-naslov:</b> ${esc(p.email)}<br><b>5 prioritet:</b> ${esc((p.prioritet||[]).join(', ')||'—')}</p>`+(p.predstavitev?`<div class="rv"><b>Predstavitev ekipe, liste ali stranke na ravni ČS Bežigrad</b><br>${esc(p.predstavitev)}</div>`:'')+
-    p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}</div>`).join('');
+    p.odgovori.filter(a=>a.odgovor||(a.besedilo||'').trim()||(a.predlog||'').trim()).map(a=>`<div class="rv"><b>${esc(a.vprasanje)}</b>${a.prioriteta?' <span class="small">(prioriteta)</span>':''}<br>Odgovor: ${esc(a.odgovor||'—')}<br>${esc(a.besedilo||'—')}${('predlog' in a)?`<br>Lasten predlog: ${esc(a.predlog||'—')}`:''}</div>`).join('');
   $('#f').hidden=true;$('#review').hidden=false;$('#review').focus();
 }
 
