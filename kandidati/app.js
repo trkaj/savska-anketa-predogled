@@ -64,7 +64,7 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Spletna oddaja bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in jih s pregleda pošljete na savskonaselje1@gmail.com.';}
-  Q = await (await fetch('questions.json?v=20261107w')).json();
+  Q = await (await fetch('questions.json?v=20261107x')).json();
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
@@ -147,12 +147,12 @@ function render(){
       ? `<h2><span class="nr">${tema}.</span> <span class="tema-lab">tema</span> ${esc(s.naslov)}</h2>`
       : `<h2>${esc(s.naslov)}</h2>`;
     const prio=jeEnaka(s)
-      ? (s.id==='zakaj'
+      ? (s.obvezno===false
         ? `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Ni obvezen.</p>`
         : `<p class="obv-tema">Ta sklop je za vse liste enak, zato ni med 5 prioritetami. Prosimo, da nanj odgovorite v celoti.</p>`)
       : `<label class="prio"><input type="checkbox" class="priobox" id="p-${s.id}" data-s="${s.id}"> To je ena od naših 5 prioritet</label>`;
     const qs=s.vprasanja.map((q,i)=>{
-      const polje=q.polje||'Razlaga zaveze (neobvezno: kako in do kdaj, lasten predlog, …)';
+      const polje=q.polje||'Razlaga zaveze (neobvezno: kako in do kdaj)';
       const razlaga=q.razlaga||'';
       const radios=q.tip==='besedilo'?'':`<fieldset class="radios" aria-labelledby="t-${q.id}"><legend class="small">Odgovor</legend>
         ${['Da','Ne','Delno'].map(v=>`<label><input type="radio" name="r-${q.id}" value="${v}"> ${v}</label>`).join('')}</fieldset>`;
@@ -238,6 +238,7 @@ function restore(){
 }
 function tipSklopa(s, prioritet){
   if(s.id==='zakaj') return 'predstavitev';
+  if(jeEnaka(s) && s.obvezno===false) return 'neobvezno';
   if(jeEnaka(s)) return 'obvezno';
   if(prioritet.includes(s.id)) return 'prioriteta';
   return 'ostalo';
@@ -248,7 +249,7 @@ function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
   return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
-  p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj, lasten predlog, …): ${a.besedilo||'—'}\n`).join('\n')}
+  p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj): ${a.besedilo||'—'}\n`).join('\n')}
 
 
 function imeDatoteke(p){
@@ -277,7 +278,7 @@ function validate(){
   if(c.prioritet.some(id=>{const s=Q.sekcije.find(x=>x.id===id);return s&&jeEnaka(s);})) e.push('Obveščanje in zaključni sklop nista med 5 prioritetami — sta enaka za vse liste.');
   if(c.prioritet.length!==5)e.push('Označite 5 prioritet (zdaj '+c.prioritet.length+').');
   const pset=new Set(c.prioritet);
-  Q.sekcije.filter(s=>jeEnaka(s)&&s.id!=='zakaj').forEach(s=>pset.add(s.id));
+  Q.sekcije.filter(s=>jeEnaka(s)&&s.obvezno!==false).forEach(s=>pset.add(s.id));
   const manjkajo=[];
   Q.sekcije.forEach(s=>{
     if(!pset.has(s.id)) return;
