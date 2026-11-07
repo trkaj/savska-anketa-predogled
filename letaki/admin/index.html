@@ -104,8 +104,12 @@ async function plosca(){const sel=document.getElementById('izbP');if(sel.options
  const P=PG.find(p=>p.id==sel.value);if(!P)return;const vh=await vhodi();let rows;
  try{const t=await (await fetch(csvZa(P)+'&t='+Date.now())).text();if(t.trim().startsWith('<'))throw 0;rows=parseCSV(t)}catch(e){document.getElementById('kpiTxt').textContent='Tabele ni mogoče prebrati.';return}
  const ima8=/prevzeto ob/i.test((rows[0]||[])[7]||'');const M={};
- rows.slice(1).forEach(x=>{if(!x[0])return;let r=(x[3]||'').trim();if(/^ne$/i.test(r))r='';if(/^(da|ja|x|✅)$/i.test(r))r=(x[2]||'').trim()||'da';
-  M[norm(x[0])+'|'+norm(x[1])]={u:norm(x[0]),n:x[1],p:(x[2]||'').trim(),r,e:(x[5]||'').trim(),tg:r?casLj(x[6]):null,th:casLj(x[7])}});
+ const used=new Set(),raw=rows.slice(1).filter(x=>x[0]);
+ raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});
+ raw.forEach(x=>{let r=(x[3]||'').trim();if(/^ne$/i.test(r))r='';if(/^(da|ja|x|✅)$/i.test(r))r=(x[2]||'').trim()||'da';
+  let st=(x[1]||'').trim();
+  if(!st){const cand=vh.find(v=>norm(v[0])==norm(x[0])&&/[A-Za-z]/.test(String(v[1]))&&!used.has(norm(v[0])+'|'+norm(v[1])));if(cand){st=cand[1];used.add(norm(cand[0])+'|'+norm(cand[1]))}}
+  M[norm(x[0])+'|'+norm(st)]={u:norm(x[0]),n:st,p:(x[2]||'').trim(),r,e:(x[5]||'').trim(),tg:r?casLj(x[6]):null,th:casLj(x[7])}});
  const V=vh.map(v=>Object.assign({u:v[0],n:v[1],p:'',r:'',e:'',tg:null,th:null},M[norm(v[0])+'|'+norm(v[1])]||{}));
  const N=V.length,d=V.filter(x=>x.r).length,z=V.filter(x=>!x.r&&x.p).length,pr=N-d-z,pc=x=>Math.round(x*100/N);
  document.getElementById('kpi').innerHTML='<div class="k1"><b>'+d+'</b>razdeljeno<br>'+pc(d)+' %</div><div class="k2"><b>'+z+'</b>rezervirano<br>'+pc(z)+' %</div><div class="k3"><b>'+pr+'</b>prosto<br>'+pc(pr)+' %</div>';

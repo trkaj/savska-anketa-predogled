@@ -353,10 +353,18 @@ function osvezi(){ogledUI();jaz();moji();ulice();lestvica();ekipeSeznam();stevec
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
 const jeRaz=x=>{x=(x||'').trim();return x&&!/^ne$/i.test(x)};
+function crkovnoStevilo(ulica,st,used){
+  st=(st||'').trim();
+  if(st){used.add(norm(ulica)+'|'+norm(st));return st}
+  const cand=(VH||[]).find(v=>norm(v.u)==norm(ulica)&&/[A-Za-z]/.test(String(v.n))&&!used.has(norm(v.u)+'|'+norm(v.n)));
+  if(!cand)return st;
+  used.add(norm(cand.u)+'|'+norm(cand.n));return cand.n}
 function preberi(t){if(t.trim().startsWith('<'))throw 0;
- const rows=parseCSV(t),ima=/ekipa/i.test((rows[0]||[])[5]||'')||/razdeljeno ob/i.test((rows[0]||[])[6]||'');const ns={};rows.slice(1).forEach(x=>{if(!x[0])return;const p=(x[2]||'').trim();let r=(x[3]||'').trim();if(/^(da|ja|x|✅)$/i.test(r))r=p||'da';if(!jeRaz(r))r='';
-  const tt=r?casLj(x[6]):null;
-  ns[norm(x[0])+'|'+norm(x[1])]={p,r,o:(x[4]||'').trim(),e:r?(x[5]||'').trim():'',t:tt,tr:tt?Date.UTC(tt.y,tt.mo-1,tt.d,tt.h,tt.mi||0,tt.se||0):0,s:r?'razdeljeno':p?'prevzeto':'prosto'}});return{ns,ima}}
+ const rows=parseCSV(t),ima=/ekipa/i.test((rows[0]||[])[5]||'')||/razdeljeno ob/i.test((rows[0]||[])[6]||'');const ns={},used=new Set(),raw=rows.slice(1).filter(x=>x[0]);
+ raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});
+ raw.forEach(x=>{const p=(x[2]||'').trim();let r=(x[3]||'').trim();if(/^(da|ja|x|✅)$/i.test(r))r=p||'da';if(!jeRaz(r))r='';
+  const st=crkovnoStevilo(x[0],x[1],used);const tt=r?casLj(x[6]):null;
+  ns[norm(x[0])+'|'+norm(st)]={p,r,o:(x[4]||'').trim(),e:r?(x[5]||'').trim():'',t:tt,tr:tt?Date.UTC(tt.y,tt.mo-1,tt.d,tt.h,tt.mi||0,tt.se||0):0,s:r?'razdeljeno':p?'prevzeto':'prosto'}});return{ns,ima}}
 let ostaliNalozeni=0;
 // iz predpomnilnika napolni stanje poglavja (nikoli ne briše že prikazanih podatkov)
 function izPredpomnilnika(id){if(stanjePo[id])return true;const c=cBeri(KC(id));if(!c)return false;try{const x=preberi(c.v);stanjePo[id]=x.ns;imaPo[id]=x.ima;if(id==P.id)casPod=c.t;return true}catch(e){return false}}

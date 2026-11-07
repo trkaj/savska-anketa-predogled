@@ -64,7 +64,12 @@ window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitB
  document.getElementById('naslov').textContent=P.st+'. poglavje: '+P.naslov+' – zemljevid razdeljevanja';document.title=document.getElementById('naslov').textContent;
  const [v,meja,t]=await Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);
  VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
- if(t&&!t.trim().startsWith('<'))parseCSV(t).slice(1).forEach(x=>{if(!x[0])return;let r=(x[3]||'').trim();if(/^ne$/i.test(r))r='';ST[norm(x[0])+'|'+norm(x[1])]={p:(x[2]||'').trim(),r}});
+ if(t&&!t.trim().startsWith('<')){const used=new Set(),raw=parseCSV(t).slice(1).filter(x=>x[0]);
+  raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});
+  raw.forEach(x=>{let r=(x[3]||'').trim();if(/^ne$/i.test(r))r='';
+   let st=(x[1]||'').trim();
+   if(!st){const cand=VH.find(v=>norm(v.u)==norm(x[0])&&/[A-Za-z]/.test(String(v.n))&&!used.has(norm(v.u)+'|'+norm(v.n)));if(cand){st=cand.n;used.add(norm(cand.u)+'|'+norm(cand.n))}}
+   ST[norm(x[0])+'|'+norm(st)]={p:(x[2]||'').trim(),r}})}
  ring=meja.map(c=>[c[1],c[0]]);
  L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:.55,interactive:false}).addTo(map);
  L.polygon(ring,{color:'#000',weight:2.5,fill:false,interactive:false}).addTo(map);
