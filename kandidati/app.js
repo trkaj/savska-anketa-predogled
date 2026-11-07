@@ -72,7 +72,8 @@ async function init(){
   if(!await fillListe()) return;
   render(); restore(); setupGrafZoom();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
-  ['foto','videoPozdrav'].forEach(id=>{const el=$('#'+id);if(!el)return;el.addEventListener('blur',()=>{const n=dopolniPovezavo(el.value);if(n&&povezavaOk(n))el.value=n;save();});});
+  function vpisiDopolnjenoPovezavo(el){const n=dopolniPovezavo(el.value);if(n&&povezavaOk(n))el.value=n;save();}
+  ['foto','videoPozdrav'].forEach(id=>{const el=$('#'+id);if(!el)return;el.addEventListener('blur',()=>vpisiDopolnjenoPovezavo(el));el.addEventListener('paste',()=>setTimeout(()=>vpisiDopolnjenoPovezavo(el),0));el.addEventListener('change',()=>vpisiDopolnjenoPovezavo(el));});
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
 }
