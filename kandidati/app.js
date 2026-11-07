@@ -74,7 +74,7 @@ async function init(){
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   function vpisiDopolnjenoPovezavo(el){const n=dopolniPovezavo(el.value);if(n&&povezavaOk(n))el.value=n;save();}
   ['foto','videoPozdrav'].forEach(id=>{const el=$('#'+id);if(!el)return;el.addEventListener('blur',()=>vpisiDopolnjenoPovezavo(el));el.addEventListener('paste',()=>setTimeout(()=>vpisiDopolnjenoPovezavo(el),0));el.addEventListener('change',()=>vpisiDopolnjenoPovezavo(el));});
-  $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false}; if($('#shraniPregled')) $('#shraniPregled').onclick = save;
+  $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false}; if($('#shraniPregled')) $('#shraniPregled').onclick = shraniInPrenesi;
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
 }
 
@@ -252,6 +252,26 @@ function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:
   return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
   p.odgovori.map(a=>`[${a.sklop}${a.temaId?' · '+a.temaId:''}${a.tip?' · '+a.tip:''}${a.prioriteta?' · prioriteta':''}] ${a.vprasanje}\nOdgovor: ${a.odgovor||'—'}\nRazlaga zaveze (kako in do kdaj, lasten predlog, …): ${a.besedilo||'—'}\n`).join('\n')}
 
+
+function imeDatoteke(p){
+  const raw=(p.listaStevilka?p.listaStevilka+'-':'')+(p.lista||'lista');
+  const slug=String(raw).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+  return 'zaveze-savsko-naselje-'+(slug||'lista')+'.txt';
+}
+function shraniInPrenesi(){
+  save();
+  const p=payload();
+  const blob=new Blob([toTxt(p)],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=imeDatoteke(p);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  const el=$('#savedRev');
+  if(el) el.textContent='Shranjeno v tem brskalniku. Prenesena je tudi datoteka z odgovori.';
+}
 function validate(){
   const c=collect(),e=[];
   if(!LISTA)e.push('Obrazec odprite prek povezave iz e-pošte.');
