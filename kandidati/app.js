@@ -252,8 +252,6 @@ function validate(){
     });
   });
   if(manjkajo.length) e.push({text:'Pri '+manjkajo.length+' obveznih vprašanjih (obveščanje ali 5 prioritet) še ni izbran odgovor Da / Ne / Delno.',links:manjkajo});
-  const urlOk = u => !u || /^https:\/\/\S+$/i.test(u);
-  if(!urlOk(c.foto) || !urlOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj se začne s https://.');
   if(!c.soglasje)e.push('Potrdite soglasje za objavo.');
   return e}
 function prikaziNapake(e){
