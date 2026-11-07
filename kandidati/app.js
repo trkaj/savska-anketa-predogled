@@ -50,7 +50,7 @@ async function fillListe(){
     if(!j || !j.ok || !j.ime) return skrijObrazec();
     LISTA={n:j.n, ime:j.ime};
     const el=$('#lista');
-    if(el) el.textContent=LISTA.n+'. '+LISTA.ime;
+    if(el) el.textContent=LISTA.n?LISTA.n+'. '+LISTA.ime:LISTA.ime;
     return true;
   }catch(err){
     return skrijObrazec();
@@ -68,8 +68,9 @@ async function init(){
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
+  setupZasebnost();
   if(!await fillListe()) return;
-  render(); restore(); setupGrafZoom(); setupZasebnost();
+  render(); restore(); setupGrafZoom();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
@@ -225,7 +226,7 @@ function tipSklopa(s, prioritet){
 }
 function payload(){const c=collect();const ime=id=>(Q.sekcije.find(s=>s.id===id)||{}).naslov||id;
   const meta=listaMeta(c.lista);
-  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',listaStevilka:LISTA?LISTA.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:!!($('#testOddaja')&&$('#testOddaja').checked),prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
+  const out={casOddaje:new Date().toISOString(),casOddajeLokalni:casLj(),lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',listaStevilka:LISTA?LISTA.n:null,email:c.email,predstavitev:c.predstavitev,foto:c.foto,videoPozdrav:c.videoPozdrav,soglasje:c.soglasje,test:false,prioritet:c.prioritet.map(ime),prioritetId:c.prioritet,odgovori:[]};
   Q.sekcije.forEach(s=>s.vprasanja.forEach(q=>out.odgovori.push({id:q.id,temaId:s.id,sklop:s.naslov,tip:tipSklopa(s,c.prioritet),prioriteta:c.prioritet.includes(s.id),vprasanje:q.besedilo,...c.odg[q.id]})));return out}
 function toTxt(p){const oznaka=p.listaStevilka?`${p.listaStevilka}. ${p.lista}`:p.lista;
   return `Savsko naselje · anketa – odgovori liste\nLista: ${oznaka}\nPreizkus: ${p.test?'da':'ne'}\nE-naslov: ${p.email}\n5 prioritet: ${(p.prioritet||[]).join(', ')||'—'}\nPredstavitev ekipe, liste ali stranke na ravni ČS Bežigrad: ${p.predstavitev||'—'}\nFotografija: ${p.foto||'—'}\nVideo pozdrav: ${p.videoPozdrav||'—'}\nČas: ${p.casOddajeLokalni||p.casOddaje}\n\n`+
