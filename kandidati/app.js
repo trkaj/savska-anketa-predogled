@@ -74,7 +74,7 @@ async function init(){
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
   function vpisiDopolnjenoPovezavo(el){const n=dopolniPovezavo(el.value);if(n&&povezavaOk(n))el.value=n;save();}
   ['foto','videoPozdrav'].forEach(id=>{const el=$('#'+id);if(!el)return;el.addEventListener('blur',()=>vpisiDopolnjenoPovezavo(el));el.addEventListener('paste',()=>setTimeout(()=>vpisiDopolnjenoPovezavo(el),0));el.addEventListener('change',()=>vpisiDopolnjenoPovezavo(el));});
-  $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
+  $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false}; if($('#shraniPregled')) $('#shraniPregled').onclick = save;
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
 }
 
@@ -228,7 +228,8 @@ function collect(){
   return o;
 }
 function save(){state=collect();localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));
-  $('#saved').textContent='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'})}
+  const msg='Shranjeno v tej napravi ob '+new Date().toLocaleTimeString('sl-SI',{hour:'2-digit',minute:'2-digit'});
+  ['#saved','#savedRev'].forEach(id=>{const el=$(id);if(el)el.textContent=msg})}
 function restore(){
   $('#email').value=state.email||'';if($('#predstavitev')){$('#predstavitev').value=state.predstavitev||'';}if($('#foto'))$('#foto').value=state.foto||'';if($('#videoPozdrav'))$('#videoPozdrav').value=state.videoPozdrav||'';$('#soglasje').checked=!!state.soglasje;
   (state.prioritet||[]).forEach(id=>{document.querySelectorAll('input.priobox[data-s="'+id+'"]').forEach(b=>b.checked=true)});
