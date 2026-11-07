@@ -72,6 +72,7 @@ async function init(){
   if(!await fillListe()) return;
   render(); restore(); setupGrafZoom();
   $('#f').addEventListener('input', save); $('#f').addEventListener('change', onFormChange);
+  ['foto','videoPozdrav'].forEach(id=>{const el=$('#'+id);if(!el)return;el.addEventListener('blur',()=>{const n=dopolniPovezavo(el.value);if(n&&povezavaOk(n))el.value=n;save();});});
   $('#pregled').onclick = review; $('#nazaj').onclick = ()=>{$('#review').hidden=true;$('#f').hidden=false};
   $('#oddaj').onclick = submit; if(off){$('#oddaj').disabled=false;$('#oddaj').textContent='Pošlji na savskonaselje1@gmail.com';$('#oddaj').onclick=posljiMail;}
 }
@@ -197,8 +198,23 @@ function graf(id){const g=G[id];if(!g)return '';
   return `<figure class="graf"><figcaption class="gq">Prebivalci so odgovarjali na vprašanje: »${esc(g.vprasanje)}«</figcaption>
   <img class="gz" src="${g.slika}?v=20261106a" alt="${esc(g.alt)}" loading="lazy" width="704" tabindex="0" role="button" aria-label="Povečaj graf">
   <p class="small vir">${vir}</p></figure>`}
+function dopolniPovezavo(u){
+  u=String(u||'').trim();
+  if(!u) return '';
+  if(/^\/\//.test(u)) u='https:'+u;
+  else if(!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(u)) u='https://'+u;
+  return u;
+}
+function povezavaOk(u){
+  u=dopolniPovezavo(u);
+  if(!u) return true;
+  try{
+    const x=new URL(u);
+    return (x.protocol==='http:'||x.protocol==='https:') && !!x.hostname && x.hostname.includes('.');
+  }catch(e){return false}
+}
 function collect(){
-  const o={lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',email:$('#email').value.trim(),predstavitev:($('#predstavitev')||{}).value?$('#predstavitev').value.trim():'',foto:($('#foto')||{}).value?$('#foto').value.trim():'',videoPozdrav:($('#videoPozdrav')||{}).value?$('#videoPozdrav').value.trim():'',soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
+  const o={lista:LISTA?LISTA.ime:'',token:LISTA?TOKEN:'',email:$('#email').value.trim(),predstavitev:($('#predstavitev')||{}).value?$('#predstavitev').value.trim():'',foto:dopolniPovezavo(($('#foto')||{}).value||''),videoPozdrav:dopolniPovezavo(($('#videoPozdrav')||{}).value||''),soglasje:$('#soglasje').checked,prioritet:[],odg:{}};
   o.prioritet = uniquePrios();
   Q.sekcije.forEach(s=>{
     s.vprasanja.forEach(q=>{
@@ -252,6 +268,7 @@ function validate(){
     });
   });
   if(manjkajo.length) e.push({text:'Pri '+manjkajo.length+' obveznih vprašanjih (obveščanje ali 5 prioritet) še ni izbran odgovor Da / Ne / Delno.',links:manjkajo});
+  if(!povezavaOk(c.foto) || !povezavaOk(c.videoPozdrav)) e.push('Povezava do fotografije ali video pozdrava naj bo običajna spletna povezava (YouTube, Google Drive ali Vimeo).');
   if(!c.soglasje)e.push('Potrdite soglasje za objavo.');
   return e}
 function prikaziNapake(e){
