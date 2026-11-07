@@ -64,7 +64,7 @@ async function init(){
   const off = ph(CONFIG.endpoint)||ph(CONFIG.upravljavec);
   if(ph(CONFIG.upravljavec)) $('#upr').hidden=true; else $('#uprTxt').textContent = CONFIG.upravljavec;
   if(off){const e=$('#cfgwarn');e.hidden=false;e.textContent='Spletna oddaja bo odprta kmalu. Odgovore lahko že pripravite – shranjujejo se v vašem brskalniku – in jih s pregleda pošljete na savskonaselje1@gmail.com.';}
-  Q = await (await fetch('questions.json?v=20261107h')).json();
+  Q = await (await fetch('questions.json?v=20261107l')).json();
   try{G=await (await fetch('grafi/grafi.json?v=20261106a')).json()}catch(e){G={}}
   try{state=JSON.parse(localStorage.getItem(CONFIG.storageKey))||{}}catch(e){state={}}
   state.odg ||= {};
