@@ -354,7 +354,7 @@ var KORAKI = [
    '<li><strong>Kdo sprašuje:</strong> sosedje, neodvisna in civilna pobuda prebivalcev Savskega naselja.</li>'+
    '<li><strong>Zakaj:</strong> da pokažemo, kaj je pri nas dobro in kaj nas res moti ter to predamo tistim, ki lahko kaj spremenijo: občini, četrtni skupnosti, upravnikom blokov in JSS.</li>'+
    '<li><strong>Kontakt:</strong> Rok Terkaj, <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> ali telefon/SMS <a href="tel:+38670205595">070 205 595</a></li>'+
-   '<li><strong>Objava:</strong> objavili bomo le skupne rezultate, združene po ulicah, in sicer na savska.org ter v Domu skupnosti. Posameznih odgovorov ne bomo objavljali.</li>'+
+   '<li><strong>Objava:</strong> objavimo zbirne rezultate ter anonimne komentarje, brez imen, naslovov, vhodov in kontaktov, na anketa.savska.org, na savska.org, v Domu skupnosti in po naših socialnih omrežjih. Če kdo to vseeno napiše, pred objavo odstranimo ali posplošimo. Ulice z manj kot 10 odgovori ostanejo združene. Ocen poimenovanih upravnikov ne objavimo.</li>'+
    '<li><strong>Odgovarjanje je prostovoljno:</strong> katero koli vprašanje lahko preskočite.</li>'+
    '</ul></div>'+
    '<p class="namig">'+'<button type="button" class="povezava" data-zasebnost>Zasebnost</button><span class="samo-tisk">Zasebnost: https://anketa.savska.org/#zasebnost</span>'+'</p>'+
@@ -823,10 +823,11 @@ function posljiListek(){
   posta('listek',o);
 }
 /* ---------- Zasebnost ---------- */
-var ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="namig">Verzija 1.2, 30. 10. 2026</p>'+
+var ZASEBNOST='<h2 tabindex="-1">Zasebnost</h2><p class="namig">Verzija 1.3, 7. 11. 2026</p>'+
  '<h3>Kdo je upravljavec</h3><p>Rok Terkaj, fizična oseba, koordinator neodvisne in civilne pobude prebivalcev Savskega naselja; <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>.</p>'+
  '<h3>Zakaj zbiramo podatke</h3><p>Da zberemo mnenja in predloge prebivalcev o naselju in jih zbirno predstavimo na zboru prebivalcev, ČS Bežigrad in MOL. Podlaga je zakoniti interes (točka (f) 6(1) Splošne uredbe). Za modri listek je podlaga vaša privolitev (točka (a) 6(1)). Če si premislite, nam samo pišite.</p>'+
- '<h3>Česa ne zbiramo</h3><p>V anketi ne sprašujemo po imenih, naslovih, hišnih številkah in ne beležimo IP-naslovov. Ulica in starostna skupina sta samo za preverjanje, ali so zastopani vsi deli naselja in vse generacije. Rezultate objavimo samo zbirno, ulice z manj kot 10 odgovori združimo.</p>'+
+ '<h3>Česa ne zbiramo</h3><p>V anketi ne sprašujemo po imenih, naslovih, hišnih številkah in ne beležimo IP-naslovov. Ulica in starostna skupina sta samo za preverjanje, ali so zastopani vsi deli naselja in vse generacije. Ulice z manj kot 10 odgovori v prikazu združimo.</p>'+
+ '<h3>Kaj objavimo</h3><p>Objavimo zbirne rezultate ter anonimne komentarje, brez imen, naslovov, vhodov in kontaktov, na anketa.savska.org, na savska.org, v Domu skupnosti in po naših socialnih omrežjih. Če kdo to vseeno napiše, pred objavo odstranimo ali posplošimo. Ulice z manj kot 10 odgovori ostanejo združene. Ocen poimenovanih upravnikov ne objavimo.</p>'+
  '<h3>Katere storitve uporabljamo</h3><p>Odgovori se shranijo v Googlovo preglednico (Apps Script), stran pa teče na GitHubu.</p>'+
  '<h3>Kako dolgo hranimo</h3><ul><li>Surove odgovore največ 12 mesecev po koncu ankete, nato jih izbrišemo; ostanejo samo zbirni rezultati.</li><li>Kontakte s listka hranimo največ 24 mesecev od zadnjega stika. Če nam pišete, jih izbrišemo prej.</li><li>Enkrat letno preverimo, ali je hramba še potrebna, in to zapišemo (43. člen ZVOP-2).</li><li>Papirne obrazce po vnosu uničimo.</li></ul>'+
  '<h3>Kaj lahko zahtevate</h3><p>Lahko vprašate, kaj imamo o vas, in zahtevate popravek ali izbris, ugovarjate ali umaknete privolitev. Dovolj je sporočilo na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>. Če niste zadovoljni, se lahko obrnete na Informacijskega pooblaščenca (www.ip-rs.si).</p>'+
