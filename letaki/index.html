@@ -85,6 +85,12 @@ let POGLAVJA=[{id:'p1-anketa', st:1, naslov:'Savska anketa', opis:'Letaki z vabi
 // 1. poglavje bere prvi zavihek (brez &sheet=), da deluje tudi, če ga kdo preimenuje
 const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'');
 let P,ZAKLJ,PIME,CSV;
+// Datoteke so vezane na stabilni id, ne na položaj poglavja v seznamu.
+function datotekeZa(p){return p&&p.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'}}
+const vhodiPo={},obljubeVhodov={};
+async function vhodiZa(p){if(vhodiPo[p.id])return vhodiPo[p.id];
+ if(!obljubeVhodov[p.id])obljubeVhodov[p.id]=fetch(datotekeZa(p).vh).then(r=>{if(!r.ok)throw Error('Vhodi niso dosegljivi');return r.json()}).then(v=>vhodiPo[p.id]=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}))).catch(e=>{delete obljubeVhodov[p.id];throw e});
+ return obljubeVhodov[p.id]}
 const pk=k=>P.id+':'+k; // ključ v localStorage za to poglavje
 // selitev starih ključev (pred poglavji) v 1. poglavje – nihče ne izgubi mejnikov
 try{if(!localStorage.getItem('letaki_migr_p1')){for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
@@ -116,7 +122,7 @@ let prviCSV={id:P.id,pr:fetch(CSV+'&t='+Date.now()).then(r=>r.text())};prviCSV.p
 fetch(SKRIPT+'?akcija=poglavja&t='+Date.now()).then(r=>r.json()).then(j=>{
  if(!(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length))return;const nova=normPoglavja(j.poglavja);if(!nova.length)return;cPisi(KP,j.poglavja);
  const prej=P.id,prejSez=JSON.stringify(POGLAVJA);POGLAVJA=nova;initPoglavje();
- if(P.id!=prej){prikaziPoglavje()}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
+ if(P.id!=prej){location.reload();return}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
 // izbira se zapomni, dokler ne pride novo poglavje – takrat vsi privzeto vidijo najnovejše aktivno
 const ekKljuc=()=>'letaki_ekipa:'+(ime||'').trim().toLowerCase();
 function ekipaGet(){let v=localStorage.getItem(ekKljuc());if(v===null)v=localStorage.getItem('letaki_ekipa')||'';return v.trim()}
@@ -353,34 +359,35 @@ function osvezi(){ogledUI();jaz();moji();ulice();lestvica();ekipeSeznam();stevec
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
 const jeRaz=x=>{x=(x||'').trim();return x&&!/^ne$/i.test(x)};
-function crkovnoStevilo(ulica,st,used){
+function crkovnoStevilo(ulica,st,used,vhodi){
   st=(st||'').trim();
   if(st){used.add(norm(ulica)+'|'+norm(st));return st}
-  const cand=(VH||[]).find(v=>norm(v.u)==norm(ulica)&&/[A-Za-z]/.test(String(v.n))&&!used.has(norm(v.u)+'|'+norm(v.n)));
+  const cand=(vhodi||[]).find(v=>norm(v.u)==norm(ulica)&&/[A-Za-z]/.test(String(v.n))&&!used.has(norm(v.u)+'|'+norm(v.n)));
   if(!cand)return st;
   used.add(norm(cand.u)+'|'+norm(cand.n));return cand.n}
-function preberi(t){if(t.trim().startsWith('<'))throw 0;
+function preberi(t,vhodi){if(t.trim().startsWith('<'))throw 0;
  const rows=parseCSV(t),ima=/ekipa/i.test((rows[0]||[])[5]||'')||/razdeljeno ob/i.test((rows[0]||[])[6]||'');const ns={},used=new Set(),raw=rows.slice(1).filter(x=>x[0]);
  raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});
  raw.forEach(x=>{const p=(x[2]||'').trim();let r=(x[3]||'').trim();if(/^(da|ja|x|✅)$/i.test(r))r=p||'da';if(!jeRaz(r))r='';
-  const st=crkovnoStevilo(x[0],x[1],used);const tt=r?casLj(x[6]):null;
+  const st=crkovnoStevilo(x[0],x[1],used,vhodi);const tt=r?casLj(x[6]):null;
   ns[norm(x[0])+'|'+norm(st)]={p,r,o:(x[4]||'').trim(),e:r?(x[5]||'').trim():'',t:tt,tr:tt?Date.UTC(tt.y,tt.mo-1,tt.d,tt.h,tt.mi||0,tt.se||0):0,s:r?'razdeljeno':p?'prevzeto':'prosto'}});return{ns,ima}}
 let ostaliNalozeni=0;
 // iz predpomnilnika napolni stanje poglavja (nikoli ne briše že prikazanih podatkov)
-function izPredpomnilnika(id){if(stanjePo[id])return true;const c=cBeri(KC(id));if(!c)return false;try{const x=preberi(c.v);stanjePo[id]=x.ns;imaPo[id]=x.ima;if(id==P.id)casPod=c.t;return true}catch(e){return false}}
+function izPredpomnilnika(id){if(stanjePo[id])return true;const c=cBeri(KC(id));if(!c||!vhodiPo[id])return false;try{const x=preberi(c.v,vhodiPo[id]);stanjePo[id]=x.ns;imaPo[id]=x.ima;if(id==P.id)casPod=c.t;return true}catch(e){return false}}
 function prikaziPoglavje(){izPredpomnilnika(P.id);stanje=stanjePo[P.id]||{};imaStolpce=!!imaPo[P.id];if(VH.length){osvezi();osvUI();nalozi()}}
 async function naloziOstale(){// druga poglavja (za »Vsa poglavja« in skupne značke); zaključena se ne spreminjajo, zato jih naložimo enkrat
  const ids=POGLAVJA.filter(p=>p.id!=P.id&&(p.stanje=='aktivno'||!ostaliNalozeni||!stanjePo[p.id]));ostaliNalozeni=1;
- await Promise.all(ids.map(p=>fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()).then(t=>{const x=preberi(t);stanjePo[p.id]=x.ns;imaPo[p.id]=x.ima;cPisi(KC(p.id),t)}).catch(e=>console.warn('poglavje',p.id,e))));
+ await Promise.all(ids.map(async p=>{const [t,vhodi]=await Promise.all([fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()),vhodiZa(p)]);const x=preberi(t,vhodi);stanjePo[p.id]=x.ns;imaPo[p.id]=x.ima;cPisi(KC(p.id),t)}).map(pr=>pr.catch(e=>console.warn('poglavje',e))));
  if(VH.length)osvezi()}
 async function nalozi(){const id=P.id;osvN++;osvUI();try{let pr;if(prviCSV&&prviCSV.id==id){pr=prviCSV.pr;prviCSV=null}else pr=fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text());
- const t=await pr;const {ns,ima}=preberi(t);cPisi(KC(id),t);stanjePo[id]=ns;imaPo[id]=ima;
+ const [t,vhodi]=await Promise.all([pr,vhodiZa({id})]);const {ns,ima}=preberi(t,vhodi);cPisi(KC(id),t);stanjePo[id]=ns;imaPo[id]=ima;
  if(P.id!=id)return;imaStolpce=ima;stanje=ns;nalozeno=true;casPod=Date.now();osvezi();if(document.getElementById('okno').style.display!='flex')mejniki();
  naloziOstale();naloziEkipe().then(()=>{if(P.id==id)osvezi()})}catch(e){console.warn(e)}finally{osvN--;osvUI()}}
 const map=L.map('map',{zoomSnap:.25,renderer:L.canvas({tolerance:7})});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
-Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json())]).then(([v,meja])=>{
- VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
+const zacetnoP=P;
+Promise.all([vhodiZa(zacetnoP),fetch(datotekeZa(zacetnoP).meja).then(r=>r.json())]).then(([v,meja])=>{
+ if(P.id!=zacetnoP.id)return;VH=v;
  const ring=meja.map(c=>[c[1],c[0]]);
  L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
  L.polygon(ring,{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);

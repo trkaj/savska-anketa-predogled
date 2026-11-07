@@ -62,7 +62,8 @@ window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitB
  try{const j=await Promise.race([fetch(SKRIPT+'?akcija=poglavja').then(r=>r.json()),new Promise((_,r)=>setTimeout(r,6000))]);if(j&&j.ok&&j.poglavja&&j.poglavja.length)PG=j.poglavja}catch(e){}
  const P=PG.find(p=>p.id==Q.get('p'))||PG.filter(p=>p.stanje!='zaključeno').pop()||PG[PG.length-1];
  document.getElementById('naslov').textContent=P.st+'. poglavje: '+P.naslov+' – zemljevid razdeljevanja';document.title=document.getElementById('naslov').textContent;
- const [v,meja,t]=await Promise.all([fetch('vhodi.json').then(r=>r.json()),fetch('meja.json').then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);
+ const dat=P.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'};
+ const [v,meja,t]=await Promise.all([fetch(dat.vh).then(r=>r.json()),fetch(dat.meja).then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);
  VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
  if(t&&!t.trim().startsWith('<')){const used=new Set(),raw=parseCSV(t).slice(1).filter(x=>x[0]);
   raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});

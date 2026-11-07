@@ -95,13 +95,13 @@ function casLj(v){v=(v||'').trim();if(!v)return null;let m;
 const tsLj=t=>t?Date.UTC(t.y,t.mo-1,t.d,t.h,t.mi||0):0; // »lokalni« čas Ljubljane kot UTC števec
 const zdajLj=()=>tsLj(casLj(new Date().toISOString()));
 const fmt=t=>t?t.d+'. '+t.mo+'. '+String(t.h).padStart(2,'0')+':'+String(t.mi||0).padStart(2,'0'):'čas neznan';
-let VH=null,DN=null,V5=null;
+let VH={},DN=null,V5=null;
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
-async function vhodi(){if(!VH)VH=await fetch('../vhodi.json').then(r=>r.json());return VH}
+async function vhodi(p){const dat=p.id=='p2-okolica-test'?'vhodi-p2.json':'vhodi.json';if(!VH[dat])VH[dat]=await fetch('../'+dat).then(r=>r.json());return VH[dat]}
 function tisk(n){const p=PG[document.getElementById('izbP').selectedIndex]||{};window.open('../tisk.html?admin=1&p='+encodeURIComponent(p.id||'')+'&nacin='+n+(document.getElementById('tiskImena').checked?'&imena=1':''),'_blank')}
 async function plosca(){const sel=document.getElementById('izbP');if(sel.options.length!=PG.length||!sel.options.length){const keep=sel.value;sel.innerHTML=PG.map(p=>'<option value="'+esc(p.id)+'">'+p.st+'. poglavje · '+esc(p.naslov)+(p.stanje=='aktivno'?'':' (zaključeno)')+'</option>').join('');
   const akt=PG.filter(p=>p.stanje=='aktivno');sel.value=keep||(akt.length?akt[akt.length-1]:PG[PG.length-1]||{}).id}
- const P=PG.find(p=>p.id==sel.value);if(!P)return;const vh=await vhodi();let rows;
+ const P=PG.find(p=>p.id==sel.value);if(!P)return;const vh=await vhodi(P);let rows;
  try{const t=await (await fetch(csvZa(P)+'&t='+Date.now())).text();if(t.trim().startsWith('<'))throw 0;rows=parseCSV(t)}catch(e){document.getElementById('kpiTxt').textContent='Tabele ni mogoče prebrati.';return}
  const ima8=/prevzeto ob/i.test((rows[0]||[])[7]||'');const M={};
  const used=new Set(),raw=rows.slice(1).filter(x=>x[0]);
