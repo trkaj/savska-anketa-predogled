@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaveze kandidatne liste</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p class="webar"><a href="index.html">← vse liste</a> · <a href="https://anketa.savska.org/pregled/">pregled ankete</a></p>
+<header class="hd">
+  <img src="logo.png" alt="">
+  <div>
+    <h1>Zaveze kandidatne liste</h1>
+    <p id="podnaslov">Svet ČS Bežigrad, volilna enota 01</p>
+  </div>
+</header>
+<main>
+  <nav class="listnav" id="nav-zgoraj"></nav>
+  <article class="card" id="kartica">
+    <h2 id="naslov"></h2>
+  </article>
+  <nav class="listnav" id="nav-spodaj"></nav>
+</main>
+<footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595</footer>
+<script>
+const LISTE = [{"n": 1, "ime": "Gibanje Svoboda"}, {"n": 2, "ime": "Slovenska ljudska stranka"}, {"n": 3, "ime": "Demokrati. Anžeta Logarja"}, {"n": 4, "ime": "Pirati"}, {"n": 5, "ime": "Levica"}, {"n": 6, "ime": "Prerod – stranka Vladimirja Prebiliča"}, {"n": 7, "ime": "Slovenska demokratska stranka – SDS"}, {"n": 8, "ime": "Vesna – zelena stranka"}, {"n": 9, "ime": "Nova Slovenija in Fokus"}, {"n": 10, "ime": "Socialni demokrati"}, {"n": 11, "ime": "Cilj – Bežigrad"}, {"n": 12, "ime": "Stranka Straža – katoliška narodna stranka"}, {"n": 13, "ime": "Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa"}, {"n": 14, "ime": "Državljansko gibanje Resni.ca"}, {"n": 15, "ime": "Lista Zorana Jankovića"}];
+const n = parseInt(new URLSearchParams(location.search).get("n") || "", 10);
+if (n === 11) { location.replace("lista-11.html"); }
+const i = LISTE.findIndex(x => x.n === n);
+if (i < 0) {
+  document.getElementById("naslov").textContent = "Lista ni na seznamu VE 01";
+} else {
+  const L = LISTE[i];
+  document.title = L.n + ". " + L.ime;
+  document.getElementById("naslov").innerHTML = '<span class="nr">' + L.n + ".</span> " + L.ime;
+  document.getElementById("podnaslov").textContent = L.ime;
+  function navHtml() {
+    const prev = LISTE[i - 1];
+    const next = LISTE[i + 1];
+    const left = prev
+      ? '<a href="' + (prev.n === 11 ? "lista-11.html" : "lista.html?n=" + prev.n) + '">← ' + prev.n + ". " + prev.ime + "</a>"
+      : "<span></span>";
+    const right = next
+      ? '<a class="next" href="' + (next.n === 11 ? "lista-11.html" : "lista.html?n=" + next.n) + '">' + next.n + ". " + next.ime + " →</a>"
+      : "<span></span>";
+    return left + right;
+  }
+  document.getElementById("nav-zgoraj").innerHTML = navHtml();
+  document.getElementById("nav-spodaj").innerHTML = navHtml();
+}
+</script>
+</body>
+</html>

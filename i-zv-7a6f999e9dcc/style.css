@@ -1,0 +1,59 @@
+:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;font:17px/1.5 "Source Sans 3","Segoe UI","DejaVu Sans",sans-serif;color:var(--t);background:#fff}
+a{color:var(--g)}
+.webar{font-size:.92rem;margin:0;padding:12px 16px;background:#f4f7f5}
+.webar a{color:var(--g);font-weight:650}
+.hd{background:var(--g);color:#fff;display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:6px solid var(--y)}
+.hd img{width:52px;height:52px;border-radius:8px;background:#fff}
+.hd h1{margin:0;font-size:1.35rem;color:var(--y)}
+.hd p{margin:2px 0 0;font-size:.9rem}
+main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
+.banner{background:var(--y2);border:2px solid var(--y);color:var(--g);font-weight:700;padding:10px 14px;border-radius:8px;margin:0 0 1rem}
+.meta{color:#444;margin:0 0 1rem}
+.card{background:#fff;border:1px solid #dde6df;border-radius:12px;padding:16px;margin:0 0 14px;box-shadow:0 1px 3px #0001}
+.card.sim{border:3px solid var(--y);background:#fffdf3}
+.card h2{color:var(--g);margin:0 0 .35rem;font-size:1.2rem}
+.nr{display:inline-block;min-width:1.7rem;color:var(--g);font-weight:800}
+.foto{width:100%;max-height:280px;object-fit:cover;border-radius:8px;background:var(--g);margin:8px 0 10px}
+.video{position:relative;background:#0b3d24;color:#fff;border-radius:8px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;margin:0 0 12px}
+.video .play{width:64px;height:64px;border-radius:50%;background:var(--y);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{background:var(--g);color:#fff;border-radius:999px;padding:4px 10px;font-size:.88rem;font-weight:650}
+.tag.other{background:#e7eee9;color:var(--g)}
+.odg{display:inline-block;font-weight:800;border-radius:6px;padding:1px 7px;font-size:.85rem;margin-right:4px}
+.odg.da{background:#d7f0de;color:var(--g)}
+.odg.ne{background:#f6d4d4;color:#7a1212}
+.odg.delno{background:var(--y2);color:#6a4b00}
+.brez{display:inline-block;background:#eee;color:#555;font-weight:700;padding:3px 8px;border-radius:6px}
+.predstavitev{margin:.4rem 0 .8rem}
+.cardlist{display:grid;gap:10px}
+.mini{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.mini h3{margin:0;font-size:1.02rem;color:var(--g)}
+footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
+.btn{display:inline-block;margin-top:8px;padding:8px 14px;border-radius:8px;background:var(--y);color:#000;font-weight:700;text-decoration:none}
+.rv{border-top:1px solid #dde;padding:10px 0}
+.rv b{color:var(--g)}
+.prio-lab{background:var(--y);color:var(--g);font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
+h3.sek{color:var(--g);margin:1.4rem 0 .4rem;border-bottom:3px solid var(--y);padding-bottom:.25rem}
+
+.mini h3 a{color:var(--g);text-decoration:none}
+.mini h3 a:hover{text-decoration:underline}
+.listnav{display:flex;justify-content:space-between;gap:12px;margin:16px 0 8px}
+.listnav a,.listnav span{flex:1;font-size:.92rem;font-weight:650}
+.listnav .next{text-align:right}
+.listnav span{color:#888;font-weight:500}
+
+/* interni predogled: oznake Da/Ne/Delno brez zelenih ali rdečih ocen */
+.odg.da,.odg.ne,.odg.delno{background:#e7eee9;color:var(--g)}
+.foto-prazno{width:100%;min-height:110px;border-radius:8px;background:#e7eee9;margin:8px 0 10px;display:flex;align-items:center;justify-content:center;color:#667;font-size:.9rem}
+a.video{text-decoration:none;color:#fff}
+.card.izpolnjena{border-color:#c5d4cb}
+
+.tag.kom{background:#2c4a6e;color:#fff}
+.blok-komunikacija{background:#e8eef6;border:2px solid #7a9bb8;border-radius:12px;padding:12px 16px 8px;margin:1.6rem 0 1.8rem}
+.blok-komunikacija h3.sek{color:#1e3a5f;border-bottom:3px solid #7a9bb8;margin-top:.2rem}
+.blok-komunikacija .rv{border-top-color:#c5d4e4}
+.blok-komunikacija .rv b{color:#1e3a5f}
+.obv-lab{background:#2c4a6e;color:#fff;font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
