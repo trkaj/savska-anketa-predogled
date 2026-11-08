@@ -60,7 +60,10 @@ async function natisni(){document.getElementById('stanjeT').textContent=' Pripra
 window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitBounds(L.latLngBounds(ring),{padding:[6,6]})});
 (async()=>{let PG=[{id:'p1-anketa',st:1,naslov:'Savska anketa',zavihek:''}];
  try{const j=await Promise.race([fetch(SKRIPT+'?akcija=poglavja').then(r=>r.json()),new Promise((_,r)=>setTimeout(r,6000))]);if(j&&j.ok&&j.poglavja&&j.poglavja.length)PG=j.poglavja}catch(e){}
- const P=PG.find(p=>p.id==Q.get('p'))||PG.filter(p=>p.stanje!='zaključeno').pop()||PG[PG.length-1];
+ // Brez ?p= vedno 1. poglavje (st === 1, sicer prvo po številki). ?p= odpre izbrano poglavje.
+ const poSt=PG.slice().sort((a,b)=>(+a.st||1)-(+b.st||1));
+ const prvo=poSt.find(p=>p.st===1)||poSt[0];
+ const P=(Q.get('p')&&PG.find(p=>p.id==Q.get('p')))||prvo;
  document.getElementById('naslov').textContent=P.st+'. poglavje: '+P.naslov+' – zemljevid razdeljevanja';document.title=document.getElementById('naslov').textContent;
  const dat=P.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'};
  const [v,meja,t]=await Promise.all([fetch(dat.vh).then(r=>r.json()),fetch(dat.meja).then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);

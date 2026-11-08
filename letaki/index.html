@@ -96,9 +96,10 @@ const pk=k=>P.id+':'+k; // ključ v localStorage za to poglavje
 try{if(!localStorage.getItem('letaki_migr_p1')){for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
  if(k=='letaki_mejniki'||k.startsWith('letaki_zakljucil_')){if(localStorage.getItem('p1-anketa:'+k)==null)localStorage.setItem('p1-anketa:'+k,localStorage.getItem(k))}}localStorage.setItem('letaki_migr_p1','1')}}catch(e){}
 document.getElementById('tabela').href='https://docs.google.com/spreadsheets/d/'+SHEET+'/edit';
-function initPoglavje(){const q=new URLSearchParams(location.search).get('p')||location.hash.replace(/^#p=?/,'');let ls='';try{ls=localStorage.getItem('letaki_poglavje')||''}catch(e){}
- const akt=POGLAVJA.filter(p=>p.stanje=='aktivno');
- P=POGLAVJA.find(p=>p.id==q)||(ls.split('|')[1]==String(POGLAVJA.length)?POGLAVJA.find(p=>p.id==ls.split('|')[0]&&p.stanje=='aktivno'):null)||akt[akt.length-1]||POGLAVJA[POGLAVJA.length-1];
+function initPoglavje(){const q=new URLSearchParams(location.search).get('p')||location.hash.replace(/^#p=?/,'');
+ // Brez ?p= in brez #p= vedno 1. poglavje (st === 1, sicer prvo v seznamu). ?p= ali #p= odpre to poglavje; zadnjega ogleda iz localStorage ne obnovimo.
+ const prvo=POGLAVJA.find(p=>p.st===1)||POGLAVJA[0];
+ P=(q&&POGLAVJA.find(p=>p.id==q))||prvo;
  ZAKLJ=P.stanje!='aktivno';PIME=P.st+'. poglavje: '+P.naslov;CSV=csvZa(P);
  document.title=PIME+' – razdeljevanje';
  document.getElementById('glava').textContent=PIME;
@@ -123,7 +124,7 @@ fetch(SKRIPT+'?akcija=poglavja&t='+Date.now()).then(r=>r.json()).then(j=>{
  if(!(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length))return;const nova=normPoglavja(j.poglavja);if(!nova.length)return;cPisi(KP,j.poglavja);
  const prej=P.id,prejSez=JSON.stringify(POGLAVJA);POGLAVJA=nova;initPoglavje();
  if(P.id!=prej){location.reload();return}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
-// izbira se zapomni, dokler ne pride novo poglavje – takrat vsi privzeto vidijo najnovejše aktivno
+// Brez poglavja v naslovu (?p= ali #p=) se vedno odpre 1. poglavje. Zadnji ogled se ne obnovi; gumb poglavja še vedno nastavi ?p=.
 const ekKljuc=()=>'letaki_ekipa:'+(ime||'').trim().toLowerCase();
 function ekipaGet(){let v=localStorage.getItem(ekKljuc());if(v===null)v=localStorage.getItem('letaki_ekipa')||'';return v.trim()}
 function ekipaUI(uredi){const b=document.getElementById('ekBox');if(!b)return;const v=ekipaGet();
