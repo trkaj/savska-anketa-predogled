@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaveze kandidatne liste</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p class="webar"><a href="index.html">← vse liste</a> · <a href="https://anketa.savska.org/pregled/">pregled ankete</a></p>
+<header class="hd">
+  <img src="../logo.png" alt="">
+  <div>
+    <h1>Zaveze kandidatne liste</h1>
+    <p id="podnaslov">Svet ČS Bežigrad, volilna enota 01</p>
+  </div>
+</header>
+<main>
+  <nav class="listnav" id="nav-zgoraj"></nav>
+  <article class="card" id="kartica">
+    <h2 id="naslov"></h2>
+    <p><span class="brez">odgovora še ni</span></p>
+    <p class="meta">Lista obrazca še ni oddala. Uradni zapis »brez odgovora« pride 11. 11. 2026. Tem, ki jih lista ni izbrala med prioritetami in jih ni dodatno izpolnila, tu ne označujemo kot manjkajočih.</p>
+  </article>
+  <nav class="listnav" id="nav-spodaj"></nav>
+</main>
+<footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595</footer>
+<script src="liste.js"></script>
+<script>
+const n = parseInt(new URLSearchParams(location.search).get('n') || '', 10);
+if (n === 11) { location.replace('odgovori-11.html'); }
+
+const i = LISTE.findIndex(x => x.n === n);
+if (i < 0) {
+  document.getElementById('naslov').textContent = 'Lista ni na seznamu VE 01';
+} else {
+  const L = LISTE[i];
+  document.title = L.n + '. ' + L.ime;
+  document.getElementById('naslov').innerHTML = '<span class="nr">' + L.n + '.</span> ' + L.ime;
+  document.getElementById('podnaslov').textContent = L.ime;
+  function navHtml() {
+    const prev = LISTE[i - 1];
+    const next = LISTE[i + 1];
+    const left = prev
+      ? '<a href="lista.html?n=' + prev.n + '">← ' + prev.n + '. ' + prev.ime + '</a>'
+      : '<span></span>';
+    const right = next
+      ? '<a class="next" href="lista.html?n=' + next.n + '">' + next.n + '. ' + next.ime + ' →</a>'
+      : '<span></span>';
+    return left + right;
+  }
+  document.getElementById('nav-zgoraj').innerHTML = navHtml();
+  document.getElementById('nav-spodaj').innerHTML = navHtml();
+}
+</script>
+</body>
+</html>
