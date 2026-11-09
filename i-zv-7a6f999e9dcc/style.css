@@ -103,3 +103,5 @@ a.video{text-decoration:none;color:#fff}
 /* Rok, 9. 11.: vmesni naslov 5 prioritet */
 .vmesni{display:flex;align-items:center;gap:10px;margin:2rem 0 .4rem;font-size:1.45rem;color:#0b3d24;border-bottom:3px solid #f5c400;padding-bottom:6px}
 .vmesni .roka{width:1.7em;height:1.7em;font-size:1.1rem;background:#f5c400;border-color:#0b3d24}
+/* Rok, 9. 11.: vmesni naslov ostale zaveze */
+.vmesni.ostale{border-bottom-color:#0b3d24;margin-top:2.4rem}
