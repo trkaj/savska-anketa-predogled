@@ -116,3 +116,14 @@ a.video{text-decoration:none;color:#fff}
 .odg.da,.odg.ne,.odg.delno{display:inline-flex;align-items:center;justify-content:center;min-width:2.6em;height:2.6em;padding:0 .5em;border-radius:999px;font-size:1rem;font-weight:900;letter-spacing:.02em;vertical-align:middle;margin:2px 4px}
 .odg.da{background:#0b3d24;color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px #0b3d24,0 2px 6px rgba(0,0,0,.25)}
 .odg.ne{background:#eee;color:#1b1b1b;border:3px solid #fff;box-shadow:0 0 0 3px #777}
+
+/* Rok, 9. 11.: barve razlag po sklopih */
+.zakaj-box .razl{background:#e8f1f6;border-color:#9bb9cb;border-left-color:#245d7a}
+.zakaj-box .razl .razl-lab{color:#245d7a}
+.prio-box .razl{background:#fff;border-color:#e2c25a;border-left-color:#b88a00}
+.prio-box .razl .razl-lab{color:#8a6700}
+.tema-box{background:#f4f5f4;border:1px solid #d5dad6;border-radius:12px;padding:8px 16px 12px;margin:1rem 0}
+.tema-box .razl{background:#e6f2ea;border-color:#9cbfa8;border-left-color:#0b3d24}
+.blok-komunikacija .razl{background:#fff;border-color:#9cbfa8;border-left-color:#0b3d24}
+.razl.predl,.zakaj-box .razl.predl,.prio-box .razl.predl,.tema-box .razl.predl,.blok-komunikacija .razl.predl{background:#eef4f8;border-color:#9bb9cb;border-left-color:#245d7a}
+.razl.predl .razl-lab{color:#245d7a}
