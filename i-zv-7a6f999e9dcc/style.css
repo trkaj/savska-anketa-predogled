@@ -127,3 +127,6 @@ a.video{text-decoration:none;color:#fff}
 .blok-komunikacija .razl{background:#fff;border-color:#9cbfa8;border-left-color:#0b3d24}
 .razl.predl,.zakaj-box .razl.predl,.prio-box .razl.predl,.tema-box .razl.predl,.blok-komunikacija .razl.predl{background:#eef4f8;border-color:#9bb9cb;border-left-color:#245d7a}
 .razl.predl .razl-lab{color:#245d7a}
+
+/* delno obkrožen */
+.odg.delno{background:#fff;color:#0b3d24;border:3px solid #0b3d24;box-shadow:0 0 0 3px #fff,0 0 0 5px #0b3d24}
