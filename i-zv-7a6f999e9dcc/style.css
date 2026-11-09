@@ -65,3 +65,7 @@ a.video{text-decoration:none;color:#fff}
 .blok-komunikacija .rv b{color:#0b3d24}
 .obv-lab{background:#0b3d24;color:#fff}
 .vpr{display:block;color:#333;font-style:italic;margin:.15rem 0 .25rem}
+
+/* Rok, 9. 11.: Da zeleno, Ne ostane nevtralno (ne rdeče) */
+.odg.da{background:#0b3d24;color:#fff}
+.odg.ne{background:#eee;color:#1b1b1b}
