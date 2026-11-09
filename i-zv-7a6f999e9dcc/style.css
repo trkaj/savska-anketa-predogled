@@ -83,3 +83,8 @@ a.video{text-decoration:none;color:#fff}
 .prio-box h3.sek{border-bottom-color:#f5c400;margin-top:.3rem}
 .prio-box .rv{border-top-color:#f0e0a0}
 .prio-lab{font-size:.9rem;padding:3px 9px;border-radius:6px}
+
+/* roka na beli podlagi, da se vidi */
+.roka{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;margin-right:.35em;background:#fff;border:1px solid #0b3d24;border-radius:50%;font-size:1.05em;line-height:1;vertical-align:middle}
+.prio-lab{display:inline-flex;align-items:center}
+.tag .roka{width:1.5em;height:1.5em;border-color:#fff}
