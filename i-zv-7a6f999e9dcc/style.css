@@ -105,3 +105,9 @@ a.video{text-decoration:none;color:#fff}
 .vmesni .roka{width:1.7em;height:1.7em;font-size:1.1rem;background:#fff;border:2px solid #0b3d24}
 /* Rok, 9. 11.: vmesni naslov ostale zaveze */
 .vmesni.ostale{border-bottom-color:#0b3d24;margin-top:2.4rem}
+
+/* Rok, 9. 11.: razlaga v svojem okvirju */
+.razl{background:#fff;border:1px solid #9cbfa8;border-left:5px solid #0b3d24;border-radius:8px;padding:8px 12px;margin:.5rem 0 .2rem;color:#1b1b1b}
+.razl-lab{display:block;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#0b3d24;margin-bottom:2px}
+.razl.predl{border-left-color:#245d7a;border-color:#9bb9cb}
+.razl.predl .razl-lab{color:#245d7a}
