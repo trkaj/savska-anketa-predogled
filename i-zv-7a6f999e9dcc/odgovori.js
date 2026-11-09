@@ -447,5 +447,59 @@ const ODGOVORI = {
       "maladela-3": "Da",
       "zakaj-3": "Da"
     }
+  },
+  "13": {
+    "prioritet": [
+      "Parkiranje",
+      "Promet skozi naselje",
+      "Igle in droge, občutek varnosti",
+      "Dom skupnosti, prostor za druženje",
+      "Boljši zrak in hrup"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "promet",
+      "varnost",
+      "dom",
+      "zrak"
+    ],
+    "counts": {
+      "da": 31,
+      "delno": 0,
+      "ne": 0
+    },
+    "odgovori": {
+      "obvescanje-1": "Da",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Da",
+      "obvescanje-6": "Da",
+      "parkiranje-1": "Da",
+      "parkiranje-2": "Da",
+      "storitve-1": "Da",
+      "storitve-2": "Da",
+      "promet-1": "Da",
+      "promet-2": "Da",
+      "promet-3": "Da",
+      "varnost-1": "Da",
+      "varnost-2": "Da",
+      "klopi-1": "Da",
+      "klopi-2": "Da",
+      "cistoca-1": "Da",
+      "cistoca-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Da",
+      "dom-1": "Da",
+      "dom-2": "Da",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Da",
+      "mladi-2": "Da",
+      "maladela-1": "Da",
+      "maladela-2": "Da",
+      "maladela-3": "Da",
+      "zakaj-3": "Da"
+    }
   }
 };
