@@ -140,7 +140,7 @@ a.video{text-decoration:none;color:#fff}
 .kandidati-vir a{font-weight:650}
 
 /* Logotip liste za naslovom, ne višji od črk naslova — enako za vse liste */
-.lista-logo{height:1em;width:auto;max-width:4em;object-fit:contain;vertical-align:middle;margin-left:.35em}
+.lista-logo{height:1.4em;width:auto;max-width:5.5em;object-fit:contain;vertical-align:middle;margin-left:.35em}
 .lista-splet{margin:.1rem 0 1rem}
 .lista-splet a{color:#0b3d24;font-weight:700}
 
