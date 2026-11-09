@@ -96,6 +96,6 @@ a.video{text-decoration:none;color:#fff}
 
 /* Rok, 9. 11.: vgrajen Instagram video */
 .ig-wrap{margin:0 0 14px;text-align:center}
-.ig-embed{width:100%;max-width:400px;height:720px;border:1px solid #dde6df;border-radius:12px;background:#fff;display:block;margin:0 auto}
+.ig-embed{width:100%;max-width:480px;height:820px;border:1px solid #dde6df;border-radius:12px;background:#fff;display:block;margin:0 auto}
 .ig-link{font-size:.9rem;margin:.4rem 0 0}
-@media (max-width:440px){.ig-embed{height:640px}}
+@media (max-width:440px){.ig-embed{height:700px !important}}
