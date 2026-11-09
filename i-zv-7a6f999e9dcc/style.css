@@ -23,7 +23,7 @@ main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
 .tag{background:var(--g);color:#fff;border-radius:999px;padding:4px 10px;font-size:.88rem;font-weight:650}
 .tag.other{background:#e7eee9;color:var(--g)}
 .odg{display:inline-block;font-weight:800;border-radius:6px;padding:1px 7px;font-size:.85rem;margin-right:4px}
-.odg.da{background:#d7f0de;color:var(--g)}
+.odg.da{background:#ececec;color:#333}
 .odg.ne{background:#f6d4d4;color:#7a1212}
 .odg.delno{background:var(--y2);color:#6a4b00}
 .brez{display:inline-block;background:#eee;color:#555;font-weight:700;padding:3px 8px;border-radius:6px}
@@ -46,7 +46,7 @@ h3.sek{color:var(--g);margin:1.4rem 0 .4rem;border-bottom:3px solid var(--y);pad
 .listnav span{color:#888;font-weight:500}
 
 /* interni predogled: oznake Da/Ne/Delno brez zelenih ali rdečih ocen */
-.odg.da,.odg.ne,.odg.delno{background:#e7eee9;color:var(--g)}
+.odg.da,.odg.ne,.odg.delno{background:#ececec;color:#333}
 .foto-prazno{width:100%;min-height:110px;border-radius:8px;background:#e7eee9;margin:8px 0 10px;display:flex;align-items:center;justify-content:center;color:#667;font-size:.9rem}
 a.video{text-decoration:none;color:#fff}
 .card.izpolnjena{border-color:#c5d4cb}
