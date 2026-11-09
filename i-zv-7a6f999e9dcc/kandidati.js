@@ -38,3 +38,121 @@ function vstaviKandidate(n, afterSelector) {
   const el = document.querySelector(afterSelector);
   if (el && html) el.insertAdjacentHTML("afterend", html);
 }
+
+const LISTE_META = {
+  1: { logo: "logo/01-svoboda.svg", web: "https://gibanjesvoboda.si/obcina/mestna-obcina-ljubljana/" },
+  2: { logo: "logo/02-sls.png", web: "https://sls.si/" },
+  3: { logo: "logo/03-demokrati.svg", web: "https://www.demokrati.si/" },
+  4: { logo: "logo/04-pirati.png", web: "https://piratskastranka.si/" },
+  5: { logo: "logo/05-levica.png", web: "https://www.levica.si/" },
+  6: { logo: "logo/06-prerod.png", web: "https://prerod.si/" },
+  7: { logo: "logo/07-sds.png", web: "https://www.sds.si/" },
+  8: { logo: "logo/08-vesna.png", web: "https://www.vesnazelenastranka.si/" },
+  9: { logo: "", web: "" },
+  10: { logo: "logo/10-sd.png", web: "https://socialnidemokrati.si/" },
+  11: { logo: "logo/11-cilj.png", web: "https://www.cilj.org/" },
+  12: { logo: "logo/12-straza.png", web: "https://strazar.si/" },
+  13: { logo: "logo/13-lsv.svg", web: "https://ljubljanasmovsi.si/" },
+  14: { logo: "logo/14-resnica.png", web: "https://stranka-resnica.si/" },
+  15: { logo: "logo/15-lzj.png", web: "https://zoranjankovic.si/ljubljana/projekti-po-cetrtnih-skupnostih/bezigrad" }
+};
+
+const PRIO_ID = {
+  "Parkiranje": "p-parkiranje",
+  "Pošta, banka in druge storitve": "p-storitve",
+  "Promet skozi naselje": "p-promet",
+  "Igle in droge, občutek varnosti": "p-varnost",
+  "Varnost": "p-varnost",
+  "Več klopi": "p-klopi",
+  "Čistoča in pasji iztrebki": "p-cistoca",
+  "Drevesa in zelenice": "p-zelenje",
+  "Dom skupnosti, prostor za druženje": "p-dom",
+  "Boljši zrak in hrup": "p-zrak",
+  "Igrišča in prostor za mlade": "p-mladi",
+  "Mala dela ČS in prijave poškodb": "p-maladela"
+};
+
+function prioId(name) {
+  if (PRIO_ID[name]) return PRIO_ID[name];
+  return "p-" + name.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+function vstaviLogoInSplet(n, h2Selector) {
+  const meta = LISTE_META[n] || {};
+  const h2 = document.querySelector(h2Selector);
+  if (!h2) return;
+  const wrap = document.createElement("div");
+  wrap.className = "lista-glava";
+  h2.parentNode.insertBefore(wrap, h2);
+  if (meta.logo) {
+    const img = document.createElement("img");
+    img.className = "lista-logo";
+    img.src = meta.logo;
+    img.alt = "";
+    wrap.appendChild(img);
+  }
+  wrap.appendChild(h2);
+  if (meta.web) {
+    const p = document.createElement("p");
+    p.className = "lista-splet";
+    const a = document.createElement("a");
+    a.href = meta.web;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.textContent = "Spletna stran";
+    p.appendChild(a);
+    wrap.insertAdjacentElement("afterend", p);
+  }
+}
+
+function vstaviPrioKazalo() {
+  const h2 = document.getElementById("pet-prioritet");
+  if (!h2 || document.querySelector(".prio-kazalo")) return;
+  const boxes = document.querySelectorAll("section.prio-box");
+  if (!boxes.length) return;
+  const ol = document.createElement("ol");
+  ol.className = "prio-kazalo";
+  boxes.forEach(function (box) {
+    const h3 = box.querySelector("h3.sek");
+    if (!h3) return;
+    const clone = h3.cloneNode(true);
+    clone.querySelectorAll(".prio-lab").forEach(function (el) { el.remove(); });
+    const name = clone.textContent.replace(/\s+/g, " ").trim();
+    if (!box.id) box.id = prioId(name);
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = "#" + box.id;
+    a.textContent = name;
+    li.appendChild(a);
+    ol.appendChild(li);
+  });
+  h2.insertAdjacentElement("afterend", ol);
+}
+
+function vstaviLogotipeNaKartice() {
+  for (let n = 1; n <= 15; n++) {
+    const card = document.getElementById("lista-" + n);
+    const meta = LISTE_META[n];
+    if (!card || !meta || !meta.logo) continue;
+    if (card.querySelector(".lista-logo")) continue;
+    const title = card.querySelector("h2, h3");
+    if (!title) continue;
+    const wrap = document.createElement("div");
+    wrap.className = "lista-glava";
+    title.parentNode.insertBefore(wrap, title);
+    const img = document.createElement("img");
+    img.className = "lista-logo";
+    img.src = meta.logo;
+    img.alt = "";
+    wrap.appendChild(img);
+    wrap.appendChild(title);
+  }
+}
+
+function pripraviListo(n, h2Selector) {
+  vstaviKandidate(n, h2Selector);
+  vstaviLogoInSplet(n, h2Selector);
+  vstaviPrioKazalo();
+}

@@ -138,3 +138,17 @@ a.video{text-decoration:none;color:#fff}
 .kandidati-box ol.kandidati li{margin:.12rem 0}
 .kandidati-vir{font-size:.92rem;margin:0 0 .35rem}
 .kandidati-vir a{font-weight:650}
+
+/* Logotip liste in povezava na uradno spletno stran — enaka velikost za vse */
+.lista-glava{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 .35rem}
+.lista-glava h2,.lista-glava h3{margin:0}
+.lista-logo{height:80px;width:auto;max-width:200px;object-fit:contain;flex:0 0 auto;background:#fff}
+.lista-splet{margin:.1rem 0 1rem}
+.lista-splet a{color:#0b3d24;font-weight:700}
+
+/* Kazalo petih prioritet pod naslovom 5 prioritet */
+.prio-kazalo{margin:.45rem 0 1.1rem;padding:8px 14px 8px 2.1rem;background:#fff8d6;border:2px solid #f5c400;border-left:6px solid #f5c400;border-radius:10px}
+.prio-kazalo li{margin:.15rem 0}
+.prio-kazalo a{color:#0b3d24;font-weight:700;text-decoration:none}
+.prio-kazalo a:hover{text-decoration:underline}
+.prio-box{scroll-margin-top:1.25rem}
