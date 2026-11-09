@@ -83,18 +83,14 @@ function vstaviLogoInSplet(n, h2Selector) {
   const meta = LISTE_META[n] || {};
   const h2 = document.querySelector(h2Selector);
   if (!h2) return;
-  const wrap = document.createElement("div");
-  wrap.className = "lista-glava";
-  h2.parentNode.insertBefore(wrap, h2);
-  if (meta.logo) {
+  if (meta.logo && !h2.querySelector(".lista-logo")) {
     const img = document.createElement("img");
     img.className = "lista-logo";
     img.src = meta.logo;
     img.alt = "";
-    wrap.appendChild(img);
+    h2.appendChild(img);
   }
-  wrap.appendChild(h2);
-  if (meta.web) {
+  if (meta.web && !document.querySelector(".lista-splet")) {
     const p = document.createElement("p");
     p.className = "lista-splet";
     const a = document.createElement("a");
@@ -103,7 +99,7 @@ function vstaviLogoInSplet(n, h2Selector) {
     a.rel = "noopener noreferrer";
     a.textContent = "Spletna stran";
     p.appendChild(a);
-    wrap.insertAdjacentElement("afterend", p);
+    h2.insertAdjacentElement("afterend", p);
   }
 }
 
@@ -136,18 +132,13 @@ function vstaviLogotipeNaKartice() {
     const card = document.getElementById("lista-" + n);
     const meta = LISTE_META[n];
     if (!card || !meta || !meta.logo) continue;
-    if (card.querySelector(".lista-logo")) continue;
     const title = card.querySelector("h2, h3");
-    if (!title) continue;
-    const wrap = document.createElement("div");
-    wrap.className = "lista-glava";
-    title.parentNode.insertBefore(wrap, title);
+    if (!title || title.querySelector(".lista-logo")) continue;
     const img = document.createElement("img");
     img.className = "lista-logo";
     img.src = meta.logo;
     img.alt = "";
-    wrap.appendChild(img);
-    wrap.appendChild(title);
+    title.appendChild(img);
   }
 }
 

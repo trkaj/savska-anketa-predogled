@@ -139,10 +139,8 @@ a.video{text-decoration:none;color:#fff}
 .kandidati-vir{font-size:.92rem;margin:0 0 .35rem}
 .kandidati-vir a{font-weight:650}
 
-/* Logotip liste in povezava na uradno spletno stran — enaka velikost za vse */
-.lista-glava{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 .35rem}
-.lista-glava h2,.lista-glava h3{margin:0}
-.lista-logo{height:80px;width:auto;max-width:200px;object-fit:contain;flex:0 0 auto;background:#fff}
+/* Logotip liste za naslovom, ne višji od črk naslova — enako za vse liste */
+.lista-logo{height:1em;width:auto;max-width:4em;object-fit:contain;vertical-align:middle;margin-left:.35em}
 .lista-splet{margin:.1rem 0 1rem}
 .lista-splet a{color:#0b3d24;font-weight:700}
 
