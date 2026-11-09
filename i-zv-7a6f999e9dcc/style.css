@@ -57,3 +57,11 @@ a.video{text-decoration:none;color:#fff}
 .blok-komunikacija .rv{border-top-color:#c5d4e4}
 .blok-komunikacija .rv b{color:#1e3a5f}
 .obv-lab{background:#2c4a6e;color:#fff;font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
+
+/* obvezni sklop obveščanja: celo okence zeleno (Rok, 9. 11.) */
+.blok-komunikacija{background:#e6f2ea;border:2px solid #0b3d24;border-left:6px solid #0b3d24}
+.blok-komunikacija h3.sek{color:#0b3d24;border-bottom-color:#0b3d24}
+.blok-komunikacija .rv{border-top-color:#b9d3c2}
+.blok-komunikacija .rv b{color:#0b3d24}
+.obv-lab{background:#0b3d24;color:#fff}
+.vpr{display:block;color:#333;font-style:italic;margin:.15rem 0 .25rem}
