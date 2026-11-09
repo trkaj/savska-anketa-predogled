@@ -145,5 +145,151 @@ function vstaviLogotipeNaKartice() {
 function pripraviListo(n, h2Selector) {
   vstaviKandidate(n, h2Selector);
   vstaviLogoInSplet(n, h2Selector);
+  vstaviPovzetek(n);
   vstaviPrioKazalo();
+  vstaviTemeIds();
+  vstaviPrimerjajPovezave();
+  skrajsajRazlage();
+}
+function escHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function stranListe(n) {
+  const map = {5: "lista-5.html", 7: "lista-7.html", 11: "lista-11.html"};
+  return map[n] || ("lista.html?n=" + n);
+}
+
+function vstaviPovzetek(n) {
+  if (document.getElementById("povzetek")) return;
+  const data = (typeof ODGOVORI !== "undefined") ? ODGOVORI[n] : null;
+  let html;
+  if (!data) {
+    html = '<aside class="povzetek" id="povzetek"><p>Odgovora še ni. Liste lahko odgovorijo do torka, 10. 11. 2026, do 24.00.</p></aside>';
+  } else {
+    const c = data.counts;
+    html = '<aside class="povzetek" id="povzetek">';
+    html += '<p class="povzetek-st">' + c.da + " × Da · " + c.delno + " × Delno · " + c.ne + " × Ne</p>";
+    html += '<div class="tags povzetek-prio">';
+    (data.prioritet || []).forEach(function (name, i) {
+      const tid = data.prioritetId[i];
+      const sid = (typeof TEMA_SID !== "undefined" && TEMA_SID[tid]) ? TEMA_SID[tid] : ("p-" + tid);
+      html += '<a class="tag" href="#' + sid + '"><span class="roka" aria-hidden="true">🖐️</span>' + (i + 1) + ". " + escHtml(name) + "</a>";
+    });
+    html += "</div></aside>";
+  }
+  const after = document.querySelector(".lista-splet")
+    || document.querySelector("main h2")
+    || document.getElementById("naslov");
+  if (after) after.insertAdjacentHTML("afterend", html);
+}
+
+function vstaviTemeIds() {
+  document.querySelectorAll("section.prio-box, section.tema-box").forEach(function (box) {
+    if (box.id) return;
+    const h3 = box.querySelector("h3.sek");
+    if (!h3) return;
+    const clone = h3.cloneNode(true);
+    clone.querySelectorAll(".prio-lab").forEach(function (el) { el.remove(); });
+    const name = clone.textContent.replace(/\s+/g, " ").trim();
+    box.id = prioId(name);
+  });
+}
+
+function vstaviPrimerjajPovezave() {
+  const blocks = document.querySelectorAll("section.prio-box, section.tema-box, section.blok-komunikacija, section.zakaj-box");
+  blocks.forEach(function (box) {
+    const h3 = box.querySelector("h3.sek");
+    if (!h3 || h3.querySelector(".primerjaj")) return;
+    let sid = box.id;
+    if (!sid && box.classList.contains("blok-komunikacija")) sid = "komunikacija";
+    if (!sid && box.classList.contains("zakaj-box")) sid = "zakaj";
+    if (!sid) {
+      const clone = h3.cloneNode(true);
+      clone.querySelectorAll(".prio-lab").forEach(function (el) { el.remove(); });
+      sid = prioId(clone.textContent.replace(/\s+/g, " ").trim());
+    }
+    const temaKey = Object.keys(typeof TEMA_SID !== "undefined" ? TEMA_SID : {}).find(function (k) {
+      return TEMA_SID[k] === sid;
+    }) || (sid || "").replace(/^p-/, "");
+    const a = document.createElement("a");
+    a.className = "primerjaj";
+    a.href = "index.html#pv-" + temaKey;
+    a.textContent = "Primerjaj";
+    h3.appendChild(document.createTextNode(" "));
+    h3.appendChild(a);
+  });
+}
+
+function skrajsajRazlage() {
+  document.querySelectorAll(".razl").forEach(function (el) {
+    if (el.dataset.clamped === "1") return;
+    const cs = getComputedStyle(el);
+    let lh = parseFloat(cs.lineHeight);
+    if (!lh || Number.isNaN(lh)) lh = parseFloat(cs.fontSize) * 1.5;
+    if (el.scrollHeight <= lh * 2.7 + 8) return;
+    el.dataset.clamped = "1";
+    el.classList.add("razl-clamped");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "preberi-vec";
+    btn.textContent = "Preberi več";
+    btn.addEventListener("click", function () {
+      const open = el.classList.toggle("odprto");
+      btn.textContent = open ? "Pokaži manj" : "Preberi več";
+    });
+    el.insertAdjacentElement("afterend", btn);
+  });
+}
+
+function vstaviPrimerjavo() {
+  const mount = document.getElementById("primerjava-wrap");
+  if (!mount || typeof VPRASANJA === "undefined") return;
+  const lists = [];
+  for (let n = 1; n <= 15; n++) lists.push(n);
+
+  function badge(n, q) {
+    const data = ODGOVORI[n];
+    const sid = q.sid;
+    const href = stranListe(n) + "#" + sid;
+    const prio = data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1;
+    const hand = prio ? '<span class="roka prio-roka" title="Ena od 5 prioritet te liste" aria-label="prioriteta">🖐️</span>' : "";
+    if (!data) {
+      return '<a class="celica-prazna" href="' + href + '" title="Odgovora še ni">' + hand + "–</a>";
+    }
+    const odg = data.odgovori[q.id];
+    if (!odg) {
+      return '<a class="celica-prazna" href="' + href + '" title="Odgovora še ni">' + hand + "–</a>";
+    }
+    const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : "ne");
+    return '<a href="' + href + '">' + hand + '<span class="odg ' + cls + '">' + escHtml(odg) + "</span></a>";
+  }
+
+  let html = '<div class="primerjava-scroll" tabindex="0">';
+  html += '<table class="primerjava">';
+  html += "<thead><tr><th scope=\"col\">Vprašanje</th>";
+  lists.forEach(function (n) {
+    const meta = (typeof LISTE_META !== "undefined" && LISTE_META[n]) ? LISTE_META[n] : {};
+    const ime = LISTE_KRATKO[n] || n;
+    const logo = meta.logo ? '<img class="lista-logo" src="' + meta.logo + '" alt="">' : "";
+    html += '<th scope="col" class="colhead"><a href="' + stranListe(n) + '"><span class="nr">' + n + ".</span> " + logo + "<br>" + escHtml(ime) + "</a></th>";
+  });
+  html += "</tr></thead><tbody>";
+
+  let lastTema = "";
+  VPRASANJA.forEach(function (q) {
+    if (q.tema !== lastTema) {
+      lastTema = q.tema;
+      html += '<tr class="pv-skupina" id="pv-' + q.temaId + '"><th colspan="16">' + escHtml(q.tema) + "</th></tr>";
+    }
+    html += "<tr>";
+    html += '<th scope="row"><span title="' + escHtml(q.vprasanje) + '">' + escHtml(q.label) + "</span></th>";
+    lists.forEach(function (n) {
+      html += "<td>" + badge(n, q) + "</td>";
+    });
+    html += "</tr>";
+  });
+  html += "</tbody></table></div>";
+  mount.innerHTML = html;
 }

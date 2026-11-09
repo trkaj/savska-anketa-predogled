@@ -21,6 +21,10 @@
 <main>
   <p class="banner">Interni predogled, ni v živo in ni javni naslov /zaveze/. Rok za ostale liste teče do torka, 10. 11., ob 24.00, zato jih tu ne označujemo z »brez odgovora«.</p>
   <p class="meta">Odgovore vseh 15 list v uradnem vrstnem redu VE 01 objavimo 11. 11. 2026, tudi tiste brez odgovora. E-naslova liste in kode obrazca ne objavimo.</p>
+  <h2 id="primerjava" style="color:#0b3d24">Primerjava odgovorov</h2>
+  <p class="meta primerjava-uvod">Kako so liste odgovorile na posamezna vprašanja. To ni naša ocena — prikazujemo oznake, kot so jih liste same izbrale. Celotno vprašanje se prikaže, če se zadržite na kratkem naslovu vrstice.</p>
+  <p class="primerjava-legenda"><span><span class="odg da">Da</span> Da</span><span><span class="odg delno">Delno</span> Delno</span><span><span class="odg ne">Ne</span> Ne</span><span><span class="celica-prazna">–</span> odgovora še ni</span><span><span class="roka" aria-hidden="true">🖐️</span> ena od 5 prioritet liste</span></p>
+  <div id="primerjava-wrap"></div>
   <h2 style="color:#0b3d24">Kandidatne liste (VE 01)</h2>
   <div class="cardlist">
 <article class="card mini" id="lista-1">
@@ -96,7 +100,8 @@
   </div>
 </main>
 <footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595</footer>
+<script src="odgovori.js"></script>
 <script src="kandidati.js"></script>
-<script>vstaviLogotipeNaKartice();</script>
+<script>vstaviLogotipeNaKartice(); vstaviPrimerjavo();</script>
 </body>
 </html>

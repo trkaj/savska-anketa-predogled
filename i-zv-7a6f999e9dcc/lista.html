@@ -27,6 +27,7 @@
   <nav class="listnav" id="nav-spodaj"></nav>
 </main>
 <footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595</footer>
+<script src="odgovori.js"></script>
 <script src="kandidati.js"></script>
 <script>
 const LISTE = [{"n": 1, "ime": "Gibanje Svoboda"}, {"n": 2, "ime": "Slovenska ljudska stranka"}, {"n": 3, "ime": "Demokrati. Anžeta Logarja"}, {"n": 4, "ime": "Pirati"}, {"n": 5, "ime": "Levica"}, {"n": 6, "ime": "Prerod – stranka Vladimirja Prebiliča"}, {"n": 7, "ime": "Slovenska demokratska stranka – SDS"}, {"n": 8, "ime": "Vesna – zelena stranka"}, {"n": 9, "ime": "Nova Slovenija in Fokus"}, {"n": 10, "ime": "Socialni demokrati"}, {"n": 11, "ime": "Cilj – Bežigrad"}, {"n": 12, "ime": "Stranka Straža – katoliška narodna stranka"}, {"n": 13, "ime": "Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa"}, {"n": 14, "ime": "Državljansko gibanje Resni.ca"}, {"n": 15, "ime": "Lista Zorana Jankovića"}];
@@ -41,6 +42,7 @@ if (i < 0) {
   document.title = L.n + ". " + L.ime;
   document.getElementById("naslov").innerHTML = '<span class="nr">' + L.n + ".</span> " + L.ime;
   document.getElementById("podnaslov").textContent = L.ime;
+  document.getElementById("status").className = "povzetek";
   document.getElementById("status").textContent = "Odgovora še ni. Liste lahko odgovorijo do torka, 10. 11. 2026, do 24.00.";
   function navHtml() {
     const prev = LISTE[i - 1];
