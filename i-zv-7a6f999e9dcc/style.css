@@ -77,3 +77,9 @@ a.video{text-decoration:none;color:#fff}
 .listnav .next{text-align:center}
 .listnav span:empty{flex:1}
 @media (max-width:560px){.listnav{flex-direction:column}.listnav span:empty{display:none}}
+
+/* Rok, 9. 11.: pet prioritet v rumenih okvirjih */
+.prio-box{background:#fff8d6;border:2px solid #f5c400;border-left:6px solid #f5c400;border-radius:12px;padding:8px 16px 12px;margin:1.2rem 0}
+.prio-box h3.sek{border-bottom-color:#f5c400;margin-top:.3rem}
+.prio-box .rv{border-top-color:#f0e0a0}
+.prio-lab{font-size:.9rem;padding:3px 9px;border-radius:6px}
