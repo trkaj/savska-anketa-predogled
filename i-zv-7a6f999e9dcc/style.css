@@ -111,3 +111,8 @@ a.video{text-decoration:none;color:#fff}
 .razl-lab{display:block;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#0b3d24;margin-bottom:2px}
 .razl.predl{border-left-color:#245d7a;border-color:#9bb9cb}
 .razl.predl .razl-lab{color:#245d7a}
+
+/* Rok, 9. 11.: obkrožen žig za odgovor */
+.odg.da,.odg.ne,.odg.delno{display:inline-flex;align-items:center;justify-content:center;min-width:2.6em;height:2.6em;padding:0 .5em;border-radius:999px;font-size:1rem;font-weight:900;letter-spacing:.02em;vertical-align:middle;margin:2px 4px}
+.odg.da{background:#0b3d24;color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px #0b3d24,0 2px 6px rgba(0,0,0,.25)}
+.odg.ne{background:#eee;color:#1b1b1b;border:3px solid #fff;box-shadow:0 0 0 3px #777}
