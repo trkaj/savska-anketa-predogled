@@ -70,16 +70,17 @@ const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out
 function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
  if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
  if(f||row.length){row.push(f);r.push(row)}return r}
+function naslovPog(p){return p&&p.id=='p2-okolica-test'?'Invazija':p.naslov}
 function pokazi(ps){if(ps)PG=ps;setTimeout(plosca,0);document.getElementById('prijava').style.display='none';document.getElementById('vsebina').style.display='block';
- document.getElementById('seznam').innerHTML=PG.length?PG.map((p,i)=>'<div class="pog"><b>'+p.st+'. poglavje · '+esc(p.naslov)+'</b><span class="zn '+(p.stanje=='aktivno'?'ak':'zk')+'">'+(p.stanje=='aktivno'?'aktivno':'zaključeno')+'</span>'+
+ document.getElementById('seznam').innerHTML=PG.length?PG.map((p,i)=>'<div class="pog"><b>'+p.st+'. poglavje · '+esc(naslovPog(p))+'</b><span class="zn '+(p.stanje=='aktivno'?'ak':'zk')+'">'+(p.stanje=='aktivno'?'aktivno':'zaključeno')+'</span>'+
   '<div class="mal">'+esc(p.opis||'')+'</div><div class="mal">Zavihek: '+esc(p.zavihek)+' · od '+esc(p.od||'')+' · <span id="st_'+i+'">razdeljeno …</span> · <a href="../?p='+encodeURIComponent(p.id)+'" target="_blank">poglej</a></div>'+
   '<div class="vr"><button class="s" onclick="uredi('+i+')">✏️ Uredi</button>'+(p.stanje=='aktivno'?'<button class="r" onclick="stanje('+i+',\'zakljuci_poglavje\')">✓ Zaključi</button>':'<button class="z" onclick="stanje('+i+',\'odpri_poglavje\')">↺ Ponovno odpri</button>')+'</div><div id="ur_'+i+'"></div></div>').join(''):'<p class="mal">Ni poglavij.</p>';
  PG.forEach((p,i)=>fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()).then(t=>{if(t.trim().startsWith('<'))throw 0;const rows=parseCSV(t).slice(1).filter(x=>x[0]);
   document.getElementById('st_'+i).textContent='razdeljeno '+rows.filter(x=>(x[3]||'').trim()&&!/^ne$/i.test(x[3].trim())).length+' od '+rows.length}).catch(()=>{document.getElementById('st_'+i).textContent='števca ni mogoče prebrati'}))}
 function uredi(i){const p=PG[i],b=document.getElementById('ur_'+i);if(b.innerHTML){b.innerHTML='';return}
- b.innerHTML='<label>Naslov<input id="uN'+i+'" maxlength="60" value="'+esc(p.naslov)+'"></label><label>Kratek opis<input id="uO'+i+'" maxlength="120" value="'+esc(p.opis||'')+'"></label><button class="g siroko" onclick="shraniUr('+i+')">Shrani</button>'}
+ b.innerHTML='<label>Naslov<input id="uN'+i+'" maxlength="60" value="'+esc(naslovPog(p))+'"></label><label>Kratek opis<input id="uO'+i+'" maxlength="120" value="'+esc(p.opis||'')+'"></label><button class="g siroko" onclick="shraniUr('+i+')">Shrani</button>'}
 async function shraniUr(i){const j=await klic({akcija:'uredi_poglavje',id:PG[i].id,naslov:document.getElementById('uN'+i).value.trim(),opis:document.getElementById('uO'+i).value.trim()});if(j.ok)pokazi(j.poglavja)}
-async function stanje(i,a){const p=PG[i];if(!confirm(a=='zakljuci_poglavje'?'Zaključim »'+p.naslov+'«? Prostovoljci bodo videli samo pregled.':'Ponovno odprem »'+p.naslov+'«?'))return;const j=await klic({akcija:a,id:p.id});if(j.ok)pokazi(j.poglavja)}
+async function stanje(i,a){const p=PG[i];if(!confirm(a=='zakljuci_poglavje'?'Zaključim »'+naslovPog(p)+'«? Prostovoljci bodo videli samo pregled.':'Ponovno odprem »'+naslovPog(p)+'«?'))return;const j=await klic({akcija:a,id:p.id});if(j.ok)pokazi(j.poglavja)}
 async function novo(){const n=document.getElementById('nNaslov').value.trim(),o=document.getElementById('nOpis').value.trim();if(!n){obv('Vpiši naslov poglavja.',1);return}
  if(!confirm('Ustvarim novo poglavje »'+n+'«?'))return;const j=await klic({akcija:'novo_poglavje',naslov:n,opis:o});if(j.ok){document.getElementById('nNaslov').value='';document.getElementById('nOpis').value='';pokazi(j.poglavja)}}
 
@@ -99,7 +100,7 @@ let VH={},DN=null,V5=null;
 const norm=s=>(s||'').trim().replace(/\s+/g,' ').replace(/-/g,'–');
 async function vhodi(p){const dat=p.id=='p2-okolica-test'?'vhodi-p2.json':'vhodi.json';if(!VH[dat])VH[dat]=await fetch('../'+dat).then(r=>r.json());return VH[dat]}
 function tisk(n){const p=PG[document.getElementById('izbP').selectedIndex]||{};window.open('../tisk.html?admin=1&p='+encodeURIComponent(p.id||'')+'&nacin='+n+(document.getElementById('tiskImena').checked?'&imena=1':''),'_blank')}
-async function plosca(){const sel=document.getElementById('izbP');if(sel.options.length!=PG.length||!sel.options.length){const keep=sel.value;sel.innerHTML=PG.map(p=>'<option value="'+esc(p.id)+'">'+p.st+'. poglavje · '+esc(p.naslov)+(p.stanje=='aktivno'?'':' (zaključeno)')+'</option>').join('');
+async function plosca(){const sel=document.getElementById('izbP');if(sel.options.length!=PG.length||!sel.options.length){const keep=sel.value;sel.innerHTML=PG.map(p=>'<option value="'+esc(p.id)+'">'+p.st+'. poglavje · '+esc(naslovPog(p))+(p.stanje=='aktivno'?'':' (zaključeno)')+'</option>').join('');
   const akt=PG.filter(p=>p.stanje=='aktivno');sel.value=keep||(akt.length?akt[akt.length-1]:PG[PG.length-1]||{}).id}
  const P=PG.find(p=>p.id==sel.value);if(!P)return;const vh=await vhodi(P);let rows;
  try{const t=await (await fetch(csvZa(P)+'&t='+Date.now())).text();if(t.trim().startsWith('<'))throw 0;rows=parseCSV(t)}catch(e){document.getElementById('kpiTxt').textContent='Tabele ni mogoče prebrati.';return}

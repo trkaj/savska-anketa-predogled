@@ -89,7 +89,7 @@ let P,ZAKLJ,PIME,CSV;
 function datotekeZa(p){return p&&p.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'}}
 const vhodiPo={},obljubeVhodov={};
 async function vhodiZa(p){if(vhodiPo[p.id])return vhodiPo[p.id];
- if(!obljubeVhodov[p.id])obljubeVhodov[p.id]=fetch(datotekeZa(p).vh).then(r=>{if(!r.ok)throw Error('Vhodi niso dosegljivi');return r.json()}).then(v=>vhodiPo[p.id]=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}))).catch(e=>{delete obljubeVhodov[p.id];throw e});
+ if(!obljubeVhodov[p.id])obljubeVhodov[p.id]=fetch(datotekeZa(p).vh).then(r=>{if(!r.ok)throw Error('Vhodi niso dosegljivi');return r.json()}).then(v=>vhodiPo[p.id]=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]],oc:+x[4]||0}))).catch(e=>{delete obljubeVhodov[p.id];throw e});
  return obljubeVhodov[p.id]}
 const pk=k=>P.id+':'+k; // ključ v localStorage za to poglavje
 // selitev starih ključev (pred poglavji) v 1. poglavje – nihče ne izgubi mejnikov
@@ -114,7 +114,8 @@ function cPisi(k,v){try{localStorage.setItem(k,JSON.stringify({t:Date.now(),v}))
 const urePod=t=>{const d=new Date(t);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
 let casPod=0,osvN=0;
 function osvUI(){const e=document.getElementById('osv');if(!e)return;e.textContent=osvN>0?'osvežujem…':casPod&&Date.now()-casPod>120000?'zadnja posodobitev '+urePod(casPod):''}
-function normPoglavja(a){return a.filter(p=>p&&p.id).map(p=>({id:String(p.id),st:+p.st||1,naslov:String(p.naslov||''),opis:String(p.opis||''),zavihek:String(p.zavihek||''),od:String(p.od||''),stanje:p.stanje=='aktivno'?'aktivno':'zaključeno'})).sort((a,b)=>a.st-b.st)}
+function naslovPog(p){return p&&p.id=='p2-okolica-test'?'Invazija':String(p&&p.naslov||'')}
+function normPoglavja(a){return a.filter(p=>p&&p.id).map(p=>({id:String(p.id),st:+p.st||1,naslov:naslovPog(p),opis:String(p.opis||''),zavihek:String(p.zavihek||''),od:String(p.od||''),stanje:p.stanje=='aktivno'?'aktivno':'zaključeno'})).sort((a,b)=>a.st-b.st)}
 {const c=cBeri(KP);if(c&&Array.isArray(c.v)&&c.v.length)POGLAVJA=normPoglavja(c.v)}
 initPoglavje();
 // CSV trenutnega poglavja začnemo nalagati takoj, vzporedno s seznamom poglavij
@@ -201,7 +202,7 @@ function odpri(u,tiho){izbrana=u;const ix=VH.map((v,i)=>i).filter(i=>VH[i].u==u)
  g.onclick=()=>{if(confirm('Vzameš '+pr.length+' naslovov na ulici '+u+'?'))akcija(pr,'prevzemi')};
  document.getElementById('stevilke').innerHTML=ix.map(i=>{const s=st(i);return '<button class="t '+s.s+'" onclick="naslov('+i+')">'+esc(VH[i].n)+'<small>'+(s.s=='razdeljeno'?'✅ '+esc(s.r):s.p?esc(s.p):'prosto')+'</small></button>'}).join('');
  if(!tiho)document.getElementById('ulicaIme').scrollIntoView({behavior:'smooth'})}
-function naslov(i){const s=st(i),v=VH[i];let h='<h2>'+esc(v.u+' '+v.n)+'</h2>';
+function naslov(i){const s=st(i),v=VH[i];let h='<h2>'+esc(v.u+' '+v.n)+'</h2>'+(v.oc?'<p class="mal">Ocena: '+v.oc+' predalov (preveri pri nabiralnikih)</p>':'');
  if(ZAKLJ){h+='<p>'+(s.s=='razdeljeno'?'✅ Razdelil: <b>'+esc(s.r)+'</b>':'Ta naslov v tem poglavju ni bil označen.')+'</p>'+(s.o?'<p class="mal">'+esc(s.o)+'</p>':'')+'<button class="s siroko" onclick="zapri()">Zapri</button>';document.getElementById('oknoVsebina').innerHTML=h;document.getElementById('okno').style.display='flex';return}
  h+='<p>'+(s.s=='razdeljeno'?'✅ Razdelil: <b>'+esc(s.r)+'</b>'+(s.p&&s.p!=s.r?' (vzel '+esc(s.p)+')':''):s.p?'Vzel: <b>'+esc(s.p)+'</b>':'Še nihče ga ni vzel.')+'</p>';
  if(s.s=='prosto')h+='<button class="g siroko" onclick="akcija(['+i+'],\'prevzemi\')">Vzamem ta naslov</button>';
@@ -392,7 +393,7 @@ Promise.all([vhodiZa(zacetnoP),fetch(datotekeZa(zacetnoP).meja).then(r=>r.json()
  const ring=meja.map(c=>[c[1],c[0]]);
  L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(map);
  L.polygon(ring,{color:'#063a23',weight:3,fill:false,interactive:false}).addTo(map);
- tocke=VH.map((x,i)=>L.circleMarker(x.ll,{radius:5,color:'#222',weight:1,fillColor:BARVA.prosto,fillOpacity:.95}).on('click',()=>naslov(i)).bindTooltip(x.u+' '+x.n,{direction:'top'}).addTo(map));
+ tocke=VH.map((x,i)=>L.circleMarker(x.ll,{radius:5,color:'#222',weight:1,fillColor:BARVA.prosto,fillOpacity:.95}).on('click',()=>naslov(i)).bindTooltip(x.u+' '+x.n+(x.oc?' · ocena '+x.oc:''),{direction:'top'}).addTo(map));
  const b=L.latLngBounds(ring);map.fitBounds(b,{padding:[2,2]});map.setMaxBounds(b.pad(0.15));map.options.maxBoundsViscosity=1;map.setMinZoom(map.getZoom());
  POGLAVJA.forEach(p=>izPredpomnilnika(p.id));stanje=stanjePo[P.id]||{};imaStolpce=!!imaPo[P.id];
  osvezi();osvUI();nalozi();setInterval(nalozi,60000);setInterval(osvUI,30000)});

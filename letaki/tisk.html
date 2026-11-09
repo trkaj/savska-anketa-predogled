@@ -60,6 +60,7 @@ async function natisni(){document.getElementById('stanjeT').textContent=' Pripra
 window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitBounds(L.latLngBounds(ring),{padding:[6,6]})});
 (async()=>{let PG=[{id:'p1-anketa',st:1,naslov:'Savska anketa',zavihek:''}];
  try{const j=await Promise.race([fetch(SKRIPT+'?akcija=poglavja').then(r=>r.json()),new Promise((_,r)=>setTimeout(r,6000))]);if(j&&j.ok&&j.poglavja&&j.poglavja.length)PG=j.poglavja}catch(e){}
+ PG.forEach(p=>{if(p.id=='p2-okolica-test')p.naslov='Invazija'});
  // Brez ?p= vedno 1. poglavje (st === 1, sicer prvo po številki). ?p= odpre izbrano poglavje.
  const poSt=PG.slice().sort((a,b)=>(+a.st||1)-(+b.st||1));
  const prvo=poSt.find(p=>p.st===1)||poSt[0];
