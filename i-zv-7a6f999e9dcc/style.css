@@ -88,3 +88,8 @@ a.video{text-decoration:none;color:#fff}
 .roka{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;margin-right:.35em;background:#fff;border:1px solid #0b3d24;border-radius:50%;font-size:1.05em;line-height:1;vertical-align:middle}
 .prio-lab{display:inline-flex;align-items:center}
 .tag .roka{width:1.5em;height:1.5em;border-color:#fff}
+
+/* Rok, 9. 11.: uvod liste v svojem modrem okvirju */
+.uvod-box{background:#e8f1f6;border:2px solid #9bb9cb;border-left:6px solid #245d7a;border-radius:12px;padding:12px 16px 4px;margin:1rem 0 1.4rem}
+.uvod-lab{display:inline-block;background:#245d7a;color:#fff;font-size:.8rem;font-weight:800;padding:2px 8px;border-radius:6px;margin-bottom:.4rem}
+.uvod-box .predstavitev{margin:.2rem 0 .8rem}
