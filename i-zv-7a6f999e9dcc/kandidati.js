@@ -149,7 +149,6 @@ function pripraviListo(n, h2Selector) {
   vstaviPrioKazalo();
   vstaviTemeIds();
   vstaviPrimerjajPovezave();
-  skrajsajRazlage();
 }
 function escHtml(s) {
   return String(s == null ? "" : s)
@@ -222,26 +221,6 @@ function vstaviPrimerjajPovezave() {
   });
 }
 
-function skrajsajRazlage() {
-  document.querySelectorAll(".razl").forEach(function (el) {
-    if (el.dataset.clamped === "1") return;
-    const cs = getComputedStyle(el);
-    let lh = parseFloat(cs.lineHeight);
-    if (!lh || Number.isNaN(lh)) lh = parseFloat(cs.fontSize) * 1.5;
-    if (el.scrollHeight <= lh * 2.7 + 8) return;
-    el.dataset.clamped = "1";
-    el.classList.add("razl-clamped");
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "preberi-vec";
-    btn.textContent = "Preberi več";
-    btn.addEventListener("click", function () {
-      const open = el.classList.toggle("odprto");
-      btn.textContent = open ? "Pokaži manj" : "Preberi več";
-    });
-    el.insertAdjacentElement("afterend", btn);
-  });
-}
 
 function vstaviPrimerjavo() {
   const mount = document.getElementById("primerjava-wrap");

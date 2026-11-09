@@ -161,10 +161,6 @@ a.video{text-decoration:none;color:#fff}
 /* Primerjaj ob naslovu teme */
 .primerjaj{font-size:.78rem;font-weight:700;margin-left:.5rem;color:#0b3d24;white-space:nowrap}
 
-/* Dolge razlage: prvi dve vrstici, ostalo za Preberi več */
-.razl.razl-clamped:not(.odprto){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.preberi-vec{display:inline-block;margin:.15rem 0 .45rem;padding:0;border:0;background:none;color:#0b3d24;font-weight:800;cursor:pointer;font-size:.92rem}
-.preberi-vec:hover{text-decoration:underline}
 
 /* Primerjava odgovorov */
 .primerjava-uvod{margin:0 0 .6rem}
