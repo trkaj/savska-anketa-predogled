@@ -130,3 +130,11 @@ a.video{text-decoration:none;color:#fff}
 
 /* delno obkrožen */
 .odg.delno{background:#fff;color:#0b3d24;border:3px solid #0b3d24;box-shadow:0 0 0 3px #fff,0 0 0 5px #0b3d24}
+
+/* Kandidati z uradnega seznama MVK MOL (samo ime in priimek, zaporedna št.) */
+.kandidati-box{background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px 10px;margin:1rem 0 1.4rem}
+.kandidati-box h3.sek{margin-top:.15rem}
+.kandidati-box ol.kandidati{margin:.35rem 0 .7rem;padding-left:1.45rem}
+.kandidati-box ol.kandidati li{margin:.12rem 0}
+.kandidati-vir{font-size:.92rem;margin:0 0 .35rem}
+.kandidati-vir a{font-weight:650}
