@@ -1,4 +1,4 @@
-:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8;--odg-da:#2e7d32;--odg-ne:#b3261e;--odg-ne-bg:#fdecea;--odg-delno:#a34d00;--odg-delno-bg:#fff1e0}
+:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8;--odg-da:#2e7d32;--odg-ne:#c62828;--odg-delno:#c25400}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;font:17px/1.5 "Source Sans 3","Segoe UI","DejaVu Sans",sans-serif;color:var(--t);background:#fff}
@@ -24,8 +24,8 @@ main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
 .tag.other{background:#e7eee9;color:var(--g)}
 .odg{display:inline-block;font-weight:800;border-radius:6px;padding:1px 7px;font-size:.85rem;margin-right:4px}
 .odg.da{background:var(--odg-da);color:#fff;font-weight:800}
-.odg.ne{background:var(--odg-ne-bg);color:var(--odg-ne)}
-.odg.delno{background:var(--odg-delno-bg);color:var(--odg-delno)}
+.odg.ne{background:var(--odg-ne);color:#fff;font-weight:800}
+.odg.delno{background:var(--odg-delno);color:#fff;font-weight:800}
 .brez{display:inline-block;background:#eee;color:#555;font-weight:700;padding:3px 8px;border-radius:6px}
 .predstavitev{margin:.4rem 0 .8rem}
 .cardlist{display:grid;gap:10px}
@@ -117,8 +117,8 @@ a.video{text-decoration:none;color:#fff}
 /* Obkrožen žig za odgovor: Da zeleno, Delno oranžno, Ne rdeče (kontrast WCAG AA) */
 .odg.da,.odg.ne,.odg.delno{display:inline-flex;align-items:center;justify-content:center;min-width:2.6em;height:2.6em;padding:0 .5em;border-radius:999px;font-size:1rem;font-weight:900;letter-spacing:.02em;vertical-align:middle;margin:2px 4px}
 .odg.da{background:var(--odg-da);color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-da),0 2px 6px rgba(0,0,0,.25)}
-.odg.ne{background:var(--odg-ne-bg);color:var(--odg-ne);border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-ne)}
-.odg.delno{background:var(--odg-delno-bg);color:var(--odg-delno);border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-delno)}
+.odg.ne{background:var(--odg-ne);color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-ne),0 2px 6px rgba(0,0,0,.25)}
+.odg.delno{background:var(--odg-delno);color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-delno),0 2px 6px rgba(0,0,0,.25)}
 
 /* Rok, 9. 11.: barve razlag po sklopih */
 .zakaj-box .razl{background:#e8f1f6;border-color:#9bb9cb;border-left-color:#245d7a}
