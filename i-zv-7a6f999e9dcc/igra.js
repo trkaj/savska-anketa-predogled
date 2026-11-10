@@ -8,7 +8,7 @@
   var SHARE_BASE = "https://anketa.savska.org/zaveze/";
   var SHARE_TXT = "Kaj liste za svet ČS Bežigrad obljubljajo Savskemu naselju? Preberi odgovore vseh 15 list.";
   var SHARE_NASLOV = "Zaveze kandidatnih list · Savsko naselje";
-  var IZP = { 1: 1, 2: 1, 5: 1, 7: 1, 11: 1, 13: 1, 15: 1 };
+  var IZP = { 1: 1, 2: 1, 5: 1, 7: 1, 8: 1, 11: 1, 13: 1, 15: 1 };
 
   var ZNACKE = [
     { id: "prvi-korak", ime: "Prvi korak", opis: "Prebrana prva lista." },
