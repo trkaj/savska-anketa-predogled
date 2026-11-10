@@ -48,7 +48,7 @@ const LISTE_META = {
   6: { logo: "logo/06-prerod.png", web: "https://prerod.si/" },
   7: { logo: "logo/07-sds.png", web: "https://www.sds.si/" },
   8: { logo: "logo/08-vesna.png", web: "https://www.vesnazelenastranka.si/" },
-  9: { logo: "", web: "" },
+  9: { logo: "logo/09-nsi.png", web: "https://nsi.si/" },
   10: { logo: "logo/10-sd.png", web: "https://socialnidemokrati.si/" },
   11: { logo: "logo/11-cilj.png", web: "https://www.cilj.org/" },
   12: { logo: "logo/12-straza.png", web: "https://strazar.si/" },
