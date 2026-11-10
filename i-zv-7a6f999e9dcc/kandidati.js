@@ -127,6 +127,33 @@ function vstaviPrioKazalo() {
   h2.insertAdjacentElement("afterend", ol);
 }
 
+function vstaviPovezaveNaKartice() {
+  for (let n = 1; n <= 15; n++) {
+    const card = document.getElementById("lista-" + n);
+    if (!card) continue;
+    const title = card.querySelector("h2, h3");
+    if (!title) continue;
+    const href = stranListe(n);
+    if (!href) continue;
+    if (title.children.length === 1 && title.firstElementChild && title.firstElementChild.tagName === "A") {
+      title.firstElementChild.setAttribute("href", href);
+      continue;
+    }
+    const a = document.createElement("a");
+    a.href = href;
+    while (title.firstChild) {
+      const node = title.firstChild;
+      if (node.nodeType === 1 && node.tagName === "A") {
+        while (node.firstChild) a.appendChild(node.firstChild);
+        title.removeChild(node);
+      } else {
+        a.appendChild(node);
+      }
+    }
+    title.appendChild(a);
+  }
+}
+
 function vstaviLogotipeNaKartice() {
   for (let n = 1; n <= 15; n++) {
     const card = document.getElementById("lista-" + n);
@@ -138,7 +165,8 @@ function vstaviLogotipeNaKartice() {
     img.className = "lista-logo";
     img.src = meta.logo;
     img.alt = "";
-    title.appendChild(img);
+    const host = title.querySelector("a") || title;
+    host.appendChild(img);
   }
 }
 

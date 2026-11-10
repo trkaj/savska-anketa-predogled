@@ -40,8 +40,11 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
 .prio-lab{background:var(--y);color:var(--g);font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
 h3.sek{color:var(--g);margin:1.4rem 0 .4rem;border-bottom:3px solid var(--y);padding-bottom:.25rem}
 
-.mini h3 a{color:var(--g);text-decoration:none}
-.mini h3 a:hover{text-decoration:underline}
+.card h2 a,.card h3 a,.mini h3 a{color:var(--g);text-decoration:none}
+.card h2 a:hover,.card h2 a:focus,.card h3 a:hover,.card h3 a:focus,.mini h3 a:hover,.mini h3 a:focus{text-decoration:underline}
+.card h2 a:focus,.card h3 a:focus,.mini h3 a:focus{outline:3px solid var(--y);outline-offset:3px;border-radius:4px}
+.card h2 a:focus:not(:focus-visible),.card h3 a:focus:not(:focus-visible),.mini h3 a:focus:not(:focus-visible){outline:none}
+.card h2 a:focus-visible,.card h3 a:focus-visible,.mini h3 a:focus-visible{outline:3px solid var(--y);outline-offset:3px;border-radius:4px;text-decoration:underline}
 .listnav{display:flex;justify-content:space-between;gap:12px;margin:16px 0 8px}
 .listnav a,.listnav span{flex:1;font-size:.92rem;font-weight:650}
 .listnav .next{text-align:right}
