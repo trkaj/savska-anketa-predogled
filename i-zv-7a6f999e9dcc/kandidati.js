@@ -219,8 +219,88 @@ function pripraviListo(n, h2Selector) {
   vstaviTemeIds();
   vstaviPrimerjajPovezave();
   vstaviSidraVprasanj();
+  vstaviZvokGumbe(n);
   zagonListnegaPasu(n);
 }
+
+var zvokAudio = null;
+var zvokGumb = null;
+
+function oznaciZvokGumb(btn, predvaja) {
+  if (!btn) return;
+  var napis = btn.querySelector(".zvok-napis");
+  if (predvaja) {
+    btn.classList.add("predvaja");
+    btn.setAttribute("aria-label", "Pavza");
+    btn.setAttribute("aria-pressed", "true");
+    if (napis) napis.textContent = "Pavza";
+  } else {
+    btn.classList.remove("predvaja");
+    btn.setAttribute("aria-label", "Poslušaj");
+    btn.setAttribute("aria-pressed", "false");
+    if (napis) napis.textContent = "Poslušaj";
+  }
+}
+
+function ustaviZvok(ponastavi) {
+  if (zvokAudio) {
+    zvokAudio.pause();
+    if (ponastavi) {
+      try { zvokAudio.currentTime = 0; } catch (e) {}
+    }
+  }
+  if (zvokGumb) oznaciZvokGumb(zvokGumb, false);
+  if (ponastavi) zvokGumb = null;
+}
+
+function predvajajZvok(btn) {
+  if (!btn || !btn.dataset.src) return;
+  if (!zvokAudio) {
+    zvokAudio = new Audio();
+    zvokAudio.preload = "none";
+    zvokAudio.addEventListener("ended", function () { ustaviZvok(true); });
+    zvokAudio.addEventListener("error", function () { ustaviZvok(true); });
+  }
+  if (zvokGumb === btn) {
+    if (!zvokAudio.paused) {
+      ustaviZvok(false);
+    } else {
+      var p = zvokAudio.play();
+      if (p && p.catch) p.catch(function () { ustaviZvok(true); });
+      oznaciZvokGumb(btn, true);
+    }
+    return;
+  }
+  ustaviZvok(true);
+  zvokGumb = btn;
+  zvokAudio.preload = "none";
+  zvokAudio.src = btn.dataset.src;
+  var play = zvokAudio.play();
+  if (play && play.catch) play.catch(function () { ustaviZvok(true); });
+  oznaciZvokGumb(btn, true);
+}
+
+function vstaviZvokGumbe(n) {
+  if (!n) return;
+  document.querySelectorAll("main div.rv[id]").forEach(function (rv) {
+    if (rv.querySelector(".zvok-gumb")) return;
+    var telo = document.createElement("div");
+    telo.className = "rv-telo";
+    while (rv.firstChild) telo.appendChild(rv.firstChild);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "zvok-gumb";
+    btn.setAttribute("aria-label", "Poslušaj");
+    btn.setAttribute("aria-pressed", "false");
+    btn.setAttribute("title", "Poslušaj");
+    btn.dataset.src = "audio/" + n + "/" + rv.id + ".mp3";
+    btn.innerHTML = '<span class="zvok-ikona" aria-hidden="true">🔊</span><span class="zvok-napis">Poslušaj</span>';
+    btn.addEventListener("click", function () { predvajajZvok(btn); });
+    rv.appendChild(btn);
+    rv.appendChild(telo);
+  });
+}
+
 function escHtml(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

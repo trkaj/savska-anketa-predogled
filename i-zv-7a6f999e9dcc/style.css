@@ -317,3 +317,28 @@ body.igra-zaklenjeno{overflow:hidden}
   .lista-cta{display:none !important}
   body.ima-lista-pas{padding-bottom:0 !important}
 }
+
+/* Zvočni gumb ob vprašanjih na strani liste. */
+.rv{display:flex;align-items:flex-start;gap:12px}
+.rv-telo{flex:1;min-width:0}
+.zvok-gumb{flex:0 0 auto;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:64px;min-width:64px;min-height:64px;margin-top:1px;padding:6px 4px 5px;border:2px solid #f5c400;border-radius:14px;background:#0b3d24;color:#fff;cursor:pointer;font:inherit;line-height:1.1;appearance:none;-webkit-appearance:none}
+.zvok-gumb .zvok-ikona{font-size:1.55rem;line-height:1}
+.zvok-gumb .zvok-napis{font-size:.7rem;font-weight:800;letter-spacing:0;color:#f5c400}
+.zvok-gumb:hover{background:#0b5d2e}
+.zvok-gumb:focus{outline:3px solid #f5c400;outline-offset:2px}
+.zvok-gumb:focus:not(:focus-visible){outline:none}
+.zvok-gumb:focus-visible{outline:3px solid #f5c400;outline-offset:2px}
+.zvok-gumb.predvaja{background:#f5c400;color:#0b3d24}
+.zvok-gumb.predvaja .zvok-napis{color:#0b3d24}
+.zvok-gumb[disabled]{opacity:.55;cursor:wait}
+@media (min-width:769px){
+  .rv{gap:16px}
+  .zvok-gumb{width:72px;min-width:72px;min-height:72px;border-radius:16px;padding:8px 4px 6px}
+  .zvok-gumb .zvok-ikona{font-size:1.85rem}
+  .zvok-gumb .zvok-napis{font-size:.78rem}
+}
+@media print{
+  .zvok-gumb{display:none !important}
+  .rv{display:block;gap:0}
+  .rv-telo{display:contents}
+}
