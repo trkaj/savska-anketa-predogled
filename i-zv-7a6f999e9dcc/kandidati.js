@@ -156,7 +156,7 @@ function escHtml(s) {
 }
 
 function stranListe(n) {
-  const map = {1: "lista-1.html", 5: "lista-5.html", 7: "lista-7.html", 11: "lista-11.html", 13: "lista-13.html"};
+  const map = {1: "lista-1.html", 2: "lista-2.html", 5: "lista-5.html", 7: "lista-7.html", 11: "lista-11.html", 13: "lista-13.html"};
   return map[n] || ("lista.html?n=" + n);
 }
 

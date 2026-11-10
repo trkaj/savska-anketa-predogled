@@ -286,6 +286,48 @@ const VPRASANJA = [
 ];
 
 const ODGOVORI = {
+  "2": {
+    "prioritet": [
+      "Pošta, banka in druge storitve",
+      "Drevesa in zelenice",
+      "Dom skupnosti, prostor za druženje",
+      "Boljši zrak in hrup",
+      "Igrišča in prostor za mlade"
+    ],
+    "prioritetId": [
+      "storitve",
+      "zelenje",
+      "dom",
+      "zrak",
+      "mladi"
+    ],
+    "counts": {
+      "da": 19,
+      "delno": 0,
+      "ne": 0
+    },
+    "odgovori": {
+      "obvescanje-1": "Da",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Da",
+      "obvescanje-6": "Da",
+      "parkiranje-1": "Da",
+      "parkiranje-2": "Da",
+      "storitve-1": "Da",
+      "storitve-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Da",
+      "dom-1": "Da",
+      "dom-2": "Da",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Da",
+      "mladi-2": "Da",
+      "zakaj-3": "Da"
+    }
+  },
   "5": {
     "prioritet": [
       "Parkiranje",
