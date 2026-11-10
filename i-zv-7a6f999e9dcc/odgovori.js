@@ -649,6 +649,60 @@ const ODGOVORI = {
       "zakaj-3": "Da"
     }
   },
+  "12": {
+    "prioritet": [
+      "Parkiranje",
+      "Pošta, banka in druge storitve",
+      "Promet skozi naselje",
+      "Igle in droge, občutek varnosti",
+      "Dom skupnosti, prostor za druženje"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "storitve",
+      "promet",
+      "varnost",
+      "dom"
+    ],
+    "counts": {
+      "da": 24,
+      "delno": 7,
+      "ne": 0
+    },
+    "odgovori": {
+      "parkiranje-1": "Delno",
+      "parkiranje-2": "Da",
+      "storitve-1": "Delno",
+      "storitve-2": "Delno",
+      "promet-1": "Da",
+      "promet-2": "Da",
+      "promet-3": "Da",
+      "varnost-1": "Da",
+      "varnost-2": "Da",
+      "klopi-1": "Delno",
+      "klopi-2": "Da",
+      "cistoca-1": "Da",
+      "cistoca-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Da",
+      "dom-1": "Da",
+      "dom-2": "Delno",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Da",
+      "mladi-2": "Da",
+      "maladela-1": "Da",
+      "maladela-2": "Da",
+      "maladela-3": "Da",
+      "obvescanje-1": "Da",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Delno",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Da",
+      "obvescanje-6": "Delno",
+      "zakaj-3": "Da"
+    }
+  },
   "13": {
     "prioritet": [
       "Parkiranje",
@@ -900,6 +954,41 @@ const RAZLAGE = {
     "zakaj-1": "Ker smo edina lista, ki daje v ospredje četrtne skupnosti, ki so za etablirane politične stranke zgolj formalnost, za MOL pa trenutno samo način širjenja svoje propagande. Mi smo edina lista, ki bo svet četrtne skupnosti uporabila kot glas vseh prebivalcev Bežigrada in jim dala možnost odločati o življenju v njihovih soseskah.",
     "zakaj-2": "Da bomo uslišali vse njihove zahteve in pobude in jim trajno odprli svet četrtne skupnosti, kot organ, kjer bodo enakopravni svetnikom in mestnim oblastem.",
     "zakaj-3": "CILJ ne deluje samo zato, da enkrat na 4 leta kandidira na volitvah. CILJ bo ne glede na rezultat volitev še naprej deloval kot platforma in mreža za vse Ljubljančane, da si izborimo boljšo kvaliteto življenja."
+  },
+  "12": {
+    "obvescanje-1": "Zahtevam popolno transparentnost!",
+    "obvescanje-2": "Da v najkrajšem možnem času bom sam zagotovil na spletni strani pregled projektov, pripomb in idej, ki se tičejo našega kraja",
+    "obvescanje-3": "Menim da je delo zamudno a vseeno pomembno, a sam bi energijo usmeril v hitro in enostavno dostopno spletno stran za vse!",
+    "obvescanje-4": "Bistvo predstavnikov ČS je komunikacija in usklajevanje s soobčani!",
+    "obvescanje-5": "Svojo energijo bom prioritetno uporabljal za čim boljšo komunikacijo in hitro implementacijo idej v četrtno skupnost in kasneje v mestni svet, da se izboljša položaj sokrajanov!",
+    "obvescanje-6": "Seveda je vsaka oseba ki pomaga doseči, da se kaj premakne zaželjena vendar sem mnenja da smo že kot sami dovolj glasni in pomembni da je to da se nas sliši in upošteva že samoumevno!",
+    "parkiranje-1": "Nimam največ znanja kaj je res in kaj ne a se bom obrnil na sokrajane da prenesem njihove želje naprej",
+    "parkiranje-2": "Zahteva je razumljiva in edina sprejemljiva... kdor se k temu ne zaveže je izdajalec lastnega kraja!",
+    "storitve-1": "Sam stremim k boljšemu dostopu do vseh koristnih objektov vendar sam vidim veliko drugih problemov, katerih posledica je pomankanje zgoraj naštetih!",
+    "storitve-2": "Ni vsaka od naštetih stvari potrebna nekatere pa definitivno so!",
+    "promet-1": "Seveda, optimizacija cest in drugih prometnih režimov je nujna in daleč v ospredju po prioriteti! to bi bilo potrebno urediti v roku 2 let. Če bomo preveč hiteli bomo dosegli še eno skropucalo in ukradena sredstva prek korupcije!",
+    "promet-2": "Ni potrebno razglabljati. Varnost najbol ranljivih je pokazatelj zdrave in močne družbe ki skrbi za vse tiste ki sami še niso ali pa niso več 100%!!!",
+    "promet-3": "Edino sprejemljivo ravnanje je tako kot opisano zgoraj!",
+    "varnost-1": "Meni osebno ena od tem kjer ne popuščam! Droge in podobne substance smatram kot rak družbe!",
+    "varnost-2": "Podpiram vse zapisano!",
+    "klopi-1": "Imamo veliko več težav tako da mi to ni prioriteta a vseeno predstavljam glas družbe zato si bom tudi  v to smer prizadeval s podporo pri omenjenih idejah!",
+    "klopi-2": "Podajanje informacij je zame ena odobveznosti in ne možnosti kot predstavnik krajevne skupnosti!",
+    "cistoca-1": "Seveda je pokazatelj zdravega uma tudi sodelovanje v skrbi za čistočo okolja v katerem živimo in vzgoji družbe z zgledom za boljši jutri!",
+    "cistoca-2": "Za lepo okolico je potrebno narediti korak v vseh straneh, s čiščenjem smeti in tudi z olajšanjem odlaganja odpadkov vseh vrst v pravilne in dovolj pogoste smetnjake!",
+    "zelenje-1": "Tako kot za ljudi je potrebno poskrbeti tudi za drevesa in ostalo zelenje. Sožitje nas in njih gre z roko v roki z boljšim počutjem in življenjem!",
+    "zelenje-2": "Ne želim da bi izpustili kakšno dobro lokacijo v kolikor imamo med sabo ljudi ki so v tej smeri strokovnjaki! Več glav več ve!",
+    "dom-1": "Z aplikacijo o podajanju predlogov bomo hitro jasno vedeli kaj je potrebno postoriti in primerno ukrepali",
+    "dom-2": "NE obljubljam rad nekaj o čemer ne vem dovolj, tako da se pri tem vprašanju malo postavim na stran a vsekakorse bom pozanimal o tem in ukrepal razumno in v korist sokrajanov!",
+    "zrak-1": "Več informacij vemo bolje lahko odreagiramo in pomagamo izboljšati stanje!",
+    "zrak-2": "Vse kar koristi meni in sokrajanom je moja borba v imenu nas vseh!",
+    "mladi-1": "Mladi zunaj je edini primeren pojav v družbi. Pozitivno vpliva na duševno zdravje otrok in vseh mladih....ne telefoni in računalniki ampak zdravo gibanje v naravi!",
+    "mladi-2": "Zelo dobra in premišljena ideja ki bo dosegla najbol pozitivno reakcijo če nam uspe kaj doseči!",
+    "maladela-1": "Vzelo bo kar nekaj časa in energije vendar nas je veliko in si lahko pomagamo, da odkrijemo vse kar je potrebno postoriti in redno opozarjamo na pomankljivosti! zaslužimo si da opazijo vse kar je potrebno urediti in nam za to tudi namenijo sredstva čim hitreje!",
+    "maladela-2": "Vse kar vem in za kar delamo bom redno objavljal na spletni strani za čim lažjo preglednost in učinkovitost!",
+    "maladela-3": "Tudi sam imam zanimanje kako in kaj storiti za izboljšanje našega kraja!",
+    "zakaj-1": "Sem odkrit, delaven in vedno gledam na dobro sočloveka. Imam močno zaledje prijateljev na katere se lahko zanesem in čigaršnje znanje je ogromno! Sem drugačen od vseh a vse ostalo smo že videli in izkusili!",
+    "zakaj-2": "Odkritost, transparentnost, boj proti korupciji in nepopustljivo zagovarjanje tega kar je potebno in nujno storiti!",
+    "zakaj-3": "Moj boj ni le ta mesec do volitev ampak vsak dan mojega življenja! Z  zgledom skrbim za okolje, vzgajam svoje bližnje v vzorne sokrajane in spodbujam k udejstvovanju v prostovoljnih organizacijah za sopomoč ljudem!"
   },
   "13": {
     "obvescanje-1": "Da, demokracija se namreč ne konča na volilni dan. Zavzemamo se za odprto in pregledno upravljanje mesta, v katerem imajo občani pravico vedeti, kako se sprejemajo odločitve, in možnost nanje tudi vplivati. Zato bomo podprli snemanje sej sveta ČS ter javno dostopnost posnetkov in prepisov razprav ob spoštovanju varstva osebnih podatkov. Poiskali bomo tudi ustrezne tehnične in finančne rešitve. Naš županski kandidat dr. Anton Rop zagovarja večjo vlogo četrtnih skupnosti, participativni proračun in uvedbo mestnih državljanskih skupščin po načelih deliberativne demokracije. Prebivalci ne smejo biti zgolj opazovalci odločitev mestne oblasti, temveč morajo pri njih dejansko sodelovati.\n\nO tem dr. Rop govori tudi javno: https://siol.net/novice/slovenija/anton-rop-napoveduje-velik-rez-v-ljubljani-pregledali-bomo-pogodbe-v-vrednosti-skoraj-pol-milijarde-evrov-zupanskikandidati-705706, https://outsider.si/anton-rop-mesto-ni-projekt-mesto-pa-je-ziv-organizem-ki-ga-moramo-soustvarjati/",
