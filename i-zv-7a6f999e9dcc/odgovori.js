@@ -490,6 +490,57 @@ const ODGOVORI = {
       "zakaj-3": "Da"
     }
   },
+  "10": {
+    "prioritet": [
+      "Parkiranje",
+      "Promet skozi naselje",
+      "Dom skupnosti, prostor za druženje",
+      "Boljši zrak in hrup",
+      "Mala dela ČS in prijave poškodb"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "promet",
+      "dom",
+      "zrak",
+      "maladela"
+    ],
+    "counts": {
+      "da": 25,
+      "delno": 3,
+      "ne": 0
+    },
+    "odgovori": {
+      "parkiranje-1": "Da",
+      "parkiranje-2": "Da",
+      "storitve-1": "Da",
+      "storitve-2": "Da",
+      "promet-1": "Da",
+      "promet-2": "Da",
+      "promet-3": "Da",
+      "varnost-1": "Da",
+      "varnost-2": "Da",
+      "klopi-1": "Da",
+      "cistoca-1": "Da",
+      "cistoca-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Da",
+      "dom-1": "Da",
+      "dom-2": "Da",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Da",
+      "maladela-1": "Da",
+      "maladela-2": "Da",
+      "maladela-3": "Da",
+      "obvescanje-1": "Delno",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Delno",
+      "obvescanje-6": "Delno"
+    }
+  },
   "11": {
     "prioritet": [
       "Parkiranje",
@@ -718,6 +769,36 @@ const RAZLAGE = {
     "zakaj-1": "Ker izhajamo iz civilne družbe in se z delovanjem v različnih civilnih iniciativah že več let borimo proti spornim projektom trenutnega župana. Skozi lastno delovanje smo spoznali ovire, ki jih je potrebno odstraniti, da bi omogočili demokratično upravljanje mesta.",
     "zakaj-2": "Kot izvoljeni predstavniki, se bomo na nivoju MS in tudi na nivoju ČS zavzemali za izboljšanje razmer  v celem mestu. Četrtne skupnosti lahko imajopartikularne probleme, a način reševanja le teh mora biti sistemski. Samo skozi demokratične procese identifikacije, analize in participativnega iskanja odgovorov na vseh nivojih, je mogoče zagotoviti skladen razvoj, ki bo sprejemljiv za čim širši krog prebivalk in prebivalcev mesta.",
     "zakaj-3": "Spodbujali bomo oblikovanje skupnostnih iniciativ in pomagali s svojim znanjem pri spodbujanju demokratičnega delovanja ČS in preprečevanju samovolje posmeznikov."
+  },
+  "10": {
+    "obvescanje-1": "To je potrebno urediti skladno z varstvom osebnih podatkov. Seje se že sedaj snemajo, kot nam je znano iz prejšnjih mandatov. Smatramo, da je dovolj, če je na voljo uradno potrjen zapis s sklepi.",
+    "obvescanje-3": "Dovolj je obveščanje na uradni strani ČS, ki ima tudi stran na družbenih omrežjih ˙n.pr. Facebook",
+    "obvescanje-4": "To se da urediti s sklepom na seji sveta ČS. Tudi vprašanja prebivalcev se lahko obravnavajo na vsaki seji, zlasti, če so posredovana pisno pred sejo ali pa jih v imenu občanov posreduje svetnik ali strokovni sodelavec v ČS.",
+    "obvescanje-5": "Priprava sprememb OPPN se izdela na pristojnem oddelku MOL in tudi ČS ne sodeluje pri pripravi ampak ob razgrnitvi, ko je predstavljena javnosti in so takrat tudi možne še spremembe.",
+    "obvescanje-6": "To je težko izvedljivo, lahko pa damo predlog.",
+    "parkiranje-1": "To se da ugotoviti iz zemljiške knjige.",
+    "parkiranje-2": "To bi moralo biti urejeno v vseh naseljih v ČS Bežigrad.",
+    "storitve-1": "To smo že storili v prejšnjem mandatu in tudi MOL, a brez uspeha.",
+    "storitve-2": "Predlog vsekakor lahko oblikujemo.",
+    "promet-1": "Vsekakor.",
+    "promet-2": "Skupaj s šolo in vrtcem.",
+    "promet-3": "Več komunikacije s prebivalci preko zborov prebivalcev določenega območja.",
+    "varnost-1": "Vsaj enkrat letno je bilo to organizirano tudi v prejšnjih mandatih vendar le za člane sveta in ravnatelji V in OŠ.",
+    "varnost-2": "Pobudo bomo dali, realizacijo je težko zagotoviti",
+    "klopi-1": "Predlog morajo vsekakor dati prebivalci.",
+    "klopi-2": "Prioritete določi svet ČS za mala dela.",
+    "cistoca-1": "Doslej so akcije potekale vsaj 1x letno, lahko pa večkrat.",
+    "cistoca-2": "Opozarjati je treba tudi lastnike psov, da pasje iztrebke pobirajo.",
+    "zrak-1": "Verjetno je to odvisno od MOL, vsekakor pa je treba dati pobudo.",
+    "zrak-2": "Po obnovi ŽP Ljubljana vsekakor predlog mestni upravi in MS.",
+    "mladi-1": "Predlog je potrebno dati.",
+    "mladi-2": "Gotovo je potrebno najprej pregledati stanje in se dogovoriti za prioritete.",
+    "maladela-1": "Tudi sedanji člani sveta so zlasti v prejšnjem mandatu iz Savskega naselja opozarjali in dali predloge za ureditev skupnih površin, zlasti igrišč.",
+    "maladela-2": "To je nujno potrebno pa tudi komunikacija s četrtnimi svetniki, ki jih boste izvolili in prebivajo v vašem naselju.",
+    "maladela-3": "To bi morali že storiti in verjetno so že pojasnili, sicer pa je to prvi korak za naslednje korake pri urejanju teh površin za prebivalce.",
+    "zakaj-1": "Glede na naš program in prioritete, ki se v celoti pokrivajo s pričakovanji prebivalcev SN in izkušenj iz preteklih mandatov obljubljamo, da bomo storili vse, da se predlogi uresničijo v obsegu, ki so v pristojnosti sveta ČS.",
+    "zakaj-2": "Zavezujemo  se za boljšo komunikacijo s prebivalci in posredovanje konkretnih predlogov na sejah ČS ter poročilo o možni izvedbi posameznega predloga s terminskim in izvedbenim načrtom.",
+    "zakaj-3": "Spremljali bomo potrebe in se vključevali v civilne iniciative za izboljšanje pobojev za bivanje otrok, mladih in starejših prebivalcev v SN in v ČS Bežigrad, kjer prebivamo v različnih naseljih."
   },
   "11": {
     "obvescanje-1": "To bomo izpostavili na prvi redni seji. Pred tem bomo stopili v kontakt z ostalimi izvoljenimi četrtnimi svetniki, da lahko v naprej zagotovimo zadostno podporo.",
