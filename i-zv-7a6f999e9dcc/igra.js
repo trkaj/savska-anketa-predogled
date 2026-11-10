@@ -18,23 +18,14 @@
     { id: "vseh-15", ime: "Vseh 15", opis: "Prebranih vseh 15 list." }
   ];
 
-  var NAGOVORI = {
-    mescan: "Aktiven meščan Savskega naselja",
-    mescanka: "Aktivna meščanka Savskega naselja",
-    nevtralno: "Aktivni prebivalec Savskega naselja"
-  };
-
   var stanje = nalozi();
   var zacetniZnacki = stanje.znacke.slice();
-  var ravnoKoncano = false;
 
   function prazno() {
     return {
       prebrane: [],
       znacke: [],
-      tema: false,
-      nagovor: "nevtralno",
-      koncano: null
+      tema: false
     };
   }
 
@@ -53,14 +44,10 @@
       (o.znacke || []).forEach(function (id) {
         if (ZNACKE.some(function (z) { return z.id === id; }) && znacke.indexOf(id) === -1) znacke.push(id);
       });
-      var nagovor = o.nagovor;
-      if (!NAGOVORI[nagovor]) nagovor = "nevtralno";
       return {
         prebrane: prebrane,
         znacke: znacke,
-        tema: !!o.tema,
-        nagovor: nagovor,
-        koncano: typeof o.koncano === "string" ? o.koncano : null
+        tema: !!o.tema
       };
     } catch (e) {
       return prazno();
@@ -71,11 +58,6 @@
     try {
       localStorage.setItem(KLJUC, JSON.stringify(stanje));
     } catch (e) { /* zasebni način ali poln prostor */ }
-  }
-
-  function pocistiInOsvezi() {
-    try { localStorage.removeItem(KLJUC); } catch (e) {}
-    location.reload();
   }
 
   function trenutnaLista() {
@@ -94,22 +76,6 @@
     return null;
   }
 
-  function jeIndex() {
-    var pot = location.pathname || "";
-    return /(?:^|\/)(?:index\.html)?$/.test(pot) && !/lista/.test(pot);
-  }
-
-  function datumLjubljana(iso) {
-    var d = iso ? new Date(iso) : new Date();
-    if (isNaN(d.getTime())) d = new Date();
-    return new Intl.DateTimeFormat("sl-SI", {
-      timeZone: "Europe/Ljubljana",
-      day: "numeric",
-      month: "numeric",
-      year: "numeric"
-    }).format(d);
-  }
-
   function zeliManjGibanja() {
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
@@ -120,10 +86,6 @@
     if (stanje.prebrane.indexOf(n) !== -1) return false;
     stanje.prebrane.push(n);
     stanje.prebrane.sort(function (a, b) { return a - b; });
-    if (stanje.prebrane.length >= SKUPAJ && !stanje.koncano) {
-      stanje.koncano = new Date().toISOString();
-      ravnoKoncano = true;
-    }
     shrani();
     return true;
   }
@@ -213,7 +175,6 @@
     }
     oznaciKartice();
     if (najavi) sporoci(txt);
-    osveziKarticoKonca();
     meriPas();
   }
 
@@ -310,79 +271,6 @@
     requestAnimationFrame(ris);
     setTimeout(function () { window.removeEventListener("resize", meri); }, 1500);
     window.addEventListener("resize", meri);
-  }
-
-  function diplomaNaslov() {
-    return NAGOVORI[stanje.nagovor] || NAGOVORI.nevtralno;
-  }
-
-  function htmlDiplome(vOkvirju) {
-    var naslov = diplomaNaslov();
-    var datum = datumLjubljana(stanje.koncano);
-    var cls = vOkvirju ? "igra-diploma igra-diploma-kartica" : "igra-diploma";
-    return (
-      '<div class="' + cls + '">' +
-        '<p class="igra-diploma-k">Zaključek branja zavez</p>' +
-        '<h2 id="igra-diploma-naslov">' + naslov + "</h2>" +
-        '<p class="igra-diploma-d">Datum: ' + datum + "</p>" +
-        '<fieldset class="igra-nagovor">' +
-          "<legend>Oblika nagovora</legend>" +
-          gumbNagovora("mescan", "Aktiven meščan") +
-          gumbNagovora("mescanka", "Aktivna meščanka") +
-          gumbNagovora("nevtralno", "Aktivni prebivalec") +
-        "</fieldset>" +
-        '<div class="igra-diploma-dejanja">' +
-          '<a class="btn btn-zacetek" href="' + JAVNA + '">Izpolni anketo</a>' +
-        "</div>" +
-        htmlDeliBloka(SHARE_BASE, SHARE_TXT) +
-        '<p class="igra-diploma-pov">Prijavi se med prostovoljce: napiši na ' +
-          '<a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>' +
-          " ali pokliči 070 205 595.</p>" +
-        '<p class="igra-diploma-kon">Kontakt: ' +
-          '<a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595</p>' +
-        '<button type="button" class="igra-reset" id="igra-reset">Začni znova</button>' +
-      "</div>"
-    );
-  }
-
-  function gumbNagovora(id, oznaka) {
-    var pritisnjen = stanje.nagovor === id;
-    return '<button type="button" class="igra-nagovor-g' + (pritisnjen ? " je" : "") +
-      '" data-nagovor="' + id + '" aria-pressed="' + (pritisnjen ? "true" : "false") + '">' +
-      oznaka + "</button>";
-  }
-
-  function poveziDiplomo(koren) {
-    if (!koren) return;
-    koren.querySelectorAll("[data-nagovor]").forEach(function (g) {
-      g.addEventListener("click", function () {
-        stanje.nagovor = g.getAttribute("data-nagovor");
-        shrani();
-        var naslov = document.getElementById("igra-diploma-naslov");
-        if (naslov) naslov.textContent = diplomaNaslov();
-        var kartica = document.getElementById("igra-konec-kartica");
-        if (kartica) {
-          var h = kartica.querySelector("h2");
-          if (h) h.textContent = diplomaNaslov();
-        }
-        koren.querySelectorAll("[data-nagovor]").forEach(function (x) {
-          var on = x.getAttribute("data-nagovor") === stanje.nagovor;
-          x.classList.toggle("je", on);
-          x.setAttribute("aria-pressed", on ? "true" : "false");
-        });
-      });
-    });
-    koren.querySelectorAll(".deli-razdelek").forEach(function (blok) {
-      poveziDeliBlok(blok, SHARE_BASE, SHARE_TXT);
-    });
-    var reset = koren.querySelector("#igra-reset");
-    if (reset) {
-      reset.addEventListener("click", function () {
-        if (window.confirm("Želiš začeti znova? Napredek in značke se bodo izbrisali.")) {
-          pocistiInOsvezi();
-        }
-      });
-    }
   }
 
   function javniUrlListe(n) {
@@ -532,76 +420,10 @@
     }
   }
 
-  function pokaziZakljucek(samodejno) {
-    if (stanje.prebrane.length < SKUPAJ) return;
-    if (document.getElementById("igra-zakljucek")) return;
-    var ov = document.createElement("div");
-    ov.id = "igra-zakljucek";
-    ov.className = "igra-zakljucek";
-    ov.setAttribute("role", "dialog");
-    ov.setAttribute("aria-modal", "true");
-    ov.setAttribute("aria-labelledby", "igra-diploma-naslov");
-    ov.innerHTML =
-      '<div class="igra-zakljucek-okvir">' +
-        '<button type="button" class="igra-zapri" id="igra-zapri" aria-label="Zapri">Zapri</button>' +
-        htmlDiplome(false) +
-      "</div>";
-    document.body.appendChild(ov);
-    document.body.classList.add("igra-zaklenjeno");
-    poveziDiplomo(ov);
-    var zapri = function () {
-      ov.remove();
-      document.body.classList.remove("igra-zaklenjeno");
-      osveziKarticoKonca();
-    };
-    ov.querySelector("#igra-zapri").addEventListener("click", zapri);
-    ov.addEventListener("click", function (e) { if (e.target === ov) zapri(); });
-    document.addEventListener("keydown", function esc(e) {
-      if (e.key === "Escape") {
-        zapri();
-        document.removeEventListener("keydown", esc);
-      }
-    });
-    if (samodejno && !zeliManjGibanja()) konfeti();
-    var fokus = ov.querySelector(".deli-gumbi .gumb") || ov.querySelector("#igra-zapri");
-    if (fokus) fokus.focus();
-  }
-
-  function osveziKarticoKonca() {
-    var stara = document.getElementById("igra-konec-kartica");
-    if (stanje.prebrane.length < SKUPAJ || !jeIndex()) {
-      if (stara) stara.remove();
-      return;
-    }
-    if (stara) {
-      var h = stara.querySelector("h2");
-      if (h) h.textContent = diplomaNaslov();
-      return;
-    }
-    var kartica = document.createElement("section");
-    kartica.id = "igra-konec-kartica";
-    kartica.className = "card igra-konec-povzetek";
-    kartica.innerHTML =
-      "<h2>" + diplomaNaslov() + "</h2>" +
-      '<p>Prebral/a si vseh 15 list. Datum: ' + datumLjubljana(stanje.koncano) + ".</p>" +
-      '<p><button type="button" class="btn btn-zacetek" id="igra-odpri-diploma">Odpri zaključni zaslon</button></p>';
-    var banner = document.querySelector(".banner");
-    var gost = document.querySelector("main") || document.body;
-    if (banner && banner.parentNode === gost) banner.insertAdjacentElement("afterend", kartica);
-    else gost.insertAdjacentElement("afterbegin", kartica);
-    kartica.querySelector("#igra-odpri-diploma").addEventListener("click", function () {
-      pokaziZakljucek(false);
-    });
-  }
-
   function poNapredku(spremenjeno) {
     var nove = preveriZnacke();
     osveziPas(spremenjeno);
     if (nove.length) pokaziToast(nove);
-    if (ravnoKoncano) {
-      ravnoKoncano = false;
-      pokaziZakljucek(true);
-    }
   }
 
   function jeNaKoncu() {
@@ -678,9 +500,7 @@
     ZNACKE.forEach(function (z) {
       if (stanje.znacke.indexOf(z.id) !== -1 && zacetniZnacki.indexOf(z.id) === -1) noveObNalaganju.push(z);
     });
-    /* Na indexu po že končani poti ne odpiraj diplome samodejno. */
     osveziPas(false);
-    if (jeIndex() && stanje.prebrane.length >= SKUPAJ) osveziKarticoKonca();
   }
 
   if (document.readyState === "loading") {
