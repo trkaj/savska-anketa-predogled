@@ -331,7 +331,7 @@ function vstaviPrimerjavo() {
     html += '<th scope="row"><span title="' + escHtml(q.vprasanje) + '">' + escHtml(q.label) + "</span></th>";
     lists.forEach(function (n) {
       const c = badge(n, q);
-      html += '<td' + (c.prio ? ' class="ima-prio"' : "") + ">" + c.html + "</td>";
+      html += '<td' + (c.prio ? ' class="ima-prio"' : "") + ">" + (c.prio ? '<span class="prio-zvezda" aria-hidden="true">★</span>' : "") + c.html + "</td>";
     });
     html += "</tr>";
   });

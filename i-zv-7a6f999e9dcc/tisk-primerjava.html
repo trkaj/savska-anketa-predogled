@@ -81,28 +81,28 @@ tr.skupina th {
 td {
   white-space: nowrap;
   letter-spacing: 0;
-  padding: 0.45pt 0.45pt;
+  padding: 0.45pt 8pt 0.45pt 0.45pt;
 }
 td .odg, .legenda .odg {
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 0.12em;
+  gap: 0.05em;
   white-space: nowrap;
   font-weight: 800;
   line-height: 1;
-  padding: 0.15pt 1.4pt;
+  padding: 0.1pt 0.55pt;
   border-radius: 2pt;
   vertical-align: middle;
   max-width: 100%;
 }
 .znak {
   display: inline-block;
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.58em;
+  height: 0.58em;
   border-radius: 50%;
-  border: 1.05pt solid currentColor;
+  border: 0.95pt solid currentColor;
   flex: 0 0 auto;
   box-sizing: border-box;
 }
@@ -112,27 +112,27 @@ td .odg, .legenda .odg {
   border-color: #111;
   background: linear-gradient(90deg, #111 50%, #fff 50%);
 }
-.odg.ne .znak { background: #fff; border-color: #111; color: #111; }
+.odg.ne .znak { background: #fff; border-color: #c62828; color: #c62828; }
 .odg.da { background: #2e7d32; color: #fff; }
 .odg.delno { background: #f5a400; color: #1a1a1a; }
-.odg.ne { background: #fff; color: #111; border: 1.35pt solid #111; }
+.odg.ne { background: #fff; color: #111; border: 1.6pt solid #c62828; }
 .odg.prazna { color: #333; letter-spacing: 0; background: transparent; font-weight: 700; }
-td.ima-prio {
-  background-color: #e6e6e6;
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 2.2pt, rgba(0,0,0,.14) 2.2pt, rgba(0,0,0,.14) 3.1pt);
-  border-left: 3pt solid #0b3d24;
+td { position: relative; }
+td.ima-prio { border-left: 3pt solid #0b3d24; background: none; }
+.prio-zvezda {
+  position: absolute;
+  top: 0.15pt;
+  right: 0.25pt;
+  font-size: 8pt;
+  font-weight: 900;
+  color: #111;
+  line-height: 1;
+  background: #fff;
+  padding: 0;
+  pointer-events: none;
+  z-index: 2;
 }
-.prio-vzorec {
-  display: inline-block;
-  width: 1.45em;
-  height: 0.95em;
-  vertical-align: -0.15em;
-  margin-right: 0.25em;
-  background-color: #e6e6e6;
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 2pt, rgba(0,0,0,.14) 2pt, rgba(0,0,0,.14) 2.8pt);
-  border: 0.45pt solid #222;
-  border-left: 3pt solid #0b3d24;
-}
+.legenda .prio-zvezda { position: static; background: transparent; padding: 0; font-size: 10pt; margin-right: 0.15em; }
 footer.list {
   margin-top: 3pt;
   font-size: 8.5pt;
@@ -146,7 +146,7 @@ footer.list {
   .no-print { display: none !important; }
   body { max-width: none; padding: 0; margin: 0; box-shadow: none; zoom: 0.9; }
   thead th, th.vpr, tr.skupina th, thead th.vpr,
-  td.ima-prio, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .prio-vzorec {
+  td.ima-prio, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, .prio-zvezda {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -162,7 +162,7 @@ footer.list {
   <h1>Kako so kandidatne liste za svet ČS Bežigrad odgovorile na vprašanja prebivalcev Savskega naselja</h1>
   <p class="podnaslov">Volilna enota 01 · primerjava zavez, kot so jih liste označile (to ni naša ocena)</p>
 </header>
-<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-vzorec" aria-hidden="true"></span>siva celica z debelo črto = ena od 5 prioritet liste</p>
+<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-zvezda" aria-hidden="true">★</span> = ena od 5 prioritet liste</p>
 <div id="tabela"></div>
 <footer class="list" id="noga"></footer>
 <script src="odgovori.js"></script>
@@ -205,7 +205,7 @@ function celica(n, q) {
     html += '<tr><th class="vpr" scope="row">' + esc(q.label) + "</th>";
     for (var n = 1; n <= 15; n++) {
       var c = celica(n, q);
-      html += '<td' + (c.prio ? ' class="ima-prio"' : '') + ">" + c.html + "</td>";
+      html += '<td' + (c.prio ? ' class="ima-prio"' : '') + ">" + (c.prio ? '<span class="prio-zvezda" aria-hidden="true">★</span>' : '') + c.html + "</td>";
     }
     html += "</tr>";
   });

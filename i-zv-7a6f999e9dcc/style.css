@@ -189,9 +189,11 @@ img.lista-logo[src*="15-lzj"]{background:#0b3d24;padding:3px;border-radius:3px;b
 .primerjava .odg.delno{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-delno)}
 .primerjava .odg.ne{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-ne)}
 .primerjava .celica-prazna{color:#888;font-weight:700}
-.primerjava td.ima-prio{background-color:#e6e6e6;background-image:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.12) 3px,rgba(0,0,0,.12) 4.5px);border-left:3px solid #0b3d24;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.prio-vzorec{display:inline-block;width:1.35em;height:.9em;vertical-align:-.12em;margin-right:.3em;background-color:#e6e6e6;background-image:repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(0,0,0,.14) 2px,rgba(0,0,0,.14) 3px);border:1px solid #777;border-left:3px solid #0b3d24}
+.primerjava td{position:relative;padding-right:1rem}
+.primerjava td.ima-prio{background:none;border-left:3px solid #0b3d24}
+.primerjava .prio-zvezda{position:absolute;top:1px;right:2px;font-size:.8rem;font-weight:900;color:#111;line-height:1;background:#fff;padding:0 1px;pointer-events:none;z-index:2}
 .primerjava-legenda .prio-legenda{display:inline-flex;align-items:center;gap:2px}
+.primerjava-legenda .prio-zvezda{position:static;background:transparent;padding:0;font-size:1rem}
 
 
 /* Igrifikacija branja zavez */
