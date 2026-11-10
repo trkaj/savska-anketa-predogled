@@ -57,6 +57,47 @@ const LISTE_META = {
   15: { logo: "logo/15-lzj.png", web: "https://zoranjankovic.si/ljubljana/projekti-po-cetrtnih-skupnostih/bezigrad" }
 };
 
+const LISTE_IME = {
+  1: "Gibanje Svoboda",
+  2: "Slovenska ljudska stranka",
+  3: "Demokrati. Anžeta Logarja",
+  4: "Pirati",
+  5: "Levica",
+  6: "Prerod – stranka Vladimirja Prebiliča",
+  7: "Slovenska demokratska stranka – SDS",
+  8: "Vesna – zelena stranka",
+  9: "Nova Slovenija in Fokus",
+  10: "Socialni demokrati",
+  11: "Cilj – Bežigrad",
+  12: "Stranka Straža – katoliška narodna stranka",
+  13: "Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa",
+  14: "Državljansko gibanje Resni.ca",
+  15: "Lista Zorana Jankovića"
+};
+
+function imeListe(n) {
+  const ime = (typeof LISTE_IME !== "undefined" && LISTE_IME[n])
+    || (typeof LISTE_KRATKO !== "undefined" && LISTE_KRATKO[n])
+    || ("Lista " + n);
+  return n + ". " + ime;
+}
+
+function razlagaListe(n, qid) {
+  if (typeof RAZLAGE === "undefined") return "";
+  const block = RAZLAGE[n] || RAZLAGE[String(n)] || {};
+  return block[qid] || "";
+}
+
+function skrajsajBesedilo(s, max) {
+  s = String(s || "").replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const sp = cut.lastIndexOf(" ");
+  const base = (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[.,;:\s]+$/, "");
+  return base + "…";
+}
+
+
 const PRIO_ID = {
   "Parkiranje": "p-parkiranje",
   "Pošta, banka in druge storitve": "p-storitve",
@@ -177,6 +218,7 @@ function pripraviListo(n, h2Selector) {
   vstaviPrioKazalo();
   vstaviTemeIds();
   vstaviPrimerjajPovezave();
+  vstaviSidraVprasanj();
 }
 function escHtml(s) {
   return String(s == null ? "" : s)
@@ -257,20 +299,16 @@ function vstaviPrimerjavo() {
   for (let n = 1; n <= 15; n++) lists.push(n);
 
   function badge(n, q) {
-    const data = ODGOVORI[n];
-    const sid = q.sid;
-    const href = stranListe(n) + "#" + sid;
+    const data = ODGOVORI[n] || ODGOVORI[String(n)];
     const prio = data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1;
     const hand = prio ? '<span class="roka prio-roka" title="Ena od 5 prioritet te liste" aria-label="prioriteta">🖐️</span>' : "";
-    if (!data) {
-      return '<a class="celica-prazna" href="' + href + '" title="Odgovora še ni">' + hand + "–</a>";
-    }
-    const odg = data.odgovori[q.id];
-    if (!odg) {
-      return '<a class="celica-prazna" href="' + href + '" title="Odgovora še ni">' + hand + "–</a>";
-    }
-    const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : "ne");
-    return '<a href="' + href + '">' + hand + '<span class="odg ' + cls + '">' + escHtml(odg) + "</span></a>";
+    const odg = data && data.odgovori ? data.odgovori[q.id] : null;
+    const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : (odg === "Ne" ? "ne" : ""));
+    const label = imeListe(n) + ", " + (odg || "Odgovora še ni");
+    const pill = odg
+      ? '<span class="odg ' + cls + '" aria-hidden="true">' + escHtml(odg) + "</span>"
+      : '<span class="celica-prazna" aria-hidden="true">–</span>';
+    return '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + hand + pill + "</button>";
   }
 
   let html = '<div class="primerjava-scroll" tabindex="0">';
@@ -299,4 +337,260 @@ function vstaviPrimerjavo() {
   });
   html += "</tbody></table></div>";
   mount.innerHTML = html;
+  vstaviOblacke();
+}
+
+function vstaviSidraVprasanj() {
+  if (typeof VPRASANJA === "undefined") return;
+  const rvs = document.querySelectorAll("div.rv");
+  if (!rvs.length) return;
+
+  function norm(s) {
+    return String(s || "").replace(/\s+/g, " ").trim();
+  }
+  function variants(q) {
+    const v = norm(q.vprasanje);
+    const out = [v];
+    const label = norm(q.label || "");
+    if (label && v.indexOf(label + ":") === 0) out.push(norm(v.slice(label.length + 1)));
+    return out;
+  }
+
+  const extras = [
+    { id: "zakaj-1", vprasanje: "Zakaj naj prebivalka ali prebivalec Savskega naselja glasuje prav za vašo listo?", label: "" },
+    { id: "zakaj-2", vprasanje: "Kaj lahko prebivalci Savskega naselja pričakujejo prav od vas, če boste izvoljeni?", label: "" }
+  ];
+  const all = VPRASANJA.concat(extras);
+  const used = {};
+
+  rvs.forEach(function (rv) {
+    if (rv.id) {
+      used[rv.id] = true;
+      return;
+    }
+    const t = norm(rv.textContent);
+    let best = null;
+    let bestLen = 0;
+    all.forEach(function (q) {
+      if (used[q.id]) return;
+      variants(q).forEach(function (v) {
+        if (v && t.indexOf(v) !== -1 && v.length > bestLen) {
+          best = q.id;
+          bestLen = v.length;
+        }
+      });
+    });
+    if (best) {
+      rv.id = best;
+      used[best] = true;
+    }
+  });
+
+  const hash = (location.hash || "").replace(/^#/, "");
+  if (hash) {
+    const cilj = document.getElementById(hash);
+    if (cilj && cilj.scrollIntoView) {
+      requestAnimationFrame(function () { cilj.scrollIntoView({ block: "start" }); });
+    }
+  }
+}
+
+function vstaviOblacke() {
+  const wrap = document.getElementById("primerjava-wrap");
+  if (!wrap) return;
+  if (wrap.getAttribute("data-oblacek") === "1") return;
+  wrap.setAttribute("data-oblacek", "1");
+
+  let openBtn = null;
+  let pinned = false;
+  let closeTimer = null;
+  let dismissedBtn = null;
+  const box = document.createElement("div");
+  box.className = "oblacek";
+  box.id = "oblacek-primerjava";
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-labelledby", "oblacek-naslov");
+  box.hidden = true;
+  document.body.appendChild(box);
+
+  function dataListe(n) {
+    return (typeof ODGOVORI !== "undefined" && (ODGOVORI[n] || ODGOVORI[String(n)])) || null;
+  }
+
+  function vsebina(n, qid) {
+    const data = dataListe(n);
+    const odg = data && data.odgovori ? data.odgovori[qid] : null;
+    const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : (odg === "Ne" ? "ne" : ""));
+    const href = stranListe(n) + "#" + qid;
+    let html = '<p class="oblacek-ime" id="oblacek-naslov">' + escHtml(imeListe(n)) + "</p>";
+    if (odg) {
+      html += '<p class="oblacek-odg">Odgovor: <span class="odg ' + cls + '">' + escHtml(odg) + "</span></p>";
+      const raz = razlagaListe(n, qid);
+      if (raz) {
+        const full = raz.replace(/\s+/g, " ").trim();
+        const short = skrajsajBesedilo(raz, 300);
+        html += '<div class="oblacek-razl"><span class="razl-lab">Razlaga zaveze</span>' + escHtml(short) + "</div>";
+      }
+    } else {
+      html += '<p class="oblacek-odg">Odgovora še ni</p>';
+    }
+    html += '<a class="oblacek-vec" href="' + href + '">Celoten odgovor liste →</a>';
+    return html;
+  }
+
+  function umesti(btn) {
+    const r = btn.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const m = 8;
+    box.style.visibility = "hidden";
+    box.style.display = "block";
+    box.style.left = "0px";
+    box.style.top = "0px";
+    const bw = box.offsetWidth;
+    const bh = box.offsetHeight;
+    let left = r.left + r.width / 2 - bw / 2;
+    left = Math.max(m, Math.min(left, vw - bw - m));
+    let top = r.bottom + 8;
+    if (top + bh > vh - m && r.top - 8 - bh >= m) top = r.top - 8 - bh;
+    if (top + bh > vh - m) top = Math.max(m, vh - bh - m);
+    if (top < m) top = m;
+    box.style.left = Math.round(left) + "px";
+    box.style.top = Math.round(top) + "px";
+    box.style.visibility = "visible";
+  }
+
+  function zapri() {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    box.hidden = true;
+    box.style.display = "none";
+    box.innerHTML = "";
+    if (openBtn) {
+      openBtn.setAttribute("aria-expanded", "false");
+      openBtn.removeAttribute("aria-controls");
+    }
+    const prev = openBtn;
+    openBtn = null;
+    pinned = false;
+    return prev;
+  }
+
+  function odpri(btn, pin) {
+    if (dismissedBtn && btn === dismissedBtn && !pin) return;
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    if (dismissedBtn && btn !== dismissedBtn) dismissedBtn = null;
+    const n = btn.getAttribute("data-lista");
+    const qid = btn.getAttribute("data-qid");
+    if (openBtn && openBtn !== btn) {
+      openBtn.setAttribute("aria-expanded", "false");
+      openBtn.removeAttribute("aria-controls");
+    }
+    box.innerHTML = vsebina(n, qid);
+    box.hidden = false;
+    box.style.display = "block";
+    btn.setAttribute("aria-expanded", "true");
+    btn.setAttribute("aria-controls", box.id);
+    openBtn = btn;
+    if (pin) pinned = true;
+    umesti(btn);
+  }
+
+  function jeFine() {
+    return window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }
+
+  wrap.addEventListener("click", function (e) {
+    const btn = e.target.closest && e.target.closest(".celica-tip");
+    if (!btn || !wrap.contains(btn)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (openBtn === btn && pinned) {
+      const prev = zapri();
+      if (prev) prev.focus();
+    } else {
+      odpri(btn, true);
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!openBtn) return;
+    if (box.contains(e.target) || openBtn.contains(e.target)) return;
+    zapri();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (!openBtn) return;
+    if (e.key === "Escape") {
+      const prev = zapri();
+      dismissedBtn = prev;
+      e.preventDefault();
+      if (prev) prev.focus({ preventScroll: true });
+      return;
+    }
+    if (e.key === "Tab" && !e.shiftKey && document.activeElement === openBtn) {
+      const link = box.querySelector(".oblacek-vec");
+      if (link && !box.hidden) {
+        e.preventDefault();
+        link.focus();
+      }
+    } else if (e.key === "Tab" && e.shiftKey && box.contains(document.activeElement)) {
+      e.preventDefault();
+      openBtn.focus();
+    }
+  });
+
+  wrap.addEventListener("pointerover", function (e) {
+    if (!jeFine()) return;
+    const btn = e.target.closest && e.target.closest(".celica-tip");
+    if (!btn || !wrap.contains(btn)) return;
+    if (pinned && openBtn && openBtn !== btn) return;
+    odpri(btn, false);
+  });
+
+  wrap.addEventListener("pointerout", function (e) {
+    const btn = e.target.closest && e.target.closest(".celica-tip");
+    const rel = e.relatedTarget;
+    if (btn && dismissedBtn === btn && !(rel && btn.contains(rel))) dismissedBtn = null;
+    if (!openBtn || pinned || !jeFine()) return;
+    if (!btn) return;
+    if (rel && (box.contains(rel) || (openBtn && openBtn.contains(rel)))) return;
+    closeTimer = setTimeout(function () {
+      if (!pinned) zapri();
+    }, 220);
+  });
+
+  box.addEventListener("pointerenter", function () {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  });
+  box.addEventListener("pointerleave", function () {
+    if (!pinned) {
+      closeTimer = setTimeout(function () {
+        if (!pinned) zapri();
+      }, 220);
+    }
+  });
+
+  wrap.addEventListener("focusin", function (e) {
+    const btn = e.target.closest && e.target.closest(".celica-tip");
+    if (!btn || !wrap.contains(btn)) return;
+    if (dismissedBtn && btn === dismissedBtn) return;
+    odpri(btn, true);
+  });
+
+  function premakni() {
+    if (openBtn && !box.hidden) umesti(openBtn);
+  }
+  window.addEventListener("resize", premakni);
+  window.addEventListener("scroll", premakni, { passive: true });
+  const sc = wrap.querySelector(".primerjava-scroll");
+  if (sc) sc.addEventListener("scroll", premakni, { passive: true });
 }
