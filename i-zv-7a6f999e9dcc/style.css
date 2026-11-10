@@ -1,4 +1,4 @@
-:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8}
+:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8;--odg-da:#0b3d24;--odg-ne:#b3261e;--odg-ne-bg:#fdecea;--odg-delno:#a34d00;--odg-delno-bg:#fff1e0}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;font:17px/1.5 "Source Sans 3","Segoe UI","DejaVu Sans",sans-serif;color:var(--t);background:#fff}
@@ -23,9 +23,9 @@ main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
 .tag{background:var(--g);color:#fff;border-radius:999px;padding:4px 10px;font-size:.88rem;font-weight:650}
 .tag.other{background:#e7eee9;color:var(--g)}
 .odg{display:inline-block;font-weight:800;border-radius:6px;padding:1px 7px;font-size:.85rem;margin-right:4px}
-.odg.da{background:#ececec;color:#333}
-.odg.ne{background:#f6d4d4;color:#7a1212}
-.odg.delno{background:var(--y2);color:#6a4b00}
+.odg.da{background:var(--odg-da);color:#fff}
+.odg.ne{background:var(--odg-ne-bg);color:var(--odg-ne)}
+.odg.delno{background:var(--odg-delno-bg);color:var(--odg-delno)}
 .brez{display:inline-block;background:#eee;color:#555;font-weight:700;padding:3px 8px;border-radius:6px}
 .predstavitev{margin:.4rem 0 .8rem}
 .cardlist{display:grid;gap:10px}
@@ -47,8 +47,7 @@ h3.sek{color:var(--g);margin:1.4rem 0 .4rem;border-bottom:3px solid var(--y);pad
 .listnav .next{text-align:right}
 .listnav span{color:#888;font-weight:500}
 
-/* interni predogled: oznake Da/Ne/Delno brez zelenih ali rdečih ocen */
-.odg.da,.odg.ne,.odg.delno{background:#ececec;color:#333}
+/* barve odgovorov so v bloku .odg.da/.ne/.delno spodaj */
 .foto-prazno{width:100%;min-height:110px;border-radius:8px;background:#e7eee9;margin:8px 0 10px;display:flex;align-items:center;justify-content:center;color:#667;font-size:.9rem}
 a.video{text-decoration:none;color:#fff}
 .card.izpolnjena{border-color:#c5d4cb}
@@ -68,9 +67,7 @@ a.video{text-decoration:none;color:#fff}
 .obv-lab{background:#0b3d24;color:#fff}
 .vpr{display:block;color:#333;font-style:italic;margin:.15rem 0 .25rem}
 
-/* Rok, 9. 11.: Da zeleno, Ne ostane nevtralno (ne rdeče) */
-.odg.da{background:#0b3d24;color:#fff}
-.odg.ne{background:#eee;color:#1b1b1b}
+/* Barve odgovorov: glej blok »obkrožen žig« */
 
 /* Rok, 9. 11.: večja gumba na prejšnjo in naslednjo listo */
 .listnav{gap:14px;margin:20px 0 12px}
@@ -114,10 +111,11 @@ a.video{text-decoration:none;color:#fff}
 .razl.predl{border-left-color:#245d7a;border-color:#9bb9cb}
 .razl.predl .razl-lab{color:#245d7a}
 
-/* Rok, 9. 11.: obkrožen žig za odgovor */
+/* Obkrožen žig za odgovor: Da zeleno, Delno oranžno, Ne rdeče (kontrast WCAG AA) */
 .odg.da,.odg.ne,.odg.delno{display:inline-flex;align-items:center;justify-content:center;min-width:2.6em;height:2.6em;padding:0 .5em;border-radius:999px;font-size:1rem;font-weight:900;letter-spacing:.02em;vertical-align:middle;margin:2px 4px}
-.odg.da{background:#0b3d24;color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px #0b3d24,0 2px 6px rgba(0,0,0,.25)}
-.odg.ne{background:#eee;color:#1b1b1b;border:3px solid #fff;box-shadow:0 0 0 3px #777}
+.odg.da{background:var(--odg-da);color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-da),0 2px 6px rgba(0,0,0,.25)}
+.odg.ne{background:var(--odg-ne-bg);color:var(--odg-ne);border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-ne)}
+.odg.delno{background:var(--odg-delno-bg);color:var(--odg-delno);border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-delno)}
 
 /* Rok, 9. 11.: barve razlag po sklopih */
 .zakaj-box .razl{background:#e8f1f6;border-color:#9bb9cb;border-left-color:#245d7a}
@@ -130,8 +128,7 @@ a.video{text-decoration:none;color:#fff}
 .razl.predl,.zakaj-box .razl.predl,.prio-box .razl.predl,.tema-box .razl.predl,.blok-komunikacija .razl.predl{background:#eef4f8;border-color:#9bb9cb;border-left-color:#245d7a}
 .razl.predl .razl-lab{color:#245d7a}
 
-/* delno obkrožen */
-.odg.delno{background:#fff;color:#0b3d24;border:3px solid #0b3d24;box-shadow:0 0 0 3px #fff,0 0 0 5px #0b3d24}
+/* Delno: barva je v bloku žigov zgoraj */
 
 /* Kandidati z uradnega seznama MVK MOL (samo ime in priimek, zaporedna št.) */
 .kandidati-box{background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px 10px;margin:1rem 0 1.4rem}
@@ -157,6 +154,7 @@ a.video{text-decoration:none;color:#fff}
 /* Povzetek na vrhu strani liste */
 .povzetek,#status.povzetek{background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px;margin:0 0 1.2rem}
 .povzetek-st{margin:0 0 .55rem;font-weight:800;color:#0b3d24}
+.povzetek-st .odg{min-width:2.1em;height:1.7em;font-size:.8rem;margin:0 1px}
 .povzetek-prio{margin:0}
 .povzetek-prio .tag{text-decoration:none}
 
@@ -183,9 +181,10 @@ a.video{text-decoration:none;color:#fff}
 .primerjava .colhead img.lista-logo[src*="15-lzj"],
 img.lista-logo[src*="15-lzj"]{background:#0b3d24;padding:3px;border-radius:3px;box-shadow:0 0 0 1px #0b3d24}
 .primerjava td a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:3px}
-.primerjava .odg{min-width:1.85em;height:1.85em;font-size:.72rem;margin:0;box-shadow:0 0 0 2px #fff,0 0 0 3px #0b3d24}
-.primerjava .odg.delno{box-shadow:0 0 0 2px #fff,0 0 0 3px #0b3d24}
-.primerjava .odg.ne{box-shadow:0 0 0 2px #fff,0 0 0 3px #777}
+.primerjava .odg{min-width:1.85em;height:1.85em;font-size:.72rem;margin:0}
+.primerjava .odg.da{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-da)}
+.primerjava .odg.delno{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-delno)}
+.primerjava .odg.ne{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-ne)}
 .primerjava .celica-prazna{color:#888;font-weight:700}
 .primerjava .prio-roka{width:1.15em;height:1.15em;font-size:.85em;margin:0}
 

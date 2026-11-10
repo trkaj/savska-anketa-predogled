@@ -169,7 +169,7 @@ function vstaviPovzetek(n) {
   } else {
     const c = data.counts;
     html = '<aside class="povzetek" id="povzetek">';
-    html += '<p class="povzetek-st">' + c.da + " × Da · " + c.delno + " × Delno · " + c.ne + " × Ne</p>";
+    html += '<p class="povzetek-st">' + c.da + ' × <span class="odg da">Da</span> · ' + c.delno + ' × <span class="odg delno">Delno</span> · ' + c.ne + ' × <span class="odg ne">Ne</span></p>';
     html += '<div class="tags povzetek-prio">';
     (data.prioritet || []).forEach(function (name, i) {
       const tid = data.prioritetId[i];
