@@ -102,6 +102,12 @@ a.video{text-decoration:none;color:#fff}
 .ig-link{font-size:.9rem;margin:.4rem 0 0}
 @media (max-width:440px){.ig-embed{height:700px !important}}
 
+/* Vgrajen video pozdrav (lokalni mp4), ne zamenjuj z .video (star placeholder). */
+.video-wrap{margin:0 0 14px;text-align:center}
+.video-wrap video{width:100%;max-width:360px;height:auto;border-radius:12px;background:#111;display:block;margin:0 auto;border:1px solid #dde6df}
+.card .video-wrap{margin:8px 0 10px}
+.card .video-wrap video{max-width:260px}
+
 /* Rok, 9. 11.: vmesni naslov 5 prioritet */
 .vmesni{display:flex;align-items:center;gap:10px;margin:2rem 0 .4rem;font-size:1.45rem;color:#0b3d24;border-bottom:3px solid #f5c400;padding-bottom:6px}
 .vmesni .roka{width:1.7em;height:1.7em;font-size:1.1rem;background:#fff;border:2px solid #0b3d24}
