@@ -219,6 +219,7 @@ function pripraviListo(n, h2Selector) {
   vstaviTemeIds();
   vstaviPrimerjajPovezave();
   vstaviSidraVprasanj();
+  zagonListnegaPasu(n);
 }
 function escHtml(s) {
   return String(s == null ? "" : s)
@@ -229,6 +230,88 @@ function stranListe(n) {
   const map = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
   return map[n] || ("lista.html?n=" + n);
 }
+
+function stevilkaListeIzUrl() {
+  const pot = location.pathname || "";
+  const m = pot.match(/lista-(\d+)\.html$/);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    return n >= 1 && n <= 15 ? n : null;
+  }
+  if (/lista\.html$/.test(pot)) {
+    const q = parseInt(new URLSearchParams(location.search).get("n") || "", 10);
+    return q >= 1 && q <= 15 ? q : null;
+  }
+  return null;
+}
+
+function imeListeKratko(n) {
+  return (typeof LISTE_KRATKO !== "undefined" && LISTE_KRATKO[n]) || ("Lista " + n);
+}
+
+function meriListniPas() {
+  const pas = document.getElementById("lista-pas");
+  if (!pas) return;
+  document.documentElement.style.setProperty("--lista-pas-h", pas.offsetHeight + "px");
+}
+
+function vstaviListniCta(n) {
+  if (document.getElementById("lista-cta")) return;
+  const main = document.querySelector("main");
+  if (!main) return;
+  const wrap = document.createElement("p");
+  wrap.className = "lista-cta";
+  wrap.id = "lista-cta";
+  if (n >= 15) {
+    wrap.innerHTML = '<a class="btn-zacetek next" href="index.html#primerjava">Nazaj na primerjavo</a>';
+  } else {
+    const nasl = n + 1;
+    wrap.innerHTML = '<a class="btn-zacetek next" href="' + escHtml(stranListe(nasl)) + '">Naslednja lista → ' + escHtml(imeListe(nasl)) + "</a>";
+  }
+  main.appendChild(wrap);
+}
+
+function postaviCtaNaKonec() {
+  const wrap = document.getElementById("lista-cta");
+  const main = document.querySelector("main");
+  if (wrap && main && wrap.parentNode === main && main.lastElementChild !== wrap) {
+    main.appendChild(wrap);
+  }
+}
+
+function vstaviPlavajociPas(n) {
+  if (document.getElementById("lista-pas")) return;
+  const prev = n > 1 ? n - 1 : null;
+  const next = n < 15 ? n + 1 : null;
+  const levo = prev
+    ? '<a class="lista-pas-gumb" href="' + escHtml(stranListe(prev)) + '">← Prejšnja</a>'
+    : '<span class="lista-pas-gumb je-konec" aria-disabled="true">← Prejšnja</span>';
+  const desno = next
+    ? '<a class="lista-pas-gumb next" href="' + escHtml(stranListe(next)) + '">Naslednja →</a>'
+    : '<span class="lista-pas-gumb je-konec" aria-disabled="true">Naslednja →</span>';
+  const pas = document.createElement("nav");
+  pas.id = "lista-pas";
+  pas.className = "lista-pas";
+  pas.setAttribute("aria-label", "Premik med listami");
+  pas.innerHTML = levo + '<p class="lista-pas-sedaj" aria-current="page">' + escHtml(n + " / 15 · " + imeListeKratko(n)) + "</p>" + desno;
+  document.body.appendChild(pas);
+  document.body.classList.add("ima-lista-pas");
+  const vp = document.querySelector('meta[name="viewport"]');
+  if (vp && !/viewport-fit/.test(vp.content || "")) {
+    vp.setAttribute("content", (vp.content || "width=device-width, initial-scale=1") + ", viewport-fit=cover");
+  }
+  meriListniPas();
+  window.addEventListener("resize", meriListniPas);
+}
+
+function zagonListnegaPasu(n) {
+  n = n || stevilkaListeIzUrl();
+  if (n == null) return;
+  vstaviPlavajociPas(n);
+  vstaviListniCta(n);
+  setTimeout(postaviCtaNaKonec, 0);
+}
+
 
 function vstaviPovzetek(n) {
   if (document.getElementById("povzetek")) return;
@@ -608,3 +691,10 @@ function vstaviOblacke() {
   const sc = wrap.querySelector(".primerjava-scroll");
   if (sc) sc.addEventListener("scroll", premakni, { passive: true });
 }
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function () { zagonListnegaPasu(); });
+} else {
+  zagonListnegaPasu();
+}
+window.addEventListener("load", postaviCtaNaKonec);
