@@ -14,8 +14,7 @@
     { id: "prvi-korak", ime: "Prvi korak", opis: "Prebrana prva lista." },
     { id: "primerjalec", ime: "Primerjalec/ka", opis: "Prebrane tri liste." },
     { id: "tema", ime: "Pogledal/a sem svojo temo", opis: "Ogled primerjalne tabele tem." },
-    { id: "pol-poti", ime: "Pol poti", opis: "Prebranih osem list." },
-    { id: "vseh-15", ime: "Vseh 15", opis: "Prebranih vseh 15 list." }
+    { id: "pol-poti", ime: "Pol poti", opis: "Prebranih osem list." }
   ];
 
   var stanje = nalozi();
@@ -104,8 +103,7 @@
       "prvi-korak": st >= 1,
       "primerjalec": st >= 3,
       "tema": !!stanje.tema,
-      "pol-poti": st >= 8,
-      "vseh-15": st >= SKUPAJ
+      "pol-poti": st >= 8
     };
     ZNACKE.forEach(function (z) {
       if (pogoji[z.id] && stanje.znacke.indexOf(z.id) === -1) {
