@@ -300,14 +300,19 @@ function vstaviPrimerjavo() {
 
   function badge(n, q) {
     const data = ODGOVORI[n] || ODGOVORI[String(n)];
-    const prio = data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1;
+    const prioIdx = data && data.prioritetId ? data.prioritetId.indexOf(q.temaId) : -1;
+    const prio = prioIdx !== -1;
+    const prioN = prio ? prioIdx + 1 : 0;
     const odg = data && data.odgovori ? data.odgovori[q.id] : null;
     const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : (odg === "Ne" ? "ne" : ""));
-    const label = imeListe(n) + ", " + (odg || "Odgovora še ni") + (prio ? ", ena od 5 prioritet te liste" : "");
+    const label = imeListe(n) + ", " + (odg || "Odgovora še ni") + (prioN ? ", " + prioN + ". prioriteta te liste" : "");
     const pill = odg
       ? '<span class="odg ' + cls + '" aria-hidden="true">' + escHtml(odg) + "</span>"
       : '<span class="celica-prazna" aria-hidden="true">–</span>';
-    return { prio: !!prio, html: '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + pill + "</button>" };
+    const st = prioN
+      ? '<span class="prio-st" aria-hidden="true">' + prioN + "</span>"
+      : '<span class="prio-st prio-st-prazno" aria-hidden="true"></span>';
+    return { prio: !!prio, prioN: prioN, html: '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + st + pill + "</button>" };
   }
 
   let html = '<div class="primerjava-scroll" tabindex="0">';
@@ -331,7 +336,7 @@ function vstaviPrimerjavo() {
     html += '<th scope="row"><span title="' + escHtml(q.vprasanje) + '">' + escHtml(q.label) + "</span></th>";
     lists.forEach(function (n) {
       const c = badge(n, q);
-      html += '<td' + (c.prio ? ' class="ima-prio"' : "") + ">" + (c.prio ? '<span class="prio-oznaka" aria-hidden="true"></span>' : "") + c.html + "</td>";
+      html += '<td' + (c.prio ? ' class="ima-prio"' : "") + ">" + c.html + "</td>";
     });
     html += "</tr>";
   });
@@ -425,6 +430,15 @@ function vstaviOblacke() {
     let html = '<p class="oblacek-ime" id="oblacek-naslov">' + escHtml(imeListe(n)) + "</p>";
     if (odg) {
       html += '<p class="oblacek-odg">Odgovor: <span class="odg ' + cls + '">' + escHtml(odg) + "</span></p>";
+      let prioN = 0;
+      if (data && data.prioritetId && typeof VPRASANJA !== "undefined") {
+        const q = VPRASANJA.find(function (x) { return x.id === qid; });
+        if (q) {
+          const i = data.prioritetId.indexOf(q.temaId);
+          if (i !== -1) prioN = i + 1;
+        }
+      }
+      if (prioN) html += '<p class="oblacek-prio">Prioriteta liste: ' + prioN + ".</p>";
       const raz = razlagaListe(n, qid);
       if (raz) {
         const full = raz.replace(/\s+/g, " ").trim();

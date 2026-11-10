@@ -81,7 +81,7 @@ tr.skupina th {
 td {
   white-space: nowrap;
   letter-spacing: 0;
-  padding: 0.45pt 8pt 0.45pt 0.45pt;
+  padding: 0.45pt 1.2pt 0.45pt 0.45pt;
 }
 td .odg, .legenda .odg {
   display: inline-flex;
@@ -118,40 +118,25 @@ td .odg, .legenda .odg {
 .odg.ne { background: #fff; color: #111; border: 1.6pt solid #c62828; }
 .odg.prazna { color: #333; letter-spacing: 0; background: transparent; font-weight: 700; }
 td { position: relative; }
-td.ima-prio { background: none; }
-td.ima-prio::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3pt;
-  background: #0b3d24;
-  pointer-events: none;
-  z-index: 1;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-.prio-oznaka {
-  /* Placeholder marker (easy to swap): filled ◥ in the top-right corner. */
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 8px;
-  height: 8px;
-  border: none;
-  background: linear-gradient(to bottom left, #111 50%, #fff 50%);
-  pointer-events: none;
-  z-index: 2;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-.legenda .prio-oznaka {
-  position: static;
-  display: inline-block;
+.prio-st {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.35em 0 0;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 7pt;
+  font-weight: 800;
+  line-height: 1;
   vertical-align: middle;
-  width: 9px;
-  height: 9px;
-  margin-right: 0.25em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
+.prio-st-prazno { visibility: hidden; background: transparent; color: transparent; }
+.legenda .prio-st { margin: 0 0.08em; }
 footer.list {
   margin-top: 3pt;
   font-size: 8.5pt;
@@ -165,7 +150,7 @@ footer.list {
   .no-print { display: none !important; }
   body { max-width: none; padding: 0; margin: 0; box-shadow: none; zoom: 0.9; }
   thead th, th.vpr, tr.skupina th, thead th.vpr,
-  td.ima-prio, td.ima-prio::before, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, .prio-oznaka {
+  .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, .prio-st {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -181,7 +166,7 @@ footer.list {
   <h1>Kako so kandidatne liste za svet ČS Bežigrad odgovorile na vprašanja prebivalcev Savskega naselja</h1>
   <p class="podnaslov">Volilna enota 01 · primerjava zavez, kot so jih liste označile (to ni naša ocena)</p>
 </header>
-<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-oznaka" aria-hidden="true"></span> = ena od 5 prioritet liste</p>
+<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-st" aria-hidden="true">1</span>–<span class="prio-st" aria-hidden="true">5</span> = mesto teme med petimi prioritetami liste</p>
 <div id="tabela"></div>
 <footer class="list" id="noga"></footer>
 <script src="odgovori.js"></script>
@@ -198,14 +183,19 @@ function znakHtml(odg) {
 }
 function celica(n, q) {
   var data = typeof ODGOVORI !== "undefined" ? (ODGOVORI[n] || ODGOVORI[String(n)]) : null;
-  var prio = !!(data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1);
+  var prioIdx = (data && data.prioritetId) ? data.prioritetId.indexOf(q.temaId) : -1;
+  var prio = prioIdx !== -1;
+  var prioN = prio ? prioIdx + 1 : 0;
   var notranjost;
   if (!data || !data.odgovori || !data.odgovori[q.id]) {
     notranjost = '<span class="odg prazna">–</span>';
   } else {
     notranjost = znakHtml(data.odgovori[q.id]);
   }
-  return { html: notranjost, prio: prio };
+  var st = prioN
+    ? '<span class="prio-st" aria-hidden="true">' + prioN + "</span>"
+    : '<span class="prio-st prio-st-prazno" aria-hidden="true"></span>';
+  return { html: st + notranjost, prio: prio };
 }
 (function () {
   if (typeof VPRASANJA === "undefined") return;
@@ -224,7 +214,7 @@ function celica(n, q) {
     html += '<tr><th class="vpr" scope="row">' + esc(q.label) + "</th>";
     for (var n = 1; n <= 15; n++) {
       var c = celica(n, q);
-      html += '<td' + (c.prio ? ' class="ima-prio"' : '') + ">" + (c.prio ? '<span class="prio-oznaka" aria-hidden="true"></span>' : '') + c.html + "</td>";
+      html += '<td' + (c.prio ? ' class="ima-prio"' : '') + ">" + c.html + "</td>";
     }
     html += "</tr>";
   });
