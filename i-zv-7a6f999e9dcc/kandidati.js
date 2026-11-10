@@ -260,7 +260,7 @@ function vstaviPrimerjavo() {
   VPRASANJA.forEach(function (q) {
     if (q.tema !== lastTema) {
       lastTema = q.tema;
-      html += '<tr class="pv-skupina" id="pv-' + q.temaId + '"><th colspan="16">' + escHtml(q.tema) + "</th></tr>";
+      html += '<tr class="pv-skupina" id="pv-' + q.temaId + '"><th colspan="16"><span class="pv-naslov">' + escHtml(q.tema) + "</span></th></tr>";
     }
     html += "<tr>";
     html += '<th scope="row"><span title="' + escHtml(q.vprasanje) + '">' + escHtml(q.label) + "</span></th>";
