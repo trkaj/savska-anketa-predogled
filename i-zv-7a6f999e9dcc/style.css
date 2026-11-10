@@ -17,6 +17,8 @@ main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
 .card h2{color:var(--g);margin:0 0 .35rem;font-size:1.2rem}
 .nr{display:inline-block;min-width:1.7rem;color:var(--g);font-weight:800}
 .foto{width:100%;max-height:280px;object-fit:cover;border-radius:8px;background:var(--g);margin:8px 0 10px}
+/* Celotna fotografija/kolaž, brez obrezovanja (object-fit:cover na .foto bi odrezal robove). */
+.foto.cela{max-height:none;object-fit:contain;height:auto;background:transparent}
 .video{position:relative;background:#0b3d24;color:#fff;border-radius:8px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;margin:0 0 12px}
 .video .play{width:64px;height:64px;border-radius:50%;background:var(--y);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;margin-bottom:10px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
