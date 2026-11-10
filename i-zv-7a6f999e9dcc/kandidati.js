@@ -296,8 +296,17 @@ function vstaviZvokGumbe(n) {
     btn.dataset.src = "audio/" + n + "/" + rv.id + ".mp3";
     btn.innerHTML = '<span class="zvok-ikona" aria-hidden="true">🔊</span><span class="zvok-napis">Poslušaj</span>';
     btn.addEventListener("click", function () { predvajajZvok(btn); });
+    btn.dataset.zvokOk = "1";
     rv.appendChild(btn);
     rv.appendChild(telo);
+  });
+}
+
+function poveziZvokGumbe() {
+  document.querySelectorAll(".zvok-gumb[data-src]").forEach(function (btn) {
+    if (btn.dataset.zvokOk) return;
+    btn.dataset.zvokOk = "1";
+    btn.addEventListener("click", function () { predvajajZvok(btn); });
   });
 }
 
@@ -342,8 +351,11 @@ function vstaviListniCta(n) {
   const wrap = document.createElement("p");
   wrap.className = "lista-cta";
   wrap.id = "lista-cta";
-  if (n >= 15) {
+  if (n === "glas") {
     wrap.innerHTML = '<a class="btn-zacetek next" href="index.html#primerjava">Nazaj na primerjavo</a>';
+  } else if (n >= 15) {
+    wrap.innerHTML = '<a class="btn-zacetek next" href="glas.html">Sedaj je čas za tvoj glas</a>' +
+      '<a class="btn-zacetek btn-drugi next" href="index.html#primerjava">Nazaj na primerjavo</a>';
   } else {
     const nasl = n + 1;
     wrap.innerHTML = '<a class="btn-zacetek next" href="' + escHtml(stranListe(nasl)) + '">Naslednja lista → ' + escHtml(imeListe(nasl)) + "</a>";
@@ -361,19 +373,27 @@ function postaviCtaNaKonec() {
 
 function vstaviPlavajociPas(n) {
   if (document.getElementById("lista-pas")) return;
-  const prev = n > 1 ? n - 1 : null;
-  const next = n < 15 ? n + 1 : null;
-  const levo = prev
-    ? '<a class="lista-pas-gumb" href="' + escHtml(stranListe(prev)) + '">← Prejšnja</a>'
-    : '<span class="lista-pas-gumb je-konec" aria-disabled="true">← Prejšnja</span>';
-  const desno = next
-    ? '<a class="lista-pas-gumb next" href="' + escHtml(stranListe(next)) + '">Naslednja →</a>'
-    : '<span class="lista-pas-gumb je-konec" aria-disabled="true">Naslednja →</span>';
+  let levo, desno, sredina;
+  if (n === "glas") {
+    levo = '<a class="lista-pas-gumb" href="lista-15.html">← Prejšnja</a>';
+    desno = '<a class="lista-pas-gumb next" href="index.html#primerjava">Primerjava →</a>';
+    sredina = "Čas za tvoj glas";
+  } else {
+    const prev = n > 1 ? n - 1 : null;
+    const next = n < 15 ? n + 1 : "glas";
+    levo = prev
+      ? '<a class="lista-pas-gumb" href="' + escHtml(stranListe(prev)) + '">← Prejšnja</a>'
+      : '<span class="lista-pas-gumb je-konec" aria-disabled="true">← Prejšnja</span>';
+    desno = next === "glas"
+      ? '<a class="lista-pas-gumb next" href="glas.html">Čas za glas →</a>'
+      : '<a class="lista-pas-gumb next" href="' + escHtml(stranListe(next)) + '">Naslednja →</a>';
+    sredina = n + " / 15 · " + imeListeKratko(n);
+  }
   const pas = document.createElement("nav");
   pas.id = "lista-pas";
   pas.className = "lista-pas";
   pas.setAttribute("aria-label", "Premik med listami");
-  pas.innerHTML = levo + '<p class="lista-pas-sedaj" aria-current="page">' + escHtml(n + " / 15 · " + imeListeKratko(n)) + "</p>" + desno;
+  pas.innerHTML = levo + '<p class="lista-pas-sedaj" aria-current="page">' + escHtml(sredina) + "</p>" + desno;
   document.body.appendChild(pas);
   document.body.classList.add("ima-lista-pas");
   const vp = document.querySelector('meta[name="viewport"]');
@@ -385,11 +405,16 @@ function vstaviPlavajociPas(n) {
 }
 
 function zagonListnegaPasu(n) {
-  n = n || stevilkaListeIzUrl();
+  if (n == null || n === undefined) n = stevilkaListeIzUrl();
   if (n == null) return;
   vstaviPlavajociPas(n);
   vstaviListniCta(n);
   setTimeout(postaviCtaNaKonec, 0);
+}
+
+function pripraviGlasStran() {
+  poveziZvokGumbe();
+  zagonListnegaPasu("glas");
 }
 
 

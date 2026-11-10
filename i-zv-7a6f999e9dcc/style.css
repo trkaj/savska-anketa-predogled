@@ -321,9 +321,9 @@ body.igra-zaklenjeno{overflow:hidden}
 /* Zvočni gumb ob vprašanjih na strani liste. */
 .rv{display:flex;align-items:flex-start;gap:12px}
 .rv-telo{flex:1;min-width:0}
-.zvok-gumb{flex:0 0 auto;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:64px;min-width:64px;min-height:64px;margin-top:1px;padding:6px 4px 5px;border:2px solid #f5c400;border-radius:14px;background:#0b3d24;color:#fff;cursor:pointer;font:inherit;line-height:1.1;appearance:none;-webkit-appearance:none}
-.zvok-gumb .zvok-ikona{font-size:1.55rem;line-height:1}
-.zvok-gumb .zvok-napis{font-size:.7rem;font-weight:800;letter-spacing:0;color:#f5c400}
+.zvok-gumb{flex:0 0 auto;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-sizing:border-box;width:52px;min-width:44px;min-height:44px;height:52px;margin-top:1px;padding:4px 3px 3px;border:2px solid #f5c400;border-radius:12px;background:#0b3d24;color:#fff;cursor:pointer;font:inherit;line-height:1.1;appearance:none;-webkit-appearance:none}
+.zvok-gumb .zvok-ikona{font-size:1.24rem;line-height:1}
+.zvok-gumb .zvok-napis{font-size:.56rem;font-weight:800;letter-spacing:0;color:#f5c400}
 .zvok-gumb:hover{background:#0b5d2e}
 .zvok-gumb:focus{outline:3px solid #f5c400;outline-offset:2px}
 .zvok-gumb:focus:not(:focus-visible){outline:none}
@@ -333,12 +333,40 @@ body.igra-zaklenjeno{overflow:hidden}
 .zvok-gumb[disabled]{opacity:.55;cursor:wait}
 @media (min-width:769px){
   .rv{gap:16px}
-  .zvok-gumb{width:72px;min-width:72px;min-height:72px;border-radius:16px;padding:8px 4px 6px}
-  .zvok-gumb .zvok-ikona{font-size:1.85rem}
-  .zvok-gumb .zvok-napis{font-size:.78rem}
+  .zvok-gumb{width:58px;min-width:44px;min-height:44px;height:58px;border-radius:14px;padding:6px 3px 4px}
+  .zvok-gumb .zvok-ikona{font-size:1.48rem}
+  .zvok-gumb .zvok-napis{font-size:.62rem}
 }
 @media print{
   .zvok-gumb{display:none !important}
   .rv{display:block;gap:0}
   .rv-telo{display:contents}
+}
+
+/* Zadnja stran: čas za glas. */
+.lista-cta{display:flex;flex-direction:column;gap:10px}
+.btn-zacetek.btn-drugi{background:#fff;color:#0b3d24;border:2px solid #0b3d24}
+.btn-zacetek.btn-drugi:hover{background:#f7faf8;filter:none}
+.glas-glava{display:flex;align-items:flex-start;gap:12px;margin:0 0 1rem;scroll-margin-top:calc(var(--igra-pas-h,4.6rem) + 8px)}
+.glas-glava h1,.glas-glava h2{flex:1;min-width:0;margin:0;color:#0b3d24;font-size:1.7rem;line-height:1.25}
+.glas-uvod{margin:0 0 1.1rem;font-size:1.05rem}
+.glas-blok{background:#f7faf8;border:2px solid #0b3d24;border-left:6px solid #0b3d24;border-radius:12px;padding:14px 16px 12px;margin:0 0 1rem}
+.glas-blok h2{margin:0 0 .45rem;color:#0b3d24;font-size:1.15rem;border:0;padding:0}
+.glas-blok p,.glas-blok ul{margin:.35rem 0}
+.glas-blok ul{padding-left:1.2rem}
+.glas-blok a{font-weight:650}
+.glas-sklep{text-align:center;margin:1.6rem 0 1.2rem;padding:18px 16px;background:#fffdf3;border:3px solid #f5c400;border-radius:14px}
+.glas-sklep .vidimo{margin:0;font-size:1.3rem;font-weight:800;color:#0b3d24;line-height:1.35}
+.glas-sklep .srecno{margin:.4rem 0 0;font-size:1.45rem;font-weight:800;color:#0b3d24;line-height:1.3}
+.glas-viri{margin:1.4rem 0 0;padding:12px 16px;background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;font-size:.92rem}
+.glas-viri h2{margin:0 0 .4rem;color:#0b3d24;font-size:1.05rem}
+.glas-viri ul{margin:.2rem 0;padding-left:1.2rem}
+.glas-viri li{margin:.25rem 0}
+@media (min-width:769px){
+  .glas-glava{gap:16px}
+  .glas-glava h1,.glas-glava h2{font-size:2rem}
+  .glas-blok{padding:16px 18px 14px}
+}
+@media print{
+  .glas-glava{display:block}
 }
