@@ -328,6 +328,60 @@ const ODGOVORI = {
       "zakaj-3": "Da"
     }
   },
+  "4": {
+    "prioritet": [
+      "Parkiranje",
+      "Promet skozi naselje",
+      "Drevesa in zelenice",
+      "Dom skupnosti, prostor za druženje",
+      "Mala dela ČS in prijave poškodb"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "promet",
+      "zelenje",
+      "dom",
+      "maladela"
+    ],
+    "counts": {
+      "da": 31,
+      "delno": 0,
+      "ne": 0
+    },
+    "odgovori": {
+      "parkiranje-1": "Da",
+      "parkiranje-2": "Da",
+      "storitve-1": "Da",
+      "storitve-2": "Da",
+      "promet-1": "Da",
+      "promet-2": "Da",
+      "promet-3": "Da",
+      "varnost-1": "Da",
+      "varnost-2": "Da",
+      "klopi-1": "Da",
+      "klopi-2": "Da",
+      "cistoca-1": "Da",
+      "cistoca-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Da",
+      "dom-1": "Da",
+      "dom-2": "Da",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Da",
+      "mladi-2": "Da",
+      "maladela-1": "Da",
+      "maladela-2": "Da",
+      "maladela-3": "Da",
+      "obvescanje-1": "Da",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Da",
+      "obvescanje-6": "Da",
+      "zakaj-3": "Da"
+    }
+  },
   "5": {
     "prioritet": [
       "Parkiranje",
@@ -728,6 +782,24 @@ const RAZLAGE = {
     "zakaj-1": "Ker delujemo pod sloganom \"NAZAJ K ČLOVEKU!!\nKer imamo VREDNOTE, spoštujemo DEDIŠČINO, ker nam je ŽIVLJENJE v MIRU, v DRUŽBI, čistem OKOLJU, ob čisti VODI in ZRAKU - SVETO! Ker vabimo celo sosesko v SKUPNO DRUŽINO, kjer bomo poskrbeli, da samote, samosti, velike praznine, občutka zapuščenosti,..., ne bo več!",
     "zakaj-2": "Moja zaveza bo skrb za človeka; moje delovanje bo potekalo pod sloganom: \"Nazaj k člo veku\"! V mislih imam takorekoč \"software\" življenja v Ljubljani, da bo življenje za kanček bolj znosno (vsaj za večino), bolj prijazno, veselo in ne tako prazno, samotno, žalostno, že skoraj nevzdržno.\nZavzela se bom za posameznika, družino, mlade pare in zakonce, mamice, ženske samohranilke in moške samohranilce, otroke, mladostnike in ljudi v zlatih letih. Vzpostavila bom skupino \"živih in radostnih ljudi\" ki bodo živeli sožitje kot je včasih bilo, naredila bom vse, da bo zaživela skupina, ki si bo pomagala (urejanje nakupov za tiste, ki to ne morejo sami, čuvanje živali, ko bodo njihovi lastniki odsotni, skrb za osebe, ki jih v času odsotnosti sorodnikov (invalidi ali nepokretni starejši) ni moč pustiti samih, zalivanje cvetja,...\nOrganizirala bom skupino \"Champagne Station\", za  vse ljubiteljice/ljubitelje penin, za druženje, promocije, izlete...\nDogodke pod naslovom: \"ZLATI PROGRAM ZA ZLATA LETA\"!; za osebe, ki so čez prag aktivnega dela; druženje, izleti, ogled dogodkov,...\nNa kratko: zpostavila bom DRAGULJARNO UŽITKOV in ZATOČIŠČE ZA ČLOVEKA - SANATORIJ ZA DUŠO (poleg vsega že naštetega, spoved za človeške probleme in podporo odvisnikom, ki želijo izstopiti iz pekla drog, alkohola, iger na srečo,..., so že na tej poti in potrebujejo podporo, pohvalo, informacije...\n\nZavzemala se bom, da ne bo samote, praznine, dolgega časa,...; za vse, ki bodo to želeli!\nIn sicer v sklopu obstoječih prostorskih zmogljivosti, kasneje v sodelovanju z različnimi ponudniki, donatorji in sponzorji.",
     "zakaj-3": "Sodelovala tam, kjer bo to potrebno. In kjer bom dobrodošla."
+  },
+  "4": {
+    "obvescanje-1": "Že na začetku mandata bomo zahtevali vzpostavitev možnosti korespondenčnega vklopa v zvočni in video prenos vsake seje za vse občane z odprtokodnimi orodji, kot je npr. orodje Jitsi, ki ga Pirati uporabljamo za svoje notranje delovanje.",
+    "obvescanje-2": "To je osnova transparentnosti delovanja vsakega demokratično izvoljenega organa zato bomo zahtevali, da se boljši sistem vodenja in objavljanje zapisnik vpelje takoj.",
+    "obvescanje-3": "Da, a pri tem bomo pazili na izbiro kanalov v skladu s smernicami odprtosti in dostopnosti.",
+    "obvescanje-4": "Po koncu redne razprave o točkah dnevnega reda bo na koncu seje vedno točka za pobude in vprašanja občanov. Občani bodo imeli možnost poslati svoja vprašanja vnaprej, podobno kot imajo danes mestni svetniki možnost pošiljati pobude in vprašanja županu, tako bodo občani imeli enake možnosti za vprašanja in pobude četrtnim svetnikom.",
+    "obvescanje-5": "Občani bodo imeli možnost poslati svoja vprašanja vnaprej, podobno kot imajo danes mestni svetniki možnost pošiljati pobude in vprašanja županu, tako bodo občani imeli enake možnosti za vprašanja in pobude četrtnim svetnikom.",
+    "obvescanje-6": "Sredstva, ki so namenjena četrtnim skupnostim bi za začetek morali povečati za vsaj faktor 5. Tako bi bila na voljo sredstva za dodatne zaposlitve kadra, ki bi skrbel za dobro delovanje četrtne skupnosti in koordinacijo s prebivalci in društvi.",
+    "varnost-2": "Da a ti obhodi bodo izvajani s strani prostovoljcev in nevladnih organizacij, ki so specializirane za delo z brezdomci in odvisniki.",
+    "klopi-2": "Proaktivna pomoč občanom pri navigiranju skozi birokracijo je eno izmed vodil javnega delovanja Piratov. Tako kot smo bili na voljo občanom za birokratske postopke povezane z referendumskimi pobudami in izvedbo zbora občanov, tako bomo na voljo tudi za druge postopke.",
+    "zelenje-1": "Da, a le pod pogojem da se sajenje novih dreves izvede strokovno, da imajo nova mlada drevesa v svoji okolici dovolj zelene površine, da ne gre le za majhno luknjo skozi betonsko ali jekleno konstrukcijo, ki drevo v poletnem času povsem izsuži.",
+    "dom-1": "Predlagali bomo bolj pravično razdelitev časovnih blokov uporabe in tudi možnost brezplačnega najema za pomembne družbene aktivnosti.",
+    "dom-2": "Zavzeli se bomo za popolno prenovo vseh prostorov četrtnih skupnosti v MOL z izjemo ČS Golovec, ki je edina dobila prenovljene prostore po dolgem času, medtem ko velika večina drugih počasi razpada.",
+    "zrak-1": "Zahtevali bomo tudi vzpostavitev javnega portala z dnevnim osveževanjem podatkov.",
+    "zrak-2": "Glede na izjemno visoke investicije v novo železniško postajo/nakupovalno središče bi bilo primerno, da se nekaj denarja nameni tudi za prebivalce, ki ob železnici živijo in trpijo nekatere negativne posledice njene prisotnosti.",
+    "zakaj-1": "Pirati smo se v zadnjih štirih letih v sklopu našega dela v Mestnem svetu MOL vedno zavzemali za interese prebivalcev, pred interesi investitorjev in povezanih podjetij s katerimi posluje občina. Dovolite nam, da svojo vizijo opravljamo še naprej v še bolj številni zasedbi in tudi na nivoju četrtnih skupnosti.",
+    "zakaj-2": "Zavzeli se bomo za večjo demokratičnost mesta in vključevanje prebivalcev četrtnih skupnosti v javno sfero z rednimi posvetovanji in s prenovo centrov četrtnih skupnosti, da bodo ti bolj primerni za izvajanje posvetov in participacije.",
+    "zakaj-3": "Za boljš pogoje za Savsko naselje se bomo trudili na nivoju Mestnega sveta MOL."
   },
   "5": {
     "obvescanje-1": "Na drugi seji bom predlagal, da so na voljo magnetogrami in prepisi na sejah, če je to zakonsko dopustno. Eanko velja za vse predloge, ki so vezane na transparentnost sej",
