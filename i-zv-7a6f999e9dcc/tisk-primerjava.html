@@ -118,7 +118,18 @@ td .odg, .legenda .odg {
 .odg.ne { background: #fff; color: #111; border: 1.6pt solid #c62828; }
 .odg.prazna { color: #333; letter-spacing: 0; background: transparent; font-weight: 700; }
 td { position: relative; }
-td.ima-prio { border-left: 3pt solid #0b3d24; background: none; }
+td.ima-prio { background: none; }
+td.ima-prio::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3pt;
+  background: #0b3d24;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 .prio-oznaka {
   /* Placeholder marker (easy to swap): filled ◥ in the top-right corner. */
   position: absolute;
@@ -154,7 +165,7 @@ footer.list {
   .no-print { display: none !important; }
   body { max-width: none; padding: 0; margin: 0; box-shadow: none; zoom: 0.9; }
   thead th, th.vpr, tr.skupina th, thead th.vpr,
-  td.ima-prio, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, MISSING
+  td.ima-prio, td.ima-prio::before, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, .prio-oznaka {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

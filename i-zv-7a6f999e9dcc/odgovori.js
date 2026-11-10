@@ -436,6 +436,47 @@ const ODGOVORI = {
       "zakaj-3": "Da"
     }
   },
+  "6": {
+    "prioritet": [
+      "Parkiranje",
+      "Promet skozi naselje",
+      "Igle in droge, občutek varnosti",
+      "Več klopi",
+      "Čistoča in pasji iztrebki"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "promet",
+      "varnost",
+      "klopi",
+      "cistoca"
+    ],
+    "counts": {
+      "da": 17,
+      "delno": 1,
+      "ne": 0
+    },
+    "odgovori": {
+      "parkiranje-1": "Da",
+      "parkiranje-2": "Da",
+      "promet-1": "Da",
+      "promet-2": "Da",
+      "promet-3": "Da",
+      "varnost-1": "Da",
+      "varnost-2": "Da",
+      "klopi-1": "Da",
+      "klopi-2": "Da",
+      "cistoca-1": "Da",
+      "cistoca-2": "Da",
+      "obvescanje-1": "Da",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Da",
+      "obvescanje-6": "Delno",
+      "zakaj-3": "Da"
+    }
+  },
   "7": {
     "prioritet": [
       "Parkiranje",
@@ -862,6 +903,28 @@ const RAZLAGE = {
     "cistoca-1": "Absolutno",
     "zakaj-1": "Mislim, da si smo skozi dosedanje delo pokazali, da se nam lahko zaupa.",
     "zakaj-2": "Od mene lahko pričakujete aktivnost in trud tak kot sem že 8 let do zdaj. Sam bom na voljo in dostopen za vse prebivalce Savskega na Rezultati pa niso odvisni samo od mene. Glede na izkušnje, ki sem si jih nabral, ugotavljam, da so obenem zelo važni dejavniki odzivnost Mestne občine Ljubljana in aktivnost prebivalstva (peticije, pobude) ter pripravljenost na odkrit in iskren dialog."
+  },
+  "6": {
+    "obvescanje-1": "Zaradi praktičnih razlogov: tehničnih in finančnih omejitev se ne bi zavzeli za video snemanje sej ali prenosa v živo. Vsekakor pa smo za transparentnost in se strinjamo, da mora biti vsebina sej javna in da mora biti jasno kdo se je za kaj zavzemal in za kaj glasoval. Zato nam je bližja rešitev zvočno snemanje in prepis. Zato bi mi takšno odločitev podprli, opozarjamo pa, da bi se najverjetneje morali s snemanjem strinjati čisto vsi svetniki. V kolikor bi se, to lahko z internim sklepom odločimo in realiziramo že v prvih mesecih novega mandata, in to bi postala nova transparentna praksa.",
+    "obvescanje-2": "To je dobra ideja, ki jo podpiramo. Prebivalci si zaslužijo na dostopen način spremljati delo sveta četrtne skupnosti. Izvajali jo bomo od začetka novega mandata dalje.",
+    "obvescanje-3": "Vsekakor lahko zagotovimo, da bodo naši svetniki z ljudmi odprto komunicirali in jih poslušali ter sproti obveščali o dogajanju na sejah. Pomembno se nam zdi tudi komuniciranje prek več kanalov, torej prek interneta in npr. tiskanih obvestil, predvsem za tiste, ki do interneta nimajo dostopa oz. niso vešči uporabniki tovrstnih kanalov.",
+    "obvescanje-4": "To ocenjujemo kot minimalni standard in se s predlaganim strinjamo. Prav tako je smiselno imeti čas na seji za vprašanja občanov, ki si zaslužijo odgovore. Gradivo bi bilo javno dostopno preko spleta; ob tem pa smo odprti za predloge, kako ga približati ljudem, ki niso vešči uporabe interneta.",
+    "obvescanje-5": "Zavzemamo se zato, da bo na pobude odgovorjeno na naslednji seji ČS. V luči transparentnosti se strinjamo tudi z javno objavljenim seznamom pobud in njihovim stanjem. Glede sprememb OPPN veliko reši že zaveza o javnih poročil iz sej. Strinjamo se, da bi o spremembah OPPN moral svet ČS prebivalce obvestiti in zagovarjati njihove interese.",
+    "obvescanje-6": "Da, takšno pobudo lahko naslovimo na MOL, a opozarjamo, da je zaposlovanje in financiranje kadrov v rokah MOL, zato ČS Bežigrad ne more sama neposredno zaposliti nove osebe. Ocenjujemo pa, da bi bilo v primeru spremembe mestne oblasti, to lažje izvedljivo.",
+    "parkiranje-1": "Vsekakor, pomembno je poznati obstoječe stanje, da se lahko lotimo sistematičnega reševanja problema. To vprašanje lahko svet ČS uradno zastavi županu, občina pa bo svetu ČS posredovala podatke. Vsi taki popisi morajo biti tudi javno objavljeni.",
+    "parkiranje-2": "Drži, strinjamo se, da nov parkirni režim ne sme kaznovati ljudi, ki ob svojem bloku parkirajo že desetletja. Zavzeli se bomo za brezplačne dovolilnice za stanovalce, ki bodo v svojih soseskah parkirali prednostno. Vsak nov režim pa se bo vzpostavljal samo v dogovoru s prebivalci.",
+    "promet-1": "Da, zavezujemo se in podpiramo strokovno prometno presojo.",
+    "promet-2": "Varnost v prometu nam je absolutna prioriteta. Zagotoviti moramo varnost najranljivejših, torej pešcev in kolesarjev, predvsem pa otrok in starostnikov. Varni prehodi bi morali biti do začetka novega šolskega leta že umeščeni in zarisani, pobuda se lahko da veliko hitreje, že v prvih mesecih.",
+    "promet-3": "Seveda da bomo, ključen cilj naše kampanje je, da mestna oblast bolje posluša prebivalce, odločitve pa se sprejemajo na strokovnih podlagah.",
+    "varnost-1": "Da, se zavezujemo. Tudi v lastni anketi, ki smo jo opravili s prebivalci Ljubljane, smo opazili, da se nas veliko ne počuti več dovolj varne.",
+    "varnost-2": "Se zavezujemo in prepoznavamo resno problematiko, ki jo je potrebno urediti v prvih 3 mesecih.",
+    "klopi-1": "Se zavežemo in menimo, da je to odlična priložnost za participativni proračun mestnih četrti, ki ga predlagamo. Ta bo sicer namenjen tudi dolgoročnim investicijam, ne samo malim delom. A glede na to, da je vaša anketa pokazala, da kar 37 % prebivalcev naselja ocenjuje, da je premalo klopi problem naselja, potem je treba to nasloviti prej kot je rok za mala dela.",
+    "klopi-2": "V kolikor bodo upravniki želeli pomagati pri dodajanju več klopi, je to več kot dobrodošlo in jim bomo sigurno pristopili naproti in jim pomagali.",
+    "cistoca-1": "Stranka Prerod je zelena stranka, ki se zavzema za čisto Ljubljano in podpira vsakršno pobudo v smeri organiziranja čistilnih akcij. Naši člani in svetniki bomo pri tem definitivno sodelovali.",
+    "cistoca-2": "Da, se strinjamo, potrebno je zagotoviti več košev za pasje iztrebke in s tem lastnike motivirati, da za svojimi ljubljenčki dosledno pobirajo iztrebke. Večje število košev se lahko doseže že v prvem letu mandata.",
+    "zakaj-1": "Naši glavni cilji in zaveze so poslušanje in upoštevanje ljudi ter večja transparentnost. V kolikor si v vašem svetu ČS in mestnem svetu želite predstavnike, ki bodo zagovarjali te vrednote, v nedeljo oddajte glas za listo Prerod - Stranka Vladimirja Prebiliča.",
+    "zakaj-2": "Prva prioriteta je definitivno ureditev parkiranja. V svetu ČS bomo predlagali in zagovarjali brezplačne dovolilnice za stanovalce, ki bodo v svojih soseskah parkirali prednostno in kot dolgoročno rešitev garažne hiše ob blokih, na neizkoriščenih površinah, z nižjo ceno za stanovalce, v javno-zasebnem partnerstvu.",
+    "zakaj-3": "Da, vsekakor. Naša zavzetost za Savsko naselje ni vezana na izvolitev. Še naprej bomo zbirali pobude sosedov, jih posredovali svetu četrtne skupnosti in mestni občini ter vztrajali pri odgovorih in rešitvah. Pred začetkom kampanje smo med občani izvedli anketo o tem, kakšno prihodnost si želijo za Ljubljano. Tudi s tem pristopom bomo nadaljevali tudi v prihodnje, saj želimo resnično slišati ljudi. Sodelovali bomo pri skupnostnih akcijah in povezovali ljudi, ki želijo prispevati k bolj urejenemu, varnemu in prijetnemu naselju. Funkcija lahko pri tem pomaga, veliko pa lahko naredimo tudi kot aktivni občani."
   },
   "7": {
     "zakaj-1": "Ker smo povsem nedolžni glede škode, ki jo je mestna večina (Županova lista in Svoboda) povzročila prometu, zraku, parkirnim prostorom in vodonosniku Kleče. Hkrati smo edina resna alternativa, ki lahko poenoti opozicijo in s podporo dovolj volilcev pride do večine za prevzem mestne oblasti."
