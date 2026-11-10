@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0b3d24">
 <link rel="icon" href="favicon.png">
 <style>
-@page { size: A4 landscape; margin: 6mm; }
+@page { size: A4 landscape; margin: 4mm; }
 * { box-sizing: border-box; }
 html { background: #eceee9; }
 body {
@@ -26,39 +26,43 @@ body {
   padding: 7px 12px; cursor: pointer; text-decoration: none; display: inline-block; margin-right: 8px; font-size: 15px;
 }
 h1 {
-  margin: 0 0 2pt;
-  font-size: 13pt;
-  line-height: 1.18;
+  margin: 0 0 1pt;
+  font-size: 11pt;
+  line-height: 1.15;
   color: #0b3d24;
 }
-.podnaslov { margin: 0 0 3pt; color: #0b3d24; font-size: 11pt; }
-.legenda { margin: 0 0 4pt; font-size: 11pt; }
-.legenda .rok { width: 10pt; height: 10pt; vertical-align: -1.5pt; }
+.podnaslov { margin: 0 0 2pt; color: #0b3d24; font-size: 9.5pt; }
+/* Odgovori so berljivi v barvi in črno-belo: pomen nosijo simboli ● ◐ ○,
+   polnila pa se po svetlosti jasno ločijo (Da temno, Delno svetlo jantarno, Ne belo).
+   Prioriteta: sivo ozadje + debela leva črta (in rahel šraf, da se v sivinah
+   ne zlije z jantarnim Delno). */
+.legenda { margin: 0 0 2pt; font-size: 8.5pt; }
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: fixed;
 }
 th, td {
-  border: 0.45pt solid #222;
-  padding: 1.4pt 1pt;
+  border: 0.4pt solid #222;
+  padding: 0.45pt 0.5pt;
   vertical-align: middle;
   text-align: center;
-  font-size: 11pt;
+  font-size: 7.6pt;
 }
 thead th {
   background: #0b3d24;
   color: #fff;
   font-weight: 700;
-  line-height: 1.15;
-  padding: 3pt 1pt 3.5pt;
+  line-height: 1.1;
+  padding: 2pt 1pt 2.2pt;
   hyphens: none;
   overflow-wrap: normal;
   word-break: normal;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
-thead th b { display: block; font-size: 12pt; letter-spacing: 0; }
-th.vpr { width: 19%; text-align: left; background: #0b3d24; color: #fff; }
+thead th b { display: block; font-size: 10pt; letter-spacing: 0; }
+th.vpr { width: 18%; text-align: left; background: #0b3d24; color: #fff; }
 tbody th.vpr {
   background: #f4f7f5;
   color: #0b3d24;
@@ -72,53 +76,77 @@ tr.skupina th {
   color: #111;
   text-align: left;
   font-weight: 800;
-  padding: 1.2pt 3.5pt;
+  padding: 0.45pt 3pt;
 }
-td { position: relative; white-space: nowrap; letter-spacing: -0.03em; padding: 1.6pt 1pt 1.6pt 2pt; }
-td.ima-prio { padding-left: 9.5pt; }
-td .odg { display: inline-block; }
-td .prazna { color: #333; font-weight: 700; letter-spacing: 0; }
+td {
+  white-space: nowrap;
+  letter-spacing: 0;
+  padding: 0.45pt 0.45pt;
+}
+td .odg, .legenda .odg {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12em;
+  white-space: nowrap;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.15pt 1.4pt;
+  border-radius: 2pt;
+  vertical-align: middle;
+  max-width: 100%;
+}
 .znak {
   display: inline-block;
-  width: 0.72em;
-  height: 0.72em;
+  width: 0.7em;
+  height: 0.7em;
   border-radius: 50%;
-  border: 1.15pt solid #111;
-  vertical-align: -0.08em;
-  background: #fff;
+  border: 1.05pt solid currentColor;
+  flex: 0 0 auto;
+  box-sizing: border-box;
 }
-.znak.da { background: #111; }
-.znak.delno {
+.odg.da .znak { background: #fff; border-color: #fff; color: #fff; }
+.odg.delno .znak {
+  color: #111;
+  border-color: #111;
   background: linear-gradient(90deg, #111 50%, #fff 50%);
 }
-.rok {
-  display: inline-block;
-  color: #111;
-  font-family: "DejaVu Sans", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
-  font-weight: 700;
-  line-height: 1;
+.odg.ne .znak { background: #fff; border-color: #111; color: #111; }
+.odg.da { background: #2e7d32; color: #fff; }
+.odg.delno { background: #f5a400; color: #1a1a1a; }
+.odg.ne { background: #fff; color: #111; border: 1.35pt solid #111; }
+.odg.prazna { color: #333; letter-spacing: 0; background: transparent; font-weight: 700; }
+td.ima-prio {
+  background-color: #e6e6e6;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 2.2pt, rgba(0,0,0,.14) 2.2pt, rgba(0,0,0,.14) 3.1pt);
+  border-left: 3pt solid #0b3d24;
 }
-.legenda .rok { font-size: 12pt; vertical-align: -1pt; }
-td .rok {
-  position: absolute;
-  left: 0.6pt;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10pt;
+.prio-vzorec {
+  display: inline-block;
+  width: 1.45em;
+  height: 0.95em;
+  vertical-align: -0.15em;
+  margin-right: 0.25em;
+  background-color: #e6e6e6;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 2pt, rgba(0,0,0,.14) 2pt, rgba(0,0,0,.14) 2.8pt);
+  border: 0.45pt solid #222;
+  border-left: 3pt solid #0b3d24;
 }
 footer.list {
-  margin-top: 4pt;
-  font-size: 11pt;
-  line-height: 1.25;
+  margin-top: 3pt;
+  font-size: 8.5pt;
+  line-height: 1.2;
   color: #111;
   border-top: 2pt solid #0b3d24;
-  padding-top: 3pt;
+  padding-top: 2pt;
 }
 @media print {
   html { background: #fff; }
   .no-print { display: none !important; }
-  body { max-width: none; padding: 0; margin: 0; box-shadow: none; }
-  thead th, th.vpr, tr.skupina th, thead th.vpr, .znak, .znak.da, .znak.delno {
+  body { max-width: none; padding: 0; margin: 0; box-shadow: none; zoom: 0.9; }
+  thead th, th.vpr, tr.skupina th, thead th.vpr,
+  td.ima-prio, .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .prio-vzorec {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -134,30 +162,29 @@ footer.list {
   <h1>Kako so kandidatne liste za svet ČS Bežigrad odgovorile na vprašanja prebivalcev Savskega naselja</h1>
   <p class="podnaslov">Volilna enota 01 · primerjava zavez, kot so jih liste označile (to ni naša ocena)</p>
 </header>
-<p class="legenda"><span class="znak da" aria-hidden="true"></span> Da &nbsp;·&nbsp; <span class="znak delno" aria-hidden="true"></span> Delno &nbsp;·&nbsp; Ne &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="rok" aria-hidden="true">☞</span> ena od 5 prioritet liste</p>
+<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-vzorec" aria-hidden="true"></span>siva celica z debelo črto = ena od 5 prioritet liste</p>
 <div id="tabela"></div>
 <footer class="list" id="noga"></footer>
 <script src="odgovori.js"></script>
 <script>
-var ROK_SVG = '<span class="rok" aria-hidden="true">☞</span>';
 function esc(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 function znakHtml(odg) {
-  if (odg === "Da") return '<span class="znak da" aria-hidden="true"></span> Da';
-  if (odg === "Delno") return '<span class="znak delno" aria-hidden="true"></span> Delno';
-  return esc(odg);
+  if (odg === "Da") return '<span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span>';
+  if (odg === "Delno") return '<span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span>';
+  if (odg === "Ne") return '<span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span>';
+  return '<span class="odg prazna">–</span>';
 }
 function celica(n, q) {
-  var data = typeof ODGOVORI !== "undefined" ? ODGOVORI[n] : null;
+  var data = typeof ODGOVORI !== "undefined" ? (ODGOVORI[n] || ODGOVORI[String(n)]) : null;
   var prio = !!(data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1);
-  var mark = prio ? ROK_SVG : "";
   var notranjost;
-  if (!data || !data.odgovori[q.id]) {
-    notranjost = mark + '<span class="odg prazna">–</span>';
+  if (!data || !data.odgovori || !data.odgovori[q.id]) {
+    notranjost = '<span class="odg prazna">–</span>';
   } else {
-    notranjost = mark + '<span class="odg">' + znakHtml(data.odgovori[q.id]) + "</span>";
+    notranjost = znakHtml(data.odgovori[q.id]);
   }
   return { html: notranjost, prio: prio };
 }

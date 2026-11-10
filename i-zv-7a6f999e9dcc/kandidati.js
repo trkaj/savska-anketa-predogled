@@ -301,14 +301,13 @@ function vstaviPrimerjavo() {
   function badge(n, q) {
     const data = ODGOVORI[n] || ODGOVORI[String(n)];
     const prio = data && data.prioritetId && data.prioritetId.indexOf(q.temaId) !== -1;
-    const hand = prio ? '<span class="roka prio-roka" title="Ena od 5 prioritet te liste" aria-label="prioriteta">🖐️</span>' : "";
     const odg = data && data.odgovori ? data.odgovori[q.id] : null;
     const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : (odg === "Ne" ? "ne" : ""));
-    const label = imeListe(n) + ", " + (odg || "Odgovora še ni");
+    const label = imeListe(n) + ", " + (odg || "Odgovora še ni") + (prio ? ", ena od 5 prioritet te liste" : "");
     const pill = odg
       ? '<span class="odg ' + cls + '" aria-hidden="true">' + escHtml(odg) + "</span>"
       : '<span class="celica-prazna" aria-hidden="true">–</span>';
-    return '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + hand + pill + "</button>";
+    return { prio: !!prio, html: '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + pill + "</button>" };
   }
 
   let html = '<div class="primerjava-scroll" tabindex="0">';
@@ -331,7 +330,8 @@ function vstaviPrimerjavo() {
     html += "<tr>";
     html += '<th scope="row"><span title="' + escHtml(q.vprasanje) + '">' + escHtml(q.label) + "</span></th>";
     lists.forEach(function (n) {
-      html += "<td>" + badge(n, q) + "</td>";
+      const c = badge(n, q);
+      html += '<td' + (c.prio ? ' class="ima-prio"' : "") + ">" + c.html + "</td>";
     });
     html += "</tr>";
   });
