@@ -75,6 +75,12 @@ const LISTE_IME = {
   15: "Lista Zorana Jankovića"
 };
 
+function napisBrezOdgovora(n, sPiko) {
+  const niso = (Number(n) === 3 || Number(n) === 9 || Number(n) === 14);
+  const tekst = niso ? "Niso odgovorili" : "Odgovora še ni";
+  return sPiko ? tekst + "." : tekst;
+}
+
 function imeListe(n) {
   const ime = (typeof LISTE_IME !== "undefined" && LISTE_IME[n])
     || (typeof LISTE_KRATKO !== "undefined" && LISTE_KRATKO[n])
@@ -424,7 +430,7 @@ function vstaviPovzetek(n) {
   const data = (typeof ODGOVORI !== "undefined") ? ODGOVORI[n] : null;
   let html;
   if (!data) {
-    html = '<aside class="povzetek" id="povzetek"><p>Odgovora še ni.</p></aside>';
+    html = '<aside class="povzetek" id="povzetek"><p>' + napisBrezOdgovora(n, true) + '</p></aside>';
   } else {
     const c = data.counts;
     html = '<aside class="povzetek" id="povzetek">';
@@ -494,7 +500,7 @@ function vstaviPrimerjavo() {
     const prioN = prio ? prioIdx + 1 : 0;
     const odg = data && data.odgovori ? data.odgovori[q.id] : null;
     const cls = odg === "Da" ? "da" : (odg === "Delno" ? "delno" : (odg === "Ne" ? "ne" : ""));
-    const label = imeListe(n) + ", " + (odg || "Odgovora še ni") + (prioN ? ", " + prioN + ". prioriteta te liste" : "");
+    const label = imeListe(n) + ", " + (odg || napisBrezOdgovora(n, false)) + (prioN ? ", " + prioN + ". prioriteta te liste" : "");
     const pill = odg
       ? '<span class="odg ' + cls + '" aria-hidden="true">' + escHtml(odg) + "</span>"
       : '<span class="celica-prazna" aria-hidden="true">–</span>';
@@ -635,7 +641,7 @@ function vstaviOblacke() {
         html += '<div class="oblacek-razl"><span class="razl-lab">Razlaga zaveze</span>' + escHtml(short) + "</div>";
       }
     } else {
-      html += '<p class="oblacek-odg">Odgovora še ni</p>';
+      html += '<p class="oblacek-odg">' + napisBrezOdgovora(n, false) + '</p>';
     }
     html += '<a class="oblacek-vec" href="' + href + '">Celoten odgovor liste →</a>';
     return html;
