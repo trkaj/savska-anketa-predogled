@@ -364,3 +364,6 @@ body.igra-ima-pas .primerjava thead th{top:var(--igra-pas-h)}
 @media (max-width:420px){.tisk-mreza{grid-template-columns:repeat(2,1fr)}}
 .tisk-tabela{margin-top:1rem;font-size:.92rem}
 .tisk-tabela a{color:#0b3d24;font-weight:700}
+.opomba-vrstni-red{color:#6b6b6b;font-size:.82rem;line-height:1.4;margin:-.4rem 0 1rem}
+#primerjava-wrap + .opomba-vrstni-red{margin:.5rem 0 .4rem}
+.opomba-vrstni-red + .btn-zacetek{margin-top:.6rem}
