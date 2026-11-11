@@ -77,7 +77,8 @@ const LISTE_IME = {
 
 function napisBrezOdgovora(n, sPiko) {
   const niso = (Number(n) === 3 || Number(n) === 9 || Number(n) === 14);
-  const tekst = niso ? "Niso odgovorili" : "Odgovora še ni";
+  if (niso) return "Brez odgovora";
+  const tekst = "Odgovora še ni";
   return sPiko ? tekst + "." : tekst;
 }
 
