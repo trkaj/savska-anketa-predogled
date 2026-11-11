@@ -290,6 +290,8 @@ function predvajajZvok(btn) {
 
 function vstaviZvokGumbe(n) {
   if (!n) return;
+  /* Lista 1 je odgovorila 11. 11.; zvočni zapis njenih odgovorov še ni pripravljen. */
+  if (Number(n) === 1) return;
   document.querySelectorAll("main div.rv[id]").forEach(function (rv) {
     if (rv.querySelector(".zvok-gumb")) return;
     var telo = document.createElement("div");
