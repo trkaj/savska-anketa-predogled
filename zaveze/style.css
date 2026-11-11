@@ -350,3 +350,9 @@ body.igra-ima-pas .primerjava thead th{top:var(--igra-pas-h)}
 @media print{
   .glas-glava{display:block}
 }
+
+.tisk-blok{background:#f4f7f5;border:1px solid #d6e2da;border-radius:12px;padding:12px 14px;margin:0 0 1rem}
+.tisk-gumbi{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 .5rem}
+.btn-tisk{display:inline-block;padding:9px 16px;border-radius:8px;background:#f5c400;color:#0b3d24;font-weight:800;text-decoration:none}
+.btn-tisk:hover{filter:brightness(0.97)}
+.tisk-navodila{margin:0;color:#0b3d24;font-size:.95rem;line-height:1.45}

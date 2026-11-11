@@ -20,6 +20,7 @@ body {
 @media screen {
   body { max-width: 297mm; padding: 8mm 7mm 7mm; margin: 12px auto 40px; box-shadow: 0 0 0 1px #ccc, 0 8px 28px rgba(0,0,0,.12); }
 }
+.no-print .navodila { display: inline-block; margin-top: 8px; color: #0b3d24; }
 .no-print { font: 15px/1.4 "Liberation Sans", "Segoe UI", sans-serif; padding: 0 0 10px; }
 .no-print a, .no-print button {
   color: #0b3d24; font-weight: 700; background: #f5c400; border: 0; border-radius: 8px;
@@ -160,7 +161,7 @@ footer.list {
 </style>
 </head>
 <body>
-<p class="no-print"><a href="index.html">← nazaj na zaveze</a><button type="button" onclick="window.print()">Natisni A4</button></p>
+<p class="no-print"><a href="index.html">← nazaj na zaveze</a><button type="button" onclick="window.print()">Natisni A4</button><a href="zaveze-savsko-naselje.pdf" download="zaveze-savsko-naselje.pdf">Prenesi PDF</a><br><span class="navodila">Prenesi PDF ali klikni Natisni A4. Pri tiskanju izberi A4, ležeče, merilo 100 % (ali »prilagodi strani«). List lahko obesiš na vhod ali ga natisneš starejšim sosedom.</span></p>
 <header>
   <h1>Kako so kandidatne liste za svet ČS Bežigrad odgovorile na vprašanja prebivalcev Savskega naselja</h1>
   <p class="podnaslov">Volilna enota 01 · primerjava zavez, kot so jih liste označile (to ni naša ocena)</p>
