@@ -362,3 +362,5 @@ body.igra-ima-pas .primerjava thead th{top:var(--igra-pas-h)}
 .tisk-stran figcaption{color:#0b3d24;font-size:.88rem;line-height:1.3;flex:1}
 .btn-stran{text-align:center;padding:7px 10px;font-size:.92rem}
 @media (max-width:420px){.tisk-mreza{grid-template-columns:repeat(2,1fr)}}
+.tisk-tabela{margin-top:1rem;font-size:.92rem}
+.tisk-tabela a{color:#0b3d24;font-weight:700}
