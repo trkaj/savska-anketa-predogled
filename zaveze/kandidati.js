@@ -82,6 +82,10 @@ function napisBrezOdgovora(n, sPiko) {
   return sPiko ? tekst + "." : tekst;
 }
 
+function oznakaOddanoPoRoku(n) {
+  return Number(n) === 1 ? "Oddano po roku (11. 11. 2026, 11.25)" : "";
+}
+
 function imeListe(n) {
   const ime = (typeof LISTE_IME !== "undefined" && LISTE_IME[n])
     || (typeof LISTE_KRATKO !== "undefined" && LISTE_KRATKO[n])
@@ -435,6 +439,8 @@ function vstaviPovzetek(n) {
   } else {
     const c = data.counts;
     html = '<aside class="povzetek" id="povzetek">';
+    const rok = oznakaOddanoPoRoku(n);
+    if (rok) html += '<p class="oddano-po-roku">' + escHtml(rok) + "</p>";
     html += '<p class="povzetek-st">' + c.da + ' × <span class="odg da">Da</span> · ' + c.delno + ' × <span class="odg delno">Delno</span> · ' + c.ne + ' × <span class="odg ne">Ne</span></p>';
     html += '<div class="tags povzetek-prio">';
     (data.prioritet || []).forEach(function (name, i) {
@@ -511,14 +517,22 @@ function vstaviPrimerjavo() {
     return { prio: !!prio, prioN: prioN, html: '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + st + pill + "</button>" };
   }
 
-  let html = '<div class="primerjava-scroll" tabindex="0">';
+  let html = "";
+  const rokTabela = oznakaOddanoPoRoku(1);
+  if (rokTabela) {
+    html += '<p class="oddano-po-roku oddano-po-roku-tabela">1. Gibanje Svoboda: ' + escHtml(rokTabela) + "</p>";
+  }
+  html += '<div class="primerjava-scroll" tabindex="0">';
   html += '<table class="primerjava">';
   html += "<thead><tr><th scope=\"col\">Vprašanje</th>";
   lists.forEach(function (n) {
     const meta = (typeof LISTE_META !== "undefined" && LISTE_META[n]) ? LISTE_META[n] : {};
     const ime = LISTE_KRATKO[n] || n;
     const logo = meta.logo ? '<img class="lista-logo" src="' + meta.logo + '" alt="">' : "";
-    html += '<th scope="col" class="colhead"><a href="' + stranListe(n) + '"><span class="nr">' + n + ".</span> " + logo + "<br>" + escHtml(ime) + "</a></th>";
+    const rok = oznakaOddanoPoRoku(n);
+    html += '<th scope="col" class="colhead"><a href="' + stranListe(n) + '"><span class="nr">' + n + ".</span> " + logo + "<br>" + escHtml(ime) + "</a>"
+      + (rok ? '<span class="oddano-po-roku-th">' + escHtml(rok) + "</span>" : "")
+      + "</th>";
   });
   html += "</tr></thead><tbody>";
 

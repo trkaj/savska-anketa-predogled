@@ -11,6 +11,11 @@ a{color:var(--g)}
 .hd p{margin:2px 0 0;font-size:.9rem}
 main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
 .banner{background:var(--y2);border:2px solid var(--y);color:var(--g);font-weight:700;padding:10px 14px;border-radius:8px;margin:0 0 1rem}
+.oddano-po-roku{background:var(--y2);border:2px solid var(--y);color:var(--g);font-weight:800;padding:8px 14px;border-radius:8px;margin:0 0 1rem;display:inline-block}
+.card .oddano-po-roku{margin:.15rem 0 .8rem}
+.povzetek .oddano-po-roku{display:block;margin:0 0 .7rem}
+.oddano-po-roku-tabela{display:block;margin:0 0 .8rem}
+.primerjava .oddano-po-roku-th{display:block;margin-top:.25rem;padding:2px 3px;border-radius:4px;background:var(--y);color:#0b3d24;font-size:.62rem;font-weight:800;line-height:1.2;text-wrap:balance}
 .meta{color:#444;margin:0 0 1rem}
 .card{background:#fff;border:1px solid #dde6df;border-radius:12px;padding:16px;margin:0 0 14px;box-shadow:0 1px 3px #0001}
 .card.sim{border:3px solid var(--y);background:#fffdf3}
