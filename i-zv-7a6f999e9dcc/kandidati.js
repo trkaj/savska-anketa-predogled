@@ -102,6 +102,7 @@ const PRIO_ID = {
   "Parkiranje": "p-parkiranje",
   "Pošta, banka in druge storitve": "p-storitve",
   "Promet skozi naselje": "p-promet",
+  "Igle in droge, varnost": "p-varnost",
   "Igle in droge, občutek varnosti": "p-varnost",
   "Varnost": "p-varnost",
   "Več klopi": "p-klopi",

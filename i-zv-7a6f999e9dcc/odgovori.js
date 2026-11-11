@@ -94,7 +94,7 @@ const VPRASANJA = [
   {
     "id": "varnost-1",
     "temaId": "varnost",
-    "tema": "Igle in droge, občutek varnosti",
+    "tema": "Igle in droge, varnost",
     "label": "Srečanja s policijo in redarstvom",
     "vprasanje": "Ali se zavežete, da bo svet ČS vsaj dvakrat na leto sklical srečanje s policijo, Mestnim redarstvom in prebivalci, prvo v 6 mesecih?",
     "sid": "p-varnost"
@@ -102,7 +102,7 @@ const VPRASANJA = [
   {
     "id": "varnost-2",
     "temaId": "varnost",
-    "tema": "Igle in droge, občutek varnosti",
+    "tema": "Igle in droge, varnost",
     "label": "Odstranjevanje igel",
     "vprasanje": "Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL za redne obhode in hitro odstranjevanje igel na mestih, ki jih navajajo prebivalci, in o odgovoru poročali?",
     "sid": "p-varnost"
@@ -386,7 +386,7 @@ const ODGOVORI = {
     "prioritet": [
       "Parkiranje",
       "Pošta, banka in druge storitve",
-      "Igle in droge, občutek varnosti",
+      "Igle in droge, varnost",
       "Drevesa in zelenice",
       "Igrišča in prostor za mlade"
     ],
@@ -440,7 +440,7 @@ const ODGOVORI = {
     "prioritet": [
       "Parkiranje",
       "Promet skozi naselje",
-      "Igle in droge, občutek varnosti",
+      "Igle in droge, varnost",
       "Več klopi",
       "Čistoča in pasji iztrebki"
     ],
@@ -695,7 +695,7 @@ const ODGOVORI = {
       "Parkiranje",
       "Pošta, banka in druge storitve",
       "Promet skozi naselje",
-      "Igle in droge, občutek varnosti",
+      "Igle in droge, varnost",
       "Dom skupnosti, prostor za druženje"
     ],
     "prioritetId": [
@@ -748,7 +748,7 @@ const ODGOVORI = {
     "prioritet": [
       "Parkiranje",
       "Promet skozi naselje",
-      "Igle in droge, občutek varnosti",
+      "Igle in droge, varnost",
       "Dom skupnosti, prostor za druženje",
       "Boljši zrak in hrup"
     ],
