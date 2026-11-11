@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaveze kandidatne liste</title>
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:site_name" content="Savsko naselje">
+<meta property="og:title" content="Zaveze kandidatnih list za svet ČS Bežigrad · Savsko naselje">
+<meta property="og:description" content="Kaj liste za svet ČS Bežigrad obljubljajo Savskemu naselju? Preberi odgovore vseh 15 list.">
+<meta property="og:url" content="https://anketa.savska.org/zaveze/">
+<meta property="og:image" content="https://anketa.savska.org/zaveze/og-zaveze.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Odgovori 15 list za svet ČS Bežigrad · Savsko naselje">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zaveze kandidatnih list za svet ČS Bežigrad · Savsko naselje">
+<meta name="twitter:description" content="Kaj liste za svet ČS Bežigrad obljubljajo Savskemu naselju? Preberi odgovore vseh 15 list.">
+<meta name="twitter:image" content="https://anketa.savska.org/zaveze/og-zaveze.png">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p class="webar"><a href="index.html">← vse liste</a> · <a href="https://anketa.savska.org/pregled/">pregled ankete</a> · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></p>
+<header class="hd">
+  <img src="logo.png" alt="">
+  <div>
+    <h1>Zaveze kandidatne liste</h1>
+    <p id="podnaslov">Svet ČS Bežigrad, volilna enota 01</p>
+  </div>
+</header>
+<main>
+  <nav class="listnav" id="nav-zgoraj"></nav>
+  <article class="card" id="kartica">
+    <h2 id="naslov"></h2>
+    <p class="meta" id="status"></p>
+  </article>
+  <nav class="listnav" id="nav-spodaj"></nav>
+</main>
+<footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595 · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></footer>
+<script src="odgovori.js"></script>
+<script src="kandidati.js"></script>
+<script>
+const LISTE = [{"n": 1, "ime": "Gibanje Svoboda"}, {"n": 2, "ime": "Slovenska ljudska stranka"}, {"n": 3, "ime": "Demokrati. Anžeta Logarja"}, {"n": 4, "ime": "Pirati"}, {"n": 5, "ime": "Levica"}, {"n": 6, "ime": "Prerod – stranka Vladimirja Prebiliča"}, {"n": 7, "ime": "Slovenska demokratska stranka – SDS"}, {"n": 8, "ime": "Vesna – zelena stranka"}, {"n": 9, "ime": "Nova Slovenija in Fokus"}, {"n": 10, "ime": "Socialni demokrati"}, {"n": 11, "ime": "Cilj – Bežigrad"}, {"n": 12, "ime": "Stranka Straža – katoliška narodna stranka"}, {"n": 13, "ime": "Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa"}, {"n": 14, "ime": "Državljansko gibanje Resni.ca"}, {"n": 15, "ime": "Lista Zorana Jankovića"}];
+const n = parseInt(new URLSearchParams(location.search).get("n") || "", 10);
+const IZP = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
+if (IZP[n]) { location.replace(IZP[n]); }
+const i = LISTE.findIndex(x => x.n === n);
+if (i < 0) {
+  document.getElementById("naslov").textContent = "Lista ni na seznamu VE 01";
+} else {
+  const L = LISTE[i];
+  document.title = L.n + ". " + L.ime;
+  document.getElementById("naslov").innerHTML = '<span class="nr">' + L.n + ".</span> " + L.ime;
+  document.getElementById("podnaslov").textContent = L.ime;
+  document.getElementById("status").className = "povzetek";
+  document.getElementById("status").textContent = "Odgovora še ni.";
+  function navHtml() {
+    const prev = LISTE[i - 1];
+    const next = LISTE[i + 1];
+    const left = prev
+      ? '<a href="' + (IZP[prev.n] || "lista.html?n=" + prev.n) + '">← ' + prev.n + ". " + prev.ime + "</a>"
+      : "<span></span>";
+    const right = next
+      ? '<a class="next" href="' + (IZP[next.n] || "lista.html?n=" + next.n) + '">' + next.n + ". " + next.ime + " →</a>"
+      : "<span></span>";
+    return left + right;
+  }
+  document.getElementById("nav-zgoraj").innerHTML = navHtml();
+  document.getElementById("nav-spodaj").innerHTML = navHtml();
+  const kh = kandidatiSectionHtml(L.n);
+  if (kh) document.getElementById("status").insertAdjacentHTML("afterend", kh);
+  vstaviLogoInSplet(L.n, "#naslov");
+}
+</script>
+<script src="igra.js"></script>
+</body>
+</html>

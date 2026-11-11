@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primerjava odgovorov – tisk A4</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" href="favicon.png">
+<style>
+@page { size: A4 landscape; margin: 4mm; }
+* { box-sizing: border-box; }
+html { background: #eceee9; }
+body {
+  margin: 0 auto;
+  color: #111;
+  background: #fff;
+  font: 11pt/1.2 "Liberation Sans", "DejaVu Sans", "Segoe UI", sans-serif;
+}
+@media screen {
+  body { max-width: 297mm; padding: 8mm 7mm 7mm; margin: 12px auto 40px; box-shadow: 0 0 0 1px #ccc, 0 8px 28px rgba(0,0,0,.12); }
+}
+.no-print { font: 15px/1.4 "Liberation Sans", "Segoe UI", sans-serif; padding: 0 0 10px; }
+.no-print a, .no-print button {
+  color: #0b3d24; font-weight: 700; background: #f5c400; border: 0; border-radius: 8px;
+  padding: 7px 12px; cursor: pointer; text-decoration: none; display: inline-block; margin-right: 8px; font-size: 15px;
+}
+h1 {
+  margin: 0 0 1pt;
+  font-size: 11pt;
+  line-height: 1.15;
+  color: #0b3d24;
+}
+.podnaslov { margin: 0 0 2pt; color: #0b3d24; font-size: 9.5pt; }
+/* Odgovori so berljivi v barvi in črno-belo: pomen nosijo simboli ● ◐ ○,
+   polnila pa se po svetlosti jasno ločijo (Da temno, Delno svetlo jantarno, Ne belo).
+   Prioriteta: črn krogec z belo številko 1–5. */
+.legenda { margin: 0 0 2pt; font-size: 8.5pt; }
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+th, td {
+  border: 0.4pt solid #222;
+  padding: 0.45pt 0.5pt;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 7.6pt;
+}
+thead th {
+  background: #0b3d24;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: 2pt 1pt 2.2pt;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  letter-spacing: -0.02em;
+}
+thead th b { display: block; font-size: 10pt; letter-spacing: 0; }
+th.vpr { width: 18%; text-align: left; background: #0b3d24; color: #fff; }
+tbody th.vpr {
+  background: #f4f7f5;
+  color: #0b3d24;
+  text-align: left;
+  font-weight: 650;
+  padding-left: 3.5pt;
+  overflow-wrap: break-word;
+}
+tr.skupina th {
+  background: #f5c400;
+  color: #111;
+  text-align: left;
+  font-weight: 800;
+  padding: 0.45pt 3pt;
+}
+td {
+  white-space: nowrap;
+  letter-spacing: 0;
+  padding: 0.45pt 1.2pt 0.45pt 0.45pt;
+}
+td .odg, .legenda .odg {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05em;
+  white-space: nowrap;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.1pt 0.55pt;
+  border-radius: 2pt;
+  vertical-align: middle;
+  max-width: 100%;
+}
+.znak {
+  display: inline-block;
+  width: 0.58em;
+  height: 0.58em;
+  border-radius: 50%;
+  border: 0.95pt solid currentColor;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+.odg.da .znak { background: #fff; border-color: #fff; color: #fff; }
+.odg.delno .znak {
+  color: #111;
+  border-color: #111;
+  background: linear-gradient(90deg, #111 50%, #fff 50%);
+}
+.odg.ne .znak { background: #fff; border-color: #c62828; color: #c62828; }
+.odg.da { background: #2e7d32; color: #fff; }
+.odg.delno { background: #f5a400; color: #1a1a1a; }
+.odg.ne { background: #fff; color: #111; border: 1.6pt solid #c62828; }
+.odg.prazna { color: #333; letter-spacing: 0; background: transparent; font-weight: 700; }
+td { position: relative; }
+.prio-st {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.35em 0 0;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 7pt;
+  font-weight: 800;
+  line-height: 1;
+  vertical-align: middle;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.prio-st-prazno { visibility: hidden; background: transparent; color: transparent; }
+.legenda .prio-st { margin: 0 0.08em; }
+footer.list {
+  margin-top: 3pt;
+  font-size: 8.5pt;
+  line-height: 1.2;
+  color: #111;
+  border-top: 2pt solid #0b3d24;
+  padding-top: 2pt;
+}
+@media print {
+  html { background: #fff; }
+  .no-print { display: none !important; }
+  body { max-width: none; padding: 0; margin: 0; box-shadow: none; zoom: 0.9; }
+  thead th, th.vpr, tr.skupina th, thead th.vpr,
+  .odg.da, .odg.delno, .odg.ne, .odg.delno .znak, .odg.ne .znak, .prio-st {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  thead { display: table-header-group; }
+  tr.skupina { break-after: avoid; break-inside: avoid; }
+  tr { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<p class="no-print"><a href="index.html">← nazaj na zaveze</a><button type="button" onclick="window.print()">Natisni A4</button></p>
+<header>
+  <h1>Kako so kandidatne liste za svet ČS Bežigrad odgovorile na vprašanja prebivalcev Savskega naselja</h1>
+  <p class="podnaslov">Volilna enota 01 · primerjava zavez, kot so jih liste označile (to ni naša ocena)</p>
+</header>
+<p class="legenda"><span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span> &nbsp;·&nbsp; <span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span> &nbsp;·&nbsp; <span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span> &nbsp;·&nbsp; – odgovora še ni &nbsp;·&nbsp; <span class="prio-st" aria-hidden="true">1</span>–<span class="prio-st" aria-hidden="true">5</span> = mesto teme med petimi prioritetami liste</p>
+<div id="tabela"></div>
+<footer class="list" id="noga"></footer>
+<script src="odgovori.js"></script>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function znakHtml(odg) {
+  if (odg === "Da") return '<span class="odg da"><span class="znak" aria-hidden="true"></span> Da</span>';
+  if (odg === "Delno") return '<span class="odg delno"><span class="znak" aria-hidden="true"></span> Delno</span>';
+  if (odg === "Ne") return '<span class="odg ne"><span class="znak" aria-hidden="true"></span> Ne</span>';
+  return '<span class="odg prazna">–</span>';
+}
+function celica(n, q) {
+  var data = typeof ODGOVORI !== "undefined" ? (ODGOVORI[n] || ODGOVORI[String(n)]) : null;
+  var prioIdx = (data && data.prioritetId) ? data.prioritetId.indexOf(q.temaId) : -1;
+  var prio = prioIdx !== -1;
+  var prioN = prio ? prioIdx + 1 : 0;
+  var notranjost;
+  if (!data || !data.odgovori || !data.odgovori[q.id]) {
+    notranjost = '<span class="odg prazna">–</span>';
+  } else {
+    notranjost = znakHtml(data.odgovori[q.id]);
+  }
+  var st = prioN
+    ? '<span class="prio-st" aria-hidden="true">' + prioN + "</span>"
+    : '<span class="prio-st prio-st-prazno" aria-hidden="true"></span>';
+  return { html: st + notranjost, prio: prio };
+}
+(function () {
+  if (typeof VPRASANJA === "undefined") return;
+  var html = '<table><thead><tr><th class="vpr" scope="col">Vprašanje</th>';
+  for (var n = 1; n <= 15; n++) {
+    var ime = (typeof LISTE_KRATKO !== "undefined" && LISTE_KRATKO[n]) ? LISTE_KRATKO[n] : String(n);
+    html += '<th scope="col"><b>' + n + "</b>" + esc(ime) + "</th>";
+  }
+  html += "</tr></thead><tbody>";
+  var last = "";
+  VPRASANJA.forEach(function (q) {
+    if (q.tema !== last) {
+      last = q.tema;
+      html += '<tr class="skupina"><th colspan="16">' + esc(q.tema) + "</th></tr>";
+    }
+    html += '<tr><th class="vpr" scope="row">' + esc(q.label) + "</th>";
+    for (var n = 1; n <= 15; n++) {
+      var c = celica(n, q);
+      html += '<td' + (c.prio ? ' class="ima-prio"' : '') + ">" + c.html + "</td>";
+    }
+    html += "</tr>";
+  });
+  html += "</tbody></table>";
+  document.getElementById("tabela").innerHTML = html;
+
+  var fmt = new Intl.DateTimeFormat("sl-SI", {
+    timeZone: "Europe/Ljubljana",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+  document.getElementById("noga").innerHTML =
+    "Presek: " + fmt.format(new Date()) + " (Europe/Ljubljana). "
+    + "Vir: odgovori list na anketa.savska.org. "
+    + "Civilna iniciativa prebivalcev Savskega naselja · savskonaselje1@gmail.com · 070 205 595.";
+})();
+</script>
+</body>
+</html>
