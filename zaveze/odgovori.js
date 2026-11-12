@@ -287,58 +287,48 @@ const VPRASANJA = [
 
 const ODGOVORI = {
   "1": {
-    "prioritet": [
-      "Parkiranje",
-      "Promet skozi naselje",
-      "Igle in droge, varnost",
-      "Igrišča in prostor za mlade",
-      "Mala dela ČS in prijave poškodb"
-    ],
-    "prioritetId": [
-      "parkiranje",
-      "promet",
-      "varnost",
-      "mladi",
-      "maladela"
-    ],
-    "counts": {
-      "da": 30,
-      "delno": 1,
-      "ne": 0
-    },
-    "odgovori": {
-      "obvescanje-1": "Da",
-      "obvescanje-2": "Da",
-      "obvescanje-3": "Da",
-      "obvescanje-4": "Da",
-      "obvescanje-5": "Da",
-      "obvescanje-6": "Da",
-      "parkiranje-1": "Da",
-      "parkiranje-2": "Da",
-      "storitve-1": "Da",
-      "storitve-2": "Delno",
-      "promet-1": "Da",
-      "promet-2": "Da",
-      "promet-3": "Da",
-      "varnost-1": "Da",
-      "varnost-2": "Da",
-      "klopi-1": "Da",
-      "klopi-2": "Da",
-      "cistoca-1": "Da",
-      "cistoca-2": "Da",
-      "zelenje-1": "Da",
-      "zelenje-2": "Da",
-      "dom-1": "Da",
-      "dom-2": "Da",
-      "zrak-1": "Da",
-      "zrak-2": "Da",
-      "mladi-1": "Da",
-      "mladi-2": "Da",
-      "maladela-1": "Da",
-      "maladela-2": "Da",
-      "maladela-3": "Da",
-      "zakaj-3": "Da"
-    }
+      "prioritet": [
+          "Promet skozi naselje",
+          "Igle in droge, varnost",
+          "Več klopi",
+          "Drevesa in zelenice",
+          "Igrišča in prostor za mlade"
+      ],
+      "prioritetId": [
+          "promet",
+          "varnost",
+          "klopi",
+          "zelenje",
+          "mladi"
+      ],
+      "counts": {
+          "da": 20,
+          "delno": 1,
+          "ne": 0
+      },
+      "odgovori": {
+          "promet-1": "Delno",
+          "promet-2": "Da",
+          "promet-3": "Da",
+          "varnost-1": "Da",
+          "varnost-2": "Da",
+          "klopi-1": "Da",
+          "klopi-2": "Da",
+          "zelenje-1": "Da",
+          "zelenje-2": "Da",
+          "mladi-1": "Da",
+          "mladi-2": "Da",
+          "maladela-1": "Da",
+          "maladela-2": "Da",
+          "maladela-3": "Da",
+          "obvescanje-1": "Da",
+          "obvescanje-2": "Da",
+          "obvescanje-3": "Da",
+          "obvescanje-4": "Da",
+          "obvescanje-5": "Da",
+          "obvescanje-6": "Da",
+          "zakaj-3": "Da"
+      }
   },
   "2": {
     "prioritet": [
@@ -963,29 +953,26 @@ const ODGOVORI = {
 
 const RAZLAGE = {
   "1": {
-    "obvescanje-1": ". V prvih treh mesecih mandata bomo predlagali ureditev snemanja javnega dela sej, objave zvočnih posnetkov in dostopnega prepisa. Z mestnimi strokovnimi službami bomo določili pravila snemanja, objavljanja in hrambe ter zagotovili zaščito osebnih podatkov. Cilj je vzpostavitev sistema v prvih šestih mesecih.\n\nJavnost dela omogoča prebivalcem, da spremljajo argumente, predloge in ravnanje svojih predstavnikov. S tem krepi odgovornost svetnikov ter omogoča spremljanje odločanja tudi ljudem, ki zaradi dela, zdravja ali družinskih obveznosti ne morejo na sejo. Prepis mora biti pregleden, morebitna samodejna priprava pa preverjena pred objavo. Informacijski pooblaščenec snemanje takšnih sej dopušča ob ustrezni ureditvi in potrebnih varovalkah.",
-    "obvescanje-2": "Ob začetku mandata bomo predlagali enoten standard zapisnikov: obravnavani problem, podani predlogi, glavni argumenti, sprejeti sklep in rezultat glasovanja. Pri sklepih, ki zahtevajo nadaljnje delo, morata biti navedena odgovorni nosilec in rok. V treh dneh po seji bomo objavili kratek informativni povzetek, jasno označen kot povzetek do potrditve uradnega zapisnika.\n\nPrebivalec mora iz objave razumeti, kaj je bilo odločeno, zakaj in kaj sledi. Takšno poročanje omogoča preverjanje izpolnjevanja zavez ter ohranja pregled nad različnimi stališči. Zapisniki morajo omogočati tudi spremljanje že sprejetih sklepov, da se odprta vprašanja ne izgubijo med posameznimi sejami.",
-    "obvescanje-3": "V prvih treh mesecih bomo vzpostavili redno obveščanje o svojem delu ter predlagali naročanje na novice MOL po četrtih in pomembnejših lokalnih temah. Z upravniki in predstavniki vhodov bomo dogovorili posredovanje bistvenih obvestil tudi na oglasne deske. Elektronsko obveščanje bo temeljilo na prostovoljni prijavi. Na svojih kanalih bomo jasno razlikovali med stališči liste in uradnimi informacijami ČS.\n\nDostop do informacij je pogoj za enakopravno sodelovanje. Obveščanje samo prek družbenih omrežij slabše doseže del starejših in ljudi brez digitalnih veščin. Zato mora biti vsebina dosegljiva po več poteh, razumljiva in pravočasna. Pomembno je tudi obveščanje o rezultatih: kaj je bilo na podlagi pobud prebivalcev dejansko spremenjeno.",
-    "obvescanje-4": "V prvih treh mesecih bomo predlagali, da se dnevni red in javno dostopno gradivo za redne seje objavita najmanj sedem dni pred sejo. Predlagali bomo stalno točko za vprašanja in pobude prebivalcev ter možnost njihove predhodne oddaje osebno ali elektronsko. Krajši roki pri nujnih sejah bodo morali biti obrazloženi.\n\nSmisel sodelovanja je, da lahko prebivalci vplivajo na odločitev med njenim oblikovanjem. Za to potrebujejo čas, informacije in možnost odziva. Pri pomembnejših vprašanjih bomo zato pred odločanjem organizirali pogovor v soseski, na katerem bodo prebivalci skupaj s strokovnjaki primerjali možne rešitve in njihove posledice. Po razpravi bomo pojasnili, katere predloge smo upoštevali in zakaj.",
-    "obvescanje-5": "V prvih šestih mesecih bomo predlagali javno evidenco pobud z datumom prejema, vsebino, pristojno službo, stanjem obravnave in naslednjim korakom. Osebni podatki pobudnikov bodo zaščiteni. Predlagali bomo potrditev prejema v petih delovnih dneh ter vsebinski odgovor oziroma obrazloženo informacijo o nadaljnji obravnavi v 30 dneh. Kadar je pristojna druga služba, bomo spremljali njen odziv.\n\nPri pripravi in spremembah OPPN bomo zahtevali zgodnje obveščanje ČS ter prebivalce vključili takoj, ko bodo informacije javno dostopne in bodo različne rešitve še odprte.\n\nZaupanje nastaja, ko človek vidi, kaj se je zgodilo z njegovim predlogom. Tudi zavrnitev mora imeti razumljive razloge. Zgodnje vključevanje pri prostorskem načrtovanju omogoča, da lokalno znanje izboljša projekt in pravočasno razkrije prometne, okoljske in socialne posledice.",
-    "obvescanje-6": "V prvih treh mesecih bomo predlagali dodatno strokovno osebo za sodelovanje s prebivalci in civilno družbo. Njene naloge naj vključujejo pomoč pri pripravi pobud, organizacijo javnih razprav, povezovanje društev in neformalnih skupin, spremljanje odgovorov mestnih služb ter podporo participativnemu proračunu. MOL bomo pozvali, naj v šestih mesecih predstavi kadrovsko in finančno rešitev.\n\nKakovostno sodelovanje potrebuje čas, znanje in stalno dostopno kontaktno osebo. Strokovna podpora omogoča vključevanje tudi prebivalcem, ki nimajo izkušenj z občinskimi postopki. Uspešnost takšnega delovnega mesta bi spremljali po dostopnosti pomoči, odzivnosti in napredku pri reševanju pobud. Strokovno in administrativno podporo četrtnim skupnostim sicer že predvideva statut MOL.",
-    "parkiranje-1": "V prvih šestih mesecih bomo zahtevali javno dostopen zemljevid parkirnih površin z razvidnim lastništvom, upravljanjem in znanimi postopki določanja pripadajočih zemljišč. Pri odprtih postopkih mora biti jasno navedeno, kaj je zemljiškoknjižno stanje in o čem še ni dokončno odločeno. Pregled bomo predlagali v obliki, ki bo razumljiva tudi brez pravnega znanja.\n\nRazjasnitev lastništva je temelj pravične ureditve parkiranja. Prebivalci morajo vedeti, kdo sme določati uporabo posamezne površine in kdo je odgovoren za njeno vzdrževanje. V programu Svobode nasprotujemo širjenju plačljivih con v stanovanjske soseske zunaj središča, posebej na zemljišča z nerešenim lastništvom. Za Savsko naselje bomo iskali rešitve skupaj s stanovalci in ob spoštovanju njihovih pravic.",
-    "parkiranje-2": "V prvem letu bomo predlagali skupno delovno skupino prebivalcev, civilne iniciative, upravnikov in pristojnih mestnih služb. Na podlagi podatkov o dnevni in nočni zasedenosti bomo pripravili rešitve za prednost stanovalcev, dostop obiskovalcev in oskrbe ter zaščito pločnikov, zelenic in intervencijskih poti. Pred uvedbo bomo variante predstavili prebivalcem.\n\nPreverili bomo možnosti dogovorjene souporabe obstoječih parkirišč ter izvedljivost cenovno dostopnega parkiranja za stanovalce na površinah, ki so že namenjene parkiranju. Morebitna garažna rešitev mora imeti jasen stroškovni izračun in preverjeno podporo uporabnikov.\n\nDostop do doma in varna hoja sta legitimni potrebi iste skupnosti. Ureditev mora zato zmanjšati pritisk zunanjega parkiranja ter hkrati omogočiti prehod otroku, človeku na invalidskem vozičku in staršu z vozičkom. Večjo vlogo morata prevzeti tudi zanesljiv javni prevoz in parkiranje dnevnih migrantov na obrobju mesta.",
-    "promet-1": "Pobudo bomo vložili v prvih šestih mesecih in zahtevali celovito presojo obstoječega prometa ter vplivov načrtovanih posegov na širšem območju. Vključiti mora Šmartinsko in Vilharjevo, povezave skozi naselje, predvidene novogradnje ter varnost hoje in kolesarjenja. Zahtevali bomo primerjavo variant glede prometnih obremenitev, hrupa, kakovosti zraka in dostopnosti javnega prevoza ter njihovo predstavitev prebivalcem pred izbiro rešitve.\n\nPosamezna prometna sprememba lahko problem prenese v sosednjo ulico. Zato potrebujemo presojo povezanega sistema, vključno s skupnimi vplivi več načrtovanih projektov. Naš cilj je preprečiti povečanje onesnaženja; doseganje tega cilja mora biti podprto z ocenami, ustreznimi ukrepi in poznejšim spremljanjem. Nova gradnja mora vključevati infrastrukturo, ki izboljša pogoje tudi obstoječim prebivalcem.",
-    "promet-2": "Pobudo bomo podali že v prvih treh mesecih, da bo dovolj časa za izvedbo potrebnih ukrepov do začetka šolskega leta 2027/28. S šolo, vrtcem, starši in prometnimi strokovnjaki bomo pregledali poti, preglednost prehodov, hitrosti vozil, razsvetljavo in mesta nevarnega ustavljanja. Predlagali bomo ustrezno umirjanje prometa, varnejše prehode, naš predlog so osvetljeni prehodi,  in urejeno kratkotrajno ustavljanje tam, kjer je potrebno.\n\nVarnost otrok mora biti izhodišče prometne ureditve. Pri načrtovanju bomo upoštevali njihovo dejansko pot od doma do vhoda, saj lahko nevarnost nastane že na nepreglednem križišču ali zaparkiranem pločniku. Uspešnost ukrepov bomo preverjali z opazovanjem razmer in meritvami hitrosti.",
-    "promet-3": "V prvih šestih mesecih bomo organizirali skupni ogled naselja in javno prometno delavnico. Prebivalci bodo lahko označili nevarna mesta in težave pri vsakdanjih poteh, strokovnjaki pa bodo preverili vzroke in možne rešitve. Povabili bomo tudi predstavnike mestnih služb, da se razprava zaključi s seznamom ukrepov, pristojnosti in rokov.\n\nPrebivalci poznajo ponavljajoče se težave ob določenih urah, strokovna presoja pa pokaže, kako jih odpraviti brez ustvarjanja novih drugje. Takšno sodelovanje povezuje izkustveno in strokovno znanje. Kjer bo primerno, bomo predlagali časovno omejene preizkusne ureditve ter njihovo vrednotenje pred trajno izvedbo.",
-    "varnost-1": "Predlagali bomo najmanj dve srečanji letno, prvo v prvih šestih mesecih mandata. Poleg policije, redarstva in prebivalcev bomo povabili pristojne socialne in zdravstvene službe ter izvajalce terenskega dela. Srečanja bodo namenjena pregledu konkretnih težav, dogovoru o ukrepih in preverjanju njihove izvedbe. Ob akutnih težavah bomo zahtevali takojšnjo koordinacijo.\n\nVarnost zahteva povezano delo služb. Dosledno je treba ukrepati ob nasilju, grožnjah, preprodaji in nevarnem vedenju, hkrati pa ljudem z odvisnostjo zagotoviti dostop do pomoči. Podpiramo pristop, ki povezuje red v javnem prostoru, terensko delo, zdravljenje in nastanitveno podporo. Preverjali bomo, ali se razmere izboljšujejo in ali ukrepi težavo zgolj premikajo v drug del naselja.",
-    "varnost-2": "V prvih treh mesecih bomo zahtevali dogovor o rednih pregledih izpostavljenih mest in hitrem strokovnem odstranjevanju odvrženih igel. Predlagali bomo jasen kanal za prijavo, določitev odgovorne službe in dogovorjen odzivni čas glede na nevarnost. Posebno pozornost bomo namenili igriščem, potem do šole in vrtca ter drugim pogosto uporabljenim površinam. Odgovor MOL in izvajanje dogovora bomo javno spremljali.\n\nPrebivalci morajo vedeti, komu sporočiti nevarnost in kdaj lahko pričakujejo ukrepanje. Odstranjevanje nevarnih odpadkov mora biti organizirana naloga usposobljenih služb. Sproti bomo povezovali podatke o ponavljajočih se najdbah s terenskim delom in drugimi preventivnimi ukrepi, da se zmanjša tudi nastajanje problema.",
-    "dom-1": "V prvih šestih mesecih bomo predlagali pregled javnih in drugih potencialno dostopnih prostorov, njihove zasedenosti, dostopnosti in možnosti souporabe. V prvem letu bomo z MOL, sedanjimi uporabniki, društvi in prebivalci pripravili dogovor o uporabi primernih prostorov. Izhajali bomo tudi iz obstoječih dejavnosti: na Belokranjski 6 že deluje Knjižnica Reči.\n\nPoseben poudarek bomo namenili starejšim: dostopnemu prostoru za redno srečevanje, pogovor, vadbo, ustvarjanje in pomoč pri digitalnih opravilih. Del programa naj omogoča brezplačno druženje brez obveznega nakupa ali članstva, hkrati pa naj prostor povezuje različne generacije.\n\nSkupnost potrebuje bližnje in predvidljivo odprte prostore. Njihova vrednost je v tem, da omogočajo stike, medsebojno pomoč in samostojno organiziranje prebivalcev. Zato morajo biti ob prostoru določeni tudi urnik, upravljanje in sredstva za osnovno delovanje.",
-    "dom-2": "V prvem letu bomo zahtevali javno pojasnilo o stanju objekta, potrebnih posegih in pripravi obnove. MOL bomo pozvali k objavi načrta z obsegom del, finančnimi viri, predvidenimi roki in odgovornim nosilcem. Če izvedbena dokumentacija še ni pripravljena, mora biti objavljena časovnica njene priprave. S sedanjimi uporabniki bomo iskali način za ohranjanje dejavnosti med morebitnimi deli.\n\nPredlagali bomo javno dostopen urnik in pregleden sistem rezervacij z enakimi pravili ter možnostjo osebne ali telefonske prijave. Pri obnovi bomo zagovarjali dostop brez ovir in ustrezne sanitarije.\n\nJavna naložba mora biti povezana z jasno javno koristjo. Prebivalci potrebujejo informacijo, kdaj bodo lahko prostor uporabljali, katere dejavnosti bodo omogočene in kako bodo sodelovali pri njegovem programu.",
-    "mladi-1": "V prvih šestih mesecih bomo MOL in šoli predlagali dogovor o popoldanski uporabi šolskega igrišča. Skupaj bomo preverili režim odpiranja, vzdrževanje, odgovornost in potrebna sredstva. Istočasno bomo pregledali možnosti za dostopen prostor pod streho, v katerem bi mladi lahko sooblikovali dejavnosti ter se družili tudi brez plačljivega programa.\n\nSavsko naselje že ima prenovljen športni park, zato bomo preverili, kako ga smiselno povezati s šolskimi površinami in drugimi prostori za mlade.\n\nRazlični prostori zadovoljujejo različne potrebe: šport, ustvarjanje, učenje in neformalno druženje. Dogovorjena souporaba javne infrastrukture lahko poveča njeno korist za sosesko. Morebitne težave z vandalizmom bomo obravnavali z upravljanjem, prisotnostjo odgovornih odraslih in mladinskim delom.",
-    "mladi-2": "Pred načrtovanjem novih ureditev bomo izvedli pregled obstoječih igral, igrišč in primernih notranjih prostorov. V prvem letu bomo organizirali pogovore z otroki in mladimi različnih starosti, tudi s tistimi, ki niso vključeni v društva ali organizirane dejavnosti. Njihove predloge bomo povezali s presojo varnosti, dostopnosti, stroškov in možnosti vzdrževanja ter pojasnili, kako so bili upoštevani.\n\nOtroci in mladi so uporabniki prostora z lastnim znanjem o njem. Sodelovanje lahko pokaže potrebo po senci, druženju, ustvarjalni delavnici ali mirnem prostoru, ki je odrasli sami ne prepoznamo. Pri načrtovanju bomo upoštevali tudi dostopnost za otroke in mlade z oviranostmi ter možnosti brezplačne uporabe.",
-    "maladela-1": "V prvem letu bomo s prebivalci, civilno iniciativo in pristojnimi službami izvedli pregled naselja ter pripravili zemljevid potrebnih izboljšav. Pri predlogih bomo preverili lastništvo zemljišč, dostopnost, izvedljivost, okvirne stroške in prihodnje vzdrževanje. Izvedljive predloge bomo pravočasno predložili v plan malih del 2028–2029. Prijave nevarnih poškodb bomo pristojnim službam posredovali sproti.\n\nLokalno znanje omogoča natančnejše določanje potreb: starejši vedo, kje na poti potrebujejo počitek, družine pa, katera igralna površina je težko dostopna ali neustrezna. Pri izbiri bomo upoštevali varnost, dostopnost in korist za skupnost.\n\nPodprli bomo tudi programsko zavezo postopnega povečanja sredstev za manjše projekte na vsaj odstotek mestnega proračuna ter uvedbo participativnega proračuna, pri katerem prebivalci izvedljive projekte izberejo z glasovanjem. ČS naj pomaga pri pripravi in spremljanju, mestne službe pa zagotovijo strokovno preverjanje in izvedbo.",
-    "maladela-2": "Pripravili bomo koledar zbiranja predlogov ter prebivalce in upravnike obvestili najmanj tri tedne pred rokom. Od MOL bomo zahtevali dovolj zgodnjo objavo poziva, pobude pa bomo zbirali tudi skozi leto. Obvestilo bo vsebovalo jasna merila, način oddaje in kontakt za pomoč. Pred iztekom roka bomo organizirali odprt termin za dopolnitev predlogov.\n\nPravočasno obveščanje vpliva na to, kdo lahko sodeluje. Kratki in slabo vidni pozivi dajejo prednost ljudem, ki že poznajo postopke. Dostopen postopek mora omogočiti sodelovanje zaposlenim staršem, starejšim in posameznikom brez organizacijske podpore. Po izboru bomo objavili predlagane projekte in obrazložitev njihovega nadaljnjega statusa.",
-    "maladela-3": "V prvem letu bomo MOL predlagali, naj za izpostavljena zemljišča pripravi razumljiv pregled lastništva, upravljanja in znanih postopkov urejanja pripadajočih zemljišč. Lastnikom in upravnikom bomo pomagali priti do pristojnih služb, informacij o potrebnih soglasjih in možnih poteh za izvedbo izboljšav. Pri odprtih sodnih postopkih bomo razlikovali med obstoječim zemljiškoknjižnim stanjem in vprašanji, o katerih še ni dokončno odločeno.\n\nUrejanje skupnega prostora zahteva jasno odgovornost. Nejasno lastništvo otežuje tudi preproste izboljšave, kot so klop, koš ali ureditev poti. ČS mora zato dejavno povezovati stanovalce, upravnike in MOL ter pomagati poiskati izvedljivo rešitev ob spoštovanju lastninskih pravic in potrebnih soglasij.",
-    "zakaj-1": "Ker želimo prebivalcem zagotoviti več vpliva na odločitve, ki določajo njihovo vsakdanje življenje. Savsko naselje je skupnost ljudi, ki najbolje poznajo svoje poti, težave in možnosti. Njihovo znanje mora imeti jasno mesto pri odločanju o prometu, parkiranju, javnih prostorih in porabi mestnega denarja.\n\nNaša posebna zaveza je povezava med sodelovanjem in izvedbo. Predlagamo odprto delo ČS, obrazložene odgovore na pobude, več sredstev za soseske in participativni proračun, pri katerem prebivalci o delu projektov odločijo sami. Za vsako pomembnejšo pobudo želimo določiti odgovornost, naslednji korak in rok, napredek pa javno spremljati.\n\nSvobodo razumemo tudi kot možnost, da otrok varno pride v šolo, starejši človek ohranja samostojnost, mladi najdejo svoj prostor, prebivalci pa lahko soodločajo o svojem okolju. Solidarnost pomeni, da pri urejanju soseske upoštevamo tudi ljudi, ki težje pridejo do besede. Odgovornost pomeni, da pojasnimo svoje odločitve in vztrajamo pri njihovi izvedbi.\n\nGlas za našo listo je zato podpora dostopni in dejavni četrtni skupnosti, ki zna poslušati, povezovati in utemeljeno zastopati interese prebivalcev pred mestom.",
-    "zakaj-2": "Pričakujejo lahko redno prisotnost v soseski, dostopnost za pogovor in preverljivo delo. V prvih treh mesecih bomo predlagali standarde odprtega delovanja ČS ter začeli obravnavo najnujnejših vprašanj varnosti, šolskih poti in odzivanja na pobude. V prvih šestih mesecih bomo predlagali pregled prometnih in parkirnih razmer ter možnosti uporabe skupnostnih prostorov.\n\nNaše delo bo imelo jasno zaporedje: pobudo bomo sprejeli, preverili pristojnost in izvedljivost, oblikovali predlog, poiskali podporo ter spremljali izvedbo. Pri zahtevnejših vprašanjih bomo povezali prebivalce, mestne službe in ustrezne strokovnjake. Vsaj dvakrat letno bomo pripravili javni pregled napredka, odprtih vprašanj in razlogov za zamude.\n\nPosebej bomo vztrajali pri prednosti stanovalcev pri urejanju parkiranja, varnih poteh skozi naselje, hitrem odzivanju na nevarne odpadke, dostopnem domu skupnosti in prostorih za mlade. Podpirali bomo dobre predloge ne glede na njihovega predlagatelja ter pojasnili tudi svoja nestrinjanja.\n\nNaše delo boste lahko presojali po tem, ali smo bili dosegljivi, ali smo vaše predloge pošteno obravnavali in ali smo pri pristojnih vztrajno zahtevali rešitev. Kadar obljubljenega napredka ne bo, bomo povedali, kje je ovira in kaj bomo naredili naprej.",
-    "zakaj-3": "Sodelovanje pri razvoju soseske razumemo kot odgovornost, ki traja tudi po volitvah. Nadaljevali bomo zbiranje in strokovno pripravo pobud, spremljali javno dostopno delo ČS ter sodelovali na javnih razpravah, srečanjih in skupnostnih akcijah.\n\nPredloge bomo posredovali izvoljenim predstavnikom ČS, mestnim svetnikom in pristojnim službam. Sodelovali bomo s civilno iniciativo, društvi, upravniki in prebivalci pri vprašanjih, pri katerih lahko pomagamo z znanjem, povezovanjem ali delom na terenu. O svojem delu bomo poročali in podpirali koristne rešitve tudi takrat, ko jih bodo predlagali drugi.\n\nVolilni rezultat določi, kdo dobi mandat za odločanje. Pripravljenost za skupno delo pa pokažemo z ravnanjem po volitvah. Savsko naselje potrebuje trajno sodelovanje ljudi, ki jim je mar za njegovo prihodnost."
+      "promet-1": "S pobudo se delno strinjamo.",
+      "promet-2": "Zavezujemo se k pripravi pobude MOL za umirjanje prometa ob šolah, vrtcih in glavnih poteh, ki jih naredimo peš.",
+      "promet-3": "Zavzemamo se za sodelovanje s prebivalci, strokovnjaki in odločevalci.",
+      "varnost-1": "Podpiramo redna srečanja s policijo in mestnim redarstvom.",
+      "varnost-2": "Se strinjamo z odstranjevanjem igel na mestnih, ki jih navajajo prebivalci.",
+      "klopi-1": "Zavezo podpiramo.",
+      "klopi-2": "Zavezo podpiramo, pa ne samo na začetku mandata, temveč tudi za naprej.",
+      "zelenje-1": "Zavezo podpiramo.",
+      "zelenje-2": "Zavezo podpiramo.",
+      "mladi-1": "Z zavezo se strinjamo, saj je prav, da imajo mladi čim več možnosti za preživljanje časa na odprtem oz. v njim dostopnih prostorih.",
+      "mladi-2": "Z zavezo se strinjamo.",
+      "obvescanje-1": "Se strinjamo s snemanjem in prenosom sej, saj imajo občanke in občani pravico biti informirani o tem, kaj se odloča v Svetu Četrtne skupnosti.",
+      "obvescanje-2": "Zavzemamo se za jasen zapis predlogov in objavo povzetkov po vsaki seji.",
+      "obvescanje-3": "Zavzemamo se za obveščaje tako prek tiskanih kot digitalnih medijev in, v kolikor finančni viri to dopuščajo, za pogostejše obveščanje prek tiskanih obvestil in drugih kanalov.",
+      "obvescanje-4": "Da.",
+      "obvescanje-5": "Zavzemamo se za čim večjo transparentnost in sprotno obveščanje prebivalcev o spremembah OPPN, pri čemer izpostavljamo, da imajo četrtni svetniki predvsem posvetovalno vlogo.",
+      "obvescanje-6": "Pobudo podpiramo.",
+      "zakaj-3": "Ne glede na izvolitev si bomo prizadevali za ohranjanje stikov in organiziranje srečanj med civilnimi iniciativami prebivalcev in izvoljenimi svetniki Četrtnih skupnosti in Mestnega sveta.",
+      "zakaj-1": "Glasujte za listo, ki se zavzema za kakovostnejše okolje za vse, ki tu živimo – za urejen, dostopen in prijeten prostor, ki upošteva potrebe vseh družbenih skupin in omogoča kakovostno življenje vsem.",
+      "zakaj-2": "Sodelovanje s civilnimi iniciativami, posluh za čim večji krog prebivalcev Bežigrada in skrb za pešpoti in kolesarske steze."
   },
   "2": {
     "obvescanje-1": "Nisem tehnik, sem pa organizator, komunikator in skrbnik besede, torej bo to moje področje",
