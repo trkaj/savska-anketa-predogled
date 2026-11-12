@@ -76,7 +76,7 @@ const LISTE_IME = {
 };
 
 function napisBrezOdgovora(n, sPiko) {
-  const niso = (Number(n) === 3 || Number(n) === 9 || Number(n) === 14);
+  const niso = (Number(n) === 3 || Number(n) === 14);
   if (niso) return "Brez odgovora";
   const tekst = "Odgovora še ni";
   return sPiko ? tekst + "." : tekst;
@@ -324,7 +324,7 @@ function escHtml(s) {
 }
 
 function stranListe(n) {
-  const map = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
+  const map = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 9: "lista-9.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
   return map[n] || ("lista.html?n=" + n);
 }
 

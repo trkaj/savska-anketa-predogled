@@ -46,7 +46,7 @@
 <script>
 const LISTE = [{"n": 1, "ime": "Gibanje Svoboda"}, {"n": 2, "ime": "Slovenska ljudska stranka"}, {"n": 3, "ime": "Demokrati. Anžeta Logarja"}, {"n": 4, "ime": "Pirati"}, {"n": 5, "ime": "Levica"}, {"n": 6, "ime": "Prerod – stranka Vladimirja Prebiliča"}, {"n": 7, "ime": "Slovenska demokratska stranka – SDS"}, {"n": 8, "ime": "Vesna – zelena stranka"}, {"n": 9, "ime": "Nova Slovenija in Fokus"}, {"n": 10, "ime": "Socialni demokrati"}, {"n": 11, "ime": "Cilj – Bežigrad"}, {"n": 12, "ime": "Stranka Straža – katoliška narodna stranka"}, {"n": 13, "ime": "Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa"}, {"n": 14, "ime": "Državljansko gibanje Resni.ca"}, {"n": 15, "ime": "Lista Zorana Jankovića"}];
 const n = parseInt(new URLSearchParams(location.search).get("n") || "", 10);
-const IZP = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
+const IZP = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 9: "lista-9.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
 if (IZP[n]) { location.replace(IZP[n]); }
 const i = LISTE.findIndex(x => x.n === n);
 if (i < 0) {

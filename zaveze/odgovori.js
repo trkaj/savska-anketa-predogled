@@ -639,6 +639,59 @@ const ODGOVORI = {
       "zakaj-3": "Da"
     }
   },
+  "9": {
+    "prioritet": [
+      "Parkiranje",
+      "Pošta, banka in druge storitve",
+      "Promet skozi naselje",
+      "Igle in droge, varnost",
+      "Igrišča in prostor za mlade"
+    ],
+    "prioritetId": [
+      "parkiranje",
+      "storitve",
+      "promet",
+      "varnost",
+      "mladi"
+    ],
+    "counts": {
+      "da": 11,
+      "delno": 19,
+      "ne": 0
+    },
+    "odgovori": {
+      "obvescanje-1": "Delno",
+      "obvescanje-2": "Da",
+      "obvescanje-3": "Da",
+      "obvescanje-4": "Da",
+      "obvescanje-5": "Delno",
+      "obvescanje-6": "Delno",
+      "parkiranje-1": "Delno",
+      "parkiranje-2": "Delno",
+      "storitve-1": "Da",
+      "storitve-2": "Delno",
+      "promet-1": "Delno",
+      "promet-2": "Da",
+      "promet-3": "Delno",
+      "varnost-1": "Delno",
+      "varnost-2": "Da",
+      "klopi-1": "Delno",
+      "klopi-2": "Da",
+      "cistoca-1": "Delno",
+      "cistoca-2": "Da",
+      "zelenje-1": "Da",
+      "zelenje-2": "Delno",
+      "dom-1": "Delno",
+      "dom-2": "Delno",
+      "zrak-1": "Da",
+      "zrak-2": "Da",
+      "mladi-1": "Delno",
+      "mladi-2": "Delno",
+      "maladela-1": "Delno",
+      "maladela-2": "Delno",
+      "maladela-3": "Delno"
+    }
+  },
   "10": {
     "prioritet": [
       "Parkiranje",
@@ -1037,6 +1090,31 @@ const RAZLAGE = {
     "zakaj-1": "Ker izhajamo iz civilne družbe in se z delovanjem v različnih civilnih iniciativah že več let borimo proti spornim projektom trenutnega župana. Skozi lastno delovanje smo spoznali ovire, ki jih je potrebno odstraniti, da bi omogočili demokratično upravljanje mesta.",
     "zakaj-2": "Kot izvoljeni predstavniki, se bomo na nivoju MS in tudi na nivoju ČS zavzemali za izboljšanje razmer  v celem mestu. Četrtne skupnosti lahko imajopartikularne probleme, a način reševanja le teh mora biti sistemski. Samo skozi demokratične procese identifikacije, analize in participativnega iskanja odgovorov na vseh nivojih, je mogoče zagotoviti skladen razvoj, ki bo sprejemljiv za čim širši krog prebivalk in prebivalcev mesta.",
     "zakaj-3": "Spodbujali bomo oblikovanje skupnostnih iniciativ in pomagali s svojim znanjem pri spodbujanju demokratičnega delovanja ČS in preprečevanju samovolje posmeznikov."
+  },
+  "9": {
+    "obvescanje-1": "Da, podpiramo večjo preglednost in javnost delovanja sveta ČS Bežigrad, vendar vse v okviru ki jih ponuja zakon o varstvu podatkov.",
+    "obvescanje-2": "Zapisniki sej sveta ČS Bežigrad so že sedaj pregledni in vsebujejo sprejete sklepe ter bistvene informacije o obravnavanih temah. Zavzemali se bomo za ohranitev te prakse in po potrebi njeno nadgradnjo s kratkimi povzetki sej, ki bodo javnosti dostopni v čim krajšem času.",
+    "obvescanje-3": "Zavzemali se bomo za boljšo uporabo obstoječih komunikacijskih kanalov MOL in ČS ter za dodatne možnosti obveščanja prek družbenih omrežij, elektronskih novic in oglasnih desk. Pri tem je sodelovanje z upravniki večstanovanjskih stavb zelo dobra pobuda.",
+    "obvescanje-4": "Na sejah sveta ČS Bežigrad imamo že sedaj stalno točko dnevnega reda v okviru katere redno obravnavamo vprašanja, pobude in predloge prebivalcev.",
+    "obvescanje-5": "Zavzemamo se, da so prebivalci o načrtovanih spremembah  (OPPN) obveščeni čim prej, že v fazi njihove priprave, saj je pravočasno vključevanje javnosti pomembno pri odločanju o razvoju naše četrtne skupnosti.",
+    "obvescanje-6": "V ČS Bežigrad je zaposlena tudi koordinatorka, ki skrbi za tekoče delovanje četrtne skupnosti in komunikacijo z občani ter je vsak delovni dan prisotna v prostorih ČS na Vojkovi cesti 1. Občani se lahko nanjo neposredno obrnejo s svojimi vprašanji in pobudami.",
+    "parkiranje-1": "Pristojne službe MOL bomo pozvali, da pripravijo oziroma javno predstavijo podatke o parkiriščih v lasti MOL, parkiriščih na zemljiščih etažnih lastnikov ter zemljiščih, ki so predmet postopkov po ZVEtL. Pri tem je treba upoštevati, da ugotavljanje lastništva in odločanje v postopkih ZVEtL ni v pristojnosti sveta četrtne skupnosti.",
+    "parkiranje-2": "V okviru naših pristojnosti bomo še naprej sodelovali s civilno iniciativo in podpirali rešitve, ki bodo upoštevale potrebe stanovalcev ter zagotavljale proste pločnike, zelene površine in varne poti za pešce.",
+    "storitve-1": "Na Pošto Slovenije in banke smo se v ČS Bežigrad v zvezi s to problematiko že obrnili. Na pristojne naslovnike se bomo ponovno pisno obrnili, pri čemer bomo upoštevali tudi podatke in ugotovitve ankete občanov",
+    "storitve-2": "Vse to že vsa leta in že prejšnji mandat podpiramo, vendar se morate zavedati,  da končne odločitve o izvajanju teh storitev niso v pristojnosti sveta ČS.",
+    "promet-1": "Zopet je enak odgovor. Vse te pobude stalno naslavljamo na MOL in pristojne službe.",
+    "promet-2": "Tudi to vsako leto sodeleujemo s PP Bežigrad, z OŠ in dajemo pobude za čim večjo varnost otrok.",
+    "promet-3": "Več  pobud smo dali  lanskem letu, vendar ne moremo narediti nič, ker nas \"zablokira\" odbor za gospodarske javne službe in promet pri MOL.",
+    "varnost-1": "Dali bomo pobudo za organizacijo rednih srečanj predstavnikov policije, Mestnega redarstva in prebivalcev ČS Bežigrad",
+    "cistoca-1": "Čistilne akcije organiziramo že zdaj in pri njih tudi člani aktivno sodelujemo.",
+    "zelenje-2": "Podpiramo vključevanje prebivalcev pri izbiri lokacij za zasaditev novih dreves. Občane bomo povabili k posredovanju predlogov.",
+    "dom-1": "V prvem letu bomo dali pobudo za pripravo pregleda razpoložljivih prostorov v Savskem naselju in pri MOL preverili njihovo lastništvo, namembnost ter možnosti uporabe.",
+    "mladi-1": "Podpiramo pobudo za popoldansko uporabo šolskega igrišča in ureditev pokritega prostora za druženje mladih. Že večkrat smo pozvali ravnatelje OŠ za Bežigradom, da so igrišča popoldne odprta. .",
+    "mladi-2": "Odprti smo za vse pobude in še posebej bomo veseli pobud mladih.",
+    "maladela-3": "kolikor je v naši pristojnosti.",
+    "zakaj-1": "Tudi v prihodnje bomo posebno pozornost namenjali urejanju parkiranja, varnosti, ohranjanju zelenih površin, dostopnosti osnovnih storitev in prostorom za druženje. Naš cilj je konstruktivno sodelovanje s prebivalci, civilnimi pobudami in MOL ter iskanje konkretnih in izvedljivih rešitev.",
+    "zakaj-2": "Prebivalci Savskega naselja lahko od mene pričakujejo enako zavzeto delo kot doslej, posluh za njihove potrebe in pobude ter aktivno iskanje konkretnih in izvedljivih rešitev",
+    "zakaj-3": "Seveda. Moja skrb za Savsko naselje ni vezana na članstvo v svetu ČS, kot tudi moje delo ni vezano samo na Savsko naselje. Po svojih močeh, znanju bom iskala rešitve."
   },
   "10": {
     "obvescanje-1": "To je potrebno urediti skladno z varstvom osebnih podatkov. Seje se že sedaj snemajo, kot nam je znano iz prejšnjih mandatov. Smatramo, da je dovolj, če je na voljo uradno potrjen zapis s sklepi.",
