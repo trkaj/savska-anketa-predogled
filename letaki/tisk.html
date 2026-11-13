@@ -35,7 +35,11 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 function parseCSV(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
  if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);r.push(row);row=[];f=''}else if(c!='\r')f+=c}
  if(f||row.length){row.push(f);r.push(row)}return r}
-const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'');
+const PREDOGLED_VOLILNI=!location.protocol.startsWith('http')||/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const P3_VOLILNI={id:'p3-volilni-listi',st:3,naslov:'Volilni listi',opis:'Razdeljevanje volilnih listov po Savskem naselju',zavihek:'3. Volilni listi',od:'2026-11-13',stanje:'aktivno'};
+function jeVolilni(p){return !!(p&&(p.id==P3_VOLILNI.id||/volilni-listi/.test(p.id||'')))}
+const csvZa=p=>{if(PREDOGLED_VOLILNI&&jeVolilni(p))return'volilni-listi-prazno.csv';return'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'')}
+const csvUrl=p=>{const u=csvZa(p);return u+(u.indexOf('?')>=0?'&':'?')+'t='+Date.now()};
 // admin (?admin=1) lahko vklopi vzdevke pri rezerviranih; privzeto brez imen
 if(Q.get('admin')=='1')document.getElementById('imenaOpc').style.display='';
 if(Q.get('admin')=='1'&&Q.get('imena')=='1')document.getElementById('imena').checked=true;
@@ -60,6 +64,7 @@ async function natisni(){document.getElementById('stanjeT').textContent=' Pripra
 window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitBounds(L.latLngBounds(ring),{padding:[6,6]})});
 (async()=>{let PG=[{id:'p1-anketa',st:1,naslov:'Savska anketa',zavihek:''}];
  try{const j=await Promise.race([fetch(SKRIPT+'?akcija=poglavja').then(r=>r.json()),new Promise((_,r)=>setTimeout(r,6000))]);if(j&&j.ok&&j.poglavja&&j.poglavja.length)PG=j.poglavja}catch(e){}
+ if(PREDOGLED_VOLILNI&&!PG.some(p=>p&&p.id==P3_VOLILNI.id))PG=PG.concat([P3_VOLILNI]);
  PG.forEach(p=>{if(p.id=='p2-okolica-test')p.naslov='Invazija'});
  // Brez ?p= vedno 1. poglavje (st === 1, sicer prvo po številki). ?p= odpre izbrano poglavje.
  const poSt=PG.slice().sort((a,b)=>(+a.st||1)-(+b.st||1));
@@ -67,7 +72,7 @@ window.addEventListener('beforeprint',()=>{map.invalidateSize();if(ring)map.fitB
  const P=(Q.get('p')&&PG.find(p=>p.id==Q.get('p')))||prvo;
  document.getElementById('naslov').textContent=P.st+'. poglavje: '+P.naslov+' – zemljevid razdeljevanja';document.title=document.getElementById('naslov').textContent;
  const dat=P.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'};
- const [v,meja,t]=await Promise.all([fetch(dat.vh).then(r=>r.json()),fetch(dat.meja).then(r=>r.json()),fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text()).catch(()=>'')]);
+ const [v,meja,t]=await Promise.all([fetch(dat.vh).then(r=>r.json()),fetch(dat.meja).then(r=>r.json()),fetch(csvUrl(P)).then(r=>r.text()).catch(()=>'')]);
  VH=v.map(x=>({u:x[0],n:x[1],k:norm(x[0])+'|'+norm(x[1]),ll:[x[2],x[3]]}));
  if(t&&!t.trim().startsWith('<')){const used=new Set(),raw=parseCSV(t).slice(1).filter(x=>x[0]);
   raw.forEach(x=>{const s=(x[1]||'').trim();if(s)used.add(norm(x[0])+'|'+norm(s))});

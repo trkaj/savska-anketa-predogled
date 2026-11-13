@@ -68,7 +68,7 @@ details.ek summary:after{content:'▸';color:#888}details.ek[open] summary:after
 <div class="blok karta"><h2>Zemljevid</h2><p class="mal leg">Pregled: <span style="background:#c9c9c9"></span>prosto<span style="background:#ffd84d"></span>vzeto<span style="background:#2e9e5b"></span>razdeljeno</p>
 <p id="povzetek" class="mal"></p><p id="osv" class="mal" style="margin:-4px 0 4px;min-height:1em;opacity:.7"></p><div id="map"></div><div id="ogledBox"><label><input type="checkbox" id="ogledVkl" onchange="ogledPlast()"> 🪧 Kažipot zavez</label> <span class="mal">(vidno samo prijavljenim; tvoja ocena ostane na tvoji napravi in gre v tabelo, rezultatov ne objavljamo pred volitvami 15. 11.)</span></div><p style="margin:10px 0 0"><b>🖨 Natisni zemljevid</b> <span class="mal">(A4 ležeče)</span></p><div style="display:flex;gap:8px"><button class="s" style="flex:1" onclick="tisk('barvno')">Barvno</button><button class="s" style="flex:1" onclick="tisk('cb')">Črno-belo</button></div></div>
 
-<p class="mal" style="padding:0 16px 30px">Težave? Pokliči ali pošlji SMS na 070 205 595. Vse je zapisano tudi v <a id="tabela" href="#">tabeli</a>.</p>
+<p class="mal" style="padding:0 16px 30px">Težave? Pokliči ali pošlji SMS na 070 205 595 ali piši na savskonaselje1@gmail.com. Vse je zapisano tudi v <a id="tabela" href="#">tabeli</a>.</p>
 
 <div id="okno" onclick="if(event.target==this)zapri()"><div class="blok" id="oknoVsebina"></div></div>
 <div id="obv"></div>
@@ -78,12 +78,21 @@ details.ek summary:after{content:'▸';color:#888}details.ek[open] summary:after
    Poglavja dodajaš na /letaki/admin/ (skript v4); seznam stran prebere s SKRIPT?akcija=poglavja.
    Spodaj je le rezerva (1. poglavje), če skript ne odgovori ali je še stara različica.
    id poglavja se po objavi ne sme spreminjati (po njem so shranjeni mejniki v brskalnikih).
-   Značke in zbirka citatov so skupne vsem poglavjem; mejniki in Zaključevalec so po poglavjih. */
+   Značke in zbirka citatov so skupne vsem poglavjem; mejniki in Zaključevalec so po poglavjih.
+   3. poglavje (volilni listi): ista karta kot 1. poglavje (vhodi.json / meja.json, samo Savsko naselje),
+   ločen zavihek v tabeli, da se ne meša z letaki. Na živi strani se pokaže, ko je v zavihku Poglavja.
+   Lokalni predogled (localhost / file) doda poglavje že prej in bere volilni-listi-prazno.csv. */
 const SHEET='12I4SGnEltzkDz9gi7KAxZhPlZJfR4VJh3HH9SVhokPM';
 const SKRIPT='https://script.google.com/macros/s/AKfycbw1885AEWkP3HCtg7dWEFYgQWxBJ0vlH4-tYmljBP2MKqVvwfljmgTEKfe7utxCJCTL/exec';
+const PREDOGLED_VOLILNI=!location.protocol.startsWith('http')||/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const P3_VOLILNI={id:'p3-volilni-listi',st:3,naslov:'Volilni listi',opis:'Razdeljevanje volilnih listov po Savskem naselju',zavihek:'3. Volilni listi',od:'2026-11-13',stanje:'aktivno'};
+function jeVolilni(p){return !!(p&&(p.id==P3_VOLILNI.id||/volilni-listi/.test(p.id||'')))}
+function dopolniPoglavja(a){a=Array.isArray(a)?a.slice():[];if(PREDOGLED_VOLILNI&&!a.some(p=>p&&p.id==P3_VOLILNI.id))a.push(P3_VOLILNI);return a}
 let POGLAVJA=[{id:'p1-anketa', st:1, naslov:'Savska anketa', opis:'Letaki z vabilom k anketi', zavihek:'', od:'2026-10-31', stanje:'aktivno'}];
-// 1. poglavje bere prvi zavihek (brez &sheet=), da deluje tudi, če ga kdo preimenuje
-const csvZa=p=>'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'');
+// 1. poglavje bere prvi zavihek (brez &sheet=), da deluje tudi, če ga kdo preimenuje.
+// Predogled volilnih listov bere lokalni prazen CSV, da se ne zmeša s podatki 1. in 2. poglavja.
+const csvZa=p=>{if(PREDOGLED_VOLILNI&&jeVolilni(p))return'volilni-listi-prazno.csv';return'https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:csv&headers=1'+(p.zavihek&&p.id!='p1-anketa'?'&sheet='+encodeURIComponent(p.zavihek):'')}
+const csvUrl=p=>{const u=csvZa(p);return u+(u.indexOf('?')>=0?'&':'?')+'t='+Date.now()};
 let P,ZAKLJ,PIME,CSV;
 // Datoteke so vezane na stabilni id, ne na položaj poglavja v seznamu.
 function datotekeZa(p){return p&&p.id=='p2-okolica-test'?{vh:'vhodi-p2.json',meja:'meja-p2.json'}:{vh:'vhodi.json',meja:'meja.json'}}
@@ -101,9 +110,9 @@ function initPoglavje(){const q=new URLSearchParams(location.search).get('p')||l
  const prvo=POGLAVJA.find(p=>p.st===1)||POGLAVJA[0];
  P=(q&&POGLAVJA.find(p=>p.id==q))||prvo;
  ZAKLJ=P.stanje!='aktivno';PIME=P.st+'. poglavje: '+P.naslov;CSV=csvZa(P);
- document.title=PIME+' – razdeljevanje';
+ document.title=PIME+(jeVolilni(P)?' – volilni listi':' – razdeljevanje');
  document.getElementById('glava').textContent=PIME;
- document.getElementById('podglava').textContent=(P.opis?P.opis+' · ':'')+(ZAKLJ?'poglavje je zaključeno, hvala vsem!':'kdo nese gradivo na kateri naslov');
+ document.getElementById('podglava').textContent=(P.opis?P.opis+' · ':'')+(ZAKLJ?'poglavje je zaključeno, hvala vsem!':(jeVolilni(P)?'kdo nese volilne liste na kateri naslov':'kdo nese gradivo na kateri naslov'));
  const nav=document.getElementById('poglavja');nav.style.display=POGLAVJA.length>1?'flex':'none';
  nav.innerHTML=POGLAVJA.length>1?POGLAVJA.map(p=>'<button class="'+(p.id==P.id?'ak':'')+'" onclick="izberiPoglavje(\''+p.id+'\')">'+p.st+'. poglavje · '+String(p.naslov).replace(/[&<>"]/g,'')+(p.stanje!='aktivno'?' ✓':'')+'</button>').join(''):'';
  ['jaz','moji','uliceBlok'].forEach(i=>{if(ZAKLJ)document.getElementById(i).style.display='none'});if(!ZAKLJ)document.getElementById('uliceBlok').style.display=''}
@@ -116,13 +125,13 @@ let casPod=0,osvN=0;
 function osvUI(){const e=document.getElementById('osv');if(!e)return;e.textContent=osvN>0?'osvežujem…':casPod&&Date.now()-casPod>120000?'zadnja posodobitev '+urePod(casPod):''}
 function naslovPog(p){return p&&p.id=='p2-okolica-test'?'Invazija':String(p&&p.naslov||'')}
 function normPoglavja(a){return a.filter(p=>p&&p.id).map(p=>({id:String(p.id),st:+p.st||1,naslov:naslovPog(p),opis:String(p.opis||''),zavihek:String(p.zavihek||''),od:String(p.od||''),stanje:p.stanje=='aktivno'?'aktivno':'zaključeno'})).sort((a,b)=>a.st-b.st)}
-{const c=cBeri(KP);if(c&&Array.isArray(c.v)&&c.v.length)POGLAVJA=normPoglavja(c.v)}
+{const c=cBeri(KP);if(c&&Array.isArray(c.v)&&c.v.length)POGLAVJA=normPoglavja(c.v)}POGLAVJA=normPoglavja(dopolniPoglavja(POGLAVJA));
 initPoglavje();
 // CSV trenutnega poglavja začnemo nalagati takoj, vzporedno s seznamom poglavij
-let prviCSV={id:P.id,pr:fetch(CSV+'&t='+Date.now()).then(r=>r.text())};prviCSV.pr.catch(()=>{});
+let prviCSV={id:P.id,pr:fetch(csvUrl(P)).then(r=>r.text())};prviCSV.pr.catch(()=>{});
 // seznam poglavij iz skripta v4 (rezerva: vgrajeno 1. poglavje)
 fetch(SKRIPT+'?akcija=poglavja&t='+Date.now()).then(r=>r.json()).then(j=>{
- if(!(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length))return;const nova=normPoglavja(j.poglavja);if(!nova.length)return;cPisi(KP,j.poglavja);
+ if(!(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length))return;const nova=normPoglavja(dopolniPoglavja(j.poglavja));if(!nova.length)return;cPisi(KP,j.poglavja);
  const prej=P.id,prejSez=JSON.stringify(POGLAVJA);POGLAVJA=nova;initPoglavje();
  if(P.id!=prej){location.reload();return}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
 // Brez poglavja v naslovu (?p= ali #p=) se vedno odpre 1. poglavje. Zadnji ogled se ne obnovi; gumb poglavja še vedno nastavi ?p=.
@@ -333,7 +342,7 @@ async function akcija(ids,a){if(ZAKLJ)return;
  setTimeout(nalozi,6000)}
 // v7: plast »Točke ogleda« (zaveze MOL); podatki letaki/ogled.json (backend/ogled-tocke.py). Brez skupnih rezultatov.
 let OG=null,ogSloj=null,ogMB=null;const ogK=id=>'ogled:'+id,ogMoj=id=>{try{return localStorage.getItem(ogK(id))||''}catch(e){return ''}};
-function ogledUI(){const b=document.getElementById('ogledBox');b.style.display=ime&&!ZAKLJ?'block':'none';if(!ime&&ogSloj){map.removeLayer(ogSloj);document.getElementById('ogledVkl').checked=false}}
+function ogledUI(){const b=document.getElementById('ogledBox');b.style.display=ime&&!ZAKLJ&&!jeVolilni(P)?'block':'none';if((!ime||jeVolilni(P))&&ogSloj){map.removeLayer(ogSloj);document.getElementById('ogledVkl').checked=false}}
 function ogIkona(z){return L.divIcon({className:'ogt'+(ogMoj(z.id)?' d':''),html:'<span>'+(z.postaja||z.st)+'</span>',iconSize:[20,20],iconAnchor:[10,10],popupAnchor:[0,-10]})}
 function ogKr(t,n){t=t||'';return t.length>n?t.slice(0,n).replace(/\s+\S*$/,'')+' …':t}
 function ogVec(b){const d=b.nextElementSibling,o=d.style.display=='none';d.style.display=o?'block':'none';b.textContent=o?'Manj ▴':'Več ▾ (daljši opis)'}
@@ -379,9 +388,9 @@ function izPredpomnilnika(id){if(stanjePo[id])return true;const c=cBeri(KC(id));
 function prikaziPoglavje(){izPredpomnilnika(P.id);stanje=stanjePo[P.id]||{};imaStolpce=!!imaPo[P.id];if(VH.length){osvezi();osvUI();nalozi()}}
 async function naloziOstale(){// druga poglavja (za »Vsa poglavja« in skupne značke); zaključena se ne spreminjajo, zato jih naložimo enkrat
  const ids=POGLAVJA.filter(p=>p.id!=P.id&&(p.stanje=='aktivno'||!ostaliNalozeni||!stanjePo[p.id]));ostaliNalozeni=1;
- await Promise.all(ids.map(async p=>{const [t,vhodi]=await Promise.all([fetch(csvZa(p)+'&t='+Date.now()).then(r=>r.text()),vhodiZa(p)]);const x=preberi(t,vhodi);stanjePo[p.id]=x.ns;imaPo[p.id]=x.ima;cPisi(KC(p.id),t)}).map(pr=>pr.catch(e=>console.warn('poglavje',e))));
+ await Promise.all(ids.map(async p=>{const [t,vhodi]=await Promise.all([fetch(csvUrl(p)).then(r=>r.text()),vhodiZa(p)]);const x=preberi(t,vhodi);stanjePo[p.id]=x.ns;imaPo[p.id]=x.ima;cPisi(KC(p.id),t)}).map(pr=>pr.catch(e=>console.warn('poglavje',e))));
  if(VH.length)osvezi()}
-async function nalozi(){const id=P.id;osvN++;osvUI();try{let pr;if(prviCSV&&prviCSV.id==id){pr=prviCSV.pr;prviCSV=null}else pr=fetch(csvZa(P)+'&t='+Date.now()).then(r=>r.text());
+async function nalozi(){const id=P.id;osvN++;osvUI();try{let pr;if(prviCSV&&prviCSV.id==id){pr=prviCSV.pr;prviCSV=null}else pr=fetch(csvUrl(P)).then(r=>r.text());
  const [t,vhodi]=await Promise.all([pr,vhodiZa({id})]);const {ns,ima}=preberi(t,vhodi);cPisi(KC(id),t);stanjePo[id]=ns;imaPo[id]=ima;
  if(P.id!=id)return;imaStolpce=ima;stanje=ns;nalozeno=true;casPod=Date.now();osvezi();if(document.getElementById('okno').style.display!='flex')mejniki();
  naloziOstale();naloziEkipe().then(()=>{if(P.id==id)osvezi()})}catch(e){console.warn(e)}finally{osvN--;osvUI()}}
