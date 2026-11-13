@@ -133,7 +133,7 @@ let prviCSV={id:P.id,pr:fetch(csvUrl(P)).then(r=>r.text())};prviCSV.pr.catch(()=
 fetch(SKRIPT+'?akcija=poglavja&t='+Date.now()).then(r=>r.json()).then(j=>{
  if(!(j&&j.ok&&Array.isArray(j.poglavja)&&j.poglavja.length))return;const nova=normPoglavja(dopolniPoglavja(j.poglavja));if(!nova.length)return;cPisi(KP,j.poglavja);
  const prej=P.id,prejSez=JSON.stringify(POGLAVJA);POGLAVJA=nova;initPoglavje();
- if(P.id!=prej){location.reload();return}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
+ if(P.id!=prej){if(typeof vnosOdprt=='function'&&vnosOdprt()){const cakaj=()=>{if(vnosOdprt()){setTimeout(cakaj,1500);return}location.reload()};setTimeout(cakaj,1500);return}location.reload();return}else if(prejSez!=JSON.stringify(nova)&&VH.length){osvezi();naloziOstale()}}).catch(e=>console.warn('poglavja',e));
 // Brez poglavja v naslovu (?p= ali #p=) se vedno odpre 1. poglavje. Zadnji ogled se ne obnovi; gumb poglavja še vedno nastavi ?p=.
 const ekKljuc=()=>'letaki_ekipa:'+(ime||'').trim().toLowerCase();
 function ekipaGet(){let v=localStorage.getItem(ekKljuc());if(v===null)v=localStorage.getItem('letaki_ekipa')||'';return v.trim()}
@@ -189,9 +189,17 @@ let ime=localStorage.getItem('vzdevek')||'';
 const st=i=>stanje[VH[i].k]||{s:'prosto',p:'',r:'',o:''};
 const jeMoj=i=>ime&&st(i).p.toLowerCase()==ime.toLowerCase();
 function obv(t,ms){const o=document.getElementById('obv');o.textContent=t;o.style.display='block';clearTimeout(obv.t);if(ms!==0)obv.t=setTimeout(()=>o.style.display='none',ms||3500)}
+function vnosOdprt(){const a=document.activeElement;
+ if(a&&(a.id=='ime'||a.id=='ekipa'||a.id=='opomba'))return true;
+ const imeEl=document.getElementById('ime');if(!ime&&imeEl&&imeEl.value.trim())return true;
+ const ek=document.getElementById('ekipa');if(ek&&ek.value.trim()&&ek.value.trim()!=ekipaGet())return true;
+ const okno=document.getElementById('okno');return !!(okno&&okno.style.display=='flex')}
 function jaz(){const b=document.getElementById('jaz');
- if(!ime){b.innerHTML='<h2>1. Kdo si?</h2><p class="mal">Vpiši samo vzdevek ali začetnice, ne pravega imena. Telefon si ga zapomni.</p><input id="ime" placeholder="npr. Sosed7 ali A. K." maxlength="30"><button class="g siroko" onclick="shraniIme()">Naprej</button>';}
- else b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Živjo, '+esc(ime)+'!</b><button class="s" onclick="ime=\'\';localStorage.removeItem(\'vzdevek\');osvezi()">Nisem jaz</button></div><div id="ekBox" style="margin-top:10px"></div>';ekipaUI()}
+ if(!ime){if(document.getElementById('ime'))return;
+  b.innerHTML='<h2>1. Kdo si?</h2><p class="mal">Vpiši samo vzdevek ali začetnice, ne pravega imena. Telefon si ga zapomni.</p><input id="ime" placeholder="npr. Sosed7 ali A. K." maxlength="30"><button class="g siroko" onclick="shraniIme()">Naprej</button>';return}
+ const ek=document.getElementById('ekipa');
+ if(ek&&(document.activeElement===ek||(ek.value.trim()&&ek.value.trim()!=ekipaGet())))return;
+ b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Živjo, '+esc(ime)+'!</b><button class="s" onclick="ime=\'\';localStorage.removeItem(\'vzdevek\');osvezi()">Nisem jaz</button></div><div id="ekBox" style="margin-top:10px"></div>';ekipaUI()}
 function shraniIme(){const v=document.getElementById('ime').value.trim();if(!v){obv('Vpiši vzdevek ali začetnice.');return}ime=v;localStorage.setItem('vzdevek',v);osvezi()}
 function moji(){const b=document.getElementById('moji');const m=VH.map((v,i)=>i).filter(jeMoj);
  if(!ime||!m.length){b.style.display='none';return}b.style.display='block';
@@ -365,7 +373,12 @@ async function ogOceni(id,k){if(!ime){obv('Najprej zgoraj vpiši vzdevek.');retu
  try{const r=await (await fetch(SKRIPT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:'ogled',kdo:ime,tocka:id,ocena:k,cas:new Date().toISOString()})})).json();obv(r&&r.ok?ogNaprej(z):'Shranjeno na napravi; strežnik: '+((r&&r.sporocilo)||'napaka'))}
  catch(e){obv('Shranjeno na tvoji napravi (strežnik ni dosegljiv).')}}
 function ogNaprej(z){const p=z.postaja||z.st;return p<OG.length?'✅ Postaja '+p+' opravljena! Naprej na postajo '+(p+1)+' →':'🏁 Postaja '+p+' opravljena – to je bila zadnja. Hvala za sprehod!'}
-function osvezi(){ogledUI();jaz();moji();ulice();lestvica();ekipeSeznam();stevec();zbirkaGumb();if(ZAKLJ)['jaz','moji','uliceBlok'].forEach(i=>document.getElementById(i).style.display='none');
+function osvezi(){ogledUI();
+ const vnos=vnosOdprt(),imeEl=document.getElementById('ime');
+ if(!vnos||!imeEl)jaz();
+ if(!vnos){moji();ulice();lestvica();ekipeSeznam();zbirkaGumb()}
+ else if(izbrana){try{ulice()}catch(e){}}
+ stevec();if(ZAKLJ)['jaz','moji','uliceBlok'].forEach(i=>document.getElementById(i).style.display='none');
  tocke.forEach((m,i)=>{const x=st(i),v=VH[i];m.setStyle({fillColor:BARVA[x.s]});m.setTooltipContent(esc(v.u+' '+v.n+(x.s=='razdeljeno'?' · razdelil '+x.r:x.p?' · rezerviral '+x.p:'')))});
  const n=VH.length,p=VH.filter((v,i)=>st(i).s!='prosto').length,d=VH.filter((v,i)=>st(i).s=='razdeljeno').length;
  document.getElementById('povzetek').textContent='Vzetih '+p+' od '+n+' naslovov, razdeljenih '+d+'.'}
