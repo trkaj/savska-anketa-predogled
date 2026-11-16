@@ -1,0 +1,299 @@
+{
+ "opomba": "Javna datoteka: SAMO potrjeni dogodki. Brez kontaktov pošiljateljev. Vnose s primer=true pred objavo odstrani. polja = številke polj z zemljevida letakov (../letaki/polja.json). izpostavljeno: 0–3, določi potrjevalec (višje = višje v dnevu). glasovi = posnetek števca ob objavi (živi števec pride iz sprejema). Oznake: brezplacno, za_otroke, dostopno (dostop z vozičkom), brez_prijave – samo če je organizator to potrdil. kako_priti = preprosto, z besedami.",
+ "posodobljeno": "2026-11-16T09:00:00+01:00",
+ "kategorije": [
+  {
+   "id": "skupnost",
+   "ime": "Sosedje in skupnost",
+   "ikona": "🤝"
+  },
+  {
+   "id": "kultura",
+   "ime": "Kultura",
+   "ikona": "🎭"
+  },
+  {
+   "id": "otroci",
+   "ime": "Za otroke in družine",
+   "ikona": "🧸"
+  },
+  {
+   "id": "sport",
+   "ime": "Šport in gibanje",
+   "ikona": "⚽"
+  },
+  {
+   "id": "izobrazevanje",
+   "ime": "Predavanja in delavnice",
+   "ikona": "💡"
+  },
+  {
+   "id": "seje",
+   "ime": "Seje in javne obravnave",
+   "ikona": "🏛️"
+  },
+  {
+   "id": "drugo",
+   "ime": "Drugo",
+   "ikona": "✨"
+  }
+ ],
+ "dogodki": [
+  {
+   "id": "primer-1",
+   "primer": true,
+   "naslov": "PRIMER: Glavni dogodek dneva",
+   "kategorija": "skupnost",
+   "zacetek": "2026-11-18T17:00",
+   "konec": "2026-11-18T19:00",
+   "kraj": "Primer kraja (polje 10 na zemljevidu)",
+   "polja": [
+    10
+   ],
+   "opis": "Izmišljen primer. Tako je videti dogodek, ki ga ob potrditvi označiš kot najpomembnejšega v dnevu: na vrhu, velik.",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 2,
+   "glasovi": 12,
+   "brezplacno": true,
+   "za_otroke": true,
+   "dostopno": true,
+   "brez_prijave": true,
+   "kako_priti": "Primer: vhod s strani parkirišča, brez stopnic."
+  },
+  {
+   "id": "primer-2",
+   "primer": true,
+   "naslov": "PRIMER: Drugi dogodek dneva",
+   "kategorija": "otroci",
+   "zacetek": "2026-11-18T10:00",
+   "konec": "2026-11-18T11:00",
+   "kraj": "Primer kraja (polje 7 na zemljevidu)",
+   "polja": [
+    7
+   ],
+   "opis": "Izmišljen primer drugega dogodka istega dne.",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 1,
+   "glasovi": 5,
+   "brezplacno": true,
+   "za_otroke": true,
+   "dostopno": false,
+   "brez_prijave": false,
+   "kako_priti": "Primer: zadaj za igriščem, sledi listkom na drevesih."
+  },
+  {
+   "id": "primer-3",
+   "primer": true,
+   "naslov": "PRIMER: Tretji dogodek dneva",
+   "kategorija": "sport",
+   "zacetek": "2026-11-18T18:30",
+   "konec": "",
+   "kraj": "Primer kraja (polje 4 na zemljevidu)",
+   "polja": [
+    4
+   ],
+   "opis": "Izmišljen primer tretjega dogodka istega dne, brez slike.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 2,
+   "brezplacno": true,
+   "dostopno": true,
+   "brez_prijave": true,
+   "kako_priti": ""
+  },
+  {
+   "id": "primer-4",
+   "primer": true,
+   "naslov": "PRIMER: Sosedska čistilna akcija",
+   "kategorija": "skupnost",
+   "zacetek": "2026-11-21T10:00",
+   "konec": "2026-11-21T12:00",
+   "kraj": "Primer kraja (polje 9 na zemljevidu)",
+   "polja": [
+    9
+   ],
+   "opis": "Izmišljen primer vnosa. Pravega dogodka ni.",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 3,
+   "brezplacno": true,
+   "za_otroke": true,
+   "brez_prijave": true,
+   "kako_priti": "Primer: dobimo se pri klopci ob zelenici. Rokavice in vreče prinesemo mi."
+  },
+  {
+   "id": "primer-5",
+   "primer": true,
+   "naslov": "PRIMER: Pravljična ura za otroke",
+   "kategorija": "otroci",
+   "zacetek": "2026-11-28T17:00",
+   "konec": "2026-11-28T18:00",
+   "kraj": "Primer kraja (polje 10 na zemljevidu)",
+   "polja": [
+    10
+   ],
+   "opis": "Izmišljen primer vnosa s sliko plakata. Pravega dogodka ni.",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 0,
+   "brezplacno": true,
+   "za_otroke": true,
+   "dostopno": true,
+   "kako_priti": ""
+  },
+  {
+   "id": "primer-6",
+   "primer": true,
+   "naslov": "PRIMER: Seja četrtne skupnosti",
+   "kategorija": "seje",
+   "zacetek": "2026-12-03T18:00",
+   "konec": "",
+   "kraj": "Primer kraja (polje 14 na zemljevidu)",
+   "polja": [
+    14
+   ],
+   "opis": "Izmišljen primer vnosa brez slike. Pravega dogodka ni.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 0,
+   "brezplacno": true,
+   "dostopno": true,
+   "brez_prijave": true,
+   "kako_priti": ""
+  },
+  {
+   "id": "primer-7",
+   "primer": true,
+   "naslov": "PRIMER: Jutranja telovadba za starejše",
+   "kategorija": "sport",
+   "zacetek": "2026-11-21T08:30",
+   "konec": "2026-11-21T09:15",
+   "kraj": "Primer kraja (polje 4 na zemljevidu)",
+   "polja": [
+    4
+   ],
+   "opis": "Izmišljen primer. Več dogodkov v enem dnevu.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 4,
+   "brezplacno": true,
+   "brez_prijave": true
+  },
+  {
+   "id": "primer-8",
+   "primer": true,
+   "naslov": "PRIMER: Menjava knjig",
+   "kategorija": "kultura",
+   "zacetek": "2026-11-21T11:00",
+   "konec": "2026-11-21T13:00",
+   "kraj": "Primer kraja (polje 10 na zemljevidu)",
+   "polja": [
+    10
+   ],
+   "opis": "Izmišljen primer na istem kraju kot še dva dogodka (skupna točka na zemljevidu).",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 1,
+   "glasovi": 6,
+   "brezplacno": true,
+   "brez_prijave": true,
+   "dostopno": true
+  },
+  {
+   "id": "primer-9",
+   "primer": true,
+   "naslov": "PRIMER: Ustvarjalna delavnica za otroke",
+   "kategorija": "otroci",
+   "zacetek": "2026-11-21T15:00",
+   "konec": "2026-11-21T16:30",
+   "kraj": "Primer kraja (polje 10 na zemljevidu)",
+   "polja": [
+    10
+   ],
+   "opis": "Izmišljen primer na istem kraju.",
+   "slika": "slike/primer-dogodek.svg",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 2,
+   "glasovi": 9,
+   "za_otroke": true,
+   "brezplacno": true
+  },
+  {
+   "id": "primer-10",
+   "primer": true,
+   "naslov": "PRIMER: Sosedski večer s čajem",
+   "kategorija": "skupnost",
+   "zacetek": "2026-11-21T18:00",
+   "konec": "2026-11-21T20:00",
+   "kraj": "Primer kraja (polje 10 na zemljevidu)",
+   "polja": [
+    10
+   ],
+   "opis": "Izmišljen primer na istem kraju.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 2,
+   "brezplacno": true,
+   "dostopno": true
+  },
+  {
+   "id": "primer-11",
+   "primer": true,
+   "naslov": "PRIMER: Popravljalnica koles",
+   "kategorija": "izobrazevanje",
+   "zacetek": "2026-11-21T13:00",
+   "konec": "2026-11-21T16:00",
+   "kraj": "Primer kraja (polje 15 na zemljevidu)",
+   "polja": [
+    15
+   ],
+   "opis": "Izmišljen primer.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 1,
+   "brezplacno": true,
+   "brez_prijave": true
+  },
+  {
+   "id": "primer-12",
+   "primer": true,
+   "naslov": "PRIMER: Družinski sprehod po naselju",
+   "kategorija": "sport",
+   "zacetek": "2026-11-21T14:00",
+   "konec": "",
+   "kraj": "Primer kraja (polje 7 na zemljevidu)",
+   "polja": [
+    7
+   ],
+   "opis": "Izmišljen primer.",
+   "slika": "",
+   "organizator": "Primer organizatorja",
+   "povezava": "",
+   "izpostavljeno": 0,
+   "glasovi": 0,
+   "za_otroke": true,
+   "brezplacno": true,
+   "brez_prijave": true
+  }
+ ]
+}

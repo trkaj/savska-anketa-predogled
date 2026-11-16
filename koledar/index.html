@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kaj se dogaja v Savskem naselju – Savski koledar</title>
+<meta name="description" content="Dogodki v Savskem naselju na enem mestu: kaj se dogaja danes, koledar in zemljevid.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--besedilo:#111;--svetlo:#f3f6f1;--glavna:#0a5232;--glavna-temna:#063a23;--poudarek:#ffd84d;--rob:#5b5b5b;--opozorilo:#7a1f00;--zgled:#fff3c4;--modra:#dce7ff;--modra-temna:#0b2a6b;--velikost:20px;--spodaj:0px}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{font-size:var(--velikost);-webkit-text-size-adjust:100%}
+html[data-velikost="2"]{--velikost:23px}
+html[data-velikost="3"]{--velikost:26px}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;color:var(--besedilo);background:var(--svetlo);overflow-wrap:break-word;padding-bottom:var(--spodaj)}
+:focus-visible{outline:4px solid #000;outline-offset:3px;box-shadow:0 0 0 7px var(--poudarek)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+h1{font-size:1.5rem;line-height:1.2;margin:0 0 .2rem;color:#fff}
+h2{font-size:1.3rem;line-height:1.25;margin:.2rem 0 .6rem;color:var(--glavna-temna)}
+h3{font-size:1.1rem;line-height:1.3;margin:0 0 .3rem}
+p{margin:.4rem 0 .8rem}
+a{color:var(--glavna-temna);text-decoration-thickness:2px;text-underline-offset:3px}
+button{font-family:inherit}
+.okvir{max-width:1100px;margin:0 auto;padding-left:1rem;padding-right:1rem}
+.skrito{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* glava */
+.glava{background:var(--glavna);color:#fff;position:sticky;top:0;z-index:1000}
+.glava .okvir{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding-top:.4rem;padding-bottom:.4rem}
+.znamka{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;min-height:48px}
+.znamka img{width:40px;height:40px;border-radius:6px;background:#fff}
+.logo{font-weight:800;font-size:24px;color:#fff;line-height:1.2}
+.logo span{color:var(--poudarek)}
+.logo small{display:block;font-weight:600;font-size:14px;opacity:.95}
+.desno{display:flex;align-items:center;gap:.4rem}
+.velikost{display:flex;gap:.3rem}
+.velikost button{min-width:48px;min-height:48px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;border-radius:10px;cursor:pointer;font-size:16px;padding:0 6px}
+.velikost button[aria-pressed="true"]{background:#fff;color:var(--glavna-temna)}
+.aa{display:none;min-width:52px;min-height:48px;border:2px solid #fff;background:transparent;color:#fff;font-weight:800;border-radius:10px;font-size:18px;cursor:pointer}
+.gumb{font:inherit;font-weight:700;font-size:1rem;min-height:3rem;padding:.5rem 1.1rem;border-radius:.7rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+.gumb.glavni{background:var(--glavna);color:#fff}
+.gumb.dodaj{background:var(--poudarek);border-color:var(--poudarek);color:#111;white-space:nowrap}
+.trak{background:var(--zgled);border-bottom:3px dashed #8a6d00;font-size:.85rem;font-weight:600}
+.trak .okvir{padding-top:.35rem;padding-bottom:.35rem}
+
+/* naslovnica z dnevno sliko */
+.naslovnica{position:relative;min-height:140px;background:#0a5232 center/cover no-repeat;display:flex;align-items:flex-end}
+.naslovnica::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.6))}
+.naslovnica .okvir{position:relative;z-index:1;width:100%;padding-top:2rem;padding-bottom:.7rem;color:#fff}
+.naslovnica p{margin:0;font-size:1rem;max-width:42rem}
+.foto-opis{position:absolute;right:.6rem;top:.4rem;z-index:1;font-size:.7rem;background:rgba(0,0,0,.6);color:#fff;padding:.1rem .45rem;border-radius:.3rem}
+
+/* KAJ SE DOGAJA */
+.kaj{background:#fff;border-bottom:3px solid #dfe6dc}
+.kaj>.okvir{padding-top:.9rem;padding-bottom:1.4rem}
+.kaj-glava{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:0 0 .5rem}
+.kaj-naslov{text-align:center;flex:1;min-width:0}
+.kaj-naslov h2{font-size:2rem;margin:0;line-height:1.1}
+.kaj-datum{font-size:1.3rem;font-weight:800;margin:.2rem 0 0;color:#222}
+.puscica{font:inherit;font-size:2rem;font-weight:800;line-height:1;min-width:3.4rem;min-height:3.4rem;border:3px solid var(--glavna);background:var(--glavna);color:#fff;border-radius:.9rem;cursor:pointer;flex:none}
+.hitro{display:flex;justify-content:center;gap:.5rem;margin:0 0 1rem;flex-wrap:wrap}
+.hitro button{font:inherit;font-weight:700;font-size:.95rem;min-height:3rem;min-width:6rem;padding:.3rem 1rem;border-radius:2rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna);cursor:pointer}
+.hitro button[aria-pressed="true"]{background:var(--glavna);color:#fff}
+.poteg{font-size:.8rem;color:#555;text-align:center;margin:-.6rem 0 .6rem;display:none}
+.kaj .mreza{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:1.2rem;align-items:start}
+#danVsebina{touch-action:pan-y}
+
+/* kartice dogodkov */
+.dogodek{background:#fff;border:2px solid #cfdacb;border-radius:1rem;overflow:hidden;margin:0 0 1rem;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.dogodek.izbran{border-color:var(--glavna);box-shadow:0 0 0 4px var(--poudarek)}
+.dogodek.primer{border-style:dashed;border-color:#c9a400;background:#fffbea}
+.dogodek .slika{display:block;width:100%;height:300px;object-fit:cover;background:var(--svetlo)}
+.dogodek.drugi .slika{height:170px}
+.dogodek .telo{padding:.8rem 1rem 1rem}
+.dogodek h3{font-size:1.6rem;line-height:1.2;margin:.2rem 0 .5rem}
+.dogodek.drugi h3{font-size:1.25rem}
+.vrh{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.rang,.oznaka,.znacka{display:inline-flex;align-items:center;gap:.25rem;font-size:.8rem;font-weight:800;padding:.15rem .6rem;border-radius:1rem;line-height:1.4}
+.rang{background:var(--glavna);color:#fff}
+.oznaka{background:#e2ece0;color:var(--glavna-temna)}
+.oznaka.primer{background:var(--poudarek);color:#111}
+.znacka{background:#fff;border:2px solid #9fb59a;color:#1d3b2a;font-weight:700}
+.znacke{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.podatki{list-style:none;margin:0;padding:0;font-size:1rem}
+.podatki li{display:flex;gap:.55rem;align-items:flex-start;margin:0 0 .35rem}
+.podatki .ik{flex:none;width:1.6rem;text-align:center}
+.podatki b{color:var(--glavna-temna)}
+.opis{font-size:1rem;margin:.5rem 0}
+.dejanja{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.dejanja .gumb{font-size:.92rem;min-height:3rem;padding:.4rem .9rem}
+.dejanja .gumb[aria-pressed="true"]{background:var(--glavna);color:#fff}
+.deli-plosca{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;padding:.6rem;background:var(--svetlo);border-radius:.7rem}
+.prazno{background:#fff;border:3px dashed #b8c4b4;border-radius:1rem;padding:1.6rem 1rem;text-align:center;color:#222}
+.prazno .velik{font-size:1.35rem;font-weight:800;color:var(--glavna-temna);margin:0 0 .3rem}
+.prazno .gumbi{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:.8rem}
+
+/* koledar (manjši) */
+.koledar-del{background:var(--svetlo);border:2px solid #dfe6dc;border-radius:1rem;padding:.2rem .8rem .8rem;position:sticky;top:4.4rem}
+.koledar-del>summary{list-style:none;cursor:pointer;font-weight:800;font-size:1.1rem;color:var(--glavna-temna);min-height:3rem;display:flex;align-items:center;justify-content:space-between}
+.koledar-del>summary::-webkit-details-marker{display:none}
+.koledar-del>summary .odpri{font-size:.85rem;font-weight:700;color:var(--glavna)}
+.koledar-del[open]>summary .odpri::after{content:" ▲"}
+.koledar-del:not([open])>summary .odpri::after{content:" ▼"}
+.zavihki{display:flex;border:2px solid var(--glavna);border-radius:.7rem;overflow:hidden;margin:0 0 .6rem}
+.zavihki button{flex:1;font:inherit;font-weight:700;font-size:.9rem;padding:.3rem .4rem;border:0;background:#fff;color:var(--glavna-temna);cursor:pointer;min-height:3rem}
+.zavihki button+button{border-left:2px solid var(--glavna)}
+.zavihki button[aria-pressed="true"]{background:var(--glavna);color:#fff}
+.premik{display:flex;align-items:center;justify-content:space-between;gap:.3rem;margin:0 0 .6rem}
+.premik button{font:inherit;font-weight:800;font-size:1.2rem;min-width:3rem;min-height:3rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna);border-radius:.6rem;cursor:pointer}
+.premik strong{text-align:center;font-size:.95rem}
+.teden{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:0 0 .6rem}
+.teden button{font:inherit;font-size:.8rem;line-height:1.2;padding:.35rem 0;border:2px solid #dfe6dc;background:#fff;border-radius:.6rem;cursor:pointer;color:#222;min-height:3.6rem}
+.teden button b{display:block;font-size:1.05rem;color:var(--glavna-temna)}
+.teden button .pike{display:block;font-size:.7rem;color:var(--glavna);font-weight:800;min-height:1em}
+.teden button.danes{border-color:var(--glavna)}
+.teden button[aria-pressed="true"]{background:var(--glavna);border-color:var(--glavna);color:#fff}
+.teden button[aria-pressed="true"] b,.teden button[aria-pressed="true"] .pike{color:var(--poudarek)}
+.mesec{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;font-size:.8rem}
+.mesec .ime-dne{font-weight:800;text-align:center;color:var(--glavna-temna)}
+.mesec .celica{background:#fff;border:1px solid #dfe6dc;border-radius:.4rem;min-height:2.6rem;padding:.15rem;cursor:pointer;text-align:center;font:inherit;font-size:.85rem}
+.mesec .celica.drug{background:#f7f9f6;color:#888}
+.mesec .celica.danes{border:2px solid var(--glavna)}
+.mesec .celica.izbran{background:var(--glavna);color:#fff}
+.mesec .st{font-weight:800;display:block}
+.mesec .pika{display:block;color:var(--glavna);font-size:.7rem;line-height:1}
+.mesec .celica.izbran .pika{color:var(--poudarek)}
+.vrsta{display:flex;gap:.5rem;align-items:center;width:100%;text-align:left;font:inherit;font-size:.92rem;background:#fff;border:2px solid #dfe6dc;border-radius:.6rem;padding:.45rem .6rem;margin:0 0 .4rem;cursor:pointer;line-height:1.3;min-height:3rem;color:#111}
+.vrsta:hover{border-color:var(--glavna)}
+.vrsta b{color:var(--glavna-temna);flex:none}
+.vrsta.primer{background:#fffbea;border-style:dashed;border-color:#c9a400}
+.dan-naslov{font-size:.85rem;font-weight:800;color:var(--glavna-temna);margin:.6rem 0 .3rem}
+.koledar-del .prazno{padding:.8rem;font-size:.92rem}
+.kat-naslov{font-size:.92rem;margin:.8rem 0 .35rem;color:var(--glavna-temna)}
+.cipi{display:flex;flex-wrap:wrap;gap:.4rem}
+.cip{font:inherit;font-size:.88rem;font-weight:700;padding:.2rem .8rem;border-radius:2rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna);cursor:pointer;min-height:3rem}
+.cip[aria-pressed="true"]{background:var(--glavna);color:#fff}
+
+/* zemljevid */
+.karta-del>.okvir{padding-top:1rem;padding-bottom:1.6rem}
+.karta-del>.okvir>details>summary{list-style:none;cursor:pointer}
+.karta-del>.okvir>details>summary::-webkit-details-marker{display:none}
+.karta-gumb{display:none}
+#karta{height:480px;border:2px solid var(--rob);border-radius:.8rem;background:#fff}
+.legenda{display:inline-block;width:1rem;height:.8rem;background:rgba(255,216,77,.75);border:2px solid #8a6d00;vertical-align:middle;border-radius:2px}
+.meta{font-size:.92rem;color:#333}
+.leaflet-popup-content{font-size:15px;line-height:1.4}
+.leaflet-popup-content b{color:var(--glavna-temna)}
+.leaflet-touch .leaflet-bar a{width:44px;height:44px;line-height:44px}
+
+/* številke = zemljevid */
+.st-pin{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;padding:0 .35rem;border-radius:1rem;background:var(--glavna);color:#fff;font-weight:800;font-size:1rem;border:3px solid var(--poudarek);flex:none;line-height:1}
+.st-pin.primer{background:#8a6d00}
+.dogodek.izbran .st-pin{background:#7a1f00}
+.st-dan{display:inline-block;min-width:1.4rem;padding:0 .3rem;border-radius:1rem;background:var(--glavna);color:#fff;font-size:.75rem;font-weight:800;line-height:1.4}
+.teden button[aria-pressed="true"] .st-dan,.mesec .celica.izbran .st-dan{background:var(--poudarek);color:#111}
+.dan-povzetek{background:var(--svetlo);border-radius:.6rem;padding:.5rem .8rem;margin:0 0 .8rem}
+.dogodek.srednji .slika{height:170px}
+.dogodek.srednji h3{font-size:1.25rem}
+.se-vec{margin:0 0 1rem}
+.dogodek,#karta{scroll-margin-top:5rem}
+.se-gumb{width:100%;list-style:none;font-size:1.05rem;min-height:3.4rem}
+.se-gumb::-webkit-details-marker{display:none}
+.se-vec[open] .se-gumb span{display:inline-block;transform:rotate(180deg)}
+.se-seznam{margin-top:.6rem}
+details.dogodek.mal{margin:0 0 .5rem;border-radius:.8rem}
+.mal-vrsta{list-style:none;display:flex;gap:.6rem;align-items:center;padding:.55rem .7rem;min-height:3.4rem;cursor:pointer}
+.mal-vrsta::-webkit-details-marker{display:none}
+.mal-cas{font-weight:800;color:var(--glavna-temna);flex:none;min-width:3.2rem}
+.mal-naslov{font-weight:700;line-height:1.3}
+.mal-naslov .meta{font-weight:400}
+details.dogodek.mal[open]>.mal-vrsta{border-bottom:2px solid #e3e9e0}
+details.dogodek.mal .telo{padding-top:.6rem}
+/* pini na zemljevidu */
+.pin{display:flex!important;align-items:center;gap:2px;width:auto!important;height:auto!important}
+.pin .pin-st{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 8px;border-radius:20px;background:#0a5232;color:#fff;font:800 17px system-ui,sans-serif;border:4px solid #ffd84d;box-shadow:0 2px 6px rgba(0,0,0,.5);white-space:nowrap}
+.pin.primer .pin-st{background:#8a6d00}
+.pin .pin-n{position:relative;margin-left:-12px;margin-top:-26px;background:#111;color:#fff;font:800 13px system-ui,sans-serif;padding:1px 6px;border-radius:10px;border:2px solid #fff}
+.pin.izbran .pin-st{background:#7a1f00;border-color:#fff;transform:scale(1.2)}
+.pin-seznam{margin:.4rem 0 0;padding:0;list-style:none}
+.pin-seznam li{margin:0 0 .3rem}
+.pin-seznam button{display:flex;gap:.4rem;align-items:center;width:100%;text-align:left;font:inherit;font-size:14px;background:#fff;border:2px solid #dfe6dc;border-radius:.5rem;padding:.35rem .4rem;min-height:44px;cursor:pointer}
+.pin-seznam .st-pin{min-width:1.6rem;height:1.6rem;font-size:.8rem;border-width:2px}
+.legenda.izb{background:rgba(255,159,64,.8);border-color:#7a1f00}
+.karta-seznam{margin-top:.6rem}
+.karta-seznam h3{font-size:1rem;color:var(--glavna-temna)}
+.karta-seznam ol{list-style:none;margin:0;padding:0}
+.karta-seznam .vrsta[aria-current="true"]{border-color:#7a1f00;box-shadow:0 0 0 3px #ffb36b}
+.noga{background:var(--glavna-temna);color:#fff;font-size:.92rem}
+.noga .okvir{padding-top:1rem;padding-bottom:1.2rem}
+.noga a{color:var(--poudarek)}
+
+/* spodnja vrstica za palec (samo mobilno) */
+.spodnja{display:none}
+
+/* obvestilo */
+.obvestilo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--spodaj) + 1rem);background:#111;color:#fff;padding:.7rem 1.1rem;border-radius:.8rem;font-weight:700;z-index:3000;max-width:90vw;text-align:center}
+
+/* obrazec v 3 korakih */
+dialog{border:0;border-radius:1rem;padding:0;width:min(640px,96vw);max-height:94vh;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg-glava{background:var(--glavna);color:#fff;padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:2;gap:.5rem}
+.dlg-glava h2{color:#fff;margin:0;font-size:1.25rem}
+.zapri{font:inherit;font-size:1.5rem;font-weight:800;background:transparent;color:#fff;border:2px solid #fff;border-radius:.6rem;min-width:3rem;min-height:3rem;cursor:pointer}
+.dlg-telo{padding:.8rem 1rem 1.2rem}
+.koraki{display:flex;gap:.4rem;list-style:none;margin:0 0 .8rem;padding:0;counter-reset:k}
+.koraki li{flex:1;text-align:center;font-size:.8rem;font-weight:700;color:#555;border-top:6px solid #dfe6dc;padding-top:.3rem}
+.koraki li.akt,.koraki li.opravljen{color:var(--glavna-temna);border-top-color:var(--glavna)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-size:1.2rem;font-weight:800;color:var(--glavna-temna);padding:0;margin:0 0 .3rem}
+label.polje{display:block;font-weight:700;margin:.8rem 0 .3rem}
+label.polje small,.neobvezno{font-weight:500;color:#444}
+input[type=text],input[type=date],input[type=time],input[type=url],textarea,select{font:inherit;font-size:1rem;padding:.65rem .8rem;border:2px solid var(--rob);border-radius:.6rem;width:100%;min-width:0;background:#fff;color:#111;min-height:3rem}
+input[type=file]{font:inherit;font-size:.95rem;max-width:100%}
+textarea{min-height:6rem}
+.dve{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+.izbire{display:flex;flex-wrap:wrap;gap:.45rem}
+.izbire label{display:inline-flex;align-items:center;gap:.4rem;border:2px solid #9fb59a;border-radius:2rem;padding:.3rem .8rem;min-height:3rem;cursor:pointer;font-weight:600;background:#fff}
+.izbire input{width:1.3rem;height:1.3rem;accent-color:var(--glavna);margin:0}
+.izbire label:has(input:checked){border-color:var(--glavna);background:#e4f0e0}
+.pomiri{background:var(--modra);border-left:6px solid var(--modra-temna);padding:.6rem .8rem;border-radius:.4rem;margin:.9rem 0 0;font-size:.95rem}
+.soglasje{display:flex;gap:.7rem;align-items:flex-start;margin:1rem 0;font-size:.9rem}
+.soglasje input{width:1.6rem;height:1.6rem;flex:none;margin:.1rem 0 0;accent-color:var(--glavna)}
+.namig{font-size:.95rem;background:var(--svetlo);border-radius:.6rem;padding:.6rem .8rem;margin:0 0 .6rem}
+.korak-gumbi{display:flex;gap:.6rem;justify-content:space-between;margin-top:1.1rem}
+.korak-gumbi .gumb{flex:1}
+.sporocilo{font-weight:700;padding:.7rem .9rem;border-radius:.6rem;margin-top:.8rem}
+.sporocilo.ok{background:#e4f0e0;color:var(--glavna-temna)}
+.sporocilo.napaka{background:#fde6dc;color:var(--opozorilo)}
+.napaka-polje{color:var(--opozorilo);font-weight:700;font-size:.9rem;margin:.25rem 0 0}
+input[aria-invalid="true"]{border-color:var(--opozorilo);border-width:3px}
+
+/* ===== MOBILNO (do 820 px): najprej telefon ===== */
+@media (max-width:820px){
+ :root{--spodaj:calc(4.6rem + env(safe-area-inset-bottom))}
+ .okvir{padding-left:.6rem;padding-right:.6rem}
+ .velikost,.glava .dodaj{display:none}
+ .aa{display:inline-block}
+ .logo{font-size:20px}
+ .logo small{font-size:13px}
+ .trak{font-size:.75rem}
+ .naslovnica{min-height:64px}
+ .naslovnica .okvir{padding-top:.4rem;padding-bottom:.4rem}
+ .naslovnica p,.foto-opis{display:none}
+ h1{font-size:1rem;opacity:.95}
+ .kaj>.okvir{padding-top:.6rem}
+ .kaj-glava .puscica{display:none}
+ .kaj-naslov h2{font-size:1.15rem;font-weight:700;color:var(--glavna)}
+ .kaj-datum{font-size:1.3rem;line-height:1.25;margin:0;color:var(--glavna-temna)}
+ .kaj-glava{margin-bottom:.5rem}
+ .hitro{margin-bottom:.5rem}
+ .koledar-del{padding:.1rem .2rem .6rem;border-width:1px}
+ .koledar-del>summary,.koledar-del .kat-naslov{padding:0 .3rem}
+ .teden{gap:2px}
+ .hitro{gap:.4rem}
+ .hitro button{flex:1;min-width:0;padding:.3rem .4rem}
+ .poteg{display:block}
+ .kaj .mreza{grid-template-columns:1fr;gap:.8rem}
+ .dogodek .slika{height:180px}
+ .dogodek.drugi .slika{height:150px}
+ .dogodek h3{font-size:1.35rem}
+ .dogodek.drugi h3{font-size:1.15rem}
+ .dejanja{display:grid;grid-template-columns:1fr 1fr}
+ .dejanja .gumb{width:100%;padding:.4rem .5rem}
+ .deli-plosca{display:grid;grid-template-columns:1fr 1fr}
+ .deli-plosca[hidden]{display:none}
+ .deli-plosca .gumb{width:100%;padding:.4rem .4rem}
+ .koledar-del{position:static}
+ .karta-gumb{display:flex;width:100%;font-size:1.05rem;min-height:3.4rem}
+ .karta-del details:not([open]) #kartaOkvir{display:none}
+ .karta-del h2{display:none}
+ #karta{height:62vh;min-height:320px}
+ .spodnja{display:grid;grid-template-columns:3.3rem 1fr 3.3rem;gap:.5rem;position:fixed;left:0;right:0;bottom:0;z-index:1500;background:#fff;border-top:2px solid #cfdacb;box-shadow:0 -4px 14px rgba(0,0,0,.12);padding:.5rem .75rem calc(.5rem + env(safe-area-inset-bottom))}
+ .spodnja button{font:inherit;font-weight:800;min-height:3.4rem;border-radius:.9rem;cursor:pointer}
+ .spodnja .sp-dan{font-size:1.7rem;border:2px solid var(--glavna);background:#fff;color:var(--glavna-temna)}
+ .spodnja .sp-dodaj{font-size:1rem;white-space:nowrap;border:2px solid #c9a400;background:var(--poudarek);color:#111}
+ dialog{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;margin:0}
+ .dlg-telo{padding-bottom:calc(1.5rem + env(safe-area-inset-bottom))}
+ .korak-gumbi{position:sticky;bottom:0;background:#fff;padding:.6rem 0 calc(.4rem + env(safe-area-inset-bottom));margin-bottom:-.6rem;border-top:1px solid #eee}
+ .noga{padding-bottom:.5rem}
+}
+@media (max-width:370px){
+ .logo small{display:none}
+ .hitro button{font-size:.88rem}
+ .dve{grid-template-columns:1fr}
+}
+
+/* ===== MEHKA SAVSKA PREOBLEKA (16. 11. 10.07) – samo videz, barve iz anketa.savska.org, zavez in letakov ===== */
+:root{--g:#0b3d24;--g2:#0a5232;--g3:#2e7d55;--y:#f5c400;--y2:#fff4c2;--krema:#fffaf0;--meta-oz:#f4f8f2;--sava:#245d7a;--sava2:#e5f0f4;--breskev:#ffe2c6;--opeka:#b5501f;--crta:#e2eadf;--sen:0 6px 22px rgba(11,61,36,.09);--sen2:0 2px 8px rgba(11,61,36,.08);--r:22px;--r2:16px;--glavna:#0a5232;--glavna-temna:#0b3d24;--poudarek:#f5c400;--rob:#7d8f80}
+body{font-family:"Source Sans 3","Segoe UI","DejaVu Sans",system-ui,-apple-system,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f7faf3 0,#fbfaf2 60%,#f7faf3 100%);color:#1b1b1b}
+h2,h3{letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--g);outline-offset:3px;box-shadow:0 0 0 7px rgba(245,196,0,.55);border-radius:12px}
+/* glava: znak savskih strani – temno zelena z rumeno črto */
+.glava{background:var(--g);border-bottom:5px solid var(--y);box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.znamka img{border-radius:12px}
+.velikost button,.aa{border-radius:999px;border:2px solid rgba(255,255,255,.55)}
+.velikost button[aria-pressed="true"]{background:var(--y2);color:var(--g);border-color:var(--y2)}
+.trak{background:var(--y2);border-bottom:0;color:#4a3b00}
+/* naslovnica z mehkim valom Save spodaj */
+.naslovnica{min-height:150px;position:relative;overflow:hidden}
+.naslovnica::after{background:linear-gradient(180deg,rgba(11,61,36,.05) 10%,rgba(11,61,36,.62))}
+.naslovnica h1{color:var(--y2);text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.naslovnica .okvir{padding-bottom:1.6rem}
+.val{position:absolute;left:0;right:0;width:100%;bottom:-1px;height:26px;z-index:2;pointer-events:none;display:block}
+/* kaj se dogaja */
+.kaj{background:transparent;border-bottom:0}
+.kaj>.okvir{padding-top:1.2rem;padding-bottom:1.6rem}
+.kaj-naslov h2{color:var(--g)}
+.kaj-naslov h2::after{content:"";display:block;width:64px;height:5px;border-radius:5px;background:var(--y);margin:.35rem auto 0;opacity:.9}
+.kaj-datum{color:#2b2b2b}
+.puscica{border-radius:50%;border:0;background:var(--g2);box-shadow:var(--sen2);min-width:3.4rem}
+.puscica:hover{background:var(--g3)}
+.hitro button{border:2px solid var(--crta);background:#fff;box-shadow:var(--sen2)}
+.hitro button[aria-pressed="true"]{background:var(--g2);border-color:var(--g2);color:#fff}
+.poteg{color:#5a665c}
+.gumb{border-radius:999px;border:2px solid #cfe0d2;background:#fff;color:var(--g);box-shadow:var(--sen2);transition:background .15s,border-color .15s}
+.gumb:hover{border-color:var(--g3);background:#f6fbf5}
+.gumb.glavni{background:var(--g2);border-color:var(--g2);color:#fff}
+.gumb.glavni:hover{background:var(--g3)}
+.gumb.dodaj{background:var(--y);border-color:var(--y);color:#1b1b1b}
+.gumb.dodaj:hover{background:#ffd633}
+.dejanja .gumb[aria-pressed="true"]{background:var(--g2);border-color:var(--g2);color:#fff}
+/* kartice */
+.dogodek{border:1px solid var(--crta);border-radius:var(--r);box-shadow:var(--sen);background:#fff}
+.dogodek .slika{border-radius:calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0}
+.dogodek.velik{border:0;box-shadow:0 10px 30px rgba(11,61,36,.13)}
+.dogodek.primer{background:var(--krema);border:2px dashed #e6cf73}
+.dogodek.izbran{border-color:#f0b27a;box-shadow:0 0 0 4px var(--breskev),var(--sen)}
+.dogodek h3{color:var(--g)}
+.dogodek .telo{padding:1rem 1.15rem 1.15rem}
+.rang{background:var(--y2);color:#5a4500;border-radius:999px}
+.oznaka{background:#e7f2ea;color:var(--g);border-radius:999px}
+.oznaka.primer{background:#ffe9a6;color:#4a3b00}
+.znacka{background:#fff6e0;border:0;color:#5a4200;border-radius:999px;padding:.2rem .7rem}
+.st-pin{background:var(--g2);border:3px solid var(--y2);box-shadow:var(--sen2)}
+.st-pin.primer{background:#7a5e00}
+.dogodek.izbran .st-pin{background:var(--opeka)}
+.podatki li{margin-bottom:.45rem}
+.dan-povzetek{background:var(--sava2);color:#163c4f;border-radius:var(--r2)}
+.se-gumb{background:#fff}
+details.dogodek.mal{border-radius:var(--r2);box-shadow:var(--sen2)}
+details.dogodek.mal[open]>.mal-vrsta{border-bottom:1px solid var(--crta)}
+.deli-plosca{background:var(--meta-oz);border-radius:var(--r2)}
+.prazno{border:2px dashed #cfe0d2;border-radius:var(--r);background:#fff;box-shadow:var(--sen2)}
+.prazno .velik{color:var(--g)}
+/* koledar */
+.koledar-del{background:#fff;border:1px solid var(--crta);border-radius:var(--r);box-shadow:var(--sen)}
+.zavihki{border:0;background:var(--meta-oz);border-radius:999px;padding:4px;gap:4px}
+.zavihki button{border-radius:999px;background:transparent}
+.zavihki button+button{border-left:0}
+.zavihki button[aria-pressed="true"]{background:var(--g2);color:#fff;box-shadow:var(--sen2)}
+.premik button{border-radius:50%;border:2px solid var(--crta);box-shadow:var(--sen2)}
+.teden button{border:1px solid var(--crta);border-radius:14px;background:var(--meta-oz)}
+.teden button.danes{border:2px solid var(--g3)}
+.teden button[aria-pressed="true"]{background:var(--g2);border-color:var(--g2)}
+.mesec .celica{border:0;border-radius:10px;background:var(--meta-oz)}
+.mesec .celica.drug{background:transparent}
+.mesec .celica.danes{box-shadow:inset 0 0 0 2px var(--g3)}
+.st-dan{border-radius:999px}
+.vrsta{border:1px solid var(--crta);border-radius:14px;box-shadow:0 1px 3px rgba(11,61,36,.05)}
+.vrsta.primer{background:var(--krema);border:1.5px dashed #e6cf73}
+.cip{border:2px solid #cfe0d2;border-radius:999px;background:#fff}
+.cip[aria-pressed="true"]{background:var(--g2);border-color:var(--g2);color:#fff}
+/* zemljevid */
+.karta-del{position:relative}
+.karta-del>.okvir{padding-top:1.4rem}
+#karta{border:0;border-radius:var(--r);box-shadow:var(--sen);overflow:hidden}
+.leaflet-bar{border:0!important;border-radius:14px!important;box-shadow:var(--sen2)!important;overflow:hidden}
+.leaflet-bar a{border-bottom-color:var(--crta)!important;color:var(--g)!important}
+.leaflet-popup-content-wrapper{border-radius:18px;box-shadow:var(--sen)}
+.pin .pin-st{background:var(--g2);border:3px solid var(--y2);box-shadow:0 3px 10px rgba(11,61,36,.35)}
+.pin.primer .pin-st{background:#7a5e00}
+.pin.izbran .pin-st{background:var(--opeka);border-color:#fff}
+.pin .pin-n{background:var(--sava);border-color:#fff}
+.pin-seznam button{border:1px solid var(--crta);border-radius:12px}
+.legenda{background:rgba(255,226,140,.8);border:2px solid #e0a800;border-radius:4px}
+.legenda.izb{background:rgba(255,200,160,.85);border-color:#d9773a}
+.karta-gumb{border-radius:999px}
+/* noga z valom in drevesi */
+.noga{background:var(--g);position:relative;margin-top:1.5rem}
+.noga::before{content:"";position:absolute;left:0;right:0;top:-24px;height:25px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 25' preserveAspectRatio='none'%3E%3Cpath d='M0 25V14c120-12 240-12 360 0s240 12 360 0 240-12 360 0 90 6 120 4v7z' fill='%230b3d24'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.noga .drevesa{display:block;margin:0 0 .6rem;opacity:.9}
+.noga a{color:var(--y2)}
+/* spodnja vrstica in obrazec */
+.spodnja{border-top:0;border-radius:22px 22px 0 0;box-shadow:0 -6px 22px rgba(11,61,36,.14)}
+.spodnja .sp-dan{border:2px solid var(--crta);border-radius:50%;color:var(--g)}
+.spodnja .sp-dodaj{border:0;border-radius:999px;background:var(--y);box-shadow:var(--sen2)}
+.obvestilo{background:var(--g);border-radius:999px;box-shadow:var(--sen)}
+dialog{border-radius:24px}
+.dlg-glava{background:var(--g);border-bottom:4px solid var(--y)}
+.zapri{border-radius:50%;border:2px solid rgba(255,255,255,.6)}
+.koraki li{border-top:6px solid var(--crta);border-radius:3px}
+.koraki li.akt,.koraki li.opravljen{border-top-color:var(--y)}
+legend{color:var(--g)}
+input[type=text],input[type=date],input[type=time],input[type=url],textarea,select{border:2px solid var(--rob);border-radius:14px;background:#fff}
+input:focus,textarea:focus,select:focus{border-color:var(--g3)}
+.izbire label{border:2px solid #cfe0d2;border-radius:999px}
+.izbire label:has(input:checked){border-color:var(--g3);background:#eaf5ec}
+.pomiri{background:var(--sava2);border-left:0;border-radius:var(--r2);color:#163c4f}
+.namig{background:var(--y2);border-radius:var(--r2);color:#3d3200}
+.sporocilo{border-radius:var(--r2)}
+.korak-gumbi{border-top:0}
+@media (max-width:820px){
+ dialog{border-radius:0}
+ .naslovnica{min-height:84px}
+ .naslovnica .okvir{padding-bottom:1.3rem}
+ .val{height:18px}
+ .kaj-naslov h2::after{width:48px;height:4px;margin-top:.25rem}
+ .koledar-del{border-radius:var(--r2)}
+ .dogodek{border-radius:20px}
+}
+/* Dodaj v koledar + Shrani + Moji (16. 11. 11.35) */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.koledar-plosca{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;padding:.7rem;background:var(--sava2);border-radius:var(--r2)}
+.koledar-plosca .gumb{background:#fff;border-color:#c5dbe4;color:#163c4f}
+.koledar-plosca .meta{flex-basis:100%;margin:.1rem .2rem 0;color:#33505e;font-size:.9rem}
+.dejanja .gumb.shrani[aria-pressed="true"]{background:#fde4e4;border-color:#f2b8b8;color:#8a1f2b}
+.dejanja .gumb[aria-expanded="true"]{background:var(--sava2);border-color:#c5dbe4;color:#163c4f}
+.zavihki button{flex:1 1 auto;min-width:0;white-space:nowrap;font-size:.88rem;padding:.3rem .45rem}
+.zavihki .st-moji{margin-left:.1em}
+.st-moji{display:inline-block;min-width:1.4em;padding:0 .35em;border-radius:999px;background:var(--y);color:#1b1b1b;font-size:.85em}
+.st-moji:empty{display:none}
+.moji-opomba{margin:.2rem 0 .6rem;padding:.5rem .8rem;background:var(--meta-oz);border-radius:var(--r2);color:#33473a;font-size:.92rem}
+.moj-vrsta{display:flex;gap:.4rem;align-items:stretch}
+.moj-vrsta .vrsta{flex:1;min-width:0}
+.moj-vrsta.mimo .vrsta{opacity:.7}
+.odstrani{flex:0 0 auto;min-width:3rem;min-height:3rem;border-radius:999px;border:2px solid #e2eadf;background:#fff;color:#8a1f2b;font:inherit;font-weight:700;cursor:pointer}
+.odstrani:hover{background:#fde4e4}
+@media (max-width:640px){.koledar-plosca{display:grid;grid-template-columns:1fr}.koledar-plosca .gumb{width:100%;justify-content:center}.zavihki button{font-size:.85rem;padding:.3rem .2rem}}
+</style>
+</head>
+<body>
+<header class="glava">
+ <div class="okvir">
+  <a class="znamka" href="../"><img src="logo.png" alt="" width="40" height="40"><div class="logo">savska<span>.org</span><small>Kaj se dogaja v naselju</small></div></a>
+  <div class="desno">
+   <div class="velikost" role="group" aria-label="Velikost pisave">
+    <button type="button" data-vel="1" aria-pressed="true" aria-label="Običajna pisava">A</button>
+    <button type="button" data-vel="2" aria-pressed="false" aria-label="Večja pisava">A+</button>
+    <button type="button" data-vel="3" aria-pressed="false" aria-label="Največja pisava">A++</button>
+   </div>
+   <button type="button" class="aa" id="aa" aria-label="Povečaj pisavo">Aa</button>
+   <button type="button" class="gumb dodaj" data-odpri-obrazec>+ Dodaj dogodek</button>
+  </div>
+ </div>
+</header>
+<div class="trak" id="trakOsnutek"><div class="okvir">OSNUTEK – stran še ni objavljena. Dogodki z oznako PRIMER so izmišljeni, slike v glavi so nadomestne.</div></div>
+
+<section class="naslovnica" id="naslovnica">
+ <svg class="val" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V12c100-10 200-10 300 0s200 10 300 0 200-10 300 0 200 10 300 0v14z" fill="#e5f0f4" opacity=".9"/><path d="M0 26V17c120-9 240-9 360 0s240 9 360 0 240-9 360 0 80 5 120 3v6z" fill="#f7faf3"/></svg>
+ <span class="foto-opis" id="fotoOpis"></span>
+ <div class="okvir">
+  <h1>Savski koledar dogodkov</h1>
+  <p>Kaj se dogaja pri nas, v Savskem naselju. Pridi, spoznaj sosede in povabi še koga.</p>
+ </div>
+</section>
+
+<main>
+ <section class="kaj" aria-labelledby="h-kaj">
+  <div class="okvir">
+   <div class="kaj-glava">
+    <button type="button" class="puscica" id="nazaj" aria-label="Prejšnji dan">‹</button>
+    <div class="kaj-naslov">
+     <h2 id="h-kaj">Kaj se dogaja</h2>
+     <p class="kaj-datum" id="obdobje" aria-live="polite"></p>
+    </div>
+    <button type="button" class="puscica" id="naprej" aria-label="Naslednji dan">›</button>
+   </div>
+   <div class="hitro" role="group" aria-label="Hitra izbira dneva">
+    <button type="button" data-hitro="danes">Danes</button>
+    <button type="button" data-hitro="jutri">Jutri</button>
+    <button type="button" data-hitro="vikend">Ta vikend</button>
+   </div>
+   <p class="poteg" aria-hidden="true">Za drug dan podrsaj levo ali desno ↔</p>
+   <div class="mreza">
+    <div id="danVsebina" aria-live="polite"></div>
+    <details class="koledar-del" id="koledarDel" open>
+     <summary><span>📅 Koledar</span><span class="odpri">izberi drug dan</span></summary>
+     <div class="zavihki" role="group" aria-label="Pogled koledarja">
+      <button type="button" data-pogled="teden" aria-pressed="true">Teden</button>
+      <button type="button" data-pogled="mesec" aria-pressed="false">Mesec</button>
+      <button type="button" data-pogled="seznam" aria-pressed="false" aria-label="Vsi prihodnji dogodki">Prihodnji</button>
+      <button type="button" data-pogled="moji" aria-pressed="false">❤️ Moji <span class="st-moji" id="stMoji"></span></button>
+     </div>
+     <div class="premik" id="premikKoledar">
+      <button type="button" id="kNazaj" aria-label="Nazaj">‹</button>
+      <strong id="koledarObdobje"></strong>
+      <button type="button" id="kNaprej" aria-label="Naprej">›</button>
+     </div>
+     <div id="vsebina" aria-live="polite"></div>
+     <h3 class="kat-naslov">Kaj te zanima?</h3>
+     <div class="cipi" id="kategorije" role="group" aria-label="Vrsta dogodka"></div>
+    </details>
+   </div>
+  </div>
+ </section>
+
+ <section class="karta-del" aria-labelledby="h-karta">
+  <div class="okvir">
+   <details id="kartaDel" open>
+    <summary class="gumb karta-gumb" id="kartaGumb">🗺️ Pokaži na zemljevidu</summary>
+    <div id="kartaOkvir">
+     <h2 id="h-karta">Zemljevid</h2>
+     <div id="karta"></div>
+     <p class="meta" style="margin-top:.4rem"><span class="legenda"></span> Rumeno: polje z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.</p>
+     <div id="kartaSeznam" class="karta-seznam"></div>
+    </div>
+   </details>
+  </div>
+ </section>
+</main>
+
+<footer class="noga">
+ <div class="okvir">
+  <svg class="drevesa" width="120" height="30" viewBox="0 0 120 30" aria-hidden="true"><g fill="#2e7d55"><circle cx="14" cy="12" r="10"/><circle cx="40" cy="9" r="9"/><circle cx="64" cy="13" r="8"/></g><g fill="#9cbfa8"><rect x="13" y="20" width="2.5" height="9" rx="1"/><rect x="39" y="17" width="2.5" height="12" rx="1"/><rect x="63" y="20" width="2.5" height="9" rx="1"/></g><path d="M78 24c7-5 14-5 21 0s14 5 21 0" stroke="#9bb9cb" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+  <p><strong>Pripravljaš kaj za sosede?</strong> Klikni »Dodaj dogodek« ali pošlji povezavo ali fotografijo plakata na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>. Če se ti kje zatakne, pokliči ali pošlji SMS na <a href="tel:+38670205595">070 205 595</a>, pa ti pomagamo.</p>
+  <p>Vsak dogodek pred objavo pogleda človek. Objavimo samo naslov, čas, kraj, opis, sliko in ime organizatorja. Tvojega kontakta ne objavimo nikoli.</p>
+  <p>»Všeč mi je« je anonimen, brez prijave: z ene naprave enkrat na dogodek. Ne shranjujemo imen ali IP naslovov.</p>
+  <p style="margin:0">Zemljevid © sodelavci <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>. <a href="../">anketa.savska.org</a></p>
+ </div>
+</footer>
+
+<nav class="spodnja" aria-label="Hitri gumbi">
+ <button type="button" class="sp-dan" id="spNazaj" aria-label="Prejšnji dan">‹</button>
+ <button type="button" class="sp-dodaj" data-odpri-obrazec>+ Dodaj dogodek</button>
+ <button type="button" class="sp-dan" id="spNaprej" aria-label="Naslednji dan">›</button>
+</nav>
+
+<div class="obvestilo" id="obvestilo" role="status" hidden></div>
+
+<dialog id="obrazec" aria-labelledby="h-obrazec">
+ <div class="dlg-glava"><h2 id="h-obrazec">Dodaj dogodek</h2><button type="button" class="zapri" id="zapriObrazec" aria-label="Zapri">×</button></div>
+ <form class="dlg-telo" id="oddaja" novalidate>
+  <ol class="koraki" aria-label="Koraki">
+   <li data-k="1" class="akt">1. Kaj in kdaj</li><li data-k="2">2. Kje</li><li data-k="3">3. O tebi</li>
+  </ol>
+  <p class="namig">💚 Ni treba, da je popolno. Napiši, kar veš, ostalo uredimo skupaj. Še lažje: fotografijo plakata pošlji na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>.</p>
+
+  <fieldset data-korak="1">
+   <legend>Kaj pripravljaš in kdaj?</legend>
+   <label class="polje" for="f-naslov">Ime dogodka <span class="neobvezno">(obvezno)</span></label>
+   <input type="text" id="f-naslov" name="naslov" maxlength="120" placeholder="npr. Sosedska kava na klopci" aria-describedby="n-naslov">
+   <p class="napaka-polje" id="n-naslov" hidden>Napiši, kako se dogodek imenuje.</p>
+   <label class="polje" for="f-datum">Datum <span class="neobvezno">(obvezno)</span></label>
+   <input type="date" id="f-datum" name="datum" aria-describedby="n-datum">
+   <p class="napaka-polje" id="n-datum" hidden>Izberi datum.</p>
+   <div class="dve">
+    <div><label class="polje" for="f-od">Od ure <span class="neobvezno">(če veš)</span></label><input type="time" id="f-od" name="ura_od"></div>
+    <div><label class="polje" for="f-do">Do ure <span class="neobvezno">(če veš)</span></label><input type="time" id="f-do" name="ura_do"></div>
+   </div>
+   <p class="polje" style="font-weight:700;margin:.9rem 0 .3rem">Kaj bo?</p>
+   <div class="izbire" id="f-kategorije"></div>
+   <label class="polje" for="f-opis">Na kratko opiši <span class="neobvezno">(če želiš)</span></label>
+   <textarea id="f-opis" name="opis" maxlength="600" placeholder="Kaj bomo počeli? Kaj naj ljudje prinesejo?"></textarea>
+   <div class="korak-gumbi"><button type="button" class="gumb" data-zapri-obrazec>Prekliči</button><button type="button" class="gumb glavni" data-naprej="2">Naprej ›</button></div>
+  </fieldset>
+
+  <fieldset data-korak="2" hidden>
+   <legend>Kje bo?</legend>
+   <label class="polje" for="f-kraj">Kraj ali naslov <span class="neobvezno">(obvezno)</span></label>
+   <input type="text" id="f-kraj" name="kraj" maxlength="160" placeholder="npr. klopca pred vhodom, park, dvorana" aria-describedby="n-kraj">
+   <p class="napaka-polje" id="n-kraj" hidden>Napiši, kje bo.</p>
+   <label class="polje" for="f-polje">Del naselja <span class="neobvezno">(če veš, s številko z zemljevida)</span></label>
+   <select id="f-polje" name="polje"></select>
+   <label class="polje" for="f-kako">Kako pridem do tja? <span class="neobvezno">(preprosto, z besedami)</span></label>
+   <input type="text" id="f-kako" name="kako_priti" maxlength="200" placeholder="npr. vhod s strani parkirišča, brez stopnic">
+   <p class="polje" style="font-weight:700;margin:.9rem 0 .3rem">Označi, kar drži</p>
+   <div class="izbire">
+    <label><input type="checkbox" name="brezplacno" value="da"> 💚 Brezplačno</label>
+    <label><input type="checkbox" name="za_otroke" value="da"> 🧸 Primerno za otroke</label>
+    <label><input type="checkbox" name="dostopno" value="da"> ♿ Dostop z vozičkom</label>
+    <label><input type="checkbox" name="brez_prijave" value="da"> 🚪 Brez prijave, kar pridi</label>
+   </div>
+   <label class="polje" for="f-slika">Slika ali plakat <span class="neobvezno">(če ga imaš, do 5 MB)</span></label>
+   <input type="file" id="f-slika" name="slika" accept="image/jpeg,image/png,image/webp,application/pdf">
+   <label class="polje" for="f-povezava">ali povezava <span class="neobvezno">(Facebook, Viber, splet)</span></label>
+   <input type="url" id="f-povezava" name="povezava" placeholder="https://" inputmode="url">
+   <div class="korak-gumbi"><button type="button" class="gumb" data-naprej="1">‹ Nazaj</button><button type="button" class="gumb glavni" data-naprej="3">Naprej ›</button></div>
+  </fieldset>
+
+  <fieldset data-korak="3" hidden>
+   <legend>Še nekaj o tebi</legend>
+   <label class="polje" for="f-org">Kdo pripravlja? <span class="neobvezno">(to ime objavimo, lahko tudi »sosedje iz Majaronove«)</span></label>
+   <input type="text" id="f-org" name="organizator" maxlength="100">
+   <label class="polje" for="f-kontakt">Tvoj e-naslov ali telefon <span class="neobvezno">(obvezno, a ostane skrit)</span></label>
+   <input type="text" id="f-kontakt" name="kontakt" maxlength="120" autocomplete="email" aria-describedby="n-kontakt p-kontakt">
+   <p class="napaka-polje" id="n-kontakt" hidden>Pusti e-naslov ali telefon, da te lahko kaj vprašamo.</p>
+   <p class="pomiri" id="p-kontakt">🔒 Tvoj kontakt vidimo samo mi, ki pregledujemo dogodke. Ne objavimo ga in ga ne damo nikomur. Pokličemo ali pišemo ti samo, če imamo vprašanje o tem dogodku. Izbrišemo ga najpozneje 3 mesece po dogodku.</p>
+   <label class="soglasje"><input type="checkbox" id="f-soglasje" name="soglasje" value="da"><span>Strinjam se, da upravljavec Rok Terkaj (<a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>, <a href="tel:+38670205595">070 205 595</a>) dogodek po pregledu objavi na tej strani, moj kontakt pa uporabi samo za vprašanja o njem. Pritožbo lahko vložim pri Informacijskem pooblaščencu.</span></label>
+   <p class="napaka-polje" id="n-soglasje" hidden>Za oddajo potrebujemo tvoje strinjanje.</p>
+   <input type="text" name="spletna_stran" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+   <div class="korak-gumbi"><button type="button" class="gumb" data-naprej="2">‹ Nazaj</button><button type="submit" class="gumb glavni">Pošlji 💚</button></div>
+  </fieldset>
+  <div id="sporocilo" role="status"></div>
+ </form>
+</dialog>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* NASTAVITVE – ko bo zasebni sprejem (Apps Script) postavljen, vpiši URL spletne aplikacije. Do takrat obrazec in glasovi ničesar ne pošljejo. */
+const SPREJEM_URL = '';
+const GLASOVI_URL = SPREJEM_URL;
+const MAKS_SLIKA = 5*1024*1024;
+const JE_MOBILNO = () => matchMedia('(max-width:820px)').matches;
+
+const DNEVI=['nedelja','ponedeljek','torek','sreda','četrtek','petek','sobota'];
+const DNEVI_K=['pon','tor','sre','čet','pet','sob','ned'];
+const MESECI=['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const varenUrl=u=>/^(https?:)?\/\//i.test(u||'')||/^[\w\-./]+$/.test(u||'')?u:'';
+const d0=d=>{const x=new Date(d);x.setHours(0,0,0,0);return x};
+const plus=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return d0(x)};
+const isoDan=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const ura=s=>s&&s.length>10?s.slice(11,16).replace(':','.'):'';
+const datumLepo=d=>DNEVI[d.getDay()]+', '+d.getDate()+'.\u00a0'+(d.getMonth()+1)+'.\u00a0'+d.getFullYear();
+const ponedeljek=d=>{const x=d0(d);x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
+function obvesti(t){const o=document.getElementById('obvestilo');o.textContent=t;o.hidden=false;clearTimeout(obvesti.t);obvesti.t=setTimeout(()=>o.hidden=true,2600)}
+
+/* velikost pisave: A / A+ / A++ (na telefonu en gumb Aa, ki kroži) */
+function nastaviVelikost(v){document.documentElement.dataset.velikost=v;document.querySelectorAll('.velikost button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.vel===v));try{localStorage.setItem('velikost',v)}catch(e){}document.getElementById('aa').setAttribute('aria-label','Velikost pisave: '+['običajna','večja','največja'][+v-1]+'. Klikni za spremembo.');setTimeout(()=>karta.invalidateSize(),50)}
+document.querySelectorAll('.velikost button').forEach(b=>b.onclick=()=>nastaviVelikost(b.dataset.vel));
+document.getElementById('aa').onclick=()=>{const v=document.documentElement.dataset.velikost||'1';nastaviVelikost(String(v%3+1))};
+
+/* dnevna fotografija */
+fetch('slike/seznam.json').then(r=>r.json()).then(s=>{
+ const sl=s.slike||[];if(!sl.length)return;
+ const dan=Math.floor((d0(new Date())-new Date(new Date().getFullYear(),0,0))/864e5);
+ const f=sl[dan%sl.length];
+ document.getElementById('naslovnica').style.backgroundImage='url("slike/'+encodeURI(f.datoteka)+'")';
+ document.getElementById('fotoOpis').textContent=(f.opis||'')+(f.avtor?' · foto: '+f.avtor:'');
+}).catch(()=>{});
+
+/* stanje */
+const S={pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
+let DOG=[],KAT=[],POLJA={},markerji={},poljaSloji={};
+
+/* zemljevid: isti kot na letakih (../letaki/) */
+const karta=L.map('karta',{zoomSnap:.25,scrollWheelZoom:false,tap:true,renderer:L.canvas({tolerance:10})}).setView([46.0632,14.5222],16);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(karta);
+const poljaSloj=L.layerGroup().addTo(karta),sloj=L.layerGroup().addTo(karta);
+const ikona=(st,n,primer,izb)=>L.divIcon({className:'pin'+(primer?' primer':'')+(izb?' izbran':'')+(n>1?' skupina':''),iconSize:null,iconAnchor:[20,20],popupAnchor:[0,-18],
+ html:'<span class="pin-st">'+esc(st)+'</span>'+(n>1?'<span class="pin-n" aria-label="'+n+' dogodki">'+n+'×</span>':'')});
+const SLOG_POLJE={color:'#2e7d55',weight:1,opacity:.35,dashArray:'3 5',fillColor:'#2e7d55',fillOpacity:0};
+const SLOG_POLJE_ON={color:'#e0a800',weight:2,opacity:.9,dashArray:null,fillColor:'#ffe28c',fillOpacity:.45};
+const SLOG_POLJE_IZB={color:'#d9773a',weight:3,opacity:1,dashArray:null,fillColor:'#ffc8a0',fillOpacity:.6};
+let RED=[],skupine=[];
+let mejaB=null;
+
+Promise.all([
+ fetch('../letaki/meja.json').then(r=>r.json()),
+ fetch('../letaki/polja.json').then(r=>r.json()),
+ fetch('../letaki/vhodi.json').then(r=>r.json()).catch(()=>[]),
+ fetch('dogodki.json',{cache:'no-store'}).then(r=>r.json())
+]).then(([meja,polja,vhodi,data])=>{
+ const ring=meja.map(c=>[c[1],c[0]]);
+ L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(karta);
+ (polja.features||[]).forEach(f=>{const st=f.properties.st,ll=f.geometry.coordinates[0].map(c=>[c[1],c[0]]);
+  POLJA[st]={ime:f.properties.ime,ll,sredina:L.polygon(ll).getBounds().getCenter()};
+  poljaSloji[st]=L.polygon(ll,SLOG_POLJE).bindTooltip(st+' – '+f.properties.ime,{sticky:true}).on('click',()=>klikPolje(st)).addTo(poljaSloj)});
+ L.polygon(ring,{color:'#0b3d24',weight:3,opacity:.75,fill:false,interactive:false,lineJoin:'round'}).addTo(karta);
+ vhodi.forEach(x=>L.circleMarker([x[2],x[3]],{radius:2.5,color:'#9cbfa8',weight:1,fillColor:'#c9dccf',fillOpacity:.9,interactive:false}).addTo(karta));
+ mejaB=L.latLngBounds(ring);prilagodiKarto();
+ KAT=data.kategorije||[];
+ DOG=(data.dogodki||[]).filter(d=>d.zacetek).map(d=>({...d,polja:d.polja||[],_z:new Date(d.zacetek),_k:d.konec?new Date(d.konec):null,_g:(d.glasovi||0)})).sort((a,b)=>a._z-b._z);
+ if(!DOG.some(d=>d.primer))document.getElementById('trakOsnutek').hidden=true;
+ document.getElementById('f-kategorije').innerHTML=KAT.map((k,i)=>'<label><input type="radio" name="kategorija" value="'+esc(k.id)+'"'+(i===0?' checked':'')+'> '+esc(k.ikona||'')+' '+esc(k.ime)+'</label>').join('');
+ document.getElementById('f-polje').innerHTML='<option value="">ne vem</option>'+Object.keys(POLJA).map(st=>'<option value="'+st+'">'+st+' – '+esc(POLJA[st].ime)+'</option>').join('');
+ /* povezava na en dogodek: #dogodek-id */
+ const h=decodeURIComponent(location.hash.slice(1)),cilj=DOG.find(d=>d.id===h);
+ if(cilj){S.dan=d0(cilj._z);S.teden=ponedeljek(S.dan);S.izbran=cilj.id}
+ izrisiKategorije();izrisi();naloziGlasove();
+ if(cilj)setTimeout(()=>izberi(cilj.id,false,true),300);
+}).catch(e=>{document.getElementById('danVsebina').innerHTML='<div class="prazno">Dogodkov trenutno ni mogoče naložiti. Poskusi čez nekaj minut.</div>';console.error(e)});
+function prilagodiKarto(){if(!mejaB)return;karta.invalidateSize({pan:false});const v=karta.getSize();if(!v.x||!v.y)return;karta.setMaxBounds(null);karta.setMinZoom(0);const z=karta.getBoundsZoom(mejaB,false,L.point(8,8));karta.setView(mejaB.getCenter(),z,{animate:false});karta.setMaxBounds(mejaB.pad(0.25));karta.options.maxBoundsViscosity=1;karta.setMinZoom(z-0.5)}
+
+/* telefon: koledar in zemljevid sta privzeto zaprta */
+if(JE_MOBILNO()){document.getElementById('koledarDel').open=false;document.getElementById('kartaDel').open=false}
+document.getElementById('kartaDel').addEventListener('toggle',e=>{const o=e.target.open;document.getElementById('kartaGumb').textContent=o?'🗺️ Skrij zemljevid':'🗺️ Pokaži na zemljevidu';if(o)setTimeout(()=>{prilagodiKarto();prilagodiNaDogodke();osveziIzbor()},60)});
+document.getElementById('kartaGumb').textContent=document.getElementById('kartaDel').open?'🗺️ Skrij zemljevid':'🗺️ Pokaži na zemljevidu';
+
+const imeKat=id=>(KAT.find(k=>k.id===id)||{}).ime||'Drugo';
+const ikonaKat=id=>(KAT.find(k=>k.id===id)||{}).ikona||'✨';
+function izrisiKategorije(){
+ const el=document.getElementById('kategorije');
+ el.innerHTML=[{id:'vse',ime:'Vse',ikona:'🌈'}].concat(KAT).map(k=>'<button type="button" class="cip" data-kat="'+esc(k.id)+'" aria-pressed="'+(S.kat===k.id)+'">'+esc(k.ikona||'')+' '+esc(k.ime)+'</button>').join('');
+ el.querySelectorAll('button').forEach(b=>b.onclick=()=>{S.kat=b.dataset.kat;izrisiKategorije();izrisi()});
+}
+document.querySelectorAll('[data-pogled]').forEach(b=>b.onclick=()=>{S.pogled=b.dataset.pogled;document.querySelectorAll('[data-pogled]').forEach(x=>x.setAttribute('aria-pressed',x===b));izrisi()});
+function nastaviDan(d,skroli){S.dan=d0(d);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=null;izrisi();
+ if(skroli)document.querySelector('.kaj').scrollIntoView({behavior:'smooth',block:'start'});
+ if(JE_MOBILNO()&&document.getElementById('koledarDel').open&&skroli)document.getElementById('koledarDel').open=false}
+const premakniDan=k=>nastaviDan(plus(S.dan,k),JE_MOBILNO());
+['nazaj','spNazaj'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(-1));
+['naprej','spNaprej'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(1));
+function vikend(){const d=d0(new Date()),w=d.getDay();return w===6||w===0?d:plus(d,6-w)}
+document.querySelectorAll('[data-hitro]').forEach(b=>b.onclick=()=>{const t=b.dataset.hitro;nastaviDan(t==='danes'?new Date():t==='jutri'?plus(new Date(),1):vikend())});
+function premakniKoledar(k){if(S.pogled==='mesec')S.mesec=new Date(S.mesec.getFullYear(),S.mesec.getMonth()+k,1);else S.teden=plus(S.teden,7*k);izrisiKoledar()}
+document.getElementById('kNazaj').onclick=()=>premakniKoledar(-1);
+document.getElementById('kNaprej').onclick=()=>premakniKoledar(1);
+
+/* podrsaj levo/desno za drug dan */
+(()=>{let x0=null,y0=null,t0=0;const el=document.getElementById('danVsebina');
+ el.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now()},{passive:true});
+ el.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;
+  if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.8&&Date.now()-t0<800)premakniDan(dx<0?1:-1)},{passive:true});})();
+
+const filtrirani=()=>DOG.filter(d=>S.kat==='vse'||d.kategorija===S.kat);
+function naDan(d,dan){const a=d0(dan),b=plus(a,1);return (d._k||d._z)>=a&&d._z<b}
+/* vrstni red v dnevu: izpostavljeno (določi potrjevalec) > glasovi > ura */
+const poPomenu=(a,b)=>(b.izpostavljeno||0)-(a.izpostavljeno||0)||b._g-a._g||a._z-b._z;
+const cas=d=>ura(d.zacetek)?'ob '+ura(d.zacetek)+(ura(d.konec)?' do '+ura(d.konec):''):'ves dan';
+const cisti=d=>d.primer?d.naslov.replace(/^PRIMER:\s*/,''):d.naslov;
+const urlDogodka=d=>location.origin+location.pathname+'#'+encodeURIComponent(d.id);
+
+function znacke(d){const z=[];if(d.brezplacno)z.push('💚 Brezplačno');if(d.za_otroke)z.push('🧸 Za otroke');if(d.dostopno)z.push('♿ Dostop z vozičkom');if(d.brez_prijave)z.push('🚪 Brez prijave, kar pridi');
+ return z.length?'<div class="znacke">'+z.map(t=>'<span class="znacka">'+t+'</span>').join('')+'</div>':''}
+function podrobnosti(d){
+ const moj=mojiGlasovi().has(d.id),polje=d.polja.length&&POLJA[d.polja[0]]?d.polja[0]+' – '+POLJA[d.polja[0]].ime:'';
+ return '<ul class="podatki">'+
+   '<li><span class="ik" aria-hidden="true">🕒</span><span><b>'+esc(cas(d))+'</b></span></li>'+
+   '<li><span class="ik" aria-hidden="true">📍</span><span>'+esc(d.kraj)+(polje?'<br><span class="meta">'+esc(polje)+'</span>':'')+'</span></li>'+
+   (d.kako_priti?'<li><span class="ik" aria-hidden="true">🚶</span><span><b>Kako priti:</b> '+esc(d.kako_priti)+'</span></li>':'')+
+   (d.organizator?'<li><span class="ik" aria-hidden="true">👋</span><span>Pripravlja: '+esc(d.organizator)+'</span></li>':'')+
+  '</ul>'+znacke(d)+
+  (d.opis?'<p class="opis">'+esc(d.opis)+'</p>':'')+
+  (/^https?:/i.test(d.povezava||'')?'<p><a href="'+esc(d.povezava)+'" target="_blank" rel="noopener">Več o dogodku ›</a></p>':'')+
+  '<div class="dejanja">'+
+   gumbShrani(d)+
+   '<button type="button" class="gumb" data-glas="'+esc(d.id)+'" aria-pressed="'+moj+'">👍 Všeč mi je'+(d._g?' · '+d._g:'')+'</button>'+
+   '<button type="button" class="gumb" data-koledar="'+esc(d.id)+'" aria-expanded="false" aria-controls="kp-'+esc(d.id)+'">📅 Dodaj v koledar <span aria-hidden="true">▾</span></button>'+
+   '<button type="button" class="gumb" data-deli="'+esc(d.id)+'" aria-expanded="false">↗ Deli s sosedi</button>'+
+   '<button type="button" class="gumb" data-na-karto="'+esc(d.id)+'">🗺️ Na zemljevidu</button>'+
+  '</div><div class="koledar-plosca" id="kp-'+esc(d.id)+'" data-kplosca="'+esc(d.id)+'" hidden>'+
+   '<a class="gumb" href="'+esc(googleUrl(d))+'" target="_blank" rel="noopener" data-google="'+esc(d.id)+'">🗓️ Shrani v Google Koledar<span class="sr"> (odpre se nov zavihek)</span></a>'+
+   '<button type="button" class="gumb" data-ics="'+esc(d.id)+'">📱 Dodaj v koledar telefona</button>'+
+   '<p class="meta">Google Koledar se odpre v novem zavihku. Za iPhone, Outlook in druge koledarje izberi »koledar telefona«.</p>'+
+  '</div><div class="deli-plosca" data-plosca="'+esc(d.id)+'" hidden></div>';
+}
+/* shranjeni dogodki: samo na tej napravi (localStorage), nič se ne pošilja */
+function shranjeni(){try{return new Set(JSON.parse(localStorage.getItem('koledar_shranjeni')||'[]'))}catch(e){return new Set()}}
+function zapisiShranjene(s){try{localStorage.setItem('koledar_shranjeni',JSON.stringify([...s]))}catch(e){}}
+function gumbShrani(d){const on=shranjeni().has(d.id);return '<button type="button" class="gumb shrani" data-shrani="'+esc(d.id)+'" aria-pressed="'+on+'">'+(on?'❤️ Shranjeno':'🤍 Shrani')+'</button>'}
+function preklopiShrani(id){const s=shranjeni(),bil=s.has(id);if(bil)s.delete(id);else s.add(id);zapisiShranjene(s);
+ S.izbran=id;izrisi();obvesti(bil?'Odstranjeno iz tvojih dogodkov.':'❤️ Shranjeno med Moje dogodke. Ostane samo na tvoji napravi.')}
+function stejMoje(){const s=shranjeni();const n=DOG.filter(d=>s.has(d.id)).length;const el=document.getElementById('stMoji');if(el)el.textContent=n?n:'';return n}
+function gcCas(s){return s.replace(/[-:]/g,'').slice(0,13)+'00'}
+function googleUrl(d){
+ let dates;
+ if(!ura(d.zacetek)){const z=new Date(d.zacetek.slice(0,10)+'T12:00');const k=new Date(z.getTime()+864e5);const f=x=>x.getFullYear()+String(x.getMonth()+1).padStart(2,'0')+String(x.getDate()).padStart(2,'0');dates=f(z)+'/'+f(k)}
+ else{let konec=d.konec&&ura(d.konec)?d.konec:null;if(!konec){const z=new Date(d.zacetek);z.setHours(z.getHours()+1);konec=z.getFullYear()+'-'+String(z.getMonth()+1).padStart(2,'0')+'-'+String(z.getDate()).padStart(2,'0')+'T'+String(z.getHours()).padStart(2,'0')+':'+String(z.getMinutes()).padStart(2,'0')}
+  dates=gcCas(d.zacetek)+'/'+gcCas(konec)}
+ const det=(d.opis||'')+(d.kako_priti?'\nKako priti: '+d.kako_priti:'')+(d.organizator?'\nPripravlja: '+d.organizator:'')+'\n\nSavski koledar: '+urlDogodka(d);
+ const q=new URLSearchParams({action:'TEMPLATE',text:cisti(d),dates,ctz:'Europe/Ljubljana',details:det.trim(),location:d.kraj+', Savsko naselje, Ljubljana'});
+ return 'https://calendar.google.com/calendar/render?'+q.toString().replace(/\+/g,'%20');
+}
+const stZnak=(d)=>'<span class="st-pin'+(d.primer?' primer':'')+'" aria-label="Številka na zemljevidu: '+d._st+'">'+d._st+'</span>';
+/* vrsta: 'velik' (1.), 'srednji' (2., 3.), 'mal' (ostali, strnjeno) */
+function kartica(d,vrsta){
+ const sl=varenUrl(d.slika),cls='dogodek '+vrsta+(d.primer?' primer':'')+(S.izbran===d.id?' izbran':'');
+ const oznake=(d.primer?'<span class="oznaka primer">PRIMER</span>':'')+'<span class="oznaka">'+esc(ikonaKat(d.kategorija))+' '+esc(imeKat(d.kategorija))+'</span>';
+ if(vrsta==='mal')return '<details class="'+cls+'" data-id="'+esc(d.id)+'"'+(S.izbran===d.id?' open':'')+'><summary class="mal-vrsta">'+stZnak(d)+'<span class="mal-cas">'+esc(ura(d.zacetek)||'ves dan')+'</span><span class="mal-naslov">'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'<span class="meta"> · '+esc(d.kraj)+'</span></span></summary><div class="telo"><div class="vrh">'+oznake+'</div>'+podrobnosti(d)+'</div></details>';
+ return '<article class="'+cls+'" data-id="'+esc(d.id)+'">'+
+  (sl?'<img class="slika" src="'+esc(sl)+'" alt="" loading="lazy">':'')+'<div class="telo">'+
+  '<div class="vrh">'+stZnak(d)+(vrsta==='velik'?'<span class="rang">⭐ Dogodek dneva</span>':'')+oznake+'</div>'+
+  '<h3>'+esc(cisti(d))+'</h3>'+podrobnosti(d)+'</div></article>';
+}
+function izrisi(){izrisiDan();izrisiKoledar()}
+function izrisiDan(){
+ const el=document.getElementById('danVsebina'),F=filtrirani(),danes=d0(new Date());
+ const k=isoDan(S.dan),opis=k===isoDan(danes)?'danes, ':k===isoDan(plus(danes,1))?'jutri, ':'';
+ document.getElementById('obdobje').textContent=opis+(JE_MOBILNO()?datumLepo(S.dan).replace(/\u00a0\d{4}$/,''):datumLepo(S.dan));
+ document.querySelectorAll('[data-hitro]').forEach(b=>{const t=b.dataset.hitro,v=t==='danes'?danes:t==='jutri'?plus(danes,1):vikend();b.setAttribute('aria-pressed',isoDan(v)===k)});
+ const vsi=F.filter(d=>naDan(d,S.dan)).sort(poPomenu);
+ /* največ 3 izpostavljeni (po pomenu), ostali strnjeno po uri; številke se ujemajo z zemljevidom */
+ const top=vsi.slice(0,3),ostali=vsi.slice(3).sort((a,b)=>a._z-b._z);
+ RED=top.concat(ostali);RED.forEach((d,i)=>d._st=i+1);
+ const vidni=RED;
+ if(vidni.length){
+  const odprto=ostali.some(d=>d.id===S.izbran);
+  el.innerHTML=(vsi.length>3?'<p class="dan-povzetek">Ta dan je <b>'+vsi.length+' dogodkov</b>. Najprej trije izpostavljeni, ostali spodaj po uri.</p>':'')+
+   top.map((d,i)=>kartica(d,i===0?'velik':'srednji')).join('')+
+   (ostali.length?'<details class="se-vec" id="seVec"'+(odprto?' open':'')+'><summary class="gumb se-gumb">Še '+ostali.length+' '+(ostali.length===1?'dogodek':ostali.length===2?'dogodka':ostali.length<5?'dogodki':'dogodkov')+' ta dan <span aria-hidden="true">▼</span></summary><div class="se-seznam">'+ostali.map(d=>kartica(d,'mal')).join('')+'</div></details>':'');
+ }
+ else{const n=naslednji();
+  el.innerHTML='<div class="prazno"><p class="velik">'+(k===isoDan(danes)?'Danes ni dogodka':'Ta dan ni dogodka')+' – kaj pa ti kaj pripraviš? 🙂</p>'+
+   '<p>Dovolj je malo: kava na klopci, skupen sprehod, menjava sadik ali knjig. Mi pomagamo, da izvejo sosedje.</p>'+
+   '<div class="gumbi">'+(n?'<button type="button" class="gumb glavni" id="naNaslednji">Naslednji dogodek: '+esc(DNEVI[n._z.getDay()]+' '+n._z.getDate()+'. '+(n._z.getMonth()+1)+'.')+' ›</button>':'')+'<button type="button" class="gumb dodaj" data-odpri-obrazec>+ Dodaj dogodek</button></div></div>';
+  const nn=document.getElementById('naNaslednji');if(nn)nn.onclick=()=>nastaviDan(n._z)}
+ vezi(el);pini(vidni);seznamPodKarto();if(mejaB&&document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}
+ el.querySelectorAll('.dogodek').forEach(c=>c.addEventListener('click',e=>{if(e.target.closest('button,a,summary,input'))return;izberi(c.dataset.id,true,false)}));
+ el.querySelectorAll('details.mal').forEach(c=>c.addEventListener('toggle',()=>{if(c.open)izberi(c.dataset.id,true,false)}));
+}
+function naslednji(){const k=plus(S.dan,1);return filtrirani().find(d=>d._z>=k)}
+function vezi(el){
+ el.querySelectorAll('[data-glas]').forEach(b=>b.onclick=()=>glasuj(b.dataset.glas));
+ el.querySelectorAll('[data-ics]').forEach(b=>b.onclick=()=>prenesiIcs(DOG.find(x=>x.id===b.dataset.ics)));
+ el.querySelectorAll('[data-shrani]').forEach(b=>b.onclick=()=>preklopiShrani(b.dataset.shrani));
+ el.querySelectorAll('[data-koledar]').forEach(b=>b.onclick=()=>{const p=el.querySelector('[data-kplosca="'+CSS.escape(b.dataset.koledar)+'"]');if(!p)return;const o=p.hidden;p.hidden=!o;b.setAttribute('aria-expanded',o)});
+ el.querySelectorAll('[data-deli]').forEach(b=>b.onclick=()=>deli(DOG.find(x=>x.id===b.dataset.deli),b));
+ el.querySelectorAll('[data-na-karto]').forEach(b=>b.onclick=()=>naKarto(b.dataset.naKarto));
+ el.querySelectorAll('[data-odpri-obrazec]').forEach(b=>b.onclick=odpri);
+}
+
+/* koledar */
+function vrsta(d){return '<button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-dan="'+isoDan(d._z)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button>'}
+function seznamKratek(v){let z='',h='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div>'}h+=vrsta(d)});return h}
+function izrisiKoledar(){
+ const el=document.getElementById('vsebina'),F=filtrirani(),danes=isoDan(new Date()),izb=isoDan(S.dan);
+ document.getElementById('premikKoledar').hidden=S.pogled==='seznam'||S.pogled==='moji';stejMoje();
+ const ob=document.getElementById('koledarObdobje');
+ if(S.pogled==='teden'){
+  const pon=S.teden,ned=plus(pon,6);
+  ob.textContent=pon.getDate()+'. '+(pon.getMonth()+1)+'. – '+ned.getDate()+'. '+(ned.getMonth()+1)+'.';
+  let h='<div class="teden" role="group" aria-label="Dnevi v tednu">'+[0,1,2,3,4,5,6].map(i=>{const d=plus(pon,i),n=F.filter(x=>naDan(x,d)).length;
+   return '<button type="button" data-dan="'+isoDan(d)+'" aria-pressed="'+(isoDan(d)===izb)+'" class="'+(isoDan(d)===danes?'danes':'')+'" aria-label="'+esc(datumLepo(d))+', dogodkov: '+n+'">'+DNEVI_K[i]+'<b>'+d.getDate()+'.</b><span class="pike">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('')+'</div>';
+  const vt=F.filter(d=>(d._k||d._z)>=pon&&d._z<plus(pon,7));
+  h+=vt.length?seznamKratek(vt):'<div class="prazno">Ta teden še ni dogodkov.</div>';
+  el.innerHTML=h;
+ }else if(S.pogled==='mesec'){
+  const a=S.mesec;ob.textContent=MESECI[a.getMonth()]+' '+a.getFullYear();
+  const zac=ponedeljek(a);let h=DNEVI_K.map(d=>'<div class="ime-dne">'+d+'</div>').join('');
+  for(let i=0;i<42;i++){const d=plus(zac,i);if(i>=35&&d.getMonth()!==a.getMonth())break;const k=isoDan(d),n=F.filter(x=>isoDan(x._z)===k).length;
+   h+='<button type="button" class="celica'+(d.getMonth()!==a.getMonth()?' drug':'')+(k===danes?' danes':'')+(k===izb?' izbran':'')+'" data-dan="'+k+'" aria-label="'+esc(datumLepo(d))+', dogodkov: '+n+'"><span class="st">'+d.getDate()+'</span><span class="pika">'+(n?'<span class="st-dan">'+n+'</span>':'&nbsp;')+'</span></button>'}
+  el.innerHTML='<div class="mesec">'+h+'</div>';
+ }else if(S.pogled==='seznam'){
+  const v=F.filter(d=>(d._k||d._z)>=d0(new Date()));
+  el.innerHTML=v.length?seznamKratek(v):'<div class="prazno">Trenutno ni prihajajočih dogodkov.</div>';
+ }else if(S.pogled==='moji'){
+  const s=shranjeni(),v=DOG.filter(d=>s.has(d.id)),dn=d0(new Date());
+  let h='<p class="moji-opomba">🔒 Shranjeno ostane samo na tvoji napravi. Nič se ne pošilja.</p>';
+  if(!v.length)h+='<div class="prazno">Tu še ni nič 🙂<br>Ko ti je kak dogodek všeč, tapni <b>🤍 Shrani</b> in ga najdeš tukaj.</div>';
+  else{let z='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div>'}
+   h+='<div class="moj-vrsta'+((d._k||d._z)<dn?' mimo':'')+'">'+vrsta(d)+'<button type="button" class="odstrani" data-odstrani="'+esc(d.id)+'" aria-label="Odstrani iz mojih: '+esc(cisti(d))+'">✕</button></div>'})}
+  el.innerHTML=h;
+  el.querySelectorAll('[data-odstrani]').forEach(b=>b.onclick=()=>preklopiShrani(b.dataset.odstrani));
+ }
+ el.querySelectorAll('[data-dan]').forEach(b=>b.onclick=()=>{const [y,m,dd]=b.dataset.dan.split('-').map(Number);nastaviDan(new Date(y,m-1,dd),true)});
+}
+
+/* zemljevid */
+function tockaZa(d){if(typeof d.lat==='number'&&typeof d.lon==='number')return L.latLng(d.lat,d.lon);const p=POLJA[d.polja[0]];return p?p.sredina:null}
+function kljuc(t){return t.lat.toFixed(4)+','+t.lng.toFixed(4)}
+function pini(v){
+ sloj.clearLayers();markerji={};skupine=[];
+ const po={};
+ v.forEach(d=>{const t=tockaZa(d);if(!t)return;const k=kljuc(t);(po[k]=po[k]||{t,dog:[]}).dog.push(d)});
+ Object.values(po).forEach(g=>{
+  g.dog.sort((a,b)=>a._st-b._st);
+  const st=g.dog.length>3?g.dog[0]._st+'…':g.dog.map(d=>d._st).join('·');
+  const vsiPrimer=g.dog.every(d=>d.primer);
+  const m=L.marker(g.t,{icon:ikona(st,g.dog.length,vsiPrimer,false),title:g.dog.map(d=>d._st+'. '+cisti(d)).join(', '),riseOnHover:true,keyboard:true});
+  if(g.dog.length>1){
+   m.bindPopup('<b>Na tem kraju: '+g.dog.length+' dogodki</b><ol class="pin-seznam">'+g.dog.map(d=>'<li><button type="button" data-k-dog="'+esc(d.id)+'"><span class="st-pin">'+d._st+'</span> '+esc(ura(d.zacetek)||'ves dan')+' · '+esc(cisti(d))+'</button></li>').join('')+'</ol>',{maxWidth:280});
+   m.on('popupopen',e=>e.popup.getElement().querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{karta.closePopup();izberi(b.dataset.kDog,false,true)}));
+  }else{const d=g.dog[0];m.on('click',()=>izberi(d.id,false,true))}
+  m.addTo(sloj);g.m=m;g.st=st;g.primer=vsiPrimer;skupine.push(g);g.dog.forEach(d=>markerji[d.id]=m);
+ });
+ osveziIzbor();
+}
+function osveziIzbor(){
+ const on=new Set(RED.flatMap(d=>d.polja)),izb=RED.find(d=>d.id===S.izbran);
+ Object.entries(poljaSloji).forEach(([st,l])=>l.setStyle(izb&&izb.polja.includes(+st)?SLOG_POLJE_IZB:on.has(+st)?SLOG_POLJE_ON:SLOG_POLJE));
+ skupine.forEach(g=>{const j=g.dog.some(d=>d.id===S.izbran);g.m.setIcon(ikona(g.st,g.dog.length,g.primer,j));g.m.setZIndexOffset(j?1000:0)});
+ document.querySelectorAll('#kartaSeznam [data-k-dog]').forEach(b=>b.setAttribute('aria-current',b.dataset.kDog===S.izbran));
+}
+function seznamPodKarto(){
+ const el=document.getElementById('kartaSeznam');
+ el.innerHTML=RED.length?'<h3>Na zemljevidu ta dan</h3><ol>'+RED.map(d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+d._st+'</span><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(cisti(d))+'</span></button></li>').join('')+'</ol>':'<p class="meta">Ta dan ni dogodkov za zemljevid.</p>';
+ el.querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{izberi(b.dataset.kDog,true,false)});
+}
+function prilagodiNaDogodke(){
+ const t=RED.map(tockaZa).filter(Boolean);
+ const v=karta.getSize();if(t.length&&v.x&&v.y)karta.fitBounds(L.latLngBounds(t),{padding:[50,50],maxZoom:17.25,animate:false});
+}
+function klikPolje(st){const d=RED.find(x=>x.polja.includes(st));if(d)izberi(d.id,true,false)}
+function izberi(id,naKarti,skroli){
+ S.izbran=id;
+ document.querySelectorAll('.dogodek').forEach(a=>a.classList.toggle('izbran',a.dataset.id===id));
+ const c=document.querySelector('.dogodek[data-id="'+CSS.escape(id)+'"]');
+ if(c&&c.classList.contains('mal')){const se=document.getElementById('seVec');if(se)se.open=true;c.open=true}
+ osveziIzbor();
+ const m=markerji[id];
+ if(m&&naKarti&&document.getElementById('kartaDel').open&&!karta.getBounds().pad(-0.1).contains(m.getLatLng())){karta.panTo(m.getLatLng());}
+ if(c&&skroli)setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),60);
+}
+function naKarto(id){const det=document.getElementById('kartaDel');if(!det.open)det.open=true;else{prilagodiKarto();prilagodiNaDogodke()}
+ setTimeout(()=>{izberi(id,true,false);document.getElementById('karta').scrollIntoView({behavior:'smooth',block:'center'})},150)}
+
+/* v moj koledar (.ics, deluje na telefonu in računalniku) */
+function icsCas(s){return s.replace(/[-:]/g,'').slice(0,13)+'00'}
+function prenesiIcs(d){if(!d)return;
+ const cel=!ura(d.zacetek),L1=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//savska.org//Savski koledar//SL','CALSCALE:GREGORIAN',
+  'BEGIN:VTIMEZONE','TZID:Europe/Ljubljana','BEGIN:STANDARD','DTSTART:19701025T030000','RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU','TZOFFSETFROM:+0200','TZOFFSETTO:+0100','TZNAME:CET','END:STANDARD','BEGIN:DAYLIGHT','DTSTART:19700329T020000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU','TZOFFSETFROM:+0100','TZOFFSETTO:+0200','TZNAME:CEST','END:DAYLIGHT','END:VTIMEZONE',
+  'BEGIN:VEVENT','UID:'+d.id+'@anketa.savska.org','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z'];
+ const ix=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/([,;])/g,'\\$1');
+ if(cel){L1.push('DTSTART;VALUE=DATE:'+d.zacetek.slice(0,10).replace(/-/g,''));}
+ else{L1.push('DTSTART;TZID=Europe/Ljubljana:'+icsCas(d.zacetek));L1.push('DTEND;TZID=Europe/Ljubljana:'+icsCas(d.konec||new Date(d._z.getTime()+36e5-d._z.getTimezoneOffset()*6e4).toISOString().slice(0,16)))}
+ L1.push('SUMMARY:'+ix(cisti(d)),'LOCATION:'+ix(d.kraj+', Savsko naselje, Ljubljana'),'DESCRIPTION:'+ix((d.opis||'')+(d.kako_priti?'\nKako priti: '+d.kako_priti:'')+'\n'+urlDogodka(d)),'URL:'+urlDogodka(d),
+  'BEGIN:VALARM','TRIGGER:-PT2H','ACTION:DISPLAY','DESCRIPTION:'+ix(cisti(d)),'END:VALARM','END:VEVENT','END:VCALENDAR');
+ const b=new Blob([L1.join('\r\n')],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(b);a.download='savski-koledar-'+d.id+'.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+ obvesti('📅 Dogodek je prenesen. Odpri datoteko in ga dodaj v svoj koledar (opomnik 2 uri prej).');
+}
+
+/* deli s sosedi: telefon odpre svoj meni za deljenje, sicer Viber, WhatsApp, kopiraj */
+async function deli(d,gumb){if(!d)return;
+ const besedilo=cisti(d)+' – '+datumLepo(d._z)+', '+cas(d)+', '+d.kraj+'. Pridi tudi ti! ';
+ if(navigator.share&&JE_MOBILNO()){try{await navigator.share({title:cisti(d),text:besedilo,url:urlDogodka(d)});return}catch(e){if(e.name==='AbortError')return}}
+ const p=document.querySelector('[data-plosca="'+CSS.escape(d.id)+'"]');const odprto=!p.hidden;p.hidden=odprto;gumb.setAttribute('aria-expanded',!odprto);if(odprto)return;
+ const t=encodeURIComponent(besedilo+urlDogodka(d));
+ p.innerHTML='<a class="gumb" href="viber://forward?text='+t+'">💜 Viber</a><a class="gumb" href="https://wa.me/?text='+t+'" target="_blank" rel="noopener">💬 WhatsApp</a><a class="gumb" href="mailto:?subject='+encodeURIComponent(cisti(d))+'&body='+t+'">✉️ E-pošta</a><button type="button" class="gumb" data-kopiraj>🔗 Kopiraj povezavo</button>';
+ p.querySelector('[data-kopiraj]').onclick=async()=>{try{await navigator.clipboard.writeText(urlDogodka(d));obvesti('🔗 Povezava je kopirana. Prilepi jo sosedom.')}catch(e){prompt('Kopiraj povezavo:',urlDogodka(d))}};
+}
+
+/* glasovanje: anonimno, brez prijave, en glas na napravo in dogodek */
+function napravaId(){try{let n=localStorage.getItem('koledar_naprava');if(!n){n=(crypto.randomUUID?crypto.randomUUID():String(Math.random()).slice(2)+Date.now());localStorage.setItem('koledar_naprava',n)}return n}catch(e){return ''}}
+function mojiGlasovi(){try{return new Set(JSON.parse(localStorage.getItem('koledar_glasovi')||'[]'))}catch(e){return new Set()}}
+function shraniMoje(s){try{localStorage.setItem('koledar_glasovi',JSON.stringify([...s]))}catch(e){}}
+async function naloziGlasove(){if(!GLASOVI_URL)return;try{const r=await fetch(GLASOVI_URL+'?akcija=stevci');const j=await r.json();if(j.ok){DOG.forEach(d=>{if(j.stevci[d.id]!=null)d._g=j.stevci[d.id]});izrisi()}}catch(e){}}
+async function glasuj(id){
+ const moji=mojiGlasovi(),d=DOG.find(x=>x.id===id);if(!d)return;
+ const umik=moji.has(id);if(umik){moji.delete(id);d._g=Math.max(0,d._g-1)}else{moji.add(id);d._g++}
+ shraniMoje(moji);S.izbran=id;izrisiDan();if(!umik)obvesti('👍 Hvala! Tvoj glas pomaga, da dobri dogodki pridejo na vrh.');
+ if(!GLASOVI_URL)return;
+ try{const r=await fetch(GLASOVI_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({akcija:umik?'umik':'glas',id,naprava:napravaId()})});const j=await r.json();if(j.ok&&j.stevec!=null){d._g=j.stevec;izrisiDan()}}catch(e){}
+}
+
+/* obrazec v 3 korakih */
+const dlg=document.getElementById('obrazec'),frm=document.getElementById('oddaja');
+function odpri(){pojdiNa(1);document.getElementById('sporocilo').className='';document.getElementById('sporocilo').textContent='';dlg.showModal();setTimeout(()=>document.getElementById('f-naslov').focus(),50)}
+document.querySelectorAll('[data-odpri-obrazec]').forEach(b=>b.onclick=odpri);
+document.getElementById('zapriObrazec').onclick=()=>dlg.close();
+document.querySelectorAll('[data-zapri-obrazec]').forEach(b=>b.onclick=()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+document.getElementById('f-datum').min=isoDan(new Date());
+function oznaciNapako(id,slabo){const i=document.getElementById(id),n=document.getElementById('n-'+id.slice(2));i&&i.setAttribute('aria-invalid',slabo);if(n)n.hidden=!slabo;return slabo}
+function preveriKorak(k){let prvi=null;const chk=(id,cond)=>{if(oznaciNapako(id,cond)&&!prvi)prvi=id};
+ if(k===1){chk('f-naslov',!frm.naslov.value.trim());chk('f-datum',!frm.datum.value)}
+ if(k===2){chk('f-kraj',!frm.kraj.value.trim())}
+ if(k===3){chk('f-kontakt',!frm.kontakt.value.trim());const s=!frm.soglasje.checked;document.getElementById('n-soglasje').hidden=!s;if(s&&!prvi)prvi='f-soglasje'}
+ if(prvi)document.getElementById(prvi).focus();return !prvi}
+let korak=1;
+function pojdiNa(k){korak=k;frm.querySelectorAll('fieldset').forEach(f=>f.hidden=+f.dataset.korak!==k);
+ frm.querySelectorAll('.koraki li').forEach(li=>{const n=+li.dataset.k;li.className=n===k?'akt':n<k?'opravljen':'';if(n===k)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
+ frm.querySelector('.namig').hidden=k!==1;dlg.scrollTop=0;const prvo=frm.querySelector('fieldset[data-korak="'+k+'"] input,fieldset[data-korak="'+k+'"] select');if(prvo&&dlg.open)prvo.focus()}
+frm.querySelectorAll('[data-naprej]').forEach(b=>b.onclick=()=>{const k=+b.dataset.naprej;if(k>korak&&!preveriKorak(korak))return;pojdiNa(k)});
+function sp(t,ok){const s=document.getElementById('sporocilo');s.className='sporocilo '+(ok?'ok':'napaka');s.textContent=t;s.scrollIntoView({block:'nearest'})}
+frm.addEventListener('submit',async e=>{
+ e.preventDefault();const fd=new FormData(frm);if(fd.get('spletna_stran'))return;
+ for(const k of [1,2,3]){if(!preveriKorak(k)){pojdiNa(k);preveriKorak(k);return}}
+ const dat=fd.get('slika');let slika=null;
+ if(dat&&dat.size){if(dat.size>MAKS_SLIKA){pojdiNa(2);sp('Slika je malo prevelika (največ 5 MB). Lahko jo pošlješ tudi na savskonaselje1@gmail.com.');return}
+  slika={ime:dat.name,tip:dat.type,podatki:await new Promise(r=>{const rd=new FileReader();rd.onload=()=>r(String(rd.result).split(',')[1]);rd.readAsDataURL(dat)})}}
+ const paket={vir:'obrazec',naslov:fd.get('naslov'),datum:fd.get('datum'),ura_od:fd.get('ura_od'),ura_do:fd.get('ura_do'),kraj:fd.get('kraj'),polje:fd.get('polje'),kako_priti:fd.get('kako_priti'),
+  kategorija:fd.get('kategorija'),opis:fd.get('opis'),povezava:fd.get('povezava'),organizator:fd.get('organizator'),kontakt:fd.get('kontakt'),soglasje:'da',
+  brezplacno:!!fd.get('brezplacno'),za_otroke:!!fd.get('za_otroke'),dostopno:!!fd.get('dostopno'),brez_prijave:!!fd.get('brez_prijave'),slika};
+ if(!SPREJEM_URL){sp('Osnutek: obrazec še ni povezan, nič ni bilo poslano. Dogodek zaenkrat pošlji na savskonaselje1@gmail.com.');console.info('Paket (ni poslan):',{...paket,kontakt:'[skrito]',slika:slika?{ime:slika.ime,tip:slika.tip}:null});return}
+ try{const r=await fetch(SPREJEM_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(paket)});const j=await r.json();if(!j.ok)throw new Error(j.napaka||'napaka');
+  frm.reset();pojdiNa(1);sp('Hvala, soseda, sosed! 💚 Dogodek smo prejeli. Pogledamo ga ob naslednjem pregledu (6.00, 12.00 ali 18.00) in ga nato objavimo.',true);
+ }catch(err){sp('Pošiljanje ni uspelo. Poskusi znova ali pošlji dogodek na savskonaselje1@gmail.com.')}
+});
+try{const v=localStorage.getItem('velikost');if(v)nastaviVelikost(v)}catch(e){}
+</script>
+</body>
+</html>

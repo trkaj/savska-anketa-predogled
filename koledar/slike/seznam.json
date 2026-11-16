@@ -1,0 +1,47 @@
+{
+ "opomba": "Seznam slik za glavo. Vsak dan se pokaže naslednja (dan v letu modulo število slik). Zamenjaj nadomestne slike s fotografijami z jasno licenco in jih vpiši sem.",
+ "slike": [
+  {
+   "datoteka": "nadomestna-01.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-02.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-03.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-04.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-05.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-06.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  },
+  {
+   "datoteka": "nadomestna-07.svg",
+   "opis": "Nadomestna slika (manjka fotografija)",
+   "avtor": "",
+   "nadomestna": true
+  }
+ ]
+}

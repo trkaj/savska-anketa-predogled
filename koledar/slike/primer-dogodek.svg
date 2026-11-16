@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+<rect width="800" height="450" fill="#fff4d6"/><path d="M0 380c130-30 270-30 400 0s270 30 400 0v70H0z" fill="#e5f0f4"/><path d="M0 410c130-22 270-22 400 0s270 22 400 0v40H0z" fill="#d3e6ec"/>
+<g fill="#9cbfa8"><circle cx="90" cy="330" r="34"/><circle cx="150" cy="345" r="24"/><circle cx="690" cy="335" r="30"/></g>
+<text x="400" y="200" text-anchor="middle" font-family="Segoe UI, DejaVu Sans, Arial, sans-serif" font-size="64" font-weight="800" fill="#5a4500">PRIMER</text>
+<text x="400" y="258" text-anchor="middle" font-family="Segoe UI, DejaVu Sans, Arial, sans-serif" font-size="28" fill="#5a4500">tu bo slika ali plakat dogodka</text></svg>
