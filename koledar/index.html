@@ -511,6 +511,24 @@ body{background:#f9faf3}
  .karta-preklop{max-width:none}
 }
 input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;max-width:100%}
+/* teden Po–Ne pod naslovom (12.32) */
+.teden-napis{text-align:center;margin:.1rem 0 .35rem;font-size:.95rem;font-weight:700;color:#33473a}
+.teden-vrh{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;max-width:36rem;margin:0 auto .7rem}
+.teden-vrh button{font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:4.2rem;min-width:0;padding:.3rem 0;border-radius:16px;cursor:pointer;line-height:1.15}
+.teden-vrh .dk{font-size:.85rem;font-weight:700}
+.teden-vrh b{font-size:1.15rem}
+.teden-vrh .tv-st{min-height:1.1rem;display:block}
+.teden-vrh .st-dan{font-size:.75rem}
+.teden-vrh button.ima{background:#fff4c2;border:2px solid #f5c400;color:#0b3d24}
+.teden-vrh button.prazen{background:#eef1ec;border:1px solid #e1e6df;color:#4a564d}
+.teden-vrh button.danes{outline:3px solid #2e7d55;outline-offset:-3px}
+.teden-vrh button[aria-pressed="true"]{background:var(--g2);border-color:var(--g2);color:#fff;outline-color:#f5c400}
+.teden-vrh button[aria-pressed="true"] .st-dan{background:#f5c400;color:#111}
+.teden-vrh button:focus-visible{outline:3px solid #245d7a;outline-offset:2px}
+.hitro button{min-height:44px;font-size:.9rem;padding:.2rem .9rem;min-width:5rem}
+.hitro{margin-bottom:.8rem}
+@media (max-width:640px){.teden-vrh{gap:3px}.teden-vrh button{border-radius:12px;min-height:3.9rem}.teden-vrh b{font-size:1.05rem}.teden-napis{font-size:.9rem;margin-top:0}}
+@media (max-width:380px){.teden-vrh{gap:2px}}
 </style>
 </head>
 <body>
@@ -543,13 +561,15 @@ input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;
  <section class="kaj" aria-labelledby="h-kaj">
   <div class="okvir">
    <div class="kaj-glava">
-    <button type="button" class="puscica" id="nazaj" aria-label="Prejšnji dan">‹</button>
+    <button type="button" class="puscica" id="nazaj" aria-label="Prejšnji teden">‹</button>
     <div class="kaj-naslov">
      <h2 id="h-kaj">Kaj se dogaja</h2>
      <p class="kaj-datum" id="obdobje" aria-live="polite"></p>
     </div>
-    <button type="button" class="puscica" id="naprej" aria-label="Naslednji dan">›</button>
+    <button type="button" class="puscica" id="naprej" aria-label="Naslednji teden">›</button>
    </div>
+   <p class="teden-napis" id="tedenNapis"></p>
+   <div class="teden-vrh" id="tedenVrh" role="group" aria-label="Dnevi v tednu"></div>
    <div class="hitro" role="group" aria-label="Hitra izbira dneva">
     <button type="button" data-hitro="danes">Danes</button>
     <button type="button" data-hitro="jutri">Jutri</button>
@@ -585,7 +605,7 @@ input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;
     <summary class="gumb karta-gumb" id="kartaGumb">🗺️ Pokaži na zemljevidu</summary>
     <div id="kartaOkvir">
      <h2 id="h-karta">Zemljevid</h2>
-     <div class="zavihki karta-preklop" role="group" aria-label="Kaj pokaže zemljevid"><button type="button" data-kt="0" aria-pressed="false">Ta dan</button><button type="button" data-kt="1" aria-pressed="true">Ves teden</button></div>
+     <div class="zavihki karta-preklop" role="group" aria-label="Kaj pokaže zemljevid"><button type="button" data-kt="0" aria-pressed="false">Ta dan</button><button type="button" data-kt="1" aria-pressed="true">Ves teden</button><button type="button" data-kt="2" aria-pressed="false">Mesec</button></div>
      <div id="karta"></div>
      <p class="meta" id="kartaLegenda" style="margin-top:.4rem"><span class="legenda"></span> Rumeno: polje z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.</p>
      <div id="kartaSeznam" class="karta-seznam"></div>
@@ -606,9 +626,9 @@ input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;
 </footer>
 
 <nav class="spodnja" aria-label="Hitri gumbi">
- <button type="button" class="sp-dan" id="spNazaj" aria-label="Prejšnji dan">‹</button>
+ <button type="button" class="sp-dan" id="spNazaj" aria-label="Prejšnji teden">‹</button>
  <button type="button" class="sp-dodaj" data-odpri-obrazec>+ Dodaj dogodek</button>
- <button type="button" class="sp-dan" id="spNaprej" aria-label="Naslednji dan">›</button>
+ <button type="button" class="sp-dan" id="spNaprej" aria-label="Naslednji teden">›</button>
 </nav>
 
 <div class="obvestilo" id="obvestilo" role="status" hidden></div>
@@ -737,7 +757,7 @@ fetch('slike/seznam.json').then(r=>r.json()).then(s=>{
 }).catch(()=>{});
 
 /* stanje */
-const S={kartaTeden:true,pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
+const S={kartaTeden:true,kartaMesec:false,pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
 let DOG=[],KAT=[],POLJA={},markerji={},poljaSloji={};
 
 /* zemljevid: isti kot na letakih (../letaki/) */
@@ -799,8 +819,10 @@ function nastaviDan(d,skroli){S.dan=d0(d);S.teden=ponedeljek(S.dan);S.mesec=new 
  if(skroli)document.querySelector('.kaj').scrollIntoView({behavior:'smooth',block:'start'});
  if(JE_MOBILNO()&&document.getElementById('koledarDel').open&&skroli)document.getElementById('koledarDel').open=false}
 const premakniDan=k=>nastaviDan(plus(S.dan,k),JE_MOBILNO());
-['nazaj','spNazaj'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(-1));
-['naprej','spNaprej'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(1));
+/* puščici premikata za cel teden (isti dan v tednu), poteg po zaslonu pa za en dan */
+const premakniTeden=k=>nastaviDan(plus(S.dan,7*k),false);
+['nazaj','spNazaj'].forEach(id=>document.getElementById(id).onclick=()=>premakniTeden(-1));
+['naprej','spNaprej'].forEach(id=>document.getElementById(id).onclick=()=>premakniTeden(1));
 function vikend(){const d=d0(new Date()),w=d.getDay();return w===6||w===0?d:plus(d,6-w)}
 document.querySelectorAll('[data-hitro]').forEach(b=>b.onclick=()=>{const t=b.dataset.hitro;nastaviDan(t==='danes'?new Date():t==='jutri'?plus(new Date(),1):vikend())});
 function premakniKoledar(k){if(S.pogled==='mesec')S.mesec=new Date(S.mesec.getFullYear(),S.mesec.getMonth()+k,1);else S.teden=plus(S.teden,7*k);izrisiKoledar()}
@@ -873,12 +895,27 @@ function kartica(d,vrsta){
   '<div class="vrh">'+stZnak(d)+(vrsta==='velik'?'<span class="rang">⭐ Dogodek dneva</span>':'')+oznake+'</div>'+
   '<h3>'+esc(cisti(d))+'</h3>'+podrobnosti(d)+'</div></article>';
 }
+const DNEVI_2=['Po','To','Sr','Če','Pe','So','Ne'];
+function napisTedna(pon){const ned=plus(pon,6);
+ if(pon.getFullYear()!==ned.getFullYear())return kratkiDatum(pon)+'\u00a0'+pon.getFullYear()+' – '+kratkiDatum(ned)+'\u00a0'+ned.getFullYear();
+ if(pon.getMonth()!==ned.getMonth())return kratkiDatum(pon)+' – '+kratkiDatum(ned)+'\u00a0'+ned.getFullYear();
+ return pon.getDate()+'.–'+ned.getDate()+'.\u00a0'+(ned.getMonth()+1)+'.\u00a0'+ned.getFullYear()}
+function izrisiTedenVrh(F,danes,k){
+ const pon=ponedeljek(S.dan),di=isoDan(danes);
+ document.getElementById('tedenNapis').textContent='Teden '+napisTedna(pon);
+ const el=document.getElementById('tedenVrh');
+ el.innerHTML=[0,1,2,3,4,5,6].map(i=>{const d=plus(pon,i),iso=isoDan(d),n=F.filter(x=>naDan(x,d)).length;
+  return '<button type="button" data-teden-dan="'+iso+'" class="'+(n?'ima':'prazen')+(iso===di?' danes':'')+'" aria-pressed="'+(iso===k)+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(iso===di?', danes':'')+'">'+
+   '<span class="dk">'+DNEVI_2[i]+'</span><b>'+d.getDate()+'.</b><span class="tv-st">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('');
+ el.querySelectorAll('[data-teden-dan]').forEach(b=>b.onclick=()=>{const [y,m,dd]=b.dataset.tedenDan.split('-').map(Number);nastaviDan(new Date(y,m-1,dd),false)});
+}
 function izrisi(){izrisiDan();izrisiKoledar()}
 function izrisiDan(){
  const el=document.getElementById('danVsebina'),F=filtrirani(),danes=d0(new Date());
  const k=isoDan(S.dan),opis=k===isoDan(danes)?'danes, ':k===isoDan(plus(danes,1))?'jutri, ':'';
  document.getElementById('obdobje').textContent=opis+(JE_MOBILNO()?datumLepo(S.dan).replace(/\u00a0\d{4}$/,''):datumLepo(S.dan));
  document.querySelectorAll('[data-hitro]').forEach(b=>{const t=b.dataset.hitro,v=t==='danes'?danes:t==='jutri'?plus(danes,1):vikend();b.setAttribute('aria-pressed',isoDan(v)===k)});
+ izrisiTedenVrh(F,danes,k);
  const vsi=F.filter(d=>naDan(d,S.dan)).sort(poPomenu);
  /* največ 3 izpostavljeni (po pomenu), ostali strnjeno po uri; številke se ujemajo z zemljevidom */
  const top=vsi.slice(0,3),ostali=vsi.slice(3).sort((a,b)=>a._z-b._z);
@@ -962,13 +999,19 @@ let KARTA_V=[];
 const N=d=>S.kartaTeden?d._stT:d._st;
 function oblacek(d){return '<div class="pin-obl"><b>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</b>'+(d.primer?' <span class="oznaka primer">PRIMER</span>':'')+
  '<span>🕒 '+esc(casKratek(d))+'</span><span>📍 '+esc(d.kraj)+'</span><button type="button" class="gumb glavni" data-poglej="'+esc(d.id)+'">Poglej ›</button></div>'}
+function zacMeseca(){return new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
+function mesecDog(F){F=F||filtrirani();const a=zacMeseca(),b=new Date(a.getFullYear(),a.getMonth()+1,1);return F.filter(d=>(d._k||d._z)>=a&&d._z<b).sort((x,y)=>x._z-y._z)}
+/* obseg zemljevida (ves teden ali mesec); ob »ta dan« okence dela pokaže teden */
+const obsegDog=()=>S.kartaMesec?mesecDog():tedenDog(S.teden);
+const obsegIme=()=>S.kartaMesec?'Ta mesec':'Ta teden';
+const obsegOpis=()=>S.kartaMesec?MESECI[S.dan.getMonth()]+' '+S.dan.getFullYear():obdobjeTedna(S.teden);
 function osveziKarto(){
- if(S.kartaTeden){KARTA_V=tedenDog(S.teden);KARTA_V.forEach((d,i)=>d._stT=i+1)}else KARTA_V=RED;
+ if(S.kartaTeden){KARTA_V=obsegDog();KARTA_V.forEach((d,i)=>d._stT=i+1)}else KARTA_V=RED;
  pini(KARTA_V);seznamPodKarto();
  const lg=document.getElementById('kartaLegenda');
- if(lg)lg.innerHTML=S.kartaTeden?'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta teden. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke gredo po vrsti skozi teden, pod pinom je dan. Tapni pin za kratek opis ali del naselja za vse dogodke tam.'
+ if(lg)lg.innerHTML=S.kartaMesec?'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta mesec. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke gredo po vrsti skozi mesec, pod pinom je datum (ali število dni). Tapni pin ali del naselja.':S.kartaTeden?'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta teden. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke gredo po vrsti skozi teden, pod pinom je dan. Tapni pin za kratek opis ali del naselja za vse dogodke tam.'
   :'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.';
- document.querySelectorAll('[data-kt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.kt==='1'===!!S.kartaTeden)));
+ document.querySelectorAll('[data-kt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.kt===(S.kartaMesec?'2':S.kartaTeden?'1':'0'))));
 }
 function pini(v){
  sloj.clearLayers();markerji={};skupine=[];
@@ -979,7 +1022,8 @@ function pini(v){
   const st=g.dog.length>3?N(g.dog[0])+'…':g.dog.map(N).join('·');
   const vsiPrimer=g.dog.every(d=>d.primer);
   const dnevi=[...new Set(g.dog.map(d=>danK(d._z)))];
-  g.dan=S.kartaTeden?(dnevi.length===1?dnevi[0]:dnevi.length+' dni'):'';
+  const datumi=[...new Set(g.dog.map(d=>isoDan(d._z)))];
+  g.dan=S.kartaMesec?(datumi.length===1?kratkiDatum(g.dog[0]._z):datumi.length+' dni'):S.kartaTeden?(dnevi.length===1?dnevi[0]:dnevi.length+' dni'):'';
   g.ik=g.dog.length===1?ikonaKat(g.dog[0].kategorija):'';
   const m=L.marker(g.t,{icon:ikona(st,g.dog.length,vsiPrimer,false,g.dan,g.ik),title:g.dog.map(d=>N(d)+'. '+cisti(d)).join(', '),riseOnHover:true,keyboard:true});
   if(g.dog.length>1){
@@ -998,7 +1042,7 @@ function skociNa(id){const d=DOG.find(x=>x.id===id);if(!d)return;
  if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=id;izrisi()}
  setTimeout(()=>izberi(id,false,true),80)}
 function osveziIzbor(){
- const danP=new Set(RED.flatMap(d=>d.polja)),tedP=new Set(tedenDog(S.teden).flatMap(d=>d.polja)),izb=DOG.find(d=>d.id===S.izbran);
+ const danP=new Set(RED.flatMap(d=>d.polja)),tedP=new Set(obsegDog().flatMap(d=>d.polja)),izb=DOG.find(d=>d.id===S.izbran);
  Object.entries(poljaSloji).forEach(([st,l])=>{st=+st;l.setStyle(izb&&izb.polja.includes(st)&&KARTA_V.includes(izb)?SLOG_POLJE_IZB:(S.kartaTeden?tedP.has(st):danP.has(st))?SLOG_POLJE_ON:tedP.has(st)?SLOG_POLJE_TEDEN:SLOG_POLJE)});
  skupine.forEach(g=>{const j=g.dog.some(d=>d.id===S.izbran);g.m.setIcon(ikona(g.st,g.dog.length,g.primer,j,g.dan,g.ik));g.m.setZIndexOffset(j?1000:0)});
  document.querySelectorAll('#kartaSeznam [data-k-dog]').forEach(b=>b.setAttribute('aria-current',b.dataset.kDog===S.izbran));
@@ -1007,8 +1051,8 @@ function seznamPodKarto(){
  const el=document.getElementById('kartaSeznam');
  const vr=d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+N(d)+'</span><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>';
  if(S.kartaTeden){
-  let h='<h3>Ves teden na zemljevidu <span class="meta">('+obdobjeTedna(S.teden)+')</span></h3>',z='';
-  if(!KARTA_V.length)h+='<p class="meta">Ta teden še ni dogodkov. Mogoče pripraviš prvega ti? 🙂</p>';
+  let h='<h3>'+(S.kartaMesec?'Ves mesec':'Ves teden')+' na zemljevidu <span class="meta">('+obsegOpis()+')</span></h3>',z='';
+  if(!KARTA_V.length)h+='<p class="meta">'+obsegIme()+' še ni dogodkov. Mogoče pripraviš prvega ti? 🙂</p>';
   KARTA_V.forEach(d=>{const k=isoDan(d._z);if(k!==z){if(z)h+='</ol>';z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div><ol>'}h+=vr(d)});if(z)h+='</ol>';
   el.innerHTML=h;
  }else el.innerHTML=RED.length?'<h3>Na zemljevidu ta dan</h3><ol>'+RED.map(vr).join('')+'</ol>':'<p class="meta">Ta dan ni dogodkov za zemljevid. Preklopi na »Ves teden«.</p>';
@@ -1020,14 +1064,14 @@ function prilagodiNaDogodke(){
 }
 /* tap na del naselja: okence z vsemi dogodki tega tedna na tem delu */
 function klikPolje(st){
- const p=POLJA[st];if(!p)return;const v=tedenDog(S.teden).filter(d=>d.polja.includes(st));
+ const p=POLJA[st];if(!p)return;const v=obsegDog().filter(d=>d.polja.includes(st));
  const dl=document.getElementById('delOkno');
  document.getElementById('delNaslov').innerHTML='<span class="polje-znak">'+st+'</span> '+esc(p.ime);
- let h='<p class="meta">Ta teden ('+obdobjeTedna(S.teden)+'): <b>'+(v.length?stDog(v.length):'ni dogodkov')+'</b></p>';
+ let h='<p class="meta">'+obsegIme()+' ('+obsegOpis()+'): <b>'+(v.length?stDog(v.length):'ni dogodkov')+'</b></p>';
  if(v.length){let z='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){if(z)h+='</ul>';z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div><ul class="del-seznam">'}
    h+='<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-del-dog="'+esc(d.id)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>'});h+='</ul>';
   h+='<p class="del-dodaj"><button type="button" class="gumb" data-del-dodaj="'+st+'">+ Dodaj dogodek tukaj</button></p>'}
- else h+='<div class="prazno"><p class="velik">Ta teden tu še ni dogodkov.</p><p>Mogoče kava na klopci ali skupen sprehod? 🙂</p><button type="button" class="gumb dodaj" data-del-dodaj="'+st+'">+ Dodaj dogodek</button></div>';
+ else h+='<div class="prazno"><p class="velik">'+obsegIme()+' tu še ni dogodkov.</p><p>Mogoče kava na klopci ali skupen sprehod? 🙂</p><button type="button" class="gumb dodaj" data-del-dodaj="'+st+'">+ Dodaj dogodek</button></div>';
  const t=document.getElementById('delTelo');t.innerHTML=h;
  t.querySelectorAll('[data-del-dog]').forEach(b=>b.onclick=()=>{dl.close();skociNa(b.dataset.delDog)});
  t.querySelectorAll('[data-del-dodaj]').forEach(b=>b.onclick=()=>{dl.close();odpri();nastaviDel(+b.dataset.delDodaj,true)});
@@ -1152,7 +1196,7 @@ document.getElementById('f-polje').addEventListener('change',e=>nastaviDel(+e.ta
 ['izbiraDel','delOkno'].forEach(id=>{const d=document.getElementById(id);d.addEventListener('click',e=>{if(e.target===d)d.close()})});
 document.getElementById('delOkno').addEventListener('close',()=>osveziIzbor());
 document.getElementById('zapriDel').onclick=()=>document.getElementById('delOkno').close();
-document.querySelectorAll('[data-kt]').forEach(b=>b.onclick=()=>{S.kartaTeden=b.dataset.kt==='1';osveziKarto();if(document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}});
+document.querySelectorAll('[data-kt]').forEach(b=>b.onclick=()=>{S.kartaTeden=b.dataset.kt!=='0';S.kartaMesec=b.dataset.kt==='2';osveziKarto();if(document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}});
 frm.addEventListener('reset',()=>setTimeout(()=>nastaviDel(null,false),0));
 document.getElementById('zapriObrazec').onclick=()=>dlg.close();
 document.querySelectorAll('[data-zapri-obrazec]').forEach(b=>b.onclick=()=>dlg.close());
