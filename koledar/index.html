@@ -430,6 +430,87 @@ input:focus,textarea:focus,select:focus{border-color:var(--g3)}
 .odstrani{flex:0 0 auto;min-width:3rem;min-height:3rem;border-radius:999px;border:2px solid #e2eadf;background:#fff;color:#8a1f2b;font:inherit;font-weight:700;cursor:pointer}
 .odstrani:hover{background:#fde4e4}
 @media (max-width:640px){.koledar-plosca{display:grid;grid-template-columns:1fr}.koledar-plosca .gumb{width:100%;justify-content:center}.zavihki button{font-size:.85rem;padding:.3rem .2rem}}
+/* 11.46–11.51: izbira dela, ves teden na zemljevidu, barve dni, ozadje zemljevida */
+body{background:#f9faf3}
+.leaflet-container{background:#f9faf3!important}
+#karta{box-shadow:none!important;background:#f9faf3;border-radius:var(--r)}
+.leaflet-control-attribution{background:rgba(249,250,243,.85)!important;border-radius:8px 0 0 0}
+/* barve dni */
+.teden button.ima,.mesec .celica.ima{background:#fff4c2;border:2px solid #f5c400;color:#0b3d24}
+.teden button.ima b,.mesec .celica.ima .st{color:#0b3d24}
+.teden button.prazen,.mesec .celica.prazen{background:#eef1ec;border:1px solid #e1e6df;color:#4a564d}
+.teden button.prazen b,.mesec .celica.prazen .st{color:#4a564d;font-weight:700}
+.mesec .celica{border:1px solid transparent}
+.mesec .celica.drug{background:transparent;border-color:transparent;color:#5f6a62}
+.mesec .celica.drug .st{color:#5f6a62}
+.mesec .celica.drug.ima{background:#fffaf0;border:2px dashed #f5c400}
+.teden button.danes,.mesec .celica.danes{outline:3px solid #2e7d55;outline-offset:-3px;box-shadow:none}
+.teden button[aria-pressed="true"],.mesec .celica.izbran{background:var(--g2)!important;border-color:var(--g2)!important;color:#fff;outline-color:#f5c400}
+.teden button[aria-pressed="true"] b,.mesec .celica.izbran .st{color:#fff}
+.dnevi-legenda{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:0 0 .5rem;font-size:.85rem;color:#33473a}
+.dnevi-legenda>span{display:inline-flex;align-items:center;gap:.35rem}
+.dnevi-legenda .lg{display:inline-flex;align-items:center;justify-content:center;width:1.6rem;height:1.3rem;border-radius:6px}
+.lg.ima{background:#fff4c2;border:2px solid #f5c400}.lg.ima .st-dan{font-size:.65rem;min-width:1rem;padding:0 .2rem;line-height:1.2}
+.lg.prazen{background:#eef1ec;border:1px solid #d5dcd3}
+.lg.danes{background:#fff;outline:3px solid #2e7d55;outline-offset:-3px}
+.lg.izb{background:var(--g2)}
+/* preklop zemljevida */
+.karta-preklop{max-width:22rem;margin:0 0 .6rem}
+/* pini: ikona kategorije in dan */
+.pin .pin-ik{font-size:14px;margin-right:3px;line-height:1}
+.pin.z-dnem .pin-dan{position:absolute;top:40px;left:50%;transform:translateX(-50%);background:#fff;color:#0b3d24;font:700 12px/1.3 "Source Sans 3","Segoe UI",sans-serif;padding:1px 7px;border-radius:999px;border:1px solid #cfe0d2;white-space:nowrap;box-shadow:0 1px 4px rgba(11,61,36,.18)}
+.pin{position:relative}
+.obl .leaflet-popup-content{margin:12px 14px}
+.pin-obl{display:flex;flex-direction:column;gap:.25rem;font-size:15px;line-height:1.35;min-width:200px}
+.pin-obl b{font-size:16px;color:#0b3d24}
+.pin-obl .gumb{margin-top:.35rem;min-height:44px;justify-content:center}
+/* okence dela naselja (namizje modal, telefon spodnji list) */
+.del-okno{width:min(480px,94vw)}
+.del-okno .dlg-glava h2{display:flex;align-items:center;gap:.5rem;font-size:1.15rem}
+.polje-znak{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;padding:0 .3rem;border-radius:999px;background:#ffc8a0;color:#5a2a0c;font-weight:800;font-size:1rem;border:2px solid #d9773a}
+.del-seznam{list-style:none;margin:0 0 .4rem;padding:0}
+.del-seznam .vrsta{width:100%}
+.del-dodaj{margin:.8rem 0 0}
+::backdrop{background:rgba(11,61,36,.35)}
+/* izbira dela v obrazcu */
+.izbira-del{margin:.3rem 0 .2rem}
+.predogled{display:block;position:relative;width:100%;padding:0;border:2px solid #cfe0d2;border-radius:18px;background:#f9faf3;cursor:pointer;overflow:hidden;font:inherit;text-align:center;min-height:44px}
+.predogled:hover,.predogled:focus-visible{border-color:#2e7d55}
+.predogled-karta{display:block;height:150px;pointer-events:none}
+.predogled-napis{display:block;padding:.55rem .8rem;background:#fff4c2;color:#0b3d24;font-weight:800;font-size:1rem}
+.izbrano{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;margin:.5rem 0 0;padding:.5rem .7rem;background:#ffe2c6;border-radius:16px;color:#4a2208}
+.izbrano .gumb{min-height:44px;background:#fff}
+.rezerva{margin:.5rem 0 .2rem;font-size:.9rem}
+.izbira-dlg{width:min(1100px,94vw);height:min(86vh,820px);max-height:none}
+.izbira-dlg[open]{display:flex;flex-direction:column}
+.izbira-telo{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 340px}
+.izbira-karta{min-height:0;position:relative}
+#kartaIzbira{position:absolute;inset:0;background:#f9faf3}
+.izbira-stran{overflow:auto;padding:.9rem 1rem 1.2rem;border-left:1px solid #e2eadf;background:#fbfcf7}
+.izbira-info{min-height:4.5rem}
+.izbira-ime{display:flex;align-items:center;gap:.5rem;margin:0 0 .2rem;font-size:1.1rem;color:#0b3d24}
+.izberi-gumb{width:100%;justify-content:center;margin:.3rem 0 .8rem}
+.izberi-gumb:disabled{background:#e3e9e1!important;border-color:#e3e9e1!important;color:#4a564d!important;box-shadow:none;cursor:not-allowed}
+.izbira-teden{font-size:1rem;color:#0b3d24;margin:.4rem 0 .4rem}
+.izbira-seznam{list-style:none;margin:0;padding:0}
+.izbira-seznam .vrsta{width:100%;align-items:flex-start;text-align:left}
+.izbira-seznam .st-pin{flex:0 0 auto}
+.polje-st{display:flex!important;align-items:center;justify-content:center}
+.polje-st span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#fff;color:#0b3d24;font:800 15px "Source Sans 3","Segoe UI",sans-serif;border:2px solid #2e7d55;box-shadow:0 1px 5px rgba(11,61,36,.2)}
+.izbira-pin .pin-st{background:#f5c400;color:#1b1b1b;border-color:#fff;min-width:34px;height:34px;font-size:15px}
+.izbira-pin.primer .pin-st{background:#f5c400;color:#1b1b1b}
+.pin-seznam.izb li{margin:0 0 .45rem;font-size:14px;line-height:1.35}
+@media (max-width:640px){
+ .izbira-dlg{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;margin:0}
+ .izbira-telo{display:flex;flex-direction:column;overflow:auto}
+ .izbira-karta{flex:0 0 54vh}
+ .izbira-stran{border-left:0;border-top:1px solid #e2eadf;overflow:visible;padding-bottom:calc(1.2rem + env(safe-area-inset-bottom))}
+ .del-okno{width:100vw;max-width:100vw;height:auto;max-height:82vh;margin:auto 0 0;border-radius:24px 24px 0 0!important}
+ .del-okno .dlg-telo{padding-bottom:calc(1.4rem + env(safe-area-inset-bottom))}
+ .dnevi-legenda{font-size:.82rem;gap:.25rem .7rem}
+ .karta-preklop{max-width:none}
+}
+input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;max-width:100%}
 </style>
 </head>
 <body>
@@ -504,8 +585,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--g3)}
     <summary class="gumb karta-gumb" id="kartaGumb">🗺️ Pokaži na zemljevidu</summary>
     <div id="kartaOkvir">
      <h2 id="h-karta">Zemljevid</h2>
+     <div class="zavihki karta-preklop" role="group" aria-label="Kaj pokaže zemljevid"><button type="button" data-kt="0" aria-pressed="false">Ta dan</button><button type="button" data-kt="1" aria-pressed="true">Ves teden</button></div>
      <div id="karta"></div>
-     <p class="meta" style="margin-top:.4rem"><span class="legenda"></span> Rumeno: polje z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.</p>
+     <p class="meta" id="kartaLegenda" style="margin-top:.4rem"><span class="legenda"></span> Rumeno: polje z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.</p>
      <div id="kartaSeznam" class="karta-seznam"></div>
     </div>
    </details>
@@ -564,7 +646,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--g3)}
    <input type="text" id="f-kraj" name="kraj" maxlength="160" placeholder="npr. klopca pred vhodom, park, dvorana" aria-describedby="n-kraj">
    <p class="napaka-polje" id="n-kraj" hidden>Napiši, kje bo.</p>
    <label class="polje" for="f-polje">Del naselja <span class="neobvezno">(če veš, s številko z zemljevida)</span></label>
-   <select id="f-polje" name="polje"></select>
+   <div class="izbira-del">
+    <button type="button" class="predogled" id="odpriIzbiro" aria-describedby="izbranoDel"><span class="predogled-karta" id="predogledKarta" aria-hidden="true"></span><span class="predogled-napis" id="odpriIzbiroNapis">🗺️ Tapni in izberi na zemljevidu</span></button>
+    <p class="izbrano" id="izbranoDel" hidden><span>Izbrano: <b id="izbranoIme"></b></span><button type="button" class="gumb" id="spremeniDel">Spremeni</button></p>
+    <p class="meta rezerva">ali izberi s seznama:</p>
+   </div>
+   <select id="f-polje" name="polje" aria-label="Del naselja s seznama"></select>
    <label class="polje" for="f-kako">Kako pridem do tja? <span class="neobvezno">(preprosto, z besedami)</span></label>
    <input type="text" id="f-kako" name="kako_priti" maxlength="200" placeholder="npr. vhod s strani parkirišča, brez stopnic">
    <p class="polje" style="font-weight:700;margin:.9rem 0 .3rem">Označi, kar drži</p>
@@ -596,6 +683,22 @@ input:focus,textarea:focus,select:focus{border-color:var(--g3)}
   </fieldset>
   <div id="sporocilo" role="status"></div>
  </form>
+</dialog>
+<dialog id="izbiraDel" class="izbira-dlg" aria-labelledby="h-izbira">
+ <div class="dlg-glava"><h2 id="h-izbira">Izberi del naselja</h2><button type="button" class="zapri" id="zapriIzbiro" aria-label="Zapri">×</button></div>
+ <div class="izbira-telo">
+  <div class="izbira-karta"><div id="kartaIzbira"></div></div>
+  <div class="izbira-stran">
+   <div class="izbira-info" id="izbiraInfo" aria-live="polite"></div>
+   <button type="button" class="gumb glavni izberi-gumb" id="izberiTaDel" disabled>✓ Izberi ta del</button>
+   <h3 class="izbira-teden" id="izbiraTedenNaslov">Ta teden v naselju</h3>
+   <ol class="izbira-seznam" id="izbiraSeznam"></ol>
+  </div>
+ </div>
+</dialog>
+<dialog id="delOkno" class="del-okno" aria-labelledby="delNaslov">
+ <div class="dlg-glava"><h2 id="delNaslov">Del naselja</h2><button type="button" class="zapri" id="zapriDel" aria-label="Zapri">×</button></div>
+ <div class="dlg-telo" id="delTelo"></div>
 </dialog>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -634,20 +737,23 @@ fetch('slike/seznam.json').then(r=>r.json()).then(s=>{
 }).catch(()=>{});
 
 /* stanje */
-const S={pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
+const S={kartaTeden:true,pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
 let DOG=[],KAT=[],POLJA={},markerji={},poljaSloji={};
 
 /* zemljevid: isti kot na letakih (../letaki/) */
 const karta=L.map('karta',{zoomSnap:.25,scrollWheelZoom:false,tap:true,renderer:L.canvas({tolerance:10})}).setView([46.0632,14.5222],16);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(karta);
 const poljaSloj=L.layerGroup().addTo(karta),sloj=L.layerGroup().addTo(karta);
-const ikona=(st,n,primer,izb)=>L.divIcon({className:'pin'+(primer?' primer':'')+(izb?' izbran':'')+(n>1?' skupina':''),iconSize:null,iconAnchor:[20,20],popupAnchor:[0,-18],
- html:'<span class="pin-st">'+esc(st)+'</span>'+(n>1?'<span class="pin-n" aria-label="'+n+' dogodki">'+n+'×</span>':'')});
+const ikona=(st,n,primer,izb,dan,ik)=>L.divIcon({className:'pin'+(primer?' primer':'')+(izb?' izbran':'')+(n>1?' skupina':'')+(dan?' z-dnem':''),iconSize:null,iconAnchor:[20,20],popupAnchor:[0,-18],
+ html:'<span class="pin-st">'+(ik?'<span class="pin-ik" aria-hidden="true">'+esc(ik)+'</span>':'')+esc(st)+'</span>'+(n>1?'<span class="pin-n" aria-label="'+n+' dogodki">'+n+'×</span>':'')+(dan?'<span class="pin-dan">'+esc(dan)+'</span>':'')});
 const SLOG_POLJE={color:'#2e7d55',weight:1,opacity:.35,dashArray:'3 5',fillColor:'#2e7d55',fillOpacity:0};
 const SLOG_POLJE_ON={color:'#e0a800',weight:2,opacity:.9,dashArray:null,fillColor:'#ffe28c',fillOpacity:.45};
 const SLOG_POLJE_IZB={color:'#d9773a',weight:3,opacity:1,dashArray:null,fillColor:'#ffc8a0',fillOpacity:.6};
 let RED=[],skupine=[];
-let mejaB=null;
+let mejaB=null,RING=null;
+const BARVA_STRANI='#f9faf3';
+const SLOG_POLJE_TEDEN={color:'#e0a800',weight:1.5,opacity:.6,dashArray:'4 4',fillColor:'#fff0b8',fillOpacity:.28};
+const SLOG_POLJE_IZBIRA={color:'#2e7d55',weight:1.5,opacity:.7,dashArray:null,fillColor:'#e7f2ea',fillOpacity:.25};
 
 Promise.all([
  fetch('../letaki/meja.json').then(r=>r.json()),
@@ -655,10 +761,10 @@ Promise.all([
  fetch('../letaki/vhodi.json').then(r=>r.json()).catch(()=>[]),
  fetch('dogodki.json',{cache:'no-store'}).then(r=>r.json())
 ]).then(([meja,polja,vhodi,data])=>{
- const ring=meja.map(c=>[c[1],c[0]]);
- L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:'#fff',fillOpacity:1,interactive:false}).addTo(karta);
+ const ring=meja.map(c=>[c[1],c[0]]);RING=ring;
+ L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],ring],{stroke:false,fillColor:BARVA_STRANI,fillOpacity:1,interactive:false}).addTo(karta);
  (polja.features||[]).forEach(f=>{const st=f.properties.st,ll=f.geometry.coordinates[0].map(c=>[c[1],c[0]]);
-  POLJA[st]={ime:f.properties.ime,ll,sredina:L.polygon(ll).getBounds().getCenter()};
+  POLJA[st]={ime:f.properties.ime,ll,sredina:L.polygon(ll).getBounds().getCenter(),tez:teziscePolja(ll)};
   poljaSloji[st]=L.polygon(ll,SLOG_POLJE).bindTooltip(st+' – '+f.properties.ime,{sticky:true}).on('click',()=>klikPolje(st)).addTo(poljaSloj)});
  L.polygon(ring,{color:'#0b3d24',weight:3,opacity:.75,fill:false,interactive:false,lineJoin:'round'}).addTo(karta);
  vhodi.forEach(x=>L.circleMarker([x[2],x[3]],{radius:2.5,color:'#9cbfa8',weight:1,fillColor:'#c9dccf',fillOpacity:.9,interactive:false}).addTo(karta));
@@ -677,7 +783,7 @@ Promise.all([
 function prilagodiKarto(){if(!mejaB)return;karta.invalidateSize({pan:false});const v=karta.getSize();if(!v.x||!v.y)return;karta.setMaxBounds(null);karta.setMinZoom(0);const z=karta.getBoundsZoom(mejaB,false,L.point(8,8));karta.setView(mejaB.getCenter(),z,{animate:false});karta.setMaxBounds(mejaB.pad(0.25));karta.options.maxBoundsViscosity=1;karta.setMinZoom(z-0.5)}
 
 /* telefon: koledar in zemljevid sta privzeto zaprta */
-if(JE_MOBILNO()){document.getElementById('koledarDel').open=false;document.getElementById('kartaDel').open=false}
+if(JE_MOBILNO()){document.getElementById('koledarDel').open=false}
 document.getElementById('kartaDel').addEventListener('toggle',e=>{const o=e.target.open;document.getElementById('kartaGumb').textContent=o?'🗺️ Skrij zemljevid':'🗺️ Pokaži na zemljevidu';if(o)setTimeout(()=>{prilagodiKarto();prilagodiNaDogodke();osveziIzbor()},60)});
 document.getElementById('kartaGumb').textContent=document.getElementById('kartaDel').open?'🗺️ Skrij zemljevid':'🗺️ Pokaži na zemljevidu';
 
@@ -789,7 +895,7 @@ function izrisiDan(){
    '<p>Dovolj je malo: kava na klopci, skupen sprehod, menjava sadik ali knjig. Mi pomagamo, da izvejo sosedje.</p>'+
    '<div class="gumbi">'+(n?'<button type="button" class="gumb glavni" id="naNaslednji">Naslednji dogodek: '+esc(DNEVI[n._z.getDay()]+' '+n._z.getDate()+'. '+(n._z.getMonth()+1)+'.')+' ›</button>':'')+'<button type="button" class="gumb dodaj" data-odpri-obrazec>+ Dodaj dogodek</button></div></div>';
   const nn=document.getElementById('naNaslednji');if(nn)nn.onclick=()=>nastaviDan(n._z)}
- vezi(el);pini(vidni);seznamPodKarto();if(mejaB&&document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}
+ vezi(el);osveziKarto();if(mejaB&&document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}
  el.querySelectorAll('.dogodek').forEach(c=>c.addEventListener('click',e=>{if(e.target.closest('button,a,summary,input'))return;izberi(c.dataset.id,true,false)}));
  el.querySelectorAll('details.mal').forEach(c=>c.addEventListener('toggle',()=>{if(c.open)izberi(c.dataset.id,true,false)}));
 }
@@ -807,6 +913,7 @@ function vezi(el){
 /* koledar */
 function vrsta(d){return '<button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-dan="'+isoDan(d._z)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button>'}
 function seznamKratek(v){let z='',h='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div>'}h+=vrsta(d)});return h}
+const LEGENDA_DNI='<p class="dnevi-legenda"><span><span class="lg ima"><span class="st-dan">3</span></span>Ima dogodke</span><span><span class="lg prazen"></span>Prazno</span><span><span class="lg danes"></span>Danes</span><span><span class="lg izb"></span>Izbran</span></p>';
 function izrisiKoledar(){
  const el=document.getElementById('vsebina'),F=filtrirani(),danes=isoDan(new Date()),izb=isoDan(S.dan);
  document.getElementById('premikKoledar').hidden=S.pogled==='seznam'||S.pogled==='moji';stejMoje();
@@ -815,16 +922,16 @@ function izrisiKoledar(){
   const pon=S.teden,ned=plus(pon,6);
   ob.textContent=pon.getDate()+'. '+(pon.getMonth()+1)+'. – '+ned.getDate()+'. '+(ned.getMonth()+1)+'.';
   let h='<div class="teden" role="group" aria-label="Dnevi v tednu">'+[0,1,2,3,4,5,6].map(i=>{const d=plus(pon,i),n=F.filter(x=>naDan(x,d)).length;
-   return '<button type="button" data-dan="'+isoDan(d)+'" aria-pressed="'+(isoDan(d)===izb)+'" class="'+(isoDan(d)===danes?'danes':'')+'" aria-label="'+esc(datumLepo(d))+', dogodkov: '+n+'">'+DNEVI_K[i]+'<b>'+d.getDate()+'.</b><span class="pike">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('')+'</div>';
+   return '<button type="button" data-dan="'+isoDan(d)+'" aria-pressed="'+(isoDan(d)===izb)+'" class="'+(n?'ima':'prazen')+(isoDan(d)===danes?' danes':'')+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(isoDan(d)===danes?', danes':'')+'">'+DNEVI_K[i]+'<b>'+d.getDate()+'.</b><span class="pike">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('')+'</div>';
   const vt=F.filter(d=>(d._k||d._z)>=pon&&d._z<plus(pon,7));
   h+=vt.length?seznamKratek(vt):'<div class="prazno">Ta teden še ni dogodkov.</div>';
-  el.innerHTML=h;
+  el.innerHTML=LEGENDA_DNI+h;
  }else if(S.pogled==='mesec'){
   const a=S.mesec;ob.textContent=MESECI[a.getMonth()]+' '+a.getFullYear();
   const zac=ponedeljek(a);let h=DNEVI_K.map(d=>'<div class="ime-dne">'+d+'</div>').join('');
   for(let i=0;i<42;i++){const d=plus(zac,i);if(i>=35&&d.getMonth()!==a.getMonth())break;const k=isoDan(d),n=F.filter(x=>isoDan(x._z)===k).length;
-   h+='<button type="button" class="celica'+(d.getMonth()!==a.getMonth()?' drug':'')+(k===danes?' danes':'')+(k===izb?' izbran':'')+'" data-dan="'+k+'" aria-label="'+esc(datumLepo(d))+', dogodkov: '+n+'"><span class="st">'+d.getDate()+'</span><span class="pika">'+(n?'<span class="st-dan">'+n+'</span>':'&nbsp;')+'</span></button>'}
-  el.innerHTML='<div class="mesec">'+h+'</div>';
+   h+='<button type="button" class="celica '+(n?'ima':'prazen')+(d.getMonth()!==a.getMonth()?' drug':'')+(k===danes?' danes':'')+(k===izb?' izbran':'')+'" data-dan="'+k+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(k===danes?', danes':'')+'"'+(k===izb?' aria-current="date"':'')+'><span class="st">'+d.getDate()+'</span><span class="pika">'+(n?'<span class="st-dan">'+n+'</span>':'&nbsp;')+'</span></button>'}
+  el.innerHTML=LEGENDA_DNI+'<div class="mesec">'+h+'</div>';
  }else if(S.pogled==='seznam'){
   const v=F.filter(d=>(d._k||d._z)>=d0(new Date()));
   el.innerHTML=v.length?seznamKratek(v):'<div class="prazno">Trenutno ni prihajajočih dogodkov.</div>';
@@ -843,39 +950,90 @@ function izrisiKoledar(){
 /* zemljevid */
 function tockaZa(d){if(typeof d.lat==='number'&&typeof d.lon==='number')return L.latLng(d.lat,d.lon);const p=POLJA[d.polja[0]];return p?p.sredina:null}
 function kljuc(t){return t.lat.toFixed(4)+','+t.lng.toFixed(4)}
+/* pomožno: teden, števila, dnevi */
+const stDog=n=>n+' '+(n%100===1?'dogodek':n%100===2?'dogodka':(n%100===3||n%100===4)?'dogodki':'dogodkov');
+const danK=d=>DNEVI_K[(d.getDay()+6)%7];
+const kratkiDatum=d=>d.getDate()+'.\u00a0'+(d.getMonth()+1)+'.';
+const obdobjeTedna=pon=>kratkiDatum(pon)+' – '+kratkiDatum(plus(pon,6));
+function tedenDog(pon,F){F=F||filtrirani();return F.filter(d=>(d._k||d._z)>=pon&&d._z<plus(pon,7)).sort((a,b)=>a._z-b._z)}
+function casKratek(d){return danK(d._z)+' '+kratkiDatum(d._z)+', '+(ura(d.zacetek)?ura(d.zacetek)+(ura(d.konec)?'–'+ura(d.konec):''):'ves dan')}
+/* glavni zemljevid: ta dan ali ves teden (privzeto ves teden, da je takoj kaj videti) */
+let KARTA_V=[];
+const N=d=>S.kartaTeden?d._stT:d._st;
+function oblacek(d){return '<div class="pin-obl"><b>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</b>'+(d.primer?' <span class="oznaka primer">PRIMER</span>':'')+
+ '<span>🕒 '+esc(casKratek(d))+'</span><span>📍 '+esc(d.kraj)+'</span><button type="button" class="gumb glavni" data-poglej="'+esc(d.id)+'">Poglej ›</button></div>'}
+function osveziKarto(){
+ if(S.kartaTeden){KARTA_V=tedenDog(S.teden);KARTA_V.forEach((d,i)=>d._stT=i+1)}else KARTA_V=RED;
+ pini(KARTA_V);seznamPodKarto();
+ const lg=document.getElementById('kartaLegenda');
+ if(lg)lg.innerHTML=S.kartaTeden?'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta teden. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke gredo po vrsti skozi teden, pod pinom je dan. Tapni pin za kratek opis ali del naselja za vse dogodke tam.'
+  :'<span class="legenda"></span> Rumeno: del naselja z dogodkom ta dan. <span class="legenda izb"></span> Oranžno: izbrani dogodek. Številke so iste kot na karticah, »3×« pomeni več dogodkov na istem kraju.';
+ document.querySelectorAll('[data-kt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.kt==='1'===!!S.kartaTeden)));
+}
 function pini(v){
  sloj.clearLayers();markerji={};skupine=[];
  const po={};
  v.forEach(d=>{const t=tockaZa(d);if(!t)return;const k=kljuc(t);(po[k]=po[k]||{t,dog:[]}).dog.push(d)});
  Object.values(po).forEach(g=>{
-  g.dog.sort((a,b)=>a._st-b._st);
-  const st=g.dog.length>3?g.dog[0]._st+'…':g.dog.map(d=>d._st).join('·');
+  g.dog.sort((a,b)=>N(a)-N(b));
+  const st=g.dog.length>3?N(g.dog[0])+'…':g.dog.map(N).join('·');
   const vsiPrimer=g.dog.every(d=>d.primer);
-  const m=L.marker(g.t,{icon:ikona(st,g.dog.length,vsiPrimer,false),title:g.dog.map(d=>d._st+'. '+cisti(d)).join(', '),riseOnHover:true,keyboard:true});
+  const dnevi=[...new Set(g.dog.map(d=>danK(d._z)))];
+  g.dan=S.kartaTeden?(dnevi.length===1?dnevi[0]:dnevi.length+' dni'):'';
+  g.ik=g.dog.length===1?ikonaKat(g.dog[0].kategorija):'';
+  const m=L.marker(g.t,{icon:ikona(st,g.dog.length,vsiPrimer,false,g.dan,g.ik),title:g.dog.map(d=>N(d)+'. '+cisti(d)).join(', '),riseOnHover:true,keyboard:true});
   if(g.dog.length>1){
-   m.bindPopup('<b>Na tem kraju: '+g.dog.length+' dogodki</b><ol class="pin-seznam">'+g.dog.map(d=>'<li><button type="button" data-k-dog="'+esc(d.id)+'"><span class="st-pin">'+d._st+'</span> '+esc(ura(d.zacetek)||'ves dan')+' · '+esc(cisti(d))+'</button></li>').join('')+'</ol>',{maxWidth:280});
-   m.on('popupopen',e=>e.popup.getElement().querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{karta.closePopup();izberi(b.dataset.kDog,false,true)}));
-  }else{const d=g.dog[0];m.on('click',()=>izberi(d.id,false,true))}
+   m.bindPopup('<b>Na tem kraju: '+stDog(g.dog.length)+'</b><ol class="pin-seznam">'+g.dog.map(d=>'<li><button type="button" data-k-dog="'+esc(d.id)+'"><span class="st-pin">'+N(d)+'</span> '+esc(ikonaKat(d.kategorija))+' '+esc(S.kartaTeden?casKratek(d):(ura(d.zacetek)||'ves dan'))+' · '+esc(cisti(d))+'</button></li>').join('')+'</ol>',{maxWidth:290});
+   m.on('popupopen',e=>e.popup.getElement().querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{karta.closePopup();skociNa(b.dataset.kDog)}));
+  }else{const d=g.dog[0];
+   m.bindPopup(oblacek(d),{maxWidth:280,className:'obl'});
+   m.on('click',()=>{if(naDan(d,S.dan))izberi(d.id,false,false)});
+   m.on('popupopen',e=>{const b=e.popup.getElement().querySelector('[data-poglej]');if(b)b.onclick=()=>{karta.closePopup();skociNa(d.id)}});
+  }
   m.addTo(sloj);g.m=m;g.st=st;g.primer=vsiPrimer;skupine.push(g);g.dog.forEach(d=>markerji[d.id]=m);
  });
  osveziIzbor();
 }
+function skociNa(id){const d=DOG.find(x=>x.id===id);if(!d)return;
+ if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=id;izrisi()}
+ setTimeout(()=>izberi(id,false,true),80)}
 function osveziIzbor(){
- const on=new Set(RED.flatMap(d=>d.polja)),izb=RED.find(d=>d.id===S.izbran);
- Object.entries(poljaSloji).forEach(([st,l])=>l.setStyle(izb&&izb.polja.includes(+st)?SLOG_POLJE_IZB:on.has(+st)?SLOG_POLJE_ON:SLOG_POLJE));
- skupine.forEach(g=>{const j=g.dog.some(d=>d.id===S.izbran);g.m.setIcon(ikona(g.st,g.dog.length,g.primer,j));g.m.setZIndexOffset(j?1000:0)});
+ const danP=new Set(RED.flatMap(d=>d.polja)),tedP=new Set(tedenDog(S.teden).flatMap(d=>d.polja)),izb=DOG.find(d=>d.id===S.izbran);
+ Object.entries(poljaSloji).forEach(([st,l])=>{st=+st;l.setStyle(izb&&izb.polja.includes(st)&&KARTA_V.includes(izb)?SLOG_POLJE_IZB:(S.kartaTeden?tedP.has(st):danP.has(st))?SLOG_POLJE_ON:tedP.has(st)?SLOG_POLJE_TEDEN:SLOG_POLJE)});
+ skupine.forEach(g=>{const j=g.dog.some(d=>d.id===S.izbran);g.m.setIcon(ikona(g.st,g.dog.length,g.primer,j,g.dan,g.ik));g.m.setZIndexOffset(j?1000:0)});
  document.querySelectorAll('#kartaSeznam [data-k-dog]').forEach(b=>b.setAttribute('aria-current',b.dataset.kDog===S.izbran));
 }
 function seznamPodKarto(){
  const el=document.getElementById('kartaSeznam');
- el.innerHTML=RED.length?'<h3>Na zemljevidu ta dan</h3><ol>'+RED.map(d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+d._st+'</span><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(cisti(d))+'</span></button></li>').join('')+'</ol>':'<p class="meta">Ta dan ni dogodkov za zemljevid.</p>';
- el.querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{izberi(b.dataset.kDog,true,false)});
+ const vr=d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+N(d)+'</span><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>';
+ if(S.kartaTeden){
+  let h='<h3>Ves teden na zemljevidu <span class="meta">('+obdobjeTedna(S.teden)+')</span></h3>',z='';
+  if(!KARTA_V.length)h+='<p class="meta">Ta teden še ni dogodkov. Mogoče pripraviš prvega ti? 🙂</p>';
+  KARTA_V.forEach(d=>{const k=isoDan(d._z);if(k!==z){if(z)h+='</ol>';z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div><ol>'}h+=vr(d)});if(z)h+='</ol>';
+  el.innerHTML=h;
+ }else el.innerHTML=RED.length?'<h3>Na zemljevidu ta dan</h3><ol>'+RED.map(vr).join('')+'</ol>':'<p class="meta">Ta dan ni dogodkov za zemljevid. Preklopi na »Ves teden«.</p>';
+ el.querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{S.kartaTeden?skociNa(b.dataset.kDog):izberi(b.dataset.kDog,true,false)});
 }
 function prilagodiNaDogodke(){
- const t=RED.map(tockaZa).filter(Boolean);
+ const t=KARTA_V.map(tockaZa).filter(Boolean);
  const v=karta.getSize();if(t.length&&v.x&&v.y)karta.fitBounds(L.latLngBounds(t),{padding:[50,50],maxZoom:17.25,animate:false});
 }
-function klikPolje(st){const d=RED.find(x=>x.polja.includes(st));if(d)izberi(d.id,true,false)}
+/* tap na del naselja: okence z vsemi dogodki tega tedna na tem delu */
+function klikPolje(st){
+ const p=POLJA[st];if(!p)return;const v=tedenDog(S.teden).filter(d=>d.polja.includes(st));
+ const dl=document.getElementById('delOkno');
+ document.getElementById('delNaslov').innerHTML='<span class="polje-znak">'+st+'</span> '+esc(p.ime);
+ let h='<p class="meta">Ta teden ('+obdobjeTedna(S.teden)+'): <b>'+(v.length?stDog(v.length):'ni dogodkov')+'</b></p>';
+ if(v.length){let z='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){if(z)h+='</ul>';z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div><ul class="del-seznam">'}
+   h+='<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-del-dog="'+esc(d.id)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>'});h+='</ul>';
+  h+='<p class="del-dodaj"><button type="button" class="gumb" data-del-dodaj="'+st+'">+ Dodaj dogodek tukaj</button></p>'}
+ else h+='<div class="prazno"><p class="velik">Ta teden tu še ni dogodkov.</p><p>Mogoče kava na klopci ali skupen sprehod? 🙂</p><button type="button" class="gumb dodaj" data-del-dodaj="'+st+'">+ Dodaj dogodek</button></div>';
+ const t=document.getElementById('delTelo');t.innerHTML=h;
+ t.querySelectorAll('[data-del-dog]').forEach(b=>b.onclick=()=>{dl.close();skociNa(b.dataset.delDog)});
+ t.querySelectorAll('[data-del-dodaj]').forEach(b=>b.onclick=()=>{dl.close();odpri();nastaviDel(+b.dataset.delDodaj,true)});
+ Object.entries(poljaSloji).forEach(([s,l])=>{if(+s===st)l.setStyle(SLOG_POLJE_IZB)});
+ dl.showModal();
+}
 function izberi(id,naKarti,skroli){
  S.izbran=id;
  document.querySelectorAll('.dogodek').forEach(a=>a.classList.toggle('izbran',a.dataset.id===id));
@@ -932,6 +1090,70 @@ async function glasuj(id){
 const dlg=document.getElementById('obrazec'),frm=document.getElementById('oddaja');
 function odpri(){pojdiNa(1);document.getElementById('sporocilo').className='';document.getElementById('sporocilo').textContent='';dlg.showModal();setTimeout(()=>document.getElementById('f-naslov').focus(),50)}
 document.querySelectorAll('[data-odpri-obrazec]').forEach(b=>b.onclick=odpri);
+/* izbira dela naselja v obrazcu: majhen predogled + velik izbirni zemljevid (isti podatki kot letaki) */
+let kartaPred=null,predSloji={},kartaIzb=null,izbSloji={},izbDel=null,izbPini=null;
+const NE_INTER={zoomControl:false,attributionControl:false,dragging:false,touchZoom:false,doubleClickZoom:false,scrollWheelZoom:false,boxZoom:false,keyboard:false,tap:false};
+function teziscePolja(ll){let a=0,x=0,y=0;for(let i=0,j=ll.length-1;i<ll.length;j=i++){const p=ll[i],q=ll[j],f=q[1]*p[0]-p[1]*q[0];a+=f;x+=(q[1]+p[1])*f;y+=(q[0]+p[0])*f}
+ if(!a)return L.latLngBounds(ll).getCenter();return L.latLng(y/(3*a),x/(3*a))}
+function osnovaKarte(k,sloji,klik){
+ L.polygon([[[-90,-180],[-90,180],[90,180],[90,-180]],RING],{stroke:false,fillColor:BARVA_STRANI,fillOpacity:1,interactive:false}).addTo(k);
+ Object.entries(POLJA).forEach(([st,p])=>{sloji[st]=L.polygon(p.ll,SLOG_POLJE_IZBIRA).addTo(k);if(klik)sloji[st].on('click',()=>klik(+st))});
+ L.polygon(RING,{color:'#0b3d24',weight:3,opacity:.75,fill:false,interactive:false,lineJoin:'round'}).addTo(k);
+}
+function prilagodi(k,pad){k.invalidateSize({pan:false});const v=k.getSize();if(!v.x||!v.y)return;k.fitBounds(mejaB,{padding:[pad,pad],animate:false})}
+function osveziPredogled(){
+ if(!RING)return;
+ if(!kartaPred){kartaPred=L.map('predogledKarta',{...NE_INTER,zoomSnap:.25,renderer:L.canvas()}).setView(mejaB.getCenter(),15);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(kartaPred);osnovaKarte(kartaPred,predSloji,null)}
+ const st=+document.getElementById('f-polje').value||null;
+ Object.entries(predSloji).forEach(([s,l])=>l.setStyle(+s===st?SLOG_POLJE_IZB:SLOG_POLJE_IZBIRA));
+ setTimeout(()=>prilagodi(kartaPred,4),30);
+}
+function tedenObrazca(){const v=document.getElementById('f-datum').value;return v?ponedeljek(new Date(v+'T12:00')):S.teden}
+function nastaviDel(st,obvestilo){
+ const sel=document.getElementById('f-polje');sel.value=st&&POLJA[st]?String(st):'';
+ const ok=!!sel.value,iz=document.getElementById('izbranoDel');iz.hidden=!ok;
+ if(ok)document.getElementById('izbranoIme').textContent=st+' – '+POLJA[st].ime;
+ document.getElementById('odpriIzbiroNapis').textContent=ok?'🗺️ Spremeni na zemljevidu':'🗺️ Tapni in izberi na zemljevidu';
+ if(kartaPred)osveziPredogled();
+ if(ok&&obvestilo)obvesti('📍 Del naselja je izbran: '+st+' – '+POLJA[st].ime);
+}
+function izberiVIzbiri(st){
+ izbDel=st;Object.entries(izbSloji).forEach(([s,l])=>l.setStyle(+s===st?SLOG_POLJE_IZB:SLOG_POLJE_IZBIRA));
+ const v=tedenDog(tedenObrazca(),DOG).filter(d=>d.polja.includes(st));
+ document.getElementById('izbiraInfo').innerHTML='<p class="izbira-ime"><span class="polje-znak">'+st+'</span> <b>'+esc(POLJA[st].ime)+'</b></p><p class="meta">'+(v.length?'Ta teden tu: '+stDog(v.length):'Ta teden tu še ni dogodkov.')+'</p>';
+ const b=document.getElementById('izberiTaDel');b.disabled=false;b.textContent='✓ Izberi ta del ('+st+')';
+}
+function odpriIzbiro(){
+ const dd=document.getElementById('izbiraDel');dd.showModal();
+ if(!kartaIzb){kartaIzb=L.map('kartaIzbira',{zoomSnap:.25,scrollWheelZoom:false,tap:true,renderer:L.canvas({tolerance:3})}).setView(mejaB.getCenter(),16);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(kartaIzb);
+  osnovaKarte(kartaIzb,izbSloji,izberiVIzbiri);
+  Object.entries(POLJA).forEach(([st,p])=>L.marker(p.tez,{icon:L.divIcon({className:'polje-st',html:'<span>'+st+'</span>',iconSize:[40,40],iconAnchor:[20,20]}),title:st+' – '+p.ime,keyboard:true,zIndexOffset:-100}).on('click',()=>izberiVIzbiri(+st)).addTo(kartaIzb));
+  izbPini=L.layerGroup().addTo(kartaIzb)}
+ /* dogodki tega tedna: pini s številkami in seznam */
+ const pon=tedenObrazca(),v=tedenDog(pon,DOG);izbPini.clearLayers();
+ const po={};v.forEach((d,i)=>{d._stI=i+1;const t=tockaZa(d);if(!t)return;const k=kljuc(t);(po[k]=po[k]||{t,dog:[]}).dog.push(d)});
+ Object.values(po).forEach(g=>{const st=g.dog.length>3?g.dog[0]._stI+'…':g.dog.map(d=>d._stI).join('·');
+  L.marker(g.t,{icon:L.divIcon({className:'pin izbira-pin'+(g.dog.every(d=>d.primer)?' primer':''),iconSize:null,iconAnchor:[-8,50],popupAnchor:[28,-50],html:'<span class="pin-st">'+esc(st)+'</span>'}),keyboard:true,title:g.dog.map(d=>d._stI+'. '+cisti(d)).join(', ')})
+   .bindPopup('<ol class="pin-seznam izb">'+g.dog.map(d=>'<li><span class="st-pin">'+d._stI+'</span> '+esc(ikonaKat(d.kategorija))+' <b>'+esc(casKratek(d))+'</b><br>'+esc(cisti(d))+'</li>').join('')+'</ol>',{maxWidth:280}).addTo(izbPini)});
+ document.getElementById('izbiraTedenNaslov').textContent='Ta teden v naselju ('+obdobjeTedna(pon)+')';
+ document.getElementById('izbiraSeznam').innerHTML=v.length?v.map(d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-iz-polje="'+(d.polja[0]||'')+'"><span class="st-pin">'+d._stI+'</span><span><b>'+esc(casKratek(d))+'</b> '+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+(d.polja[0]?'<span class="meta"> · del '+d.polja[0]+'</span>':'')+'</span></button></li>').join(''):'<li class="meta">Ta teden še ni dogodkov – tvoj bo prvi 🙂</li>';
+ document.querySelectorAll('#izbiraSeznam [data-iz-polje]').forEach(b=>b.onclick=()=>{const st=+b.dataset.izPolje;if(st){izberiVIzbiri(st);kartaIzb.panTo(POLJA[st].tez)}});
+ const zdaj=+document.getElementById('f-polje').value||null;
+ if(zdaj)izberiVIzbiri(zdaj);else{izbDel=null;Object.values(izbSloji).forEach(l=>l.setStyle(SLOG_POLJE_IZBIRA));document.getElementById('izbiraInfo').innerHTML='<p class="izbira-ime">👆 Tapni del naselja na zemljevidu.</p><p class="meta">Številke so iste kot na letakih. Rumeni pini so dogodki ta teden.</p>';const b=document.getElementById('izberiTaDel');b.disabled=true;b.textContent='✓ Izberi ta del'}
+ setTimeout(()=>prilagodi(kartaIzb,JE_MOBILNO()?6:20),60);
+}
+document.getElementById('odpriIzbiro').onclick=odpriIzbiro;
+document.getElementById('spremeniDel').onclick=odpriIzbiro;
+document.getElementById('zapriIzbiro').onclick=()=>document.getElementById('izbiraDel').close();
+document.getElementById('izberiTaDel').onclick=()=>{if(izbDel){nastaviDel(izbDel,true);document.getElementById('izbiraDel').close();document.getElementById('spremeniDel').focus()}};
+document.getElementById('f-polje').addEventListener('change',e=>nastaviDel(+e.target.value||null,false));
+['izbiraDel','delOkno'].forEach(id=>{const d=document.getElementById(id);d.addEventListener('click',e=>{if(e.target===d)d.close()})});
+document.getElementById('delOkno').addEventListener('close',()=>osveziIzbor());
+document.getElementById('zapriDel').onclick=()=>document.getElementById('delOkno').close();
+document.querySelectorAll('[data-kt]').forEach(b=>b.onclick=()=>{S.kartaTeden=b.dataset.kt==='1';osveziKarto();if(document.getElementById('kartaDel').open){prilagodiKarto();prilagodiNaDogodke()}});
+frm.addEventListener('reset',()=>setTimeout(()=>nastaviDel(null,false),0));
 document.getElementById('zapriObrazec').onclick=()=>dlg.close();
 document.querySelectorAll('[data-zapri-obrazec]').forEach(b=>b.onclick=()=>dlg.close());
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
@@ -945,7 +1167,7 @@ function preveriKorak(k){let prvi=null;const chk=(id,cond)=>{if(oznaciNapako(id,
 let korak=1;
 function pojdiNa(k){korak=k;frm.querySelectorAll('fieldset').forEach(f=>f.hidden=+f.dataset.korak!==k);
  frm.querySelectorAll('.koraki li').forEach(li=>{const n=+li.dataset.k;li.className=n===k?'akt':n<k?'opravljen':'';if(n===k)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
- frm.querySelector('.namig').hidden=k!==1;dlg.scrollTop=0;const prvo=frm.querySelector('fieldset[data-korak="'+k+'"] input,fieldset[data-korak="'+k+'"] select');if(prvo&&dlg.open)prvo.focus()}
+ if(k===2)setTimeout(osveziPredogled,60);frm.querySelector('.namig').hidden=k!==1;dlg.scrollTop=0;const prvo=frm.querySelector('fieldset[data-korak="'+k+'"] input,fieldset[data-korak="'+k+'"] select');if(prvo&&dlg.open)prvo.focus()}
 frm.querySelectorAll('[data-naprej]').forEach(b=>b.onclick=()=>{const k=+b.dataset.naprej;if(k>korak&&!preveriKorak(korak))return;pojdiNa(k)});
 function sp(t,ok){const s=document.getElementById('sporocilo');s.className='sporocilo '+(ok?'ok':'napaka');s.textContent=t;s.scrollIntoView({block:'nearest'})}
 frm.addEventListener('submit',async e=>{
