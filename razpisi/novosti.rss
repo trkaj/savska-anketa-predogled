@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Razpisi za Savsko naselje — novosti</title>
+    <link>https://anketa.savska.org/razpisi/</link>
+    <description>Posodobitve javne plošče razpisov, zavez in ukrepov za čist zrak v Savskem naselju. Volilno nevtralno.</description>
+    <language>sl</language>
+    <lastBuildDate>Tue, 17 Nov 2026 16:00:00 +0100</lastBuildDate>
+    <item>
+      <title>Prenesene lokalne tuje prakse na ploščo</title>
+      <link>https://anketa.savska.org/razpisi/#novosti</link>
+      <guid>https://anketa.savska.org/razpisi/#novosti-2026-11-17-prakse</guid>
+      <pubDate>Tue, 17 Nov 2026 16:00:00 +0100</pubDate>
+      <description>Na ploščo so prenesene lokalne tuje prakse: sledilnik napredka zavez, razdelek Rekli ste — kje smo, povezave na ARSO in Sensor.Community (brez izmišljenih meritev), poti za vključitev, zemljevid lokacij, tisk oziroma PDF, večja pisava, večji kontrast in RSS.</description>
+    </item>
+    <item>
+      <title>Objavljena javna plošča razpisov</title>
+      <link>https://anketa.savska.org/razpisi/</link>
+      <guid>https://anketa.savska.org/razpisi/#novosti-2026-11-17-objava</guid>
+      <pubDate>Tue, 17 Nov 2026 16:24:00 +0100</pubDate>
+      <description>Javna plošča razpisov je objavljena na anketa.savska.org/razpisi/. Vsebuje koledar rokov, preglednico, tehnologije za čist zrak, učni sloj Učimo se in kotiček Za šole. Nastavljeno je dnevno preverjanje in samodejno posodabljanje.</description>
+    </item>
+  </channel>
+</rss>
