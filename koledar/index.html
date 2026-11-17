@@ -890,7 +890,7 @@ const stZnak=(d)=>'<span class="st-pin'+(d.primer?' primer':'')+'" aria-label="�
 function kartica(d,vrsta){
  const sl=varenUrl(d.slika),cls='dogodek '+vrsta+(d.primer?' primer':'')+(S.izbran===d.id?' izbran':'');
  const oznake=(d.primer?'<span class="oznaka primer">PRIMER</span>':'')+'<span class="oznaka">'+esc(ikonaKat(d.kategorija))+' '+esc(imeKat(d.kategorija))+'</span>';
- if(vrsta==='mal')return '<details class="'+cls+'" data-id="'+esc(d.id)+'"'+(S.izbran===d.id?' open':'')+'><summary class="mal-vrsta">'+stZnak(d)+'<span class="mal-cas">'+esc(ura(d.zacetek)||'ves dan')+'</span><span class="mal-naslov">'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'<span class="meta"> · '+esc(d.kraj)+'</span></span></summary><div class="telo"><div class="vrh">'+oznake+'</div>'+podrobnosti(d)+'</div></details>';
+ if(vrsta==='mal')return '<details class="'+cls+'" data-id="'+esc(d.id)+'"'+(S.izbran===d.id?' open':'')+'><summary class="mal-vrsta">'+stZnak(d)+'<span class="mal-cas">'+esc(casOdDo(d))+'</span><span class="mal-naslov">'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'<span class="meta"> · '+esc(d.kraj)+'</span></span></summary><div class="telo"><div class="vrh">'+oznake+'</div>'+podrobnosti(d)+'</div></details>';
  return '<article class="'+cls+'" data-id="'+esc(d.id)+'">'+
   (sl?'<img class="slika" src="'+esc(sl)+'" alt="" loading="lazy">':'')+'<div class="telo">'+
   '<div class="vrh">'+stZnak(d)+(vrsta==='velik'?'<span class="rang">⭐ Dogodek dneva</span>':'')+oznake+'</div>'+
@@ -951,7 +951,7 @@ function vezi(el){
 }
 
 /* koledar */
-function vrsta(d){return '<button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-dan="'+isoDan(d._z)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button>'}
+function vrsta(d){return '<button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-dan="'+isoDan(d._z)+'"><b>'+esc(casOdDo(d))+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button>'}
 function seznamKratek(v){let z='',h='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div>'}h+=vrsta(d)});return h}
 const LEGENDA_DNI='<p class="dnevi-legenda"><span><span class="lg ima"><span class="st-dan">3</span></span>Ima dogodke</span><span><span class="lg prazen"></span>Prazno</span><span><span class="lg danes"></span>Danes</span><span><span class="lg izb"></span>Izbran</span></p>';
 function izrisiKoledar(){
@@ -996,6 +996,7 @@ const danK=d=>DNEVI_K[(d.getDay()+6)%7];
 const kratkiDatum=d=>d.getDate()+'.\u00a0'+(d.getMonth()+1)+'.';
 const obdobjeTedna=pon=>kratkiDatum(pon)+' – '+kratkiDatum(plus(pon,6));
 function tedenDog(pon,F){F=F||filtrirani();return F.filter(d=>(d._k||d._z)>=pon&&d._z<plus(pon,7)).sort((a,b)=>a._z-b._z)}
+function casOdDo(d){const z=ura(d.zacetek),k=ura(d.konec);return z?(k?z+'–'+k:z):'ves dan'}
 function casKratek(d){return danK(d._z)+' '+kratkiDatum(d._z)+', '+(ura(d.zacetek)?ura(d.zacetek)+(ura(d.konec)?'–'+ura(d.konec):''):'ves dan')}
 /* glavni zemljevid: ta dan ali ves teden (privzeto ves teden, da je takoj kaj videti) */
 let KARTA_V=[];
@@ -1054,7 +1055,7 @@ function osveziIzbor(){
 }
 function seznamPodKarto(){
  const el=document.getElementById('kartaSeznam');
- const vr=d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+N(d)+'</span><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>';
+ const vr=d=>'<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-k-dog="'+esc(d.id)+'"><span class="st-pin'+(d.primer?' primer':'')+'">'+N(d)+'</span><b>'+esc(casOdDo(d))+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>';
  if(S.kartaTeden){
   let h='<h3>'+(S.kartaMesec?'Ves mesec':'Ves teden')+' na zemljevidu <span class="meta">('+obsegOpis()+')</span></h3>',z='';
   if(!KARTA_V.length)h+='<p class="meta">'+obsegIme()+' še ni dogodkov. Mogoče pripraviš prvega ti? 🙂</p>';
@@ -1074,7 +1075,7 @@ function klikPolje(st){
  document.getElementById('delNaslov').innerHTML='<span class="polje-znak">'+st+'</span> '+esc(p.ime);
  let h='<p class="meta">'+obsegIme()+' ('+obsegOpis()+'): <b>'+(v.length?stDog(v.length):'ni dogodkov')+'</b></p>';
  if(v.length){let z='';v.forEach(d=>{const k=isoDan(d._z);if(k!==z){if(z)h+='</ul>';z=k;h+='<div class="dan-naslov">'+esc(datumLepo(d._z))+'</div><ul class="del-seznam">'}
-   h+='<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-del-dog="'+esc(d.id)+'"><b>'+esc(ura(d.zacetek)||'ves dan')+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>'});h+='</ul>';
+   h+='<li><button type="button" class="vrsta'+(d.primer?' primer':'')+'" data-del-dog="'+esc(d.id)+'"><b>'+esc(casOdDo(d))+'</b><span>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</span></button></li>'});h+='</ul>';
   h+='<p class="del-dodaj"><button type="button" class="gumb" data-del-dodaj="'+st+'">+ Dodaj dogodek tukaj</button></p>'}
  else h+='<div class="prazno"><p class="velik">'+obsegIme()+' tu še ni dogodkov.</p><p>Mogoče kava na klopci ali skupen sprehod? 🙂</p><button type="button" class="gumb dodaj" data-del-dodaj="'+st+'">+ Dodaj dogodek</button></div>';
  const t=document.getElementById('delTelo');t.innerHTML=h;
