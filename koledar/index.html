@@ -463,7 +463,7 @@ body{background:#f9faf3}
 .obl .leaflet-popup-content{margin:12px 14px}
 .pin-obl{display:flex;flex-direction:column;gap:.25rem;font-size:15px;line-height:1.35;min-width:200px}
 .pin-obl b{font-size:16px;color:#0b3d24}
-.pin-obl .gumb{margin-top:.35rem;min-height:44px;justify-content:center}
+.pin-obl .gumb{margin-top:.35rem;width:100%;min-height:44px;justify-content:center}
 /* okence dela naselja (namizje modal, telefon spodnji list) */
 .del-okno{width:min(480px,94vw)}
 .del-okno .dlg-glava h2{display:flex;align-items:center;gap:.5rem;font-size:1.15rem}
@@ -855,6 +855,7 @@ function podrobnosti(d){
   '</ul>'+znacke(d)+
   (d.opis?'<p class="opis">'+esc(d.opis)+'</p>':'')+
   (/^https?:/i.test(d.povezava||'')?'<p><a href="'+esc(d.povezava)+'" target="_blank" rel="noopener">Več o dogodku ›</a></p>':'')+
+  (navUrl(d)?'<p><a class="gumb glavni nav" href="'+esc(navUrl(d))+'" target="_blank" rel="noopener">🧭 Pelji me tja</a></p>':'')+
   '<div class="dejanja">'+
    gumbShrani(d)+
    '<button type="button" class="gumb" data-glas="'+esc(d.id)+'" aria-pressed="'+moj+'">👍 Všeč mi je'+(d._g?' · '+d._g:'')+'</button>'+
@@ -998,7 +999,8 @@ function casKratek(d){return danK(d._z)+' '+kratkiDatum(d._z)+', '+(ura(d.zacete
 let KARTA_V=[];
 const N=d=>S.kartaTeden?d._stT:d._st;
 function oblacek(d){return '<div class="pin-obl"><b>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</b>'+(d.primer?' <span class="oznaka primer">PRIMER</span>':'')+
- '<span>🕒 '+esc(casKratek(d))+'</span><span>📍 '+esc(d.kraj)+'</span><button type="button" class="gumb glavni" data-poglej="'+esc(d.id)+'">Poglej ›</button></div>'}
+ '<span>🕒 '+esc(casKratek(d))+'</span><span>📍 '+esc(d.kraj)+'</span><button type="button" class="gumb glavni" data-poglej="'+esc(d.id)+'">Poglej ›</button>'+(navUrl(d)?'<a class="gumb nav" href="'+esc(navUrl(d))+'" target="_blank" rel="noopener">🧭 Pelji me tja</a>':'')+'</div>'}
+function navUrl(d){const t=tockaZa(d);return t?'https://www.google.com/maps/dir/?api=1&destination='+t.lat.toFixed(6)+','+t.lng.toFixed(6):''}
 function zacMeseca(){return new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
 function mesecDog(F){F=F||filtrirani();const a=zacMeseca(),b=new Date(a.getFullYear(),a.getMonth()+1,1);return F.filter(d=>(d._k||d._z)>=a&&d._z<b).sort((x,y)=>x._z-y._z)}
 /* obseg zemljevida (ves teden ali mesec); ob »ta dan« okence dela pokaže teden */
