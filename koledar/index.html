@@ -918,6 +918,8 @@ function izrisiDan(){
  document.querySelectorAll('[data-hitro]').forEach(b=>{const t=b.dataset.hitro,v=t==='danes'?danes:t==='jutri'?plus(danes,1):vikend();b.setAttribute('aria-pressed',isoDan(v)===k)});
  izrisiTedenVrh(F,danes,k);
  const vsi=F.filter(d=>naDan(d,S.dan)).sort(poPomenu);
+ /* izbrani dogodek (klik iz meseca/zemljevida) gre na vrh kot velika kartica */
+ {const ii=vsi.findIndex(d=>d.id===S.izbran);if(ii>0)vsi.unshift(vsi.splice(ii,1)[0])}
  /* največ 3 izpostavljeni (po pomenu), ostali strnjeno po uri; številke se ujemajo z zemljevidom */
  const top=vsi.slice(0,3),ostali=vsi.slice(3).sort((a,b)=>a._z-b._z);
  RED=top.concat(ostali);RED.forEach((d,i)=>d._st=i+1);
@@ -1041,7 +1043,8 @@ function pini(v){
  osveziIzbor();
 }
 function skociNa(id){const d=DOG.find(x=>x.id===id);if(!d)return;
- if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=id;izrisi()}
+ if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
+ S.izbran=id;izrisi();
  setTimeout(()=>izberi(id,false,true),80)}
 function osveziIzbor(){
  const danP=new Set(RED.flatMap(d=>d.polja)),tedP=new Set(obsegDog().flatMap(d=>d.polja)),izb=DOG.find(d=>d.id===S.izbran);
