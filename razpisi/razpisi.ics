@@ -804,4 +804,257 @@ DESCRIPTION:Rok razpisa: Fundacija za šport – objekti 2026 (zaprt)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:eucf-call-8@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20261221T170000
+DTEND;TZID=Europe/Brussels:20261221T171500
+SUMMARY:European City Facility (EUCF)\, 8. razpis: investicijski koncepti z
+ a energetske naložbe
+DESCRIPTION:EUCF 8. razpis\nRok: Oddaja do 21. 12. 2026 ob 17.00 (bruseljsk
+ i čas\, enako kot ljubljanski). Naslednja razpisa okvirno aprila in oktob
+ ra 2027.\nZnesek: Fiksni grant 60.000 € za izdelavo investicijskega konc
+ epta\; 23 grantov za srednjo in vzhodno Evropo (vključno s Slovenijo)\, s
+ kupaj 62.\nKdo: Občine in lokalne oblasti ter njihova združenja iz EU\; 
+ potreben podnebno-energetski načrt (npr. SECAP) in podporno pismo župana
+ .\nPilot B: MOL lahko pridobi 60.000 € za investicijski koncept energets
+ kega dela zelene garaže (sončna elektrarna s hranilnikom\, polnilnice\, 
+ prezračevanje)\, ki ga nato ponudi SID\, ELENA ali vlagateljem. Grant ne 
+ financira gradnje. Preveriti\, ali ima MOL veljaven SECAP.
+URL:https://www.eucityfacility.eu/calls/call-8
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EUCF 8. razpis
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sos2learndbs-tag1@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20261211T170000
+DTEND;TZID=Europe/Brussels:20261211T171500
+SUMMARY:SOS2LearnDBS: Transition Agenda Call 1 – skupnostni načrti za Po
+ donavje in Črno morje (Misija Oceani in vode)
+DESCRIPTION:Podonavje: Transition Agenda\nRok: Rok 11. 12. 2026 ob 17.00. V
+ prašanja do 6. 12. 2026. Rezultati do 31. 3. 2027.\nZnesek: Pavšal\, 100
+  % upravičenih stroškov\; znesek na načrt preveriti v pogojih razpisa.\
+ nKdo: Konzorcij 2–4 pravnih oseb (NVO\, občine\, raziskovalci\, MSP)\; 
+ vodja iz regije Donava–Črno morje\; vsaj en partner z lokalno povezavo.
+ \nSava je v porečju Donave\, a razpis je usmerjen v vode in ekosisteme\, 
+ ne v zrak ali promet. Pride v poštev le za zeleno-modro infrastrukturo (z
+ adrževanje meteorne vode\, zelene površine) v širšem konzorciju.
+URL:https://sos2learndbs.eu/funding-calls/transition-agenda-call-1/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Podonavje: Transition Agenda
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:interreg-danube-2028-posvet@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270115T235900
+DTEND;TZID=Europe/Ljubljana:20270116T001400
+SUMMARY:Interreg Danube Region 2028–2034: javni posvet o teritorialni ana
+ lizi
+DESCRIPTION:Donava 2028+ posvet\nRok: Anketa do 15. 1. 2027. Ni financiranj
+ e\, ampak priložnost\, da v prihodnji program vpišemo potrebe mestnih so
+ sesk (zrak\, promet).\nZnesek: Ni denarja – javni posvet za prihodnji pr
+ ogram.\nKdo: Vsi deležniki (prebivalci\, NVO\, občine).\nBrezplačna pri
+ ložnost: v posvetu predlagati\, da prihodnji program Podonavja podpira č
+ ist zrak in zmanjšanje tranzita v gostih mestnih soseskah. To odpre pot z
+ a kasnejše prijave.
+URL:https://interreg-danube.eu/news/help-shape-the-future-of-the-danube-reg
+ ion
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Donava 2028+ posvet
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wri-ross-prize-c6@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270114T055900
+DTEND;TZID=Europe/Ljubljana:20270114T061400
+SUMMARY:WRI Ross Center Prize for Cities\, 6. cikel
+DESCRIPTION:WRI Prize for Cities\nRok: Rok 13. 1. 2027 ob 23.59 po vzhodnoa
+ meriškem času\, kar je 14. 1. 2027 ob 5.59 po ljubljanskem času.\nZnese
+ k: Glavna nagrada 250.000 USD\; štirje finalisti po 25.000 USD.\nKdo: Jav
+ ne\, zasebne in neprofitne organizacije ter skupnostne skupine z že izved
+ enim mestnim projektom z merljivim učinkom.\nNagrada je za že izvedene p
+ rojekte. Za Savsko še ni zrela\; cilj za enega od naslednjih ciklov\, ko 
+ bosta šolska ulica ali pilot A izvedena in izmerjena.
+URL:https://prizeforcities.org/apply
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: WRI Prize for Cities
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:earth-prize-2027@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270110T235900
+DTEND;TZID=Europe/Ljubljana:20270111T001400
+SUMMARY:The Earth Prize 2027 (The Earth Foundation\, Švica): svetovno tekm
+ ovanje mladih 13–19 let za okoljske rešitve
+DESCRIPTION:The Earth Prize 2027\nRok: Registracija do 10. 1. 2027\, oddaja
+  projekta (Blueprint) do 31. 1. 2027.\nZnesek: Vsak od sedmih regijskih zm
+ agovalcev prejme 10.000 USD za izvedbo projekta\; skupni sklad več kot 10
+ 0.000 USD.\nKdo: Učenci in dijaki 13–19 let (posamezno ali ekipa do 5)\
+ , z mentorjem\; za mladoletne soglasje staršev.\nStarejši učenci OŠ Sa
+ vsko naselje (od 13 let) lahko prijavijo rešitev za zrak ob šoli\, npr. 
+ meritve in zeleni zaslon iz pilota A. Dobro izobraževalno\, finančno man
+ j.
+URL:https://www.theearthprize.org/competition
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: The Earth Prize 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esa-climate-detectives-2026-27@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270402T235900
+DTEND;TZID=Europe/Ljubljana:20270403T001400
+SUMMARY:ESA Climate Detectives 2026–2027 (šolski projekt ESA in ESERO)
+DESCRIPTION:ESA Climate Detectives\nRok: Projekt Teens: oddaja rezultatov o
+ kvirno do 2. 4. 2027\; Kids brez tekmovanja. Rok pri nacionalnem organizat
+ orju preveriti.\nZnesek: Brezplačen projekt\; izbrane ekipe obiščejo ce
+ nter ESA ESRIN (Italija) maja/junija 2027.\nKdo: Učenci do 19 let iz drž
+ av članic ESA in pridruženih članic\; prijavi učitelj.\nOdlično za pi
+ lot A: učenci raziščejo onesnaženost zraka ob šoli s satelitskimi pod
+ atki in lastnimi meritvami ter primerjajo z ARSO. Brez stroškov\, takoj i
+ zvedljivo.
+URL:https://education.esa.int/climate_detectives_2026_2027_registration_now
+ _open/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: ESA Climate Detectives
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:yre-mpo-2026-27@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270405T235900
+DTEND;TZID=Europe/Ljubljana:20270406T001400
+SUMMARY:Mladi poročevalci za okolje 2026/2027 (Young Reporters for the Env
+ ironment\, FEE)
+DESCRIPTION:Mladi poročevalci za okolje\nRok: 1. rok za nacionalni nateča
+ j in mednarodno tekmovanje 5. 4. 2027\; zadnji rok za vse prispevke 14. 5.
+  2027.\nZnesek: Ni denarne podpore\; nagrade in uvrstitev na mednarodno te
+ kmovanje YRE.\nKdo: Učenci\, dijaki in študenti 11–25 let prek ekošol
+ .\nUčenci OŠ Savsko naselje (Ekošola) lahko pripravijo reportažo ali p
+ odkast o zraku in prometu v naselju. Krepi glas otrok in ozaveščanje.
+URL:https://ekosola.si/mladi-porocevalci-za-okolje-26-27/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Mladi poročevalci za okolje
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cerv-2027-child@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20270922T235900
+DTEND;TZID=Europe/Brussels:20270923T001400
+SUMMARY:CERV-2027-CHILD: pravice otrok in sodelovanje otrok v demokratične
+ m življenju EU
+DESCRIPTION:CERV otroci 2027\nRok: Okvirno: objava 16. 3. 2027\, odprtje 29
+ . 4. 2027\, rok 22. 9. 2027. Uradni razpis še ni objavljen\; preveriti na
+  portalu EU Funding & Tenders.\nZnesek: Okvirno 21 mio € za razpis\; zne
+ sek na projekt preveriti.\nKdo: NVO\, mednarodne organizacije\, akademski 
+ in izobraževalni deležniki (preveriti v razpisu).\nMed okvirnimi prednos
+ tmi sta okoljska trajnost in sodelovanje otrok pri odločanju. Primer: otr
+ oci soodločajo o šolski ulici in čistem zraku ob šoli\, v mednarodnem 
+ konzorciju.
+URL:https://commission.europa.eu/funding-and-tenders/find-funding/eu-fundin
+ g-programmes/citizens-equality-rights-and-values-programme/citizens-equali
+ ty-rights-and-values-programme-overview_en
+LOCATION:Savsko naselje / razpis
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: CERV otroci 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mop-life-sofinanciranje-2026@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270831T235900
+DTEND;TZID=Europe/Ljubljana:20270901T001400
+SUMMARY:MOP: javni poziv za sofinanciranje projektov LIFE za leto 2026 (nac
+ ionalni delež)
+DESCRIPTION:MOP sofinanciranje LIFE\nRok: Rok 31. 8. 2027 do 23.59\; prilo
+ žiti podpisano pogodbo s CINEA.\nZnesek: Do 25 % upravičenih stroškov s
+ lovenskih upravičencev (Narava in biotska raznovrstnost) oziroma do 20 % 
+ (Krožno gospodarstvo in kakovost življenja).\nKdo: Slovenski upravičenc
+ i že odobrenih projektov LIFE (NVO\, občine\, raziskovalci\, podjetja).\
+ nDopolnilni vir: če uspe prijava LIFE (npr. kakovost zraka ali zelena inf
+ rastruktura)\, država pokrije še do 20–25 % slovenskega deleža. Zmanj
+ ša lastni delež partnerjev iz Savskega.
+URL:https://www.gov.si/zbirke/javne-objave/javni-poziv-za-sofinanciranje-pr
+ ojektov-s-programskega-podrocja-life-za-leto-2026/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOP sofinanciranje LIFE
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:jr-2ch-ove-2025@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270310T235900
+DTEND;TZID=Europe/Ljubljana:20270311T001400
+SUMMARY:Drugi švicarski prispevek: JR 2CH OVE 2025 – skupnostna samooskr
+ ba z OVE in plitva geotermija v srednjih in visokih šolah
+DESCRIPTION:Švicarski prispevek OVE\nRok: Tretji (zadnji) rok 10. 3. 2027 
+ do 23.59.\nZnesek: Skupaj 13\,8 mio €\; na vlogo do 1 mio € (sončne e
+ lektrarne s hranilnikom) in/ali do 2 mio € (geotermalne toplotne črpalk
+ e).\nKdo: Samo javne srednje\, višje in visoke šole ter dijaški domovi 
+ (ne osnovne šole).\nOŠ in vrtci niso upravičeni. Pride v poštev le\, 
+ če bi bližnja srednja šola ali dijaški dom zgradila skupnostno sončno
+  elektrarno\, ki bi lahko oskrbovala tudi naselje.
+URL:https://www.gov.si/zbirke/javne-objave/javni-razpis-za-sofinanciranje-n
+ alozb-v-skupnostno-samooskrbo-na-podrocju-obnovljivih-virov-energije-in-v-
+ izkoriscanje-plitve-geotermalne-energije-za-obdobje-od-2026-do-2029-oznaka
+ -jr-2ch-ove-2025/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Švicarski prispevek OVE
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
