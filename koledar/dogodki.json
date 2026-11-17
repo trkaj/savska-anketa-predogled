@@ -1,6 +1,6 @@
 {
  "opomba": "Javna datoteka: SAMO potrjeni dogodki. Brez kontaktov pošiljateljev. Vnose s primer=true pred objavo odstrani. polja = številke polj z zemljevida letakov (../letaki/polja.json). izpostavljeno: 0–3, določi potrjevalec (višje = višje v dnevu). glasovi = posnetek števca ob objavi (živi števec pride iz sprejema). Oznake: brezplacno, za_otroke, dostopno (dostop z vozičkom), brez_prijave – samo če je organizator to potrdil. kako_priti = preprosto, z besedami.",
- "posodobljeno": "2026-11-17T16:58:00+01:00",
+ "posodobljeno": "2026-11-17T17:00:00+01:00",
  "kategorije": [
   {
    "id": "skupnost",
@@ -972,6 +972,66 @@
    "za_otroke": true,
    "lat": 46.063841,
    "lon": 14.524194
+  },
+  {
+   "id": "knjiznica-reci-2026-11-27-popravc-tekstil",
+   "naslov": "Poprav’c – tekstilna popravila",
+   "kategorija": "izobrazevanje",
+   "zacetek": "2026-11-27T16:00",
+   "konec": "2026-11-27T19:00",
+   "kraj": "Knjižnica Reči, Belokranjska 6",
+   "polja": [
+    10
+   ],
+   "lat": 46.063779,
+   "lon": 14.523763,
+   "opis": "Skupnostna popravljalnica tekstila v Knjižnici Reči. Serviser vas vodi skozi popravilo, orodje in osnovni potrošni material sta na voljo. Udeležba je brezplačna; zaradi omejenega števila mest je obvezna spletna prijava na strani dogodka. Poteka v sodelovanju z Mladinsko postajo Moste (Združenje Sezam) in Mašinotekom.",
+   "slika": "",
+   "organizator": "Knjižnica Reči",
+   "povezava": "https://knjiznicareci.si/popravc/",
+   "izpostavljeno": 1,
+   "glasovi": 0,
+   "brezplacno": true
+  },
+  {
+   "id": "knjiznica-reci-2026-12-11-popravc-elektrika",
+   "naslov": "Poprav’c – popravila električnih aparatov",
+   "kategorija": "izobrazevanje",
+   "zacetek": "2026-12-11T16:00",
+   "konec": "2026-12-11T19:00",
+   "kraj": "Knjižnica Reči, Belokranjska 6",
+   "polja": [
+    10
+   ],
+   "lat": 46.063779,
+   "lon": 14.523763,
+   "opis": "Skupnostna popravljalnica električne opreme v Knjižnici Reči. Serviser vas vodi skozi popravilo, da se napravo naučite popraviti tudi sami. Orodje in osnovni potrošni material sta na voljo. Udeležba je brezplačna; zaradi omejenega števila mest je obvezna spletna prijava na strani dogodka. Prinesete lahko katerikoli električni aparat.",
+   "slika": "",
+   "organizator": "Knjižnica Reči",
+   "povezava": "https://knjiznicareci.si/popravc/",
+   "izpostavljeno": 0,
+   "glasovi": 0,
+   "brezplacno": true
+  },
+  {
+   "id": "knjiznica-reci-2026-12-18-popravc-elektrika",
+   "naslov": "Poprav’c – popravila električnih aparatov",
+   "kategorija": "izobrazevanje",
+   "zacetek": "2026-12-18T16:00",
+   "konec": "2026-12-18T19:00",
+   "kraj": "Knjižnica Reči, Belokranjska 6",
+   "polja": [
+    10
+   ],
+   "lat": 46.063779,
+   "lon": 14.523763,
+   "opis": "Skupnostna popravljalnica električne opreme v Knjižnici Reči. Serviser vas vodi skozi popravilo, da se napravo naučite popraviti tudi sami. Orodje in osnovni potrošni material sta na voljo. Udeležba je brezplačna; zaradi omejenega števila mest je obvezna spletna prijava na strani dogodka. Prinesete lahko katerikoli električni aparat.",
+   "slika": "",
+   "organizator": "Knjižnica Reči",
+   "povezava": "https://knjiznicareci.si/popravc/",
+   "izpostavljeno": 0,
+   "glasovi": 0,
+   "brezplacno": true
   }
  ]
 }
