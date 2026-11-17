@@ -1057,4 +1057,27 @@ DESCRIPTION:Rok razpisa: Švicarski prispevek OVE
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:zrsz-javna-dela-2027@anketa.savska.org
+DTSTAMP:20261117T180000Z
+DTSTART;TZID=Europe/Ljubljana:20270430T235900
+DTEND;TZID=Europe/Ljubljana:20270501T001400
+SUMMARY:ZRSZ: Javna dela 2027 (zadnji rok\, lahko prej zaprto)
+DESCRIPTION:Javna dela 2027\nRok: ponudbe od 12. 11. 2026 do 30. 4. 2027 do
+  23.59 ali do porabe sredstev.\nZnesek: okvirno 21.654.638\,40 € za vso 
+ Slovenijo.\nKorist za Savsko: zaposlena oseba v naselju (družabnik ali sp
+ remljevalec starejših\, pomočnik v knjižnici).\nMožni partnerji: druš
+ tvo upokojencev\, NVO za duševno zdravje\, knjižnica\, zavod za oskrbo n
+ a domu.
+URL:https://www.ess.gov.si/delodajalci/financne-spodbude/predstavitev-spodb
+ ud-za-zaposlitev/javna-dela-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Javna dela 2027
+TRIGGER:-P14D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
