@@ -40,6 +40,25 @@
  ],
  "dogodki": [
   {
+   "id": "spomincica-2026-11-17-vkljucevanje",
+   "naslov": "Predavanje »Pomen in načini vključevanja oseb z demenco v vsakdanje aktivnosti«",
+   "kategorija": "izobrazevanje",
+   "zacetek": "2026-11-17T17:00",
+   "konec": "2026-11-17T18:30",
+   "kraj": "Spominčica – Alzheimer Slovenija, Luize Pesjakove 9",
+   "polja": [
+    15
+   ],
+   "lat": 46.062388,
+   "lon": 14.522971,
+   "opis": "Predavanje v programu Ne pozabi me (jesen 2026) za svojce in vse, ki skrbijo za osebe z demenco. Predava Mateja Kavčič, dipl. del. ter. V živo na Luize Pesjakove 9 in prek Zooma; prijave pri Spominčici, tel. 01 256 51 11.",
+   "slika": "",
+   "organizator": "Spominčica – Alzheimer Slovenija",
+   "povezava": "https://www.spomincica.si/usposabljanje-za-svojce/usposabljanje-za-svojce-%E2%80%9Cne-pozabi-me%E2%80%9D/ne-pozabi-me---jesen-2026",
+   "izpostavljeno": 1,
+   "glasovi": 0
+  },
+  {
    "id": "spomincica-2026-11-24-hoja",
    "naslov": "Predavanje »Skrb za varnost, gibljivost in samostojnost pri hoji«",
    "kategorija": "izobrazevanje",
@@ -49,7 +68,7 @@
    "polja": [
     15
    ],
-   "opis": "V sklopu usposabljanja Ne pozabi me bo predavala diplomirana fizioterapevtka Marjeta Gomboc. Vse delovno življenje je delala s starejšimi, zadnjih 22 let v UPK Ljubljana z osebami z demenco. V Spominčici s svojim znanjem pomaga osebam z demenco ohranjati gibalne sposobnosti. Ogled je možen tudi prek Zooma; za prijavo se obrnite na Spominčico (www.spomincica.si, 01 256 51 11).",
+   "opis": "V sklopu usposabljanja Ne pozabi me bo predavala diplomirana fizioterapevtka Marjeta Gomboc. Vse delovno življenje je delala s starejšimi, zadnjih 22 let v UPK Ljubljana z osebami z demenco. V Spominčici s svojim znanjem pomaga osebam z demenco ohranjati gibalne sposobnosti. Ogled je možen tudi prek Zooma; prijave pri Spominčici, tel. 01 256 51 11.",
    "slika": "slike/spomincica-2026-11-24.jpg",
    "organizator": "Spominčica – Alzheimer Slovenija",
    "povezava": "https://www.spomincica.si/usposabljanje-za-svojce/usposabljanje-za-svojce-%E2%80%9Cne-pozabi-me%E2%80%9D/ne-pozabi-me---jesen-2026",
