@@ -493,6 +493,42 @@ table.data .pobude{margin-top:.35rem}
 <button type="button" class="chip" data-tema="dostopnost" aria-pressed="false">♿ Dostopnost</button>
 </div>
   <div id="ideja-rezultati" class="ideja-rez" aria-live="polite"></div>
+  <section class="obvesti" id="obvesti" hidden>
+    <h3>Obvesti me, ko bo kaj zame</h3>
+    <p>Če želite, vam sporočimo, ko se na plošči pojavi razpis, ki se ujema z vašim opisom. Polja z * so obvezna. Iskanje samo po sebi podatkov nikamor ne pošilja — shranimo jih šele, ko oddate ta obrazec.</p>
+    <form id="obvesti-obrazec">
+      <div class="polja">
+        <label for="obvesti-email">E-pošta *
+          <input type="email" id="obvesti-email" name="email" required autocomplete="email" maxlength="200" inputmode="email">
+        </label>
+        <label for="obvesti-opis">Opis (iz iskalnika) *
+          <textarea id="obvesti-opis" name="opis" rows="3" maxlength="800" required></textarea>
+        </label>
+        <div>
+          <p class="meta" style="margin:0 0 .35rem">Izbrane teme</p>
+          <div class="teme-izbira" id="obvesti-teme">
+            <label><input type="checkbox" name="tema" value="promet"> Promet in prehodi</label>
+            <label><input type="checkbox" name="tema" value="zrak"> Zrak</label>
+            <label><input type="checkbox" name="tema" value="zelenje"> Zelenje in gredice</label>
+            <label><input type="checkbox" name="tema" value="solstvo"> Otroci, šola, igrišče</label>
+            <label><input type="checkbox" name="tema" value="socialno"> Starejši in socialno</label>
+            <label><input type="checkbox" name="tema" value="kultura"> Kultura in glasba</label>
+            <label><input type="checkbox" name="tema" value="cistoca"> Čistoča in varnost</label>
+            <label><input type="checkbox" name="tema" value="garaze"> Garaže in parkiranje</label>
+            <label><input type="checkbox" name="tema" value="skupnost"> Skupnost in klopi</label>
+            <label><input type="checkbox" name="tema" value="dostopnost"> Dostopnost</label>
+          </div>
+        </div>
+        <label class="soglasje" for="obvesti-soglasje">
+          <input type="checkbox" id="obvesti-soglasje" name="soglasje" required>
+          <span>Soglašam, da Civilna iniciativa za Savsko naselje shrani moj e-poštni naslov, opis in izbrane teme ter me na ta naslov obvesti o razpisih, ki se ujemajo s tem opisom. *</span>
+        </label>
+      </div>
+      <p class="pravno">Namen obdelave je samo obveščanje o razpisih, ki se ujemajo z vnesenim opisom in temami. Podatke hrani projekt v preglednici (ni javna). Upravljavec je Civilna iniciativa za Savsko naselje, uradni kontakt projekta: <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a>. Odjava: na isti naslov pošljite sporočilo z zadevo »Odjava – Imam idejo«; podatke bomo izbrisali na vašo zahtevo ali ko obveščanje ne bo več potekalo. Podatkov ne posredujemo tretjim za trženje.</p>
+      <button type="submit" class="btn" id="obvesti-shrani">Shrani prijavo</button>
+      <p class="ideja-status" id="obvesti-status" role="status"></p>
+    </form>
+  </section>
 </section>
 <section class="blk" id="od-ideje" aria-labelledby="h-od-ideje">
   <h2 class="sec" id="h-od-ideje">Od ideje do prijave</h2>
@@ -1047,6 +1083,7 @@ table.data .pobude{margin-top:.35rem}
 /* Iskalnik znotraj brskalnika. Ničesar ne pošilja s strežnika. */
 (function () {
   "use strict";
+  var IDEJA_WEBAPP = "https://script.google.com/macros/s/AKfycbyBk-Tur6zhwco-UzxbHwCVMczSRbJwNSMXvpF0Wxeq2o8fGQJsw_eXxcYv-K0EY9EHIA/exec";
   var dataEl = document.getElementById("data");
   var idejaEl = document.getElementById("ideja-data");
   if (!dataEl || !idejaEl) return;
@@ -1387,6 +1424,18 @@ table.data .pobude{margin-top:.35rem}
     else for (i = 0; i < top.length; i++) html += renderCard(top[i]);
     html += renderPractice(pickPractice(themes.length ? themes : (chipTheme ? [chipTheme] : [])));
     out.innerHTML = html;
+    var formWrap = document.getElementById("obvesti");
+    var opisEl = document.getElementById("obvesti-opis");
+    if (opisEl) opisEl.value = text;
+    if (formWrap) {
+      var boxes = formWrap.querySelectorAll('input[name="tema"]');
+      var i, box;
+      for (i = 0; i < boxes.length; i++) {
+        box = boxes[i];
+        box.checked = themes.indexOf(box.value) !== -1 || (!!chipTheme && box.value === chipTheme);
+      }
+      formWrap.hidden = false;
+    }
     return { themes: themes, results: top };
   }
   window.__idejaSearch = search;
@@ -1401,6 +1450,10 @@ table.data .pobude{margin-top:.35rem}
     clr.addEventListener("click", function () {
       qEl.value = "";
       out.innerHTML = "";
+      var formWrap = document.getElementById("obvesti");
+      if (formWrap) formWrap.hidden = true;
+      var st = document.getElementById("obvesti-status");
+      if (st) st.textContent = "";
     });
   }
   document.querySelectorAll("#ideja-teme .chip").forEach(function (ch) {
@@ -1413,6 +1466,65 @@ table.data .pobude{margin-top:.35rem}
       search(qEl ? qEl.value : "", id);
     });
   });
+
+  var form = document.getElementById("obvesti-obrazec");
+  var statusEl = document.getElementById("obvesti-status");
+  function selectedThemes() {
+    var formWrap = document.getElementById("obvesti");
+    if (!formWrap) return [];
+    var boxes = formWrap.querySelectorAll('input[name="tema"]:checked');
+    var arr = [], i;
+    for (i = 0; i < boxes.length; i++) arr.push(boxes[i].value);
+    return arr;
+  }
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var emailEl = document.getElementById("obvesti-email");
+      var opisEl = document.getElementById("obvesti-opis");
+      var sog = document.getElementById("obvesti-soglasje");
+      var email = String((emailEl && emailEl.value) || "").trim();
+      var opis = String((opisEl && opisEl.value) || (qEl && qEl.value) || "").trim();
+      if (!email || email.indexOf("@") < 1) {
+        statusEl.textContent = "Vpišite veljaven e-poštni naslov.";
+        statusEl.style.color = "#8a1c1c";
+        return;
+      }
+      if (!sog || !sog.checked) {
+        statusEl.textContent = "Za shranjevanje je potrebno soglasje.";
+        statusEl.style.color = "#8a1c1c";
+        return;
+      }
+      if (!IDEJA_WEBAPP) {
+        statusEl.textContent = "Shranjevanje trenutno ni vklopljeno. Pišete lahko na savskonaselje1@gmail.com.";
+        statusEl.style.color = "#3b2a00";
+        return;
+      }
+      var body = new URLSearchParams();
+      body.set("email", email);
+      body.set("opis", opis);
+      body.set("teme", selectedThemes().join(", "));
+      body.set("soglasje", "da — obveščanje o razpisih za vneseni opis, hramba v preglednici projekta");
+      body.set("vir", "razpisi");
+      body.set("opomba", "");
+      statusEl.textContent = "Pošiljam…";
+      statusEl.style.color = "#0b3d24";
+      fetch(IDEJA_WEBAPP, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=utf-8" },
+        body: body.toString()
+      }).then(function () {
+        statusEl.textContent = "Hvala, prijava zabeležena. Odjava: savskonaselje1@gmail.com, zadeva »Odjava – Imam idejo«.";
+        statusEl.style.color = "#0b3d24";
+        form.reset();
+        if (opisEl) opisEl.value = opis;
+      }).catch(function () {
+        statusEl.textContent = "Pošiljanje tokrat ni uspelo. Poskusite znova ali pišite na savskonaselje1@gmail.com.";
+        statusEl.style.color = "#8a1c1c";
+      });
+    });
+  }
 })();
 
 </script>
