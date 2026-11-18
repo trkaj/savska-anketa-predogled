@@ -515,6 +515,24 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
 .skupni-povzetek .oznaka{font-size:.82rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:.02em}
 @media (max-width:560px){.zavihki [role=tab]{font-size:.9rem;padding:0 4px}}
 @media (max-width:360px){.zavihki .st-l{display:none}}
+
+.graf-delez{margin:0 0 1rem;padding:12px 14px;border:1px solid #dde6df;border-radius:10px;background:#fff}
+.graf-delez figcaption h3{margin:0;color:var(--g);font-size:1.08rem}
+.graf-oznaka{margin:.1rem 0 .5rem;font-size:.82rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:.02em}
+.graf-razvrsti{font:inherit;font-size:.9rem;font-weight:750;padding:6px 12px;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;margin:0 0 .6rem}
+.graf-razvrsti[aria-pressed=true]{background:var(--y2);border-color:var(--y)}
+.graf-razvrsti:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.graf-seznam{list-style:none;margin:0;padding:0}
+.graf-seznam li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ime vr" "pas pas";column-gap:10px;row-gap:3px;padding:6px 0;border-top:1px solid #eef3ef;min-width:0}
+.graf-seznam li:first-child{border-top:0}
+.graf-ime{grid-area:ime;font-weight:700;color:var(--t);min-width:0;overflow-wrap:anywhere}
+.graf-ime .nr{min-width:1.9rem}
+.graf-vr{grid-area:vr;text-align:right;white-space:nowrap;font-size:.95rem;font-variant-numeric:tabular-nums}
+.graf-pas{grid-area:pas;display:block;height:14px;background:#eef3ef;border-radius:4px;overflow:hidden}
+.graf-stolpec{display:block;height:100%;background:#5b7a68;border-radius:4px;min-width:2px}
+.graf-opomba{margin:.5rem 0 0;font-size:.82rem;color:#4a5a50}
+@media (min-width:700px){.graf-seznam li{grid-template-columns:11.5rem minmax(0,1fr) 10.5rem;grid-template-areas:"ime pas vr";align-items:center}.graf-vr{text-align:right}}
+@media print{.graf-razvrsti{display:none}.graf-stolpec{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -548,6 +566,23 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
     <p class="druga">Liste brez mandata skupaj: 8 list, 1.763 glasov (14,0&nbsp;%). Vse liste skupaj: 15 list, 12.610 glasov (100&nbsp;%). Delež je delež vseh veljavnih glasov za liste v volilni enoti 01.</p>
     <a class="preklop" href="#neizvoljeni" data-zavihek="neizvoljeni">Na zavihek Liste brez mandata →</a>
   </div>
+  <figure class="graf-delez" id="graf-izvoljeni" aria-labelledby="graf-izvoljeni-nasl">
+    <figcaption>
+      <h3 id="graf-izvoljeni-nasl">Delež glasov izvoljenih list</h3>
+      <p class="graf-oznaka">Neuradni izid, 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
+    </figcaption>
+    <button type="button" class="graf-razvrsti" aria-controls="graf-izvoljeni-sez" aria-pressed="false" hidden>Razvrsti po deležu</button>
+    <ol class="graf-seznam" id="graf-izvoljeni-sez" aria-label="Delež glasov izvoljenih list: glasovi in delež po listah">
+      <li data-ve="1" data-glasovi="1422"><span class="graf-ime"><span class="nr">1.</span> Svoboda</span><span class="graf-vr">1.422 glasov · <strong>11,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:46.8%"></span></span></li>
+      <li data-ve="4" data-glasovi="845"><span class="graf-ime"><span class="nr">4.</span> Pirati</span><span class="graf-vr">845 glasov · <strong>6,7&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:27.8%"></span></span></li>
+      <li data-ve="5" data-glasovi="3037"><span class="graf-ime"><span class="nr">5.</span> Levica</span><span class="graf-vr">3.037 glasov · <strong>24,1&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:100.0%"></span></span></li>
+      <li data-ve="7" data-glasovi="1613"><span class="graf-ime"><span class="nr">7.</span> SDS</span><span class="graf-vr">1.613 glasov · <strong>12,8&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:53.1%"></span></span></li>
+      <li data-ve="11" data-glasovi="735"><span class="graf-ime"><span class="nr">11.</span> Cilj</span><span class="graf-vr">735 glasov · <strong>5,8&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:24.2%"></span></span></li>
+      <li data-ve="13" data-glasovi="558"><span class="graf-ime"><span class="nr">13.</span> Ljubljana smo vsi</span><span class="graf-vr">558 glasov · <strong>4,4&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:18.4%"></span></span></li>
+      <li data-ve="15" data-glasovi="2637"><span class="graf-ime"><span class="nr">15.</span> LZJ</span><span class="graf-vr">2.637 glasov · <strong>20,9&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:86.8%"></span></span></li>
+    </ol>
+    <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
+  </figure>
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
@@ -1020,6 +1055,24 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
     <p class="druga">Izvoljene liste skupaj: 7 list, 17 sedežev, 10.847 glasov (86,0&nbsp;%). Vse liste skupaj: 15 list, 12.610 glasov (100&nbsp;%). Delež je delež vseh veljavnih glasov za liste v volilni enoti 01.</p>
     <a class="preklop" href="#izvoljeni" data-zavihek="izvoljeni">Na zavihek Izvoljene liste →</a>
   </div>
+  <figure class="graf-delez" id="graf-neizvoljeni" aria-labelledby="graf-neizvoljeni-nasl">
+    <figcaption>
+      <h3 id="graf-neizvoljeni-nasl">Delež glasov list brez mandata</h3>
+      <p class="graf-oznaka">Neuradni izid, 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
+    </figcaption>
+    <button type="button" class="graf-razvrsti" aria-controls="graf-neizvoljeni-sez" aria-pressed="false" hidden>Razvrsti po deležu</button>
+    <ol class="graf-seznam" id="graf-neizvoljeni-sez" aria-label="Delež glasov list brez mandata: glasovi in delež po listah">
+      <li data-ve="2" data-glasovi="98"><span class="graf-ime"><span class="nr">2.</span> SLS</span><span class="graf-vr">98 glasov · <strong>0,8&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:23.9%"></span></span></li>
+      <li data-ve="3" data-glasovi="183"><span class="graf-ime"><span class="nr">3.</span> Demokrati</span><span class="graf-vr">183 glasov · <strong>1,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:44.6%"></span></span></li>
+      <li data-ve="6" data-glasovi="166"><span class="graf-ime"><span class="nr">6.</span> Prerod</span><span class="graf-vr">166 glasov · <strong>1,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:40.5%"></span></span></li>
+      <li data-ve="8" data-glasovi="337"><span class="graf-ime"><span class="nr">8.</span> Vesna</span><span class="graf-vr">337 glasov · <strong>2,7&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:82.2%"></span></span></li>
+      <li data-ve="9" data-glasovi="366"><span class="graf-ime"><span class="nr">9.</span> NSi in Fokus</span><span class="graf-vr">366 glasov · <strong>2,9&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:89.3%"></span></span></li>
+      <li data-ve="10" data-glasovi="410"><span class="graf-ime"><span class="nr">10.</span> SD</span><span class="graf-vr">410 glasov · <strong>3,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:100.0%"></span></span></li>
+      <li data-ve="12" data-glasovi="59"><span class="graf-ime"><span class="nr">12.</span> Straža</span><span class="graf-vr">59 glasov · <strong>0,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:14.4%"></span></span></li>
+      <li data-ve="14" data-glasovi="144"><span class="graf-ime"><span class="nr">14.</span> Resni.ca</span><span class="graf-vr">144 glasov · <strong>1,1&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:35.1%"></span></span></li>
+    </ol>
+    <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
+  </figure>
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
@@ -1263,6 +1316,24 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
   });
   window.addEventListener('hashchange',function(){izHash(true);});
   izHash(true);
+})();
+</script>
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.graf-delez'),function(f){
+    var b=f.querySelector('.graf-razvrsti'),ol=f.querySelector('.graf-seznam'),st=f.querySelector('.graf-stanje');
+    if(!b||!ol)return;
+    b.hidden=false;
+    b.addEventListener('click',function(){
+      var po=b.getAttribute('aria-pressed')!=='true';
+      var li=[].slice.call(ol.children);
+      li.sort(po?function(a,c){return c.dataset.glasovi-a.dataset.glasovi;}:function(a,c){return a.dataset.ve-c.dataset.ve;});
+      li.forEach(function(x){ol.appendChild(x);});
+      b.setAttribute('aria-pressed',po?'true':'false');
+      b.textContent=po?'Po vrstnem redu na glasovnici':'Razvrsti po deležu';
+      if(st)st.textContent=po?'Vrstni red: po deležu, od največjega.':'Vrstni red: po glasovnici.';
+    });
+  });
 })();
 </script>
 </body>
