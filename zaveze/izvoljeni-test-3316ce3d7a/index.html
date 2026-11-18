@@ -536,6 +536,34 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
 .graf-manjka{grid-area:man;font-size:.86rem;color:#3d4f44}
 .graf-seznam li.ima-manjka{grid-template-areas:"ime vr" "pas pas" "man man"}
 @media (min-width:700px){.graf-seznam li.ima-manjka{grid-template-areas:"ime pas vr" ". man man"}}
+
+.tema-filter{margin:0 0 1rem;padding:12px 14px;border:1px solid #dde6df;border-radius:10px;background:#fff}
+.tema-filter h3{margin:0 0 .3rem;color:var(--g);font-size:1.08rem}
+.tf-uvod{margin:0 0 .6rem;font-size:.92rem}
+.tf-izbor{border:0;padding:0;margin:0 0 .5rem;min-width:0}
+.tf-izbor legend{font-weight:800;color:var(--g);font-size:.9rem;padding:0;margin-bottom:.35rem}
+.tf-cbs{display:flex;flex-wrap:wrap;gap:6px}
+.tf-cb{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #c9d6cd;border-radius:999px;background:#f4f7f5;font-size:.9rem;font-weight:650;cursor:pointer;max-width:100%}
+.tf-cb input{margin:0;width:1.05rem;height:1.05rem;accent-color:#0b3d24;flex:0 0 auto}
+.tf-cb:has(input:checked){background:var(--y2);border-color:var(--y)}
+.tf-cb input:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.tf-n{font-weight:500;color:#4a5a50}
+.tf-nacin{display:flex;flex-wrap:wrap;gap:4px 14px;margin:.55rem 0 .2rem;font-size:.88rem}
+.tf-nacin input{accent-color:#0b3d24}
+.tf-pocisti{font:inherit;font-size:.9rem;font-weight:750;padding:6px 12px;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;margin-top:.45rem}
+.tf-pocisti:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.tf-stevec{margin:.3rem 0 .5rem;font-weight:800;color:var(--g)}
+.tf-stevec:empty{display:none}
+.tf-seznam{list-style:none;margin:0;padding:0}
+.tf-lista{border-top:1px solid #e5ece7;padding:.6rem 0}
+.tf-lista h4{margin:0 0 .3rem;color:var(--g);font-size:1rem}
+.tf-tema h5{margin:.4rem 0 .2rem;font-size:.88rem;color:#3d4f44;text-transform:uppercase;letter-spacing:.02em}
+.tf-tema ul{list-style:none;margin:0;padding:0}
+.tf-tema li{margin:0 0 .45rem;font-size:.93rem;overflow-wrap:anywhere}
+.tf-tema .odg{font-size:.75rem;padding:1px 7px;border-width:2px;margin-right:4px}
+.tf-razlaga{display:block;margin:.2rem 0 0 .2rem;padding:.3rem .6rem;border-left:3px solid #c9d6cd;background:#f7faf8;color:#2b3a31}
+.tf-brez{margin:0;font-size:.9rem;color:#4a5a50}
+.tf-skrito{display:none !important}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -586,6 +614,702 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
     </ol>
     <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
   </figure>
+  <section class="tema-filter" id="filter-izvoljeni" aria-labelledby="filter-izvoljeni-nasl" data-skupaj="7">
+    <h3 id="filter-izvoljeni-nasl">Zaveze po temah</h3>
+    <p class="tf-uvod">Izberi eno ali več tem. Prikazane so izvoljene liste, ki so pri vsaj enem vprašanju te teme označile »da« ali »delno«, in njihove zaveze, kot so jih liste same napisale. Vrstni red je enak glasovnici.</p>
+    <fieldset class="tf-izbor" hidden>
+      <legend>Teme iz ankete</legend>
+      <div class="tf-cbs">
+        <label class="tf-cb"><input type="checkbox" name="tema" value="parkiranje"> <span>Parkiranje</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="storitve"> <span>Pošta, banka in druge storitve</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="promet"> <span>Promet skozi naselje</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="varnost"> <span>Igle in droge, varnost</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="klopi"> <span>Več klopi</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="cistoca"> <span>Čistoča in pasji iztrebki</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="zelenje"> <span>Drevesa in zelenice</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="dom"> <span>Dom skupnosti, prostor za druženje</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="zrak"> <span>Boljši zrak in hrup</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="mladi"> <span>Igrišča in prostor za mlade</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="maladela"> <span>Mala dela ČS in prijave poškodb</span> <span class="tf-n">(7)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="obvescanje"> <span>Obveščanje in komunikacija s ČS</span> <span class="tf-n">(7)</span></label>
+      </div>
+      <div class="tf-nacin" role="radiogroup" aria-label="Pri več temah">
+        <label><input type="radio" name="tf-nacin-izvoljeni" value="ali" checked> vsaj ena izbrana tema</label>
+        <label><input type="radio" name="tf-nacin-izvoljeni" value="in"> vse izbrane teme</label>
+      </div>
+      <button type="button" class="tf-pocisti">Počisti izbor</button>
+    </fieldset>
+    <p class="tf-stevec" aria-live="polite"></p>
+    <ol class="tf-seznam">
+      <li class="tf-lista" data-ve="1" data-teme="promet varnost klopi zelenje mladi maladela obvescanje">
+        <h4><span class="nr">1.</span> Svoboda</h4>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">S pobudo se delno strinjamo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Zavezujemo se k pripravi pobude MOL za umirjanje prometa ob šolah, vrtcih in glavnih poteh, ki jih naredimo peš.</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Zavzemamo se za sodelovanje s prebivalci, strokovnjaki in odločevalci.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Podpiramo redna srečanja s policijo in mestnim redarstvom.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Se strinjamo z odstranjevanjem igel na mestnih, ki jih navajajo prebivalci.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Zavezo podpiramo, pa ne samo na začetku mandata, temveč tudi za naprej.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Z zavezo se strinjamo, saj je prav, da imajo mladi čim več možnosti za preživljanje časa na odprtem oz. v njim dostopnih prostorih.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Z zavezo se strinjamo.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Se strinjamo s snemanjem in prenosom sej, saj imajo občanke in občani pravico biti informirani o tem, kaj se odloča v Svetu Četrtne skupnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Zavzemamo se za jasen zapis predlogov in objavo povzetkov po vsaki seji.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Zavzemamo se za obveščaje tako prek tiskanih kot digitalnih medijev in, v kolikor finančni viri to dopuščajo, za pogostejše obveščanje prek tiskanih obvestil in drugih kanalov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Da.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Zavzemamo se za čim večjo transparentnost in sprotno obveščanje prebivalcev o spremembah OPPN, pri čemer izpostavljamo, da imajo četrtni svetniki predvsem posvetovalno vlogo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Pobudo podpiramo.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="4" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">4.</span> Pirati</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Da a ti obhodi bodo izvajani s strani prostovoljcev in nevladnih organizacij, ki so specializirane za delo z brezdomci in odvisniki.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Proaktivna pomoč občanom pri navigiranju skozi birokracijo je eno izmed vodil javnega delovanja Piratov. Tako kot smo bili na voljo občanom za birokratske postopke povezane z referendumskimi pobudami in izvedbo zbora občanov, tako bomo na voljo tudi za druge postopke.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Da, a le pod pogojem da se sajenje novih dreves izvede strokovno, da imajo nova mlada drevesa v svoji okolici dovolj zelene površine, da ne gre le za majhno luknjo skozi betonsko ali jekleno konstrukcijo, ki drevo v poletnem času povsem izsuži.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Predlagali bomo bolj pravično razdelitev časovnih blokov uporabe in tudi možnost brezplačnega najema za pomembne družbene aktivnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">Zavzeli se bomo za popolno prenovo vseh prostorov četrtnih skupnosti v MOL z izjemo ČS Golovec, ki je edina dobila prenovljene prostore po dolgem času, medtem ko velika večina drugih počasi razpada.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Zahtevali bomo tudi vzpostavitev javnega portala z dnevnim osveževanjem podatkov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Glede na izjemno visoke investicije v novo železniško postajo/nakupovalno središče bi bilo primerno, da se nekaj denarja nameni tudi za prebivalce, ki ob železnici živijo in trpijo nekatere negativne posledice njene prisotnosti.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Že na začetku mandata bomo zahtevali vzpostavitev možnosti korespondenčnega vklopa v zvočni in video prenos vsake seje za vse občane z odprtokodnimi orodji, kot je npr. orodje Jitsi, ki ga Pirati uporabljamo za svoje notranje delovanje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">To je osnova transparentnosti delovanja vsakega demokratično izvoljenega organa zato bomo zahtevali, da se boljši sistem vodenja in objavljanje zapisnik vpelje takoj.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Da, a pri tem bomo pazili na izbiro kanalov v skladu s smernicami odprtosti in dostopnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Po koncu redne razprave o točkah dnevnega reda bo na koncu seje vedno točka za pobude in vprašanja občanov. Občani bodo imeli možnost poslati svoja vprašanja vnaprej, podobno kot imajo danes mestni svetniki možnost pošiljati pobude in vprašanja županu, tako bodo občani imeli enake možnosti za vprašanja in pobude četrtnim svetnikom.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Občani bodo imeli možnost poslati svoja vprašanja vnaprej, podobno kot imajo danes mestni svetniki možnost pošiljati pobude in vprašanja županu, tako bodo občani imeli enake možnosti za vprašanja in pobude četrtnim svetnikom.</span></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Sredstva, ki so namenjena četrtnim skupnostim bi za začetek morali povečati za vsaj faktor 5. Tako bi bila na voljo sredstva za dodatne zaposlitve kadra, ki bi skrbel za dobro delovanje četrtne skupnosti in koordinacijo s prebivalci in društvi.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="5" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">5.</span> Levica</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Da, to sem storil že večkrat. Lahko ponovno.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Sam sem na to temo prejšnji mandat že dal predlog za sklic in podobno seja je zaradi pritožb krajanov prejšnji mandat že bila in  lahko ponovno dam predlog, da vidimo ali se je od zadnje seje na to temo kaj spremenilo. Važno je spremeniti odnos MOL do tega vprašanja v celoti</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Absolutno</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Na drugi seji bom predlagal, da so na voljo magnetogrami in prepisi na sejah, če je to zakonsko dopustno. Eanko velja za vse predloge, ki so vezane na transparentnost sej</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="7" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">7.</span> SDS</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Pismo Pošti in bankam</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Umestitev storitev v naselje</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Strokovna prometna presoja</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Preverjanje motenj s prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Srečanja s policijo in redarstvom</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Odstranjevanje igel</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Predlogi mest za klopi</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Čistilne akcije</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Koši za pasje iztrebke</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Pregled dreves in zasaditve</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Izbira mest z prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Prostori za skupne dejavnosti</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Obnova Belokranjske 6</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Meritve zraka in hrupa</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Hrup ob železnici in cestah</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Odprtost šolskega igrišča</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Pregled igrišč z mladimi</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Predlogi za mala dela</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Obvestilo pred rokom</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Zemljišča, ki niso MOL</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Prenos in posnetki sej</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Jasni zapisniki in povzetki</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Sprotno obveščanje</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Vključevanje pred sejo</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Odgovor na pobude in OPPN</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="11" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">11.</span> Cilj</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Parkiranje je eden od najbolj pogosto navedenih problemov, s katerim se soočajo prebivalci Bežigrada. Osnova za rešitev na tem področju so informacije o statusu vseh potencialnih parkirnih mest. CILJ je že dosegel zmago z referendumom o parkiriščih in naprej bomo zagotavljali boljšo parkirno politiko za prebivalce celotne Ljubljane.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Prebivalci Savskega naselja so ekstremno angažirani in najbolje vedo kako bi morala izgledati dobra parkirna politika v njihovi soseski. Zagotovili bomo, da bodo oni v ospredju katerekoli nove ureditve, ki pa je nujna čim prej.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Volja prebivalcev soseske je jasna. V svetu četrtne skupnosti bomo poskusili zagotoviti odgovore v imenu ČS Bežigrad. V kolikor ostali svetniki ne odobrijo našega predloga, bomo odgovore od pošte in banke terjali kot CILJ. Tematiko bomo naslovili že na prvi seji.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Pomanjkanje storitev v Savske naselju je nujno nasloviti. Vse predloge iz ankete bomo izpostavili na sejah ČS Bežigrad.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Tovrstna ureditev bi bila smiselna in v skladu z željami Savčanev, zato jo bomo podprli in probali nasloviti na MOL v imenu ČS Bežigrad.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Skupaj s prebivalci soseske bomo šli na pohod ob šoli in vrtcu in identificirali kritične cone, kjer menijo, da je najbolj potrebno umiriti promet.</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Enako kot za šole in vrtce gremo lahko s prebivalci na pohod po soseski in identificiramo kritične točke ter potencialne rešitve.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">To bi bilo zagotovo smiselno. Z enoto policije v Bežigradu bomo stopili v stik kmalu po izvolitvi in se pogovorili o varnosti v soseski.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Igle v Bežigradu videvamo vedno bolj pogosto. Nujno je sprejeti ukrep, ki bo zagotavljal varnost z odstranjevanjem igel, nemudoma ko se pojavijo.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Sestavili bomo nabor predlogov in pogledali katera mesta so dobila največ pozivov za nove klopi.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Uvedli bomo sistem samoorganiziranih čistilnih akcij, kjer lahko v posameznih soseskah ČS Bežigrad prebivalci sami skličejo čistilno akcijo, ko precenijo, da je potrebna. Pri tem bomo na račun MOL zagotovila opremo in orodja, ki jo lahko za to uporabijo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Več zelenja in sence je eden od temeljev našega programa. Zato bomo skupaj s prebicalvi identificirali najbolj kritične točke in na ravni MOL zagovarjali bolj zeleno politiko.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Potreba po tovrstnih prostorih je visoka, vendar prebivalci sploh niso seznanjeni o vseh možnostih, ki so jim na to na voljo. Pomapirali bomo vse skupnostne prostore in prebivalce obvestili o možnosti njihove rabe in primernosti za razne aktivnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Mladi v soseski vedno bolj poudarjajo, da nimajo svojih prostorov. Nujno jih je čim prej zagotoviti na vse možne načine.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Prostore lahko zagotovimo tudi s prenovo in začasno rabo zapuščenih prostorov.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">V prvem letu mandata bomo na podlagi te ankete naredili jasen načrt vseh potencialnih malih del, in potem na skupščini s stanovalci soseske sprejeli končne odločitve o tem kako se razporedi mala dela.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">Uporabili bomo vse kanale in vse platforme, ki so nam na voljo. Med drugim bomo zagovarjali ponovno izdajo glasila Bežigrada.</span></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">To je eden od najpomembnejših ciljev za nas v Bežigradu in bomo od prvega dne delali na tem.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">To bomo izpostavili na prvi redni seji. Pred tem bomo stopili v kontakt z ostalimi izvoljenimi četrtnimi svetniki, da lahko v naprej zagotovimo zadostno podporo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Jasni zapisniki z vsemi znanimi informacijami so predpogoj za učinkovito delovanje četrtne skupnosti. To bomo zagotovili od prve seje dalje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Takoj ob izvolitvi v svet četrtne skupnosti bomo javnosti v četrti preko naših kanalov razglasili, da bo svet četrtne skupnosti po novem bolj odprt in transparenten. To vključuje uporabo prostorov četrtne skupnosti kot omogočanje prebivalcem, da vse svoj predloge predstavijo na sejah.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">To bomo zagotovili že s prvo skupščino.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Že na prvi seji bomo odprli tematiko OPPN-jev. Raziskali bomo vse možne opcije, da se te javnosti predstavijo takoj ko je možno in sproti obvešča o njihovem statusu. Ko bo prišlo do relevantnih sprememb, bomo na seji četrtne skupnosti uvrstili točko diskusije posameznega OPPN-ja na dnevni red in tako vsem prebivalcem dali opcijo, da podajo svoja mnenja.</span></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Ne glede na število mest, ki jih bomo dosegli v svetu četrtne skupnosti, bodo vsi aktivni člani CILJ-a v Bežigradu še naprej skrbeli za stik s civilno družbo in lokalnimi prebivalci, kar je že od začetka temelj našega delovanja kot civilne iniciative.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="13" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">13.</span> Ljubljana smo vsi</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Da. Težav s parkiranjem v Savskem naselju ne bomo rešili, dokler ne razčistimo osnovnih vprašanj glede lastništva zemljišč. Zato bom v prvih šestih mesecih zagotovil javno dostopen pregled parkirišč, iz katerega bo jasno razvidno, katera so v lasti MOL, katera pripadajo etažnim lastnikom in za katera potekajo postopki po ZVEtL. Mestna uprava bo v sodelovanju s prebivalci pristopila tudi k razreševanju odprtih lastniških vprašanj. Šele na tej podlagi bomo lahko pripravili dolgoročne rešitve za parkiranje, ki ne bodo šle na račun zelenih površin in kakovosti življenja v naselju.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Da. V prvem letu bomo za Savsko naselje pripravili konkreten načrt ureditve parkiranja, ki bo stanovalcem zagotovil prednost, pločnike in zelenice pa vrnil pešcem. Toda zgolj spreminjanje parkirnega režima ne bo rešilo pomanjkanja parkirnih mest. Zato bomo preverili možnosti obnove obstoječih garaž in gradnje novih garažnih hiš v soseski.
+
+Za Ljubljano smo pripravili program 5.000 novih garažnih mest, tudi z možnostjo javno-zasebnega partnerstva in zadružne gradnje. Naš cilj je, da bi bilo parkirno mesto dostopno po stroškovni ceni okoli 8.000 evrov oziroma za približno 30 evrov mesečne najemnine. O konkretnih lokacijah in načinu izvedbe se bomo dogovorili s prebivalci. Ne bomo jim zgolj zaračunavali parkiranja, ne da bi jim prej zagotovili ustrezne možnosti.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Da. Pošta in bančne storitve niso razkošje, temveč del osnovne infrastrukture vsakega stanovanjskega naselja. Njihovo ukinjanje najbolj prizadene starejše in ljudi, ki težje dostopajo do storitev drugje. Zato bomo v prvih treh mesecih na podlagi podatkov o potrebah prebivalcev Pošti Slovenije in bankam posredovali konkretno pobudo za ponovno vzpostavitev storitev v Savskem naselju ter njihove odgovore javno objavili.  V pogovore bomo vključil tudi mestno upravo in preveril, kako lahko občina pomaga pri zagotavljanju primernih prostorov. Ne pristajamo na to, da se kakovost življenja v stanovanjskih soseskah zmanjšuje zgolj zaradi poslovnih odločitev posameznih ponudnikov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Da. Savsko naselje mora biti soseska, v kateri lahko ljudje večino vsakodnevnih opravkov uredijo v bližini svojega doma. To je še posebej pomembno za starejše prebivalce in družine. Skrbeli bomo, da bo MOL aktivno sodelovala pri vračanju osnovnih storitev v naselje. Pregledali bomo razpoložljive občinske prostore, preverili možnosti ugodnega najema za dejavnosti v javnem interesu ter skupaj s ponudniki in lokalno skupnostjo pripravili pogoje za ponovno vzpostavitev pošte, bančnih storitev in drugih potrebnih dejavnosti, kot so lekarna, trgovina in pekarna. Pri tem bomo uporabili tudi možnosti javnih razpisov in partnerstev. Razvoj Ljubljane ne sme biti osredotočen samo na mestno središče. Kakovost mesta se meri tudi po tem, kako dobro je poskrbljeno za življenje v njegovih soseskah.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Da. Prometnih težav Savskega naselja ne moremo reševati ločeno od razvoja širšega območja Bežigrada. V prvem letu bomo zagotovili celovito strokovno prometno presojo, ki bo upoštevala načrtovano širitev Šmartinske ceste, prometno povezavo na Vilharjevi pri Orto Baru ter vpliv morebitne nove stanovanjske pozidave. Preverili bomo različne prometne scenarije, njihove posledice za pretočnost, varnost, hrup in kakovost zraka. Nobena rešitev ne sme pomeniti, da bomo prometne zastoje z ene ceste preprosto preselili med stanovanjske bloke. Pred sprejetjem odločitev bomo prebivalcem predstavili variante in njihove strokovne utemeljitve ter upoštevali njihovo mnenje. Naš cilj ni zgolj večja pretočnost avtomobilov, temveč manj tranzitnega prometa skozi naselje, učinkovitejši javni prevoz in zdravo bivalno okolje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Da. Varnost otrok na poti v šolo in vrtec mora imeti absolutno prednost.  Do začetka šolskega leta 2027/28 bomo pregledali in uredili najbolj nevarne prometne točke v okolici šole in vrtca v Savskem naselju. Kjer bo potrebno, bomo uredili varnejše prehode za pešce, izboljšali preglednost križišč, uvedli ukrepe za umirjanje prometa in preprečili nevarno parkiranje. Pri določanju prednostnih ukrepov bomo sodelovali s šolo, vrtcem in starši. Ne potrebujemo še ene prometne študije, ki bo obležala v predalu, temveč konkretne izboljšave, ki jih bodo otroci in starši občutili že na začetku naslednjega šolskega leta.</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Da. Prometna ureditev mora izhajati iz dejanskih potreb prebivalcev, ne zgolj iz načrtov prometnih projektantov. Uvedli bi prakso, da se pred večjimi spremembami prometnih režimov opravi terenski ogled s prebivalci, predstavniki četrtne skupnosti in prometnimi strokovnjaki. Na kraju samem bomo preverili, kje prihaja do nepotrebnih zastojev, nevarnih situacij ali nelogičnih prometnih rešitev. Posebej bomo pozorni na predloge ljudi, ki te ceste uporabljajo vsak dan. Tudi manjši, premišljeni posegi lahko bistveno izboljšajo promet, zato bomo poleg dolgoročnih rešitev določili tudi ukrepe, ki jih je mogoče izvesti hitro in brez velikih investicij.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Da. Odvržene injekcijske igle, uživanje drog na javnih površinah in občutek ogroženosti niso težave, ki bi jih smeli prepustiti prebivalcem, da jih rešujejo sami. Zagotovil bomo redno sodelovanje policije, Mestnega redarstva, četrtne skupnosti in prebivalcev, prvo srečanje najpozneje v šestih mesecih, nato pa najmanj dvakrat letno. Na podlagi prijav in ugotovljenih razmer bomo določili kritične lokacije, okrepili nadzor in zagotovili hitro ter varno odstranjevanje odvrženih igel. Hkrati bomo vključili pristojne socialne in zdravstvene službe, saj samo represija problema odvisnosti ne rešuje. Javne površine morajo biti varne za otroke, starejše in vse prebivalce, pomoč ljudem z odvisnostjo pa mora biti strokovna in dostopna.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Da. Odvržene injekcijske igle na otroških igriščih, zelenicah in drugih javnih površinah zahtevajo takojšnje ukrepanje. V prvih treh mesecih bomo zagotovili vzpostavitev sistema rednih pregledov izpostavljenih lokacij v Savskem naselju ter jasen protokol za nujno odstranjevanje nevarnih odpadkov. Prebivalcem bomo omogočili enostavno prijavo, brez prelaganja odgovornosti med različnimi občinskimi službami. Za vsako prijavo mora biti jasno, kdo je odgovoren za ukrepanje in v kakšnem času bo nevarnost odpravljena. O izvedenih ukrepih bomo redno in javno poročali. Varnost in čistoča javnega prostora sta osnovni nalogi občine, ne nekaj, za kar bi morali občani vedno znova prositi.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Da. Klopi niso velik investicijski projekt, lahko pa pomembno prispevajo h kakovosti življenja v soseski, zlasti starejših prebivalcev. Pred pripravo predlogov za mala dela v obdobju 2028–2029 bomo prebivalce javno povabili, da sami označijo lokacije, kjer klopi najbolj potrebujejo. Posebno pozornost bomo namenili senčnim površinam, potem do trgovin, postajališč javnega prevoza in zdravstvenih storitev. Poskrbeli bomo, da bodo predlogi pravočasno vključeni v načrtovanje in da bodo sredstva namenjena tudi takšnim manjšim, a za vsakdanje življenje pomembnim izboljšavam.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Da. Urejanje prostora med stanovanjskimi bloki je pogosto zapleteno zaradi lastniških razmerij in postopkov odločanja etažnih lastnikov. V prvem letu bomo zato pripravili preprosta navodila in vzorce potrebnih sklepov, s katerimi bomo stanovalcem in upravnikom olajšali postavitev klopi na skupnih zemljiščih. Mestna uprava mora ljudem pomagati pri uresničevanju takšnih pobud, ne pa jih prepuščati birokratskim postopkom. Za postavitev ene klopi res ne bi smeli potrebovati mesecev usklajevanja.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Da. Od pomladi 2027 bomo v sodelovanju z VOKA Snago in prebivalci najmanj dvakrat letno organizirali čistilne akcije v Savskem naselju. Pri njih bomo sodelovali tudi sami. Vendar urejenost naselja ne sme biti odvisna od prostovoljnega dela občanov. Mestne službe morajo svoje delo opravljati redno in kakovostno, čistilne akcije pa so priložnost, da skupaj poskrbimo za okolje in okrepimo povezanost soseske. Posebno pozornost bomo v prihodnjem mandatu namenili urejenosti stanovanjskih naselij, ne le mestnega središča. Ljubljana mora biti čista in urejena tudi tam, kjer njeni prebivalci vsak dan živijo, ne samo tam, kjer jo občudujejo turisti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Da. Savsko naselje mora biti prijazno tako do ljudi kot do njihovih štirinožnih spremljevalcev. Zagotovili bomo dovolj košev za pasje iztrebke na lokacijah, kjer jih skrbniki dejansko potrebujejo, njihovo redno praznjenje in brezplačne vrečke za pobiranje pasjih iztrebkov. Preverili bomo tudi možnosti za ureditev primernih površin za sprehajanje in druženje psov. Pri tem pričakujemo odgovorno ravnanje skrbnikov, občina pa mora zagotoviti ustrezne pogoje. Sobivanje v mestu temelji na medsebojnem spoštovanju, ne na nepotrebnih prepovedih.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Da. V prvih šestih mesecih bom zagotovil strokovni pregled dreves v Savskem naselju in vključitev ugotovitev v javno dostopen register mestnega drevja. Zaščita zdravih odraslih dreves bo pravilo, njihov posek pa izjema, ki mora biti strokovno utemeljena. Pri pomembnejših posegih bomo zagotovili neodvisno strokovno presojo in prebivalce pravočasno seznanili z razlogi za odstranitev dreves.
+
+Pripravili bomo tudi načrt novih zasaditev in izboljšanja rastnih pogojev obstoječih dreves. Za vsako odstranjeno drevo na javni površini bomo zagotovili nadomestno zasaditev, pri čemer bomo upoštevali, da mlado drevo še desetletja ne more nadomestiti odraslega.
+
+Podnebne spremembe od nas zahtevajo bistveno več kot občasno sajenje dreves. Ljubljana se sooča z vse daljšimi vročinskimi valovi, drevesa pa so naša naravna zaščita pred pregrevanjem mesta. Zato bomo pri ozelenjevanju sledili načelu 3–30–300 in posebno pozornost namenili stanovanjskim soseskam, kjer primanjkuje sence. Pri urejanju javnih površin bomo zmanjšali nepotrebno asfaltiranje in betoniranje ter omogočili boljše zadrževanje padavinske vode.
+
+Ljubljana mora ostati zeleno mesto ne le po nazivu, temveč predvsem po svojih odločitvah.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Da. Prebivalci najbolje vedo, kje v njihovi soseski poleti najbolj pripeka, kje primanjkuje sence in katere javne površine bi bilo treba ozeleniti. Zato bomo pred pripravo načrta malih del za obdobje 2028–2029 organizirali javni poziv, na katerem bodo lahko predlagali konkretne lokacije za zasaditev novih dreves. Predloge bomo skupaj s strokovnjaki pregledali in preverili ustreznost rastnih pogojev ter izbiro drevesnih vrst.
+
+Kot sem poudaril že v odgovoru iniciativi Urbani gozd, ozelenjevanje ne sme biti zgolj estetski dodatek, temveč sestavni del prilagajanja Ljubljane podnebnim spremembam. Prednost bomo dali površinam ob stanovanjskih blokih, šolah, vrtcih in pešpoteh, kjer lahko nova drevesa največ prispevajo k zmanjševanju poletne vročine. Pomembno pa ni le, koliko dreves zasadimo, temveč tudi, da jim zagotovimo pogoje za dolgoročno rast.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Da. V prvem letu bomo zagotovili pregled razpoložljivih prostorov v Savskem naselju in pripravil pogoje, da dom skupnosti ponovno postane prostor srečevanja, druženja in skupnih dejavnosti prebivalcev. Pri tem bomo upoštevali potrebe različnih generacij, od otrok in mladih do starejših, ter omogočili uporabo prostorov lokalnim društvom in civilnim iniciativam.
+
+Toda pri tem ne gre samo za ureditev prostorov. Gre za drugačno razumevanje mesta in drugačen način njegovega vodenja. Mesto ni projekt. Mesto je skupnost ljudi, njihovih življenj, potreb in odnosov. Njegove uspešnosti zato ne moremo meriti zgolj po številu novih gradenj in velikih investicij, temveč predvsem po kakovosti življenja in povezanosti prebivalcev.
+
+Krepili bomo vlogo četrtnih skupnosti, jim zagotovil več sredstev in omogočil, da bodo prebivalci neposredno odločali o projektih v svojem okolju. Želimo si Ljubljane, v kateri bodo soseske imele svoja središča družbenega življenja, ljudje pa občutek, da mestu pripadajo in lahko vplivajo na njegovo prihodnost.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">Da. V prvem letu bomo zagotovili, da MOL javno predstavi načrt obnove stavbe na Belokranjski 6, predvidene roke izvedbe in možnosti njene prihodnje uporabe. Toda o tem, kakšen naj bo dom skupnosti, ne sme odločati zgolj mestna uprava. Najprej bomo prisluhnili prebivalkam in prebivalcem Savskega naselja, jih vključili že v pripravo projekta ter skupaj z njimi oblikovali vsebino in način uporabe prostorov. Zagotovili bomo tudi javno dostopen urnik in pregledna pravila souporabe.
+
+To je bistvo drugačnega načina vodenja Ljubljane, za katerega se zavzemamo. Mestna oblast ne sme odločati namesto ljudi, temveč mora ustvarjati pogoje, da lahko ti sami sooblikujejo življenje v svoji soseski. Belokranjska 6 naj postane projekt prebivalcev Savskega naselja, ne zgolj še ena pompozna nezaživela investicija mestne občine.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Da. V prvih šestih mesecih bomo zagotovili izvedbo meritev kakovosti zraka in prometnega hrupa na najbolj obremenjenih območjih Savskega naselja ter javno objavo rezultatov. Že v svojem programu smo predvideli spremljanje kakovosti zraka po posameznih četrtnih skupnostih, saj povprečni podatki za celotno Ljubljano ne povedo dovolj o razmerah, v katerih ljudje dejansko živijo.
+
+Posebno pozornost bomo namenili vplivom prometa, tudi v povezavi z načrtovanimi novimi prometnicami in pozidavo. Meritve ne smejo biti same sebi namen. Na njihovi podlagi bomo določili ukrepe za zmanjševanje onesnaženosti in hrupa ter spremljali njihovo učinkovitost. Čist zrak in mirno bivalno okolje nista privilegij, temveč osnovna pogoja za zdravo življenje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Da. Ljubljana potrebuje drugačno prometno politiko, ki ne bo usmerjena zgolj v povečevanje pretočnosti avtomobilov, temveč predvsem v izboljšanje kakovosti življenja. V stanovanjskih soseskah moramo zmanjševati prometne obremenitve, ne pa jih povečevati z novimi cestnimi povezavami in dodatno pozidavo.
+
+Zavzemamo se, da se pri prometnih posegih upoštevajo tudi vplivi na zdravje prebivalcev. Prednost bomo dali zmanjševanju hrupa pri njegovem izvoru, izboljšanju javnega potniškega prometa in ozelenjevanju prometno obremenjenih območij. S pristojnimi državnimi institucijami bomo uredili tudi vprašanja, ki presegajo občinske pristojnosti. Ne moremo govoriti o sodobnem in zelenem mestu, če ob tem zanemarjamo življenjske razmere ljudi v stanovanjskih naseljih.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Da. V prvih šestih mesecih bomo v sodelovanju z vodstvom šole zagotovil dogovor o popoldanski uporabi šolskega igrišča ter preveril možnosti za ureditev pokritega prostora, namenjenega druženju mladih.
+
+V Ljubljani veliko govorimo o velikih investicijah, premalo pa o tem, kaj mladi dejansko potrebujejo v svojem vsakdanjem okolju. Ne potrebujejo vedno novih objektov, temveč predvsem dostopne, varne in urejene prostore, kjer se lahko srečujejo, ukvarjajo s športom in kakovostno preživljajo prosti čas.
+
+Pri načrtovanju bomo vključili tudi mlade iz Savskega naselja. Sami naj povedo, kakšen prostor si želijo in kako bi ga uporabljali. Zavzemali se bomo za to, da bodo šolska igrišča in druga javna infrastruktura zunaj časa pouka čim bolj dostopni lokalni skupnosti, ob ustreznem zagotavljanju varnosti in vzdrževanja.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Da. Zazvezujemo se, da bomo pred načrtovanjem novih ureditev najprej preverili stanje obstoječih igrišč, igral in javnih prostorov v Savskem naselju. Pri tem pa želim predvsem slišati otroke in mlade. Ne smemo namesto njih odločati, kaj potrebujejo, ne da bi jih o tem sploh vprašali.
+
+Zato bomo v sodelovanju s šolo, mladinskimi organizacijami in četrtno skupnostjo pripravili srečanja z mladimi ter njihove predloge vključili v načrtovanje. Preverili bomo tudi možnosti, da v Domu skupnosti ali drugih javnih prostorih dobijo svoj prostor za druženje in ustvarjanje.
+
+Mesto po meri človeka mora biti tudi mesto po meri otrok in mladih.  Njihove potrebe ne smejo biti na zadnjem mestu, ko se razdelijo sredstva za velike mestne projekte. Pomembno je, da imajo možnost kakovostno preživljati prosti čas v svoji soseski in da se že zgodaj naučijo sodelovati pri odločitvah, ki vplivajo na njihovo življenje.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">Da. V sodelovanju s prebivalci, civilnimi iniciativami in četrtno skupnostjo bomo pripravili konkreten seznam potrebnih izboljšav, določili prednostne lokacije in jih vključili v načrt malih del za obdobje 2028–2029.
+
+Toda želim narediti še korak dlje. Ena mojih programskih zavez je uvedba participativnega proračuna, s katerim bodo prebivalci neposredno odločali o delu mestnih sredstev. Prav manjše ureditve javnega prostora so najboljši primer, kako lahko takšen način odločanja deluje v praksi.
+
+Četrtnim skupnostim bomo zagotovili več pristojnosti in sredstev, da ne bodo zgolj posrednice pobud mestni upravi, temveč bodo lahko tudi same uresničevale dogovorjene prednostne naloge. O tem, kaj najbolj potrebuje posamezna soseska, morajo imeti odločilno besedo ljudje, ki v njej živijo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">Da. Zagotovil bom, da bodo prebivalci in upravniki o pozivu obveščeni najmanj tri tedne pred iztekom roka, in sicer prek različnih komunikacijskih kanalov, tudi oglasnih desk v stanovanjskih stavbah. Posebno pozornost bomo namenili starejšim in tistim, ki ne uporabljajo digitalnih medijev.
+
+Toda pravočasno obveščanje je šele prvi korak. Mestna uprava mora prebivalcem tudi pomagati pri pripravi pobud in jim pojasniti, kako se o njih odloča. Zato bomo okrepili neposredno komunikacijo četrtnih skupnosti z občani ter zagotovili pregledne informacije o izboru in izvedbi projektov.
+
+Sodelovanje prebivalcev ne sme biti zgolj formalnost, s katero mestna oblast izpolni zakonske obveznosti, temveč mora postati običajen način upravljanja Ljubljane.</span></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">Da. V prvem letu bom zagotovil pregled lastništva zemljišč med stanovanjskimi bloki v Savskem naselju, vključno s tistimi, za katera še potekajo postopki po ZVEtL. Prebivalcem bomo na razumljiv način pojasnili, katera zemljišča so občinska, katera pripadajo etažnim lastnikom in kje lastniška vprašanja še niso razrešena.
+
+Mestna uprava bo lastnikom in upravnikom nudila strokovno in pravno pomoč pri pripravi soglasij ter izvedbi manjših ureditev skupnih površin. Kjer bodo postopki še odprti, bomo preverili možnosti za njihovo hitrejše razreševanje v okviru občinskih pristojnosti.
+
+Neurejena lastniška razmerja ne smejo postati izgovor, da se v stanovanjskih soseskah nič ne premakne. Naloga občine je, da prebivalcem pomaga iskati rešitve, ne da jim nalaga dodatne birokratske ovire.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Da, demokracija se namreč ne konča na volilni dan. Zavzemamo se za odprto in pregledno upravljanje mesta, v katerem imajo občani pravico vedeti, kako se sprejemajo odločitve, in možnost nanje tudi vplivati. Zato bomo podprli snemanje sej sveta ČS ter javno dostopnost posnetkov in prepisov razprav ob spoštovanju varstva osebnih podatkov. Poiskali bomo tudi ustrezne tehnične in finančne rešitve. Naš županski kandidat dr. Anton Rop zagovarja večjo vlogo četrtnih skupnosti, participativni proračun in uvedbo mestnih državljanskih skupščin po načelih deliberativne demokracije. Prebivalci ne smejo biti zgolj opazovalci odločitev mestne oblasti, temveč morajo pri njih dejansko sodelovati.
+
+O tem dr. Rop govori tudi javno: https://siol.net/novice/slovenija/anton-rop-napoveduje-velik-rez-v-ljubljani-pregledali-bomo-pogodbe-v-vrednosti-skoraj-pol-milijarde-evrov-zupanskikandidati-705706, https://outsider.si/anton-rop-mesto-ni-projekt-mesto-pa-je-ziv-organizem-ki-ga-moramo-soustvarjati/</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Da. Občani imajo pravico vedeti, kaj se v njihovem imenu odloča, kdo je kaj predlagal in zakaj je bila določena odločitev sprejeta. Zapisniki zato ne smejo biti zgolj formalnost, iz katere je razvidno le, kateri sklepi so bili potrjeni. Jasno morajo povzeti tudi različna stališča, argumente in izide glasovanj. Podpiramo objavo kratkega povzetka najpozneje v treh dneh po vsaki seji. Če želimo, da ljudje sodelujejo pri upravljanju mesta, jim moramo najprej omogočiti, da vedo, kaj se v mestu in njihovi četrtni skupnosti dogaja. Preglednost ni dobra volja oblasti, ampak njena dolžnost.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Da. Mesto ne more pričakovati, da bodo občani sodelovali pri odločanju, če jih o pomembnih zadevah niti pravočasno ne obvesti. Danes morajo ljudje pogosto sami iskati informacije o tem, kaj se načrtuje v njihovi neposredni okolici. To je treba spremeniti. Podpiramo lastne komunikacijske kanale četrtnih skupnosti, možnost naročanja na novice MOL po posameznih četrtih ter obveščanje prek oglasnih desk in tiskanih obvestil v sodelovanju z upravniki in predstavniki stanovalcev, ob spoštovanju potrebnih soglasij. Ne smemo pozabiti na starejše in vse, ki ne uporabljajo družbenih omrežij. Občani ne smejo za odločitve, ki vplivajo na njihovo življenje, izvedeti šele takrat, ko se začnejo izvajati.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Da. Občani ne smejo biti postavljeni pred izvršena dejstva. Če želimo, da sodelujejo pri odločanju, jim moramo dati možnost, da se z gradivi pravočasno seznanijo, oblikujejo svoja stališča in postavijo vprašanja. Zato bomo zagotovili objavo dnevnega reda in gradiv najmanj sedem dni pred sejo ter čas za vprašanja in pobude občanov. Četrtna skupnost ne sme biti zgolj organ, ki potrjuje že sprejete odločitve mestne oblasti. Biti mora prostor razprave, tudi različnih mnenj. Mesto ni projekt, o katerem odloča peščica ljudi. Mesto soustvarjamo vsi, ki v njem živimo. Zato tudi pravimo: Ljubljana smo vsi.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Da. Vsaka pobuda občanov si zasluži odgovor, ne pa da obleži v predalu mestne uprave. Zato bomo določili jasne roke za odgovore in zagotovili javno evidenco pobud, iz katere bo razvidno, kako se obravnavajo in zakaj so bile posamezne odločitve sprejete.
+
+Pri prostorskem načrtovanju pa želimo narediti še korak dlje. Prebivalci morajo biti vključeni že takrat, ko se o prihodnosti njihove soseske šele razmišlja, ne pa šele ob javni razgrnitvi že pripravljenih načrtov. Zato predlagamo tudi uvedbo mestnih državljanskih skupščin po načelih deliberativne demokracije, v katerih bodo prebivalci skupaj s strokovnjaki razpravljali o ključnih razvojnih vprašanjih. Tako lahko namesto odločanja za zaprtimi vrati vzpostavimo prostor za argumentirano razpravo in iskanje rešitev, ki bodo imele širšo podporo prebivalcev.</span></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Da. Četrtne skupnosti morajo dobiti več pristojnosti, pa tudi ljudi in sredstva, da jih bodo lahko izvajale. Danes od njih pričakujemo, da bodo reševale težave prebivalcev, pri tem pa pogosto nimajo ustrezne podpore mestne uprave. Zato bomo predlagali dodatno kadrovsko okrepitev ČS Bežigrad, namenjeno sodelovanju s prebivalci, civilnimi iniciativami in lokalnimi organizacijami. Ne potrebujemo še enega birokratskega položaja, temveč človeka, ki bo poznal težave na terenu, povezoval ljudi in skrbel, da se bodo njihove pobude tudi uresničevale.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="15" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">15.</span> LZJ</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Zemljiška knjiga je javna in do nje lahko že sedaj dostopa vsak občan. Zato je javno dostopna tudi informacija o lastništvu parcel, označeno pa je tudi, ali je parcela s čim obremenjena (npr. teče postopek po ZVEtL). Poleg tega je ZK »živa« in se ves čas spreminja.  Podobno velja za zahtevke po ZVEtL, saj je moč te vložiti kadarkoli. Posledično nekaj, kar velja danes, nujno ne bo veljalo tudi jutri.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Za to si ČS prizadeva ves čas, a iskanje rešitve zahteva sodelovanje številnih deležnikov.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Tovrstna prizadevanja smo podpirali že do sedaj in tako bomo ravnali tudi v prihodnje. Vendar je treba ob tem spomniti, da so banke v zasebni, Pošta Slovenije pa v državni lasti in ne MOL ne ČS na to nimata neposrednega vpliva.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">V skladu s pristojnostmi MOL in sveta ČS.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Svet ČS je (skupaj s Policijo in MR) že pripravil sejo, na kateri se je obravnavala varnostna problematika. Vsako leto svet ČS obravnava tudi prioritetne naloge s področja varnosti in jih posreduje MR in PU Ljubljana. Prav tako smo organizirali sestanek z upravniki, predstavniki stanovalcev (nekateri NO), policije in MR ter MOL glede delovanje društva Stigma v Zupančičevi jami in glede problematike zaradi uporabnikov drog.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Tovrstna prizadevanja smo podpirali že do sedaj in tako bomo ravnali tudi v prihodnje. Javno podjetje VOKA SNAGA to počne že sedaj. Občani lahko to javijo na telefonsko številko 031 659 424, ali ali pošljejo e-sporočilo na vokasnaga@vokasnaga.si.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Svet ČS Bežigrad je že sedaj vabil občane, naj podajo svoje predloge za izboljšanje bivanja v ČS, poziv za lokacije klopi je zato dobrodošel. Je pa te moč postaviti zgolj na zemljiščih v lasti MOL.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Svet ČS je v okviru akcije za lepšo Ljubljana je v Savskem naselju (in drugod) zmeraj podprla čistilne akcije, če je prišla za njih pobuda ali s strani svetnika ali strani občana (poskrbeli smo objavo na spletni strani in FB, zagotovili rokavice, vrečka, pobiralke smeti/tudi drugo orodje, če je bila želja, poskrbeli za odvoz zbranih odpadkov in za malico.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Že do sedaj smo aktivno sodelovali v akcijah Človek čuvaj svoje mesto in tako bo tudi v prihodnje. Ob tem računamo na lastnike psov, da za njimi res pospravijo. Spominjamo, da je pasje iztrebke moč odlagati v vse koše za mešane odpadke!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Tovrstne pobude smo podpirali že do sedaj in jih bomo tudi v prihodnje. MOL sicer to že počne, je pa tudi tu odvisno od lastništva zemljišča, na katerem drevo stoji.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">To smo počeli že v tem mandatu, s tem bomo nadaljevali tudi v prihodnje. Ob tem naj spomnimo, da posaditev drevesa zahteva ustrezno strokovno oceno vseh dejavnikov in tveganj, zato zgolj predlog občanov za postavitev drevesa na točno določeni lokaciji ni vedno dovolj.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Svet ČS, v sodelovanju z Oddelkom za ravnanje z nepremičninami MOL in Službo za lokalno samoupravo MOL, že sedaj vodi preglednico prostorov. Skupaj si prizadevamo za njihovo polno zasedenost in ob tem veliko pozornost namenjamo vsebinam, s katerimi se zapolnjujejo ti prostori. Brezplačna uporaba prostorov je odvisna od vsebine aktivnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">V skladu s pristojnostmi sveta ČS.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">MOL podpira odprta igrišča, izjema so igrišča, kjer je potrebno zagotavljati posebno stopnjo varnosti (denimo vrtci). Kjer si OŠ deli igrišče z vrtcem, je le to zaprto. Prostor pod streho podpiramo, v kolikor se najde ustrezna lokacija in bo za to sprejet širši konsenz med bližnjimi stanovalci.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">Kot že do sedaj, bodo tudi v prihodnje predlogi za malam dela temeljili na pobudah občanov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">Obveščanje po kanalih sveta ČS.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">Informacije zemljiške knjige so javne in dostopne vsem zainteresiranim. Svet ČS nima pristojnosti urejanja zadev na parcelah, ki so v zasebni lasti.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Skladno s 4. odstavkom 115. člena Poslovnika Mestnega sveta MOL se zapisniki sej svetov ČS vodijo v obliki skrajšanega zapisnika ali zapisnika sklepov. Morebitno izjemo od tega pa lahko določi svet ČS. Vsak svetnik ali razpravljalec ima pravico predlagati popravek na osnutek zapisnika, ki pa ga svet ČS obravnava šele na naslednji seji. Zato bi bilo objavljanje nepotrjenih zapisnikov (četudi zgolj njihovih izsekov) nepravilno. Ko pa je zapisnik formalno potrjen, je objavljen na uradni spletni strani ČS.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Že do sedaj smo v LZJ to podpirali, je pa tudi ta odločitev v pristojnosti vsakokratnih svetnikov ČS, ki na svoji prvi seji sprejmejo sklep o tem, ali bo ČS imela svoje kanale tudi na socialnih omrežjih, ali pa bo za namene obveščanja uporabljala (le) spletno stran in oglasne deske ČS. 
+ČS Bežigrad ima že od leta 2012 tudi svoje letno glasilo, ki je naslovljeno na prav vsako gospodinjstvo v ČS,. S to prakso bomo nadaljevali tudi v prihodnje. Odločitev o tem, ali v določenem letu ČS izda glasilo, pa je stvar odločitve celotnega sveta ČS. 
+
+Se je pa ob tem treba zavedati, da tako vodenje vsebin na socialnih omrežjih, kot tudi izdajanje glasila od svetnic in svetnikov zahteva precej časa in dela, ki ga opravljajo v svojem prostem času.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Vabilo na redno sejo sveta ČS z dnevnim redom je (na spletni strani ČS) vedno objavljeno vsaj 7 dni pred sejo. 
+
+Svet ČS Bežigrad že vsa leta na svojih sejah obravnava vse pobude občanov, ne glede na datum prispetja na ČS, na prvi možni seji, v kolikor je za njih pristojen. Sicer jih odstopi pristojnemu organu. S to prakso bomo nadaljevali tudi v prihodnje.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Poudariti velja, da podajanje odgovorov na pripombe in predloge na OPPN presega pristojnost četrtnih skupnosti. So pa stališča oziroma pripombe sveta ČS na dopolnjen osnutek OPPN javno objavljena v gradivu za sejo Mestnega sveta MOL, na kateri se obravnava PREDLOG OPPN. V njih se mestna uprava tudi opredeli do pripomb sveta ČS.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Občani se že sedaj lahko kadarkoli obračajo na katerokoli izmed svetnic oz. kateregakoli izmed svetnikov ČS, Prav tako tehnično in strokovno pomoč nudijo sodelavci Službe za lokalno samoupravo MOL. Ob tem naj spomnimo, da velikosti posameznih ČS presega velikost številnih občin v Sloveniji.
+
+Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj omenimo prakso, ki deluje v Štepanjskem naselju. Tam delovno skupino, ki nagovarja izzive posamezne soseske, sestavlja do 5 predstavnikov CI in do 5 svetnikov ČS.</span></li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+    <p class="graf-opomba">Vir: oddane zaveze list (31 vprašanj), objavljene na <a href="https://anketa.savska.org/zaveze/">straneh zavez</a>. Upoštevani sta oznaki »da« in »delno«; odgovori »ne« in vprašanja brez odgovora niso prikazani.</p>
+  </section>
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
@@ -1076,6 +1800,529 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
     </ol>
     <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. Manjkajoči glasovi: sedeži se delijo po D’Hondtovem sistemu (14.&nbsp;člen ZLV, brez praga); število pove, koliko glasov več bi lista potrebovala, da bi njen prvi količnik presegel zadnji podeljeni količnik (537,67), ob nespremenjenih glasovih drugih list. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
   </figure>
+  <section class="tema-filter" id="filter-neizvoljeni" aria-labelledby="filter-neizvoljeni-nasl" data-skupaj="8">
+    <h3 id="filter-neizvoljeni-nasl">Zaveze po temah</h3>
+    <p class="tf-uvod">Izberi eno ali več tem. Prikazane so liste brez mandata, ki so pri vsaj enem vprašanju te teme označile »da« ali »delno«, in njihove zaveze, kot so jih liste same napisale. Vrstni red je enak glasovnici. Zavez niso oddali: Demokrati, Resni.ca.</p>
+    <fieldset class="tf-izbor" hidden>
+      <legend>Teme iz ankete</legend>
+      <div class="tf-cbs">
+        <label class="tf-cb"><input type="checkbox" name="tema" value="parkiranje"> <span>Parkiranje</span> <span class="tf-n">(6)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="storitve"> <span>Pošta, banka in druge storitve</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="promet"> <span>Promet skozi naselje</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="varnost"> <span>Igle in droge, varnost</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="klopi"> <span>Več klopi</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="cistoca"> <span>Čistoča in pasji iztrebki</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="zelenje"> <span>Drevesa in zelenice</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="dom"> <span>Dom skupnosti, prostor za druženje</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="zrak"> <span>Boljši zrak in hrup</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="mladi"> <span>Igrišča in prostor za mlade</span> <span class="tf-n">(5)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="maladela"> <span>Mala dela ČS in prijave poškodb</span> <span class="tf-n">(4)</span></label>
+        <label class="tf-cb"><input type="checkbox" name="tema" value="obvescanje"> <span>Obveščanje in komunikacija s ČS</span> <span class="tf-n">(6)</span></label>
+      </div>
+      <div class="tf-nacin" role="radiogroup" aria-label="Pri več temah">
+        <label><input type="radio" name="tf-nacin-neizvoljeni" value="ali" checked> vsaj ena izbrana tema</label>
+        <label><input type="radio" name="tf-nacin-neizvoljeni" value="in"> vse izbrane teme</label>
+      </div>
+      <button type="button" class="tf-pocisti">Počisti izbor</button>
+    </fieldset>
+    <p class="tf-stevec" aria-live="polite"></p>
+    <ol class="tf-seznam">
+      <li class="tf-lista" data-ve="2" data-teme="parkiranje storitve zelenje dom zrak mladi obvescanje">
+        <h4><span class="nr">2.</span> SLS</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">v optimalnih časovnih gabaritih, po sondiranju terena na MOL in sodelovanju s tamkajšnjimi zaposlenimi in odgovornimi.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">S pogovori, pisanjem in komunikacijo s pristojnimi.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Komunikacija s pošto je zelo težka. Pošta je dolgo ignorirala stanovalce soseke Župančičeve jame, Savskemu naselju pa je pošto celo vzela. Župančičeva jama je zaposljevala veliko oholih, samovšečnih, lenih in neprijaznih ženskih uslužbenk. Zdaj poleg znamk dosti več skorajda ne moreš kupiti, poštnih storitev pa ne opraviti.
+Ja, z vso vnemo bom poskrbela za komunikacijo s pošto in drugimi vladnimi institucijami, da se POŠTA ZGODI!
+Zavzela se bom, da slovenska pošta ne bo šla po poti Danske in da Savskemu naselju vrnila dolgoletno institucijo</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Komunikacija in sodelovanje z vsemi potrebnimi institucijami, organi,...</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Komunikacija in sodelovanje z vsemi potrebnimi institucijami, podjetji...</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">S prebivalci in Arboretumom bomo izbrali prava drevesa in prava mesta zanje, toliko bolj, ker ima Arboretum zdaj celo pot dreves, ki so lažje prilagodljiva novodobnim vremenskim pojavom.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Vsekakor je začetek v naboru prostorov, ki so na voljo.
+Sledi pogovor s člani sveta ČS, katere dejavnosti bomo izpeljali najprej in katere malo kasneje,
+Potem so na vrsti nositelji projektov, programov...
+In začetek dela!</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">Aktivno sodelovanje, prevzem dela po dogovoru.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Aktivno sodelovanje, prevzem dela po dogovoru.</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Sodelovanje po potrebi.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">V sodelovanju z ostalimi člani bom aktivna na meni določenih nalogah in skrbela za njih uresničitev v najkrajšem možnem času.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Kjer bo dogovor to dovoljeval.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Nisem tehnik, sem pa organizator, komunikator in skrbnik besede, torej bo to moje področje</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Po dogodku bom poskrbela za zapis.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">kot pisateljica, novinarka...</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Ja, zahtevala bom informacije, gradiva in drugo, od pristojnih in jih v kratki obliki in nazorno, da bo besedilo razumel vsakdo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Ja, obveščanje bo sprotno, pa razlogi zakaj, kdo in kje je zatajil tudi! Poimensko!</span></li>
+            <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Seveda, saj je obseg dela zelo velik in nujno je, da MOL skrbi tudi za četrtne skupnosti, ki so ven iz centra mesta. Te so v primerjavi s centrom zapuščene!
+Dovolj je tega, da župan vidi do konice svojega nosu in se zave, da je MOL mesto s 17 četrtnimi skupnostmi.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="3" data-teme="">
+        <h4><span class="nr">3.</span> Demokrati</h4>
+        <p class="tf-brez">Lista zavez ni oddala.</p>
+      </li>
+      <li class="tf-lista" data-ve="6" data-teme="parkiranje promet varnost klopi cistoca obvescanje">
+        <h4><span class="nr">6.</span> Prerod</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Vsekakor, pomembno je poznati obstoječe stanje, da se lahko lotimo sistematičnega reševanja problema. To vprašanje lahko svet ČS uradno zastavi županu, občina pa bo svetu ČS posredovala podatke. Vsi taki popisi morajo biti tudi javno objavljeni.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Drži, strinjamo se, da nov parkirni režim ne sme kaznovati ljudi, ki ob svojem bloku parkirajo že desetletja. Zavzeli se bomo za brezplačne dovolilnice za stanovalce, ki bodo v svojih soseskah parkirali prednostno. Vsak nov režim pa se bo vzpostavljal samo v dogovoru s prebivalci.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Da, zavezujemo se in podpiramo strokovno prometno presojo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Varnost v prometu nam je absolutna prioriteta. Zagotoviti moramo varnost najranljivejših, torej pešcev in kolesarjev, predvsem pa otrok in starostnikov. Varni prehodi bi morali biti do začetka novega šolskega leta že umeščeni in zarisani, pobuda se lahko da veliko hitreje, že v prvih mesecih.</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Seveda da bomo, ključen cilj naše kampanje je, da mestna oblast bolje posluša prebivalce, odločitve pa se sprejemajo na strokovnih podlagah.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Da, se zavezujemo. Tudi v lastni anketi, ki smo jo opravili s prebivalci Ljubljane, smo opazili, da se nas veliko ne počuti več dovolj varne.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Se zavezujemo in prepoznavamo resno problematiko, ki jo je potrebno urediti v prvih 3 mesecih.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Se zavežemo in menimo, da je to odlična priložnost za participativni proračun mestnih četrti, ki ga predlagamo. Ta bo sicer namenjen tudi dolgoročnim investicijam, ne samo malim delom. A glede na to, da je vaša anketa pokazala, da kar 37 % prebivalcev naselja ocenjuje, da je premalo klopi problem naselja, potem je treba to nasloviti prej kot je rok za mala dela.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">V kolikor bodo upravniki želeli pomagati pri dodajanju več klopi, je to več kot dobrodošlo in jim bomo sigurno pristopili naproti in jim pomagali.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Stranka Prerod je zelena stranka, ki se zavzema za čisto Ljubljano in podpira vsakršno pobudo v smeri organiziranja čistilnih akcij. Naši člani in svetniki bomo pri tem definitivno sodelovali.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Da, se strinjamo, potrebno je zagotoviti več košev za pasje iztrebke in s tem lastnike motivirati, da za svojimi ljubljenčki dosledno pobirajo iztrebke. Večje število košev se lahko doseže že v prvem letu mandata.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Zaradi praktičnih razlogov: tehničnih in finančnih omejitev se ne bi zavzeli za video snemanje sej ali prenosa v živo. Vsekakor pa smo za transparentnost in se strinjamo, da mora biti vsebina sej javna in da mora biti jasno kdo se je za kaj zavzemal in za kaj glasoval. Zato nam je bližja rešitev zvočno snemanje in prepis. Zato bi mi takšno odločitev podprli, opozarjamo pa, da bi se najverjetneje morali s snemanjem strinjati čisto vsi svetniki. V kolikor bi se, to lahko z internim sklepom odločimo in realiziramo že v prvih mesecih novega mandata, in to bi postala nova transparentna praksa.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">To je dobra ideja, ki jo podpiramo. Prebivalci si zaslužijo na dostopen način spremljati delo sveta četrtne skupnosti. Izvajali jo bomo od začetka novega mandata dalje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Vsekakor lahko zagotovimo, da bodo naši svetniki z ljudmi odprto komunicirali in jih poslušali ter sproti obveščali o dogajanju na sejah. Pomembno se nam zdi tudi komuniciranje prek več kanalov, torej prek interneta in npr. tiskanih obvestil, predvsem za tiste, ki do interneta nimajo dostopa oz. niso vešči uporabniki tovrstnih kanalov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">To ocenjujemo kot minimalni standard in se s predlaganim strinjamo. Prav tako je smiselno imeti čas na seji za vprašanja občanov, ki si zaslužijo odgovore. Gradivo bi bilo javno dostopno preko spleta; ob tem pa smo odprti za predloge, kako ga približati ljudem, ki niso vešči uporabe interneta.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Zavzemamo se zato, da bo na pobude odgovorjeno na naslednji seji ČS. V luči transparentnosti se strinjamo tudi z javno objavljenim seznamom pobud in njihovim stanjem. Glede sprememb OPPN veliko reši že zaveza o javnih poročil iz sej. Strinjamo se, da bi o spremembah OPPN moral svet ČS prebivalce obvestiti in zagovarjati njihove interese.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Da, takšno pobudo lahko naslovimo na MOL, a opozarjamo, da je zaposlovanje in financiranje kadrov v rokah MOL, zato ČS Bežigrad ne more sama neposredno zaposliti nove osebe. Ocenjujemo pa, da bi bilo v primeru spremembe mestne oblasti, to lažje izvedljivo.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="8" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">8.</span> Vesna</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Jasna analiza stanja je predpogoj za uspešno reševanje problematike.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Na osnovi analize stanja in javne razprave bodo pripravljeni alternativni predlogi reševanja problematike, ki bodo vključevali argumente za in proti. Odločitev bo sprejeta na skupščini stanovalk in stanovalcev.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">V skladu z doktrino 15minutnega mesta je potrebno zagotoviti osnovne servise za vse prebivalke in prebivalce MOL. Pošta in banka sta osnovni servis, ki mora biti dostopen peš v nekaj minutah. 
+Odgovori Pošte in Bnk bodojavno objavljeni.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Glej prejšnje vprašanje.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Ureditev prometa v naseljih je del celostne prometne strategije MOL. Na osnovi pripomb prebivalk in prebivalcev je v dogovoru s širšo interdisciplinarno skupino strokovnjakov potrebno poiskati ustrezne rešitve in sanirati nevarna mesta.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Komunikacija prebivalk inprebivalcev s pristojnimi institucijami je nujna za složno sobivanje. Vključevanje ustreznih strokovnjakov omogoča prprečevanje konfliktov in izbiro ustreznih rešitev za odpravoproblemov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Participacija prebivalki in prrebivalcev pri urejanju javnih prostorv je nujna. Skladno s predlogi bodo pripravljene rešitve ureditev, ki bodo pred izvedbo javno predstavljene in po potrebi dopolnjene.</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Čistilne akcije so del povezovanja skupnosti in način ozaveščanja prebivalk in prebivalcev o potreni skrbi za skupno bivalno okolje. Sem sodi seveda tudi ozaveščanje lastnikov psov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Namestitev košev za pasje iztrebke je enostaven poseg, ki omogoča ustrezno higieno javnih odprtih prostorov. Je pa pomembno, da lastniki psov dosledno pobirajo iztrebke svojih kužkov.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">MOL ima kataster vseh dreves na javnih površinah. Smiselo je vzpostaviti komunikacijski kanal preko katerega bodo lahko meščanke in meščani obveščali O ev. spremebah na drevesih in potrebe po posegih na njih. Vsekakor mora biti javsnost pravočasno obvešečna o vseh posegih na drevju in razlogih zanje. Predlogi novih ureditev morajo biti predmet javne razprave in obravnave predlogov. Spodbijamo večanje števila dreves in zamanjševanje tlakovanih površin, kar zmanjšuje pregrevanjein omogoča ponikovanje deževnice.</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Prebivalke in prebivalci bodo predlagali lokacije izberemo skupaj z prostorskimi načrtovalci in arboristi.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Ne samo v Savskem naselju ampak v celotni ČS. tudi na tem področju je potrebno narediti analizo vseh nepremičnin v lasti MOL, kakšne in kako velike so in v kakšnem stanju so. Vzpostavitev mreže skupnostnih prostorov, ki so na voljo za brezplačno uporabo vsem meščankam in meščanom je nujna za grajenje skupnosti.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">Stavbo je potrebno prenoviti. Urniki vseh skupnostnih prostorov moraj biti javno dostopni na spletni strani ČS, kjer je mogoče turi rezervirati proste termine ob kratkem opisu dogodka.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Meritve zagotavljajo podatke, potrebne za razmislek o potrebnih ukrepih. Vsakršno preseganje mejnih vrednosti mora sprožiti procese za ustrezne ukrepe.</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Preseganje mejnih vrednosti je potrebno preprečiti z ustreznimi ukrepi. Na pobudo prebivalk in prebivalcev je na izpostavljenih lokacijah potrebno izvesti meritve. Na osnovi meritev ter prostorskih razmer je ob sodelovanju strokovnih institucij potrebnodefinirati zaščitne ukrepe. Nobeno preseganje mejnih vrednosti onesnaženja ni dopusto in ga ne smemo tolerirati. Nujno je zadeve sanirati, saj je to pogoj za zagotovitev normalnih bivalnih razmer za vse prebivalke in prebivalce mesta.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Prostore je seveda potrebno pregledati, a zeloverjetno med svetniki ČS ne bo ustreznih strokovnjakov. Svet poda pobudo,za izvedbo analize stanja, izvedbo nujnih sanacij in identifikacijo dodatnih ureditev. Zagotovitev prostorov za mlade je del ureditve skupnostnih prostorov v vseh ČS. Mreža skupnostnih prostorov je del javne infrastrukture in osnovnih servisov in mora biti urejena skladno z doktrino 15 minutnega mesta.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">Zbarali bomo pobude prebivalki in prebivalcev ČS, si skupaj z njimi in strokovnimi službami MOL ogledali razmere in predvideli izvedbo potrebnih del. V primeru zahtevnejših prostorskih ureditev bo potrebno angažirati ustrezne strokovnjake. Pred izvedbo mora predlog potrditi lokalna skupnost.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">Pravočasno obveščanje o možnosti sodelovanja v demokratičnih postopkih je predpogoj participativnega in transparentnega upravljanja mesta. Načini zagotavljanja obveščenosti (oglasne deske, spletna stran, družbena omrežja...) morajo biti zapisani v statutu MOL.</span></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">Potrebna je analiza pravnega stanja zemljišč. Podana bo pobuda, da se na državnem nivoju ustrezno prilagodi nekatere člene ZVEtL. Skrajno problematična je namreč privatizacija skupnih delov sosesk, saj lahko vodi v razgradnjo javnega prostora. Nuno je na nivoju MOL sprejeti dogovor o vzdrževanju vseh površin,ki predstavljajo grajeno javno dobro, četudi so skladno z zakonom dodeljene posameznim stavbam in njihovim lastnikom.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Transparentnost odločanja je predpogoj za zagotovitev demokratičnega in participatornega upravljanja mesta. Snemanje sej je logična zahteva, ki onemogoča manipulacije. Sklep o snemanju sej je potrebno sprejeti na prvi sejai Sveta ČS.
+Če trenutna tehnološka oprmeljenost ČS ne omogoča snemanja je to potrebno zagotoviti do naslednje seje.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Snemanje sej v povezavi z umetno inteligenco omogoča hitro pripravo zapisnikov in povzetkov. Objava povzetka seje na spleti strani ČS je sevda nujna in omogoča sprotno odzivanje prebivalk in prebivalcev.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Obveščanje o pomembnih dogodkih, pomembnih odprtih vprašanjih, ki zahtevajo participacijo prebivalk in prebivalcev ter odločitev je smiselno tudi v tiskani obliki npr 1x mesečno (po potrebi tudi večkrat) objavljati na oglasnih deskah,</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Dnevni red in gradivo morata biti objavljena pravočasno - najmanj 7dni pred sejo. Seja mora biti odprta za zainteresirane občanke in očane, ki morajo imeti možnost podajanja vprašanj in pripomb.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">MOL mora na vsako pobudo podati odgovor. Nujno je potrebno spremembe opn pripraviti pregledno in ločeno po četrtnih skupnosti. Prav takoje potrebno zbrati pobude in odgovore nanje. Ker MOL prejme veliko število pobud je nujno zagotoviti preglednost saj je večina pobud zanimiva za širši krog meščanki in meščanov. 
+Če so pobude in odgovori, kot do sedaj predstavljeni po vrstnem redu prispelosti, je preglednost slaba, obveščenost javnosti pa povsem neustrezna.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Odvisno od obsega dela. Glede na precej številčno zasedbo Sveta ČS je verjetno mogoče za komunikacijo zadožiti enega ali več članov Sveta.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="9" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">9.</span> NSi in Fokus</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Pristojne službe MOL bomo pozvali, da pripravijo oziroma javno predstavijo podatke o parkiriščih v lasti MOL, parkiriščih na zemljiščih etažnih lastnikov ter zemljiščih, ki so predmet postopkov po ZVEtL. Pri tem je treba upoštevati, da ugotavljanje lastništva in odločanje v postopkih ZVEtL ni v pristojnosti sveta četrtne skupnosti.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">V okviru naših pristojnosti bomo še naprej sodelovali s civilno iniciativo in podpirali rešitve, ki bodo upoštevale potrebe stanovalcev ter zagotavljale proste pločnike, zelene površine in varne poti za pešce.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Na Pošto Slovenije in banke smo se v ČS Bežigrad v zvezi s to problematiko že obrnili. Na pristojne naslovnike se bomo ponovno pisno obrnili, pri čemer bomo upoštevali tudi podatke in ugotovitve ankete občanov</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Vse to že vsa leta in že prejšnji mandat podpiramo, vendar se morate zavedati,  da končne odločitve o izvajanju teh storitev niso v pristojnosti sveta ČS.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Zopet je enak odgovor. Vse te pobude stalno naslavljamo na MOL in pristojne službe.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Tudi to vsako leto sodeleujemo s PP Bežigrad, z OŠ in dajemo pobude za čim večjo varnost otrok.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Več  pobud smo dali  lanskem letu, vendar ne moremo narediti nič, ker nas &quot;zablokira&quot; odbor za gospodarske javne službe in promet pri MOL.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Dali bomo pobudo za organizacijo rednih srečanj predstavnikov policije, Mestnega redarstva in prebivalcev ČS Bežigrad</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Predlogi mest za klopi</strong></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Čistilne akcije organiziramo že zdaj in pri njih tudi člani aktivno sodelujemo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Podpiramo vključevanje prebivalcev pri izbiri lokacij za zasaditev novih dreves. Občane bomo povabili k posredovanju predlogov.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">V prvem letu bomo dali pobudo za pripravo pregleda razpoložljivih prostorov v Savskem naselju in pri MOL preverili njihovo lastništvo, namembnost ter možnosti uporabe.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Obnova Belokranjske 6</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Podpiramo pobudo za popoldansko uporabo šolskega igrišča in ureditev pokritega prostora za druženje mladih. Že večkrat smo pozvali ravnatelje OŠ za Bežigradom, da so igrišča popoldne odprta. .</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Odprti smo za vse pobude in še posebej bomo veseli pobud mladih.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Predlogi za mala dela</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Obvestilo pred rokom</strong></li>
+            <li><span class="odg delno">Delno</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">kolikor je v naši pristojnosti.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Da, podpiramo večjo preglednost in javnost delovanja sveta ČS Bežigrad, vendar vse v okviru ki jih ponuja zakon o varstvu podatkov.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Zapisniki sej sveta ČS Bežigrad so že sedaj pregledni in vsebujejo sprejete sklepe ter bistvene informacije o obravnavanih temah. Zavzemali se bomo za ohranitev te prakse in po potrebi njeno nadgradnjo s kratkimi povzetki sej, ki bodo javnosti dostopni v čim krajšem času.</span></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Zavzemali se bomo za boljšo uporabo obstoječih komunikacijskih kanalov MOL in ČS ter za dodatne možnosti obveščanja prek družbenih omrežij, elektronskih novic in oglasnih desk. Pri tem je sodelovanje z upravniki večstanovanjskih stavb zelo dobra pobuda.</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Na sejah sveta ČS Bežigrad imamo že sedaj stalno točko dnevnega reda v okviru katere redno obravnavamo vprašanja, pobude in predloge prebivalcev.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Zavzemamo se, da so prebivalci o načrtovanih spremembah  (OPPN) obveščeni čim prej, že v fazi njihove priprave, saj je pravočasno vključevanje javnosti pomembno pri odločanju o razvoju naše četrtne skupnosti.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">V ČS Bežigrad je zaposlena tudi koordinatorka, ki skrbi za tekoče delovanje četrtne skupnosti in komunikacijo z občani ter je vsak delovni dan prisotna v prostorih ČS na Vojkovi cesti 1. Občani se lahko nanjo neposredno obrnejo s svojimi vprašanji in pobudami.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="10" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">10.</span> SD</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">To se da ugotoviti iz zemljiške knjige.</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">To bi moralo biti urejeno v vseh naseljih v ČS Bežigrad.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">To smo že storili v prejšnjem mandatu in tudi MOL, a brez uspeha.</span></li>
+            <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Predlog vsekakor lahko oblikujemo.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Vsekakor.</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Skupaj s šolo in vrtcem.</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Več komunikacije s prebivalci preko zborov prebivalcev določenega območja.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Vsaj enkrat letno je bilo to organizirano tudi v prejšnjih mandatih vendar le za člane sveta in ravnatelji V in OŠ.</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Pobudo bomo dali, realizacijo je težko zagotoviti</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Predlog morajo vsekakor dati prebivalci.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Doslej so akcije potekale vsaj 1x letno, lahko pa večkrat.</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Opozarjati je treba tudi lastnike psov, da pasje iztrebke pobirajo.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong></li>
+            <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Verjetno je to odvisno od MOL, vsekakor pa je treba dati pobudo.</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Po obnovi ŽP Ljubljana vsekakor predlog mestni upravi in MS.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Predlog je potrebno dati.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">Tudi sedanji člani sveta so zlasti v prejšnjem mandatu iz Savskega naselja opozarjali in dali predloge za ureditev skupnih površin, zlasti igrišč.</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">To je nujno potrebno pa tudi komunikacija s četrtnimi svetniki, ki jih boste izvolili in prebivajo v vašem naselju.</span></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">To bi morali že storiti in verjetno so že pojasnili, sicer pa je to prvi korak za naslednje korake pri urejanju teh površin za prebivalce.</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">To je potrebno urediti skladno z varstvom osebnih podatkov. Seje se že sedaj snemajo, kot nam je znano iz prejšnjih mandatov. Smatramo, da je dovolj, če je na voljo uradno potrjen zapis s sklepi.</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong></li>
+            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Dovolj je obveščanje na uradni strani ČS, ki ima tudi stran na družbenih omrežjih ˙n.pr. Facebook</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">To se da urediti s sklepom na seji sveta ČS. Tudi vprašanja prebivalcev se lahko obravnavajo na vsaki seji, zlasti, če so posredovana pisno pred sejo ali pa jih v imenu občanov posreduje svetnik ali strokovni sodelavec v ČS.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Priprava sprememb OPPN se izdela na pristojnem oddelku MOL in tudi ČS ne sodeluje pri pripravi ampak ob razgrnitvi, ko je predstavljena javnosti in so takrat tudi možne še spremembe.</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">To je težko izvedljivo, lahko pa damo predlog.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="12" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
+        <h4><span class="nr">12.</span> Straža</h4>
+        <div class="tf-tema" data-tema="parkiranje">
+          <h5>Parkiranje</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Nimam največ znanja kaj je res in kaj ne a se bom obrnil na sokrajane da prenesem njihove želje naprej</span></li>
+            <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Zahteva je razumljiva in edina sprejemljiva... kdor se k temu ne zaveže je izdajalec lastnega kraja!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="storitve">
+          <h5>Pošta, banka in druge storitve</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Sam stremim k boljšemu dostopu do vseh koristnih objektov vendar sam vidim veliko drugih problemov, katerih posledica je pomankanje zgoraj naštetih!</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Ni vsaka od naštetih stvari potrebna nekatere pa definitivno so!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="promet">
+          <h5>Promet skozi naselje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Seveda, optimizacija cest in drugih prometnih režimov je nujna in daleč v ospredju po prioriteti! to bi bilo potrebno urediti v roku 2 let. Če bomo preveč hiteli bomo dosegli še eno skropucalo in ukradena sredstva prek korupcije!</span></li>
+            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Ni potrebno razglabljati. Varnost najbol ranljivih je pokazatelj zdrave in močne družbe ki skrbi za vse tiste ki sami še niso ali pa niso več 100%!!!</span></li>
+            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Edino sprejemljivo ravnanje je tako kot opisano zgoraj!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="varnost">
+          <h5>Igle in droge, varnost</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Meni osebno ena od tem kjer ne popuščam! Droge in podobne substance smatram kot rak družbe!</span></li>
+            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Podpiram vse zapisano!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="klopi">
+          <h5>Več klopi</h5>
+          <ul>
+            <li><span class="odg delno">Delno</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Imamo veliko več težav tako da mi to ni prioriteta a vseeno predstavljam glas družbe zato si bom tudi  v to smer prizadeval s podporo pri omenjenih idejah!</span></li>
+            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Podajanje informacij je zame ena odobveznosti in ne možnosti kot predstavnik krajevne skupnosti!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="cistoca">
+          <h5>Čistoča in pasji iztrebki</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Seveda je pokazatelj zdravega uma tudi sodelovanje v skrbi za čistočo okolja v katerem živimo in vzgoji družbe z zgledom za boljši jutri!</span></li>
+            <li><span class="odg da">Da</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Za lepo okolico je potrebno narediti korak v vseh straneh, s čiščenjem smeti in tudi z olajšanjem odlaganja odpadkov vseh vrst v pravilne in dovolj pogoste smetnjake!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zelenje">
+          <h5>Drevesa in zelenice</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Tako kot za ljudi je potrebno poskrbeti tudi za drevesa in ostalo zelenje. Sožitje nas in njih gre z roko v roki z boljšim počutjem in življenjem!</span></li>
+            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Ne želim da bi izpustili kakšno dobro lokacijo v kolikor imamo med sabo ljudi ki so v tej smeri strokovnjaki! Več glav več ve!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="dom">
+          <h5>Dom skupnosti, prostor za druženje</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Z aplikacijo o podajanju predlogov bomo hitro jasno vedeli kaj je potrebno postoriti in primerno ukrepali</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">NE obljubljam rad nekaj o čemer ne vem dovolj, tako da se pri tem vprašanju malo postavim na stran a vsekakorse bom pozanimal o tem in ukrepal razumno in v korist sokrajanov!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="zrak">
+          <h5>Boljši zrak in hrup</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Več informacij vemo bolje lahko odreagiramo in pomagamo izboljšati stanje!</span></li>
+            <li><span class="odg da">Da</span> <strong>Hrup ob železnici in cestah</strong><span class="tf-razlaga">Vse kar koristi meni in sokrajanom je moja borba v imenu nas vseh!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="mladi">
+          <h5>Igrišča in prostor za mlade</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Mladi zunaj je edini primeren pojav v družbi. Pozitivno vpliva na duševno zdravje otrok in vseh mladih....ne telefoni in računalniki ampak zdravo gibanje v naravi!</span></li>
+            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Zelo dobra in premišljena ideja ki bo dosegla najbol pozitivno reakcijo če nam uspe kaj doseči!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="maladela">
+          <h5>Mala dela ČS in prijave poškodb</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong><span class="tf-razlaga">Vzelo bo kar nekaj časa in energije vendar nas je veliko in si lahko pomagamo, da odkrijemo vse kar je potrebno postoriti in redno opozarjamo na pomankljivosti! zaslužimo si da opazijo vse kar je potrebno urediti in nam za to tudi namenijo sredstva čim hitreje!</span></li>
+            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong><span class="tf-razlaga">Vse kar vem in za kar delamo bom redno objavljal na spletni strani za čim lažjo preglednost in učinkovitost!</span></li>
+            <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong><span class="tf-razlaga">Tudi sam imam zanimanje kako in kaj storiti za izboljšanje našega kraja!</span></li>
+          </ul>
+        </div>
+        <div class="tf-tema" data-tema="obvescanje">
+          <h5>Obveščanje in komunikacija s ČS</h5>
+          <ul>
+            <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Zahtevam popolno transparentnost!</span></li>
+            <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Da v najkrajšem možnem času bom sam zagotovil na spletni strani pregled projektov, pripomb in idej, ki se tičejo našega kraja</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Menim da je delo zamudno a vseeno pomembno, a sam bi energijo usmeril v hitro in enostavno dostopno spletno stran za vse!</span></li>
+            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Bistvo predstavnikov ČS je komunikacija in usklajevanje s soobčani!</span></li>
+            <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Svojo energijo bom prioritetno uporabljal za čim boljšo komunikacijo in hitro implementacijo idej v četrtno skupnost in kasneje v mestni svet, da se izboljša položaj sokrajanov!</span></li>
+            <li><span class="odg delno">Delno</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Seveda je vsaka oseba ki pomaga doseči, da se kaj premakne zaželjena vendar sem mnenja da smo že kot sami dovolj glasni in pomembni da je to da se nas sliši in upošteva že samoumevno!</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="tf-lista" data-ve="14" data-teme="">
+        <h4><span class="nr">14.</span> Resni.ca</h4>
+        <p class="tf-brez">Lista zavez ni oddala.</p>
+      </li>
+    </ol>
+    <p class="graf-opomba">Vir: oddane zaveze list (31 vprašanj), objavljene na <a href="https://anketa.savska.org/zaveze/">straneh zavez</a>. Upoštevani sta oznaki »da« in »delno«; odgovori »ne« in vprašanja brez odgovora niso prikazani.</p>
+  </section>
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
@@ -1336,6 +2583,33 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
       b.textContent=po?'Po vrstnem redu na glasovnici':'Razvrsti po deležu';
       if(st)st.textContent=po?'Vrstni red: po deležu, od največjega.':'Vrstni red: po glasovnici.';
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  function sklon(n){var m=n%100;return m===1?'lista':m===2?'listi':(m===3||m===4)?'liste':'list';}
+  [].forEach.call(document.querySelectorAll('.tema-filter'),function(f){
+    var fs=f.querySelector('.tf-izbor'),cbs=[].slice.call(f.querySelectorAll('input[name=tema]')),
+        rad=[].slice.call(f.querySelectorAll('.tf-nacin input')),st=f.querySelector('.tf-stevec'),
+        lis=[].slice.call(f.querySelectorAll('.tf-lista')),tot=+f.dataset.skupaj;
+    fs.hidden=false;
+    function osvezi(){
+      var izb=cbs.filter(function(c){return c.checked;}).map(function(c){return c.value;});
+      var vse=rad.some(function(r){return r.checked&&r.value==='in';});
+      var n=0;
+      lis.forEach(function(li){
+        var t=(li.dataset.teme||'').split(' ').filter(Boolean);
+        var ok=izb.length>0&&(vse?izb.every(function(x){return t.indexOf(x)>=0;}):izb.some(function(x){return t.indexOf(x)>=0;}));
+        li.classList.toggle('tf-skrito',!ok);
+        if(ok)n++;
+        [].forEach.call(li.querySelectorAll('.tf-tema'),function(b){b.classList.toggle('tf-skrito',izb.indexOf(b.dataset.tema)<0);});
+      });
+      st.textContent=izb.length?(n+' od '+tot+' '+(tot===1?'liste':'list')+(n===0?' – pri izbranih temah ni zaveze.':'')):'Izberi temo, da se prikažejo liste in njihove zaveze.';
+    }
+    cbs.concat(rad).forEach(function(c){c.addEventListener('change',osvezi);});
+    f.querySelector('.tf-pocisti').addEventListener('click',function(){cbs.forEach(function(c){c.checked=false;});osvezi();cbs[0].focus();});
+    osvezi();
   });
 })();
 </script>
