@@ -1080,4 +1080,162 @@ DESCRIPTION:Rok razpisa: Javna dela 2027
 TRIGGER:-P14D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:rralur-rrp-2028-2034@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261120T235900
+DTEND;TZID=Europe/Ljubljana:20261121T001400
+SUMMARY:RRA LUR: poziv k oddaji projektnih predlogov za Regionalni razvojni
+  program Osrednjeslovenske regije 2028–2034
+DESCRIPTION:RRA LUR – predlogi za RRP 2028–2034\nRok: Rok za oddajo pre
+ dlogov 20. 11. 2026 (ure ne navajajo)\, prek spletnega obrazca na strani R
+ RA LUR.\nZnesek: Ni denarja. Predlog se zapiše med razvojne pobude regije
+ \; oddaja ne pomeni uvrstitve v program ali zagotovljenih sredstev.\nKdo: 
+ Občine\, javni zavodi\, gospodarske družbe\, izobraževalne in raziskova
+ lne ustanove\, nevladne organizacije in drugi razvojni partnerji regije.\n
+ Korist za Savsko: Projekti za čist zrak in zeleno garažo v Savskem dobij
+ o mesto v regionalnem programu\, iz katerega se po letu 2027 delijo evrops
+ ka sredstva.
+URL:https://rralur.si/novice/poziv-k-oddaji-projektnih-predlogov-za-regiona
+ lni-razvojni-program-osrednjeslovenske-regije-2028-2034/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: RRA LUR – predlogi za RRP 2028–2034
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:rpp-lur-javna-razprava@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20270215T235900
+DTEND;TZID=Europe/Ljubljana:20270216T001400
+SUMMARY:RRA LUR: javna razprava o osnutku Regionalnega prostorskega plana L
+ jubljanske urbane regije
+DESCRIPTION:RPP LUR – javna razprava\nRok: Javna razprava od 16. 11. 2026
+  do 15. 2. 2027\; pripombe po e-pošti ali pošti (obrazec na strani RRA L
+ UR). Javni posvet bo napovedan naknadno.\nZnesek: Ni denarja. Pripombe na 
+ strateški prostorski akt regije (promet\, raba prostora).\nKdo: Občani\,
+  strokovna in zainteresirana javnost ter drugi deležniki.\nKorist za Savs
+ ko: Manj tranzitnega prometa skozi Savsko\, če regionalni plan usmeri pro
+ met na P+R in obvoznice.
+URL:https://rralur.si/novice/javna-razprava-o-osnutku-regionalnega-prostors
+ kega-plana-ljubljanske-urbane-regije
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: RPP LUR – javna razprava
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mope-jr-nipp-2026-r2@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T120000
+DTEND;TZID=Europe/Ljubljana:20261130T121500
+SUMMARY:MOPE: Javni razpis za sofinanciranje priprave Načrtov izvajanja pa
+ rkirne politike (JR NIPP 2026) – drugi rok
+DESCRIPTION:JR NIPP 2026 (2. rok)\nRok: Drugi rok 30. 11. 2026 do 12.00 vel
+ ja le\, če v prvem roku (16. 6. 2026) sredstva niso bila v celoti dodelje
+ na\; vloga na gp.mope@gov.si. Stran razpisa na GOV.SI ima oznako »Rok za 
+ prijavo je potekel« (1. rok) – preveriti pri ministrstvu.\nZnesek: Skup
+ aj do 1.000.000 € (Podnebni sklad)\; do 80 % upravičenih stroškov\; na
+ jvišji znesek za MOL 265.125 € (Priloga A).\nKdo: Samo občine\, ki še
+  nimajo izdelanega Načrta izvajanja parkirne politike.\nKorist za Savsko:
+  Parkirni načrt z evidenco mest lahko upraviči garažo za stanovalce in 
+ sprosti prostor med bloki za zelenje in igro.
+URL:https://www.gov.si/zbirke/javne-objave/javni-razpis-za-sofinanciranje-p
+ riprave-nacrtov-izvajanja-parkirne-politike/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: JR NIPP 2026 (2. rok)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-publikacije-posveti-2027@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20270111T235900
+DTEND;TZID=Europe/Ljubljana:20270112T001400
+SUMMARY:MOL: Javni razpis za sofinanciranje znanstvenih oziroma strokovnih 
+ publikacij ter znanstvenih oziroma strokovnih posvetov za leto 2027
+DESCRIPTION:MOL publikacije in posveti 2027\nRok: Vnos v e-aplikacijo in na
+ tisnjena vloga v Glavno pisarno ali priporočeno po pošti najkasneje 11. 
+ 1. 2027. Projekti morajo biti zaključeni do 29. 10. 2027.\nZnesek: Okvirn
+ o 50.000 € skupaj za razpis.\nKdo: Sedež v MOL. Posveti: javni zavodi a
+ li nepridobitne organizacije. Publikacije: založbe\, javni zavodi ali nep
+ ridobitne organizacije z registrirano založniško dejavnostjo.\nKorist za
+  Savsko: Javni strokovni posvet o zraku in prometu v Savskem\, kjer prebiv
+ alci\, stroka in mesto skupaj pregledajo meritve in rešitve.
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/javni-razpis-mol-za-sofinanciranje-znanstvenih-oziroma-strokovnih-pu
+ blikacij-ter-znanstvenih-oziroma-strokovnih-posvetov-za-leto-2027
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: MOL publikacije in posveti 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-mladi-raziskovalci-2027@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T235900
+DTEND;TZID=Europe/Ljubljana:20261201T001400
+SUMMARY:MOL: vabilo za prijavo raziskovalnih aktivnosti na 40. srečanje ml
+ adih raziskovalcev Ljubljane »Zaupajmo v lastno ustvarjalnost«
+DESCRIPTION:MOL mladi raziskovalci (predprijava)\nRok: Predprijava do 30. 1
+ 1. 2026\, prijava naloge do 29. 1. 2027.\nZnesek: Ni denarja\; predstavite
+ v raziskovalnih nalog učencev in dijakov.\nKdo: Učenci osnovnih in dijak
+ i srednjih šol z območja MOL ter njihovi mentorji.\nKorist za Savsko: Ot
+ roci sami izmerijo zrak in promet ob šoli in te podatke predstavijo mestu
+ .
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/vabilo-za-prijavo-raziskovalnih-aktivnosti-ki-bodo-predstavljene-na-
+ 40-srecanju-mladih-raziskovalcev-in-njihovih-mentorjev-ljubljane-zaupajmo-
+ v-lastno-ustvarjalnost
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: MOL mladi raziskovalci (predprijava)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bw-perspektive-donau-2026@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T235900
+DTEND;TZID=Europe/Ljubljana:20261201T001400
+SUMMARY:Baden-Württemberg Stiftung: Perspektive Donau – izobraževanje\,
+  kultura in civilna družba v Podonavju
+DESCRIPTION:Perspektive Donau (BW Stiftung)\nRok: Komponenta B: roka 30. 4.
+  in 30. 11. vsako leto. Komponenta A (mali projekti): sprotno\, najmanj 8 
+ tednov pred začetkom projekta. Prijava v nemščini.\nZnesek: A: 2.000–
+ 10.000 €\; B: do 50.000 €\; do 85 % stroškov\, najmanj 15 % lastnih s
+ redstev\; trajanje do 3 let.\nKdo: Prijavitelj mora biti neprofitna organi
+ zacija s sedežem v Baden-Württembergu\; partner iz druge države Podonav
+ ja (tudi Slovenije)\, ki mora biti prav tako neprofiten.\nKorist za Savsko
+ : Izmenjava sosedskih\, kulturnih in izobraževalnih praks z nemškim part
+ nerjem iz Podonavja.
+URL:https://www.bwstiftung.de/de/programme/perspektive-donau
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Perspektive Donau (BW Stiftung)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
