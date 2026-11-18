@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ta teden prišlo v Knjižnico Savsko naselje – testni predogled</title>
+<meta name="description" content="Testni predogled tedenskih novosti Knjižnice Savsko naselje. Stran ni javna.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{--besedilo:#111;--svetlo:#f3f6f1;--glavna:#0a5232;--glavna-temna:#063a23;--poudarek:#ffd84d;--rob:#5b5b5b;--opozorilo:#7a1f00;--zgled:#fff3c4;--velikost:20px}
+*{box-sizing:border-box}
+html{font-size:var(--velikost);-webkit-text-size-adjust:100%}
+html[data-velikost="2"]{--velikost:23px}
+html[data-velikost="3"]{--velikost:26px}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;color:var(--besedilo);background:var(--svetlo);overflow-wrap:break-word}
+:focus-visible{outline:4px solid #000;outline-offset:3px;box-shadow:0 0 0 7px var(--poudarek)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+h1{font-size:1.5rem;line-height:1.2;margin:0 0 .2rem;color:#fff}
+h2{font-size:1.3rem;line-height:1.25;margin:.2rem 0 .6rem;color:var(--glavna-temna)}
+h3{font-size:1.25rem;line-height:1.3;margin:.2rem 0 .35rem;color:var(--glavna-temna)}
+p{margin:.4rem 0 .8rem}
+a{color:var(--glavna-temna);text-decoration-thickness:2px;text-underline-offset:3px}
+button{font-family:inherit}
+.okvir{max-width:1100px;margin:0 auto;padding-left:1rem;padding-right:1rem}
+.skrito{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.glava{background:var(--glavna);color:#fff;position:sticky;top:0;z-index:1000}
+.glava .okvir{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding-top:.4rem;padding-bottom:.4rem}
+.znamka{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;min-height:48px}
+.znamka img{width:40px;height:40px;border-radius:6px;background:#fff}
+.logo{font-weight:800;font-size:24px;color:#fff;line-height:1.2}
+.logo span{color:var(--poudarek)}
+.logo small{display:block;font-weight:600;font-size:14px;opacity:.95}
+.desno{display:flex;align-items:center;gap:.4rem}
+.velikost{display:flex;gap:.3rem}
+.velikost button{min-width:48px;min-height:48px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;border-radius:10px;cursor:pointer;font-size:16px;padding:0 6px}
+.velikost button[aria-pressed="true"]{background:#fff;color:var(--glavna-temna)}
+
+.trak{background:var(--zgled);border-bottom:3px dashed #8a6d00;font-size:.85rem;font-weight:800;color:#111}
+.trak .okvir{padding-top:.45rem;padding-bottom:.45rem;text-align:center}
+
+.naslovnica{position:relative;min-height:140px;background:var(--glavna);display:flex;align-items:flex-end}
+.naslovnica::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.45))}
+.naslovnica .okvir{position:relative;z-index:1;width:100%;padding-top:2rem;padding-bottom:.9rem;color:#fff}
+.naslovnica p{margin:0;font-size:1rem;max-width:42rem}
+
+.glavno{background:#fff;border-bottom:3px solid #dfe6dc}
+.glavno>.okvir{padding-top:1.1rem;padding-bottom:1.8rem}
+.uvod{max-width:42rem}
+.datum{font-weight:800;color:var(--glavna-temna);font-size:1.05rem;margin:.2rem 0 .8rem}
+.knjiznica{background:var(--svetlo);border:2px solid #cfdacb;border-radius:1rem;padding:.9rem 1rem;margin:0 0 1.4rem;max-width:42rem}
+.knjiznica h2{margin:0 0 .35rem;font-size:1.15rem}
+.knjiznica ul{margin:.2rem 0 .5rem;padding-left:1.2rem}
+.knjiznica li{margin:0 0 .2rem}
+
+.mreza{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media (min-width:820px){.mreza{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}}
+
+.knjiga{background:#fff;border:2px solid #cfdacb;border-radius:1rem;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.slika-ovitek{display:block;background:var(--svetlo);padding:.8rem .8rem 0;text-align:center}
+.slika-ovitek img{display:block;width:100%;max-width:280px;height:auto;margin:0 auto;border-radius:.4rem;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.vir-slike{display:block;font-size:.75rem;color:#444;margin:.45rem 0 0;padding-bottom:.2rem}
+.telo{padding:.7rem 1rem 1.1rem;flex:1;display:flex;flex-direction:column}
+.avtor{font-weight:700;color:#333;margin:0 0 .25rem}
+.podnaslov{font-size:1rem;font-weight:600;color:#333;margin:0 0 .5rem}
+.meta{list-style:none;margin:0 0 .6rem;padding:0;font-size:.95rem}
+.meta li{display:flex;gap:.5rem;align-items:flex-start;margin:0 0 .25rem}
+.meta .ik{flex:none;width:1.4rem;text-align:center}
+.opis{font-size:1rem;margin:.2rem 0 .7rem;flex:1}
+.cobiss{font-size:.92rem;margin:0}
+
+.noga{background:var(--glavna-temna);color:#fff;font-size:.92rem}
+.noga .okvir{padding-top:1rem;padding-bottom:1.2rem}
+.noga a{color:var(--poudarek)}
+.noga p{margin:.4rem 0}
+
+@media (max-width:520px){
+  .logo{font-size:20px}
+  .logo small{font-size:12px}
+  .velikost button{min-width:44px;min-height:44px}
+  h1{font-size:1.35rem}
+}
+</style>
+</head>
+<body>
+<a class="skrito" href="#vsebina">Skoči na vsebino</a>
+<header class="glava">
+ <div class="okvir">
+  <a class="znamka" href="../"><img src="../logo.png" alt="" width="40" height="40"><div class="logo">savska<span>.org</span><small>Kaj se dogaja v naselju</small></div></a>
+  <div class="desno">
+   <div class="velikost" role="group" aria-label="Velikost pisave">
+    <button type="button" data-vel="1" aria-pressed="true" aria-label="Običajna pisava">A</button>
+    <button type="button" data-vel="2" aria-pressed="false" aria-label="Večja pisava">A+</button>
+    <button type="button" data-vel="3" aria-pressed="false" aria-label="Največja pisava">A++</button>
+   </div>
+  </div>
+ </div>
+</header>
+<div class="trak"><div class="okvir">TESTNI PREDOGLED – ni javno</div></div>
+
+<section class="naslovnica">
+ <div class="okvir">
+  <h1>Ta teden prišlo v Knjižnico Savsko naselje</h1>
+  <p>Sveže knjige s police vaše krajevne knjižnice – za branje v čitalnici ali za izposojo na dom.</p>
+ </div>
+</section>
+
+<main id="vsebina" class="glavno">
+ <div class="okvir">
+  <p class="datum">Prispelo v tednu 16.–20. 11. 2026 (testno)</p>
+  <div class="uvod">
+   <p>To je skriti testni predogled tedenskega razdelka z novostmi. Na stran gre samo tisto, kar bo potrjeno, pred javno objavo pa je potrebno tudi pisno soglasje službe za odnose z javnostmi MKL.</p>
+  </div>
+
+  <aside class="knjiznica">
+   <h2>Pridite v Knjižnico Savsko naselje</h2>
+   <p>Belokranjska 2, Ljubljana. Knjige lahko prelistate na licu mesta ali si jih izposodite.</p>
+   <ul>
+    <li>torek 9.30–19.00</li>
+    <li>sreda 10.00–15.00</li>
+    <li>četrtek 13.30–19.00</li>
+   </ul>
+   <p style="margin:0"><a href="https://www.mklj.si/knjiznica/knjiznica-savsko-naselje/">www.mklj.si/knjiznica/knjiznica-savsko-naselje/</a></p>
+  </aside>
+
+  <div class="mreza">
+   <article class="knjiga">
+    <div class="slika-ovitek">
+     <img src="slike/spet-smo-bolni.jpg" width="591" height="741" alt="Naslovnica knjige Spet smo bolni">
+     <small class="vir-slike">Vir naslovnice: <a href="https://mladinska-knjiga.si/knjige/stvarna-literatura/spet-smo-bolni/">Mladinska knjiga Založba</a></small>
+    </div>
+    <div class="telo">
+     <h3>Spet smo bolni</h3>
+     <p class="podnaslov">Celostni vodnik za zdravje otrok in mirnejše starše</p>
+     <p class="avtor">Dina Al Nawas, Alenka Biteznik, Kristina Stare, Mateja Tiselj in Patricija Trunkl</p>
+     <ul class="meta">
+      <li><span class="ik" aria-hidden="true">📖</span><span>Mladinska knjiga Založba, 2026</span></li>
+     </ul>
+     <p class="opis">Pet pediatrinj je v tem priročniku zbralo razumljive nasvete o zdravju otrok, od prvih ur po rojstvu do najpogostejših otroških bolezni. Knjiga staršem pomaga presoditi, kaj lahko storijo sami, kdaj lahko otroka mirno opazujejo in kdaj je čas za zdravniško pomoč. Pridite jo prelistat v Knjižnico Savsko naselje.</p>
+     <p class="cobiss">Dodatek: <a href="https://plus.cobiss.net/cobiss/si/sl/bib/290305539">zapis v COBISS+</a></p>
+    </div>
+   </article>
+
+   <article class="knjiga">
+    <div class="slika-ovitek">
+     <img src="slike/izgorelost.jpg" width="900" height="1320" alt="Naslovnica knjige Izgorelost">
+     <small class="vir-slike">Vir naslovnice: <a href="https://mladinska-knjiga.si/knjige/stvarna-literatura/izgorelost/">Mladinska knjiga Založba</a></small>
+    </div>
+    <div class="telo">
+     <h3>Izgorelost</h3>
+     <p class="podnaslov">Si upate živeti drugače?</p>
+     <p class="avtor">Tina Bončina</p>
+     <ul class="meta">
+      <li><span class="ik" aria-hidden="true">📖</span><span>Mladinska knjiga Založba, 2019</span></li>
+     </ul>
+     <p class="opis">Zdravnica in psihoterapevtka Tina Bončina v priročniku razlaga, kako prepoznati izgorelost in zakaj jo telo sporoča kot opozorilo, da je treba spremeniti ritem življenja in dela. V knjigi so razlage o stresu, sami izgorelosti ter o zdravljenju in spremembi življenjskih vzorcev. Na voljo je v Knjižnici Savsko naselje.</p>
+     <p class="cobiss">Dodatek: <a href="https://plus.cobiss.net/cobiss/si/sl/bib/301469184">zapis v COBISS+</a></p>
+    </div>
+   </article>
+
+   <article class="knjiga">
+    <div class="slika-ovitek">
+     <img src="slike/znanost-mirnega-zivljenja.jpg" width="900" height="1287" alt="Naslovnica knjige Znanost mirnega življenja">
+     <small class="vir-slike">Vir naslovnice: <a href="https://mladinska-knjiga.si/knjige/stvarna-literatura/znanost-mirnega-zivljenja/">Mladinska knjiga Založba</a></small>
+    </div>
+    <div class="telo">
+     <h3>Znanost mirnega življenja</h3>
+     <p class="avtor">David Zupančič</p>
+     <ul class="meta">
+      <li><span class="ik" aria-hidden="true">📖</span><span>Mladinska knjiga Založba, 2023</span></li>
+     </ul>
+     <p class="opis">Zdravnik David Zupančič, avtor uspešnice Življenje v sivi coni, piše o iskanju miru v hektičnem vsakdanu. Nasvete podpira z navedbo več kot 70 strokovnih raziskav in z lastnimi izkušnjami. Knjiga je poljudna in praktična: spodbuja k razmisleku o čuječnosti, spancu in vsakdanjih navadah. Pridite po njo v Knjižnico Savsko naselje.</p>
+     <p class="cobiss">Dodatek: <a href="https://plus.cobiss.net/cobiss/si/sl/bib/162182659">zapis v COBISS+</a></p>
+    </div>
+   </article>
+  </div>
+ </div>
+</main>
+
+<footer class="noga">
+ <div class="okvir">
+  <p><strong>TESTNI PREDOGLED – ni javno.</strong> Ta stran ni namenjena obiskovalcem in je označena, da je iskalniki ne indeksirajo.</p>
+  <p>Naslovnice so uradne založniške slike. Na strani ni fotografij ljudi in ni osebnih podatkov.</p>
+  <p style="margin:0"><a href="../koledar/">Savski koledar</a> · <a href="../">anketa.savska.org</a></p>
+ </div>
+</footer>
+<script>
+(function(){
+  var html=document.documentElement;
+  var gumbi=[].slice.call(document.querySelectorAll(".velikost [data-vel]"));
+  function nastavi(v){
+    html.setAttribute("data-velikost", String(v));
+    try{localStorage.setItem("novosti-velikost", String(v));}catch(e){}
+    gumbi.forEach(function(b){b.setAttribute("aria-pressed", b.getAttribute("data-vel")===String(v)?"true":"false");});
+  }
+  gumbi.forEach(function(b){b.addEventListener("click", function(){nastavi(b.getAttribute("data-vel"));});});
+  try{var sh=localStorage.getItem("novosti-velikost"); if(sh==="2"||sh==="3") nastavi(sh);}catch(e){}
+})();
+</script>
+</body>
+</html>
