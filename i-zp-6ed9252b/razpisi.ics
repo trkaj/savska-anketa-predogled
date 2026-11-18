@@ -1,0 +1,1327 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Savsko naselje//Razpisi//SL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Razpisi za Savsko naselje
+X-WR-CALDESC:Roki razpisov za projekte v Savskem naselju (promet, garaže, zrak, zelenje, skupnost, šolstvo). Preverjeno 18. 11. 2026. Volilno nevtralno.
+X-WR-TIMEZONE:Europe/Ljubljana
+BEGIN:VTIMEZONE
+TZID:Europe/Ljubljana
+X-LIC-LOCATION:Europe/Ljubljana
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VTIMEZONE
+TZID:Europe/Brussels
+X-LIC-LOCATION:Europe/Brussels
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:mol-kultura-2027@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261124T235900
+DTEND;TZID=Europe/Ljubljana:20261125T001400
+SUMMARY:MOL: Javni razpis za izbor kulturnih projektov za leto 2027
+DESCRIPTION:MOL kultura 2027\nRok: Oddaja v aplikaciji in natisnjena vloga 
+ v Glavno pisarno ali priporočeno pošto najkasneje 24. 11. 2026.\nZnesek:
+  Okvirno 600.000 € skupaj za razpis. Največ 70 % vrednosti projekta\; z
+ gornje meje po področjih (npr. 15.000 € produkcija\, 8.000 € vizualne
+ /intermedijske\, 3.000 € kulturno-umetnostna vzgoja\, 3.000 € mladike)
+ .\nSofinanciranje: do 70 %\nSodi predvsem v kulturno produkcijo\, ne v pro
+ met ali garaže. Pride v poštev le\, če imamo kulturni dogodek ali umetn
+ iški poseg v javnem prostoru.\nPreverjeno na uradni strani MOL in v razpi
+ sni dokumentaciji (okvirna vrednost\, točka 10).
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/javni-razpis-za-izbor-kulturnih-projektov-ki-jih-bo-v-letu-2027-sofi
+ nancirala-mestna-obcina-ljubljana
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOL kultura 2027
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-mladina-2027@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261201T235900
+DTEND;TZID=Europe/Ljubljana:20261202T001400
+SUMMARY:MOL: Sofinanciranje projektov za leto 2027 in programov 2027–2029
+  s področja mladinskega sektorja
+DESCRIPTION:MOL mladina 2027\nRok: Natisnjena vloga mora biti oddana s prip
+ oročeno pošto najkasneje 1. 12. 2026.\nZnesek: Okvirno 590.000 € za le
+ to 2027. Projekti (sklop A): največ 6.000 € na vlogo in hkrati največ 
+ 50 % vrednosti\; možnih dodatnih 1.000 € za vključevanje. Triletni pro
+ grami mreženja (sklop B): največ 70 %\, do 35.000 €.\nSofinanciranje: 
+ projekti do 50 % (največ 6.000 €)\; programi do 70 % (največ 35.000 
+ €)\nMed prednostnimi usmeritvami je tudi prometna kultura mladih: hoja\,
+  kolesarjenje\, JPP\, varna mikromobilnost in sodelovanje s četrtnimi sku
+ pnostmi. Ustreza tudi prometni vzgoji in programom za mlade ob šoli\; pri
+ javitelj je mladinska organizacija\, šola ali vrtec je lahko partner (sto
+ lpec partnerjev dopolnimo pozneje).\nPreverjeno na uradni strani MOL in v 
+ razpisni dokumentaciji (poglavje V\, pogoji za sklopa A in B).
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/javni-razpis-za-sofinanciranje-projektov-za-leto-2027-in-programov-z
+ a-obdobje-od-2027-do-2029-s-podrocja-mladinskega-sektorja-v-mol
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOL mladina 2027
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eit-um-sme-me-2027@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261201T170000
+DTEND;TZID=Europe/Ljubljana:20261201T171500
+SUMMARY:EIT Urban Mobility: SME Market Expansion Open Call 2027
+DESCRIPTION:EIT UM SME Market Expansion\nRok: Rok 1. 12. 2026 ob 17.00 CET.
+ \nZnesek: Okvirno 600.000 € skupaj\; približno 10 projektov. Pavšal 60
+ .000 € na izbrano MSP.\nSofinanciranje: pavšal 60.000 € (lump sum)\; 
+ lastna udeležba v razpisnem priročniku\nSmiselno le\, če imamo podjetni
+ škega partnerja z rešitvijo (npr. senzorji zraka\, souporaba\, podatki o
+  mobilnosti) in MOL ali drugega končnega uporabnika kot end-client. Teme 
+ vključujejo tudi zdravje in mobilnost.\nPreverjeno na uradni strani EIT U
+ rban Mobility.
+URL:https://www.eiturbanmobility.eu/call-for-proposals/sme-market-expansion
+ -open-call-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EIT UM SME Market Expansion
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:unhabitat-acros-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART:20261204T205900Z
+DTEND:20261204T211400Z
+SUMMARY:UN-Habitat / ACROS: Road Safety Cities Challenge (2. krog)
+DESCRIPTION:UN-Habitat Road Safety Cities Challenge\nRok: Rok 4. 12. 2026 o
+ b 23.59 vzhodnoafriškega časa (EAT\, UTC+3). Poudarek razpisa je na mest
+ ih v Braziliji\, Etiopiji\, Gani\, Jordaniji\, Keniji\, Liberiji\, Mozambi
+ ku\, Južni Afriki in Zimbabveju.\nZnesek: Do 40.000 USD na pilot\, do 6 p
+ redlogov\, trajanje 6 mesecev.\nSofinanciranje: ni uradno navedena stopnja
+ \; gre za nepovratna sredstva do 40.000 USD\nVsebinsko bi lahko sodil k va
+ rnosti pešcev in šolskih poti\, a je upravičenost zožena na članice A
+ CROS\; Ljubljana v razpisnem besedilu ni med prednostnimi državami. Brez 
+ potrjenega članstva MOL v ACROS prijave ni.\nPreverjeno na uradni strani 
+ UN-Habitat. Članstva MOL v ACROS nismo potrdili.
+URL:https://unhabitat.org/join-us/calls/road-safety-cities-challenge-call-f
+ or-cities-private-sector-partner
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: UN-Habitat Road Safety Cities Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:jr-ekp-utm-2025@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20270126T235900
+DTEND;TZID=Europe/Ljubljana:20270127T001400
+SUMMARY:Javni razpis za sofinanciranje ukrepov trajnostne mobilnosti 2023
+ –2029 (JR EKP UTM 2025)\, 3. rok
+DESCRIPTION:JR EKP UTM 2025 (3. rok)\nRok: Tretji rok je 26. 1. 2027. Razpi
+ s je odprt do porabe sredstev oziroma najkasneje do 30. 4. 2027. Vprašanj
+ a na jr-utm.mope@gov.si do najkasneje 10 dni pred rokom. Prijavitelj je ob
+ čina\, ne prebivalci.\nZnesek: Skupna okvirna višina razpisa 81.527.698\
+ ,93 € (49.527.698\,93 € kohezijska politika + 32.000.000 € Podnebni 
+ sklad). Del sredstev je bil že dodeljen na 1. in 2. roku\; preostanek ob 
+ tem pregledu ni bil objavljen kot ločena številka. Priznani upravičeni 
+ stroški operacije: od 125.000 € do 2.500.000 €\; najvišje sofinancir
+ anje 2.000.000 €.\nSofinanciranje: do 80 % priznanih upravičenih stroš
+ kov\nNajboljši odprti razpis za zeleni promet v Savskem: celovita preured
+ itev ulic\, infrastruktura za pešce in kolesarje\, površine za JPP\, če
+  so ukrepi v CPS MOL. Garaže in čistilci zraka niso predmet razpisa. Naj
+ močnejši odprti vir za varne šolske poti\, prehode in šolsko ulico ob 
+ OŠ in vrtcu\; prijavitelj je MOL.\nPreverjeno na GOV.SI. Stopnja 80 % in 
+ zgornja meja 2.000.000 € izhajata iz razpisnega besedila in uradnih odgo
+ vorov na vprašanja.
+URL:https://www.gov.si/zbirke/javne-objave/javni-razpis-za-sofinanciranje-u
+ krepov-trajnostne-mobilnosti-v-obdobju-2023-2029/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: JR EKP UTM 2025 (3. rok)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eit-um-strategic-innovation-c4@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20270128T170000
+DTEND;TZID=Europe/Ljubljana:20270128T171500
+SUMMARY:EIT Urban Mobility: Strategic Innovation Open Call\, 4. rok
+DESCRIPTION:EIT UM Strategic Innovation (4. rok)\nRok: 4. rok 28. 1. 2027 o
+ b 17.00 CET. 5. rok je 3. 6. 2027.\nZnesek: Do 2.000.000 € EIT sredstev 
+ na projekt. Za 4. rok je okvirno predvidenih približno 12 mio €. Skupni
+  okvir razpisa 2026–2028: 60 mio €.\nSofinanciranje: do 65 % upraviče
+ nih stroškov\; najmanj 35 % lastne udeležbe\nPrimerno za preizkus tržno
+  zrele rešitve v naselju (souporaba\, podatki\, zdravje in mobilnost)\, 
+ če imamo podjetniškega partnerja iz druge države. Ni razpis za gradnjo 
+ garaž.\nPreverjeno na uradni strani EIT Urban Mobility (rok 28. 1. 2027\,
+  65/35\, do 2 mio €).
+URL:https://www.eiturbanmobility.eu/call-for-proposals/strategic-innovation
+ -open-call/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EIT UM Strategic Innovation (4. rok)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cerv-2027-citizens-town-nt@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Brussels:20270317T170000
+DTEND;TZID=Europe/Brussels:20270317T171500
+SUMMARY:CERV-2027-CITIZENS-TOWN-NT: Networks of Towns (mreže mest)
+DESCRIPTION:CERV Networks of Towns 2027\nRok: Po koledarju delovnega progra
+ ma: objava 17. 12. 2026\, odprtje 17. 1. 2027\, rok 17. 3. 2027. Datumi la
+ hko še spremenijo do uradne objave razpisa.\nZnesek: Okvirni proračun ra
+ zpisa 13.000.000 €. Znesek na projekt bo znan ob objavi razpisnega dokum
+ enta.\nSofinanciranje: bo navedena v uradnem razpisnem dokumentu (še ni o
+ bjavljen)\nPrimerno za izmenjavo o sodelovanju prebivalcev\, superisolah i
+ n soupravljanju javnega prostora z drugimi mesti. Ni investicijski razpis 
+ za garaže ali ceste.\nKoledar in 13 mio € sta iz koledarja razpisov CER
+ V 2027 na podlagi delovnega programa 2026–2027\; uradni call fiche še n
+ i objavljen. Zato zneska na projekt in stopnje sofinanciranja ne navajamo.
+URL:https://commission.europa.eu/funding-and-tenders/find-funding/eu-fundin
+ g-programmes/citizens-equality-rights-and-values-programme/citizens-equali
+ ty-rights-and-values-programme-overview_en
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: CERV Networks of Towns 2027
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-miss-2027-04@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Brussels:20271007T170000
+DTEND;TZID=Europe/Brussels:20271007T171500
+SUMMARY:Obzorje Evropa: HORIZON-MISS-2027-04\, izvajanje misije podnebno ne
+ vtralnih in pametnih mest
+DESCRIPTION:Obzorje Evropa Cities Mission 2027\nRok: Odprtje 9. 2. 2027\, r
+ ok 7. 10. 2027 ob 17.00 po bruseljskem času (v francoskem vmesniku navede
+ no tudi 02:00 naslednjega dne\, kar ustreza 17.00 prvi dan v CEST/CET pret
+ vorbi portala – ob odprtju preveriti uro na Funding & Tenders).\nZnesek:
+  Skupni proračun sklopa približno 92\,32 mio €. Najbolj relevanten tem
+ atski sklop za nas: HORIZON-MISS-2027-04-CIT-03 (večmodalna vozlišča in
+  modalni premik) 18.000.000 €. Drugi sklopi: mikromreže 20 mio €\, vo
+ dikova mesta 5 mio €\, krožna logistika 22\,5 mio €\, predkomercialno
+  naročanje 26\,82 mio €.\nSofinanciranje: po pravilih Obzorja Evropa\; 
+ natančna stopnja bo v razpisnem dokumentu ob odprtju\nCIT-03 (modalni pre
+ mik\, hoje\, kolesarjenje\, souporaba) je vsebinsko blizu\, a gre za velik
+ e konzorcije z demonstratorji. Savsko je lahko testno območje\, če MOL i
+ n raziskovalni partner vstopita v konzorcij. Priprava naj se začne že pr
+ ed odprtjem 9. 2. 2027.\nDatumi in proračuni po delovnem programu Obzorja
+  Evropa 2026–2027 (Misije) ter pregledih tem. Portal Funding & Tenders o
+ b odprtju ostaja primarni vir.
+URL:https://www.horizon-europe.gouv.fr/supporting-implementation-climate-ne
+ utral-and-smart-cities-mission-41445
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Obzorje Evropa Cities Mission 2027
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ekosola-vrtilnica-2026-27@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20270608
+DTEND;VALUE=DATE:20270609
+SUMMARY:Ekošola: Šolska VRTilnica 2026/2027 (šolski vrt kot učilnica na
+  prostem)
+DESCRIPTION:Ekošola – Šolska VRTilnica 2026/27\nRok: Rok za oddajo foto
+ grafij na nagradni natečaj je 8. 6. 2027 (Ekoportal).\nZnesek: nagradni n
+ atečaj\; denarni znesek na uradni strani projekta ni naveden kot fiksna d
+ otacija\nSofinanciranje: ni sofinanciranje gradnje\; pedagoški projekt in
+  natečaj\nUstreza učilnici na prostem in zelenemu šolskemu vrtu kot pro
+ gramu\, ne pa večji ureditvi dvorišča ali senčenju z investicijo.\nPre
+ verjeno 17. 11. 2026 na ekosola.si. Sodelovanje je smiselno vzporedno z vk
+ ljučitvijo v program Ekošola.
+URL:https://ekosola.si/solska-vrtilnica-26-27/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Ekošola – Šolska VRTilnica 2026/27
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mizm-krajsi-program-vrtec-2026-27@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20270430T235900
+DTEND;TZID=Europe/Ljubljana:20270501T001400
+SUMMARY:MIZM: financiranje oddelkov krajšega programa v vrtcih\, šolsko l
+ eto 2026/2027
+DESCRIPTION:MIZM – krajši program v vrtcih 2026/27\nRok: Rok za prijavo 
+ 30. 4. 2027 do 23.59. Objava 14. 10. 2026\, šifra 602-22/2026-3370-2.\nZn
+ esek: Cena oddelka 13.825\,92 €\; 20.738\,88 € za dvojezični slovensk
+ o-madžarski oddelek oziroma oddelek z otroki priseljencev ali Romov. Prog
+ ram je za starše brezplačen.\nSofinanciranje: celotno financiranje iz dr
+ žavnega proračuna za oddelek krajšega programa (240 ur)\nOdprt ministrs
+ ki razpis za vrtce\, vendar financira pedagoški oddelek\, ne varnih poti\
+ , igrišča\, sence ali učilnice na prostem.\nMinistrstvo za izobraževan
+ je\, znanost in mladino. Kontakt sektorja za predšolsko vzgojo je naveden
+  na uradni objavi.
+URL:https://www.gov.si/zbirke/javne-objave/dodaj-javna-objava-261014145748/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MIZM – krajši program v vrtcih 2026/27
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ctn-rso2-8@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261104
+SUMMARY:CTN RSO2.8 (ZMOS)
+DESCRIPTION:CTN RSO2.8\nRok: ZMOS je 3. 11. 2026 izbral Novo Gorico\, Mursk
+ o Soboto in Ptuj\, brez Ljubljane. MOL je celotno svojo kvoto 13\,97 mio 
+ € porabila že na prvem pozivu.\nZnesek: 3\,56 mio € za izbrane tri me
+ stne občine na tem izboru\; MOL kvota 13\,97 mio € že porabljena prej.
+ \nSofinanciranje: ni več odprt\nZaprt\, Ljubljana ni bila izbrana.\nZnano
+  dejstvo\; ne ponavljati kot novost.
+URL:https://zmos.si/ctn/rso2-8_p3/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: CTN RSO2.8
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nipp-ejn-80821@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261113T120000
+DTEND;TZID=Europe/Ljubljana:20261113T121500
+SUMMARY:MOL javno naročilo NIPP (eJN 80821 / JN008062/2026)
+DESCRIPTION:MOL NIPP (storitvena pogodba)\nRok: Rok za ponudbe je bil 13. 1
+ 1. 2026 ob 12.00. To ni razpis za nepovratna sredstva\, temveč storitvena
+  pogodba za izdelavo načrta parkiranja za celotno MOL.\nZnesek: ni grant\
+ nSofinanciranje: ni grant\nKo bo znan izvajalec\, lahko pripravimo gradivo
+  o zasedenosti\, dovoljenjih in prebivalskem parkiranju v Savskem.\nZnano 
+ dejstvo\; ni razpis za sofinanciranje projektov prebivalcev.
+URL:https://www.ljubljana.si/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOL NIPP (storitvena pogodba)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:euro-med-call-8@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Interreg Euro-MED\, 8. razpis za tematske projekte
+DESCRIPTION:Interreg Euro-MED call 8\nRok: Pisne vloge so se zaprle 13. 11.
+  2026\; to je zadnji razpis programa 2021–2027. Obvezne priloge so bile 
+ v informacijskem gradivu navedene do 27. 11. 2026\, vendar brez pravočasn
+ e vloge to ni nova priložnost.\nZnesek: ni ponovno preverjen znesek po za
+ prtju\nSofinanciranje: po pravilih Interreg (običajno ERDF\, stopnja v za
+ prtnem razpisu)\nRok za vloge je potekel.\nZnano dejstvo.
+URL:https://interreg-euro-med.eu/en/call-8-thematic-projects/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Interreg Euro-MED call 8
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eit-um-startups-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261116T170000
+DTEND;TZID=Europe/Ljubljana:20261116T171500
+SUMMARY:EIT Urban Mobility: Financial Support to Startups
+DESCRIPTION:EIT UM start-up call\nRok: Rok 16. 11. 2026 ob 17.00 CET.\nZnes
+ ek: ni ponovno povzet\nSofinanciranje: ni ponovno povzet\nRok je potekel\;
+  namenjen je startupom.\nZnano dejstvo.
+URL:https://www.eiturbanmobility.eu/call-for-proposals/financial-support-to
+ -startups-open-call-3/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EIT UM start-up call
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eit-enhance-neb-2027@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261117T170000
+DTEND;TZID=Europe/Ljubljana:20261117T171500
+SUMMARY:EIT Community NEB: Enhance NEB 2027
+DESCRIPTION:Enhance NEB 2027\nRok: Rok 17. 11. 2026 ob 17.00 CET. Odprt sam
+ o za partnerje prejšnjih projektov Connect/Co-create NEB.\nZnesek: Do 92.
+ 500 € EIT sredstev na projekt\, 20 % lastne udeležbe.\nSofinanciranje: 
+ 80 % EIT / 20 % lastna udeležba\nČe nismo bili partnerji prejšnjega NEB
+  projekta\, nismo upravičeni.\nRok je danes\; razpis ni splošno odprt.
+URL:https://www.eiturbanmobility.eu/call-for-proposals/enhance-neb-2027-ope
+ n-call/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Enhance NEB 2027
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dut-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261117T130000
+DTEND;TZID=Europe/Ljubljana:20261117T131500
+SUMMARY:Driving Urban Transitions (DUT) Joint Call 2026
+DESCRIPTION:DUT 2026\nRok: Predprijave so bile do 17. 11. 2026 ob 13.00 CET
+ . Povabljeni konzorciji oddajo polne predloge do 15. 4. 2027. Naslednji kr
+ og DUT ob pregledu ni bil razpisan. ARIS za slovenski del: skupaj 450.000 
+ €\, največ 165.000 € na projekt\, samo za raziskovalne organizacije.\
+ nZnesek: ARIS: 450.000 € skupaj\, največ 165.000 € na projekt (samo R
+ O).\nSofinanciranje: po nacionalnih pravilih ARIS / DUT\nPredprijave so se
+  zaprle 17. 11. 2026. Polna prijava je možna le\, če je konzorcij že od
+ dal predprijavo in bo povabljen.\nZnano dejstvo. Naslednji razpis DUT ni o
+ bjavljen.
+URL:https://dutpartnership.eu/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: DUT 2026
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iclei-tap-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:ICLEI Transformative Actions Program (TAP) Call for Projects 2026
+DESCRIPTION:ICLEI TAP 2026\nRok: Rok 15. 11. 2026. TAP je predvsem vstopnic
+ a do financerjev\, ne nujno neposredna dotacija.\nZnesek: ni neposredno pr
+ everjen znesek dotacije\nSofinanciranje: ni klasičen grant\nRok je poteke
+ l dva dni pred tem pregledom.\nZaprt 15. 11. 2026.
+URL:https://iclei.org/tap/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: ICLEI TAP 2026
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:interreg-ce@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20251127
+DTEND;VALUE=DATE:20251128
+SUMMARY:Interreg Central Europe
+DESCRIPTION:Interreg Central Europe\nRok: Zadnji\, kapitalizacijski razpis 
+ programa 2021–2027 se je zaprl 27. 11. 2025. Novih razpisov v tem obdobj
+ u ni.\nProgram v tem finančnem obdobju nima več odprtih razpisov.\nPreve
+ rjeno na uradni strani programa.
+URL:https://www.interreg-central.eu/calls-for-proposals/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Interreg Central Europe
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:interreg-alpine@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20260630
+DTEND;VALUE=DATE:20260701
+SUMMARY:Interreg Alpine Space
+DESCRIPTION:Interreg Alpine Space\nRok: Zadnji kapitalizacijski razpis se j
+ e zaprl 30. 6. 2026. Odbor programa se sestane 17.–18. 11. 2026 za odlo
+ čitev o že prejetih vlogah.\nNi odprtega razpisa.\nPreverjeno na uradni 
+ strani programa.
+URL:https://www.alpine-space.eu/how-to-apply/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Interreg Alpine Space
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:interreg-danube@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20251215
+DTEND;VALUE=DATE:20251216
+SUMMARY:Interreg Danube Region\, 3. razpis
+DESCRIPTION:Interreg Danube\nRok: Tretji razpis se je zaprl 15. 12. 2025. N
+ ov razpis ni objavljen. Projekti 3. razpisa naj bi se začeli 1. 12. 2026.
+ \nNi odprtega razpisa.\nPreverjeno na uradni strani programa.
+URL:https://interreg-danube.eu/calls-for-proposals
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Interreg Danube
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eui-ia-call-4@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20260615
+DTEND;VALUE=DATE:20260616
+SUMMARY:EUI Innovative Actions\, 4. razpis
+DESCRIPTION:EUI Innovative Actions 4\nRok: Rok 15. 6. 2026 ob 14.00 CEST. N
+ aslednji razpis ni objavljen.\nZaprt. Za naslednji krog je potrebna mestna
+  prijava inovativnega ukrepa.
+URL:https://www.urban-initiative.eu/news/eui-launches-innovative-actions-ca
+ ll-4-support-local-led-innovation
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EUI Innovative Actions 4
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:urbact-an-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20260617
+DTEND;VALUE=DATE:20260618
+SUMMARY:URBACT IV: Action Networks
+DESCRIPTION:URBACT Action Networks\nRok: Rok 17. 6. 2026 ob 15.00 CEST. Nas
+ lednji razpis ni objavljen.\nZaprt.
+URL:https://urbact.eu/call-action-networks-closed
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: URBACT Action Networks
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:las-sozitje-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20260323
+DTEND;VALUE=DATE:20260324
+SUMMARY:LAS Sožitje med mestom in podeželjem\, 2. javni poziv 2026 (RRA L
+ UR)
+DESCRIPTION:LAS Sožitje 2026\nRok: Zaprt 23. 3. 2026. Nov poziv za 2027 ni
+  objavljen.\nZnesek: V 2. pozivu je bilo na voljo približno 236.198 € (
+ EKSRP) in 234.411 € (ESRR).\nObmočje LAS vključuje MOL\, a je namenjen
+ o razvoju podeželja. Savsko kot gosto mestno naselje verjetno ni v jedru.
+  Spremljamo morebitni 3. poziv.
+URL:https://www.las-sozitje.si/Pozivi
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: LAS Sožitje 2026
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eko-84ls25@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:Eko sklad: Javni poziv 84LS25 Kreditiranje okoljskih naložb občin
+DESCRIPTION:Eko sklad 84LS25 (krediti občin)\nRok: Zaključek objavljen 8.
+  9. 2026. V pozivu so bili med upravičenimi ukrepi tudi P+R\, kolesarnice
+ \, ukrepi trajnostne mobilnosti po CPS. Naslednji občinski kreditni poziv
+  ni objavljen.\nZnesek: Krediti občinam\; fiksna OM je bila 0\,7 %\, doba
+  do 20 let (po besedilu zaprtega poziva).\nSofinanciranje: kredit\nKo se p
+ oziv ponovi\, bo to pomemben ugoden kredit za občinske ukrepe mobilnosti.
+ \nZaprt 8. 9. 2026\; spremljati ponovitev.
+URL:https://zer.ekosklad.si/prebivalstvo/pridobite-spodbudo/objava
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Eko sklad 84LS25 (krediti občin)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-opvi-prosti-cas-2027@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20261112T235900
+DTEND;TZID=Europe/Ljubljana:20261113T001400
+SUMMARY:MOL: podporne storitve v vzgoji in izobraževanju ter prostem času
+  otrok 2027
+DESCRIPTION:MOL – vzgoja\, izobraževanje in prosti čas 2027\nRok: Rok j
+ e potekel 12. 11. 2026. Na uradni strani je status 17. 11. 2026 'Zaključe
+ n'.\nZnesek: Okvirna višina sredstev največ 680.700 € za programe\, iz
+ vedene v letu 2027.\nSofinanciranje: sofinanciranje programov po merilih r
+ azpisa (ni investicija v gradnjo)\nUstreza programom za otroke in mlade (p
+ rosti čas\, počitnice\, ozaveščanje o virih)\, ne pa gradnji pokritega
+  prostora ali urejanju šolskega dvorišča. Spremljati morebitni naslednj
+ i letni razpis.\nPreverjeno 18. 11. 2026. Prijavitelji so oddajali prek er
+ azpisisubvencije.ljubljana.si. Ne ponavljati kot odprt razpis.
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/za-sofinanciranje-programov-in-projektov-v-mol-v-letu-2027-s-podrocj
+ a-podpornih-storitev-v-vzgoji-in-izobrazevanju-ter-prostem-casu-otrok
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOL – vzgoja\, izobraževanje in prosti čas 202
+ 7
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-2026-ka1-ka2-sch@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Brussels:20260929T120000
+DTEND;TZID=Europe/Brussels:20260929T121500
+SUMMARY:Erasmus+ 2026: KA1\, KA2 in akreditacije za šole (CMEPIUS) – zap
+ rt
+DESCRIPTION:Erasmus+ 2026 šole (zaprt)\nRok: KA1 (SCH\, VET\, HED\, ADU): 
+ 19. 2. 2026 ob 12.00. KA2 (sodelovalna in manjša partnerstva): 5. 3. 2026
+  ob 12.00. KA240 evropska partnerstva za razvoj šol: 9. 4. 2026 ob 12.00.
+  Akreditacija: 29. 9. 2026 ob 12.00 po bruseljskem času. Rezultati KA2 ju
+ nij 2026.\nZnesek: Za Erasmus+ projekte 2026 je bilo za Slovenijo na voljo
+  okoli 37 mio € (vse akcije\, ne samo šole).\nSofinanciranje: po pravil
+ ih Vodnika Erasmus+ 2026\nZaprt. Naslednji krog je razpis 2027\, ki še ni
+  objavljen.\nNe ponavljati kot odprt razpis.
+URL:https://www.cmepius.si/mednarodno-sodelovanje/moznosti-sodelovanja/erasmus/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Erasmus+ 2026 šole (zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esc-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Brussels:20261001T120000
+DTEND;TZID=Europe/Brussels:20261001T121500
+SUMMARY:Evropska solidarnostna enota 2026 (MOVIT) – zaprt
+DESCRIPTION:ESE / ESC 2026 (zaprt)\nRok: Prostovoljstvo: 18. 2. 2026 do 12.
+ 00. Solidarnostni projekti: 18. 2. in 1. 10. 2026 do 12.00. Razpis EAC/A15
+ /2025.\nZnesek: Ocenjen skupni proračun razpisa 2026: 129.595.000 € na 
+ ravni EU. MOVIT je na prvem roku odobril 1.681.172 €.\nSofinanciranje: p
+ o Vodniku ESE 2026\nZaprt. Solidarnostni projekti z začetkom 1. 1.–31. 
+ 5. 2027 so se prijavljali do 1. 10. 2026.\nNe ponavljati kot odprt razpis.
+URL:https://www.movit.si/evropska-solidarnostna-enota/prijava-projekta/prij
+ avni-roki/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: ESE / ESC 2026 (zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-youth-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Brussels:20261001T120000
+DTEND;TZID=Europe/Brussels:20261001T121500
+SUMMARY:Erasmus+ 2026\, poglavje Mladina (MOVIT) – zaprt
+DESCRIPTION:Erasmus+ Mladina 2026 (zaprt)\nRok: KA1 prvi rok 12. 2. 2026\, 
+ drugi rok 1. 10. 2026 do 12.00. KA2 5. 3. 2026 do 12.00. Akreditacije 29. 
+ 9. 2026 do 12.00.\nZnesek: znesek za slovensko poglavje Mladina na tej str
+ ani MOVIT ni naveden kot enotna številka\nSofinanciranje: po pravilih Era
+ smus+ 2026\nZaprt. Drugi KA1 rok 1. 10. 2026 je potekel.\nNe ponavljati ko
+ t odprt razpis.
+URL:https://www.movit.si/erasmus-mladina/prijava-projekta/prijavni-roki/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Erasmus+ Mladina 2026 (zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mvi-investicije-vrtci-sole-2026-2029@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20250930T235900
+DTEND;TZID=Europe/Ljubljana:20251001T001400
+SUMMARY:MVI/MIZM: sofinanciranje investicij v vrtce in osnovno šolstvo 202
+ 6–2029
+DESCRIPTION:Investicije v vrtce in OŠ 2026–2029 (zaprt)\nRok: Rok za ele
+ ktronske vloge občin je bil 30. 9. 2025 do 23.59. Rezultati so bili objav
+ ljeni 12. 12. 2025.\nZnesek: 160 mio € skupaj: 45 mio € vrtci\, 85 mio
+  € osnovno šolstvo\, 30 mio € OŠ s prilagojenim programom.\nSofinanc
+ iranje: sofinanciranje rekonstrukcij ali novogradenj\; prijavitelj je obč
+ ina\nBil je glavni državni investicijski razpis za stavbe vrtcev in šol\
+ , ne posebej za zelena dvorišča ali učilnice na prostem. Prijavitelj je
+  MOL\, ne šola sama. Ali je MOL prijavila objekt v Savskem\, iz javnega p
+ regleda 17. 11. 2026 nismo potrjevali.\nRezultati: https://www.gov.si/novi
+ ce/2025-12-12-znani-rezultati-razpisa-za-sofinanciranje-investicij-v-vrtci
+ h-in-osnovnih-solah-v-letih-2026-2029/ Spremljati morebitni naslednji krog
+ . Ne ponavljati kot odprt razpis.
+URL:https://www.gov.si/novice/2025-07-11-razpisanih-rekordnih-160-milijonov
+ -evrov-za-sofinanciranje-investicij-v-vrtce-in-osnovne-sole/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Investicije v vrtce in OŠ 2026–2029 (zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:zrss-solski-eko-vrtovi-2025@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;VALUE=DATE:20250626
+DTEND;VALUE=DATE:20250627
+SUMMARY:ZRSS / MOPE: Šolski »eko« vrtovi za podnebne cilje – izbor VIZ
+DESCRIPTION:Šolski eko vrtovi (izbor 2025\, zaprt)\nRok: Rok za prijavo na
+  javno povabilo je bil 26. 6. 2025. Projekt še poteka (konferenca 16. 9. 
+ 2026)\; novega povabila za vključitev dodatnih zavodov ob pregledu nismo 
+ našli.\nZnesek: Vključitev do 120 zavodov (do 40 vrtcev\, 60 OŠ\, 20 gi
+ mnazij). Javni znesek na zavod na strani povabila ni naveden kot enotna š
+ tevilka.\nSofinanciranje: projekt financira MOPE iz Podnebnega sklada (pro
+ gram 2025–2028)\, v sodelovanju z ministrstvom\, pristojnim za šolstvo\
+ , in ZRSS\nTo je bil najbližji državni okvir za šolske eko vrtove in u
+ čilnice na prostem. Novega povabila 17. 11. 2026 nismo potrdili. Ali je l
+ okalni zavod že vključen\, ne ugibamo.\nNe ponavljati kot odprt razpis.
+URL:https://www.zrss.si/novice/javno-povabilo-za-izbor-sodelujocih-vzgojno-
+ izobrazevalnih-zavodov-v-projektu-solski-eko-vrtovi-v-vzgojno-izobrazevaln
+ em-okolju-za-doseganje-podnebnih-ciljev/
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Šolski eko vrtovi (izbor 2025\, zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fundacija-za-sport-objekti-2026@anketa.savska.org
+DTSTAMP:20261117T110000Z
+DTSTART;TZID=Europe/Ljubljana:20251216T000000
+DTEND;TZID=Europe/Ljubljana:20251216T001500
+SUMMARY:Fundacija za šport: sofinanciranje gradnje športnih objektov in p
+ ovršin za šport v naravi 2026
+DESCRIPTION:Fundacija za šport – objekti 2026 (zaprt)\nRok: Rok za vloge
+  je bil 15. 12. 2025. Razpis 2026 je zaključen.\nZnesek: znesek razpisa j
+ e v uradnem besedilu razpisa\; na pregledu ga tu ne povzemamo netočno\, 
+ če ni preverjen v celoti\nSofinanciranje: sofinanciranje gradnje športni
+ h objektov in površin za šport v naravi\nNajbližji preverjeni fundacijs
+ ki razpis za površine\, ki lahko vključujejo šolski športni prostor. N
+ i namenski razpis za zeleno dvorišče ali učilnico na prostem. Odprtega 
+ razpisa Fundacije za šolstvo 17. 11. 2026 nismo našli.\nPreverjeno kot z
+ aprt. Spremljati morebitni razpis 2027. Ne ponavljati kot odprt.
+URL:https://www.fundacijazasport.org/razpisi/2026
+LOCATION:Savsko naselje / razpis
+STATUS:CANCELLED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Fundacija za šport – objekti 2026 (zaprt)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eucf-call-8@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20261221T170000
+DTEND;TZID=Europe/Brussels:20261221T171500
+SUMMARY:European City Facility (EUCF)\, 8. razpis: investicijski koncepti z
+ a energetske naložbe
+DESCRIPTION:EUCF 8. razpis\nRok: Oddaja do 21. 12. 2026 ob 17.00 (bruseljsk
+ i čas\, enako kot ljubljanski). Naslednja razpisa okvirno aprila in oktob
+ ra 2027.\nZnesek: Fiksni grant 60.000 € za izdelavo investicijskega konc
+ epta\; 23 grantov za srednjo in vzhodno Evropo (vključno s Slovenijo)\, s
+ kupaj 62.\nKdo: Občine in lokalne oblasti ter njihova združenja iz EU\; 
+ potreben podnebno-energetski načrt (npr. SECAP) in podporno pismo župana
+ .\nPilot B: MOL lahko pridobi 60.000 € za investicijski koncept energets
+ kega dela zelene garaže (sončna elektrarna s hranilnikom\, polnilnice\, 
+ prezračevanje)\, ki ga nato ponudi SID\, ELENA ali vlagateljem. Grant ne 
+ financira gradnje. Preveriti\, ali ima MOL veljaven SECAP.
+URL:https://www.eucityfacility.eu/calls/call-8
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: EUCF 8. razpis
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sos2learndbs-tag1@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20261211T170000
+DTEND;TZID=Europe/Brussels:20261211T171500
+SUMMARY:SOS2LearnDBS: Transition Agenda Call 1 – skupnostni načrti za Po
+ donavje in Črno morje (Misija Oceani in vode)
+DESCRIPTION:Podonavje: Transition Agenda\nRok: Rok 11. 12. 2026 ob 17.00. V
+ prašanja do 6. 12. 2026. Rezultati do 31. 3. 2027.\nZnesek: Pavšal\, 100
+  % upravičenih stroškov\; znesek na načrt preveriti v pogojih razpisa.\
+ nKdo: Konzorcij 2–4 pravnih oseb (NVO\, občine\, raziskovalci\, MSP)\; 
+ vodja iz regije Donava–Črno morje\; vsaj en partner z lokalno povezavo.
+ \nSava je v porečju Donave\, a razpis je usmerjen v vode in ekosisteme\, 
+ ne v zrak ali promet. Pride v poštev le za zeleno-modro infrastrukturo (z
+ adrževanje meteorne vode\, zelene površine) v širšem konzorciju.
+URL:https://sos2learndbs.eu/funding-calls/transition-agenda-call-1/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Podonavje: Transition Agenda
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:interreg-danube-2028-posvet@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270115T235900
+DTEND;TZID=Europe/Ljubljana:20270116T001400
+SUMMARY:Interreg Danube Region 2028–2034: javni posvet o teritorialni ana
+ lizi
+DESCRIPTION:Donava 2028+ posvet\nRok: Anketa do 15. 1. 2027. Ni financiranj
+ e\, ampak priložnost\, da v prihodnji program vpišemo potrebe mestnih so
+ sesk (zrak\, promet).\nZnesek: Ni denarja – javni posvet za prihodnji pr
+ ogram.\nKdo: Vsi deležniki (prebivalci\, NVO\, občine).\nBrezplačna pri
+ ložnost: v posvetu predlagati\, da prihodnji program Podonavja podpira č
+ ist zrak in zmanjšanje tranzita v gostih mestnih soseskah. To odpre pot z
+ a kasnejše prijave.
+URL:https://interreg-danube.eu/news/help-shape-the-future-of-the-danube-reg
+ ion
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Donava 2028+ posvet
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wri-ross-prize-c6@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270114T055900
+DTEND;TZID=Europe/Ljubljana:20270114T061400
+SUMMARY:WRI Ross Center Prize for Cities\, 6. cikel
+DESCRIPTION:WRI Prize for Cities\nRok: Rok 13. 1. 2027 ob 23.59 po vzhodnoa
+ meriškem času\, kar je 14. 1. 2027 ob 5.59 po ljubljanskem času.\nZnese
+ k: Glavna nagrada 250.000 USD\; štirje finalisti po 25.000 USD.\nKdo: Jav
+ ne\, zasebne in neprofitne organizacije ter skupnostne skupine z že izved
+ enim mestnim projektom z merljivim učinkom.\nNagrada je za že izvedene p
+ rojekte. Za Savsko še ni zrela\; cilj za enega od naslednjih ciklov\, ko 
+ bosta šolska ulica ali pilot A izvedena in izmerjena.
+URL:https://prizeforcities.org/apply
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: WRI Prize for Cities
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:earth-prize-2027@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270110T235900
+DTEND;TZID=Europe/Ljubljana:20270111T001400
+SUMMARY:The Earth Prize 2027 (The Earth Foundation\, Švica): svetovno tekm
+ ovanje mladih 13–19 let za okoljske rešitve
+DESCRIPTION:The Earth Prize 2027\nRok: Registracija do 10. 1. 2027\, oddaja
+  projekta (Blueprint) do 31. 1. 2027.\nZnesek: Vsak od sedmih regijskih zm
+ agovalcev prejme 10.000 USD za izvedbo projekta\; skupni sklad več kot 10
+ 0.000 USD.\nKdo: Učenci in dijaki 13–19 let (posamezno ali ekipa do 5)\
+ , z mentorjem\; za mladoletne soglasje staršev.\nStarejši učenci OŠ Sa
+ vsko naselje (od 13 let) lahko prijavijo rešitev za zrak ob šoli\, npr. 
+ meritve in zeleni zaslon iz pilota A. Dobro izobraževalno\, finančno man
+ j.
+URL:https://www.theearthprize.org/competition
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: The Earth Prize 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esa-climate-detectives-2026-27@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270402T235900
+DTEND;TZID=Europe/Ljubljana:20270403T001400
+SUMMARY:ESA Climate Detectives 2026–2027 (šolski projekt ESA in ESERO)
+DESCRIPTION:ESA Climate Detectives\nRok: Projekt Teens: oddaja rezultatov o
+ kvirno do 2. 4. 2027\; Kids brez tekmovanja. Rok pri nacionalnem organizat
+ orju preveriti.\nZnesek: Brezplačen projekt\; izbrane ekipe obiščejo ce
+ nter ESA ESRIN (Italija) maja/junija 2027.\nKdo: Učenci do 19 let iz drž
+ av članic ESA in pridruženih članic\; prijavi učitelj.\nOdlično za pi
+ lot A: učenci raziščejo onesnaženost zraka ob šoli s satelitskimi pod
+ atki in lastnimi meritvami ter primerjajo z ARSO. Brez stroškov\, takoj i
+ zvedljivo.
+URL:https://education.esa.int/climate_detectives_2026_2027_registration_now
+ _open/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: ESA Climate Detectives
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:yre-mpo-2026-27@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270405T235900
+DTEND;TZID=Europe/Ljubljana:20270406T001400
+SUMMARY:Mladi poročevalci za okolje 2026/2027 (Young Reporters for the Env
+ ironment\, FEE)
+DESCRIPTION:Mladi poročevalci za okolje\nRok: 1. rok za nacionalni nateča
+ j in mednarodno tekmovanje 5. 4. 2027\; zadnji rok za vse prispevke 14. 5.
+  2027.\nZnesek: Ni denarne podpore\; nagrade in uvrstitev na mednarodno te
+ kmovanje YRE.\nKdo: Učenci\, dijaki in študenti 11–25 let prek ekošol
+ .\nUčenci OŠ Savsko naselje (Ekošola) lahko pripravijo reportažo ali p
+ odkast o zraku in prometu v naselju. Krepi glas otrok in ozaveščanje.
+URL:https://ekosola.si/mladi-porocevalci-za-okolje-26-27/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Mladi poročevalci za okolje
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cerv-2027-child@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Brussels:20270922T235900
+DTEND;TZID=Europe/Brussels:20270923T001400
+SUMMARY:CERV-2027-CHILD: pravice otrok in sodelovanje otrok v demokratične
+ m življenju EU
+DESCRIPTION:CERV otroci 2027\nRok: Okvirno: objava 16. 3. 2027\, odprtje 29
+ . 4. 2027\, rok 22. 9. 2027. Uradni razpis še ni objavljen\; preveriti na
+  portalu EU Funding & Tenders.\nZnesek: Okvirno 21 mio € za razpis\; zne
+ sek na projekt preveriti.\nKdo: NVO\, mednarodne organizacije\, akademski 
+ in izobraževalni deležniki (preveriti v razpisu).\nMed okvirnimi prednos
+ tmi sta okoljska trajnost in sodelovanje otrok pri odločanju. Primer: otr
+ oci soodločajo o šolski ulici in čistem zraku ob šoli\, v mednarodnem 
+ konzorciju.
+URL:https://commission.europa.eu/funding-and-tenders/find-funding/eu-fundin
+ g-programmes/citizens-equality-rights-and-values-programme/citizens-equali
+ ty-rights-and-values-programme-overview_en
+LOCATION:Savsko naselje / razpis
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: CERV otroci 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mop-life-sofinanciranje-2026@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270831T235900
+DTEND;TZID=Europe/Ljubljana:20270901T001400
+SUMMARY:MOP: javni poziv za sofinanciranje projektov LIFE za leto 2026 (nac
+ ionalni delež)
+DESCRIPTION:MOP sofinanciranje LIFE\nRok: Rok 31. 8. 2027 do 23.59\; prilo
+ žiti podpisano pogodbo s CINEA.\nZnesek: Do 25 % upravičenih stroškov s
+ lovenskih upravičencev (Narava in biotska raznovrstnost) oziroma do 20 % 
+ (Krožno gospodarstvo in kakovost življenja).\nKdo: Slovenski upravičenc
+ i že odobrenih projektov LIFE (NVO\, občine\, raziskovalci\, podjetja).\
+ nDopolnilni vir: če uspe prijava LIFE (npr. kakovost zraka ali zelena inf
+ rastruktura)\, država pokrije še do 20–25 % slovenskega deleža. Zmanj
+ ša lastni delež partnerjev iz Savskega.
+URL:https://www.gov.si/zbirke/javne-objave/javni-poziv-za-sofinanciranje-pr
+ ojektov-s-programskega-podrocja-life-za-leto-2026/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: MOP sofinanciranje LIFE
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:jr-2ch-ove-2025@anketa.savska.org
+DTSTAMP:20261117T170000Z
+DTSTART;TZID=Europe/Ljubljana:20270310T235900
+DTEND;TZID=Europe/Ljubljana:20270311T001400
+SUMMARY:Drugi švicarski prispevek: JR 2CH OVE 2025 – skupnostna samooskr
+ ba z OVE in plitva geotermija v srednjih in visokih šolah
+DESCRIPTION:Švicarski prispevek OVE\nRok: Tretji (zadnji) rok 10. 3. 2027 
+ do 23.59.\nZnesek: Skupaj 13\,8 mio €\; na vlogo do 1 mio € (sončne e
+ lektrarne s hranilnikom) in/ali do 2 mio € (geotermalne toplotne črpalk
+ e).\nKdo: Samo javne srednje\, višje in visoke šole ter dijaški domovi 
+ (ne osnovne šole).\nOŠ in vrtci niso upravičeni. Pride v poštev le\, 
+ če bi bližnja srednja šola ali dijaški dom zgradila skupnostno sončno
+  elektrarno\, ki bi lahko oskrbovala tudi naselje.
+URL:https://www.gov.si/zbirke/javne-objave/javni-razpis-za-sofinanciranje-n
+ alozb-v-skupnostno-samooskrbo-na-podrocju-obnovljivih-virov-energije-in-v-
+ izkoriscanje-plitve-geotermalne-energije-za-obdobje-od-2026-do-2029-oznaka
+ -jr-2ch-ove-2025/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Švicarski prispevek OVE
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:zrsz-javna-dela-2027@anketa.savska.org
+DTSTAMP:20261117T180000Z
+DTSTART;TZID=Europe/Ljubljana:20270430T235900
+DTEND;TZID=Europe/Ljubljana:20270501T001400
+SUMMARY:ZRSZ: Javna dela 2027 (zadnji rok\, lahko prej zaprto)
+DESCRIPTION:Javna dela 2027\nRok: ponudbe od 12. 11. 2026 do 30. 4. 2027 do
+  23.59 ali do porabe sredstev.\nZnesek: okvirno 21.654.638\,40 € za vso 
+ Slovenijo.\nKorist za Savsko: zaposlena oseba v naselju (družabnik ali sp
+ remljevalec starejših\, pomočnik v knjižnici).\nMožni partnerji: druš
+ tvo upokojencev\, NVO za duševno zdravje\, knjižnica\, zavod za oskrbo n
+ a domu.
+URL:https://www.ess.gov.si/delodajalci/financne-spodbude/predstavitev-spodb
+ ud-za-zaposlitev/javna-dela-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Javna dela 2027
+TRIGGER:-P14D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:rralur-rrp-2028-2034@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261120T235900
+DTEND;TZID=Europe/Ljubljana:20261121T001400
+SUMMARY:RRA LUR: poziv k oddaji projektnih predlogov za Regionalni razvojni
+  program Osrednjeslovenske regije 2028–2034
+DESCRIPTION:RRA LUR – predlogi za RRP 2028–2034\nRok: Rok za oddajo pre
+ dlogov 20. 11. 2026 (ure ne navajajo)\, prek spletnega obrazca na strani R
+ RA LUR.\nZnesek: Ni denarja. Predlog se zapiše med razvojne pobude regije
+ \; oddaja ne pomeni uvrstitve v program ali zagotovljenih sredstev.\nKdo: 
+ Občine\, javni zavodi\, gospodarske družbe\, izobraževalne in raziskova
+ lne ustanove\, nevladne organizacije in drugi razvojni partnerji regije.\n
+ Korist za Savsko: Projekti za čist zrak in zeleno garažo v Savskem dobij
+ o mesto v regionalnem programu\, iz katerega se po letu 2027 delijo evrops
+ ka sredstva.
+URL:https://rralur.si/novice/poziv-k-oddaji-projektnih-predlogov-za-regiona
+ lni-razvojni-program-osrednjeslovenske-regije-2028-2034/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: RRA LUR – predlogi za RRP 2028–2034
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:rpp-lur-javna-razprava@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20270215T235900
+DTEND;TZID=Europe/Ljubljana:20270216T001400
+SUMMARY:RRA LUR: javna razprava o osnutku Regionalnega prostorskega plana L
+ jubljanske urbane regije
+DESCRIPTION:RPP LUR – javna razprava\nRok: Javna razprava od 16. 11. 2026
+  do 15. 2. 2027\; pripombe po e-pošti ali pošti (obrazec na strani RRA L
+ UR). Javni posvet bo napovedan naknadno.\nZnesek: Ni denarja. Pripombe na 
+ strateški prostorski akt regije (promet\, raba prostora).\nKdo: Občani\,
+  strokovna in zainteresirana javnost ter drugi deležniki.\nKorist za Savs
+ ko: Manj tranzitnega prometa skozi Savsko\, če regionalni plan usmeri pro
+ met na P+R in obvoznice.
+URL:https://rralur.si/novice/javna-razprava-o-osnutku-regionalnega-prostors
+ kega-plana-ljubljanske-urbane-regije
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: RPP LUR – javna razprava
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mope-jr-nipp-2026-r2@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T120000
+DTEND;TZID=Europe/Ljubljana:20261130T121500
+SUMMARY:MOPE: Javni razpis za sofinanciranje priprave Načrtov izvajanja pa
+ rkirne politike (JR NIPP 2026) – drugi rok
+DESCRIPTION:JR NIPP 2026 (2. rok)\nRok: Drugi rok 30. 11. 2026 do 12.00 vel
+ ja le\, če v prvem roku (16. 6. 2026) sredstva niso bila v celoti dodelje
+ na\; vloga na gp.mope@gov.si. Stran razpisa na GOV.SI ima oznako »Rok za 
+ prijavo je potekel« (1. rok) – preveriti pri ministrstvu.\nZnesek: Skup
+ aj do 1.000.000 € (Podnebni sklad)\; do 80 % upravičenih stroškov\; na
+ jvišji znesek za MOL 265.125 € (Priloga A).\nKdo: Samo občine\, ki še
+  nimajo izdelanega Načrta izvajanja parkirne politike.\nKorist za Savsko:
+  Parkirni načrt z evidenco mest lahko upraviči garažo za stanovalce in 
+ sprosti prostor med bloki za zelenje in igro.
+URL:https://www.gov.si/zbirke/javne-objave/javni-razpis-za-sofinanciranje-p
+ riprave-nacrtov-izvajanja-parkirne-politike/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: JR NIPP 2026 (2. rok)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-publikacije-posveti-2027@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20270111T235900
+DTEND;TZID=Europe/Ljubljana:20270112T001400
+SUMMARY:MOL: Javni razpis za sofinanciranje znanstvenih oziroma strokovnih 
+ publikacij ter znanstvenih oziroma strokovnih posvetov za leto 2027
+DESCRIPTION:MOL publikacije in posveti 2027\nRok: Vnos v e-aplikacijo in na
+ tisnjena vloga v Glavno pisarno ali priporočeno po pošti najkasneje 11. 
+ 1. 2027. Projekti morajo biti zaključeni do 29. 10. 2027.\nZnesek: Okvirn
+ o 50.000 € skupaj za razpis.\nKdo: Sedež v MOL. Posveti: javni zavodi a
+ li nepridobitne organizacije. Publikacije: založbe\, javni zavodi ali nep
+ ridobitne organizacije z registrirano založniško dejavnostjo.\nKorist za
+  Savsko: Javni strokovni posvet o zraku in prometu v Savskem\, kjer prebiv
+ alci\, stroka in mesto skupaj pregledajo meritve in rešitve.
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/javni-razpis-mol-za-sofinanciranje-znanstvenih-oziroma-strokovnih-pu
+ blikacij-ter-znanstvenih-oziroma-strokovnih-posvetov-za-leto-2027
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: MOL publikacije in posveti 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mol-mladi-raziskovalci-2027@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T235900
+DTEND;TZID=Europe/Ljubljana:20261201T001400
+SUMMARY:MOL: vabilo za prijavo raziskovalnih aktivnosti na 40. srečanje ml
+ adih raziskovalcev Ljubljane »Zaupajmo v lastno ustvarjalnost«
+DESCRIPTION:MOL mladi raziskovalci (predprijava)\nRok: Predprijava do 30. 1
+ 1. 2026\, prijava naloge do 29. 1. 2027.\nZnesek: Ni denarja\; predstavite
+ v raziskovalnih nalog učencev in dijakov.\nKdo: Učenci osnovnih in dijak
+ i srednjih šol z območja MOL ter njihovi mentorji.\nKorist za Savsko: Ot
+ roci sami izmerijo zrak in promet ob šoli in te podatke predstavijo mestu
+ .
+URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
+ bjave/vabilo-za-prijavo-raziskovalnih-aktivnosti-ki-bodo-predstavljene-na-
+ 40-srecanju-mladih-raziskovalcev-in-njihovih-mentorjev-ljubljane-zaupajmo-
+ v-lastno-ustvarjalnost
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: MOL mladi raziskovalci (predprijava)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bw-perspektive-donau-2026@anketa.savska.org
+DTSTAMP:20261118T054500Z
+DTSTART;TZID=Europe/Ljubljana:20261130T235900
+DTEND;TZID=Europe/Ljubljana:20261201T001400
+SUMMARY:Baden-Württemberg Stiftung: Perspektive Donau – izobraževanje\,
+  kultura in civilna družba v Podonavju
+DESCRIPTION:Perspektive Donau (BW Stiftung)\nRok: Komponenta B: roka 30. 4.
+  in 30. 11. vsako leto. Komponenta A (mali projekti): sprotno\, najmanj 8 
+ tednov pred začetkom projekta. Prijava v nemščini.\nZnesek: A: 2.000–
+ 10.000 €\; B: do 50.000 €\; do 85 % stroškov\, najmanj 15 % lastnih s
+ redstev\; trajanje do 3 let.\nKdo: Prijavitelj mora biti neprofitna organi
+ zacija s sedežem v Baden-Württembergu\; partner iz druge države Podonav
+ ja (tudi Slovenije)\, ki mora biti prav tako neprofiten.\nKorist za Savsko
+ : Izmenjava sosedskih\, kulturnih in izobraževalnih praks z nemškim part
+ nerjem iz Podonavja.
+URL:https://www.bwstiftung.de/de/programme/perspektive-donau
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Perspektive Donau (BW Stiftung)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mz-dober-tek-2026-2036@anketa.savska.org
+DTSTAMP:20261118T133000Z
+DTSTART;TZID=Europe/Ljubljana:20261212T235900
+DTEND;TZID=Europe/Ljubljana:20261213T001400
+SUMMARY:MZ: javna razprava o predlogu Nacionalnega programa o prehrani in t
+ elesni dejavnosti za zdravje – Dober tek\, Slovenija 2026–2036
+DESCRIPTION:Dober tek Slovenija 2026–2036\nRok: Pripombe do 12. 12. 2026 
+ na gp.mz@gov.si (sklic 0070-220/2026-2711) ali po pošti na Ministrstvo za
+  zdravje\, Štefanova ulica 5\, 1000 Ljubljana.\nZnesek: Ni denarja. Javna
+  razprava o nacionalnem programu (prehrana\, gibanje\, aktivno staranje\, 
+ okolja za zdrav življenjski slog).\nKdo: Kdorkoli: prebivalci\, NVO\, šo
+ le\, četrtne skupnosti\, občine in strokovna javnost.\nKorist za Savsko:
+  V program lahko predlagamo varne pešpoti\, senco in gibalne kotičke med
+  bloki ter ukrepe za aktivno staranje v soseskah z veliko enočlanskih gos
+ podinjstev.
+URL:https://www.gov.si/zbirke/javne-objave/predlog-nacionalnega-programa-o-
+ prehrani-in-telesni-dejavnosti-za-zdravje-dober-tek-slovenija-20262036-v-j
+ avni-razpravi/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Dober tek Slovenija 2026–2036
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:poni-lur-8-2026@anketa.savska.org
+DTSTAMP:20261118T134500Z
+DTSTART;TZID=Europe/Ljubljana:20261210T235900
+DTEND;TZID=Europe/Ljubljana:20261211T001400
+SUMMARY:RRA LUR: Javni razpis PONI LUR – 8. skupina (Podjetno nad izzive)
+DESCRIPTION:PONI LUR – 8. skupina\nRok: Oddaja natisnjenega prijavnega ob
+ razca in življenjepisa do 10. 12. 2026. Predviden začetek usposabljanja 
+ je 1. 3. 2027. Štirimesečna zaposlitev na RRA LUR.\nZnesek: Štirimeseč
+ na zaposlitev na RRA LUR za razvoj poslovne ideje. Celoten projekt PONI LU
+ R 2023–2029 je vreden 1.538.272 €\, od tega ESRR 615.308\,50 €.\nKdo
+ : Fizične osebe s poslovno idejo\, s stalnim ali začasnim bivališčem v
+  eni od 25 občin Ljubljanske urbane regije (tudi Ljubljana)\, ki pred za
+ četkom lahko podpišejo pogodbo o zaposlitvi za štiri mesece in še niso
+  bile vključene v program PONI ali Podjetno v svet podjetništva.\nKorist
+  za Savsko: Prebivalec lahko v štirih mesecih z zaposlitvijo na RRA LUR r
+ azvije poslovno idejo\, ki rešuje potrebo v naselju\, na primer storitev 
+ za starejše\, mobilnost ali vzdrževanje zelenja.
+URL:https://rralur.si/projekti/poni-lur-2023-2029/javni-razpis-poni-lur-8-s
+ kupina/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: PONI LUR – 8. skupina
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:srrs-nvo-pf-2026@anketa.savska.org
+DTSTAMP:20261118T134500Z
+DTSTART;TZID=Europe/Ljubljana:20271231T160000
+DTEND;TZID=Europe/Ljubljana:20271231T161500
+SUMMARY:SRRS: premostitveno posojilo NVO PF za projekte z odobrenimi nepovr
+ atnimi sredstvi
+DESCRIPTION:SRRS NVO PF\nRok: Odprt od 2. 4. 2026 od 8.00 do 31. 12. 2027 d
+ o 16.00 oziroma do porabe sredstev. Oddaja izključno prek aplikacije e-Rs
+ klad.\nZnesek: Posojilo od 10.000 do 150.000 €. Za produkt NVO PF je na 
+ voljo 3.000.000 €. Fiksna obrestna mera ROM + 0\,60 % letno (0\,40 % za 
+ obmejna problemska območja in območja avtohtonih narodnih skupnosti).\nK
+ do: Neprofitne zasebne organizacije (zasebni zavod\, sklad\, društvo\, zv
+ eza društev\, gospodarska zbornica in podobno)\, vpisane v ustrezen regis
+ ter pred 1. 1. 2024\, ki imajo že odobrena evropska ali nacionalna nepovr
+ atna sredstva.\nKorist za Savsko: Če društvo ali zavod v naselju dobi ev
+ ropski ali državni razpis\, lahko s posojilom začne delo\, preden pridej
+ o nepovratna sredstva.
+URL:https://www.srrs.si/javni-razpisi/nvo-pf-2026/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: SRRS NVO PF
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
+

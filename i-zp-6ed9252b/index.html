@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!-- Interna, nepovezana stran. noindex. Nič zaupnega. -->
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Interno — Čist zrak in napredek (Savsko naselje)</title>
+<meta name="description" content="Interna stran za pregled, ni namenjena javni objavi.">
+<meta name="theme-color" content="#0b3d24">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta property="og:title" content="Interno — ni za javno deljenje">
+<meta property="og:description" content="Najbližji roki, koledar razpisov, tehnologije za čist zrak in kako se vključiti. Volilno nevtralno.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:url" content="">
+<link rel="icon" href="favicon.png">
+<link rel="alternate" type="application/rss+xml" title="Novosti: razpisi za Savsko naselje" href="novosti.rss">
+<style>
+:root{
+  --g:#0b3d24; --g2:#0b5d2e; --y:#f5c400; --y2:#fff4c2;
+  --t:#1a1a1a; --bg:#f7faf8; --muted:#555; --line:#dde6df;
+  --open:#2e7d32; --soon:#1565c0; --urg:#b26a00; --closed:#616161; --cont:#00695c;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;font:17px/1.5 "Source Sans 3","Segoe UI","DejaVu Sans",sans-serif;color:var(--t);background:#fff}
+a{color:var(--g)}
+.webar{font-size:.92rem;margin:0;padding:12px 16px;background:#f4f7f5}
+.webar a{color:var(--g);font-weight:650}
+.hd{background:var(--g);color:#fff;display:flex;gap:14px;align-items:center;padding:16px 20px;border-bottom:6px solid var(--y)}
+.hd img{width:56px;height:56px;border-radius:8px;background:#fff}
+.hd h1{margin:0;font-size:1.45rem;color:var(--y);line-height:1.2}
+.hd p{margin:4px 0 0;font-size:.92rem}
+main{max-width:74rem;margin:auto;padding:16px 16px 3rem}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1rem 0}
+.kpi>div{background:#f4f7f5;border-left:4px solid var(--y);padding:.55rem .7rem}
+.kpi span{display:block;font-size:1.4rem;font-weight:800;color:var(--g)}
+.kpi small{display:block;font-size:.8rem;color:#444;line-height:1.25}
+.callout{background:#eef6f1;border:1px solid #cfe0d5;border-left:5px solid var(--g);padding:12px 14px;border-radius:8px;margin:1rem 0}
+.callout.warn{background:var(--y2);border-color:var(--y);border-left-color:var(--y)}
+.callout b{color:var(--g)}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1rem 0 .6rem}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:.85rem;font-weight:700;color:var(--g)}
+select,button,.btn{font:inherit}
+select{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:.4rem 0 1rem}
+.btn{display:inline-block;padding:8px 14px;border-radius:8px;background:var(--y);color:var(--g);font-weight:800;text-decoration:none;border:0;cursor:pointer}
+.btn.sec{background:#e7eee9}
+.chk{display:flex;gap:8px;align-items:center;font-size:.92rem}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.85rem;margin:.2rem 0 1rem;color:#333}
+.dot{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.3rem;vertical-align:middle}
+.dot.open{background:var(--open)} .dot.upcoming{background:var(--soon)} .dot.continuous{background:var(--cont)} .dot.closed{background:var(--closed)} .dot.urg{background:var(--urg)}
+.calwrap{display:grid;grid-template-columns:1.25fr .9fr;gap:16px;align-items:start;margin:0 0 1.4rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;box-shadow:0 1px 3px #0001}
+.card h2{margin:0 0 .6rem;font-size:1.15rem;color:var(--g)}
+.calhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.calhead h3{margin:0;color:var(--g);font-size:1.05rem}
+.cal{width:100%;border-collapse:collapse;table-layout:fixed}
+.cal th{font-size:.78rem;color:var(--muted);font-weight:700;padding:4px 2px}
+.cal td{vertical-align:top;height:5.2rem;border:1px solid var(--line);padding:3px 4px;font-size:.78rem}
+.cal td.out{color:#aaa;background:#fafafa}
+.cal td.today{outline:2px solid var(--y);outline-offset:-2px;background:#fffdf3}
+.cal td.picked{background:#eef6f1}
+.cal .dn{font-weight:800;color:var(--g);display:block}
+.cal button.daybtn{display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit}
+.pill{display:block;margin:2px 0 0;padding:1px 4px;border-radius:4px;font-size:.7rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-weight:700}
+.pill.open{background:var(--open)} .pill.upcoming{background:var(--soon)} .pill.continuous{background:var(--cont)} .pill.closed{background:var(--closed)}
+.pill.urg{background:var(--urg)}
+.upcoming{list-style:none;margin:0;padding:0}
+.upcoming li{border-bottom:1px solid var(--line);padding:8px 0}
+.upcoming li:last-child{border:0}
+.upcoming .when{font-weight:800;color:var(--g)}
+.badge{display:inline-block;border-radius:999px;padding:1px 8px;font-size:.78rem;font-weight:800;margin-left:4px}
+.badge.urg{background:var(--y2);color:#7a4a00}
+.badge.open{background:#e8f5e9;color:var(--open)}
+.badge.upcoming{background:#e3f2fd;color:var(--soon)}
+.badge.continuous{background:#e0f2f1;color:var(--cont)}
+.badge.closed{background:#eee;color:#555}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px}
+table.data{width:100%;border-collapse:collapse;font-size:.92rem;min-width:70rem}
+table.data th{background:var(--g);color:#fff;text-align:left;padding:8px 8px;font-weight:700;position:sticky;top:0}
+table.data td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.data tr.urg td{background:#fff8e1}
+table.data tr:hover td{background:#f4f7f5}
+h2.sec{font-size:1.28rem;color:var(--g);margin:1.8rem 0 .45rem;border-bottom:2px solid var(--y);padding-bottom:.15rem}
+.meta,.note{color:var(--muted);font-size:.92rem}
+
+.term{border-bottom:1px dotted var(--g);cursor:help;font-weight:650}
+.i{display:inline-flex;align-items:center;justify-content:center;width:1.05rem;height:1.05rem;margin-left:.15rem;border-radius:50%;background:var(--g);color:#fff;font-size:.68rem;font-weight:800;cursor:help;position:relative;vertical-align:middle;border:0;line-height:1}
+.i:focus{outline:2px solid var(--y);outline-offset:2px}
+.i::after,.term[data-tip]::after{content:none}
+.i:hover::after,.i:focus::after,.term:hover::after,.term:focus::after{
+  content:attr(data-tip);position:absolute;z-index:8;left:0;top:1.4rem;width:min(18rem,70vw);
+  background:#163d28;color:#fff;font-size:.8rem;font-weight:500;line-height:1.35;
+  padding:8px 10px;border-radius:8px;box-shadow:0 4px 16px #0004;text-align:left;white-space:normal;
+}
+.learn h3{color:var(--g);font-size:1.05rem;margin:1.1rem 0 .35rem}
+.schoolbox{background:var(--y2);border:2px solid var(--y);border-radius:12px;padding:14px 16px;margin:1rem 0 1.4rem}
+.schoolbox h3{margin:0 0 .4rem;color:var(--g)}
+.pilot{border-radius:12px;padding:14px 16px;margin:.8rem 0;border:2px solid var(--g);background:#eef6f1}
+.pilot h3{margin:0 0 .35rem;color:var(--g)}
+.pilot.b{border-color:#0b5d2e;background:#f4f7f5}
+details.acc{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:.4rem 0;background:#fff}
+details.acc summary{cursor:pointer;font-weight:700;color:var(--g)}
+footer{text-align:center;font-size:.85rem;padding:20px;color:#555;border-top:1px solid var(--line);margin-top:2rem}
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--y);color:var(--g);padding:8px 12px;border-radius:8px;font-weight:800;z-index:20}
+.skip:focus{left:8px}
+.webar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tools button{padding:4px 9px;border:1px solid #cfe0d5;border-radius:6px;background:#fff;color:var(--g);font-weight:700;cursor:pointer}
+.tools button[aria-pressed="true"]{background:var(--y);border-color:var(--y)}
+.jump{display:flex;flex-wrap:wrap;gap:6px 10px;margin:0 0 1rem;font-size:.92rem}
+.jump a{background:#f4f7f5;border:1px solid var(--line);border-radius:999px;padding:4px 10px;text-decoration:none;font-weight:650}
+.jump a:hover,.jump a:focus{border-color:var(--g)}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1rem 0}
+.path{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#f4f7f5}
+.path h3{margin:0 0 .4rem;color:var(--g);font-size:1.05rem}
+.st{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.8rem;font-weight:800;white-space:nowrap}
+.st-ideja{background:#eee;color:#333}
+.st-priprava{background:#e3f2fd;color:#0d47a1}
+.st-prijava{background:#fff3e0;color:#e65100}
+.st-odobreno{background:#e8f5e9;color:#1b5e20}
+.st-teku{background:#fff8e1;color:#b26a00}
+.st-done{background:#c8e6c9;color:#1b5e20}
+.places{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:start;margin:1rem 0}
+.diagram{border:1px solid var(--line);border-radius:12px;padding:12px;background:#f4f7f5;font-size:.92rem}
+.diagram .road{background:#dbe7e0;padding:4px 8px;text-align:center;font-weight:700;color:var(--g);border-radius:6px;margin:4px 0}
+.diagram .block{border:2px dashed var(--g);border-radius:8px;padding:8px;margin:6px 0;background:#fff}
+.diagram .block a{display:block;margin:2px 0}
+.land{display:block;font-size:.82em;color:var(--muted);margin:0 0 4px}
+.pilot .land{display:block;margin:.4rem 0 0}
+.news{list-style:none;padding:0;margin:0 0 1rem}
+.news li{border-bottom:1px solid var(--line);padding:.6rem 0}
+.news time{display:block;font-size:.85rem;color:var(--muted);font-weight:700}
+:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+html.lg{font-size:115%}
+html.xl{font-size:130%}
+html.contrast,html.contrast body{background:#fff;color:#000}
+html.contrast{--t:#000;--muted:#222;--bg:#fff;--line:#000;--g:#062616;--g2:#062616}
+html.contrast a{color:#062616;text-decoration:underline}
+html.contrast .hd{background:#062616;color:#fff}
+html.contrast .callout,html.contrast .kpi>div,html.contrast .path,html.contrast .diagram,html.contrast .schoolbox,html.contrast .pilot{border-color:#000;background:#fff}
+@media (max-width:900px){
+  .paths,.places{grid-template-columns:1fr}
+}
+@media print{
+  .skip,.webar,.tools,.jump,.toolbar,.btn,button,.filters,select,.chk,.calwrap{display:none !important}
+  header.hd{background:#fff;color:#000;border-bottom:2px solid #000;break-after:avoid}
+  .hd h1{color:#000}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;font-weight:400;color:#000}
+  body{font-size:11pt;background:#fff}
+  table.data{font-size:9pt}
+  .pilot,.schoolbox,.callout{break-inside:avoid}
+}
+@media (max-width:900px){
+  .kpi,.filters,.calwrap{grid-template-columns:1fr 1fr}
+  .cal td{height:4.4rem}
+}
+@media (max-width:640px){
+  .kpi,.filters,.calwrap{grid-template-columns:1fr}
+  .hd{align-items:flex-start}
+}
+
+/* ---- UX prenova 17. 11. 2026 ---- */
+main{overflow-wrap:break-word}
+.hero{background:var(--g);color:#fff;border-bottom:6px solid var(--y)}
+.hero .in{max-width:74rem;margin:auto;padding:18px 16px 20px;display:flex;gap:16px;align-items:flex-start}
+.hero img{width:60px;height:60px;border-radius:8px;background:#fff;flex:none}
+.hero h1{margin:0;font-size:1.7rem;color:var(--y);line-height:1.15}
+.hero .lead{margin:.4rem 0 .9rem;font-size:1.08rem;max-width:46rem}
+.hero .meta2{margin:.7rem 0 0;font-size:.85rem;color:#d7e6dc}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a{display:inline-flex;align-items:center;gap:.4rem;padding:12px 18px;border-radius:10px;background:var(--y);color:var(--g);font-weight:800;text-decoration:none;font-size:1.02rem}
+.cta a.alt{background:#fff}
+.cta a:hover,.cta a:focus{filter:brightness(.95)}
+.toc{position:sticky;top:0;z-index:15;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(4px)}
+.toc ul{max-width:74rem;margin:auto;padding:6px 12px;list-style:none;display:flex;gap:4px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+.toc a{display:block;padding:6px 10px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--g)}
+.toc a:hover,.toc a:focus,.toc a.on{background:var(--y2)}
+section.blk{scroll-margin-top:3.4rem;padding-top:.2rem}
+h2.sec{scroll-margin-top:3.4rem}
+.next{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.next li{border:1px solid var(--line);border-left:5px solid var(--soon);border-radius:10px;padding:10px 12px;background:#fff}
+.next li.urg{border-left-color:var(--urg);background:#fffbef}
+.next .when{font-weight:800;color:var(--g)}
+.next .nm{font-weight:650;margin:.15rem 0}
+.next .note a{white-space:nowrap}
+.kpi{grid-template-columns:repeat(3,1fr)}
+.start{margin:1rem 0}
+.start ul{margin:.3rem 0 0;padding-left:1.2rem}
+details.filt{margin:.6rem 0}
+details.filt>summary{cursor:pointer;font-weight:800;color:var(--g);padding:8px 0}
+.monthlist{list-style:none;margin:0;padding:0}
+.monthlist li{border-bottom:1px solid var(--line);padding:7px 0}
+.monthlist li:last-child{border:0}
+.more{margin:.8rem 0 0}
+.tog{display:none}
+.tag{display:inline-block;margin-top:4px;padding:1px 8px;border-radius:999px;font-size:.75rem;font-weight:800}
+.tag.clean{background:#c8e6c9;color:#1b5e20}
+.tag.src{background:#e3f2fd;color:#0d47a1}
+.tag.help{background:#eee;color:#333}
+.pilots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pilots .pilot{margin:0}
+.airnow{background:#f4f7f5;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:1rem 0}
+.airnow h3{margin:0 0 .3rem;color:var(--g);font-size:1.05rem}
+.airnow ul{margin:.3rem 0 0;padding-left:1.2rem}
+details.acc>summary{padding:4px 0}
+details.acc[open]>summary{margin-bottom:.4rem}
+dl.gloss{margin:0}
+dl.gloss dt{font-weight:800;color:var(--g);margin-top:.5rem}
+dl.gloss dd{margin:0}
+.stages{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;margin:.4rem 0 .8rem}
+table.data td .sub{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-size:.85rem}
+.term{position:relative}
+.pill.urg{background:#8a5200}
+.legend .dot.urg{background:#8a5200}
+@media (max-width:900px){
+  .next{grid-template-columns:1fr 1fr}
+  .pilots{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .hero .in{padding:14px 14px 16px;gap:12px}
+  .hero img{width:44px;height:44px}
+  .hero h1{font-size:1.35rem}
+  .hero .lead{font-size:1rem}
+  .cta{flex-direction:column}
+  .cta a{justify-content:center;padding:12px 14px}
+  .next{grid-template-columns:1fr}
+  .kpi{grid-template-columns:repeat(3,1fr);gap:6px}
+  .kpi span{font-size:1.1rem}
+  .kpi small{font-size:.72rem}
+  .webar{padding:8px 12px;font-size:.85rem}
+  .tools button{padding:3px 7px;font-size:.82rem}
+  .tablewrap{overflow:visible;border:0;border-radius:0}
+  table.data{min-width:0 !important}
+  table.data,table.data tbody,table.data tr,table.data td{display:block;width:100%}
+  table.data thead{display:none}
+  table.data tr{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;padding:8px 12px;background:#fff}
+  table.data tr.urg{border-left:5px solid var(--urg)}
+  table.data td{border:0;padding:3px 0}
+  table.data tr:hover td,table.data tr.urg td{background:none}
+  table.data td[data-label]::before{content:attr(data-label);display:block;font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.02em}
+  table.data td:first-child{font-weight:700;font-size:1.02rem}
+  table.data td:first-child::before{display:none}
+  table.data.fold tr:not(.open) td:not(:first-child):not(.keep){display:none}
+  .tog{display:inline-block;margin-top:6px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#f4f7f5;color:var(--g);font-weight:700;font-size:.85rem;cursor:pointer}
+  .cal td{height:3.6rem;padding:2px}
+  .cal .pill{font-size:0;height:.45rem;padding:0;border-radius:3px}
+  .i:hover::after,.i:focus::after,.term:hover::after,.term:focus::after{left:auto;right:-4rem}
+}
+@media print{ .toc,.cta,.razpis-pas,details.filt>summary{display:none !important} details{display:block} }
+.path.wide{margin:16px 0}
+
+.pobude{display:block;margin:.45rem 0 0;font-size:.9rem;color:var(--muted);line-height:1.4}
+.pobude a{font-weight:700}
+table.data .pobude{margin-top:.35rem}
+/* Plavajoči pas med razpisi (samo telefon), po vzoru pasu med listami na /zaveze/. */
+.razpis-pas{display:none}
+@media (max-width:700px){
+  .razpis-pas{display:flex;align-items:center;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#0b3d24;color:#fff;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:3px solid #f5c400;box-shadow:0 -4px 16px #0004}
+  .razpis-pas-gumb{flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:10px 8px;border:0;border-radius:10px;background:#f5c400;color:#0b3d24;font:inherit;font-weight:800;font-size:.9rem;line-height:1.2;text-align:center;text-decoration:none;cursor:pointer}
+  .razpis-pas-gumb:hover,.razpis-pas-gumb:focus{filter:brightness(0.97);text-decoration:none}
+  .razpis-pas-gumb:focus{outline:3px solid #fff;outline-offset:2px}
+  .razpis-pas-gumb:focus:not(:focus-visible){outline:none}
+  .razpis-pas-gumb:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .razpis-pas-gumb.je-konec, .razpis-pas-gumb:disabled{background:transparent;color:#9bb5a5;font-weight:650;pointer-events:none;cursor:default}
+  .razpis-pas-sedaj{flex:0 1 36%;margin:0;text-align:center;font-size:.78rem;font-weight:700;line-height:1.25;color:#fff}
+  body.ima-razpis-pas{padding-bottom:calc(var(--razpis-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 8px)}
+  table.data#tbl tbody tr{scroll-margin-top:3.4rem;scroll-margin-bottom:calc(var(--razpis-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 12px)}
+}
+@media print{
+  .razpis-pas{display:none !important}
+  body.ima-razpis-pas{padding-bottom:0 !important}
+}
+
+/* Predlog zavihkov in čipov (osnutek, ni za objavo) */
+.osnutek-pas{background:var(--y2);border-bottom:2px solid var(--y);color:var(--g);font-weight:700;font-size:.92rem;padding:8px 16px;text-align:center}
+.zavihki{position:sticky;top:0;z-index:20;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(4px)}
+.zavihki .zavihki-vrsta{max-width:74rem;margin:auto;padding:8px 12px 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+.zavihek{font:inherit;font-weight:800;font-size:.95rem;padding:.45rem 1rem;min-height:2.8rem;border-radius:999px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.35rem}
+.zavihek[aria-selected="true"],.zavihek.on{background:var(--g);color:#fff;border-color:var(--g)}
+.zavihek:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.tab-panel[hidden]{display:none !important}
+.cipi{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 .6rem}
+.cip{font:inherit;font-size:.88rem;font-weight:700;padding:.25rem .9rem;border-radius:2rem;border:2px solid #cfe0d2;background:#fff;color:var(--g);cursor:pointer;min-height:3rem}
+.cip[aria-pressed="true"]{background:var(--g);border-color:var(--g);color:#fff}
+.cip:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.kat-naslov{font-size:.92rem;margin:.2rem 0 .35rem;color:var(--g)}
+@media print{
+  .osnutek-pas,.zavihki{display:none !important}
+  .tab-panel[hidden]{display:block !important}
+}
+.pas-interno{background:#3b2a00;color:#fff;font-weight:700;font-size:.92rem;padding:8px 16px;text-align:center}
+</style>
+</head>
+<body>
+<a class="skip" href="#vsebina">Skoči na vsebino</a>
+<p class="pas-interno">Interno — samo za pregled. Stran ni povezana z javno ploščo in ni za deljenje.</p>
+<p class="webar"><span><a href="https://anketa.savska.org">anketa.savska.org</a> · <a href="https://anketa.savska.org/razpisi/">Javna plošča razpisov</a></span>
+<span class="tools" role="group" aria-label="Pisava, kontrast in tisk">
+  <button type="button" id="btn-font" aria-pressed="false" title="Večja pisava">Večja pisava</button>
+  <button type="button" id="btn-contrast" aria-pressed="false" title="Močnejši kontrast">Večji kontrast</button>
+  <button type="button" id="btn-print" title="Natisni ali shrani kot PDF">Natisni / PDF</button>
+</span></p>
+<header class="hero">
+  <div class="in">
+    <img src="logo.png" width="60" height="60" alt="Znak Savskega naselja">
+    <div>
+      <h1>Čist zrak ter napredek in pobude</h1>
+      <p class="lead">Interna stran za pregled vsebine, ki na javni plošči ni več v zavihkih. Ni povezana z javno stranjo.</p>
+      <div class="cta">
+        <a href="#cist-zrak">🌿 Čist zrak</a>
+        <a href="#napredek" class="alt">📌 Napredek in pobude</a>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="zavihki" aria-label="Razdelki strani">
+  <div class="zavihki-vrsta" role="tablist">
+    <button type="button" class="zavihek" role="tab" id="tab-cist-zrak" aria-controls="panel-cist-zrak" aria-selected="true" data-tab="cist-zrak">🌿 Čist zrak</button>
+    <button type="button" class="zavihek" role="tab" id="tab-napredek" aria-controls="panel-napredek" aria-selected="false" data-tab="napredek">📌 Napredek in pobude</button>
+  </div>
+</nav>
+<main id="vsebina">
+<div class="tab-panel" id="panel-cist-zrak" role="tabpanel" aria-labelledby="tab-cist-zrak">
+<section class="blk" id="cist-zrak" aria-labelledby="h-zrak">
+  <h2 class="sec" id="h-zrak">Kaj delamo za čist zrak</h2>
+  <p>Cilj je v Savsko pripeljati tehnologije, ki zrak <b>res</b> očistijo tam, kjer dihajo otroci in stanovalci, in hkrati zmanjšati vire: tranzit in ogrevanje. Predlagamo dva pilota. <b>Stebrov s filtri ob odprtih cestah</b> (Savska, Linhartova) <b>ne priporočamo</b>: v Stuttgartu so jih po več kot 2&nbsp;mio&nbsp;€ in približno 10&nbsp;% manj PM10 na kratkem odseku odstranili (<a href="#ucimo-se">zakaj</a>).</p>
+  <div class="pilots">
+  <div class="pilot" id="pilot-a">
+    <h3>Pilot A — Zaščita otrok pri šoli in vrtcu</h3>
+    <p>Sestava: gosti zeleni zasloni ali živa meja na robu igrišč, merilna mreža (primerjava z ARSO Bežigrad in partnerstvo ZAG/IJS) ter po presoji dvorišča preizkus Para-PM. Prometni sloj istega pilota je šolska ulica in varni prehodi do začetka šolskega leta 2027/28.</p>
+    <p>Zakaj: študija Ilenič in sod. kaže, da so bili najbolj izpostavljeni otroci na kolesu v kurilni sezoni; v poljudnem prikazu je bila izpostavljenost otrok v nekaterih primerih tudi do štirikrat večja kot pri odraslih. Para-PM ima enoletni preizkus z neodvisnimi senzorji na polzaprtem šolskem dvorišču — za razliko od neuspešnih stebrov na odprtih cestah.</p>
+    <p><b>Partnerji:</b> OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>); merilna partnerja ZAG in IJS. Za šolsko ulico in prehode prijavi MOL (UTM, 26.&nbsp;1.&nbsp;2027).</p>
+    <p class="land"><b>Stanje zemljišča:</b> ni preverjeno <span class="note">(možna stanja: MOL / pripadajoče zemljišče / ZVEtL v teku / ni preverjeno)</span></p>
+  </div>
+  <div class="pilot b" id="pilot-b">
+    <h3>Pilot B — Zelena podzemna garaža kot preizkusno okolje</h3>
+    <p>Sestava: zgoščeno parkiranje, polnilnice Etrel po vzoru Šubičeve, sončna elektrarna s hranilnikom, prezračevanje po potrebi in filtracija izpusta (VFA ali primerljiv preizkušen sistem). Na robu: predaja souporabe in kolesarsko ali paketno mikrovozlišče, da dostavniki ne vozijo v naselje.</p>
+    <p>To je paket, ki hkrati naslavlja pomanjkanje mest, izpust iz kleti v naselje in e-mobilnost. Ciljnih 3.000&nbsp;€ na mesto ostane subvencionirana prebivalska cena, ne strošek gradnje. Prijavitelj oziroma investitor je praviloma MOL; dopolnilni viri so SID (sprotno) in ELENA le ob paketu nad 30&nbsp;mio&nbsp;€. UTM garaž ne financira.</p>
+    <p class="land"><b>Stanje zemljišča:</b> ni preverjeno <span class="note">(možna stanja: MOL / pripadajoče zemljišče / ZVEtL v teku / ni preverjeno)</span></p>
+    <span class="pobude">Povezane pobude meščanov: približno 19 o garažah, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span>
+  </div>
+  </div>
+  <p class="note land-why"><b>Zakaj je stanje zemljišča pomembno.</b> Prijavitelj mora dokazati pravico graditi (npr. MOL pri razpisu UTM, investitor garaže v pilotu B). Zemljišča med bloki pogosto še čakajo na postopek ZVEtL, s katerim se določi pripadajoče zemljišče stavbe. Dokler to ni urejeno, prijava brez soglasja etažnih lastnikov ni mogoča. Sodnega stanja parcel še nismo preverili, zato povsod piše »ni preverjeno«.</p>
+
+  <h3>Tehnologije in kdo jih lahko financira</h3>
+  <p class="note">Razvrščeno od tistih, ki zrak očistijo neposredno ob ljudeh, do tistih, ki le merijo ali zmanjšajo izpuhe. Številke so iz javnih virov; navedbe podjetij so označene.</p>
+  <div class="tablewrap">
+    <table class="data fold" id="tbl-tech">
+      <thead>
+        <tr>
+          <th>Tehnologija</th>
+          <th>Učinek in strošek <button type="button" class="i" data-tip="Samo javno preverjene številke. Kjer gre za navedbo podjetja, je to posebej označeno." aria-label="Pojasnilo: učinek">i</button></th>
+          <th>Kje v Savskem</th>
+          <th>Razpisi, ki bi jo lahko financirali</th>
+          <th>Kdo prijavi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://www.parapm.org/en/projects/la-victoire-school-paris-9th-district/">Para-PM</a> (Aérophile, Francija)<br><span class="tag clean">čisti zrak ob otrocih</span></td><td>Na 330&nbsp;m² šolskem dvorišču v Parizu (10 naprav, 6 neodvisnih senzorjev) v povprečju približno 30&nbsp;% manj <span class="term" tabindex="0" data-tip="Finejši delci, manjši od 2,5 mikrometra. Pridejo globlje v pljuča. V Ljubljani so bile v finejših frakcijah (pod PM2,5) vsebnosti nekaterih kovin celo višje kot v Mariboru (Ilenič in sod., Sci Rep 2026).">PM2,5</span>, ko so naprave vklopljene. Cena iz oktobra 2022: 15.000&nbsp;€ na napravo (izjava soustanovitelja); novo ponudbo je treba pridobiti. Primerno za polzaprta dvorišča, ne za odprte vpadnice.</td><td>Igrišče <a href="https://ossavskonaselje.si/">OŠ Savsko naselje</a> in <a href="https://vrtec-jelka.si/">enote Storžek</a>, če je dvorišče vsaj deloma zaprto stavbami — to pred preskusom preveriti. Del pilota A.</td><td>Prihajajoči LIFE 2027; EIT UM, če je podjetniški partner; pričakovani mestni razpis NVO za okolje 2027. Šolska ulica ob istem mestu sodi v UTM (26.&nbsp;1.&nbsp;2027, prijavitelj MOL).</td><td>MOL s šolo in vrtcem kot partnerjema; morebitno podjetje pri EIT.</td></tr>
+        <tr><td>Zeleni zasloni in goste žive meje (npr. <a href="https://mobilane.com/the-story/2015-research-on-particulate-matter-reduction-with-staffordshire-university-atkins/">Mobilane Green Screen</a>)<br><span class="tag clean">ščiti igrišče</span></td><td>Raziskava v Birminghamu: zasloni lahko na listih zajamejo 40–60&nbsp;% (ultra)finih delcev — to je usedanje na listih, ne nujno enak padec v celem naselju. Javnega cenika proizvajalca v pregledu ni. Običajna živa meja je bistveno cenejša od tehničnih čistilcev.</td><td>Ograje igrišč OŠ in vrtca proti cesti; zeleni pas ob Savski, Linhartovi in Topniški. Del pilota A. <span class="pobude">Povezane pobude meščanov: približno 164 o drevesih ali zelenju, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></td><td>Mala dela ČS (samo zemljišča MOL, naslednji krog še ni objavljen); UTM, če gre za preureditev ulice (26.&nbsp;1.&nbsp;2027, MOL); LIFE 2027; Ekošola in Šolska VRTilnica kot pedagoški okvir (rok natečaja 8.&nbsp;6.&nbsp;2027).</td><td>Na javnih površinah MOL; na šolskem dvorišču šola ali vrtec; pri Ekošoli OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Filtracija izpusta iz garaže (<a href="https://www.vfa-solutions.com/en/our-technology/vfa-parcair/">VFA ParcAir</a> ali primerljiv sistem)<br><span class="tag clean">čisti izpust garaže</span></td><td>VFA kot podjetje navaja več kot 90&nbsp;% tudi za <span class="term" tabindex="0" data-tip="Delci, manjši od 1 mikrometra, še finejša frakcija kot PM2,5.">PM1</span>. Neodvisne terenske študije za ParcAir v pregledu nismo našli. V Eindhovnu (drug sistem) so poročali o približno 70&nbsp;% manj PM10 in 40&nbsp;% manj PM2,5 v zraku, ki zapušča garažo, in približno 25.000&nbsp;€ na filtrirno enoto — tuji pilot, ne slovenski cenik.</td><td>Izpust obstoječih ali nove podzemne garaže, kjer zrak že piha med bloke. Jedro pilota B.</td><td>Kredit <a href="https://www.sid.si/obcine-in-javni-sektor/financiranje-obcin-in-javnega-sektorja-javni-sektor-1/">SID Javni sektor 1</a> (sprotno, če je investitor MOL); ELENA le ob mestnem paketu nad 30&nbsp;mio&nbsp;€; EIT ob podjetniškem partnerju. UTM garažne filtracije ne financira.</td><td>MOL ali lastniki/upravniki garaže; raziskovalni partner za meritev pred/po.</td></tr>
+        <tr><td><a href="https://thetyrecollective.com/impact">The Tyre Collective</a> (TC05, Združeno kraljestvo)<br><span class="tag src">lovi delce na vozilu</span></td><td>V poskusih 2025 (EIT Urban Mobility) do 25&nbsp;% <span class="term" tabindex="0" data-tip="Delci, manjši od 10 mikrometrov (približno desetina debeline lasu). Vdihnemo jih v dihala. V študiji Ilenič in sod. so v PM10 merili tudi kovine in policiklične aromatske ogljikovodike.">PM10</span> po masi. Indicativna cena 150–200&nbsp;£ (približno 175–230&nbsp;€) je izjava podjetja za leto 2026, ne javni cenik. Prodajo napovedujejo za 2026.</td><td>Naprav ne kupuje naselje, ampak flote, ki vozijo ob Savski, Linhartovi in Topniški (LPP, komunala, dostava, MOL).</td><td>Odprta: <a href="https://www.eiturbanmobility.eu/call-for-proposals/sme-market-expansion-open-call-2027/">EIT UM SME Market Expansion</a> (1.&nbsp;12.&nbsp;2026, 17.00 CET, pavšal 60.000&nbsp;€, podjetje + MOL kot končni uporabnik). <a href="https://www.eiturbanmobility.eu/call-for-proposals/strategic-innovation-open-call/">EIT UM Strategic Innovation</a> (28.&nbsp;1.&nbsp;2027, do 2&nbsp;mio&nbsp;€). Prihajajoča: LIFE 2027, Obzorje misija mest 2027 (rok načrtovan 7.&nbsp;10.&nbsp;2027).</td><td>Podjetniški partner; MOL ali prevoznik kot končni uporabnik.</td></tr>
+        <tr><td><a href="https://www.tallano-technologies.com/en/tamic/">Tallano TAMIC</a> (Francija) — filter zavornih delcev<br><span class="tag src">lovi delce na vozilu</span></td><td>Na zavoram v znanstvenem članku več kot 85&nbsp;% po masi; na pariškem smetarskem vozilu (6.900&nbsp;km) podjetje navaja več kot 80&nbsp;%. Indicativno približno 350&nbsp;€ brez DDV na sistem (izjava podjetja, ne javni cenik).</td><td>Preizkus na mestnih in komunalnih vozilih, ki zavirajo na obodnih cestah in v naselju.</td><td>Isti EIT UM razpisi (1.&nbsp;12.&nbsp;2026 in 28.&nbsp;1.&nbsp;2027); prihajajoča LIFE in Obzorje. Ni nakup zbora stanovalcev.</td><td>Podjetje z MOL, LPP ali komunalo kot uporabnikom flote.</td></tr>
+        <tr><td><a href="https://www.mann-hummel.com/en/filtration-company/news-press/2023/cleaner-mobility-platform-from-mann-hummel.html">MANN+HUMMEL</a> — zavorni filtri (Nemčija)<br><span class="tag src">lovi delce na vozilu</span></td><td>Po podatkih podjetja pasivni filter do 40&nbsp;% trdnih delcev, aktivni do 80&nbsp;%. V projektu AeroSolfd približno 35–40&nbsp;% <span class="term" tabindex="0" data-tip="Delci, manjši od 10 mikrometrov (približno desetina debeline lasu). Vdihnemo jih v dihala. V študiji Ilenič in sod. so v PM10 merili tudi kovine in policiklične aromatske ogljikovodike.">PM10</span> na ciklu mestnih avtobusov; med preizkusnimi mesti je navedena tudi Ljubljana. Javne cene zavornega filtra v pregledu nismo našli.</td><td>Naknadna vgradnja na avtobuse LPP, ki vozijo po Linhartovi in Savski.</td><td>EIT UM (1.&nbsp;12.&nbsp;2026 in 28.&nbsp;1.&nbsp;2027); prihajajoča LIFE in Obzorje.</td><td>Podjetje oziroma LPP/MOL kot uporabnik.</td></tr>
+        <tr><td>Merilne mreže: Sensor.Community, <a href="https://www.airgradient.com/outdoor/">AirGradient</a>, <a href="https://airly.org/en/case-studies/warsaw-city-council/">Airly</a>, Aerosol Magee Scientific + ZAG in IJS<br><span class="tag help">meri, ne čisti</span></td><td>To so merilniki, ne čistilci. Sensor.Community okrog 50&nbsp;€ na komplet; AirGradient Open Air 225&nbsp;USD za sestavljeno enoto (125&nbsp;USD komplet); Airly v članku 2022 od 540&nbsp;USD na vozlišče na leto. Aerosol Magee Scientific je referenčni merilnik črnega ogljika (saj), ne poceni občinski senzor. Nizkocenovni senzorji potrebujejo primerjavo z ARSO Bežigrad (Ilenič in sod. za SPS30: R² = 0,50).</td><td>Točke ob Savski, Linhartovi in Topniški, pri šoli in vrtcu, v notranjosti naselja in primerjava z postajo ARSO LJ Bežigrad. Del pilota A.</td><td>Pričakovani mestni razpis NVO – okolje 2027; LIFE 2027; EIT SME, če je podjetje s senzorji in MOL kot uporabnik (rok 1.&nbsp;12.&nbsp;2026).</td><td>Prebivalci in NVO; šola/vrtec kot lokacija; strokovno sodelovanje ZAG in IJS (ustanovi, brez osebnih stikov na tej strani).</td></tr>
+        <tr><td><a href="https://etrel.com/moon-power-shared-payment-cluster-for-cost-and-space-optimisation/">Etrel</a> — pametne polnilnice (Slovenija)<br><span class="tag help">manj izpuhov, ne filtrira</span></td><td>Ni meritev PM; zmanjšuje izpuhe, kolikor nadomesti bencinska in dizelska vozila (obraba gum in zavor ostane). Javnega cenika v pregledu ni. V parkirni hiši Šubičeva že 16 polnilnic INCH in en INCH Duo.</td><td>Standardna oprema zelene garaže (pilot B), po vzoru Šubičeve.</td><td>SID, če je investitor MOL; energetska skupnost in lastna udeležba. Ni nepovratni razpis za polnilnice v tem pregledu.</td><td>MOL ali investitor garaže.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="airnow" id="zrak">
+    <h3>Kakšen je zrak danes?</h3>
+    <p>Meritev na tej strani ne prikazujemo in jih ne izmišljujemo. Najbližja uradna postaja ARSO LJ Bežigrad <b>ni v Savskem naselju</b>, zato ni nujno enaka zraku ob šoli ali ob Savski, Linhartovi in Topniški.</p>
+  <ul>
+    <li>Uradne dnevne in urne vrednosti postaje <a href="https://www.arso.gov.si/zrak/kakovost%20zraka/podatki/dnevne_koncentracije.html">ARSO — dnevne koncentracije</a> in graf za <a href="https://www.arso.gov.si/zrak/kakovost%20zraka/podatki/amp/e00_g_1.html">postajo LJ Bežigrad</a> (PM10, PM2,5, NO<sub>2</sub> in druga onesnaževala, ki jih postaja meri).</li>
+    <li>Prostovoljni senzorji v okolici na zemljevidu <a href="https://maps.sensor.community/#14/46.064/14.520">Sensor.Community, približno središče Savskega</a>. To niso referenčni merilniki; če jih kdo postavi pri šoli ali vrtcu, jih je treba primerjati z ARSO. Navodila za sestavo: <a href="https://sensor.community/sl/sensors/">sensor.community/sl</a>.</li>
+  </ul>
+  </div>
+</section>
+</div>
+
+
+<div class="tab-panel" id="panel-napredek" role="tabpanel" aria-labelledby="tab-napredek" hidden>
+<section class="blk" id="zaveze" aria-labelledby="h-zaveze">
+  <h2 class="sec" id="h-zaveze">Zaveze: rekli ste — kje smo</h2>
+  <div class="callout"><b>Rekli ste.</b> 409 od 545 vprašanih (75&nbsp;%) je parkiranje uvrstilo med do 5 najnujnejših težav. V javnih zavezah za svet ČS Bežigrad so široko podprti tudi varni prehodi ob šoli in vrtcu, meritve zraka, zelenje in javen pregled lastništva parkirišč. To so zaveze, ne že izvedeni posegi. <span class="sub">Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>, stanje preseka 16.&nbsp;11.&nbsp;2026 ob 7.39. Zaveze članov sveta ČS: <a href="https://anketa.savska.org/zaveze/izvoljeni/">anketa.savska.org/zaveze/izvoljeni</a>.</span></div>
+  <p class="stages" aria-label="Stopnje">Stopnje: <span class="st st-ideja">ideja</span>→<span class="st st-priprava">v pripravi</span>→<span class="st st-prijava">prijavljeno</span>→<span class="st st-odobreno">odobreno</span>→<span class="st st-teku">v teku</span>→<span class="st st-done">opravljeno</span></p>
+  <p class="meta">Stanje na dan 17.&nbsp;11.&nbsp;2026. Ukrepa ne označimo kot izvedenega, dokler ni.</p>
+  <div class="tablewrap" id="napredek">
+    <table class="data">
+      <thead><tr><th>Projekt ali zaveza</th><th>Stanje</th><th>Kaj to pomeni</th><th>Naslednji korak</th></tr></thead>
+      <tbody>
+        <tr><td>Prijava MOL na razpis UTM (rok 26.&nbsp;1.&nbsp;2027)</td><td><span class="st st-priprava">v pripravi</span></td><td>Predlagani ukrepi: šolska ulica, varni prehodi, pešci in kolesarji, skladno s CPS. Prijavitelj je MOL.</td><td>Kratko gradivo za MOL.</td></tr>
+        <tr><td>Šolska ulica in varni prehodi (pilot A)</td><td><span class="st st-ideja">ideja</span></td><td>V zavezah ciljni rok do začetka šolskega leta 2027/28. Ukrepi so na cestah MOL.</td><td>Prijava na UTM in vzporedno hitri ukrepi iz rednega proračuna.</td></tr>
+        <tr><td>Meritve zraka (in hrupa) v naselju, zeleni zasloni pri šoli in vrtcu (pilot A)</td><td><span class="st st-ideja">ideja</span></td><td>V zavezah rok prvih 6 mesecev. Uradnih meritev v Savskem še ni; ARSO meri v Bežigradu, ne v naselju.</td><td>Pobuda MOL za uradne meritve; dogovor s šolo in vrtcem za skupnostno merjenje in primerjavo z ARSO.</td></tr>
+        <tr><td>Pregled lastništva parkirišč</td><td><span class="st st-ideja">ideja</span></td><td>V zavezah predviden v prvih 6 mesecih.</td><td>Javen popis: zemljišča MOL, lastniki in postopki ZVEtL.</td></tr>
+        <tr><td>Zelena podzemna garaža (pilot B)</td><td><span class="st st-ideja">ideja</span></td><td>Testno okolje: filtracija izpusta, polnilnice, zgoščeno parkiranje. Ciljnih 3.000&nbsp;€ na mesto je subvencionirana prebivalska cena, ne strošek gradnje.</td><td>Pregled parcel in pogovor z MOL kot možnim investitorjem.</td></tr>
+        <tr><td>Predlogi za mala dela 2028/2029</td><td><span class="st st-ideja">ideja</span></td><td>Naslednji četrtni poziv še ni objavljen. Krog za 2026–2027 je zaprt. Novi svet ČS se še ni sestal; konstitutivno sejo mora župan sklicati do 15.&nbsp;12.&nbsp;2026, zato bo rok za naslednji krog malih del znan šele potem.</td><td>Že zdaj ločiti predloge na zemljiščih MOL od predlogov ob blokih.</td></tr>
+        <tr><td>Socialno vključujoče Savsko (starejši, dostopnost, duševno zdravje, kultura)</td><td><span class="st st-ideja">ideja</span></td><td>Izhodišče je srečanje lokalnih organizacij 14.&nbsp;10.&nbsp;2026 v Knjižnici REČI: starejši potrebujejo bližnje dejavnosti, druženje, gibanje in spremstvo, mladi prostor z vsebino. V Savskem je 47,7&nbsp;% gospodinjstev enočlanskih. Nobena organizacija se še ni zavezala k prijavi.</td><td>Izbrati en skupni projekt in prvi razpis (npr. javna dela 2027 ali naslednji mestni razpis za socialno varstvo).</td></tr>
+        <tr><td>Obnova doma skupnosti, Belokranjska 6</td><td><span class="st st-ideja">ideja</span></td><td>Načrt in rok obnove sta v zavezah široko podprta. Javnega terminskega načrta MOL še ni.</td><td>MOL naj objavi načrt in rok; preveriti Eko sklad 119SUB-LS24, če je stavba v (so)lasti MOL.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="acc">
+    <summary>Vse teme zavez in dopolnilni razpisi zanje</summary>
+  <div class="tablewrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th>Tema</th>
+          <th>Opora v zavezah</th>
+          <th>Lastništvo</th>
+          <th>Dopolnilni razpisi</th>
+          <th>Možni prijavitelji/partnerji (šole, vrtci, UTŽO Ljubljana)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Parkiranje</td><td>Pogosto izbrana prioritetna tema. Javen pregled lastništva in ureditev s prednostjo stanovalcev imata široko podporo.</td><td>Mešano: javne ceste MOL in parkirišča lastnikov ali ZVEtL</td><td>Najprej pregled lastništva. UTM za ulice MOL; mala dela ne uredijo režima med bloki.</td><td>—</td></tr>
+        <tr><td>Garaže</td><td>Ni samostojna prioritetna tema; pojavi se v zavezah o parkiranju (obnova, nove hiše, dostopnejša cena za stanovalce).</td><td>Mešano</td><td>Pilot B. Javni viri predvsem, če je parcela ali investitor MOL (SID, morebitni nov Eko sklad za občine, ELENA ob paketu).</td><td>—</td></tr>
+        <tr><td>Promet in varne šolske poti</td><td>Pogosto izbrana prioritetna tema. Varni prehodi in umirjanje ob šoli in vrtcu imajo zelo široko podporo, ciljni rok do začetka šolskega leta 2027/28.</td><td>Predvsem ceste in površine MOL</td><td>UTM (26. 1. 2027), EUI izmenjava o šolskih ulicah, mestni mladinski razpis do 1. 12. 2026; hitri ukrepi ob šoli iz rednega proračuna MOL. Del pilota A.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Zrak in hrup</td><td>Izbrana prioritetna tema v delu zavez. Meritve in ureditev ob progi ter glavnih cestah imata široko podporo, rok meritev prvih 6 mesecev.</td><td>Meritve niso vezane na parcelo; posegi ob progi so</td><td>Pričakovani mestni okoljski razpis NVO, LIFE 2027, EIT UM za senzorje in filtre na flotah. Glej tudi Tehnologije za čist zrak.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>). Strokovno: ZAG in IJS.</td></tr>
+        <tr><td>Zelenje, senca ob šoli in vrtcu</td><td>Pogosto izbrana prioritetna tema. Pregled dreves in izbira mest z prebivalci pred planom malih del 2028/2029 sta široko podprta; v idejah za sofinanciranje je tudi več sence ob šolah in vrtcih.</td><td>Mešano</td><td>Mala dela na zemljiščih MOL; Ekošola in Šolska VRTilnica; zeleni zasloni v pilotu A. Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Igrišča, popoldanska raba in prostor za mlade</td><td>Izbrana prioritetna tema v delu zavez. Popoldanska odprtost šolskega igrišča in prostor pod streho imata široko podporo. Rok za pobudo: prvih 6 mesecev.</td><td>Mešano: šola ali MOL in morebitna zemljišča etažnih lastnikov</td><td>Dogovor MOL in šole za popoldansko rabo; mladinski razpis do 1. 12. 2026 za programe. Gradnje pokritega prostora ti razpisi praviloma ne pokrijejo.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Šolstvo: ekošola in učilnice na prostem</td><td>Ni bila samostojna izbirna prioritetna tema, je pa povezana z zelenjem, igrišči in ozaveščanjem otrok. OŠ Savsko naselje je že Ekošola in vodi Erasmus+ Zelena šola.</td><td>Praviloma zemljišče šole ali vrtca (javni zavod / MOL) — preveriti</td><td>Ekošola (sprotno), Šolska VRTilnica (8. 6. 2027), pričakovani Erasmus+ KA1 in KA2 2027. Povabilo Šolski eko vrtovi je zaprto.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>). Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli.</td></tr>
+        <tr><td>Javni prostor in klopi</td><td>Redkeje izbrana kot prioritetna tema, a zaveze o klopeh so široke, tudi v senci in ob poteh za starejše.</td><td>Mešano</td><td>Klopi na zemljiščih MOL v mala dela; ob bloku vzorec sklepa lastnikov.</td><td><a href="https://www.utzo.si/utzo-ljubljana/">UTŽO Ljubljana</a> (mestna ustanova, možni partner pri medgeneracijskih programih).</td></tr>
+        <tr><td>Varnost</td><td>Izbrana prioritetna tema v delu zavez. Srečanja s policijo in redarstvom ter pobuda za obhode so predvsem operativne naloge.</td><td>Ni predvsem razpisno vprašanje</td><td>Za varne prehode glej promet in šolske poti. Namenskega razpisa za redarske obhode ni.</td><td>OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Pošta, banka in storitve</td><td>Pogosto izbrana prioritetna tema. Končne odločitve ponudnikov niso v neposredni pristojnosti sveta ČS.</td><td>Odvisno od prostora</td><td>Najprej občinski prostori in pogovor s ponudniki, ne razpis.</td><td>—</td></tr>
+        <tr><td>Dom skupnosti</td><td>Pogosto izbrana prioritetna tema. Načrt in rok obnove Belokranjske 6 sta široko podprta. Prostor za mlade in medgeneracijske dejavnosti se lahko umesti tudi v domu.</td><td>Praviloma stavba MOL, lastništvo preveriti</td><td>Energetska prenova: Eko sklad 119SUB-LS24 in SID, če je lastnik MOL; mladinski in kulturni razpis za programe; Erasmus+ za izobraževanje odraslih, ko bo 2027 objavljen.</td><td><a href="https://www.utzo.si/utzo-ljubljana/">UTŽO Ljubljana</a> (mestna ustanova, možni partner pri medgeneracijskih programih).</td></tr>
+        <tr><td>Čistoča</td><td>Redkeje izbrana kot prioritetna tema, a zaveze o akcijah in koših so široke, vključno s koši za pasje iztrebke.</td><td>Večinoma javne površine</td><td>Mala dela za koše; akcije z Voka Snago.</td><td>—</td></tr>
+        <tr><td>Mala dela ČS</td><td>Izbrana prioritetna tema v delu zavez. Zbiranje predlogov za plan 2028/2029 ima široko podporo.</td><td>Samo zemljišča MOL</td><td>Spremljati poziv 2028/2029; za parcele, ki niso MOL, informacije in soglasja lastnikov.</td><td>—</td></tr>
+        <tr><td>Obveščanje in komunikacija s ČS</td><td>Obvezna tema. Snemanje oziroma prenos sej ima večinsko podporo.</td><td>Ni vezano na zemljišče</td><td>Finančni načrt ČS; CERV le kot del širšega projekta sodelovanja.</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </details>
+</section>
+
+<section class="blk" id="vkljuci" aria-labelledby="h-vkljuci">
+  <h2 class="sec" id="h-vkljuci">Kako se vključiti</h2>
+  <div class="callout" id="pot-cs"><b>Uradna pot do sveta ČS Bežigrad.</b> Pobudo ali predlog pošljite na uradni naslov četrtne skupnosti <a href="mailto:mol.bezigrad@ljubljana.si">mol.bezigrad@ljubljana.si</a>. Na sejah sveta je stalna točka »Pobude in predlogi«; dnevne rede in zapisnike najdete na strani <a href="https://www.ljubljana.si/sl/mestna-obcina/cetrtne-skupnosti/bezigrad/seje-cetrtne-skupnosti-bezigrad">Seje Četrtne skupnosti Bežigrad</a>.</div>
+  <div class="paths">
+    <div class="path">
+      <h3>Prebivalci</h3>
+      <ol>
+        <li>Spremljajte razpise in si <a href="razpisi.ics" download="razpisi.ics">rokove shranite v koledar</a>.</li>
+        <li>Za klopi, drevesa in opremo na zemljiščih MOL pripravite predlog za prihodnja mala dela ČS Bežigrad (poziv 2028/2029 še ni objavljen). Novi svet ČS se še ni sestal; konstitutivno sejo mora župan sklicati do 15.&nbsp;12.&nbsp;2026, zato bo rok za naslednji krog malih del znan šele potem.</li>
+        <li>Za ukrepe med bloki je potreben sklep zbora lastnikov; mala dela ČS tam ne zadostujejo.</li>
+        <li>Pri merjenju zraka lahko sestavite senzor po navodilih <a href="https://sensor.community/sl/sensors/">Sensor.Community</a> in ga primerjate z ARSO.</li>
+      </ol>
+    </div>
+    <div class="path">
+      <h3>Šole in vrtci</h3>
+      <ol>
+        <li>Za pouk: <a href="#za-sole">štiri zamisli spodaj</a> — merjenje zraka, zemljevid šolske poti, zeleni zaslon, Ekošola.</li>
+        <li>OŠ Savsko naselje je že Ekošola in vodi Erasmus+ Zelena šola; to je podlaga za naslednji krog, ko bo razpis 2027 objavljen.</li>
+        <li>Za šolsko ulico in prehode je prijavitelj MOL (UTM, 26.&nbsp;1.&nbsp;2027); šola in vrtec sta lahko partner pri utemeljitvi.</li>
+        <li>Natečaj <a href="https://ekosola.si/solska-vrtilnica-26-27/">Šolska VRTilnica</a> ima rok fotografij 8.&nbsp;6.&nbsp;2027.</li>
+      </ol>
+    </div>
+    <div class="path">
+      <h3>Društva in NVO</h3>
+      <ol>
+        <li>Če ste mladinska organizacija, do 1.&nbsp;12.&nbsp;2026 preverite <a href="https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-objave/javni-razpis-za-sofinanciranje-projektov-za-leto-2027-in-programov-za-obdobje-od-2027-do-2029-s-podrocja-mladinskega-sektorja-v-mol">mestni razpis za mladino</a> (prometna kultura, programi za mlade; projekti največ 6.000&nbsp;€).</li>
+        <li>Spremljajte pričakovani mestni razpis za NVO s področja varstva okolja 2027 (še ni objavljen, zato roka ne izmišljujemo) — primeren za meritve s prebivalci in zasaditve.</li>
+        <li>Kulturni razpis MOL je odprt do 24.&nbsp;11.&nbsp;2026, vendar le za kulturno vsebino, ne za promet ali garaže.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="path wide" id="socialni-partnerji">
+    <h3>Socialne, zdravstvene in kulturne organizacije</h3>
+    <p>Na srečanju 14.&nbsp;10.&nbsp;2026 v Knjižnici REČI so sodelovale lokalne organizacije: šola, zavod za oskrbo na domu, organizacija za duševno zdravje, rehabilitacijski inštitut, društvo upokojencev, šola zdravja, organizacija za demenco in knjižnica. Spodaj so <b>možni partnerji</b> po vrsti organizacije; nobena se še ni zavezala k prijavi.</p>
+    <ul>
+      <li><b>Društvo upokojencev, šola zdravja:</b> gibalne skupine in sprehodi (Fundacija za šport, naslednji krog jeseni 2027), izobraževanje odraslih (Erasmus+ KA210, pričakovano marca 2027).</li>
+      <li><b>NVO za demenco in duševno zdravje:</b> socialnovarstveni programi MDDSZ (pričakovano decembra 2026), mestni razpis za socialno varstvo (naslednji krog jeseni 2027), Civil Society Fund (hitri odziv sproti).</li>
+      <li><b>Organizacije slepih in slabovidnih ter gibalno oviranih:</b> FIHO (naslednji krog jeseni 2027); pomoč MOL pri nagradi Access City Award s primeri ovir v naselju.</li>
+      <li><b>Rehabilitacijski inštitut:</b> strokovni partner za sprehajalne skupine, pripomočke in parašport; prijavitelj je praviloma društvo ali MOL.</li>
+      <li><b>Knjižnica in kulturna društva:</b> mestni kulturni razpis (24.&nbsp;11.&nbsp;2026), JSKD Ljubljana in oprema (pričakovano februar–marec 2027), sklad IPF za glasbene delavnice (sproti), Telekom za digitalne tečaje za starejše (sproti).</li>
+      <li><b>Neprofitni delodajalci (društva, zavodi):</b> javna dela 2027 za družabnika ali spremljevalca starejših (do 30.&nbsp;4.&nbsp;2027 ali do porabe sredstev).</li>
+    </ul>
+  </div>
+  <div class="callout" id="korist-savsko">
+    <b>Kako to koristi Savskemu: več razpisov za en večji projekt</b>
+    <ol>
+      <li><b>Savsko prijazno za vse generacije:</b> dostopne poti in klopi do trgovine in zdravstvenega doma (mala dela ČS, UTM prek MOL) + zelenje (MOL okolje) + senzorji zraka z razlago za starejše (Civil Society Fund) + medgeneracijske glasbene delavnice v knjižnici (MOL kultura, IPF).</li>
+      <li><b>Demenci prijazna soseska:</b> usposobljene trgovina, lekarna in knjižnica, vaje za spomin dopoldne v knjižnici (MDDSZ, mestni socialni razpis) + glasba za osebe z demenco (JSKD, kultura in zdravje).</li>
+      <li><b>Čista pot za ranljive:</b> pot brez ovir in z manj prometa od blokov do zdravstvenega doma, šole in trgovine, z zelenim zaslonom ob cesti in prostorom s čistim zrakom v knjižnici v dneh s slabim zrakom (UTM, LIFE, Civil Society Fund).</li>
+      <li><b>Hodimo skupaj:</b> tedenske sprehajalne in gibalne skupine s strokovno podporo rehabilitacijskega inštituta in šole zdravja; spremljevalca financirajo javna dela, vadbo Fundacija za šport.</li>
+      <li><b>Glas Savskega:</b> skupnostni studio ali kotiček za snemanje (oprema JSKD), podkast ali kratek film o naselju in čistem zraku, ki ga ustvarijo mladi in starejši (MOL mladina, Ustvarjalna Evropa).</li>
+    </ol>
+    <p class="note">To so predlogi za povezovanje virov, ne dogovorjeni projekti. Mestna občina je od leta 2011 članica <a href="https://extranet.who.int/agefriendlyworld/network/ljubljana/">WHO mreže starosti prijaznih mest</a>; to je okvir, ne vir denarja.</p>
+  </div>
+  <div class="schoolbox" id="za-sole">
+    <h3>Za šole in vrtce: štiri zamisli za pouk</h3>
+    <p>Povezano z Ekošolo in pilotom A. Partnerji v naselju: <a href="https://ossavskonaselje.si/">OŠ Savsko naselje</a> (Ekošola in Erasmus+ KA122 »Zelena šola kot učeča se skupnost«, 9/2025–2/2027); <a href="https://vrtec-jelka.si/">Vrtec Jelka, enota Storžek</a>; <a href="https://www.vrtec-mladirod.si/">Vrtec Mladi rod, enoti Čira čara in Mavrica</a> (Erasmus+ akreditacija 2022–2027). OŠ Savsko naselje je že Ekošola in vodi Erasmus+ Zelena šola, zato se ideje ujemajo z delom, ki že poteka.</p>
+    <ol>
+      <li><b>Merimo zrak.</b> Z ugodnim senzorjem (npr. <a href="https://sensor.community/sl/sensors/">Sensor.Community</a>, okrog 50&nbsp;€ na komplet, ali AirGradient) postavite točko pri šoli ali vrtcu in jo eno sezono primerjajte z uradno postajo <a href="https://www.arso.gov.si/zrak/kakovost%20zraka/podatki/dnevne_koncentracije.html">ARSO LJ Bežigrad</a>. Zapišite, kdaj so vrednosti višje (konica, kurilna sezona). Senzor ni referenčni merilnik, zato rezultate berite skupaj z učiteljem in jih ne zamenjujte za uradne podatke.</li>
+      <li><b>Zemljevid šolske poti.</b> V skupinah označite prehode, ovinke brez preglednosti in mesta, kjer avtomobili čakajo v prostem teku. To je gradivo za šolsko ulico in razpis UTM (prijavitelj MOL), ne pa samo šolska naloga.</li>
+      <li><b>Zeleni zaslon.</b> Skupaj z vrtcem načrtujte gosto živo mejo ali predhodno vzgojen zaslon na robu igrišča proti cesti. Opazujte rast in — če imate senzor — primerjajte meritev pred in po zasaditvi, brez pretiranih obljub o učinku.</li>
+      <li><b>Beremo študijo in Ekošolo.</b> Preberite poljudni povzetek meritev Ilenič in sod. (<a href="https://doi.org/10.1038/s41598-026-48692-z">znanstveni članek</a>) in se vključite v program <a href="https://ekosola.si/">Ekošola</a> oziroma natečaj <a href="https://ekosola.si/solska-vrtilnica-26-27/">Šolska VRTilnica</a> (rok fotografij 8.&nbsp;6.&nbsp;2027). Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli.</li>
+    </ol>
+    <details class="acc">
+      <summary>Razpisi za šolske teme (šolske poti, igrišče, zelena dvorišča, Erasmus+)</summary>
+  <p>Tema pokriva ukrepe ob šoli in vrtcu: varne šolske poti in prehode, popoldansko rabo šolskega igrišča, pokrit prostor za mlade, zelena šolska dvorišča in senčenje, učilnice na prostem ter ekošolo. Povezava izhaja iz javnih tematskih zavez (varni prehodi do šolskega leta 2027/28, popoldanska odprtost igrišča in prostor pod streho, več sence ob šolah in vrtcih), brez imen list, strank in kandidatov.</p>
+  <div class="callout">
+    <b>Lastništvo in prijavitelj.</b> Varne poti in prehodi so na javnih cestah MOL, zato se na razpis za trajnostno mobilnost prijavi MOL. Ureditev šolskega igrišča, dvorišča ali učilnice na prostem je praviloma na zemljišču šole ali vrtca (javni zavod / MOL) — to pred prijavo preveriti. Širši možni partner: <a href="https://www.utzo.si/utzo-ljubljana/">UTŽO Ljubljana</a> (mestna ustanova, možni partner pri medgeneracijskih programih). Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli.
+  </div>
+  <ul>
+    <li><b>Varne poti in prehodi:</b> odprt JR EKP UTM 2025 (26.&nbsp;1.&nbsp;2027, prijavitelj MOL); dopolnilno izmenjava EUI o šolskih ulicah (sprotno) in mestni mladinski razpis do 1.&nbsp;12.&nbsp;2026 za prometno vzgojo. <span class="pobude">Povezane pobude meščanov: približno 167 o prehodih ali pločnikih in 77 o šoli ali vrtcu, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></li>
+    <li><b>Popoldanska raba igrišča in pokrit prostor za mlade:</b> to je predvsem dogovor MOL in šole, ne investicijski razpis. Mestni mladinski razpis (še odprt do 1.&nbsp;12.&nbsp;2026) lahko podpre programe. Mestni razpis za vzgojo, izobraževanje in prosti čas otrok 2027 je zaključen (12.&nbsp;11.&nbsp;2026); spremljati naslednji letni krog. Erasmus+ Mladina in Evropska solidarnostna enota 2027 še nista uradno objavljena.</li>
+    <li><b>Zelena dvorišča, senca, učilnice na prostem, ekošola:</b> vključitev v program Ekošola je odprta sprotno; natečaj Šolska VRTilnica ima rok 8.&nbsp;6.&nbsp;2027. Povabilo Šolski eko vrtovi (ZRSS / Podnebni sklad MOPE) je zaprto od 26.&nbsp;6.&nbsp;2025 — Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli. Eko sklad 119SUB-LS24 je odprt za energetsko prenovo občinskih stavb, ne za ureditev dvorišča. Državni investicijski razpis za vrtce in OŠ 2026–2029 je zaprt (rok 30.&nbsp;9.&nbsp;2025, 160&nbsp;mio&nbsp;€). Odprtega razpisa Fundacije za šolstvo 17.&nbsp;11.&nbsp;2026 nismo našli.</li>
+    <li><b>Erasmus+ KA1 in KA2 za šole ter ESE:</b> razpis 2026 je zaključen. Za 2027 uradnih rokov pri CMEPIUS in MOVIT še ni, zato jih ne izmišljujemo. OŠ Savsko naselje že izvaja Erasmus+ KA122 Zelena šola (do 2/2027); to je dobra podlaga za naslednji krog, ko bo objavljen.</li>
+  </ul>
+    </details>
+  </div>
+</section>
+
+<section class="blk learn" id="ucimo-se" aria-labelledby="h-ucimo">
+  <h2 class="sec" id="h-ucimo">Učimo se</h2>
+  <p>Preprosto razloženo za prebivalce, učence in učitelje. Dejstva o zraku izhajajo iz študije Ilenič in sod., <em>Scientific Reports</em> (2026), <a href="https://doi.org/10.1038/s41598-026-48692-z">doi:10.1038/s41598-026-48692-z</a>, in njenega poljudnega povzetka. Ljubljansko merilno mesto v študiji <b>ni bilo v Savskem</b>; prenosljivi so viri, sezona in izpostavljenost otrok, ne pa lokalne številke za Savsko, Linhartovo ali Topniško. V Bežigradu že meri postaja <a href="https://www.arso.gov.si/zrak/kakovost%20zraka/podatki/dnevne_koncentracije.html">ARSO LJ Bežigrad</a> (<span class="term" tabindex="0" data-tip="Delci, manjši od 10 mikrometrov (približno desetina debeline lasu). Vdihnemo jih v dihala. V študiji Ilenič in sod. so v PM10 merili tudi kovine in policiklične aromatske ogljikovodike.">PM10</span>, <span class="term" tabindex="0" data-tip="Finejši delci, manjši od 2,5 mikrometra. Pridejo globlje v pljuča. V Ljubljani so bile v finejših frakcijah (pod PM2,5) vsebnosti nekaterih kovin celo višje kot v Mariboru (Ilenič in sod., Sci Rep 2026).">PM2,5</span> in NO₂).</p>
+  <details class="acc">
+    <summary>Kaj so delci v zraku in od kod pridejo</summary>
+<p><span class="term" tabindex="0" data-tip="Delci, manjši od 10 mikrometrov (približno desetina debeline lasu). Vdihnemo jih v dihala. V študiji Ilenič in sod. so v PM10 merili tudi kovine in policiklične aromatske ogljikovodike.">PM10</span> so delci, manjši od 10 mikrometrov — približno desetina debeline lasu. Vdihnemo jih v nos, žrelo in zgornja dihala. <span class="term" tabindex="0" data-tip="Finejši delci, manjši od 2,5 mikrometra. Pridejo globlje v pljuča. V Ljubljani so bile v finejših frakcijah (pod PM2,5) vsebnosti nekaterih kovin celo višje kot v Mariboru (Ilenič in sod., Sci Rep 2026).">PM2,5</span> so še manjši (pod 2,5 mikrometra) in pridejo globlje v pljuča. <span class="term" tabindex="0" data-tip="Še manjši delci, običajno pod 0,1 mikrometra, nastajajo predvsem pri zgorevanju in obrabi. Študija poudarja tveganje finejših frakcij; referenčne mejne vrednosti za to velikost v študiji niso bile osrednje merilo.">Ultrafini delci</span> so praviloma manjši od 0,1 mikrometra; nastajajo predvsem pri zgorevanju in obrabi. S prostim očesom jih ne vidimo, vendar jih vdihujemo vsak dan.</p>
+  <p>Študija Ilenič in sod. je eno leto (1.&nbsp;6.&nbsp;2023–30.&nbsp;6.&nbsp;2024) merila delce ob kolesarskih stezah in pločnikih v več slovenskih krajih. Najvišje koncentracije kovin in policikličnih aromatskih ogljikovodikov so izmerili v Mariboru in Ljubljani. <b>Glavni viri</b> sta bila <b>promet</b> (izpusti dizelskih motorjev, premeščanje prahu, obraba pnevmatik in zavor) in v kurilni sezoni <b>kurjenje biomase in premoga</b>. Predpisane letne mejne vrednosti za nekatere kovine in benzo(a)piren v PM10 niso bile presežene; to po avtorjih ne pomeni, da je izpostavljenost brez tveganja, ker po WHO varne ravni ni.</p>
+  </details>
+  <details class="acc">
+    <summary>Zakaj so otroci bolj izpostavljeni</summary>
+<p>Najbolj izpostavljeni so bili <b>otroci na kolesu v kurilni sezoni</b>. V poljudnem prikazu avtorica navaja, da je bila izpostavljenost otrok v nekaterih primerih tudi do štirikrat večja kot pri odraslih. To sledi iz razmerja med hitrostjo dihanja in telesno težo v oceni odmerka v znanstvenem članku (za kolesarjenje 3,5&nbsp;m³/h pri otroku z 32&nbsp;kg proti 2,5&nbsp;m³/h pri odraslem moškem z 85&nbsp;kg). Otroci dihajo hitreje glede na svojo težo, njihova dihala se še razvijajo, ob šoli in vrtcu pa pogosto stojijo prav ob cesti, kjer avtomobili zavirajo in v prostem teku čakajo. Zato sta šolska ulica in zaščita igrišča smiselna prva koraka — tudi če merilno mesto študije ni bilo v Savskem.</p>
+  </details>
+  <details class="acc">
+    <summary>Kako delujejo tehnologije in kje so njihove meje</summary>
+<ul>
+    <li><b>Zajemanje obrabe gum in zavor</b> (The Tyre Collective, Tallano, MANN+HUMMEL) lovi delce pri viru, na vozilu, še preden se razpršijo v zrak. Učinki so merjeni na napravi ali vozilu (do 25&nbsp;% PM10 pri pnevmatikah; pri zavorah pogosto nad 80&nbsp;% v preizkusih). Naselje tega ne kupi samo: potrebuje floto (avtobus, komunala). Obrabe to ne odpravi povsem.</li>
+    <li><b>Para-PM</b> ionizira in filtrira zrak na polzaprtem dvorišču. V Parizu so izmerili približno 30&nbsp;% manj PM2,5, ko so naprave delovale. Na odprti vpadnici tak učinek ni dokazan.</li>
+    <li><b>Filter na izpustu garaže</b> očisti zrak, preden pride iz kleti med bloke. V polzaprtem jašku je meritev smiselna; to ni čistilec za celotno naselje.</li>
+    <li><b>Polnilnice</b> same zraka ne filtrirajo; koristijo, kolikor nadomestijo dizelska in bencinska vozila.</li>
+    <li><b>Senzorji</b> zraka ne čistijo. Pokažejo, kje in kdaj je obremenitev višja, če jih primerjamo z uradno postajo.</li>
+    <li><b>Žive meje in zeleni zasloni</b> na listih usedajo delce in ščitijo igrišče. Niso nadomestilo za manj prometa.</li>
+  </ul>
+  <p><b>Zakaj so stebri v Stuttgartu razočarali.</b> Ob križišču Am Neckartor so postavili 17–23 stebrov MANN+HUMMEL (Filter Cubes). Spremljevalne meritve so pokazale približno 9–10&nbsp;% manj PM10 in NO₂ na pločniku, učinek pa je padal z razdaljo. Pilot in obratovanje sta stala več kot 2&nbsp;milijona evrov, elektrika je bila trajno draga. Ko so se izpusti zmanjšali tudi zaradi prometnih ukrepov, filtrov niso več potrebovali in so jih leta 2025 odstranili. Minister je ukrep opisal kot drago »po-oskrbo«, dokler se ne zmanjšajo izpusti. Za odprto Savsko ali Linhartovo zato tak nakup ni prvi korak. Podobno mahovne stene CityTree v Corku niso pokazale doslednega učinka.</p>
+  </details>
+  <details class="acc">
+    <summary>Kaj je razpis in kako iz ideje nastane prijava</summary>
+<p>Razpis je javno vabilo, da se za konkreten namen prijavite za denar ali kredit. Ni nagrada, ki bi jo kdo dobil sam od sebe, in ni isto kot občinsko javno naročilo (npr. NIPP je storitvena pogodba za načrt parkiranja, ne grant). Vsak razpis pove, <b>kdo sme oddati vlogo</b> (upravičenec: prebivalci, društvo, šola, občina, podjetje), <b>za kaj</b> sme porabiti denar, <b>koliko</b> in <b>do kdaj</b>.</p>
+  <p><b>Sofinanciranje</b> pomeni, da razpis ne pokrije vsega. Če piše »do 80&nbsp;%«, morate preostanek zagotoviti sami ali iz drugega vira. Pavšal (npr. 60.000&nbsp;€ pri EIT SME) je fiksen znesek, ne odstotek.</p>
+  <ol>
+    <li>Izberemo konkreten problem (npr. varna pot ob šoli ali merilna mreža) in preverimo lastništvo zemljišča.</li>
+    <li>Poiščemo razpis, kjer smo upravičeni — na tej plošči po filtru »Kdo lahko prijavi« in temi.</li>
+    <li>Sestavimo partnerje (šola, vrtec, MOL, raziskovalci, podjetje). Konzorcij je skupina partnerjev, ki se prijavi skupaj.</li>
+    <li>Pripravimo kratek opis: cilj, ukrepi, stroški, kdo kaj naredi, kako bomo merili učinek.</li>
+    <li>Vlogo odda tisti, ki sme biti prijavitelj, pred rokom na uradni strani. Na tej plošči rokov ne izmišljujemo, če razpis še ni objavljen.</li>
+  </ol>
+  </details>
+  <details class="acc">
+    <summary>Slovar izrazov</summary>
+<dl class="gloss"><dt>Razpis</dt><dd>Javno vabilo k prijavi za sredstva ali kredit, z rokom, pogoji in namenom.</dd><dt>Sofinanciranje</dt><dd>Delež stroškov, ki ga krije razpis; preostanek je lastna udeležba.</dd><dt>Upravičenec</dt><dd>Kdor sme oddati vlogo ali prejeti sredstva (npr. občina, šola, društvo, podjetje).</dd><dt>Konzorcij</dt><dd>Skupina organizacij, ki se na razpis prijavijo skupaj in si razdelijo delo.</dd><dt>Modalni filter</dt><dd>Fizična prepreka (stebrički, korito), ki avtom prepreči vožnjo skozi ulico, pešcem in kolesarjem pa ne.</dd><dt>Šolska ulica</dt><dd>Ulica ob šoli ali vrtcu, ki je ob prihodu in odhodu zaprta za motorni promet (dovoz po dogovoru ostane).</dd><dt>Superblok (superisola)</dt><dd>Skupina ulic, kjer je tranzit skozi notranjost omejen, robne ceste pa prevzamejo promet; zgled so barcelonske Superilles.</dd><dt>PM10 / PM2,5 / ultrafini delci</dt><dd>Velikostni razredi delcev v zraku; manjši pridejo globlje v telo. Vire v slovenskih mestih opisuje študija Ilenič in sod.</dd><dt>Grant / nepovratna sredstva</dt><dd>Denar, ki ga ob izpolnjenih pogojih ni treba vračati, za razliko od kredita (npr. SID).</dd><dt>Pavšal</dt><dd>Vnaprej določen znesek podpore, ki ni izračunan kot odstotek računov.</dd></dl>
+  </details>
+</section>
+
+<section class="blk" id="zemljevid" aria-labelledby="h-zem">
+  <h2 class="sec" id="h-zem">Kje v naselju</h2>
+  <p class="meta">Tranzit želimo umiriti v notranjosti naselja. Savska, Linhartova in Topniška so obodne ceste, kjer je promet kot vir onesnaženja najbližje.</p>
+  <div class="places">
+    <div class="diagram" role="img" aria-label="Shema Savskega naselja: na severu Linhartova, na vzhodu Savska, na jugu Topniška; v notranjosti šola, vrtci in dom skupnosti.">
+      <div class="road"><a href="https://www.openstreetmap.org/search?query=Linhartova%20cesta%2C%20Ljubljana">Linhartova cesta</a> (obod) <span class="land">Stanje zemljišča: ni preverjeno</span></div>
+      <div class="block">
+        Notranjost Savskega naselja — manj tranzita
+        <a href="https://www.openstreetmap.org/search?query=Matja%C5%BEeva%20ulica%204%2C%201000%20Ljubljana">OŠ Savsko naselje, Matjaževa ulica 4</a><span class="land">Stanje zemljišča: ni preverjeno</span>
+        <a href="https://www.openstreetmap.org/search?query=Matja%C5%BEeva%20ulica%204%2C%201000%20Ljubljana">Vrtec Jelka, enota Storžek, Matjaževa ulica 4</a><span class="land">Stanje zemljišča: ni preverjeno</span>
+        <a href="https://www.openstreetmap.org/search?query=Savska%20cesta%201%2C%201000%20Ljubljana">Vrtec Mladi rod, enota Mavrica, Savska cesta 1</a><span class="land">Stanje zemljišča: ni preverjeno</span>
+        <a href="https://www.openstreetmap.org/search?query=Belokranjska%20ulica%2027%2C%201000%20Ljubljana">Vrtec Mladi rod, enota Čira čara, Belokranjska ulica 27</a><span class="land">Stanje zemljišča: ni preverjeno</span>
+        <a href="https://www.openstreetmap.org/search?query=Belokranjska%20ulica%206%2C%201000%20Ljubljana">Dom skupnosti, Belokranjska ulica 6</a><span class="land">Stanje zemljišča: ni preverjeno</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div class="road"><a href="https://www.openstreetmap.org/search?query=Topni%C5%A1ka%20ulica%2C%20Ljubljana">Topniška ulica</a> (obod) <span class="land">Stanje zemljišča: ni preverjeno</span></div>
+        <div class="road"><a href="https://www.openstreetmap.org/search?query=Savska%20cesta%2C%20Ljubljana">Savska cesta</a> (obod) <span class="land">Stanje zemljišča: ni preverjeno</span></div>
+      </div>
+    </div>
+    <div>
+      <p>Pregled celotnega naselja: <a href="https://www.openstreetmap.org/search?query=Savsko%20naselje%2C%20Ljubljana">OpenStreetMap — Savsko naselje</a>.</p>
+      <p>Spletne strani ustanov (brez osebnih stikov): <a href="https://ossavskonaselje.si/">ossavskonaselje.si</a>, <a href="https://vrtec-jelka.si/enote_in_oddelki/enota_jelka_storzek/">Vrtec Jelka — Storžek</a>, <a href="https://www.vrtec-mladirod.si/">vrtec-mladirod.si</a>.</p>
+      <p class="note">Zemljevid ne prikazuje lastništva parcel. Pri vsaki lokaciji je zapisano stanje zemljišča (MOL / pripadajoče zemljišče / ZVEtL v teku / ni preverjeno); sodnega stanja še nismo preverili, zato povsod »ni preverjeno«. Za mala dela in preureditev ulic velja: ukrepi na zemljiščih MOL imajo odprte četrtne in mestne poti; ureditve med bloki potrebujejo soglasja lastnikov.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+</main>
+<footer>
+  <p>Interna stran, namenjena pregledu. Iskalniki naj je ne indeksirajo. Javna plošča ostaja na anketa.savska.org/razpisi/.</p>
+</footer>
+<script>
+(function(){
+  const TAB_IDS = {
+    "cist-zrak": ["panel-cist-zrak","cist-zrak","h-zrak","pilot-a","pilot-b","tbl-tech","zrak"],
+    "napredek": ["panel-napredek","zaveze","h-zaveze","napredek","vkljuci","h-vkljuci","pot-cs","socialni-partnerji","korist-savsko","za-sole","ucimo-se","h-ucimo","zemljevid","h-zem"]
+  };
+  function tabForHash(hash){
+    const id=(hash||"").replace(/^#/,"");
+    if(!id) return "cist-zrak";
+    for(const tab of Object.keys(TAB_IDS)){
+      if(id===tab || TAB_IDS[tab].includes(id)) return tab;
+    }
+    return "cist-zrak";
+  }
+  function setTab(tab, opts){
+    opts=opts||{};
+    const t = TAB_IDS[tab] ? tab : "cist-zrak";
+    document.querySelectorAll(".tab-panel").forEach(p=>{
+      const on=p.id==="panel-"+t;
+      p.hidden=!on;
+    });
+    document.querySelectorAll(".zavihek").forEach(b=>{
+      const on=b.getAttribute("data-tab")===t;
+      b.setAttribute("aria-selected", on?"true":"false");
+      b.classList.toggle("on", on);
+    });
+    document.body.setAttribute("data-tab", t);
+    if(opts.scrollId){
+      const el=document.getElementById(opts.scrollId);
+      if(el){ requestAnimationFrame(()=>el.scrollIntoView({behavior:opts.instant?"auto":"smooth", block:"start"})); }
+    }
+  }
+  function applyHash(instant){
+    const raw=location.hash||"#cist-zrak";
+    const id=raw.replace(/^#/,"") || "cist-zrak";
+    const tab=tabForHash(raw);
+    const scrollId = (id && document.getElementById(id)) ? id : ("panel-"+tab);
+    setTab(tab, {scrollId, instant: !!instant});
+  }
+  document.querySelectorAll(".zavihek").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      const tab=b.getAttribute("data-tab");
+      const hash = tab==="napredek" ? "#napredek" : "#cist-zrak";
+      if(location.hash!==hash) history.pushState(null,"",hash);
+      setTab(tab, {scrollId: "panel-"+tab, instant:false});
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  });
+  window.addEventListener("hashchange", ()=>applyHash(false));
+  document.addEventListener("click", e=>{
+    const a=e.target.closest("a[href^='#']");
+    if(!a) return;
+    const href=a.getAttribute("href");
+    if(!href || href==="#") return;
+    const tab=tabForHash(href);
+    const id=href.replace(/^#/,"");
+    if(tab){ e.preventDefault(); if(location.hash!==href) history.pushState(null,"",href); setTab(tab,{scrollId:id, instant:false}); }
+  });
+  const root=document.documentElement;
+  const btnFont=document.getElementById("btn-font");
+  const btnContrast=document.getElementById("btn-contrast");
+  const btnPrint=document.getElementById("btn-print");
+  if(btnFont){ btnFont.addEventListener("click", ()=>{ const on=root.classList.toggle("big"); btnFont.setAttribute("aria-pressed", on?"true":"false"); }); }
+  if(btnContrast){ btnContrast.addEventListener("click", ()=>{ const on=root.classList.toggle("hi"); btnContrast.setAttribute("aria-pressed", on?"true":"false"); }); }
+  if(btnPrint){ btnPrint.addEventListener("click", ()=>window.print()); }
+  function addToggles(tbl){
+    if(!tbl) return;
+    tbl.querySelectorAll("tbody tr.fold").forEach(tr=>{
+      const prev=tr.previousElementSibling;
+      if(!prev) return;
+      const btn=document.createElement("button");
+      btn.type="button"; btn.className="toggle"; btn.textContent="podrobnosti";
+      btn.addEventListener("click", ()=>{
+        const open=tr.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open?"true":"false");
+      });
+      const cell=prev.querySelector("td,th")||prev;
+      cell.appendChild(btn);
+    });
+  }
+  addToggles(document.getElementById("tbl-tech"));
+  applyHash(true);
+})();
+</script>
+
+</body>
+</html>
