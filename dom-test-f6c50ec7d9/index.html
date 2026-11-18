@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savsko naselje – skupna stran prebivalcev (osnutek)</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Skupna stran prebivalcev Savskega naselja: anketa, rezultati, dogodki, razpisi in pobude.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+/* Slog usklajen s korensko stranjo ankete (savska.org slog): velike pisave, visok kontrast */
+:root{
+  --besedilo:#111; --ozadje:#fff; --svetlo:#f3f6f1; --glavna:#0a5232; --glavna-temna:#063a23;
+  --poudarek:#ffd84d; --rob:#5b5b5b; --zgled:#fff3c4;
+  --velikost:20px;
+}
+html{font-size:var(--velikost)}
+html[data-velikost="2"]{--velikost:23px}
+html[data-velikost="3"]{--velikost:26px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;color:var(--besedilo);background:var(--svetlo);overflow-wrap:break-word}
+.okvir{max-width:60rem;margin:0 auto;padding:0 1rem}
+:focus-visible{outline:4px solid #000;outline-offset:3px;box-shadow:0 0 0 7px var(--poudarek)}
+.preskok{position:absolute;left:-999px;top:0;background:#fff;color:#000;padding:.5rem 1rem;z-index:10}
+.preskok:focus{left:.5rem;top:.5rem}
+h1{font-size:1.6rem;line-height:1.2;margin:.4rem 0 .6rem;color:var(--glavna-temna)}
+h2{font-size:1.15rem;line-height:1.3;margin:0 0 .4rem;color:var(--glavna-temna)}
+p{margin:.4rem 0 .8rem}
+a{color:var(--glavna-temna)}
+.glava{background:var(--glava,var(--glavna));color:#fff}
+.glava .okvir{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem;padding-top:.5rem;padding-bottom:.5rem}
+.znamka{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;margin-right:auto}
+.znamka img{height:40px;width:40px;border-radius:.3rem;background:#fff}
+.logo{font-weight:800;font-size:24px;color:#fff;line-height:1.2}
+.logo span{color:var(--poudarek)}
+.logo small{display:block;font-weight:600;font-size:14px;opacity:.9}
+.velikost{display:flex;gap:.25rem}
+.velikost button{min-width:46px;min-height:46px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;border-radius:8px;cursor:pointer;font-size:16px;padding:0 6px}
+.velikost button[aria-pressed="true"]{background:#fff;color:var(--glavna-temna)}
+main{padding:1rem 0 2rem}
+.uvod{max-width:40rem}
+.uvod p{font-size:1.02rem}
+.mreza{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+@media (min-width:720px){.mreza{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1040px){.mreza{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kartica{position:relative;display:flex;flex-direction:column;background:#fff;border:2px solid #c9d3c6;border-radius:.8rem;padding:1rem;min-width:0}
+.kartica .ikona{font-size:1.6rem;line-height:1;margin:0 0 .4rem}
+.kartica p{font-size:.9rem;margin:.2rem 0 .7rem;color:#222}
+.kartica .gumb{margin-top:auto}
+.kartica:has(.cela:hover){border-color:var(--glavna)}
+.cela::after{content:"";position:absolute;inset:0;border-radius:.8rem}
+.gumb{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;min-height:2.9rem;padding:.5rem 1rem;border-radius:.6rem;border:2px solid var(--glavna);background:var(--glavna);color:#fff;text-decoration:none;text-align:center}
+.kartica.kmalu{background:#fbfcfa;border-style:dashed}
+.oznaka{display:inline-block;font-size:.75rem;font-weight:700;padding:.15rem .6rem;border-radius:1rem;background:var(--zgled);color:#5a4500;border:1px solid #8a6d00;margin:0 0 .3rem;align-self:flex-start}
+.stat{font-size:.9rem;background:var(--svetlo);border-left:6px solid var(--glavna);padding:.45rem .65rem;border-radius:.3rem;margin:.2rem 0 .4rem}
+.vir{font-size:.75rem!important;color:#444!important;margin:0 0 .7rem!important}
+.povezave{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+.povezave a{display:flex;align-items:center;min-height:2.75rem;padding:.3rem .7rem;border:2px solid #c9d3c6;border-radius:.5rem;text-decoration:none;font-weight:700;font-size:.92rem;overflow-wrap:anywhere}
+.povezave a:hover{border-color:var(--glavna)}
+.noga{background:#fff;border-top:2px solid #c9d3c6;padding:1rem 0 1.5rem;font-size:.92rem}
+.noga p{margin:.3rem 0}
+.noga a{font-weight:700}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<a class="preskok" href="#vsebina">Skoči na vsebino</a>
+<header class="glava">
+  <div class="okvir">
+    <a class="znamka" href="./"><img src="logo.png" alt="" width="40" height="40"><span class="logo">savska<span>.org</span><small>Skupna stran prebivalcev</small></span></a>
+    <div class="velikost" role="group" aria-label="Velikost pisave">
+      <button type="button" data-vel="1" aria-pressed="true" aria-label="Običajna pisava">A</button>
+      <button type="button" data-vel="2" aria-pressed="false" aria-label="Večja pisava">A+</button>
+      <button type="button" data-vel="3" aria-pressed="false" aria-label="Največja pisava">A++</button>
+    </div>
+  </div>
+</header>
+<main id="vsebina" class="okvir">
+  <section class="uvod" aria-labelledby="naslov">
+    <h1 id="naslov">Savsko naselje na enem mestu</h1>
+    <p>To je skupna stran prebivalcev Savskega naselja. Tu najdeš anketo in njene rezultate, dogodke v naselju, razpise, pobude meščanov in stike s četrtno skupnostjo.</p>
+  </section>
+
+  <ul class="mreza" aria-label="Vsebine strani">
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">📝</div>
+      <h2>Anketa</h2>
+      <p>Povej, kaj ti je v naselju všeč in kaj bi izboljšali. Traja nekaj minut.</p>
+      <a class="gumb cela" href="/">Izpolni anketo</a>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">📊</div>
+      <h2>Pregled rezultatov</h2>
+      <p>Kaj so sosedje do zdaj povedali v anketi, v številkah in grafih.</p>
+      <a class="gumb cela" href="/pregled/">Poglej rezultate</a>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">📅</div>
+      <h2>Koledar dogodkov</h2>
+      <p>Kaj se dogaja v naselju in okolici. Lahko dodaš tudi svoj dogodek.</p>
+      <a class="gumb cela" href="/koledar/">Odpri koledar</a>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">💶</div>
+      <h2>Razpisi</h2>
+      <p>Razpisi in sredstva, ki bi lahko koristila prebivalcem, društvom in blokom.</p>
+      <a class="gumb cela" href="/razpisi/">Poglej razpise</a>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">🤝</div>
+      <h2>Zaveze list</h2>
+      <p>Kaj so liste za četrtno skupnost zapisale, da bodo naredile za naselje.</p>
+      <a class="gumb cela" href="/zaveze/">Poglej zaveze</a>
+    </li>
+    <li class="kartica kmalu">
+      <span class="oznaka">kmalu</span>
+      <div class="ikona" aria-hidden="true">📚</div>
+      <h2>Novosti v Knjižnici Savsko naselje</h2>
+      <p>Vsak teden pokažemo, katere nove knjige so prišle v knjižnico v naselju.</p>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">💡</div>
+      <h2>Pobude meščanov MOL</h2>
+      <p>Pobude prebivalcev Mestni občini Ljubljana in njeni odgovori.</p>
+      <p class="stat">Od 916 pobud v naselju jih ima 408 obljubo MOL, rešenih je 70.</p>
+      <p class="vir">Po podatkih portala, osveži Savski pobudko.</p>
+      <a class="gumb cela" href="https://pobude.ljubljana.si/">Odpri portal pobud <span class="sr">(zunanja stran)</span></a>
+    </li>
+    <li class="kartica">
+      <div class="ikona" aria-hidden="true">🏛️</div>
+      <h2>ČS Bežigrad</h2>
+      <p>Četrtna skupnost Bežigrad: svetniki, seje in kontakt.</p>
+      <ul class="povezave">
+        <li><a href="/zaveze/izvoljeni/">Izvoljeni v svet ČS</a></li>
+        <li><a href="https://www.ljubljana.si/sl/mestna-obcina/cetrtne-skupnosti/bezigrad/seje-cetrtne-skupnosti-bezigrad">Seje ČS Bežigrad <span class="sr">(zunanja stran)</span></a></li>
+        <li><a href="mailto:mol.bezigrad@ljubljana.si">mol.bezigrad@ljubljana.si</a></li>
+      </ul>
+    </li>
+    <li class="kartica kmalu">
+      <span class="oznaka">kmalu</span>
+      <div class="ikona" aria-hidden="true">🏢</div>
+      <h2>Bloki in upravniki</h2>
+      <p>Splošni kontakti upravnikov stavb v naselju, po registru JSS MOL.</p>
+    </li>
+  </ul>
+</main>
+<footer class="noga">
+  <div class="okvir">
+    <p><strong>Kontakt:</strong> <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · telefon/SMS <a href="tel:+38670205595">070 205 595</a></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var h=document.documentElement,b=document.querySelectorAll('.velikost button');
+  function nastavi(v){h.setAttribute('data-velikost',v);b.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-vel')===v?'true':'false')});try{localStorage.setItem('savska-velikost',v)}catch(e){}}
+  try{var s=localStorage.getItem('savska-velikost');if(s)nastavi(s)}catch(e){}
+  b.forEach(function(x){x.addEventListener('click',function(){nastavi(x.getAttribute('data-vel'))})});
+})();
+</script>
+</body>
+</html>
