@@ -290,6 +290,24 @@ table.data .pobude{margin-top:.35rem}
   .razpis-pas{display:none !important}
   body.ima-razpis-pas{padding-bottom:0 !important}
 }
+
+/* Predlog zavihkov in čipov (osnutek, ni za objavo) */
+.osnutek-pas{background:var(--y2);border-bottom:2px solid var(--y);color:var(--g);font-weight:700;font-size:.92rem;padding:8px 16px;text-align:center}
+.zavihki{position:sticky;top:0;z-index:20;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(4px)}
+.zavihki .zavihki-vrsta{max-width:74rem;margin:auto;padding:8px 12px 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+.zavihek{font:inherit;font-weight:800;font-size:.95rem;padding:.45rem 1rem;min-height:2.8rem;border-radius:999px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.35rem}
+.zavihek[aria-selected="true"],.zavihek.on{background:var(--g);color:#fff;border-color:var(--g)}
+.zavihek:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.tab-panel[hidden]{display:none !important}
+.cipi{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 .6rem}
+.cip{font:inherit;font-size:.88rem;font-weight:700;padding:.25rem .9rem;border-radius:2rem;border:2px solid #cfe0d2;background:#fff;color:var(--g);cursor:pointer;min-height:3rem}
+.cip[aria-pressed="true"]{background:var(--g);border-color:var(--g);color:#fff}
+.cip:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.kat-naslov{font-size:.92rem;margin:.2rem 0 .35rem;color:var(--g)}
+@media print{
+  .osnutek-pas,.zavihki{display:none !important}
+  .tab-panel[hidden]{display:block !important}
+}
 </style>
 </head>
 <body>
@@ -300,6 +318,7 @@ table.data .pobude{margin-top:.35rem}
   <button type="button" id="btn-contrast" aria-pressed="false" title="Močnejši kontrast">Večji kontrast</button>
   <button type="button" id="btn-print" title="Natisni ali shrani kot PDF">Natisni / PDF</button>
 </span></p>
+<p class="osnutek-pas">Predlog nove postavitve — še ni objavljeno. Zavihki in čipi kategorij so tu za pregled.</p>
 <header class="hero">
   <div class="in">
     <img src="logo.png" width="60" height="60" alt="Znak Savskega naselja">
@@ -315,18 +334,15 @@ table.data .pobude{margin-top:.35rem}
     </div>
   </div>
 </header>
-<nav class="toc" aria-label="Kazalo">
-  <ul>
-    <li><a href="#roki">Roki</a></li>
-    <li><a href="#razpisi">Vsi razpisi</a></li>
-    <li><a href="#cist-zrak">Čist zrak</a></li>
-    <li><a href="#zaveze">Zaveze</a></li>
-    <li><a href="#vkljuci">Vključi se</a></li>
-    <li><a href="#ucimo-se">Učimo se</a></li>
-    <li><a href="#zemljevid">Zemljevid</a></li>
-  </ul>
+<nav class="zavihki" aria-label="Razdelki strani">
+  <div class="zavihki-vrsta" role="tablist">
+    <button type="button" class="zavihek" role="tab" id="tab-razpisi" aria-controls="panel-razpisi" aria-selected="true" data-tab="razpisi">📋 Razpisi</button>
+    <button type="button" class="zavihek" role="tab" id="tab-cist-zrak" aria-controls="panel-cist-zrak" aria-selected="false" data-tab="cist-zrak">🌿 Čist zrak</button>
+    <button type="button" class="zavihek" role="tab" id="tab-napredek" aria-controls="panel-napredek" aria-selected="false" data-tab="napredek">📌 Napredek in pobude</button>
+  </div>
 </nav>
 <main id="vsebina">
+<div class="tab-panel" id="panel-razpisi" role="tabpanel" aria-labelledby="tab-razpisi">
 
 <section class="blk" id="roki" aria-labelledby="h-roki">
   <h2 class="sec" id="h-roki">Najbližji roki</h2>
@@ -338,7 +354,7 @@ table.data .pobude{margin-top:.35rem}
     <ul>
       <li><b>Šolska ulica in varni prehodi:</b> razpis za trajnostno mobilnost (JR EKP UTM 2025, 3.&nbsp;rok 26.&nbsp;1.&nbsp;2027, do 80&nbsp;%, največ 2.000.000&nbsp;€). Prijavi MOL; šola in vrtec sta partnerja. <span class="pobude">Povezane pobude meščanov: približno 167 o prehodih ali pločnikih in 77 o šoli ali vrtcu, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></li>
       <li><b>Mladinske organizacije:</b> mestni razpis za mladino do 1.&nbsp;12.&nbsp;2026.</li>
-      <li><b>Starejši, socialno in kultura:</b> javna dela 2027 (do 30.&nbsp;4.&nbsp;2027 ali do porabe sredstev) za družabnika starejših ali pomočnika v knjižnici; mestni kulturni razpis do 24.&nbsp;11.&nbsp;2026 za medgeneracijske delavnice. V filtru »Projekt / tema« izberite <i>socialno in starejši</i>, <i>dostopnost</i> ali <i>kultura in glasba</i>.</li>
+      <li><b>Starejši, socialno in kultura:</b> javna dela 2027 (do 30.&nbsp;4.&nbsp;2027 ali do porabe sredstev) za družabnika starejših ali pomočnika v knjižnici; mestni kulturni razpis do 24.&nbsp;11.&nbsp;2026 za medgeneracijske delavnice. Na čipih spodaj izberite <i>Socialno in starejši</i>, <i>Dostopnost</i> ali <i>Kultura in glasba</i>.</li>
       <li><b>Šole in vrtci:</b> spremljati Erasmus+ 2027 (KA1, KA2) pri CMEPIUS — razpis še ni objavljen, zato roka ne navajamo.</li>
     </ul>
   </div>
@@ -346,34 +362,15 @@ table.data .pobude{margin-top:.35rem}
 
 <section class="blk" id="razpisi" aria-labelledby="h-razpisi">
   <h2 class="sec" id="h-razpisi">Vsi razpisi: koledar in seznam</h2>
-  <details class="filt" id="filt" open>
-    <summary>Filtriraj razpise <span id="filt-count" class="note"></span></summary>
-  <div class="filters">
-    <label class="f">Raven
-      <select id="f-level"></select>
-    </label>
-    <label class="f">Projekt / tema
-      <select id="f-project"></select>
-    </label>
-    <label class="f">Kdo lahko prijavi
-      <select id="f-who"></select>
-    </label>
-    <label class="f">Ujemanje z nami
-      <select id="f-fit">
-        <option value="vsi">vsa ujemanja</option>
-        <option value="visoko">visoko</option>
-        <option value="srednje">srednje</option>
-        <option value="šibko">šibko</option>
-        <option value="spremljati">spremljati ponovitev</option>
-      </select>
-    </label>
+  <div class="filt" id="filt">
+    <h3 class="kat-naslov" id="kat-naslov">Kaj te zanima? <span id="filt-count" class="note"></span></h3>
+    <div class="cipi" id="kategorije" role="group" aria-labelledby="kat-naslov"></div>
+    <div class="toolbar">
+      <label class="chk"><input type="checkbox" id="f-closed"> Pokaži zaprte</label>
+      <label class="chk"><input type="checkbox" id="f-urgent"> Samo roki v 14 dneh</label>
+      <button type="button" class="btn sec" id="btn-reset">Ponastavi</button>
+    </div>
   </div>
-  <div class="toolbar">
-    <label class="chk"><input type="checkbox" id="f-closed"> Pokaži zaprte</label>
-    <label class="chk"><input type="checkbox" id="f-urgent"> Samo roki v 14 dneh</label>
-    <button type="button" class="btn sec" id="btn-reset">Ponastavi</button>
-  </div>
-  </details>
   <p class="legend">
     <span><i class="dot open"></i>odprt</span>
     <span><i class="dot upcoming"></i>prihajajoč</span>
@@ -412,6 +409,18 @@ table.data .pobude{margin-top:.35rem}
   <p class="more"><button type="button" class="btn sec" id="btn-more" hidden></button></p>
 </section>
 
+<section class="blk" id="novosti" aria-labelledby="h-nov">
+  <h2 class="sec" id="h-nov">Novosti</h2>
+  <ol class="news" id="novosti-list">
+    <li><time datetime="2026-11-17">17. 11. 2026</time> Dodani razpisi za starejše, socialno vključenost, dostopnost ter kulturo in glasbo (npr. javna dela 2027, sklad IPF, JSKD, Ustvarjalna Evropa, Telekom) in nove teme v filtru. Pri vsakem razpisu je zdaj zapisana korist za Savsko. Dodan je razdelek za socialne, zdravstvene in kulturne organizacije.</li>
+    <li><time datetime="2026-11-17">17. 11. 2026</time> Stran je preurejena za lažjo uporabo na telefonu: najbližji roki so na vrhu, razpisi in tehnologije so prikazani kot kartice.</li>
+    <li><time datetime="2026-11-17">17. 11. 2026</time> Objavljen pregled razpisov z vseh ravni za Savsko naselje, s koledarjem rokov, tehnologijami za čist zrak in predlogoma pilotov A (šola in vrtec) in B (zelena garaža).</li>
+  </ol>
+</section>
+
+</div>
+
+<div class="tab-panel" id="panel-cist-zrak" role="tabpanel" aria-labelledby="tab-cist-zrak" hidden>
 <section class="blk" id="cist-zrak" aria-labelledby="h-zrak">
   <h2 class="sec" id="h-zrak">Kaj delamo za čist zrak</h2>
   <p>Cilj je v Savsko pripeljati tehnologije, ki zrak <b>res</b> očistijo tam, kjer dihajo otroci in stanovalci, in hkrati zmanjšati vire: tranzit in ogrevanje. Predlagamo dva pilota. <b>Stebrov s filtri ob odprtih cestah</b> (Savska, Linhartova) <b>ne priporočamo</b>: v Stuttgartu so jih po več kot 2&nbsp;mio&nbsp;€ in približno 10&nbsp;% manj PM10 na kratkem odseku odstranili (<a href="#ucimo-se">zakaj</a>).</p>
@@ -468,7 +477,9 @@ table.data .pobude{margin-top:.35rem}
   </ul>
   </div>
 </section>
+</div>
 
+<div class="tab-panel" id="panel-napredek" role="tabpanel" aria-labelledby="tab-napredek" hidden>
 <section class="blk" id="zaveze" aria-labelledby="h-zaveze">
   <h2 class="sec" id="h-zaveze">Zaveze: rekli ste — kje smo</h2>
   <div class="callout"><b>Rekli ste.</b> 409 od 545 vprašanih (75&nbsp;%) je parkiranje uvrstilo med do 5 najnujnejših težav. V javnih zavezah za svet ČS Bežigrad so široko podprti tudi varni prehodi ob šoli in vrtcu, meritve zraka, zelenje in javen pregled lastništva parkirišč. To so zaveze, ne že izvedeni posegi. <span class="sub">Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>, stanje preseka 16.&nbsp;11.&nbsp;2026 ob 7.39. Zaveze članov sveta ČS: <a href="https://anketa.savska.org/zaveze/izvoljeni/">anketa.savska.org/zaveze/izvoljeni</a>.</span></div>
@@ -671,14 +682,7 @@ table.data .pobude{margin-top:.35rem}
   </div>
 </section>
 
-<section class="blk" id="novosti" aria-labelledby="h-nov">
-  <h2 class="sec" id="h-nov">Novosti</h2>
-  <ol class="news" id="novosti-list">
-    <li><time datetime="2026-11-17">17. 11. 2026</time> Dodani razpisi za starejše, socialno vključenost, dostopnost ter kulturo in glasbo (npr. javna dela 2027, sklad IPF, JSKD, Ustvarjalna Evropa, Telekom) in nove teme v filtru. Pri vsakem razpisu je zdaj zapisana korist za Savsko. Dodan je razdelek za socialne, zdravstvene in kulturne organizacije.</li>
-    <li><time datetime="2026-11-17">17. 11. 2026</time> Stran je preurejena za lažjo uporabo na telefonu: najbližji roki so na vrhu, razpisi in tehnologije so prikazani kot kartice.</li>
-    <li><time datetime="2026-11-17">17. 11. 2026</time> Objavljen pregled razpisov z vseh ravni za Savsko naselje, s koledarjem rokov, tehnologijami za čist zrak in predlogoma pilotov A (šola in vrtec) in B (zelena garaža).</li>
-  </ol>
-</section>
+</div>
 </main>
 <nav id="razpis-pas" class="razpis-pas" aria-label="Premik med razpisi">
   <button type="button" class="razpis-pas-gumb" id="razpis-prev" aria-label="Prejšnji razpis">‹ Prejšnji</button>
@@ -747,33 +751,48 @@ table.data .pobude{margin-top:.35rem}
       return (a.name||"").localeCompare(b.name||"","sl");
     });
   }
-  function fillSelect(id, map, allLabel){
-    const s=document.getElementById(id);
-    s.innerHTML = '<option value="vsi">'+allLabel+'</option>' +
-      Object.keys(map).map(k=>'<option value="'+k+'">'+map[k]+'</option>').join("");
-  }
-  fillSelect("f-level", LEVEL, "vse ravni");
-  fillSelect("f-project", PROJ, "vsi projekti");
-  fillSelect("f-who", APP, "vsi prijavitelji");
+  const CHIPS = [
+    {id:"vse", ime:"Vse", ikona:"🌈"},
+    {id:"promet-garaze", ime:"Promet in garaže", ikona:"🚗", projects:["promet","garaze"]},
+    {id:"zrak-zelenje", ime:"Čist zrak in zelenje", ikona:"🌿", projects:["zrak","zelenje"]},
+    {id:"socialno", ime:"Socialno in starejši", ikona:"🤝", projects:["socialno"]},
+    {id:"dostopnost", ime:"Dostopnost", ikona:"♿", projects:["dostopnost"]},
+    {id:"kultura", ime:"Kultura in glasba", ikona:"🎵", projects:["kultura"]},
+    {id:"solstvo", ime:"Mladi in šola", ikona:"🎒", projects:["solstvo"]},
+    {id:"civilna", ime:"Civilna družba", ikona:"🕊️", levels:["civilna","korporativni","ambasade"]},
+    {id:"eu-podonavje", ime:"EU in Podonavje", ikona:"🇪🇺", levels:["eu","podonavje","svetovni"]}
+  ];
 
   const state = {
-    level:"vsi", project:"vsi", who:"vsi", fit:"vsi",
+    chip:"vse",
     showClosed:false, onlyUrgent:false,
     y: Number(ljToday().slice(0,4)),
     m: Number(ljToday().slice(5,7)),
     picked: null, showAll:false
   };
 
+  function chipMatch(c, chip){
+    if(!chip || chip.id==="vse") return true;
+    const projs=c.projects||[];
+    if(chip.projects && chip.projects.some(p=>projs.includes(p))) return true;
+    if(chip.levels && chip.levels.includes(c.level)) return true;
+    return false;
+  }
+  function currentChip(){ return CHIPS.find(k=>k.id===state.chip) || CHIPS[0]; }
   function filtered(){
+    const chip=currentChip();
     return sortCalls(allCalls().filter(c=>{
-      if(!state.showClosed && c.status==="closed" && state.fit!=="spremljati") return false;
+      if(!state.showClosed && c.status==="closed") return false;
       if(state.onlyUrgent && !isUrgent(c)) return false;
-      if(state.level!=="vsi" && c.level!==state.level) return false;
-      if(state.project!=="vsi" && !(c.projects||[]).includes(state.project)) return false;
-      if(state.who!=="vsi" && !whoOf(c).includes(state.who)) return false;
-      if(state.fit!=="vsi" && !fitMatch(c,state.fit)) return false;
+      if(!chipMatch(c, chip)) return false;
       return true;
     }));
+  }
+  function renderChips(){
+    const el=document.getElementById("kategorije");
+    if(!el) return;
+    el.innerHTML=CHIPS.map(k=>'<button type="button" class="cip" data-kat="'+esc(k.id)+'" aria-pressed="'+(state.chip===k.id?"true":"false")+'">'+esc(k.ikona||"")+" "+esc(k.ime)+"</button>").join("");
+    el.querySelectorAll("button").forEach(b=>b.onclick=()=>{state.chip=b.dataset.kat;state.showAll=false;render();});
   }
 
   function shortName(c){
@@ -888,8 +907,9 @@ table.data .pobude{margin-top:.35rem}
     const list=filtered();
     const shown=state.showAll?list:list.slice(0,LIMIT);
     document.getElementById("count").textContent = "Najdenih razpisov: "+list.length+(shown.length<list.length?" (prikazanih prvih "+shown.length+")":"")+". Razvrščeno po roku.";
-    const nf=[state.level,state.project,state.who,state.fit].filter(v=>v!=="vsi").length+(state.showClosed?1:0)+(state.onlyUrgent?1:0);
-    document.getElementById("filt-count").textContent = nf?("· izbranih filtrov: "+nf):"";
+    const nf=(state.chip!=="vse"?1:0)+(state.showClosed?1:0)+(state.onlyUrgent?1:0);
+    const filtCount=document.getElementById("filt-count");
+    if(filtCount) filtCount.textContent = nf?("· izbranih filtrov: "+nf):"";
     const more=document.getElementById("btn-more");
     if(list.length>LIMIT){ more.hidden=false; more.textContent=state.showAll?"Pokaži manj":"Pokaži vseh "+list.length+" razpisov"; } else more.hidden=true;
     const tb=document.querySelector("#tbl tbody");
@@ -936,27 +956,20 @@ table.data .pobude{margin-top:.35rem}
   document.getElementById("btn-print").addEventListener("click", ()=>window.print());
   applyPrefs();
 
-  function render(){ renderKpi(); renderNext(); renderCal(); renderMonth(); renderTable(); updateRazpisPas(); }
+  function render(){ renderChips(); renderKpi(); renderNext(); renderCal(); renderMonth(); renderTable(); updateRazpisPas(); }
 
-  document.getElementById("f-level").onchange=e=>{state.level=e.target.value;render();};
-  document.getElementById("f-project").onchange=e=>{state.project=e.target.value;render();};
-  document.getElementById("f-who").onchange=e=>{state.who=e.target.value;render();};
-  document.getElementById("f-fit").onchange=e=>{state.fit=e.target.value;render();};
   document.getElementById("f-closed").onchange=e=>{state.showClosed=e.target.checked;render();};
   document.getElementById("f-urgent").onchange=e=>{state.onlyUrgent=e.target.checked;render();};
   document.getElementById("cal-prev").onclick=()=>{state.m--; if(state.m<1){state.m=12;state.y--;} render();};
   document.getElementById("cal-next").onclick=()=>{state.m++; if(state.m>12){state.m=1;state.y++;} render();};
   document.getElementById("btn-more").onclick=()=>{state.showAll=!state.showAll; render(); if(!state.showAll) document.getElementById("tbl").scrollIntoView({block:"start"});};
   document.getElementById("btn-reset").onclick=()=>{
-    state.level=state.project=state.who=state.fit="vsi";
+    state.chip="vse";
     state.showClosed=state.onlyUrgent=false; state.picked=null; state.showAll=false;
-    ["f-level","f-project","f-who","f-fit"].forEach(id=>document.getElementById(id).value="vsi");
     document.getElementById("f-closed").checked=false;
     document.getElementById("f-urgent").checked=false;
     render();
   };
-  // Na telefonu so filtri privzeto zaprti.
-  if(window.matchMedia("(max-width:700px)").matches) document.getElementById("filt").open=false;
   // Statične preglednice: oznake stolpcev za kartični prikaz na telefonu.
   document.querySelectorAll("table.data:not(#tbl)").forEach(t=>{
     const hs=[...t.querySelectorAll("thead th")].map(th=>th.childNodes[0].textContent.trim());
@@ -972,12 +985,73 @@ table.data .pobude{margin-top:.35rem}
     });
   }
   window.__addToggles=addToggles;
-  // Kazalo: označi trenutni razdelek.
-  const tocLinks=[...document.querySelectorAll(".toc a")];
-  if("IntersectionObserver" in window){
-    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ tocLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }); },{rootMargin:"-45% 0px -50% 0px"});
-    document.querySelectorAll("section.blk").forEach(s=>io.observe(s));
+  const TAB_IDS = {
+    "razpisi": ["panel-razpisi","roki","h-roki","next","kpi","razpisi","h-razpisi","filt","novosti","h-nov"],
+    "cist-zrak": ["panel-cist-zrak","cist-zrak","h-zrak","pilot-a","pilot-b","tbl-tech","zrak"],
+    "napredek": ["panel-napredek","zaveze","h-zaveze","napredek","vkljuci","h-vkljuci","pot-cs","socialni-partnerji","korist-savsko","za-sole","ucimo-se","h-ucimo","zemljevid","h-zem"]
+  };
+  function tabForHash(hash){
+    const id=(hash||"").replace(/^#/,"");
+    if(!id) return "razpisi";
+    for(const tab of Object.keys(TAB_IDS)){
+      if(id===tab || TAB_IDS[tab].includes(id)) return tab;
+    }
+    if(id.indexOf("razpis-")===0) return "razpisi";
+    return "razpisi";
   }
+  function setTab(tab, opts){
+    opts=opts||{};
+    const t = TAB_IDS[tab] ? tab : "razpisi";
+    document.querySelectorAll(".tab-panel").forEach(p=>{
+      const on=p.id==="panel-"+t;
+      p.hidden=!on;
+    });
+    document.querySelectorAll(".zavihek").forEach(b=>{
+      const on=b.getAttribute("data-tab")===t;
+      b.setAttribute("aria-selected", on?"true":"false");
+      b.classList.toggle("on", on);
+    });
+    document.body.setAttribute("data-tab", t);
+    if(opts.hash){
+      const want=opts.hash;
+      if(location.hash !== want){
+        history.replaceState(null,"", want || "#razpisi");
+      }
+    }
+    updateRazpisPas();
+    if(opts.scrollId){
+      const el=document.getElementById(opts.scrollId);
+      if(el && !el.hidden){
+        requestAnimationFrame(()=>el.scrollIntoView({behavior:opts.instant?"auto":"smooth", block:"start"}));
+      }
+    }
+  }
+  function applyHash(instant){
+    const raw=location.hash||"#razpisi";
+    const id=raw.replace(/^#/,"") || "razpisi";
+    const tab=tabForHash(raw);
+    const scrollId = (id && document.getElementById(id)) ? id : ("panel-"+tab);
+    setTab(tab, {scrollId: scrollId, instant: !!instant});
+  }
+  document.querySelectorAll(".zavihek").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      const tab=b.getAttribute("data-tab");
+      const hash = tab==="cist-zrak" ? "#cist-zrak" : (tab==="napredek" ? "#napredek" : "#razpisi");
+      if(location.hash!==hash) history.pushState(null,"",hash);
+      setTab(tab, {scrollId: "panel-"+tab, instant:false});
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  });
+  window.addEventListener("hashchange", ()=>applyHash(false));
+  document.addEventListener("click", e=>{
+    const a=e.target.closest("a[href^='#']");
+    if(!a) return;
+    const href=a.getAttribute("href");
+    if(!href || href==="#") return;
+    const tab=tabForHash(href);
+    // Let the browser update the hash; we also switch tab immediately.
+    setTab(tab, {});
+  });
 
   const PAS_MQ = window.matchMedia("(max-width:700px)");
   function meriRazpisPas(){
@@ -989,7 +1063,7 @@ table.data .pobude{margin-top:.35rem}
     return [...document.querySelectorAll("#tbl tbody tr")];
   }
   function tocOffset(){
-    const toc=document.querySelector(".toc");
+    const toc=document.querySelector(".zavihki");
     return (toc ? toc.getBoundingClientRect().height : 0) + 8;
   }
   function trenutniRazpis(){
@@ -1040,8 +1114,10 @@ table.data .pobude{margin-top:.35rem}
     const prev=document.getElementById("razpis-prev");
     const next=document.getElementById("razpis-next");
     if(!pas||!countEl||!prev||!next) return;
-    const mobile=PAS_MQ.matches;
+    const onRazpisi=document.body.getAttribute("data-tab")!=="cist-zrak" && document.body.getAttribute("data-tab")!=="napredek";
+    const mobile=PAS_MQ.matches && onRazpisi;
     document.body.classList.toggle("ima-razpis-pas", mobile);
+    pas.style.display = mobile ? "" : "none";
     if(!mobile){ meriRazpisPas(); return; }
     meriRazpisPas();
     const total=filtered().length;
@@ -1081,6 +1157,7 @@ table.data .pobude{margin-top:.35rem}
   document.querySelectorAll("#tbl-tech tbody tr").forEach(tr=>tr.children[1]&&tr.children[1].classList.add("keep"));
   render();
   addToggles(document);
+  applyHash(true);
   meriRazpisPas();
   updateRazpisPas();
 })();
