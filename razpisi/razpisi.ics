@@ -4,7 +4,7 @@ PRODID:-//Savsko naselje//Razpisi//SL
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Razpisi za Savsko naselje
-X-WR-CALDESC:Roki razpisov za projekte v Savskem naselju (promet, garaže, zrak, zelenje, skupnost, šolstvo). Preverjeno 17. 11. 2026. Volilno nevtralno.
+X-WR-CALDESC:Roki razpisov za projekte v Savskem naselju (promet, garaže, zrak, zelenje, skupnost, šolstvo). Preverjeno 18. 11. 2026. Volilno nevtralno.
 X-WR-TIMEZONE:Europe/Ljubljana
 BEGIN:VTIMEZONE
 TZID:Europe/Ljubljana
@@ -338,7 +338,7 @@ DESCRIPTION:CTN RSO2.8\nRok: ZMOS je 3. 11. 2026 izbral Novo Gorico\, Mursk
  stne občine na tem izboru\; MOL kvota 13\,97 mio € že porabljena prej.
  \nSofinanciranje: ni več odprt\nZaprt\, Ljubljana ni bila izbrana.\nZnano
   dejstvo\; ne ponavljati kot novost.
-URL:https://www.zmos.si/
+URL:https://zmos.si/ctn/rso2-8_p3/
 LOCATION:Savsko naselje / razpis
 STATUS:CANCELLED
 TRANSP:TRANSPARENT
@@ -611,7 +611,7 @@ DESCRIPTION:Eko sklad 84LS25 (krediti občin)\nRok: Zaključek objavljen 8.
   do 20 let (po besedilu zaprtega poziva).\nSofinanciranje: kredit\nKo se p
  oziv ponovi\, bo to pomemben ugoden kredit za občinske ukrepe mobilnosti.
  \nZaprt 8. 9. 2026\; spremljati ponovitev.
-URL:https://www.ekosklad.si/informacije/vsi-pozivi
+URL:https://zer.ekosklad.si/prebivalstvo/pridobite-spodbudo/objava
 LOCATION:Savsko naselje / razpis
 STATUS:CANCELLED
 TRANSP:TRANSPARENT
@@ -635,7 +635,7 @@ DESCRIPTION:MOL – vzgoja\, izobraževanje in prosti čas 2027\nRok: Rok j
  azpisa (ni investicija v gradnjo)\nUstreza programom za otroke in mlade (p
  rosti čas\, počitnice\, ozaveščanje o virih)\, ne pa gradnji pokritega
   prostora ali urejanju šolskega dvorišča. Spremljati morebitni naslednj
- i letni razpis.\nPreverjeno 17. 11. 2026. Prijavitelji so oddajali prek er
+ i letni razpis.\nPreverjeno 18. 11. 2026. Prijavitelji so oddajali prek er
  azpisisubvencije.ljubljana.si. Ne ponavljati kot odprt razpis.
 URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
  bjave/za-sofinanciranje-programov-in-projektov-v-mol-v-letu-2027-s-podrocj
@@ -665,7 +665,7 @@ DESCRIPTION:Erasmus+ 2026 šole (zaprt)\nRok: KA1 (SCH\, VET\, HED\, ADU):
   okoli 37 mio € (vse akcije\, ne samo šole).\nSofinanciranje: po pravil
  ih Vodnika Erasmus+ 2026\nZaprt. Naslednji krog je razpis 2027\, ki še ni
   objavljen.\nNe ponavljati kot odprt razpis.
-URL:https://www.cmepius.si/objave/razpis/erasmus-2026/
+URL:https://www.cmepius.si/mednarodno-sodelovanje/moznosti-sodelovanja/erasmus/
 LOCATION:Savsko naselje / razpis
 STATUS:CANCELLED
 TRANSP:TRANSPARENT
@@ -1235,6 +1235,34 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rok: Perspektive Donau (BW Stiftung)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:mz-dober-tek-2026-2036@anketa.savska.org
+DTSTAMP:20261118T133000Z
+DTSTART;TZID=Europe/Ljubljana:20261212T235900
+DTEND;TZID=Europe/Ljubljana:20261213T001400
+SUMMARY:MZ: javna razprava o predlogu Nacionalnega programa o prehrani in t
+ elesni dejavnosti za zdravje – Dober tek\, Slovenija 2026–2036
+DESCRIPTION:Dober tek Slovenija 2026–2036\nRok: Pripombe do 12. 12. 2026 
+ na gp.mz@gov.si (sklic 0070-220/2026-2711) ali po pošti na Ministrstvo za
+  zdravje\, Štefanova ulica 5\, 1000 Ljubljana.\nZnesek: Ni denarja. Javna
+  razprava o nacionalnem programu (prehrana\, gibanje\, aktivno staranje\, 
+ okolja za zdrav življenjski slog).\nKdo: Kdorkoli: prebivalci\, NVO\, šo
+ le\, četrtne skupnosti\, občine in strokovna javnost.\nKorist za Savsko:
+  V program lahko predlagamo varne pešpoti\, senco in gibalne kotičke med
+  bloki ter ukrepe za aktivno staranje v soseskah z veliko enočlanskih gos
+ podinjstev.
+URL:https://www.gov.si/zbirke/javne-objave/predlog-nacionalnega-programa-o-
+ prehrani-in-telesni-dejavnosti-za-zdravje-dober-tek-slovenija-20262036-v-j
+ avni-razpravi/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok razpisa: Dober tek Slovenija 2026–2036
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
