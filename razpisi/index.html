@@ -18,7 +18,7 @@
 <html lang="sl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Razpisi in čist zrak za Savsko naselje</title>
 <meta name="description" content="Razpisi z vseh ravni (od četrtnih do svetovnih) za čist zrak, varne šolske poti, zelene garaže in skupnost v Savskem naselju. Koledar rokov, tehnologije za čist zrak, zaveze in kako se vključiti. Volilno nevtralno.">
 <meta name="theme-color" content="#0b3d24">
@@ -265,8 +265,30 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
   .cal .pill{font-size:0;height:.45rem;padding:0;border-radius:3px}
   .i:hover::after,.i:focus::after,.term:hover::after,.term:focus::after{left:auto;right:-4rem}
 }
-@media print{ .toc,.cta,details.filt>summary{display:none !important} details{display:block} }
+@media print{ .toc,.cta,.razpis-pas,details.filt>summary{display:none !important} details{display:block} }
 .path.wide{margin:16px 0}
+
+.pobude{display:block;margin:.45rem 0 0;font-size:.9rem;color:var(--muted);line-height:1.4}
+.pobude a{font-weight:700}
+table.data .pobude{margin-top:.35rem}
+/* Plavajoči pas med razpisi (samo telefon), po vzoru pasu med listami na /zaveze/. */
+.razpis-pas{display:none}
+@media (max-width:700px){
+  .razpis-pas{display:flex;align-items:center;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#0b3d24;color:#fff;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:3px solid #f5c400;box-shadow:0 -4px 16px #0004}
+  .razpis-pas-gumb{flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:10px 8px;border:0;border-radius:10px;background:#f5c400;color:#0b3d24;font:inherit;font-weight:800;font-size:.9rem;line-height:1.2;text-align:center;text-decoration:none;cursor:pointer}
+  .razpis-pas-gumb:hover,.razpis-pas-gumb:focus{filter:brightness(0.97);text-decoration:none}
+  .razpis-pas-gumb:focus{outline:3px solid #fff;outline-offset:2px}
+  .razpis-pas-gumb:focus:not(:focus-visible){outline:none}
+  .razpis-pas-gumb:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .razpis-pas-gumb.je-konec, .razpis-pas-gumb:disabled{background:transparent;color:#9bb5a5;font-weight:650;pointer-events:none;cursor:default}
+  .razpis-pas-sedaj{flex:0 1 36%;margin:0;text-align:center;font-size:.78rem;font-weight:700;line-height:1.25;color:#fff}
+  body.ima-razpis-pas{padding-bottom:calc(var(--razpis-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 8px)}
+  table.data#tbl tbody tr{scroll-margin-top:3.4rem;scroll-margin-bottom:calc(var(--razpis-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 12px)}
+}
+@media print{
+  .razpis-pas{display:none !important}
+  body.ima-razpis-pas{padding-bottom:0 !important}
+}
 </style>
 </head>
 <body>
@@ -313,7 +335,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
   <div class="callout start">
     <b>Kaj začeti najprej</b>
     <ul>
-      <li><b>Šolska ulica in varni prehodi:</b> razpis za trajnostno mobilnost (JR EKP UTM 2025, 3.&nbsp;rok 26.&nbsp;1.&nbsp;2027, do 80&nbsp;%, največ 2.000.000&nbsp;€). Prijavi MOL; šola in vrtec sta partnerja.</li>
+      <li><b>Šolska ulica in varni prehodi:</b> razpis za trajnostno mobilnost (JR EKP UTM 2025, 3.&nbsp;rok 26.&nbsp;1.&nbsp;2027, do 80&nbsp;%, največ 2.000.000&nbsp;€). Prijavi MOL; šola in vrtec sta partnerja. <span class="pobude">Povezane pobude meščanov: približno 167 o prehodih ali pločnikih in 77 o šoli ali vrtcu, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></li>
       <li><b>Mladinske organizacije:</b> mestni razpis za mladino do 1.&nbsp;12.&nbsp;2026.</li>
       <li><b>Starejši, socialno in kultura:</b> javna dela 2027 (do 30.&nbsp;4.&nbsp;2027 ali do porabe sredstev) za družabnika starejših ali pomočnika v knjižnici; mestni kulturni razpis do 24.&nbsp;11.&nbsp;2026 za medgeneracijske delavnice. V filtru »Projekt / tema« izberite <i>socialno in starejši</i>, <i>dostopnost</i> ali <i>kultura in glasba</i>.</li>
       <li><b>Šole in vrtci:</b> spremljati Erasmus+ 2027 (KA1, KA2) pri CMEPIUS — razpis še ni objavljen, zato roka ne navajamo.</li>
@@ -405,6 +427,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
     <p>Sestava: zgoščeno parkiranje, polnilnice Etrel po vzoru Šubičeve, sončna elektrarna s hranilnikom, prezračevanje po potrebi in filtracija izpusta (VFA ali primerljiv preizkušen sistem). Na robu: predaja souporabe in kolesarsko ali paketno mikrovozlišče, da dostavniki ne vozijo v naselje.</p>
     <p>To je paket, ki hkrati naslavlja pomanjkanje mest, izpust iz kleti v naselje in e-mobilnost. Ciljnih 3.000&nbsp;€ na mesto ostane subvencionirana prebivalska cena, ne strošek gradnje. Prijavitelj oziroma investitor je praviloma MOL; dopolnilni viri so SID (sprotno) in ELENA le ob paketu nad 30&nbsp;mio&nbsp;€. UTM garaž ne financira.</p>
     <p class="land"><b>Stanje zemljišča:</b> ni preverjeno <span class="note">(možna stanja: MOL / pripadajoče zemljišče / ZVEtL v teku / ni preverjeno)</span></p>
+    <span class="pobude">Povezane pobude meščanov: približno 19 o garažah, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span>
   </div>
   </div>
   <p class="note land-why"><b>Zakaj je stanje zemljišča pomembno.</b> Prijavitelj mora dokazati pravico graditi (npr. MOL pri razpisu UTM, investitor garaže v pilotu B). Zemljišča med bloki pogosto še čakajo na postopek ZVEtL, s katerim se določi pripadajoče zemljišče stavbe. Dokler to ni urejeno, prijava brez soglasja etažnih lastnikov ni mogoča. Sodnega stanja parcel še nismo preverili, zato povsod piše »ni preverjeno«.</p>
@@ -424,7 +447,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
       </thead>
       <tbody>
         <tr><td><a href="https://www.parapm.org/en/projects/la-victoire-school-paris-9th-district/">Para-PM</a> (Aérophile, Francija)<br><span class="tag clean">čisti zrak ob otrocih</span></td><td>Na 330&nbsp;m² šolskem dvorišču v Parizu (10 naprav, 6 neodvisnih senzorjev) v povprečju približno 30&nbsp;% manj <span class="term" tabindex="0" data-tip="Finejši delci, manjši od 2,5 mikrometra. Pridejo globlje v pljuča. V Ljubljani so bile v finejših frakcijah (pod PM2,5) vsebnosti nekaterih kovin celo višje kot v Mariboru (Ilenič in sod., Sci Rep 2026).">PM2,5</span>, ko so naprave vklopljene. Cena iz oktobra 2022: 15.000&nbsp;€ na napravo (izjava soustanovitelja); novo ponudbo je treba pridobiti. Primerno za polzaprta dvorišča, ne za odprte vpadnice.</td><td>Igrišče <a href="https://ossavskonaselje.si/">OŠ Savsko naselje</a> in <a href="https://vrtec-jelka.si/">enote Storžek</a>, če je dvorišče vsaj deloma zaprto stavbami — to pred preskusom preveriti. Del pilota A.</td><td>Prihajajoči LIFE 2027; EIT UM, če je podjetniški partner; pričakovani mestni razpis NVO za okolje 2027. Šolska ulica ob istem mestu sodi v UTM (26.&nbsp;1.&nbsp;2027, prijavitelj MOL).</td><td>MOL s šolo in vrtcem kot partnerjema; morebitno podjetje pri EIT.</td></tr>
-        <tr><td>Zeleni zasloni in goste žive meje (npr. <a href="https://mobilane.com/the-story/2015-research-on-particulate-matter-reduction-with-staffordshire-university-atkins/">Mobilane Green Screen</a>)<br><span class="tag clean">ščiti igrišče</span></td><td>Raziskava v Birminghamu: zasloni lahko na listih zajamejo 40–60&nbsp;% (ultra)finih delcev — to je usedanje na listih, ne nujno enak padec v celem naselju. Javnega cenika proizvajalca v pregledu ni. Običajna živa meja je bistveno cenejša od tehničnih čistilcev.</td><td>Ograje igrišč OŠ in vrtca proti cesti; zeleni pas ob Savski, Linhartovi in Topniški. Del pilota A.</td><td>Mala dela ČS (samo zemljišča MOL, naslednji krog še ni objavljen); UTM, če gre za preureditev ulice (26.&nbsp;1.&nbsp;2027, MOL); LIFE 2027; Ekošola in Šolska VRTilnica kot pedagoški okvir (rok natečaja 8.&nbsp;6.&nbsp;2027).</td><td>Na javnih površinah MOL; na šolskem dvorišču šola ali vrtec; pri Ekošoli OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
+        <tr><td>Zeleni zasloni in goste žive meje (npr. <a href="https://mobilane.com/the-story/2015-research-on-particulate-matter-reduction-with-staffordshire-university-atkins/">Mobilane Green Screen</a>)<br><span class="tag clean">ščiti igrišče</span></td><td>Raziskava v Birminghamu: zasloni lahko na listih zajamejo 40–60&nbsp;% (ultra)finih delcev — to je usedanje na listih, ne nujno enak padec v celem naselju. Javnega cenika proizvajalca v pregledu ni. Običajna živa meja je bistveno cenejša od tehničnih čistilcev.</td><td>Ograje igrišč OŠ in vrtca proti cesti; zeleni pas ob Savski, Linhartovi in Topniški. Del pilota A. <span class="pobude">Povezane pobude meščanov: približno 164 o drevesih ali zelenju, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></td><td>Mala dela ČS (samo zemljišča MOL, naslednji krog še ni objavljen); UTM, če gre za preureditev ulice (26.&nbsp;1.&nbsp;2027, MOL); LIFE 2027; Ekošola in Šolska VRTilnica kot pedagoški okvir (rok natečaja 8.&nbsp;6.&nbsp;2027).</td><td>Na javnih površinah MOL; na šolskem dvorišču šola ali vrtec; pri Ekošoli OŠ Savsko naselje in vrtci v naselju (<a href="#za-sole">seznam</a>).</td></tr>
         <tr><td>Filtracija izpusta iz garaže (<a href="https://www.vfa-solutions.com/en/our-technology/vfa-parcair/">VFA ParcAir</a> ali primerljiv sistem)<br><span class="tag clean">čisti izpust garaže</span></td><td>VFA kot podjetje navaja več kot 90&nbsp;% tudi za <span class="term" tabindex="0" data-tip="Delci, manjši od 1 mikrometra, še finejša frakcija kot PM2,5.">PM1</span>. Neodvisne terenske študije za ParcAir v pregledu nismo našli. V Eindhovnu (drug sistem) so poročali o približno 70&nbsp;% manj PM10 in 40&nbsp;% manj PM2,5 v zraku, ki zapušča garažo, in približno 25.000&nbsp;€ na filtrirno enoto — tuji pilot, ne slovenski cenik.</td><td>Izpust obstoječih ali nove podzemne garaže, kjer zrak že piha med bloke. Jedro pilota B.</td><td>Kredit <a href="https://www.sid.si/obcine-in-javni-sektor/financiranje-obcin-in-javnega-sektorja-javni-sektor-1/">SID Javni sektor 1</a> (sprotno, če je investitor MOL); ELENA le ob mestnem paketu nad 30&nbsp;mio&nbsp;€; EIT ob podjetniškem partnerju. UTM garažne filtracije ne financira.</td><td>MOL ali lastniki/upravniki garaže; raziskovalni partner za meritev pred/po.</td></tr>
         <tr><td><a href="https://thetyrecollective.com/impact">The Tyre Collective</a> (TC05, Združeno kraljestvo)<br><span class="tag src">lovi delce na vozilu</span></td><td>V poskusih 2025 (EIT Urban Mobility) do 25&nbsp;% <span class="term" tabindex="0" data-tip="Delci, manjši od 10 mikrometrov (približno desetina debeline lasu). Vdihnemo jih v dihala. V študiji Ilenič in sod. so v PM10 merili tudi kovine in policiklične aromatske ogljikovodike.">PM10</span> po masi. Indicativna cena 150–200&nbsp;£ (približno 175–230&nbsp;€) je izjava podjetja za leto 2026, ne javni cenik. Prodajo napovedujejo za 2026.</td><td>Naprav ne kupuje naselje, ampak flote, ki vozijo ob Savski, Linhartovi in Topniški (LPP, komunala, dostava, MOL).</td><td>Odprta: <a href="https://www.eiturbanmobility.eu/call-for-proposals/sme-market-expansion-open-call-2027/">EIT UM SME Market Expansion</a> (1.&nbsp;12.&nbsp;2026, 17.00 CET, pavšal 60.000&nbsp;€, podjetje + MOL kot končni uporabnik). <a href="https://www.eiturbanmobility.eu/call-for-proposals/strategic-innovation-open-call/">EIT UM Strategic Innovation</a> (28.&nbsp;1.&nbsp;2027, do 2&nbsp;mio&nbsp;€). Prihajajoča: LIFE 2027, Obzorje misija mest 2027 (rok načrtovan 7.&nbsp;10.&nbsp;2027).</td><td>Podjetniški partner; MOL ali prevoznik kot končni uporabnik.</td></tr>
         <tr><td><a href="https://www.tallano-technologies.com/en/tamic/">Tallano TAMIC</a> (Francija) — filter zavornih delcev<br><span class="tag src">lovi delce na vozilu</span></td><td>Na zavoram v znanstvenem članku več kot 85&nbsp;% po masi; na pariškem smetarskem vozilu (6.900&nbsp;km) podjetje navaja več kot 80&nbsp;%. Indicativno približno 350&nbsp;€ brez DDV na sistem (izjava podjetja, ne javni cenik).</td><td>Preizkus na mestnih in komunalnih vozilih, ki zavirajo na obodnih cestah in v naselju.</td><td>Isti EIT UM razpisi (1.&nbsp;12.&nbsp;2026 in 28.&nbsp;1.&nbsp;2027); prihajajoča LIFE in Obzorje. Ni nakup zbora stanovalcev.</td><td>Podjetje z MOL, LPP ali komunalo kot uporabnikom flote.</td></tr>
@@ -569,7 +592,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
     <b>Lastništvo in prijavitelj.</b> Varne poti in prehodi so na javnih cestah MOL, zato se na razpis za trajnostno mobilnost prijavi MOL. Ureditev šolskega igrišča, dvorišča ali učilnice na prostem je praviloma na zemljišču šole ali vrtca (javni zavod / MOL) — to pred prijavo preveriti. Širši možni partner: <a href="https://www.utzo.si/utzo-ljubljana/">UTŽO Ljubljana</a> (mestna ustanova, možni partner pri medgeneracijskih programih). Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli.
   </div>
   <ul>
-    <li><b>Varne poti in prehodi:</b> odprt JR EKP UTM 2025 (26.&nbsp;1.&nbsp;2027, prijavitelj MOL); dopolnilno izmenjava EUI o šolskih ulicah (sprotno) in mestni mladinski razpis do 1.&nbsp;12.&nbsp;2026 za prometno vzgojo.</li>
+    <li><b>Varne poti in prehodi:</b> odprt JR EKP UTM 2025 (26.&nbsp;1.&nbsp;2027, prijavitelj MOL); dopolnilno izmenjava EUI o šolskih ulicah (sprotno) in mestni mladinski razpis do 1.&nbsp;12.&nbsp;2026 za prometno vzgojo. <span class="pobude">Povezane pobude meščanov: približno 167 o prehodih ali pločnikih in 77 o šoli ali vrtcu, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></li>
     <li><b>Popoldanska raba igrišča in pokrit prostor za mlade:</b> to je predvsem dogovor MOL in šole, ne investicijski razpis. Mestni mladinski razpis (še odprt do 1.&nbsp;12.&nbsp;2026) lahko podpre programe. Mestni razpis za vzgojo, izobraževanje in prosti čas otrok 2027 je zaključen (12.&nbsp;11.&nbsp;2026); spremljati naslednji letni krog. Erasmus+ Mladina in Evropska solidarnostna enota 2027 še nista uradno objavljena.</li>
     <li><b>Zelena dvorišča, senca, učilnice na prostem, ekošola:</b> vključitev v program Ekošola je odprta sprotno; natečaj Šolska VRTilnica ima rok 8.&nbsp;6.&nbsp;2027. Povabilo Šolski eko vrtovi (ZRSS / Podnebni sklad MOPE) je zaprto od 26.&nbsp;6.&nbsp;2025 — Primer na Bežigradu: OŠ Franceta Bevka ima šolski eko vrt, financiran iz projekta Podnebnega sklada MOPE 2025–2028. Javno povabilo je zaprto od 26.&nbsp;6.&nbsp;2025; novega odprtega kroga 17.&nbsp;11.&nbsp;2026 nismo našli. Eko sklad 119SUB-LS24 je odprt za energetsko prenovo občinskih stavb, ne za ureditev dvorišča. Državni investicijski razpis za vrtce in OŠ 2026–2029 je zaprt (rok 30.&nbsp;9.&nbsp;2025, 160&nbsp;mio&nbsp;€). Odprtega razpisa Fundacije za šolstvo 17.&nbsp;11.&nbsp;2026 nismo našli.</li>
     <li><b>Erasmus+ KA1 in KA2 za šole ter ESE:</b> razpis 2026 je zaključen. Za 2027 uradnih rokov pri CMEPIUS in MOVIT še ni, zato jih ne izmišljujemo. OŠ Savsko naselje že izvaja Erasmus+ KA122 Zelena šola (do 2/2027); to je dobra podlaga za naslednji krog, ko bo objavljen.</li>
@@ -656,6 +679,12 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
   </ol>
 </section>
 </main>
+<nav id="razpis-pas" class="razpis-pas" aria-label="Premik med razpisi">
+  <button type="button" class="razpis-pas-gumb" id="razpis-prev" aria-label="Prejšnji razpis">‹ Prejšnji</button>
+  <p class="razpis-pas-sedaj" id="razpis-pas-count" aria-live="polite">—</p>
+  <button type="button" class="razpis-pas-gumb" id="razpis-next" aria-label="Naslednji razpis">Naslednji razpis ›</button>
+</nav>
+
 <footer>
   <p>Roki so preverjeni na uradnih straneh 18.&nbsp;11.&nbsp;2026 (Europe/Ljubljana); dni do roka se preračunajo v brskalniku. Kjer razpis še ni objavljen, roka ne navajamo. Vir za zrak: Ilenič in sod., <em>Scientific Reports</em> 2026.</p>
   <p>Volilno nevtralno: brez imen list, strank in kandidatov. Brez osebnih podatkov in brez prostih odgovorov iz ankete; pri ustanovah so samo imena in spletne strani.</p>
@@ -860,7 +889,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
       const vir = c.official_url?'<span class="sub"><a href="'+esc(c.official_url)+'">Uradna stran ↗</a></span>':"";
       const why = c.fit_note?'<details><summary>Zakaj za nas</summary>'+esc(c.fit_note)+'</details>':'';
       const amt = esc(c.amount)+(c.cofinancing?'<span class="sub">Sofinanciranje: '+esc(c.cofinancing)+'</span>':'');
-      return '<tr class="'+(isUrgent(c)?"urg":"")+'"><td data-label="Razpis">'+esc(c.name)+vir+'</td><td data-label="Korist za Savsko">'+esc(c.korist||"preveriti")+'</td><td data-label="Raven">'+esc(LEVEL[c.level]||c.level)+'</td><td data-label="Rok" class="keep">'+esc(rok)+dni+st+'</td><td data-label="Znesek">'+amt+'</td><td data-label="Kdo prijavi">'+esc(who)+'</td><td data-label="Tema in ujemanje">'+esc(proj)+'<span class="sub">ujemanje: '+esc(c.fit||"—")+'</span>'+why+'</td></tr>';
+      return '<tr class="'+(isUrgent(c)?"urg":"")+'" data-id="'+esc(c.id)+'" id="razpis-'+esc(c.id)+'"><td data-label="Razpis">'+esc(c.name)+vir+'</td><td data-label="Korist za Savsko">'+esc(c.korist||"preveriti")+'</td><td data-label="Raven">'+esc(LEVEL[c.level]||c.level)+'</td><td data-label="Rok" class="keep">'+esc(rok)+dni+st+'</td><td data-label="Znesek">'+amt+'</td><td data-label="Kdo prijavi">'+esc(who)+'</td><td data-label="Tema in ujemanje">'+esc(proj)+'<span class="sub">ujemanje: '+esc(c.fit||"—")+'</span>'+why+'</td></tr>';
     }).join("");
     if(window.__addToggles) window.__addToggles(document);
   }
@@ -894,7 +923,7 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
   document.getElementById("btn-print").addEventListener("click", ()=>window.print());
   applyPrefs();
 
-  function render(){ renderKpi(); renderNext(); renderCal(); renderMonth(); renderTable(); }
+  function render(){ renderKpi(); renderNext(); renderCal(); renderMonth(); renderTable(); updateRazpisPas(); }
 
   document.getElementById("f-level").onchange=e=>{state.level=e.target.value;render();};
   document.getElementById("f-project").onchange=e=>{state.project=e.target.value;render();};
@@ -936,11 +965,114 @@ table.data details summary{cursor:pointer;color:var(--g);font-weight:700;font-si
     const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ tocLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }); },{rootMargin:"-45% 0px -50% 0px"});
     document.querySelectorAll("section.blk").forEach(s=>io.observe(s));
   }
+
+  const PAS_MQ = window.matchMedia("(max-width:700px)");
+  function meriRazpisPas(){
+    const pas=document.getElementById("razpis-pas");
+    if(!pas || !PAS_MQ.matches) return;
+    document.documentElement.style.setProperty("--razpis-pas-h", pas.offsetHeight+"px");
+  }
+  function razpisKartice(){
+    return [...document.querySelectorAll("#tbl tbody tr")];
+  }
+  function tocOffset(){
+    const toc=document.querySelector(".toc");
+    return (toc ? toc.getBoundingClientRect().height : 0) + 8;
+  }
+  function trenutniRazpis(){
+    const list=razpisKartice();
+    if(!list.length) return -1;
+    const topLine=tocOffset();
+    const pasH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--razpis-pas-h"))||72;
+    const botLine=window.innerHeight - pasH - 8;
+    if(list[0].getBoundingClientRect().top > botLine) return -1;
+    if(list[list.length-1].getBoundingClientRect().bottom < topLine) return list.length-1;
+    let idx=0;
+    for(let i=0;i<list.length;i++){
+      if(list[i].getBoundingClientRect().top <= topLine + 24) idx=i;
+    }
+    return idx;
+  }
+  function odpriKartico(el){
+    if(!el) return;
+    let d=el.closest("details");
+    while(d){ d.open=true; d=d.parentElement && d.parentElement.closest("details"); }
+    if(!el.classList.contains("open")){
+      const b=el.querySelector(".tog");
+      if(b) b.click();
+    }
+  }
+  function pojdiNaRazpis(i){
+    const total=filtered().length;
+    if(i<0 || i>=total) return;
+    if(!state.showAll && i>=LIMIT){
+      state.showAll=true;
+      render();
+    }
+    const list=razpisKartice();
+    const el=list[i];
+    if(!el) return;
+    odpriKartico(el);
+    el.scrollIntoView({behavior:"smooth", block:"start"});
+    requestAnimationFrame(()=>{ meriRazpisPas(); updateRazpisPas(); });
+  }
+  function setPasGumb(btn, disabled){
+    btn.disabled=disabled;
+    btn.classList.toggle("je-konec", disabled);
+    btn.setAttribute("aria-disabled", disabled?"true":"false");
+  }
+  function updateRazpisPas(){
+    const pas=document.getElementById("razpis-pas");
+    const countEl=document.getElementById("razpis-pas-count");
+    const prev=document.getElementById("razpis-prev");
+    const next=document.getElementById("razpis-next");
+    if(!pas||!countEl||!prev||!next) return;
+    const mobile=PAS_MQ.matches;
+    document.body.classList.toggle("ima-razpis-pas", mobile);
+    if(!mobile){ meriRazpisPas(); return; }
+    meriRazpisPas();
+    const total=filtered().length;
+    const shown=razpisKartice().length;
+    if(!total){
+      countEl.textContent="0 / 0";
+      setPasGumb(prev,true);
+      setPasGumb(next,true);
+      return;
+    }
+    let cur=trenutniRazpis();
+    const atStart=cur<0;
+    const pos=atStart?1:cur+1;
+    const moreHidden=!state.showAll && shown<total;
+    countEl.textContent=pos+" / "+total;
+    setPasGumb(prev, atStart || cur<=0);
+    setPasGumb(next, !atStart && cur>=shown-1 && !moreHidden);
+  }
+  document.getElementById("razpis-prev").addEventListener("click", ()=>{
+    const cur=trenutniRazpis();
+    if(cur>0) pojdiNaRazpis(cur-1);
+  });
+  document.getElementById("razpis-next").addEventListener("click", ()=>{
+    const cur=trenutniRazpis();
+    const total=filtered().length;
+    if(cur<0) pojdiNaRazpis(0);
+    else if(cur+1<total) pojdiNaRazpis(cur+1);
+  });
+  let pasTick=false;
+  window.addEventListener("scroll", ()=>{
+    if(pasTick) return;
+    pasTick=true;
+    requestAnimationFrame(()=>{ pasTick=false; updateRazpisPas(); });
+  }, {passive:true});
+  window.addEventListener("resize", ()=>{ meriRazpisPas(); updateRazpisPas(); });
+  PAS_MQ.addEventListener("change", ()=>{ meriRazpisPas(); updateRazpisPas(); });
   document.querySelectorAll("#tbl-tech tbody tr").forEach(tr=>tr.children[1]&&tr.children[1].classList.add("keep"));
   render();
   addToggles(document);
+  meriRazpisPas();
+  updateRazpisPas();
 })();
 
 </script>
+
 </body>
 </html>
