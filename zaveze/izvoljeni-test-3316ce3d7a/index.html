@@ -533,6 +533,9 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
 .graf-opomba{margin:.5rem 0 0;font-size:.82rem;color:#4a5a50}
 @media (min-width:700px){.graf-seznam li{grid-template-columns:11.5rem minmax(0,1fr) 10.5rem;grid-template-areas:"ime pas vr";align-items:center}.graf-vr{text-align:right}}
 @media print{.graf-razvrsti{display:none}.graf-stolpec{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.graf-manjka{grid-area:man;font-size:.86rem;color:#3d4f44}
+.graf-seznam li.ima-manjka{grid-template-areas:"ime vr" "pas pas" "man man"}
+@media (min-width:700px){.graf-seznam li.ima-manjka{grid-template-areas:"ime pas vr" ". man man"}}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -1062,16 +1065,16 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
     </figcaption>
     <button type="button" class="graf-razvrsti" aria-controls="graf-neizvoljeni-sez" aria-pressed="false" hidden>Razvrsti po deležu</button>
     <ol class="graf-seznam" id="graf-neizvoljeni-sez" aria-label="Delež glasov list brez mandata: glasovi in delež po listah">
-      <li data-ve="2" data-glasovi="98"><span class="graf-ime"><span class="nr">2.</span> SLS</span><span class="graf-vr">98 glasov · <strong>0,8&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:23.9%"></span></span></li>
-      <li data-ve="3" data-glasovi="183"><span class="graf-ime"><span class="nr">3.</span> Demokrati</span><span class="graf-vr">183 glasov · <strong>1,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:44.6%"></span></span></li>
-      <li data-ve="6" data-glasovi="166"><span class="graf-ime"><span class="nr">6.</span> Prerod</span><span class="graf-vr">166 glasov · <strong>1,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:40.5%"></span></span></li>
-      <li data-ve="8" data-glasovi="337"><span class="graf-ime"><span class="nr">8.</span> Vesna</span><span class="graf-vr">337 glasov · <strong>2,7&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:82.2%"></span></span></li>
-      <li data-ve="9" data-glasovi="366"><span class="graf-ime"><span class="nr">9.</span> NSi in Fokus</span><span class="graf-vr">366 glasov · <strong>2,9&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:89.3%"></span></span></li>
-      <li data-ve="10" data-glasovi="410"><span class="graf-ime"><span class="nr">10.</span> SD</span><span class="graf-vr">410 glasov · <strong>3,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:100.0%"></span></span></li>
-      <li data-ve="12" data-glasovi="59"><span class="graf-ime"><span class="nr">12.</span> Straža</span><span class="graf-vr">59 glasov · <strong>0,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:14.4%"></span></span></li>
-      <li data-ve="14" data-glasovi="144"><span class="graf-ime"><span class="nr">14.</span> Resni.ca</span><span class="graf-vr">144 glasov · <strong>1,1&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:35.1%"></span></span></li>
+      <li class="ima-manjka" data-ve="2" data-glasovi="98"><span class="graf-ime"><span class="nr">2.</span> SLS</span><span class="graf-vr">98 glasov · <strong>0,8&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:23.9%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 440 glasov</span></li>
+      <li class="ima-manjka" data-ve="3" data-glasovi="183"><span class="graf-ime"><span class="nr">3.</span> Demokrati</span><span class="graf-vr">183 glasov · <strong>1,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:44.6%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 355 glasov</span></li>
+      <li class="ima-manjka" data-ve="6" data-glasovi="166"><span class="graf-ime"><span class="nr">6.</span> Prerod</span><span class="graf-vr">166 glasov · <strong>1,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:40.5%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 372 glasov</span></li>
+      <li class="ima-manjka" data-ve="8" data-glasovi="337"><span class="graf-ime"><span class="nr">8.</span> Vesna</span><span class="graf-vr">337 glasov · <strong>2,7&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:82.2%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 201 glas</span></li>
+      <li class="ima-manjka" data-ve="9" data-glasovi="366"><span class="graf-ime"><span class="nr">9.</span> NSi in Fokus</span><span class="graf-vr">366 glasov · <strong>2,9&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:89.3%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 172 glasov</span></li>
+      <li class="ima-manjka" data-ve="10" data-glasovi="410"><span class="graf-ime"><span class="nr">10.</span> SD</span><span class="graf-vr">410 glasov · <strong>3,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:100.0%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 128 glasov</span></li>
+      <li class="ima-manjka" data-ve="12" data-glasovi="59"><span class="graf-ime"><span class="nr">12.</span> Straža</span><span class="graf-vr">59 glasov · <strong>0,5&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:14.4%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 479 glasov</span></li>
+      <li class="ima-manjka" data-ve="14" data-glasovi="144"><span class="graf-ime"><span class="nr">14.</span> Resni.ca</span><span class="graf-vr">144 glasov · <strong>1,1&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:35.1%"></span></span><span class="graf-manjka">Do sedeža je manjkalo: 394 glasov</span></li>
     </ol>
-    <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
+    <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. Manjkajoči glasovi: sedeži se delijo po D’Hondtovem sistemu (14.&nbsp;člen ZLV, brez praga); število pove, koliko glasov več bi lista potrebovala, da bi njen prvi količnik presegel zadnji podeljeni količnik (537,67), ob nespremenjenih glasovih drugih list. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
   </figure>
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
