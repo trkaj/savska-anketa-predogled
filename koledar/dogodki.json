@@ -56,7 +56,8 @@
       "organizator": "Spominčica – Alzheimer Slovenija",
       "povezava": "https://www.spomincica.si/usposabljanje-za-svojce/usposabljanje-za-svojce-%E2%80%9Cne-pozabi-me%E2%80%9D/ne-pozabi-me---jesen-2026",
       "izpostavljeno": 1,
-      "glasovi": 0
+      "glasovi": 0,
+      "nav": "Spominčica - Alzheimer Slovenija, Luize Pesjakove ulica 9, 1000 Ljubljana"
     },
     {
       "id": "spomincica-2026-11-24-hoja",
@@ -75,7 +76,8 @@
       "izpostavljeno": 2,
       "glasovi": 0,
       "lat": 46.062388,
-      "lon": 14.522971
+      "lon": 14.522971,
+      "nav": "Spominčica - Alzheimer Slovenija, Luize Pesjakove ulica 9, 1000 Ljubljana"
     },
     {
       "id": "szz-serkec-2026-11-18",

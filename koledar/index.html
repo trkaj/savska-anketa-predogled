@@ -1003,7 +1003,7 @@ let KARTA_V=[];
 const N=d=>S.kartaTeden?d._stT:d._st;
 function oblacek(d){return '<div class="pin-obl"><b>'+esc(ikonaKat(d.kategorija))+' '+esc(cisti(d))+'</b>'+(d.primer?' <span class="oznaka primer">PRIMER</span>':'')+
  '<span>🕒 '+esc(casKratek(d))+'</span><span>📍 '+esc(d.kraj)+'</span><button type="button" class="gumb glavni" data-poglej="'+esc(d.id)+'">Poglej ›</button>'+(navUrl(d)?'<a class="gumb nav" href="'+esc(navUrl(d))+'" target="_blank" rel="noopener">🧭 Pelji me tja</a>':'')+'</div>'}
-function navUrl(d){const t=tockaZa(d);return t?'https://www.google.com/maps/dir/?api=1&destination='+t.lat.toFixed(6)+','+t.lng.toFixed(6):''}
+function navUrl(d){if(d.nav)return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(d.nav);const t=tockaZa(d);return t?'https://www.google.com/maps/dir/?api=1&destination='+t.lat.toFixed(6)+','+t.lng.toFixed(6):''}
 function zacMeseca(){return new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
 function mesecDog(F){F=F||filtrirani();const a=zacMeseca(),b=new Date(a.getFullYear(),a.getMonth()+1,1);return F.filter(d=>(d._k||d._z)>=a&&d._z<b).sort((x,y)=>x._z-y._z)}
 /* obseg zemljevida (ves teden ali mesec); ob »ta dan« okence dela pokaže teden */
