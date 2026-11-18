@@ -613,6 +613,18 @@ table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weigh
 .tf-vecina .vc-brez{background:#eceeed;color:#4a4f4c}
 .tf-vecina .vc-opomba{font-size:.82rem;color:#4a5a50}
 .tf-vecina h5{margin:.5rem 0 .1rem;font-size:.86rem;color:#3d4f44}
+
+.vc-kartica{border:1px solid #d3ddd6;border-radius:8px;padding:.6rem .7rem;margin:.6rem 0 0;background:#fbfcfb}
+.vc-kartica h5{margin:0 0 .4rem;font-size:.98rem;color:var(--g)}
+.vc-skupina{margin:0 0 .35rem;padding:.3rem .5rem;border-radius:6px;border-left:5px solid}
+.vc-s-da{border-color:#2e7d32;background:#eef6ee}
+.vc-s-delno{border-color:#f5a400;background:#fff6e0}
+.vc-s-brez{border-color:#b9bfbc;background:#f3f4f3}
+.vc-sk-nasl{margin:0!important;font-weight:800;font-size:.88rem!important}
+.vc-sk-liste{margin:.1rem 0 0!important;font-size:.9rem!important;overflow-wrap:anywhere}
+.tf-vecina .vc-da{background:#2e7d32;color:#fff}
+.vc-pod{margin:.4rem 0 .1rem!important;font-weight:750;font-size:.86rem!important;color:#3d4f44}
+.vc-komb{margin:.3rem 0 0!important}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -2771,45 +2783,43 @@ Odgovori Pošte in Bnk bodojavno objavljeni.</span></li>
 (function(){
   var box=document.querySelector('#filter-izvoljeni .tf-vecina'); if(!box)return;
   var D=JSON.parse(box.getAttribute('data-vecina')),f=document.getElementById('filter-izvoljeni');
-  var cbs=[].slice.call(f.querySelectorAll('input[name=tema]')),rad=[].slice.call(f.querySelectorAll('.tf-nacin input'));
+  var cbs=[].slice.call(f.querySelectorAll('input[name=tema]'));
   function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function sed(n){var m=n%100;return m===1?'sedež':m===2?'sedeža':(m===3||m===4)?'sedeži':'sedežev';}
-  function stanje(id,izb,vse){
-    var s=izb.map(function(t){return D.stanja[id][t];});
-    if(vse){if(s.every(function(x){return x==='da';}))return 'da';if(s.every(function(x){return x!=='ne';}))return 'delno';return 'ne';}
-    if(s.indexOf('da')>=0)return 'da';if(s.indexOf('delno')>=0)return 'delno';return 'ne';
-  }
-  function izracun(){
-    var izb=cbs.filter(function(c){return c.checked;}).map(function(c){return c.value;});
-    if(!izb.length){box.hidden=true;box.innerHTML='';return;}
-    var vse=rad.some(function(r){return r.checked&&r.value==='in';});
-    var st={};D.ve.forEach(function(i){st[i]=stanje(String(i),izb,vse);});
-    var da=D.ve.filter(function(i){return st[i]==='da';}),sd=da.reduce(function(a,i){return a+D.sedezi[i];},0);
-    var ime=function(i){return esc(D.imena[i])+' ('+D.sedezi[i]+')';};
-    var h='<h4>Kaj je potrebno za večino (samo aritmetika)</h4>';
-    h+='<p>Liste z »da«: '+(da.length?da.map(ime).join(', '):'nobena')+' = <strong>'+sd+' '+sed(sd)+'</strong> od 17.</p>';
-    if(sd>=9){h+='<p class="vc-izid">Liste z »da« imajo skupaj že večino ('+sd+' od 17; potrebnih je 9).</p>';}
+  function vsota(a){return a.reduce(function(x,i){return x+D.sedezi[i];},0);}
+  function ime(i){return esc(D.imena[i])+' ('+D.sedezi[i]+')';}
+  var cmp=function(a,b){if(a.length!==b.length)return a.length-b.length;for(var k=0;k<a.length;k++)if(a[k]!==b[k])return a[k]-b[k];return 0;};
+  function kartica(t,naslov){
+    var st={};D.ve.forEach(function(i){st[i]=D.stanja[String(i)][t];});
+    var da=D.ve.filter(function(i){return st[i]==='da';}),de=D.ve.filter(function(i){return st[i]==='delno';}),ne=D.ve.filter(function(i){return st[i]==='ne';});
+    var sd=vsota(da),out=[];
+    var skup=function(cls,lab,arr){return '<div class="vc-skupina vc-s-'+cls+'"><p class="vc-sk-nasl"><span class="vc-oz vc-'+cls+'">'+lab+'</span> '+vsota(arr)+' '+sed(vsota(arr))+'</p><p class="vc-sk-liste">'+(arr.length?arr.map(ime).join(', '):'nobena lista')+'</p></div>';};
+    var h='<article class="vc-kartica" data-tema="'+t+'"><h5>'+esc(naslov)+'</h5>'+skup('da','za (da)',da)+skup('delno','delno',de)+skup('brez','ne ali brez odgovora',ne);
+    if(sd>=9){h+='<p class="vc-izid">Večina je že zagotovljena ('+sd+' od 17).</p>';}
     else{
-      var need=9-sd,rest=D.ve.filter(function(i){return st[i]!=='da';}),out=[];
-      h+='<p class="vc-izid">Do večine (9 od 17) manjka '+need+' '+sed(need)+'.</p>';
+      var need=9-sd,rest=D.ve.filter(function(i){return st[i]!=='da';});
+      h+='<p class="vc-izid">Manjka '+need+' '+sed(need)+' do večine (9 od 17).</p>';
       for(var m=1;m<(1<<rest.length);m++){
-        var c=rest.filter(function(_,k){return m&(1<<k);}),tot=c.reduce(function(a,i){return a+D.sedezi[i];},0);
+        var c=rest.filter(function(_,k){return m&(1<<k);}),tot=vsota(c);
         if(tot>=need&&c.every(function(i){return tot-D.sedezi[i]<need;}))out.push(c);
       }
-      var cmp=function(a,b){if(a.length!==b.length)return a.length-b.length;for(var k=0;k<a.length;k++)if(a[k]!==b[k])return a[k]-b[k];return 0;};
       var A=out.filter(function(c){return c.every(function(i){return st[i]==='delno';});}).sort(cmp),B=out.filter(function(c){return A.indexOf(c)<0;}).sort(cmp);
+      out=A.concat(B);
       var li=function(c){return '<li>'+c.map(function(i){return ime(i)+'<span class="vc-oz '+(st[i]==='delno'?'vc-delno">delno':'vc-brez">brez zaveze')+'</span>';}).join(' + ')+'</li>';};
-      h+='<p>Najmanjše kombinacije ostalih izvoljenih list, ki skupaj z listami z »da« dosežejo 9 sedežev (brez odvečne liste):</p>';
-      if(A.length)h+='<h5>Samo liste z »delno«</h5><ul>'+A.map(li).join('')+'</ul>';
-      if(B.length)h+='<h5>Z listami brez zaveze pri izbrani temi</h5><ul>'+B.map(li).join('')+'</ul>';
-      box.setAttribute('data-kombinacije',JSON.stringify(A.concat(B)));
+      h+='<p class="vc-komb">Najmanjše kombinacije ostalih list do 9 sedežev (brez odvečne liste):</p>';
+      if(A.length)h+='<p class="vc-pod">Samo liste z »delno«</p><ul>'+A.map(li).join('')+'</ul>';
+      if(B.length)h+='<p class="vc-pod">Z listami brez zaveze pri tej temi</p><ul>'+B.map(li).join('')+'</ul>';
     }
-    if(sd>=9)box.setAttribute('data-kombinacije','[]');
-    box.setAttribute('data-da-sedezi',sd);
-    h+='<p class="vc-opomba">'+(izb.length>1?(vse?'Pri več temah: »da« pomeni »da« pri vseh izbranih temah. ':'Pri več temah: »da« pomeni »da« pri vsaj eni izbrani temi. '):'')+'Gre zgolj za seštevek sedežev (Levica 5, Lista Zorana Jankovića 4, SDS 3, Gibanje Svoboda 2, Pirati 1, Cilj – Bežigrad 1, Ljubljana smo vsi 1), ne za oceno, ali je takšno sodelovanje politično verjetno. Oznake so take, kot so jih liste same izbrale.</p>';
+    return h.replace('<article class="vc-kartica"','<article class="vc-kartica" data-da-sedezi="'+sd+'" data-kombinacije="'+esc(JSON.stringify(out))+'"')+'</article>';
+  }
+  function izracun(){
+    var izb=cbs.filter(function(c){return c.checked;});
+    if(!izb.length){box.hidden=true;box.innerHTML='';return;}
+    var h='<h4>Kaj je potrebno za večino (samo aritmetika)</h4><p class="vc-opomba">Gre zgolj za seštevek sedežev (Levica 5, Lista Zorana Jankovića 4, SDS 3, Gibanje Svoboda 2, Pirati 1, Cilj – Bežigrad 1, Ljubljana smo vsi 1), ne za oceno, ali je takšno sodelovanje politično verjetno. Za sklep je potrebnih 9 od 17 glasov. Oznake so take, kot so jih liste same izbrale. Vsaka izbrana tema ima svojo kartico.</p>';
+    h+=izb.map(function(c){return kartica(c.value,c.parentNode.querySelector('span').textContent);}).join('');
     box.innerHTML=h;box.hidden=false;
   }
-  cbs.concat(rad).forEach(function(c){c.addEventListener('change',izracun);});
+  cbs.forEach(function(c){c.addEventListener('change',izracun);});
   f.querySelector('.tf-pocisti').addEventListener('click',izracun);
   izracun();
 })();
