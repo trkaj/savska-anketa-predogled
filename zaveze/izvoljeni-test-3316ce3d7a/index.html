@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zaveze izvoljenih list – testna različica · Savsko naselje</title>
+<title>Zaveze list za svet ČS Bežigrad – testna različica · Savsko naselje</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Testna različica strani zavez izvoljenih list za svet ČS Bežigrad: sestava sveta, člani in zaveze list. Ni objavljeno.">
+<meta name="description" content="Testna različica strani zavez vseh 15 list za svet ČS Bežigrad: sestava sveta, izidi, zaveze in poti za vključitev. Ni objavljeno.">
 <meta name="theme-color" content="#0b3d24">
 <link rel="icon" href="slike/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -411,6 +411,7 @@ body.izvoljeni-stran .primerjava{min-width:38rem}
 .sestava-sveta img{width:100%;height:auto;border:1px solid #e3e3e3;border-radius:6px}
 .sestava-sveta .vir-slike{font-size:.85rem;color:#666;margin:.5rem 0 0}
 h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;padding-bottom:.25rem;scroll-margin-top:12px}
+.lista-card{scroll-margin-top:4.6rem}
 .podatki{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.2rem}
 .podatki th,.podatki td{border-bottom:1px solid #e5ece7;padding:6px 8px;text-align:left;vertical-align:top}
 .podatki td.num,.podatki th.num{text-align:right;white-space:nowrap}
@@ -439,6 +440,48 @@ main{max-width:54rem}
 .skupne ol{margin:.3rem 0 1rem;padding-left:1.3rem}
 .opomba{color:#444;font-size:.92rem}
 footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.mandati-st.brez-mandata{background:#fff;color:#0b3d24;border:1.5px solid #0b3d24;font-weight:750}
+.glasovi-vrstica{margin:.1rem 0 .7rem;color:#333;font-size:.95rem}
+.glasovi-vrstica .glasovi-st{font-weight:700}
+.zaveza-naprej{margin:.2rem 0 0}
+.zaveza-naprej h3{margin:0 0 .35rem;color:#0b3d24;font-size:1.02rem}
+.zaveza-naprej .vprasanje-kratko{margin:0 0 .45rem;color:#444;font-size:.92rem}
+.razlaga-izvor{margin:.45rem 0 .8rem;padding:10px 12px;background:#f4f7f5;border-left:4px solid #0b3d24;border-radius:0 8px 8px 0;white-space:pre-wrap;font-size:.98rem;line-height:1.45}
+.vkljucitev{margin:0 0 1.4rem}
+.vkljucitev > p{margin:0 0 .8rem}
+.vkljucitev-poti{display:grid;gap:10px;margin:0 0 1rem}
+.vkljucitev-pot{background:#fff;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 14px}
+.vkljucitev-pot h3{margin:0 0 .35rem;color:#0b3d24;font-size:1.02rem}
+.vkljucitev-pot p{margin:0;font-size:.95rem;line-height:1.45}
+.vkljucitev-stik{background:#fffdf3;border:2px solid #f5c400;border-radius:12px;padding:12px 14px;margin:0}
+.vkljucitev-stik p{margin:0;font-size:.98rem}
+.vkljucitev-stik a{font-weight:700}
+.liste-skok{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 2px 10px;margin:0 0 1rem;position:sticky;top:0;background:#fff;z-index:8;border-bottom:1px solid #e5ece7;box-shadow:0 2px 6px #0001}
+.liste-skok a{flex:0 0 auto;min-width:2.4rem;height:2.4rem;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:#f4f7f5;border:1px solid #dde6df;font-weight:800;text-decoration:none;color:#0b3d24;font-size:.95rem}
+.liste-skok a:hover,.liste-skok a:focus{background:#fff4c2;border-color:#f5c400;outline:none}
+.liste-skok a[data-mandat="ne"]{background:#fff;font-weight:750}
+.kazalo-liste{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:.35rem 0 0}
+.kazalo-liste li{margin:0}
+.kazalo-liste a{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid #dde6df;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:700;background:#fff;color:#0b3d24}
+.kazalo-liste a:hover,.kazalo-liste a:focus{background:#fff4c2;border-color:#f5c400}
+.kazalo-liste .st{font-weight:800}
+.tabela-namig{margin:0 0 .4rem;color:#555;font-size:.85rem}
+.podatki tfoot th,.podatki tfoot td{font-weight:800;border-top:2px solid #0b3d24;background:#f4f7f5}
+.povzetek-mandati .glasovi-kratek{color:#444;font-size:.9rem}
+@media (max-width:480px){
+  .hd h1{font-size:1.15rem}
+  .hd p{font-size:.85rem}
+  .lista-card > h2{font-size:1.08rem;gap:6px 8px}
+  .lista-card > h2 .lista-logo{height:24px;width:48px;margin-left:0}
+  .podatki{font-size:.88rem}
+  .podatki th,.podatki td{padding:8px 6px}
+  .vkljucitev-pot{padding:12px}
+  .glasovi-vrstica{font-size:.92rem}
+  .webar{font-size:.85rem;padding:10px 12px}
+}
+
 @media print{
   .test-trak{border:2px solid #f5c400;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .webar{display:none}
@@ -452,30 +495,39 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
 <header class="hd">
   <img src="slike/logo.png" alt="">
   <div>
-    <h1>Zaveze izvoljenih list</h1>
+    <h1>Zaveze list za svet ČS Bežigrad</h1>
     <p>Svet ČS Bežigrad 2026–2030, volilna enota 01 · testna različica</p>
   </div>
 </header>
 <main>
   <div class="banner">Testna različica – ni objavljeno. To ni javna stran zavez; je skrit predogled celostnega vpogleda.</div>
 
-  <p class="meta">Stran združuje sestavo sveta, kratke profile izvoljenih in zaveze list. Liste so obravnavane enakovredno in niso ocenjene ali razvrščene. V razdelku po listah je vrstni red enak zaporednim številkam na glasovnici za volilno enoto 01. Odgovori na zaveze so odgovori <strong>list</strong>, ne osebni odgovori izvoljenih svetnikov. Prikazane so oznake, kot so jih liste same izbrale.</p>
-  <p class="opomba-vrstni-red">Pripravljeno 17.&nbsp;11.&nbsp;2026 (Europe/Ljubljana). Izidi volitev so neuradni. Vir mandatov in glasov: izvoz Državne volilne komisije za lokalne volitve 15.&nbsp;11.&nbsp;2026, stanje 16.&nbsp;11.&nbsp;2026 ob 11.00 (Europe/Ljubljana). Uradno jih potrdi Občinska volilna komisija MOL.</p>
+  <p class="meta">Stran združuje sestavo sveta, neuradne izide vseh 15 list, kratke profile izvoljenih in zaveze list. Prikazane so tudi liste brez mandata, z njihovim odgovorom na vprašanje, ali se bodo za Savsko naselje trudile tudi, če ne bodo izvoljene. Liste so obravnavane enakovredno in niso ocenjene ali razvrščene. V razdelku po listah je vrstni red enak zaporednim številkam na glasovnici za volilno enoto 01, ne po številu glasov. Odgovori na zaveze so odgovori <strong>list</strong>, ne osebni odgovori kandidatov. Prikazane so oznake in razlage, kot so jih liste same napisale.</p>
+  <p class="opomba-vrstni-red">Posodobljeno 18.&nbsp;11.&nbsp;2026 (Europe/Ljubljana). Izidi volitev so neuradni. Vir mandatov in glasov: Volilna komisija MOL (<a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>), prek portala <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana). Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</p>
 
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
       <li><a href="#sestava">Sestava in večina</a></li>
+      <li><a href="#vkljucitev">Kako se lahko vključijo</a></li>
       <li><a href="#liste">Po listah</a>
-        <ol>
-          <li><a href="#lista-1">Gibanje Svoboda</a></li>
-          <li><a href="#lista-4">Pirati</a></li>
-          <li><a href="#lista-5">Levica</a></li>
-          <li><a href="#lista-7">SDS</a></li>
-          <li><a href="#lista-11">Cilj – Bežigrad</a></li>
-          <li><a href="#lista-13">Ljubljana smo vsi</a></li>
-          <li><a href="#lista-15">Lista Zorana Jankovića</a></li>
-        </ol>
+        <ul class="kazalo-liste">
+          <li><a href="#lista-1"><span class="st">1.</span> Svoboda</a></li>
+          <li><a href="#lista-2"><span class="st">2.</span> SLS</a></li>
+          <li><a href="#lista-3"><span class="st">3.</span> Demokrati</a></li>
+          <li><a href="#lista-4"><span class="st">4.</span> Pirati</a></li>
+          <li><a href="#lista-5"><span class="st">5.</span> Levica</a></li>
+          <li><a href="#lista-6"><span class="st">6.</span> Prerod</a></li>
+          <li><a href="#lista-7"><span class="st">7.</span> SDS</a></li>
+          <li><a href="#lista-8"><span class="st">8.</span> Vesna</a></li>
+          <li><a href="#lista-9"><span class="st">9.</span> NSi in Fokus</a></li>
+          <li><a href="#lista-10"><span class="st">10.</span> SD</a></li>
+          <li><a href="#lista-11"><span class="st">11.</span> Cilj</a></li>
+          <li><a href="#lista-12"><span class="st">12.</span> Straža</a></li>
+          <li><a href="#lista-13"><span class="st">13.</span> Ljubljana smo vsi</a></li>
+          <li><a href="#lista-14"><span class="st">14.</span> Resni.ca</a></li>
+          <li><a href="#lista-15"><span class="st">15.</span> LZJ</a></li>
+        </ul>
       </li>
       <li><a href="#skupne">Skupne točke</a></li>
       <li><a href="#viri">Viri in omejitve</a></li>
@@ -485,37 +537,49 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
   <section id="sestava" class="sestava-sveta">
     <h2 class="sekcija">1. Sestava in večina</h2>
     <p>Svet Četrtne skupnosti Bežigrad ima <strong>17 sedežev</strong>. Za večino je potrebnih <strong>9 glasov</strong>. Nobena lista sama nima večine.</p>
-    <p>Volitve v svet ČS so bile v nedeljo, 15.&nbsp;11.&nbsp;2026, volilna enota 01. Seštevek glasov po vseh listah: 12.579. Preferenčni glasovi v izvozu DVK tedaj še niso bili vpisani (vrednosti 0).</p>
+    <p>Volitve v svet ČS so bile v nedeljo, 15.&nbsp;11.&nbsp;2026, volilna enota 01. Seštevek glasov po vseh 15 listah: 12.610. Skupaj je 17 sedežev.</p>
 
     <div class="vir-izidov">
-      <p class="oznaka">Neuradni izidi</p>
-      <p>Vir izidov: uradni podatkovni izvoz DVK za Mestno občino Ljubljana (<a href="https://volitve.dvk-rs.si/lv2026/data/obcine-xlsx/izvoz_061.xlsx">izvoz_061.xlsx</a>), zavihek »Četrtna skupnost Bežigrad« in seznam kandidatov z oznako izvolitve. Podatki so osveženi 16.&nbsp;11.&nbsp;2026 ob 11.00 (Europe/Ljubljana). Portal DVK: <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">volitve.dvk-rs.si/lv2026</a>.</p>
-      <p>To so neuradni izidi, ki jih DVK objavlja sproti. Uradno jih potrdi Občinska volilna komisija MOL.</p>
+      <p class="oznaka">Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
+      <p>Vir izidov: Volilna komisija MOL, stran <a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>, ki povezuje na portal <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>. Številke so iz izvoza za MOL, zavihek »Četrtna skupnost Bežigrad«, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana).</p>
+      <p>To je neuradni izid. Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</p>
     </div>
 
     <h3 class="sek">Mandati in glasovi</h3>
     <p class="opomba">Vrstni red v preglednici je enak zaporednim številkam na glasovnici (VE&nbsp;01), ne po številu glasov.</p>
+    <p class="tabela-namig">Na ožjem zaslonu preglednico povlecite vstran. Vrstni red je enak glasovnici, ne po številu glasov.</p>
     <div class="primerjava-scroll" tabindex="0">
     <table class="podatki">
+      <caption class="sr-only">Neuradni izid volitev v svet ČS Bežigrad, stanje 18. 11. 2026 ob 8.00</caption>
       <thead>
         <tr><th>Št.</th><th>Lista</th><th class="num">Glasovi</th><th class="num">Delež</th><th class="num">Mandati</th></tr>
       </thead>
       <tbody>
-        <tr><td>1.</td><th scope="row">Gibanje Svoboda</th><td class="num">1.417</td><td class="num">11,26&nbsp;%</td><td class="num">2</td></tr>
-        <tr><td>4.</td><th scope="row">Pirati</th><td class="num">845</td><td class="num">6,72&nbsp;%</td><td class="num">1</td></tr>
-        <tr><td>5.</td><th scope="row">Levica</th><td class="num">3.034</td><td class="num">24,12&nbsp;%</td><td class="num">5</td></tr>
-        <tr><td>7.</td><th scope="row">SDS</th><td class="num">1.602</td><td class="num">12,74&nbsp;%</td><td class="num">3</td></tr>
-        <tr><td>11.</td><th scope="row">Cilj – Bežigrad</th><td class="num">734</td><td class="num">5,84&nbsp;%</td><td class="num">1</td></tr>
-        <tr><td>13.</td><th scope="row">Ljubljana smo vsi</th><td class="num">556</td><td class="num">4,42&nbsp;%</td><td class="num">1</td></tr>
-        <tr><td>15.</td><th scope="row">Lista Zorana Jankovića</th><td class="num">2.631</td><td class="num">20,92&nbsp;%</td><td class="num">4</td></tr>
-        <tr><td></td><th scope="row">Ostale liste (brez mandata)</th><td class="num">1.760</td><td class="num">14,00&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>1.</td><th scope="row">Gibanje Svoboda</th><td class="num">1.422</td><td class="num">11,28&nbsp;%</td><td class="num">2</td></tr>
+        <tr><td>2.</td><th scope="row">Slovenska ljudska stranka</th><td class="num">98</td><td class="num">0,78&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>3.</td><th scope="row">Demokrati. Anžeta Logarja</th><td class="num">183</td><td class="num">1,45&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>4.</td><th scope="row">Pirati</th><td class="num">845</td><td class="num">6,70&nbsp;%</td><td class="num">1</td></tr>
+        <tr><td>5.</td><th scope="row">Levica</th><td class="num">3.037</td><td class="num">24,08&nbsp;%</td><td class="num">5</td></tr>
+        <tr><td>6.</td><th scope="row">Prerod – stranka Vladimirja Prebiliča</th><td class="num">166</td><td class="num">1,32&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>7.</td><th scope="row">Slovenska demokratska stranka – SDS</th><td class="num">1.613</td><td class="num">12,79&nbsp;%</td><td class="num">3</td></tr>
+        <tr><td>8.</td><th scope="row">Vesna – zelena stranka</th><td class="num">337</td><td class="num">2,67&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>9.</td><th scope="row">Nova Slovenija in Fokus</th><td class="num">366</td><td class="num">2,90&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>10.</td><th scope="row">Socialni demokrati</th><td class="num">410</td><td class="num">3,25&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>11.</td><th scope="row">Cilj – Bežigrad</th><td class="num">735</td><td class="num">5,83&nbsp;%</td><td class="num">1</td></tr>
+        <tr><td>12.</td><th scope="row">Stranka Straža – katoliška narodna stranka</th><td class="num">59</td><td class="num">0,47&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>13.</td><th scope="row">Ljubljana smo vsi</th><td class="num">558</td><td class="num">4,43&nbsp;%</td><td class="num">1</td></tr>
+        <tr><td>14.</td><th scope="row">Državljansko gibanje Resni.ca</th><td class="num">144</td><td class="num">1,14&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>15.</td><th scope="row">Lista Zorana Jankovića</th><td class="num">2.637</td><td class="num">20,91&nbsp;%</td><td class="num">4</td></tr>
       </tbody>
+      <tfoot>
+        <tr><td></td><th scope="row">Skupaj</th><td class="num">12.610</td><td class="num">100&nbsp;%</td><td class="num">17</td></tr>
+      </tfoot>
     </table>
     </div>
 
     <h3 class="sek">Diagram sedežev</h3>
     <a href="https://anketa.savska.org/svet-cs/"><img src="slike/svet-cs-bezigrad-2026.png" width="1690" height="1170" alt="Sestava sveta ČS Bežigrad 2026–2030: Levica 5 sedežev, Lista Zorana Jankovića 4, SDS 3, Gibanje Svoboda 2, Pirati 1, Cilj – Bežigrad 1, Ljubljana smo vsi 1, z imeni izvoljenih."></a>
-    <p class="vir-slike">Vir diagrama: <a href="https://anketa.savska.org/svet-cs/">anketa.savska.org/svet-cs</a>, neuradni izidi DVK, volilna enota 01, stanje 16.&nbsp;11.&nbsp;2026 ob 11.00 (Europe/Ljubljana). <a href="https://anketa.savska.org/svet-cs/">Samostojna stran sestave sveta</a></p>
+    <p class="vir-slike">Vir diagrama: <a href="https://anketa.savska.org/svet-cs/">anketa.savska.org/svet-cs</a>. Sestava sedežev se od prejšnjega stanja ni spremenila; število glasov na tej strani je neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana). <a href="https://anketa.savska.org/svet-cs/">Samostojna stran sestave sveta</a></p>
 
     <div class="vecina-box">
       <h3>Možne večinske kombinacije (samo aritmetika)</h3>
@@ -533,22 +597,76 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
     </div>
   </section>
 
+
+  <section id="vkljucitev" class="vkljucitev">
+    <h2 class="sekcija">2. Kako se lahko vključijo</h2>
+    <p>Spodnje poti veljajo enako za vse liste in za prebivalce. Nikogar ne izpostavljamo in nikogar ne spregledamo. Če bomo pošiljali vabilo, gre z istim besedilom prek vseh 15 list.</p>
+    <div class="vkljucitev-poti">
+      <article class="vkljucitev-pot">
+        <h3>Zunanji člani odborov mestnega sveta MOL</h3>
+        <p>Mestni svet lahko imenuje člane odborov tudi izmed občanov, ki niso mestni svetniki, vendar največ polovico članov (<a href="https://www.ljubljana.si/assets/mestna-obcina/Katalog-informacij-javnega-znacaja/register-neuradno-preciscenih-besedil-predpisov/Neuradno-precisceno-besedilo-Statuta-Mestne-obcine-Ljubljana-Statut.pdf">30.&nbsp;člen Statuta MOL</a>). Z novim mandatom članom vseh delovnih teles preneha mandat, zato jih bo novi mestni svet imenoval na novo (<a href="https://pisrs.si/pregledPredpisa?id=MP_POSL1687">14.&nbsp;člen Poslovnika Mestnega sveta MOL</a>). Kdo predlaga zunanje člane, v poslovniku ne piše; postopek predlaganja še preverjamo pri službi mestnega sveta.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Zbori občanov in predstavniki ČS</h3>
+        <p>Svet četrtne skupnosti lahko skliče zbor občanov. ČS ima pravico do svojih predstavnikov v posvetovalnih telesih in delovnih skupinah MOL.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Odprte delovne skupine po temah iz ankete</h3>
+        <p>Predlog so odprte delovne skupine za teme, ki so jih prebivalci v anketi izpostavili: parkiranje in promet, pošta in storitve, zelenje, »Igle in droge, varnost« in drugo. Vanje se lahko enako prijavijo vse liste in prebivalci.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Posvoji pobudo</h3>
+        <p>Kdor želi, lahko spremlja posamezno temo ali žarišče in preverja, ali MOL drži obljube, zapisane na portalu pobud.</p>
+      </article>
+    </div>
+    <div class="vkljucitev-stik">
+      <p>Če se želite vključiti, pišite ali pokličite: <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070&nbsp;205&nbsp;595.</p>
+    </div>
+  </section>
+
   <section id="liste">
-    <h2 class="sekcija">2. Po listah</h2>
-    <p>Vrstni red je enak zaporednim številkam na glasovnici (volilna enota 01). Pri vsaki listi je najprej kratek povzetek zavez, nato člani: kdo je in osebno zavzemanje. Odgovor liste ni osebni odgovor svetnika. Podrobne zaveze posamezne liste so na <a href="https://anketa.savska.org/zaveze/izvoljeni/">javni strani zavez izvoljenih list</a>.</p>
+    <h2 class="sekcija">3. Po listah</h2>
+    <p>Vrstni red je enak zaporednim številkam na glasovnici (volilna enota 01), ne po številu glasov. Pri listah z mandatom je najprej kratek povzetek zavez, nato člani: kdo je in osebno zavzemanje. Pri listah brez mandata je njihov odgovor na vprašanje: »Če ne boste izvoljeni v svet ČS, se boste še vseeno trudili za Savsko naselje — in kaj boste naredili v tem primeru?« Razlage so v izvirnem besedilu, kot so ga liste same napisale. Odgovor liste ni osebni odgovor kandidata. Podrobne zaveze list, ki so obrazec oddale, so na njihovih straneh zavez.</p>
+
+    <nav class="liste-skok" aria-label="Skok na listo po številki glasovnice">
+      <a href="#lista-1">1</a>
+      <a href="#lista-2" data-mandat="ne">2</a>
+      <a href="#lista-3" data-mandat="ne">3</a>
+      <a href="#lista-4">4</a>
+      <a href="#lista-5">5</a>
+      <a href="#lista-6" data-mandat="ne">6</a>
+      <a href="#lista-7">7</a>
+      <a href="#lista-8" data-mandat="ne">8</a>
+      <a href="#lista-9" data-mandat="ne">9</a>
+      <a href="#lista-10" data-mandat="ne">10</a>
+      <a href="#lista-11">11</a>
+      <a href="#lista-12" data-mandat="ne">12</a>
+      <a href="#lista-13">13</a>
+      <a href="#lista-14" data-mandat="ne">14</a>
+      <a href="#lista-15">15</a>
+    </nav>
 
     <ul class="povzetek-mandati">
-      <li><span class="nr">1.</span> <a href="#lista-1">Gibanje Svoboda</a> <span class="mandati-st">2 mandata</span> <span class="mandati-glasovi">— dr. Simona Gerenčer, Lars Arrigler Demirović</span></li>
-      <li><span class="nr">4.</span> <a href="#lista-4">Pirati</a> <span class="mandati-st">1 mandat</span> <span class="mandati-glasovi">— Rok Deželak</span></li>
-      <li><span class="nr">5.</span> <a href="#lista-5">Levica</a> <span class="mandati-st">5 mandatov</span> <span class="mandati-glasovi">— Tomo Barić Ravbar, Julijana Jovanić, mag. Damir Cibic, Tjaša Stanić Gjorgjievska, Peter Rondaij</span></li>
-      <li><span class="nr">7.</span> <a href="#lista-7">Slovenska demokratska stranka – SDS</a> <span class="mandati-st">3 mandati</span> <span class="mandati-glasovi">— dr. Bojan Rotar, Simona Kaučič, Klemen Traven</span></li>
-      <li><span class="nr">11.</span> <a href="#lista-11">Cilj – Bežigrad</a> <span class="mandati-st">1 mandat</span> <span class="mandati-glasovi">— Metod Miklič</span></li>
-      <li><span class="nr">13.</span> <a href="#lista-13">Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa</a> <span class="mandati-st">1 mandat</span> <span class="mandati-glasovi">— Matej Bertoša</span></li>
-      <li><span class="nr">15.</span> <a href="#lista-15">Lista Zorana Jankovića</a> <span class="mandati-st">4 mandati</span> <span class="mandati-glasovi">— Stanko Furlan, Alenka Žibert, Dejan Mikuš, Tanja Hižak Furlan</span></li>
+      <li><span class="nr">1.</span> <a href="#lista-1">Gibanje Svoboda</a> <span class="mandati-st">2 mandata</span> <span class="glasovi-kratek">1.422 glasov (11,28&nbsp;%)</span> <span class="mandati-glasovi">— dr. Simona Gerenčer, Lars Arrigler Demirović</span></li>
+      <li><span class="nr">2.</span> <a href="#lista-2">Slovenska ljudska stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">98 glasov (0,78&nbsp;%)</span></li>
+      <li><span class="nr">3.</span> <a href="#lista-3">Demokrati. Anžeta Logarja</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">183 glasov (1,45&nbsp;%)</span></li>
+      <li><span class="nr">4.</span> <a href="#lista-4">Pirati</a> <span class="mandati-st">1 mandat</span> <span class="glasovi-kratek">845 glasov (6,70&nbsp;%)</span> <span class="mandati-glasovi">— Rok Deželak</span></li>
+      <li><span class="nr">5.</span> <a href="#lista-5">Levica</a> <span class="mandati-st">5 mandatov</span> <span class="glasovi-kratek">3.037 glasov (24,08&nbsp;%)</span> <span class="mandati-glasovi">— Tomo Barić Ravbar, Julijana Jovanić, mag. Damir Cibic, Tjaša Stanić Gjorgjievska, Peter Rondaij</span></li>
+      <li><span class="nr">6.</span> <a href="#lista-6">Prerod – stranka Vladimirja Prebiliča</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">166 glasov (1,32&nbsp;%)</span></li>
+      <li><span class="nr">7.</span> <a href="#lista-7">Slovenska demokratska stranka – SDS</a> <span class="mandati-st">3 mandati</span> <span class="glasovi-kratek">1.613 glasov (12,79&nbsp;%)</span> <span class="mandati-glasovi">— dr. Bojan Rotar, Simona Kaučič, Klemen Traven</span></li>
+      <li><span class="nr">8.</span> <a href="#lista-8">Vesna – zelena stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">337 glasov (2,67&nbsp;%)</span></li>
+      <li><span class="nr">9.</span> <a href="#lista-9">Nova Slovenija in Fokus</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">366 glasov (2,90&nbsp;%)</span></li>
+      <li><span class="nr">10.</span> <a href="#lista-10">Socialni demokrati</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">410 glasov (3,25&nbsp;%)</span></li>
+      <li><span class="nr">11.</span> <a href="#lista-11">Cilj – Bežigrad</a> <span class="mandati-st">1 mandat</span> <span class="glasovi-kratek">735 glasov (5,83&nbsp;%)</span> <span class="mandati-glasovi">— Metod Miklič</span></li>
+      <li><span class="nr">12.</span> <a href="#lista-12">Stranka Straža – katoliška narodna stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">59 glasov (0,47&nbsp;%)</span></li>
+      <li><span class="nr">13.</span> <a href="#lista-13">Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa</a> <span class="mandati-st">1 mandat</span> <span class="glasovi-kratek">558 glasov (4,43&nbsp;%)</span> <span class="mandati-glasovi">— Matej Bertoša</span></li>
+      <li><span class="nr">14.</span> <a href="#lista-14">Državljansko gibanje Resni.ca</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">144 glasov (1,14&nbsp;%)</span></li>
+      <li><span class="nr">15.</span> <a href="#lista-15">Lista Zorana Jankovića</a> <span class="mandati-st">4 mandati</span> <span class="glasovi-kratek">2.637 glasov (20,91&nbsp;%)</span> <span class="mandati-glasovi">— Stanko Furlan, Alenka Žibert, Dejan Mikuš, Tanja Hižak Furlan</span></li>
     </ul>
 
-    <article class="card lista-card" id="lista-1" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-1" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">1.</span> <img class="lista-logo" src="slike/01-svoboda.svg" alt=""> Gibanje Svoboda <span class="mandati-st">2 mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">1.422 glasov</span> (11,28&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">promet skozi naselje</span> <span class="tag">igle in droge, varnost</span> <span class="tag">več klopi</span> <span class="tag">drevesa in zelenice</span> <span class="tag">igrišča in prostor za mlade</span></p>
@@ -573,8 +691,30 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-4" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-2" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">2.</span> <img class="lista-logo" src="slike/02-sls.png" alt=""> Slovenska ljudska stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">98 glasov</span> (0,78&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Sodelovala tam, kjer bo to potrebno. In kjer bom dobrodošla.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-2.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-3" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">3.</span> <img class="lista-logo" src="slike/03-demokrati.svg" alt=""> Demokrati. Anžeta Logarja <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">183 glasov</span> (1,45&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez odgovora</span></p>
+        <p>Lista zavez ni oddala.</p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-4" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">4.</span> <img class="lista-logo" src="slike/04-pirati.png" alt=""> Pirati <span class="mandati-st">1 mandat</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">845 glasov</span> (6,70&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">parkiranje</span> <span class="tag">promet skozi naselje</span> <span class="tag">drevesa in zelenice</span> <span class="tag">dom skupnosti, prostor za druženje</span> <span class="tag">mala dela ČS in prijave poškodb</span></p>
@@ -593,8 +733,9 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-5" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-5" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">5.</span> <img class="lista-logo" src="slike/05-levica.png" alt=""> Levica <span class="mandati-st">5 mandatov</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">3.037 glasov</span> (24,08&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">parkiranje</span> <span class="tag">pošta, banka in druge storitve</span> <span class="tag">igle in droge, varnost</span> <span class="tag">drevesa in zelenice</span> <span class="tag">igrišča in prostor za mlade</span></p>
@@ -637,8 +778,20 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-7" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-6" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">6.</span> <img class="lista-logo" src="slike/06-prerod.png" alt=""> Prerod – stranka Vladimirja Prebiliča <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">166 glasov</span> (1,32&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Da, vsekakor. Naša zavzetost za Savsko naselje ni vezana na izvolitev. Še naprej bomo zbirali pobude sosedov, jih posredovali svetu četrtne skupnosti in mestni občini ter vztrajali pri odgovorih in rešitvah. Pred začetkom kampanje smo med občani izvedli anketo o tem, kakšno prihodnost si želijo za Ljubljano. Tudi s tem pristopom bomo nadaljevali tudi v prihodnje, saj želimo resnično slišati ljudi. Sodelovali bomo pri skupnostnih akcijah in povezovali ljudi, ki želijo prispevati k bolj urejenemu, varnemu in prijetnemu naselju. Funkcija lahko pri tem pomaga, veliko pa lahko naredimo tudi kot aktivni občani.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-6.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-7" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">7.</span> <img class="lista-logo" src="slike/07-sds.png" alt=""> Slovenska demokratska stranka – SDS <span class="mandati-st">3 mandati</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">1.613 glasov</span> (12,79&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">parkiranje</span> <span class="tag">pošta, banka in druge storitve</span> <span class="tag">promet skozi naselje</span> <span class="tag">boljši zrak in hrup</span> <span class="tag">mala dela ČS in prijave poškodb</span></p>
@@ -669,8 +822,42 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-11" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-8" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">8.</span> <img class="lista-logo" src="slike/08-vesna.png" alt=""> Vesna – zelena stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">337 glasov</span> (2,67&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Spodbujali bomo oblikovanje skupnostnih iniciativ in pomagali s svojim znanjem pri spodbujanju demokratičnega delovanja ČS in preprečevanju samovolje posmeznikov.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-8.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-9" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">9.</span> <img class="lista-logo" src="slike/09-nsi.png" alt=""> Nova Slovenija in Fokus <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">366 glasov</span> (2,90&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez oznake</span> na izbiro da / delno / ne. Lista je oddala pojasnilo:</p>
+        <div class="razlaga-izvor">Seveda. Moja skrb za Savsko naselje ni vezana na članstvo v svetu ČS, kot tudi moje delo ni vezano samo na Savsko naselje. Po svojih močeh, znanju bom iskala rešitve.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-9.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-10" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">10.</span> <img class="lista-logo" src="slike/10-sd.png" alt=""> Socialni demokrati <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">410 glasov</span> (3,25&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez oznake</span> na izbiro da / delno / ne. Lista je oddala pojasnilo:</p>
+        <div class="razlaga-izvor">Spremljali bomo potrebe in se vključevali v civilne iniciative za izboljšanje pobojev za bivanje otrok, mladih in starejših prebivalcev v SN in v ČS Bežigrad, kjer prebivamo v različnih naseljih.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-10.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-11" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">11.</span> <img class="lista-logo" src="slike/11-cilj.png" alt=""> Cilj – Bežigrad <span class="mandati-st">1 mandat</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">735 glasov</span> (5,83&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">parkiranje</span> <span class="tag">pošta, banka in druge storitve</span> <span class="tag">drevesa in zelenice</span> <span class="tag">dom skupnosti, prostor za druženje</span> <span class="tag">igrišča in prostor za mlade</span></p>
@@ -689,8 +876,20 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-13" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-12" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">12.</span> <img class="lista-logo" src="slike/12-straza.png" alt=""> Stranka Straža – katoliška narodna stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">59 glasov</span> (0,47&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Moj boj ni le ta mesec do volitev ampak vsak dan mojega življenja! Z  zgledom skrbim za okolje, vzgajam svoje bližnje v vzorne sokrajane in spodbujam k udejstvovanju v prostovoljnih organizacijah za sopomoč ljudem!</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-12.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-13" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">13.</span> <img class="lista-logo" src="slike/13-lsv.svg" alt=""> Ljubljana smo vsi <span class="mandati-st">1 mandat</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">558 glasov</span> (4,43&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <p class="meta">Polni naziv liste: Ljubljana smo vsi – lista mag. Urške Klakočar Zupančič in dr. Antona Ropa.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
@@ -710,8 +909,19 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
       </div>
     </article>
 
-    <article class="card lista-card" id="lista-15" style="scroll-margin-top:12px">
+    <article class="card lista-card" id="lista-14" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">14.</span> <img class="lista-logo" src="slike/14-resnica.png" alt=""> Državljansko gibanje Resni.ca <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">144 glasov</span> (1,14&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez odgovora</span></p>
+        <p>Lista zavez ni oddala.</p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-15" style="scroll-margin-top:4.6rem">
       <h2><span class="nr">15.</span> <img class="lista-logo" src="slike/15-lzj.png" alt=""> Lista Zorana Jankovića <span class="mandati-st">4 mandati</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">2.637 glasov</span> (20,91&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
       <div class="zaveze-povzetek">
         <p><strong>Zaveze liste.</strong> Prioritete:</p>
         <p class="tags"><span class="tag">parkiranje</span> <span class="tag">promet skozi naselje</span> <span class="tag">čistoča in pasji iztrebki</span> <span class="tag">drevesa in zelenice</span> <span class="tag">dom skupnosti, prostor za druženje</span></p>
@@ -750,7 +960,7 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
   </section>
 
   <section id="skupne" class="skupne">
-    <h2 class="sekcija">3. Skupne točke</h2>
+    <h2 class="sekcija">4. Skupne točke</h2>
     <p>Štetje sedežev v tem razdelku izhaja iz odgovorov, kot so jih liste same oddale na <a href="https://anketa.savska.org/zaveze/izvoljeni/">javni strani zavez</a>. Oznake so take, kot so jih liste same izbrale. To ni naša ocena. Mandati: Gibanje Svoboda 2, Pirati 1, Levica 5, SDS 3, Cilj – Bežigrad 1, Ljubljana smo vsi 1, Lista Zorana Jankovića 4 (skupaj 17).</p>
     <p>Nobeno od 31 vprašanj niso vse liste brez izjeme podprle z »da«, ker je SDS na vseh 31 vprašanjih označila »delno«.</p>
 
@@ -894,9 +1104,9 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
     <h2 class="sekcija">Viri in omejitve</h2>
     <div class="glas-viri">
       <ul>
-        <li>Zaveze list (31 vprašanj, oznake da/delno/ne, razlage, prioritete, mandati): javna stran <a href="https://anketa.savska.org/zaveze/izvoljeni/">anketa.savska.org/zaveze/izvoljeni</a> in neuradni izidi DVK z 16.&nbsp;11.&nbsp;2026 ob 11.00 (Europe/Ljubljana).</li>
+        <li>Zaveze list (31 vprašanj, oznake da/delno/ne, razlage, prioritete): javne strani <a href="https://anketa.savska.org/zaveze/">anketa.savska.org/zaveze</a> in <a href="https://anketa.savska.org/zaveze/izvoljeni/">anketa.savska.org/zaveze/izvoljeni</a>. Odgovor na vprašanje o delu tudi, če ne bodo izvoljeni, je vzet iz oddanih zavez list (polje zakaj-3), v izvirnem besedilu.</li>
         <li>Diagram sedežev: <a href="https://anketa.savska.org/svet-cs/">anketa.savska.org/svet-cs</a>.</li>
-        <li>Neuradni izidi DVK: datoteka <a href="https://volitve.dvk-rs.si/lv2026/data/obcine-xlsx/izvoz_061.xlsx">izvoz_061.xlsx</a>, zavihka »Četrtna skupnost Bežigrad« in »Četrtna skupnost Bežigrad (kandidati)«; portal <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">volitve.dvk-rs.si/lv2026</a>.</li>
+        <li>Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana): Volilna komisija MOL, <a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>, prek portala <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>, izvoz za MOL, zavihek »Četrtna skupnost Bežigrad«. Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</li>
         <li>Uradna kandidatna lista OVK MOL (imena, nazivi, leta rojstva): <a href="https://www.ljubljana.si/assets/Mestni-svet/Lokalne-volitve-2026/Kandidature/Cetrtna-skupnost-Bezigrad.pdf">PDF, Četrtna skupnost Bežigrad</a>.</li>
         <li>Profili in osebno zavzemanje: javni viri, navedeni pri vsaki osebi zgoraj. Kjer piše »v javnih virih nismo našli«, to pomeni, da v tem pregledu zanesljivega javnega vira nismo našli — ne da podatek ne obstaja.</li>
       </ul>
@@ -904,6 +1114,6 @@ footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
     <p class="opomba">To je testna različica in ni objavljena. Imena lastnikov, zasebni kontakti in drugi zasebni podatki na strani niso prikazani.</p>
   </section>
 </main>
-<footer>Civilna iniciativa prebivalcev Savskega naselja · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></footer>
+<footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595 · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></footer>
 </body>
 </html>
