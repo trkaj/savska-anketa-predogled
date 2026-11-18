@@ -1032,7 +1032,7 @@ function pini(v){
   g.ik=g.dog.length===1?ikonaKat(g.dog[0].kategorija):'';
   const m=L.marker(g.t,{icon:ikona(st,g.dog.length,vsiPrimer,false,g.dan,g.ik),title:g.dog.map(d=>N(d)+'. '+cisti(d)).join(', '),riseOnHover:true,keyboard:true});
   if(g.dog.length>1){
-   m.bindPopup('<b>Na tem kraju: '+stDog(g.dog.length)+'</b><ol class="pin-seznam">'+g.dog.map(d=>'<li><button type="button" data-k-dog="'+esc(d.id)+'"><span class="st-pin">'+N(d)+'</span> '+esc(ikonaKat(d.kategorija))+' '+esc(S.kartaTeden?casKratek(d):(ura(d.zacetek)||'ves dan'))+' · '+esc(cisti(d))+'</button></li>').join('')+'</ol>',{maxWidth:290});
+   m.bindPopup('<b>Na tem kraju: '+stDog(g.dog.length)+'</b><ul class="pin-seznam">'+g.dog.map(d=>'<li><button type="button" data-k-dog="'+esc(d.id)+'">'+esc(ikonaKat(d.kategorija))+' <span><b>'+esc(S.kartaTeden?casKratek(d):casOdDo(d))+'</b> · '+esc(cisti(d))+'</span></button></li>').join('')+'</ul>',{maxWidth:290});
    m.on('popupopen',e=>e.popup.getElement().querySelectorAll('[data-k-dog]').forEach(b=>b.onclick=()=>{karta.closePopup();skociNa(b.dataset.kDog)}));
   }else{const d=g.dog[0];
    m.bindPopup(oblacek(d),{maxWidth:280,className:'obl'});
