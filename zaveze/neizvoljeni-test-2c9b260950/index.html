@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liste brez mandata – testna različica · Savsko naselje</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Testna različica strani zavez vseh 15 list za svet ČS Bežigrad: sestava sveta, izidi, zaveze in poti za vključitev. Ni objavljeno.">
+<meta name="theme-color" content="#0b3d24">
+<link rel="icon" href="slike/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0b3d24;--g2:#0b5d2e;--y:#f5c400;--y2:#fff4c2;--t:#1b1b1b;--bg:#f7faf8;--odg-da:#2e7d32;--odg-ne:#c62828;--odg-delno:#f5a400;--odg-delno-fg:#1a1a1a}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;font:17px/1.5 "Source Sans 3","Segoe UI","DejaVu Sans",sans-serif;color:var(--t);background:#fff}
+a{color:var(--g)}
+.webar{font-size:.92rem;margin:0;padding:12px 16px;background:#f4f7f5}
+.webar a{color:var(--g);font-weight:650}
+.hd{background:var(--g);color:#fff;display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:6px solid var(--y)}
+.hd img{width:52px;height:52px;border-radius:8px;background:#fff}
+.hd h1{margin:0;font-size:1.35rem;color:var(--y)}
+.hd p{margin:2px 0 0;font-size:.9rem}
+main{max-width:52rem;margin:auto;padding:16px 16px 3rem}
+.banner{background:var(--y2);border:2px solid var(--y);color:var(--g);font-weight:700;padding:10px 14px;border-radius:8px;margin:0 0 1rem}
+.meta{color:#444;margin:0 0 1rem}
+.card{background:#fff;border:1px solid #dde6df;border-radius:12px;padding:16px;margin:0 0 14px;box-shadow:0 1px 3px #0001}
+.card.sim{border:3px solid var(--y);background:#fffdf3}
+.card h2{color:var(--g);margin:0 0 .35rem;font-size:1.2rem}
+.nr{display:inline-block;min-width:1.7rem;color:var(--g);font-weight:800}
+.foto{width:100%;max-height:280px;object-fit:cover;border-radius:8px;background:var(--g);margin:8px 0 10px}
+/* Celotna fotografija/kolaž, brez obrezovanja (object-fit:cover na .foto bi odrezal robove). */
+.foto.cela{max-height:none;object-fit:contain;height:auto;background:transparent}
+.video{position:relative;background:#0b3d24;color:#fff;border-radius:8px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;margin:0 0 12px}
+.video .play{width:64px;height:64px;border-radius:50%;background:var(--y);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{background:var(--g);color:#fff;border-radius:999px;padding:4px 10px;font-size:.88rem;font-weight:650}
+.tag.other{background:#e7eee9;color:var(--g)}
+.odg{display:inline-block;font-weight:800;border-radius:6px;padding:1px 7px;font-size:.85rem;margin-right:4px}
+.odg.da{background:var(--odg-da);color:#fff;font-weight:800}
+.odg.ne{background:var(--odg-ne);color:#fff;font-weight:800}
+.odg.delno{background:var(--odg-delno);color:var(--odg-delno-fg);font-weight:800}
+.brez{display:inline-block;background:#eee;color:#555;font-weight:700;padding:3px 8px;border-radius:6px}
+.predstavitev{margin:.4rem 0 .8rem}
+.cardlist{display:grid;gap:10px}
+.mini{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.mini h3{margin:0;font-size:1.02rem;color:var(--g)}
+footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
+.btn{display:inline-block;margin-top:8px;padding:8px 14px;border-radius:8px;background:var(--y);color:#000;font-weight:700;text-decoration:none}
+.btn-zacetek{display:block;width:100%;text-align:center;margin:.2rem 0 1rem;padding:18px 22px;border-radius:12px;background:#f5c400;color:#0b3d24;font-weight:800;font-size:1.25rem;line-height:1.3;text-decoration:none}
+#primerjava-wrap + .btn-zacetek{margin-top:1.1rem}
+.btn-zacetek:hover{filter:brightness(0.97)}
+.rv{border-top:1px solid #dde;padding:10px 0}
+.rv b{color:var(--g)}
+.prio-lab{background:var(--y);color:var(--g);font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
+h3.sek{color:var(--g);margin:1.4rem 0 .4rem;border-bottom:3px solid var(--y);padding-bottom:.25rem}
+
+.card h2 a,.card h3 a,.mini h3 a{color:var(--g);text-decoration:none}
+.card h2 a:hover,.card h2 a:focus,.card h3 a:hover,.card h3 a:focus,.mini h3 a:hover,.mini h3 a:focus{text-decoration:underline}
+.card h2 a:focus,.card h3 a:focus,.mini h3 a:focus{outline:3px solid var(--y);outline-offset:3px;border-radius:4px}
+.card h2 a:focus:not(:focus-visible),.card h3 a:focus:not(:focus-visible),.mini h3 a:focus:not(:focus-visible){outline:none}
+.card h2 a:focus-visible,.card h3 a:focus-visible,.mini h3 a:focus-visible{outline:3px solid var(--y);outline-offset:3px;border-radius:4px;text-decoration:underline}
+.listnav{display:flex;justify-content:space-between;gap:12px;margin:16px 0 8px}
+.listnav a,.listnav span{flex:1;font-size:.92rem;font-weight:650}
+.listnav .next{text-align:right}
+.listnav span{color:#888;font-weight:500}
+
+/* barve odgovorov so v bloku .odg.da/.ne/.delno spodaj */
+.foto-prazno{width:100%;min-height:110px;border-radius:8px;background:#e7eee9;margin:8px 0 10px;display:flex;align-items:center;justify-content:center;color:#667;font-size:.9rem}
+a.video{text-decoration:none;color:#fff}
+.card.izpolnjena{border-color:#c5d4cb}
+
+.tag.kom{background:#2c4a6e;color:#fff}
+.blok-komunikacija{background:#e8eef6;border:2px solid #7a9bb8;border-radius:12px;padding:12px 16px 8px;margin:1.6rem 0 1.8rem}
+.blok-komunikacija h3.sek{color:#1e3a5f;border-bottom:3px solid #7a9bb8;margin-top:.2rem}
+.blok-komunikacija .rv{border-top-color:#c5d4e4}
+.blok-komunikacija .rv b{color:#1e3a5f}
+.obv-lab{background:#2c4a6e;color:#fff;font-size:.75rem;font-weight:800;padding:1px 6px;border-radius:4px;margin-left:6px}
+
+/* obvezni sklop obveščanja: celo okence zeleno (Rok, 9. 11.) */
+.blok-komunikacija{background:#e6f2ea;border:2px solid #0b3d24;border-left:6px solid #0b3d24}
+.blok-komunikacija h3.sek{color:#0b3d24;border-bottom-color:#0b3d24}
+.blok-komunikacija .rv{border-top-color:#b9d3c2}
+.blok-komunikacija .rv b{color:#0b3d24}
+.obv-lab{background:#0b3d24;color:#fff}
+.vpr{display:block;color:#333;font-style:italic;margin:.15rem 0 .25rem}
+
+/* Barve odgovorov: glej blok »obkrožen žig« */
+
+/* Rok, 9. 11.: večja gumba na prejšnjo in naslednjo listo */
+.listnav{gap:14px;margin:20px 0 12px}
+.listnav a{display:flex;align-items:center;justify-content:center;min-height:56px;padding:12px 18px;background:#0b3d24;color:#fff;border-radius:10px;font-size:1.1rem;font-weight:800;text-decoration:none;text-align:center;line-height:1.3}
+.listnav a:hover{background:#0b5d2e;text-decoration:none}
+.listnav .next{text-align:center}
+.listnav span:empty{flex:1}
+@media (max-width:560px){.listnav{flex-direction:column}.listnav span:empty{display:none}}
+
+/* Rok, 9. 11.: pet prioritet v rumenih okvirjih */
+.prio-box{background:#fff8d6;border:2px solid #f5c400;border-left:6px solid #f5c400;border-radius:12px;padding:8px 16px 12px;margin:1.2rem 0}
+.prio-box h3.sek{border-bottom-color:#f5c400;margin-top:.3rem}
+.prio-box .rv{border-top-color:#f0e0a0}
+.prio-lab{font-size:.9rem;padding:3px 9px;border-radius:6px}
+
+/* roka na beli podlagi, da se vidi */
+.prio-st{display:inline-flex;align-items:center;justify-content:center;width:1.45em;height:1.45em;margin-right:.4em;border-radius:50%;background:#111;color:#fff;font-size:.85em;font-weight:800;line-height:1;vertical-align:middle;flex:0 0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tag .prio-st{box-shadow:0 0 0 1px #fff}
+.roka{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;margin-right:.35em;background:#fff;border:1px solid #0b3d24;border-radius:50%;font-size:1.05em;line-height:1;vertical-align:middle}
+.prio-lab{display:inline-flex;align-items:center}
+.tag .roka{width:1.5em;height:1.5em;border-color:#fff}
+
+/* Rok, 9. 11.: uvod liste v svojem modrem okvirju */
+.uvod-box{background:#e8f1f6;border:2px solid #9bb9cb;border-left:6px solid #245d7a;border-radius:12px;padding:12px 16px 4px;margin:1rem 0 1.4rem}
+.uvod-lab{display:inline-block;background:#245d7a;color:#fff;font-size:.8rem;font-weight:800;padding:2px 8px;border-radius:6px;margin-bottom:.4rem}
+.uvod-box .predstavitev{margin:.2rem 0 .8rem}
+
+/* Rok, 9. 11.: vgrajen Instagram video */
+.ig-wrap{margin:0 0 14px;text-align:center}
+.ig-embed{width:100%;max-width:480px;height:820px;border:1px solid #dde6df;border-radius:12px;background:#fff;display:block;margin:0 auto}
+.ig-link{font-size:.9rem;margin:.4rem 0 0}
+@media (max-width:440px){.ig-embed{height:700px !important}}
+
+/* Vgrajen video pozdrav (lokalni mp4), ne zamenjuj z .video (star placeholder). */
+.video-wrap{margin:0 0 14px;text-align:center}
+.video-wrap video{width:100%;max-width:360px;height:auto;border-radius:12px;background:#111;display:block;margin:0 auto;border:1px solid #dde6df}
+.card .video-wrap{margin:8px 0 10px}
+.card .video-wrap video{max-width:260px}
+
+/* Rok, 9. 11.: vmesni naslov 5 prioritet */
+.vmesni{display:flex;align-items:center;gap:10px;margin:2rem 0 .4rem;font-size:1.45rem;color:#0b3d24;border-bottom:3px solid #f5c400;padding-bottom:6px}
+.vmesni .roka{width:1.7em;height:1.7em;font-size:1.1rem;background:#fff;border:2px solid #0b3d24}
+/* Rok, 9. 11.: vmesni naslov ostale zaveze */
+.vmesni.ostale{border-bottom-color:#0b3d24;margin-top:2.4rem}
+
+/* Rok, 9. 11.: razlaga v svojem okvirju */
+.razl{background:#fff;border:1px solid #9cbfa8;border-left:5px solid #0b3d24;border-radius:8px;padding:8px 12px;margin:.5rem 0 .2rem;color:#1b1b1b}
+.razl-lab{display:block;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#0b3d24;margin-bottom:2px}
+.razl.predl{border-left-color:#245d7a;border-color:#9bb9cb}
+.razl.predl .razl-lab{color:#245d7a}
+
+/* Obkrožen žig za odgovor: Da zeleno, Delno oranžno, Ne rdeče (kontrast WCAG AA) */
+.odg.da,.odg.ne,.odg.delno{display:inline-flex;align-items:center;justify-content:center;min-width:2.6em;height:2.6em;padding:0 .5em;border-radius:999px;font-size:1rem;font-weight:900;letter-spacing:.02em;vertical-align:middle;margin:2px 4px}
+.odg.da{background:var(--odg-da);color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-da),0 2px 6px rgba(0,0,0,.25)}
+.odg.ne{background:var(--odg-ne);color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-ne),0 2px 6px rgba(0,0,0,.25)}
+.odg.delno{background:var(--odg-delno);color:var(--odg-delno-fg);font-weight:900;border:3px solid #fff;box-shadow:0 0 0 3px var(--odg-delno),0 2px 6px rgba(0,0,0,.25)}
+
+/* Rok, 9. 11.: barve razlag po sklopih */
+.zakaj-box .razl{background:#e8f1f6;border-color:#9bb9cb;border-left-color:#245d7a}
+.zakaj-box .razl .razl-lab{color:#245d7a}
+.prio-box .razl{background:#fff;border-color:#e2c25a;border-left-color:#b88a00}
+.prio-box .razl .razl-lab{color:#8a6700}
+.tema-box{background:#f4f5f4;border:1px solid #d5dad6;border-radius:12px;padding:8px 16px 12px;margin:1rem 0}
+.tema-box .razl{background:#e6f2ea;border-color:#9cbfa8;border-left-color:#0b3d24}
+.blok-komunikacija .razl{background:#fff;border-color:#9cbfa8;border-left-color:#0b3d24}
+.razl.predl,.zakaj-box .razl.predl,.prio-box .razl.predl,.tema-box .razl.predl,.blok-komunikacija .razl.predl{background:#eef4f8;border-color:#9bb9cb;border-left-color:#245d7a}
+.razl.predl .razl-lab{color:#245d7a}
+
+/* Delno: barva je v bloku žigov zgoraj */
+
+/* Kandidati z uradnega seznama MVK MOL (samo ime in priimek, zaporedna št.) */
+.kandidati-box{background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px 10px;margin:1rem 0 1.4rem}
+.kandidati-box h3.sek{margin-top:.15rem}
+.kandidati-box ol.kandidati{margin:.35rem 0 .7rem;padding-left:1.45rem}
+.kandidati-box ol.kandidati li{margin:.12rem 0}
+.kandidati-vir{font-size:.92rem;margin:0 0 .35rem}
+.kandidati-vir a{font-weight:650}
+
+/* Logotip liste za naslovom, ne višji od črk naslova — enako za vse liste */
+.lista-logo{display:inline-block;height:28px;width:56px;object-fit:contain;object-position:center;vertical-align:middle;margin-left:.35em;padding:3px;box-sizing:border-box;border-radius:3px;background:#eceee9;box-shadow:0 0 0 1px #d5d8d0}
+.lista-splet{margin:.1rem 0 1rem}
+.lista-splet a{color:#0b3d24;font-weight:700}
+
+/* Kazalo petih prioritet pod naslovom 5 prioritet */
+.prio-kazalo{margin:.45rem 0 1.1rem;padding:8px 14px 8px 2.1rem;background:#fff8d6;border:2px solid #f5c400;border-left:6px solid #f5c400;border-radius:10px}
+.prio-kazalo li{margin:.15rem 0}
+.prio-kazalo a{color:#0b3d24;font-weight:700;text-decoration:none}
+.prio-kazalo a:hover{text-decoration:underline}
+.prio-box{scroll-margin-top:1.25rem}
+
+
+/* Povzetek na vrhu strani liste */
+.povzetek,#status.povzetek{background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px;margin:0 0 1.2rem}
+.povzetek-st{margin:0 0 .55rem;font-weight:800;color:#0b3d24}
+.povzetek-st .odg{min-width:2.1em;height:1.7em;font-size:.8rem;margin:0 1px}
+.povzetek-prio{margin:0}
+.povzetek-prio .tag{text-decoration:none}
+
+/* Primerjaj ob naslovu teme */
+.primerjaj{font-size:.78rem;font-weight:700;margin-left:.5rem;color:#0b3d24;white-space:nowrap}
+
+
+/* Primerjava odgovorov */
+.primerjava-uvod{margin:0 0 .6rem}
+.primerjava-legenda{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:.4rem 0 1rem;font-size:.92rem}
+.primerjava-legenda .odg{min-width:2em;height:2em;font-size:.8rem}
+.primerjava-scroll{overflow-x:auto;max-width:100%;border:1px solid #dde6df;border-radius:12px;background:#fff;-webkit-overflow-scrolling:touch}
+.primerjava{border-collapse:separate;border-spacing:0;min-width:70rem;font-size:.8rem}
+.primerjava th,.primerjava td{border-bottom:1px solid #e5ece7;padding:6px 5px;text-align:center;vertical-align:middle}
+.primerjava thead th{position:sticky;top:0;z-index:3;background:#f7f7f2;color:#0b3d24;font-weight:700;border-bottom:3px solid #f5c400}
+.primerjava thead th a{color:#0b3d24;text-decoration:none}
+.primerjava thead th a:hover{text-decoration:underline}
+.primerjava tbody th{position:sticky;left:0;z-index:2;background:#f4f7f5;color:#0b3d24;text-align:left;min-width:11.5rem;max-width:14rem;font-weight:650}
+.primerjava thead th:first-child{position:sticky;left:0;z-index:5;background:#f7f7f2;color:#0b3d24;text-align:left;border-bottom:3px solid #f5c400}
+.primerjava .pv-skupina th{background:#fff8d6;color:#0b3d24;text-align:left;font-size:.92rem;scroll-margin-top:1.2rem}
+.primerjava .pv-skupina .pv-naslov{position:sticky;left:0;display:inline-block;background:#fff8d6;border-left:6px solid #f5c400;padding:2px 12px 2px 8px;z-index:1}
+.primerjava .colhead{min-width:3.8rem;max-width:5rem;line-height:1.25}
+.primerjava .colhead .lista-logo{height:28px;width:56px;margin-left:.15em;padding:3px;box-sizing:border-box;border-radius:3px;background:#eceee9;box-shadow:0 0 0 1px #d5d8d0}
+.primerjava .colhead img.lista-logo[src*="15-lzj"],
+img.lista-logo[src*="15-lzj"]{background:#0b3d24;padding:3px;border-radius:3px;box-shadow:0 0 0 1px #0b3d24}
+.primerjava td a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:3px}
+.primerjava .odg{min-width:1.85em;height:1.85em;font-size:.72rem;margin:0}
+.primerjava .odg.da{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-da)}
+.primerjava .odg.delno{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-delno)}
+.primerjava .odg.ne{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--odg-ne)}
+.primerjava .celica-prazna{color:#888;font-weight:700}
+.primerjava td{position:relative}
+.primerjava .prio-st{display:inline-flex;align-items:center;justify-content:center;width:1.15em;height:1.15em;margin:0;border-radius:50%;background:#111;color:#fff;font-size:11px;font-weight:800;line-height:1;flex:0 0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.primerjava .prio-st-prazno{visibility:hidden;background:transparent}
+.primerjava-legenda .prio-legenda{display:inline-flex;align-items:center;gap:3px}
+.primerjava-legenda .prio-st{margin:0}
+.oblacek-prio{margin:0 0 .25rem;font-size:13px;font-weight:700;color:#111}
+
+
+/* Igrifikacija branja zavez */
+:root{--igra-pas-h:4.6rem}
+.igra-pas{background:#fff;border-bottom:3px solid var(--y);padding:8px 16px 9px;position:sticky;top:0;z-index:30;box-shadow:0 1px 4px #0001}
+.igra-pas-vrstica{display:flex;align-items:center;gap:12px;max-width:70rem;margin:0 auto}
+.igra-pas-meter{flex:1;height:10px;background:var(--g);border-radius:99px;overflow:hidden;min-width:5rem}
+.igra-pas-fill{display:block;height:100%;width:0;background:var(--y);border-radius:99px;transition:width .35s ease}
+.igra-pas-txt{margin:0;font-weight:750;color:var(--g);font-size:.95rem;white-space:nowrap}
+.igra-znacke{list-style:none;display:flex;flex-wrap:nowrap;gap:6px;margin:7px auto 0;padding:0;max-width:70rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.igra-znacka{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:650;color:#6a746e;background:#f4f7f5;border:1px solid #dde6df;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.igra-znacka.je{color:var(--g);background:var(--y2);border-color:var(--y)}
+.igra-znacka-ok{width:.65rem;height:.65rem;border-radius:50%;background:var(--g);display:inline-block}
+.igra-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.card{position:relative}
+.igra-ok{position:absolute;top:10px;right:10px;font-size:.72rem;font-weight:750;letter-spacing:.01em;color:var(--g);background:var(--y2);border:1px solid var(--y);border-radius:99px;padding:1px 8px}
+.card.mini .igra-ok{top:8px;right:8px}
+.card.igra-prebrana{padding-right:5.8rem}
+body.igra-ima-pas .primerjava thead th{top:var(--igra-pas-h)}
+.igra-toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:80;background:var(--g);color:#fff;padding:10px 18px 12px;border-radius:12px;border-bottom:4px solid var(--y);box-shadow:0 8px 24px #0004;max-width:min(28rem,calc(100vw - 2rem));text-align:center;animation:igra-toast-vhod .28s ease}
+.igra-toast.skrij{opacity:0;transition:opacity .3s}
+.igra-toast-k{margin:0;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;color:var(--y);font-weight:700}
+.igra-toast-i{margin:2px 0 0;font-weight:750;font-size:1.05rem}
+.igra-konfeti{position:fixed;inset:0;z-index:90;pointer-events:none}
+@keyframes igra-toast-vhod{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+@media (max-width:640px){
+  :root{--igra-pas-h:5.4rem}
+  .igra-pas{padding:8px 12px 8px}
+  .igra-pas-vrstica{flex-wrap:wrap;gap:6px 10px}
+  .igra-pas-txt{white-space:normal;font-size:.88rem;flex:1 1 auto}
+  .igra-pas-meter{flex:1 1 100%;order:-1}
+}
+@media (prefers-reduced-motion:reduce){
+  .igra-pas-fill,.igra-toast,.igra-toast.skrij{transition:none;animation:none}
+}
+
+
+/* Deljenje naprej (vzorec ankete) */
+.deli-razdelek{margin:1rem 0 1.2rem;padding:14px 16px;background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid var(--g);border-radius:12px}
+.deli-razdelek h3{margin:0 0 .55rem;color:var(--g);font-size:1.05rem}
+.deli-gumbi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:.2rem 0}
+.deli-gumbi .gumb{display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;box-sizing:border-box;font:inherit;font-weight:700;font-size:.95rem;min-height:44px;padding:.55rem .8rem;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;line-height:1.2}
+.deli-gumbi .gumb:hover{background:var(--y);border-color:var(--y);color:var(--g)}
+.deli-stanje{min-height:1.2em;margin:.35rem 0 0;color:var(--g);font-weight:650;font-size:.9rem}
+.deli-kartica{margin:.75rem 0 0}
+.deli-kartica summary{cursor:pointer;color:var(--g);font-weight:700;font-size:.9rem;list-style:none;min-height:44px;display:inline-flex;align-items:center}
+.deli-kartica summary::-webkit-details-marker{display:none}
+.deli-kompakt{margin:.45rem 0 0;padding:0;background:transparent;border:none;border-radius:0}
+.deli-anketa-povezava{margin:.55rem 0 0}
+.webar a.igra-anketa{font-weight:700}
+
+/* sidra vprašanj in oblaček v primerjalni tabeli */
+.rv{scroll-margin-top:5.5rem}
+.primerjava .celica-tip{appearance:none;-webkit-appearance:none;background:none;border:0;padding:2px;margin:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:3px;color:inherit;font:inherit;border-radius:999px;line-height:1}
+.primerjava .celica-tip:focus{outline:3px solid var(--y);outline-offset:2px}
+.primerjava .celica-tip:focus:not(:focus-visible){outline:none}
+.primerjava .celica-tip:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.oblacek{position:fixed;z-index:12000;width:min(240px,calc(100vw - 16px));max-width:240px;max-height:min(70vh,22rem);overflow:auto;background:#fff;color:#1b1b1b;border:1px solid #c5d4cb;border-radius:8px;box-shadow:0 6px 18px rgba(11,61,36,.2);padding:7px 9px 8px;box-sizing:border-box;font-size:13px;line-height:1.3}
+.oblacek-ime{margin:0 0 .2rem;font-weight:800;color:var(--g);font-size:13px;line-height:1.25}
+.oblacek-odg{margin:0 0 .25rem;font-size:13px}
+.oblacek-odg .odg,.oblacek .odg.da,.oblacek .odg.ne,.oblacek .odg.delno{min-width:1.7em;height:1.35em;font-size:11px;padding:0 .35em;margin:0 0 0 2px;border-width:1.5px;box-shadow:none;letter-spacing:0}
+.oblacek-razl{background:#f7faf8;border:1px solid #9cbfa8;border-left:3px solid #0b3d24;border-radius:6px;padding:4px 7px;color:#1b1b1b;font-size:13px;line-height:1.35}
+.oblacek-razl .razl-lab{font-size:10px;margin-bottom:1px;letter-spacing:.03em}
+.oblacek-vec{display:inline-block;margin-top:.3rem;font-weight:700;color:var(--g);text-decoration:none;font-size:13px}
+.oblacek-vec:hover,.oblacek-vec:focus{text-decoration:underline}
+.oblacek-vec:focus{outline:3px solid var(--y);outline-offset:3px;border-radius:4px}
+.oblacek-vec:focus:not(:focus-visible){outline:none}
+.oblacek-vec:focus-visible{outline:3px solid var(--y);outline-offset:3px;border-radius:4px}
+
+/* Plavajoči pas med listami (mobilno) in rumeni CTA na dnu strani liste. */
+.lista-cta{margin:1.4rem 0 1rem;scroll-margin-bottom:calc(var(--lista-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 16px)}
+.lista-cta .btn-zacetek{margin:0}
+.lista-pas{display:none}
+@media (max-width:768px){
+  .lista-pas{display:flex;align-items:center;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#0b3d24;color:#fff;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:3px solid #f5c400;box-shadow:0 -4px 16px #0004}
+  .lista-pas-gumb{flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:10px 8px;border-radius:10px;background:#f5c400;color:#0b3d24;font-weight:800;font-size:.95rem;line-height:1.2;text-align:center;text-decoration:none}
+  .lista-pas-gumb:hover,.lista-pas-gumb:focus{filter:brightness(0.97);text-decoration:none}
+  .lista-pas-gumb:focus{outline:3px solid #fff;outline-offset:2px}
+  .lista-pas-gumb:focus:not(:focus-visible){outline:none}
+  .lista-pas-gumb:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .lista-pas-gumb.je-konec{background:transparent;color:#9bb5a5;font-weight:650;pointer-events:none}
+  .lista-pas-sedaj{flex:0 1 36%;margin:0;text-align:center;font-size:.78rem;font-weight:700;line-height:1.25;color:#fff}
+  body.ima-lista-pas{padding-bottom:calc(var(--lista-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + 8px)}
+  body.ima-lista-pas .listnav{display:none}
+  body.ima-lista-pas .igra-toast{bottom:calc(var(--lista-pas-h,4.6rem) + env(safe-area-inset-bottom,0px) + .8rem)}
+}
+@media print{
+  .lista-pas{display:none !important}
+  .lista-cta{display:none !important}
+  body.ima-lista-pas{padding-bottom:0 !important}
+}
+
+/* Zvočni gumb ob vprašanjih na strani liste. */
+.rv{display:flex;align-items:flex-start;gap:12px}
+.rv-telo{flex:1;min-width:0}
+.zvok-gumb{flex:0 0 auto;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-sizing:border-box;width:52px;min-width:44px;min-height:44px;height:52px;margin-top:1px;padding:4px 3px 3px;border:2px solid #f5c400;border-radius:12px;background:#0b3d24;color:#fff;cursor:pointer;font:inherit;line-height:1.1;appearance:none;-webkit-appearance:none}
+.zvok-gumb .zvok-ikona{font-size:1.24rem;line-height:1}
+.zvok-gumb .zvok-napis{font-size:.56rem;font-weight:800;letter-spacing:0;color:#f5c400}
+.zvok-gumb:hover{background:#0b5d2e}
+.zvok-gumb:focus{outline:3px solid #f5c400;outline-offset:2px}
+.zvok-gumb:focus:not(:focus-visible){outline:none}
+.zvok-gumb:focus-visible{outline:3px solid #f5c400;outline-offset:2px}
+.zvok-gumb.predvaja{background:#f5c400;color:#0b3d24}
+.zvok-gumb.predvaja .zvok-napis{color:#0b3d24}
+.zvok-gumb[disabled]{opacity:.55;cursor:wait}
+@media (min-width:769px){
+  .rv{gap:16px}
+  .zvok-gumb{width:58px;min-width:44px;min-height:44px;height:58px;border-radius:14px;padding:6px 3px 4px}
+  .zvok-gumb .zvok-ikona{font-size:1.48rem}
+  .zvok-gumb .zvok-napis{font-size:.62rem}
+}
+@media print{
+  .zvok-gumb{display:none !important}
+  .rv{display:block;gap:0}
+  .rv-telo{display:contents}
+}
+
+/* Zadnja stran: čas za glas. */
+.lista-cta{display:flex;flex-direction:column;gap:10px}
+.btn-zacetek.btn-drugi{background:#fff;color:#0b3d24;border:2px solid #0b3d24}
+.btn-zacetek.btn-drugi:hover{background:#f7faf8;filter:none}
+.glas-glava{display:flex;align-items:flex-start;gap:12px;margin:0 0 1rem;scroll-margin-top:calc(var(--igra-pas-h,4.6rem) + 8px)}
+.glas-glava h1,.glas-glava h2{flex:1;min-width:0;margin:0;color:#0b3d24;font-size:1.7rem;line-height:1.25}
+.glas-uvod{margin:0 0 1.1rem;font-size:1.05rem}
+.glas-blok{background:#f7faf8;border:2px solid #0b3d24;border-left:6px solid #0b3d24;border-radius:12px;padding:14px 16px 12px;margin:0 0 1rem}
+.glas-blok h2{margin:0 0 .45rem;color:#0b3d24;font-size:1.15rem;border:0;padding:0}
+.glas-blok p,.glas-blok ul{margin:.35rem 0}
+.glas-blok ul{padding-left:1.2rem}
+.glas-blok a{font-weight:650}
+.glas-sklep{text-align:center;margin:1.6rem 0 1.2rem;padding:18px 16px;background:#fffdf3;border:3px solid #f5c400;border-radius:14px}
+.glas-sklep .vidimo{margin:0;font-size:1.3rem;font-weight:800;color:#0b3d24;line-height:1.35}
+.glas-sklep .srecno{margin:.4rem 0 0;font-size:1.45rem;font-weight:800;color:#0b3d24;line-height:1.3}
+.glas-viri{margin:1.4rem 0 0;padding:12px 16px;background:#f4f7f5;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;font-size:.92rem}
+.glas-viri h2{margin:0 0 .4rem;color:#0b3d24;font-size:1.05rem}
+.glas-viri ul{margin:.2rem 0;padding-left:1.2rem}
+.glas-viri li{margin:.25rem 0}
+@media (min-width:769px){
+  .glas-glava{gap:16px}
+  .glas-glava h1,.glas-glava h2{font-size:2rem}
+  .glas-blok{padding:16px 18px 14px}
+}
+@media print{
+  .glas-glava{display:block}
+}
+
+.tisk-blok{background:#f4f7f5;border:1px solid #d6e2da;border-radius:12px;padding:12px 14px;margin:0 0 1rem}
+.tisk-gumbi{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 .5rem}
+.btn-tisk{display:inline-block;padding:9px 16px;border-radius:8px;background:#f5c400;color:#0b3d24;font-weight:800;text-decoration:none}
+.btn-tisk:hover{filter:brightness(0.97)}
+.tisk-navodila{margin:0;color:#0b3d24;font-size:.95rem;line-height:1.45}
+.tisk-mreza{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:.8rem 0 0}
+.tisk-stran{margin:0;background:#fff;border:1px solid #d6e2da;border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px}
+.tisk-stran img{width:100%;height:auto;display:block;border:1px solid #ccc;border-radius:4px}
+.tisk-stran figcaption{color:#0b3d24;font-size:.88rem;line-height:1.3;flex:1}
+.btn-stran{text-align:center;padding:7px 10px;font-size:.92rem}
+@media (max-width:420px){.tisk-mreza{grid-template-columns:repeat(2,1fr)}}
+.tisk-tabela{margin-top:1rem;font-size:.92rem}
+.tisk-tabela a{color:#0b3d24;font-weight:700}
+.opomba-vrstni-red{color:#6b6b6b;font-size:.82rem;line-height:1.4;margin:-.4rem 0 1rem}
+#primerjava-wrap + .opomba-vrstni-red{margin:.5rem 0 .4rem}
+.opomba-vrstni-red + .btn-zacetek{margin-top:.6rem}
+
+
+/* --- testna stran izvoljeni (celosten vpogled) --- */
+body.izvoljeni-stran .primerjava{min-width:38rem}
+.vir-izidov{background:#f4f7f5;border:1px solid #c5d4cb;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px;margin:0 0 1.2rem;font-size:.92rem;line-height:1.45;color:#222}
+.vir-izidov p{margin:0 0 .55rem}
+.vir-izidov p:last-child{margin:0}
+.vir-izidov .oznaka{display:inline-block;background:#0b3d24;color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin:0 0 .55rem}
+.mandati-vrstica{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:.45rem 0 .2rem}
+.mandati-st{display:inline-block;background:#0b3d24;color:#fff;font-weight:800;font-size:.95rem;padding:4px 10px;border-radius:999px}
+.mandati-glasovi{color:#444;font-size:.92rem}
+.izvoljeni-imena{margin:.25rem 0 .7rem;color:#1b1b1b;font-size:.95rem}
+.povezava-vse{margin:0 0 1rem;font-size:.95rem}
+.povzetek-mandati{margin:0 0 1.1rem;padding:0;list-style:none}
+.povzetek-mandati li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:6px 0;border-bottom:1px solid #e5ece7;font-size:.95rem}
+.povzetek-mandati li:last-child{border-bottom:0}
+.povzetek-mandati .nr{min-width:1.5rem}
+.povzetek-mandati .mandati-st{font-size:.8rem;padding:2px 8px}
+.primerjava .colhead .mandati-st{display:inline-flex;margin:.25rem auto 0;font-size:10px;width:auto;height:auto;padding:1px 6px;border-radius:999px;background:#0b3d24;color:#fff}
+
+.test-trak{background:#fff4c2;border-bottom:4px solid #f5c400;color:#0b3d24;font-weight:800;text-align:center;padding:10px 16px;letter-spacing:.02em;font-size:1rem}
+.test-trak span{display:inline-block}
+.kazalo{background:#f4f7f5;border:1px solid #dde6df;border-radius:12px;padding:12px 16px;margin:0 0 1.4rem}
+.kazalo h2{margin:0 0 .45rem;font-size:1.05rem;color:#0b3d24}
+.kazalo ol{margin:0;padding-left:1.3rem}
+.kazalo li{margin:.15rem 0}
+.kazalo a{font-weight:700}
+.sestava-sveta img{width:100%;height:auto;border:1px solid #e3e3e3;border-radius:6px}
+.sestava-sveta .vir-slike{font-size:.85rem;color:#666;margin:.5rem 0 0}
+h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;padding-bottom:.25rem;scroll-margin-top:12px}
+.lista-card{scroll-margin-top:4.6rem}
+.podatki{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.2rem}
+.podatki th,.podatki td{border-bottom:1px solid #e5ece7;padding:6px 8px;text-align:left;vertical-align:top}
+.podatki td.num,.podatki th.num{text-align:right;white-space:nowrap}
+.podatki thead th{background:#f4f7f5;color:#0b3d24;font-weight:700;border-bottom:3px solid #f5c400}
+.podatki tbody th{font-weight:650;color:#0b3d24}
+.vecina-box{background:#f4f7f5;border:1px solid #c5d4cb;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px;margin:0 0 1.2rem}
+.vecina-box h3{margin:.1rem 0 .5rem;color:#0b3d24;font-size:1.05rem}
+.vecina-box ul{margin:.2rem 0 .6rem;padding-left:1.2rem}
+.vecina-box li{margin:.25rem 0}
+.lista-card{margin:0 0 1.4rem}
+.lista-card > h2{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:0 0 .5rem}
+.lista-card > h2 .nr{font-size:1.15rem}
+.zaveze-povzetek{margin:0 0 .8rem}
+.oseba{border-top:1px solid #e5ece7;padding:12px 0 2px;margin-top:10px}
+.oseba:first-of-type{border-top:0;padding-top:4px}
+.oseba h3{margin:0 0 .35rem;color:#0b3d24;font-size:1.08rem}
+.oseba .roj{font-weight:500;color:#444;font-size:.95rem}
+.oseba p{margin:0 0 .55rem}
+.viri{font-size:.9rem;color:#333}
+.tags{margin:.35rem 0 .7rem}
+main{max-width:54rem}
+.primerjava-scroll{margin:0 0 1.2rem}
+.primerjava .odg{min-width:1.85em;height:1.85em;font-size:.72rem;margin:0}
+.primerjava td .brez,.primerjava td .celica-prazna{display:inline-block;min-width:1.85em;color:#666;font-weight:700}
+.skupne .podatki{font-size:.9rem}
+.skupne ol{margin:.3rem 0 1rem;padding-left:1.3rem}
+.opomba{color:#444;font-size:.92rem}
+footer{text-align:center;font-size:.85rem;padding:20px;color:#555}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.mandati-st.brez-mandata{background:#fff;color:#0b3d24;border:1.5px solid #0b3d24;font-weight:750}
+.glasovi-vrstica{margin:.1rem 0 .7rem;color:#333;font-size:.95rem}
+.glasovi-vrstica .glasovi-st{font-weight:700}
+.zaveza-naprej{margin:.2rem 0 0}
+.zaveza-naprej h3{margin:0 0 .35rem;color:#0b3d24;font-size:1.02rem}
+.zaveza-naprej .vprasanje-kratko{margin:0 0 .45rem;color:#444;font-size:.92rem}
+.razlaga-izvor{margin:.45rem 0 .8rem;padding:10px 12px;background:#f4f7f5;border-left:4px solid #0b3d24;border-radius:0 8px 8px 0;white-space:pre-wrap;font-size:.98rem;line-height:1.45}
+.vkljucitev{margin:0 0 1.4rem}
+.vkljucitev > p{margin:0 0 .8rem}
+.vkljucitev-poti{display:grid;gap:10px;margin:0 0 1rem}
+.vkljucitev-pot{background:#fff;border:1px solid #dde6df;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 14px}
+.vkljucitev-pot h3{margin:0 0 .35rem;color:#0b3d24;font-size:1.02rem}
+.vkljucitev-pot p{margin:0;font-size:.95rem;line-height:1.45}
+.vkljucitev-stik{background:#fffdf3;border:2px solid #f5c400;border-radius:12px;padding:12px 14px;margin:0}
+.vkljucitev-stik p{margin:0;font-size:.98rem}
+.vkljucitev-stik a{font-weight:700}
+.liste-skok{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 2px 10px;margin:0 0 1rem;position:sticky;top:0;background:#fff;z-index:8;border-bottom:1px solid #e5ece7;box-shadow:0 2px 6px #0001}
+.liste-skok a{flex:0 0 auto;min-width:2.4rem;height:2.4rem;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:#f4f7f5;border:1px solid #dde6df;font-weight:800;text-decoration:none;color:#0b3d24;font-size:.95rem}
+.liste-skok a:hover,.liste-skok a:focus{background:#fff4c2;border-color:#f5c400;outline:none}
+.liste-skok a[data-mandat="ne"]{background:#fff;font-weight:750}
+.kazalo-liste{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:.35rem 0 0}
+.kazalo-liste li{margin:0}
+.kazalo-liste a{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid #dde6df;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:700;background:#fff;color:#0b3d24}
+.kazalo-liste a:hover,.kazalo-liste a:focus{background:#fff4c2;border-color:#f5c400}
+.kazalo-liste .st{font-weight:800}
+.tabela-namig{margin:0 0 .4rem;color:#555;font-size:.85rem}
+.podatki tfoot th,.podatki tfoot td{font-weight:800;border-top:2px solid #0b3d24;background:#f4f7f5}
+.povzetek-mandati .glasovi-kratek{color:#444;font-size:.9rem}
+@media (max-width:480px){
+  .hd h1{font-size:1.15rem}
+  .hd p{font-size:.85rem}
+  .lista-card > h2{font-size:1.08rem;gap:6px 8px}
+  .lista-card > h2 .lista-logo{height:24px;width:48px;margin-left:0}
+  .podatki{font-size:.88rem}
+  .podatki th,.podatki td{padding:8px 6px}
+  .vkljucitev-pot{padding:12px}
+  .glasovi-vrstica{font-size:.92rem}
+  .webar{font-size:.85rem;padding:10px 12px}
+}
+
+@media print{
+  .test-trak{border:2px solid #f5c400;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .webar{display:none}
+}
+
+
+.skupaj-box{background:#f4f7f5;border:2px solid var(--g);border-radius:10px;padding:12px 14px;margin:0 0 1rem}
+.skupaj-box .oznaka{margin:0 0 .3rem;font-size:.85rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:.02em}
+.skupaj-box .glavna{margin:0;font-size:1.25rem;font-weight:800;color:var(--g);line-height:1.3}
+.skupaj-box .glavna span{white-space:nowrap}
+.skupaj-box .druga{margin:.45rem 0 0;font-size:.95rem}
+.skupaj-box .preklop{display:inline-block;margin-top:.6rem;padding:8px 14px;border-radius:8px;background:var(--y);color:#000;font-weight:750;text-decoration:none}
+.strani-preklop{display:flex;gap:6px;margin:0 0 1rem;flex-wrap:wrap}
+.strani-preklop a,.strani-preklop span{flex:1 1 12rem;text-align:center;padding:9px 12px;border-radius:8px;border:2px solid var(--g);font-weight:750;text-decoration:none;color:var(--g);background:#fff}
+.strani-preklop span{background:var(--g);color:#fff}
+table.podatki tfoot tr.ta-stran th,table.podatki tfoot tr.ta-stran td{font-weight:800;background:#fff4c2}
+@media (max-width:560px){.skupaj-box .glavna{font-size:1.1rem}}
+</style>
+</head>
+<body class="izvoljeni-stran">
+<p class="test-trak"><span>Testna različica – ni objavljeno</span></p>
+<p class="webar"><a href="https://anketa.savska.org/">savska.org</a> · <a href="https://anketa.savska.org/zaveze/">vse zaveze</a> · <a href="https://anketa.savska.org/zaveze/izvoljeni/">javna stran izvoljenih</a> · <a href="https://anketa.savska.org/pregled/">pregled ankete</a> · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></p>
+<header class="hd">
+  <img src="slike/logo.png" alt="">
+  <div>
+    <h1>Liste brez mandata</h1>
+    <p>Svet ČS Bežigrad 2026–2030, volilna enota 01 · testna različica</p>
+  </div>
+</header>
+<main>
+  <div class="banner">Testna različica – ni objavljeno. To ni javna stran zavez; je skrit predogled.</div>
+  <nav class="strani-preklop" aria-label="Testni strani"><a href="https://anketa.savska.org/zaveze/izvoljeni-test-3316ce3d7a/">Izvoljene liste (7)</a><span aria-current="page">Liste brez mandata (8)</span></nav>
+  <div class="skupaj-box">
+    <p class="oznaka">Liste brez mandata skupaj · neuradni izid, 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
+    <p class="glavna"><span>8 list</span> · <span>brez sedeža</span> · <span>1.763 glasov</span> · <span>14,0&nbsp;%</span></p>
+    <p class="druga">Izvoljene liste skupaj: 7 list, 17 sedežev, 10.847 glasov (86,0&nbsp;%). Vse liste skupaj: 15 list, 12.610 glasov (100&nbsp;%). Delež je delež vseh veljavnih glasov za liste v volilni enoti 01.</p>
+    <a class="preklop" href="https://anketa.savska.org/zaveze/izvoljeni-test-3316ce3d7a/">Izvoljene liste →</a>
+  </div>
+  <p class="meta">Stran prikazuje neuradne izide osmih list, ki v svetu ČS Bežigrad nimajo mandata, in njihov odgovor na vprašanje, ali se bodo za Savsko naselje trudile tudi, če ne bodo izvoljene. Izvoljene liste so na <a href="https://anketa.savska.org/zaveze/izvoljeni-test-3316ce3d7a/">ločeni strani</a>. Liste so obravnavane enakovredno in niso ocenjene ali razvrščene. Vrstni red je enak zaporednim številkam na glasovnici za volilno enoto 01, ne po številu glasov. Odgovori so odgovori <strong>list</strong>, ne osebni odgovori kandidatov, v izvirnem besedilu, kot so ga liste same napisale.</p>
+  <p class="opomba-vrstni-red">Posodobljeno 18.&nbsp;11.&nbsp;2026 (Europe/Ljubljana). Izidi volitev so neuradni. Vir mandatov in glasov: Volilna komisija MOL (<a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>), prek portala <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana). Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</p>
+
+  <nav class="kazalo" aria-label="Kazalo">
+    <h2>Kazalo</h2>
+    <ol>
+      <li><a href="#glasovi">Glasovi</a></li>
+      <li><a href="#liste">Po listah</a>
+        <ul class="kazalo-liste">
+          <li><a href="#lista-2"><span class="st">2.</span> SLS</a></li>
+          <li><a href="#lista-3"><span class="st">3.</span> Demokrati</a></li>
+          <li><a href="#lista-6"><span class="st">6.</span> Prerod</a></li>
+          <li><a href="#lista-8"><span class="st">8.</span> Vesna</a></li>
+          <li><a href="#lista-9"><span class="st">9.</span> NSi in Fokus</a></li>
+          <li><a href="#lista-10"><span class="st">10.</span> SD</a></li>
+          <li><a href="#lista-12"><span class="st">12.</span> Straža</a></li>
+          <li><a href="#lista-14"><span class="st">14.</span> Resni.ca</a></li>
+        </ul>
+      </li>
+      <li><a href="#vkljucitev">Kako se lahko vključijo</a></li>
+      <li><a href="#viri">Viri in omejitve</a></li>
+      <li><a href="https://anketa.savska.org/zaveze/izvoljeni-test-3316ce3d7a/">Izvoljene liste (ločena stran)</a></li>
+    </ol>
+  </nav>
+
+  <section id="glasovi" class="sestava-sveta">
+    <h2 class="sekcija">1. Glasovi</h2>
+    <p>Volitve v svet ČS Bežigrad so bile v nedeljo, 15.&nbsp;11.&nbsp;2026, volilna enota 01. Osem list brez mandata je skupaj dobilo 1.763 od 12.610 glasov za liste (14,0&nbsp;%).</p>
+
+    <div class="vir-izidov">
+      <p class="oznaka">Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
+      <p>Vir izidov: Volilna komisija MOL, stran <a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>, ki povezuje na portal <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>. Številke so iz izvoza za MOL, zavihek »Četrtna skupnost Bežigrad«, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana).</p>
+      <p>To je neuradni izid. Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</p>
+    </div>
+
+    <h3 class="sek">Glasovi po listah</h3>
+    <p class="tabela-namig">Na ožjem zaslonu preglednico povlecite vstran. Vrstni red je enak glasovnici (VE&nbsp;01), ne po številu glasov. Delež je izračunan od vseh 12.610 glasov za liste.</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <caption class="sr-only">Neuradni izid volitev v svet ČS Bežigrad, stanje 18. 11. 2026 ob 8.00</caption>
+      <thead>
+        <tr><th>Št.</th><th>Lista</th><th class="num">Glasovi</th><th class="num">Delež</th><th class="num">Mandati</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2.</td><th scope="row">Slovenska ljudska stranka</th><td class="num">98</td><td class="num">0,8&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>3.</td><th scope="row">Demokrati. Anžeta Logarja</th><td class="num">183</td><td class="num">1,5&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>6.</td><th scope="row">Prerod – stranka Vladimirja Prebiliča</th><td class="num">166</td><td class="num">1,3&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>8.</td><th scope="row">Vesna – zelena stranka</th><td class="num">337</td><td class="num">2,7&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>9.</td><th scope="row">Nova Slovenija in Fokus</th><td class="num">366</td><td class="num">2,9&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>10.</td><th scope="row">Socialni demokrati</th><td class="num">410</td><td class="num">3,3&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>12.</td><th scope="row">Stranka Straža – katoliška narodna stranka</th><td class="num">59</td><td class="num">0,5&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td>14.</td><th scope="row">Državljansko gibanje Resni.ca</th><td class="num">144</td><td class="num">1,1&nbsp;%</td><td class="num">0</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="ta-stran"><td></td><th scope="row">Skupaj liste brez mandata</th><td class="num">1.763</td><td class="num">14,0&nbsp;%</td><td class="num">0</td></tr>
+        <tr><td></td><th scope="row">Vse liste (15)</th><td class="num">12.610</td><td class="num">100&nbsp;%</td><td class="num">17</td></tr>
+      </tfoot>
+    </table>
+    </div>
+  </section>
+
+  <section id="liste">
+    <h2 class="sekcija">2. Po listah</h2>
+    <p>Vrstni red je enak zaporednim številkam na glasovnici (volilna enota 01), ne po številu glasov. Pri vsaki listi je njen odgovor na vprašanje iz zavez: »Če ne boste izvoljeni v svet ČS, se boste še vseeno trudili za Savsko naselje — in kaj boste naredili v tem primeru?« Razlage so v izvirnem besedilu, kot so ga liste same napisale. Odgovor liste ni osebni odgovor kandidata.</p>
+
+    <nav class="liste-skok" aria-label="Skok na listo po številki glasovnice">
+      <a href="#lista-2">2</a>
+      <a href="#lista-3">3</a>
+      <a href="#lista-6">6</a>
+      <a href="#lista-8">8</a>
+      <a href="#lista-9">9</a>
+      <a href="#lista-10">10</a>
+      <a href="#lista-12">12</a>
+      <a href="#lista-14">14</a>
+    </nav>
+
+    <ul class="povzetek-mandati">
+      <li><span class="nr">2.</span> <a href="#lista-2">Slovenska ljudska stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">98 glasov (0,8&nbsp;%)</span></li>
+      <li><span class="nr">3.</span> <a href="#lista-3">Demokrati. Anžeta Logarja</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">183 glasov (1,5&nbsp;%)</span></li>
+      <li><span class="nr">6.</span> <a href="#lista-6">Prerod – stranka Vladimirja Prebiliča</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">166 glasov (1,3&nbsp;%)</span></li>
+      <li><span class="nr">8.</span> <a href="#lista-8">Vesna – zelena stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">337 glasov (2,7&nbsp;%)</span></li>
+      <li><span class="nr">9.</span> <a href="#lista-9">Nova Slovenija in Fokus</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">366 glasov (2,9&nbsp;%)</span></li>
+      <li><span class="nr">10.</span> <a href="#lista-10">Socialni demokrati</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">410 glasov (3,3&nbsp;%)</span></li>
+      <li><span class="nr">12.</span> <a href="#lista-12">Stranka Straža – katoliška narodna stranka</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">59 glasov (0,5&nbsp;%)</span></li>
+      <li><span class="nr">14.</span> <a href="#lista-14">Državljansko gibanje Resni.ca</a> <span class="mandati-st brez-mandata">brez mandata</span> <span class="glasovi-kratek">144 glasov (1,1&nbsp;%)</span></li>
+    </ul>
+
+    <article class="card lista-card" id="lista-2" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">2.</span> <img class="lista-logo" src="slike/02-sls.png" alt=""> Slovenska ljudska stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">98 glasov</span> (0,8&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Sodelovala tam, kjer bo to potrebno. In kjer bom dobrodošla.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-2.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-3" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">3.</span> <img class="lista-logo" src="slike/03-demokrati.svg" alt=""> Demokrati. Anžeta Logarja <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">183 glasov</span> (1,5&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez odgovora</span></p>
+        <p>Lista zavez ni oddala.</p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-6" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">6.</span> <img class="lista-logo" src="slike/06-prerod.png" alt=""> Prerod – stranka Vladimirja Prebiliča <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">166 glasov</span> (1,3&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Da, vsekakor. Naša zavzetost za Savsko naselje ni vezana na izvolitev. Še naprej bomo zbirali pobude sosedov, jih posredovali svetu četrtne skupnosti in mestni občini ter vztrajali pri odgovorih in rešitvah. Pred začetkom kampanje smo med občani izvedli anketo o tem, kakšno prihodnost si želijo za Ljubljano. Tudi s tem pristopom bomo nadaljevali tudi v prihodnje, saj želimo resnično slišati ljudi. Sodelovali bomo pri skupnostnih akcijah in povezovali ljudi, ki želijo prispevati k bolj urejenemu, varnemu in prijetnemu naselju. Funkcija lahko pri tem pomaga, veliko pa lahko naredimo tudi kot aktivni občani.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-6.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-8" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">8.</span> <img class="lista-logo" src="slike/08-vesna.png" alt=""> Vesna – zelena stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">337 glasov</span> (2,7&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Spodbujali bomo oblikovanje skupnostnih iniciativ in pomagali s svojim znanjem pri spodbujanju demokratičnega delovanja ČS in preprečevanju samovolje posmeznikov.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-8.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-9" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">9.</span> <img class="lista-logo" src="slike/09-nsi.png" alt=""> Nova Slovenija in Fokus <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">366 glasov</span> (2,9&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez oznake</span> na izbiro da / delno / ne. Lista je oddala pojasnilo:</p>
+        <div class="razlaga-izvor">Seveda. Moja skrb za Savsko naselje ni vezana na članstvo v svetu ČS, kot tudi moje delo ni vezano samo na Savsko naselje. Po svojih močeh, znanju bom iskala rešitve.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-9.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-10" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">10.</span> <img class="lista-logo" src="slike/10-sd.png" alt=""> Socialni demokrati <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">410 glasov</span> (3,3&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez oznake</span> na izbiro da / delno / ne. Lista je oddala pojasnilo:</p>
+        <div class="razlaga-izvor">Spremljali bomo potrebe in se vključevali v civilne iniciative za izboljšanje pobojev za bivanje otrok, mladih in starejših prebivalcev v SN in v ČS Bežigrad, kjer prebivamo v različnih naseljih.</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-10.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-12" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">12.</span> <img class="lista-logo" src="slike/12-straza.png" alt=""> Stranka Straža – katoliška narodna stranka <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">59 glasov</span> (0,5&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="odg da">Da</span></p>
+        <div class="razlaga-izvor">Moj boj ni le ta mesec do volitev ampak vsak dan mojega življenja! Z  zgledom skrbim za okolje, vzgajam svoje bližnje v vzorne sokrajane in spodbujam k udejstvovanju v prostovoljnih organizacijah za sopomoč ljudem!</div>
+        <p class="lista-splet"><a href="https://anketa.savska.org/zaveze/lista-12.html">Podrobne zaveze liste</a></p>
+      </div>
+    </article>
+
+    <article class="card lista-card" id="lista-14" style="scroll-margin-top:4.6rem">
+      <h2><span class="nr">14.</span> <img class="lista-logo" src="slike/14-resnica.png" alt=""> Državljansko gibanje Resni.ca <span class="mandati-st brez-mandata">brez mandata</span></h2>
+      <p class="glasovi-vrstica"><span class="glasovi-st">144 glasov</span> (1,1&nbsp;%). Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+      <div class="zaveza-naprej">
+        <h3>Delo tudi, če ne bodo izvoljeni</h3>
+        <p><span class="brez">Brez odgovora</span></p>
+        <p>Lista zavez ni oddala.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <section id="vkljucitev" class="vkljucitev">
+    <h2 class="sekcija">3. Kako se lahko vključijo</h2>
+    <p>Spodnje poti veljajo enako za vse liste in za prebivalce. Nikogar ne izpostavljamo in nikogar ne spregledamo. Če bomo pošiljali vabilo, gre z istim besedilom prek vseh 15 list.</p>
+    <div class="vkljucitev-poti">
+      <article class="vkljucitev-pot">
+        <h3>Zunanji člani odborov mestnega sveta MOL</h3>
+        <p>Mestni svet lahko imenuje člane odborov tudi izmed občanov, ki niso mestni svetniki, vendar največ polovico članov (<a href="https://www.ljubljana.si/assets/mestna-obcina/Katalog-informacij-javnega-znacaja/register-neuradno-preciscenih-besedil-predpisov/Neuradno-precisceno-besedilo-Statuta-Mestne-obcine-Ljubljana-Statut.pdf">30.&nbsp;člen Statuta MOL</a>). Z novim mandatom članom vseh delovnih teles preneha mandat, zato jih bo novi mestni svet imenoval na novo (<a href="https://pisrs.si/pregledPredpisa?id=MP_POSL1687">14.&nbsp;člen Poslovnika Mestnega sveta MOL</a>). Kdo predlaga zunanje člane, v poslovniku ne piše; postopek predlaganja še preverjamo pri službi mestnega sveta.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Zbori občanov in predstavniki ČS</h3>
+        <p>Svet četrtne skupnosti lahko skliče zbor občanov. ČS ima pravico do svojih predstavnikov v posvetovalnih telesih in delovnih skupinah MOL.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Odprte delovne skupine po temah iz ankete</h3>
+        <p>Predlog so odprte delovne skupine za teme, ki so jih prebivalci v anketi izpostavili: parkiranje in promet, pošta in storitve, zelenje, »Igle in droge, varnost« in drugo. Vanje se lahko enako prijavijo vse liste in prebivalci.</p>
+      </article>
+      <article class="vkljucitev-pot">
+        <h3>Posvoji pobudo</h3>
+        <p>Kdor želi, lahko spremlja posamezno temo ali žarišče in preverja, ali MOL drži obljube, zapisane na portalu pobud.</p>
+      </article>
+    </div>
+    <div class="vkljucitev-stik">
+      <p>Če se želite vključiti, pišite ali pokličite: <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070&nbsp;205&nbsp;595.</p>
+    </div>
+  </section>
+
+  <section id="viri">
+    <h2 class="sekcija">Viri in omejitve</h2>
+    <div class="glas-viri">
+      <ul>
+        <li>Odgovor na vprašanje o delu tudi, če ne bodo izvoljeni: oddane zaveze list (polje zakaj-3), v izvirnem besedilu. Javne strani zavez: <a href="https://anketa.savska.org/zaveze/">anketa.savska.org/zaveze</a>.</li>
+        <li>Neuradni izid, stanje 18.&nbsp;11.&nbsp;2026 ob 8.00 (Europe/Ljubljana): Volilna komisija MOL, <a href="https://www.ljubljana.si/sl/mestna-obcina/upravljanje/lokalne-volitve/lokalne-volitve-2026">Lokalne volitve 2026</a>, prek portala <a href="https://volitve.dvk-rs.si/lv2026/#/obcine/ljubljana/rezultati">DVK</a>, izvoz za MOL, zavihek »Četrtna skupnost Bežigrad«. Uradno poročilo Volilne komisije MOL pričakujemo okoli 20.&nbsp;do 25.&nbsp;11.&nbsp;2026.</li>
+      </ul>
+    </div>
+    <p class="opomba">To je testna različica in ni objavljena. Imena lastnikov, zasebni kontakti in drugi zasebni podatki na strani niso prikazani.</p>
+  </section>
+</main>
+<footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595 · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></footer>
+</body>
+</html>
