@@ -164,6 +164,7 @@ button{font-family:inherit}
 .dogodek,#karta{scroll-margin-top:5rem}
 .se-gumb{width:100%;list-style:none;font-size:1.05rem;min-height:3.4rem}
 .se-gumb::-webkit-details-marker{display:none}
+.se-naslov{font-size:1.05rem;margin:1rem 0 .5rem}
 .se-vec[open] .se-gumb span{display:inline-block;transform:rotate(180deg)}
 .se-seznam{margin-top:.6rem}
 details.dogodek.mal{margin:0 0 .5rem;border-radius:.8rem}
@@ -926,9 +927,9 @@ function izrisiDan(){
  const vidni=RED;
  if(vidni.length){
   const odprto=ostali.some(d=>d.id===S.izbran);
-  el.innerHTML=(vsi.length>3?'<p class="dan-povzetek">Ta dan je <b>'+vsi.length+' dogodkov</b>. Najprej trije izpostavljeni, ostali spodaj po uri.</p>':'')+
+  el.innerHTML=(vsi.length>3?'<p class="dan-povzetek">Ta dan '+(vsi.length<5?'so':'je')+' <b>'+vsi.length+' '+(vsi.length<5?'dogodki':'dogodkov')+'</b>. Najprej trije izpostavljeni, vsi ostali so spodaj po uri.</p>':'')+
    top.map((d,i)=>kartica(d,i===0?'velik':'srednji')).join('')+
-   (ostali.length?'<details class="se-vec" id="seVec"'+(odprto?' open':'')+'><summary class="gumb se-gumb">Še '+ostali.length+' '+(ostali.length===1?'dogodek':ostali.length===2?'dogodka':ostali.length<5?'dogodki':'dogodkov')+' ta dan <span aria-hidden="true">▼</span></summary><div class="se-seznam">'+ostali.map(d=>kartica(d,'mal')).join('')+'</div></details>':'');
+   (ostali.length?'<div class="se-vec odprt" id="seVec"><h3 class="se-naslov">Še '+ostali.length+' '+(ostali.length===1?'dogodek':ostali.length===2?'dogodka':ostali.length<5?'dogodki':'dogodkov')+' ta dan</h3><div class="se-seznam">'+ostali.map(d=>kartica(d,'mal')).join('')+'</div></div>':'');
  }
  else{const n=naslednji();
   el.innerHTML='<div class="prazno"><p class="velik">'+(k===isoDan(danes)?'Danes ni dogodka':'Ta dan ni dogodka')+' – kaj pa ti kaj pripraviš? 🙂</p>'+
