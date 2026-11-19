@@ -1323,5 +1323,161 @@ DESCRIPTION:Rok: SRRS NVO PF
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:tmf-polis-inclusive-mobility-2026@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20261211T235900
+DTEND;TZID=Europe/Brussels:20261212T001400
+SUMMARY:Toyota Mobility Foundation in POLIS: Inclusive Mobility Cities Chal
+ lenge (vključujoča mobilnost v mestih)
+DESCRIPTION:Inclusive Mobility Cities Challenge (TMF/POLIS)\nRok: Prijave o
+ d 12. 10. do 11. 12. 2026 do 23.59 (srednjeevropski čas)\; izjavo o inter
+ esu podpiše pooblaščeni politični predstavnik mesta. Predizbor februar
+ ja 2027.\nZnesek: Znesek ni objavljen: »znatna« projektna sredstva\, str
+ okovna podpora in vrstniško učenje za 3–5 mest\, izvedba do 4 leta.\nK
+ do: Mesta in regije\, članice mreže POLIS (Ljubljana je članica od 2022
+ )\, ali mesta s povezavo s Toyota Mobility Foundation\; 100.000–1.000.00
+ 0 prebivalcev\; EU\, Norveška\, Islandija\, Švica\, Združeno kraljestvo
+ .\nKorist za Savsko: Starejši\, gibalno ovirani in otroci v Savskem bi do
+ bili varnejše in dostopnejše poti do postaj\, trgovin in zdravstvenega d
+ oma\, če MOL Savsko predlaga kot pilotno območje.
+URL:https://www.toyotamobilityfoundation.org/en/press-room/pressrelease1012
+ 2026/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Inclusive Mobility Cities Challenge (TMF/POLIS)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prospect-cube-peer-learning-c2@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20261127T090000
+DTEND;TZID=Europe/Brussels:20261127T091500
+SUMMARY:PROSPECT Cube: 2. poziv za vrstniško učenje o inovativnem financi
+ ranju energetskih in podnebnih projektov
+DESCRIPTION:PROSPECT Cube – vrstniško učenje (2. poziv)\nRok: Prijave d
+ o petka\, 27. 11. 2026\, ob 9.00 (bruseljski čas) prek registracije v PRO
+ SPECT Academy.\nZnesek: Ni denarja: brezplačno vrstniško učenje in ment
+ orstvo (teme med drugim ELENA/PDA\, revolving skladi\, spodbude za e-mobil
+ nost\, energetske skupnosti\, energetske agencije).\nKdo: Lokalne in regio
+ nalne oblasti in njihove energetske agencije iz držav\, upravičenih do p
+ rograma LIFE.\nKorist za Savsko: MOL bi se naučil\, kako financirati son
+ čno elektrarno\, polnilnice in prezračevanje zelene garaže v Savskem br
+ ez celotnega bremena na proračunu.
+URL:https://eu-mayors.ec.europa.eu/en/calls/call-applications-prospect-cube
+ -peer-learning-programme
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: PROSPECT Cube – vrstniško učenje (2. poziv)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-ka1-sch-2027@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20270218T120000
+DTEND;TZID=Europe/Brussels:20270218T121500
+SUMMARY:Erasmus+ 2027: mobilnost posameznikov v šolstvu (KA1\, KA121/KA122
+ -SCH)
+DESCRIPTION:Erasmus+ KA1 šole 2027\nRok: Razpis Erasmus+ 2027 objavljen 18
+ . 11. 2026. Rok za KA1 (SCH\, VET\, HED\, ADU) je 18. 2. 2027 ob 12.00 po 
+ bruseljskem času. Spletne prijavnice CMEPIUS bodo okvirno konec novembra 
+ 2026.\nZnesek: Za vse projekte Erasmus+ 2027 je za Slovenijo na voljo okol
+ i 39 mio € (CMEPIUS)\; skupni proračun razpisa 5\,36 mrd €.\nKdo: Vzg
+ ojno-izobraževalni zavodi na področju splošnega šolskega izobraževanj
+ a (šole\, vrtci in drugi upravičeni VIZ)\, akreditirani (KA121) ali s kr
+ atkoročnim projektom (KA122).\nKorist za Savsko: Učitelji in vzgojitelji
+  prinesejo nove prakse (zelena šola\, šolska ulica).
+URL:https://www.cmepius.si/objave/razpis/erasmus-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Erasmus+ KA1 šole 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-ka2-2027@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20270309T120000
+DTEND;TZID=Europe/Brussels:20270309T121500
+SUMMARY:Erasmus+ 2027: partnerstva za sodelovanje (KA2)\, tudi šole (KA210
+ /KA220-SCH) in evropska partnerstva za razvoj šol (KA240)
+DESCRIPTION:Erasmus+ KA2 2027\, tudi šole\nRok: Razpis Erasmus+ 2027 objav
+ ljen 18. 11. 2026. Rok za sodelovalna in manjša partnerstva ter KA240 je 
+ 9. 3. 2027 ob 12.00 po bruseljskem času.\nZnesek: Za vse projekte Erasmus
+ + 2027 je za Slovenijo na voljo okoli 39 mio € (CMEPIUS)\; pavšali po v
+ odniku 2027.\nKdo: Organizacije na področju izobraževanja\, mladine in 
+ športa\, vključno z NVO in javnimi organi\, v transnacionalnih partnerst
+ vih.\nKorist za Savsko: Učenje od tujih sosesk in šol\, tudi za medgener
+ acijske projekte.
+URL:https://www.cmepius.si/objave/razpis/erasmus-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Erasmus+ KA2 2027\, tudi šole
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-adu-2027@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20270218T120000
+DTEND;TZID=Europe/Brussels:20270218T121500
+SUMMARY:Erasmus+ izobraževanje odraslih 2027: KA1 mobilnost in KA210 manj
+ ša partnerstva
+DESCRIPTION:Erasmus+ odrasli 2027\nRok: Razpis Erasmus+ 2027 objavljen 18. 
+ 11. 2026. KA1 odrasli: 18. 2. 2027 ob 12.00\; KA210 manjša partnerstva: 9
+ . 3. 2027 ob 12.00 (bruseljski čas). Prijava prek CMEPIUS.\nZnesek: KA210
+ : pavšal 30.000 ali 60.000 € (po vodniku 2026\; za 2027 preveriti).\nKd
+ o: Organizacije za izobraževanje odraslih\, društva\, knjižnice\, NVO.\
+ nKorist za Savsko: Starejši in prostovoljci se naučijo novih znanj (digi
+ talne veščine\, vaje za spomin) od tujih sosesk in jih prenesejo v knji
+ žnico.
+URL:https://www.cmepius.si/objave/razpis/erasmus-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Erasmus+ odrasli 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erasmus-youth-2027@anketa.savska.org
+DTSTAMP:20261119T061500Z
+DTSTART;TZID=Europe/Brussels:20270211T120000
+DTEND;TZID=Europe/Brussels:20270211T121500
+SUMMARY:Erasmus+ 2027\, poglavje Mladina (KA1 in KA2) (MOVIT)
+DESCRIPTION:Erasmus+ Mladina 2027\nRok: Razpis Erasmus+ 2027 objavljen 18. 
+ 11. 2026. Mobilnost na področju mladine (KA1): 11. 2. 2027 in 5. 10. 2027
+  ob 12.00\; partnerstva KA2: 9. 3. 2027 ob 12.00 (bruseljski čas). MOVIT 
+ ob pregledu še kaže roke 2026.\nZnesek: še ni objavljen za leto 2027\nK
+ do: Mladinske organizacije\, neformalne skupine mladih in druge upravičen
+ e organizacije na področju mladine\; nacionalna agencija MOVIT.\nKorist z
+ a Savsko: Mladinski projekti in izmenjave\, ki mladim dajo vsebino in pros
+ tor.
+URL:https://www.movit.si/erasmus-mladina/prijava-projekta/prijavni-roki/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Erasmus+ Mladina 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
