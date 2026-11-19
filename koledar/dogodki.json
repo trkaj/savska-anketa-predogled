@@ -1,6 +1,6 @@
 {
   "opomba": "Javna datoteka: SAMO potrjeni dogodki. Brez kontaktov pošiljateljev. Vnose s primer=true pred objavo odstrani. polja = številke polj z zemljevida letakov (../letaki/polja.json). izpostavljeno: 0–3, določi potrjevalec (višje = višje v dnevu). glasovi = posnetek števca ob objavi (živi števec pride iz sprejema). Oznake: brezplacno, za_otroke, dostopno (dostop z vozičkom), brez_prijave – samo če je organizator to potrdil. kako_priti = preprosto, z besedami.",
-  "posodobljeno": "2026-11-17T17:16:00+01:00",
+  "posodobljeno": "2026-11-19T15:03:09+01:00",
   "kategorije": [
     {
       "id": "skupnost",
@@ -2410,6 +2410,38 @@
       "povezava": "https://knjiznicareci.si/kontakt/",
       "izpostavljeno": 0,
       "glasovi": 0
+    },
+    {
+      "id": "cistilna-akcija-2026-11-29",
+      "naslov": "Čistilna akcija Savsko naselje",
+      "kategorija": "skupnost",
+      "zacetek": "2026-11-29",
+      "kraj": "po vsem Savskem naselju",
+      "polja": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "opis": "Prva čistilna akcija po vsem Savskem naselju. Prosimo, da vsak vsaj malo pogleda okoli svojega bloka. Vreče priskrbi ČS Bežigrad, na voljo bodo tudi prijemalke. Vreče in prijemalke dobite na Filipovem igrišču ali na Linhartovi 62a pred vhodom v šolo. Za odvoz odpadkov se še dogovarjamo. Kontakt: savskonaselje1@gmail.com",
+      "slika": "",
+      "organizator": "Civilna iniciativa Savsko naselje",
+      "povezava": "",
+      "izpostavljeno": 1,
+      "glasovi": 0,
+      "nav": "Filipovo igrišče, Savsko naselje, Ljubljana"
     }
   ]
 }
