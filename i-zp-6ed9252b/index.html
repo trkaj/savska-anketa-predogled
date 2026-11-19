@@ -293,6 +293,19 @@ table.data .pobude{margin-top:.35rem}
   .tab-panel[hidden]{display:block !important}
 }
 .pas-interno{background:#3b2a00;color:#fff;font-weight:700;font-size:.92rem;padding:8px 16px;text-align:center}
+
+.ukrepaj{background:var(--y2);border:1px solid var(--y);border-left:6px solid var(--y);border-radius:12px;padding:14px 16px 16px;margin:.8rem 0 1.2rem}
+.ukrepaj h2.sec{margin:0 0 .7rem;border-bottom:2px solid var(--y)}
+.ukrepaj-seznam{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ukrepaj-seznam li{background:#fff;border:1px solid var(--line);border-left:5px solid var(--soon);border-radius:10px;padding:10px 12px}
+.ukrepaj-seznam li.urg{border-left-color:var(--urg);background:#fffbef}
+.ukrepaj-rok{font-weight:800;color:var(--g);margin:0}
+.ukrepaj-naslov{font-weight:700;margin:.2rem 0 .15rem}
+.ukrepaj-besedilo{margin:0 0 .45rem}
+.ukrepaj-povezava{margin:0}
+.ukrepaj-povezava a{font-weight:700}
+@media (max-width:900px){.ukrepaj-seznam{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ukrepaj-seznam{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -309,7 +322,7 @@ table.data .pobude{margin-top:.35rem}
     <img src="logo.png" width="60" height="60" alt="Znak Savskega naselja">
     <div>
       <h1>Čist zrak ter napredek in pobude</h1>
-      <p class="lead">Interna stran za pregled vsebine, ki na javni plošči ni več v zavihkih. Ni povezana z javno stranjo.</p>
+      <p class="lead">Interna stran za pregled vsebine, ki na javni plošči razpisov ni več v zavihkih — med drugim tedenski ukrepi in izhodiščni nasveti. Ni povezana z javno stranjo.</p>
       <div class="cta">
         <a href="#cist-zrak">🌿 Čist zrak</a>
         <a href="#napredek" class="alt">📌 Napredek in pobude</a>
@@ -324,6 +337,44 @@ table.data .pobude{margin-top:.35rem}
   </div>
 </nav>
 <main id="vsebina">
+
+<section class="blk ukrepaj" id="ukrepaj" aria-labelledby="h-ukrepaj">
+  <h2 class="sec" id="h-ukrepaj">Ta teden ukrepaj</h2>
+  <p>Besedilo je 19.&nbsp;11.&nbsp;2026 (Europe/Ljubljana) prestavljeno z javne plošče razpisov (anketa.savska.org/razpisi/), kjer je podvajalo koledar in seznam razpisov. Tu ostane kot interno izhodišče s tekočimi roki.</p>
+  <ol class="ukrepaj-seznam">
+    <li class="urg">
+      <p class="ukrepaj-rok">Rok: 20.&nbsp;11.&nbsp;2026</p>
+      <p class="ukrepaj-naslov">RRA LUR – predlogi za regionalni razvojni program 2028–2034</p>
+      <p class="ukrepaj-besedilo">Oddajte projektni predlog, da se čist zrak, zelena garaža ali umirjanje prometa v Savskem zapišejo v regionalni program.</p>
+      <p class="ukrepaj-povezava"><a href="https://rralur.si/novice/poziv-k-oddaji-projektnih-predlogov-za-regionalni-razvojni-program-osrednjeslovenske-regije-2028-2034/" target="_blank" rel="noopener noreferrer">Uradna objava RRA LUR ↗</a></p>
+    </li>
+    <li>
+      <p class="ukrepaj-rok">Rok: 11.&nbsp;12.&nbsp;2026</p>
+      <p class="ukrepaj-naslov">MOL in Inclusive Mobility Cities Challenge</p>
+      <p class="ukrepaj-besedilo">Prijavi lahko le mesto. MOL lahko Savsko predlaga kot pilotno območje za dostopne poti za starejše.</p>
+      <p class="ukrepaj-povezava"><a href="https://members.polisnetwork.eu/inclusive-mobility-cities-challenge" target="_blank" rel="noopener noreferrer">Stran izziva ↗</a></p>
+    </li>
+    <li>
+      <p class="ukrepaj-rok">Rok: 9.&nbsp;3.&nbsp;2027</p>
+      <p class="ukrepaj-naslov">Erasmus+ 2027 je objavljen</p>
+      <p class="ukrepaj-besedilo">Sporočite šoli in knjižnici v naselju. Za partnerstva (KA2) je rok 9.&nbsp;3.&nbsp;2027.</p>
+      <p class="ukrepaj-povezava"><a href="https://www.cmepius.si/objave/razpis/erasmus-2027/" target="_blank" rel="noopener noreferrer">Razpis CMEPIUS ↗</a></p>
+    </li>
+  </ol>
+</section>
+
+<section class="blk" id="kaj-zaceti" aria-labelledby="h-kaj-zaceti">
+  <h2 class="sec" id="h-kaj-zaceti">Kaj začeti najprej</h2>
+  <p>Besedilo je 19.&nbsp;11.&nbsp;2026 prestavljeno z javne plošče razpisov (anketa.savska.org/razpisi/), kjer je podvajalo filtre, koledar in seznam razpisov. Tu ostane kot interno izhodišče.</p>
+  <div class="callout start">
+    <ul>
+      <li><b>Šolska ulica in varni prehodi:</b> razpis za trajnostno mobilnost (JR EKP UTM 2025, 3.&nbsp;rok 26.&nbsp;1.&nbsp;2027, do 80&nbsp;%, največ 2.000.000&nbsp;€). Prijavi MOL; šola in vrtec sta partnerja. <span class="pobude">Povezane pobude meščanov: približno 167 o prehodih ali pločnikih in 77 o šoli ali vrtcu, po ključnih besedah, presek 31.&nbsp;10.&nbsp;2026. <a href="https://pobude.ljubljana.si/PregledOdgovorjenihPobud.aspx">Portal pobud MOL</a> (izberi ČS Bežigrad).</span></li>
+      <li><b>Mladinske organizacije:</b> mestni razpis za mladino do 1.&nbsp;12.&nbsp;2026.</li>
+      <li><b>Starejši, socialno in kultura:</b> javna dela 2027 (do 30.&nbsp;4.&nbsp;2027 ali do porabe sredstev) za družabnika starejših ali pomočnika v knjižnici; mestni kulturni razpis do 24.&nbsp;11.&nbsp;2026 za medgeneracijske delavnice.</li>
+      <li><b>Šole in vrtci:</b> spremljati Erasmus+ 2027 (KA1, KA2) pri CMEPIUS — razpis je objavljen, roki 18.&nbsp;2.&nbsp;2027 (šole) in 9.&nbsp;3.&nbsp;2027 (partnerstva).</li>
+    </ul>
+  </div>
+</section>
 <div class="tab-panel" id="panel-cist-zrak" role="tabpanel" aria-labelledby="tab-cist-zrak">
 <section class="blk" id="cist-zrak" aria-labelledby="h-zrak">
   <h2 class="sec" id="h-zrak">Kaj delamo za čist zrak</h2>
@@ -588,6 +639,7 @@ table.data .pobude{margin-top:.35rem}
 </section>
 
 </div>
+
 
 </main>
 <footer>
