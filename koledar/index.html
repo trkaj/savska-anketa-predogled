@@ -512,7 +512,7 @@ body{background:#f9faf3}
  .karta-preklop{max-width:none}
 }
 input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;max-width:100%}
-/* teden Po–Ne pod naslovom (12.32) */
+/* trak 7 dni od izbranega dne (ne Po–Ne) */
 .teden-napis{text-align:center;margin:.1rem 0 .35rem;font-size:.95rem;font-weight:700;color:#33473a}
 .teden-vrh{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;max-width:36rem;margin:0 auto .7rem}
 .teden-vrh button{font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:4.2rem;min-width:0;padding:.3rem 0;border-radius:16px;cursor:pointer;line-height:1.15}
@@ -562,15 +562,15 @@ input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;
  <section class="kaj" aria-labelledby="h-kaj">
   <div class="okvir">
    <div class="kaj-glava">
-    <button type="button" class="puscica" id="nazaj" aria-label="Prejšnji teden">‹</button>
+    <button type="button" class="puscica" id="nazaj" aria-label="Prejšnji dan">‹</button>
     <div class="kaj-naslov">
      <h2 id="h-kaj">Kaj se dogaja</h2>
      <p class="kaj-datum" id="obdobje" aria-live="polite"></p>
     </div>
-    <button type="button" class="puscica" id="naprej" aria-label="Naslednji teden">›</button>
+    <button type="button" class="puscica" id="naprej" aria-label="Naslednji dan">›</button>
    </div>
    <p class="teden-napis" id="tedenNapis"></p>
-   <div class="teden-vrh" id="tedenVrh" role="group" aria-label="Dnevi v tednu"></div>
+   <div class="teden-vrh" id="tedenVrh" role="group" aria-label="Sedem dni naprej"></div>
    <div class="hitro" role="group" aria-label="Hitra izbira dneva">
     <button type="button" data-hitro="danes">Danes</button>
     <button type="button" data-hitro="jutri">Jutri</button>
@@ -627,9 +627,9 @@ input[type=file]{min-height:48px;padding:.5rem;box-sizing:border-box;width:100%;
 </footer>
 
 <nav class="spodnja" aria-label="Hitri gumbi">
- <button type="button" class="sp-dan" id="spNazaj" aria-label="Prejšnji teden">‹</button>
+ <button type="button" class="sp-dan" id="spNazaj" aria-label="Prejšnji dan">‹</button>
  <button type="button" class="sp-dodaj" data-odpri-obrazec>+ Dodaj dogodek</button>
- <button type="button" class="sp-dan" id="spNaprej" aria-label="Naslednji teden">›</button>
+ <button type="button" class="sp-dan" id="spNaprej" aria-label="Naslednji dan">›</button>
 </nav>
 
 <div class="obvestilo" id="obvestilo" role="status" hidden></div>
@@ -758,7 +758,7 @@ fetch('slike/seznam.json').then(r=>r.json()).then(s=>{
 }).catch(()=>{});
 
 /* stanje */
-const S={kartaTeden:true,kartaMesec:false,pogled:'teden',kat:'vse',dan:ponedeljek(new Date()),teden:ponedeljek(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
+const S={kartaTeden:true,kartaMesec:false,pogled:'teden',kat:'vse',dan:d0(new Date()),teden:d0(new Date()),mesec:new Date(new Date().getFullYear(),new Date().getMonth(),1),izbran:null};
 let DOG=[],KAT=[],POLJA={},markerji={},poljaSloji={};
 
 /* zemljevid: isti kot na letakih (../letaki/) */
@@ -795,9 +795,11 @@ Promise.all([
  if(!DOG.some(d=>d.primer))document.getElementById('trakOsnutek').hidden=true;
  document.getElementById('f-kategorije').innerHTML=KAT.map((k,i)=>'<label><input type="radio" name="kategorija" value="'+esc(k.id)+'"'+(i===0?' checked':'')+'> '+esc(k.ikona||'')+' '+esc(k.ime)+'</label>').join('');
  document.getElementById('f-polje').innerHTML='<option value="">ne vem</option>'+Object.keys(POLJA).map(st=>'<option value="'+st+'">'+st+' – '+esc(POLJA[st].ime)+'</option>').join('');
- /* povezava na en dogodek: #dogodek-id */
- const h=decodeURIComponent(location.hash.slice(1)),cilj=DOG.find(d=>d.id===h);
- if(cilj){S.dan=d0(cilj._z);S.teden=ponedeljek(S.dan);S.izbran=cilj.id}
+ /* povezava na en dogodek (#id) ali na dan (#YYYY-MM-DD / ?dan=) */
+ const h=decodeURIComponent((location.hash||'').slice(1)),cilj=h?DOG.find(d=>d.id===h):null;
+ if(cilj){S.dan=d0(cilj._z);S.teden=d0(S.dan);S.izbran=cilj.id}
+ else{const q=new URLSearchParams(location.search);const raw=q.get('dan')||q.get('datum')||(/^\d{4}-\d{2}-\d{2}$/.test(h)?h:'');
+  if(raw){const [y,m,dd]=raw.split('-').map(Number),d=new Date(y,m-1,dd);if(!isNaN(d.getTime())){S.dan=d0(d);S.teden=d0(d)}}}
  izrisiKategorije();izrisi();naloziGlasove();
  if(cilj)setTimeout(()=>izberi(cilj.id,false,true),300);
 }).catch(e=>{document.getElementById('danVsebina').innerHTML='<div class="prazno">Dogodkov trenutno ni mogoče naložiti. Poskusi čez nekaj minut.</div>';console.error(e)});
@@ -816,14 +818,13 @@ function izrisiKategorije(){
  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{S.kat=b.dataset.kat;izrisiKategorije();izrisi()});
 }
 document.querySelectorAll('[data-pogled]').forEach(b=>b.onclick=()=>{S.pogled=b.dataset.pogled;document.querySelectorAll('[data-pogled]').forEach(x=>x.setAttribute('aria-pressed',x===b));izrisi()});
-function nastaviDan(d,skroli){S.dan=d0(d);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=null;izrisi();
+function nastaviDan(d,skroli){S.dan=d0(d);S.teden=d0(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1);S.izbran=null;izrisi();
  if(skroli)document.querySelector('.kaj').scrollIntoView({behavior:'smooth',block:'start'});
  if(JE_MOBILNO()&&document.getElementById('koledarDel').open&&skroli)document.getElementById('koledarDel').open=false}
 const premakniDan=k=>nastaviDan(plus(S.dan,k),JE_MOBILNO());
-/* puščici premikata za cel teden (isti dan v tednu), poteg po zaslonu pa za en dan */
-const premakniTeden=k=>nastaviDan(plus(S.dan,7*k),false);
-['nazaj','spNazaj'].forEach(id=>document.getElementById(id).onclick=()=>premakniTeden(-1));
-['naprej','spNaprej'].forEach(id=>document.getElementById(id).onclick=()=>premakniTeden(1));
+/* puščici in spodnji gumbi premikata za en dan; trak kaže izbrani dan in 6 naslednjih */
+['nazaj','spNazaj'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(-1));
+['naprej','spNaprej'].forEach(id=>document.getElementById(id).onclick=()=>premakniDan(1));
 function vikend(){const d=d0(new Date()),w=d.getDay();return w===6||w===0?d:plus(d,6-w)}
 document.querySelectorAll('[data-hitro]').forEach(b=>b.onclick=()=>{const t=b.dataset.hitro;nastaviDan(t==='danes'?new Date():t==='jutri'?plus(new Date(),1):vikend())});
 function premakniKoledar(k){if(S.pogled==='mesec')S.mesec=new Date(S.mesec.getFullYear(),S.mesec.getMonth()+k,1);else S.teden=plus(S.teden,7*k);izrisiKoledar()}
@@ -903,12 +904,12 @@ function napisTedna(pon){const ned=plus(pon,6);
  if(pon.getMonth()!==ned.getMonth())return kratkiDatum(pon)+' – '+kratkiDatum(ned)+'\u00a0'+ned.getFullYear();
  return pon.getDate()+'.–'+ned.getDate()+'.\u00a0'+(ned.getMonth()+1)+'.\u00a0'+ned.getFullYear()}
 function izrisiTedenVrh(F,danes,k){
- const pon=ponedeljek(S.dan),di=isoDan(danes);
- document.getElementById('tedenNapis').textContent='Teden '+napisTedna(pon);
+ const zac=d0(S.dan),di=isoDan(danes);
+ document.getElementById('tedenNapis').textContent=napisTedna(zac);
  const el=document.getElementById('tedenVrh');
- el.innerHTML=[0,1,2,3,4,5,6].map(i=>{const d=plus(pon,i),iso=isoDan(d),n=F.filter(x=>naDan(x,d)).length;
+ el.innerHTML=[0,1,2,3,4,5,6].map(i=>{const d=plus(zac,i),iso=isoDan(d),n=F.filter(x=>naDan(x,d)).length;
   return '<button type="button" data-teden-dan="'+iso+'" class="'+(n?'ima':'prazen')+(iso===di?' danes':'')+'" aria-pressed="'+(iso===k)+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(iso===di?', danes':'')+'">'+
-   '<span class="dk">'+DNEVI_2[i]+'</span><b>'+d.getDate()+'.</b><span class="tv-st">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('');
+   '<span class="dk">'+DNEVI_2[(d.getDay()+6)%7]+'</span><b>'+d.getDate()+'.</b><span class="tv-st">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('');
  el.querySelectorAll('[data-teden-dan]').forEach(b=>b.onclick=()=>{const [y,m,dd]=b.dataset.tedenDan.split('-').map(Number);nastaviDan(new Date(y,m-1,dd),false)});
 }
 function izrisi(){izrisiDan();izrisiKoledar()}
@@ -958,11 +959,11 @@ function izrisiKoledar(){
  document.getElementById('premikKoledar').hidden=S.pogled==='seznam'||S.pogled==='moji';stejMoje();
  const ob=document.getElementById('koledarObdobje');
  if(S.pogled==='teden'){
-  const pon=S.teden,ned=plus(pon,6);
-  ob.textContent=pon.getDate()+'. '+(pon.getMonth()+1)+'. – '+ned.getDate()+'. '+(ned.getMonth()+1)+'.';
-  let h='<div class="teden" role="group" aria-label="Dnevi v tednu">'+[0,1,2,3,4,5,6].map(i=>{const d=plus(pon,i),n=F.filter(x=>naDan(x,d)).length;
-   return '<button type="button" data-dan="'+isoDan(d)+'" aria-pressed="'+(isoDan(d)===izb)+'" class="'+(n?'ima':'prazen')+(isoDan(d)===danes?' danes':'')+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(isoDan(d)===danes?', danes':'')+'">'+DNEVI_K[i]+'<b>'+d.getDate()+'.</b><span class="pike">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('')+'</div>';
-  const vt=F.filter(d=>(d._k||d._z)>=pon&&d._z<plus(pon,7));
+  const zac=S.teden,ned=plus(zac,6);
+  ob.textContent=zac.getDate()+'. '+(zac.getMonth()+1)+'. – '+ned.getDate()+'. '+(ned.getMonth()+1)+'.';
+  let h='<div class="teden" role="group" aria-label="Sedem dni naprej">'+[0,1,2,3,4,5,6].map(i=>{const d=plus(zac,i),n=F.filter(x=>naDan(x,d)).length;
+   return '<button type="button" data-dan="'+isoDan(d)+'" aria-pressed="'+(isoDan(d)===izb)+'" class="'+(n?'ima':'prazen')+(isoDan(d)===danes?' danes':'')+'" aria-label="'+esc(datumLepo(d))+': '+(n?stDog(n):'ni dogodkov')+(isoDan(d)===danes?', danes':'')+'">'+DNEVI_K[(d.getDay()+6)%7]+'<b>'+d.getDate()+'.</b><span class="pike">'+(n?'<span class="st-dan">'+n+'</span>':'')+'</span></button>'}).join('')+'</div>';
+  const vt=F.filter(d=>(d._k||d._z)>=zac&&d._z<plus(zac,7));
   h+=vt.length?seznamKratek(vt):'<div class="prazno">Ta teden še ni dogodkov.</div>';
   el.innerHTML=LEGENDA_DNI+h;
  }else if(S.pogled==='mesec'){
@@ -1043,7 +1044,7 @@ function pini(v){
  osveziIzbor();
 }
 function skociNa(id){const d=DOG.find(x=>x.id===id);if(!d)return;
- if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=ponedeljek(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
+ if(!naDan(d,S.dan)){S.dan=d0(d._z);S.teden=d0(S.dan);S.mesec=new Date(S.dan.getFullYear(),S.dan.getMonth(),1)}
  S.izbran=id;izrisi();
  setTimeout(()=>izberi(id,false,true),80)}
 function osveziIzbor(){
