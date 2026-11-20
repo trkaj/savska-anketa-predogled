@@ -7,7 +7,8 @@
 
 .card-summary{display:block;font-size:13px;line-height:1.55;color:#d1deea;margin:8px 0 11px;overflow-wrap:anywhere}.card-summary.missing-text{color:#b4c5d7;font-size:12px;border-left:2px solid #69849d;padding-left:9px}.card-open{display:block;font-size:11px;color:#91e5d2;margin-top:10px}
 
-#dimensionToggle{border:1px solid #78e0c5;color:#aff3df;white-space:nowrap}@media(max-width:760px){#mapActions{right:8px;justify-content:space-between}#mapActions button{font-size:10px;padding:8px 6px}}
+#dimensionToggle{border:1px solid #78e0c5;color:#aff3df;white-space:nowrap}
+#mapActions:not(:has(button:not([hidden]))){display:none}@media(max-width:760px){#mapActions{right:8px;justify-content:space-between}#mapActions button{font-size:10px;padding:8px 6px}}
 
 #pobudeView{font-weight:800}#propertyProposal{margin-top:15px}
 /* Mobile map with an expandable sheet, instead of a permanent half-height sidebar. */
@@ -21,7 +22,8 @@
  header h1{font-size:17px}header p{display:none}.brand{font-size:22px}
  nav{position:fixed;top:calc(44px + env(safe-area-inset-top));left:0;right:0;max-width:none;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 44px;gap:3px;padding:5px 8px;border-radius:0;background:#102137f5;border-width:0 0 1px;z-index:20;overflow:visible}
  nav button{min-height:44px;padding:5px 4px;font-size:12px;white-space:normal;line-height:1.2}
- #mapActions{position:fixed;top:auto;bottom:calc(var(--sheet-height) + 12px);left:10px;right:10px;z-index:21;display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:5px;padding:5px;background:#102137f5}
+ #mapActions{position:fixed;top:auto;bottom:calc(var(--sheet-height) + 12px);left:auto;right:10px;width:auto;z-index:21;display:flex;gap:5px;padding:5px;background:#102137f5}
+ #mapActions:not(:has(button:not([hidden]))){display:none}
  #mapActions button{min-height:44px;font-size:12px;padding:6px 4px;line-height:1.2;white-space:normal}
  #status{position:fixed;top:calc(103px + env(safe-area-inset-top));bottom:auto;left:10px;right:auto;max-width:calc(100vw - 20px);padding:4px 7px;font-size:10px;pointer-events:none;z-index:10}
  .camera-controls{position:fixed;top:calc(140px + env(safe-area-inset-top));bottom:auto;right:10px;display:grid;grid-template-columns:44px 44px;gap:2px;padding:3px;z-index:10}
@@ -32,7 +34,7 @@
  .sheet-grip{display:block;width:38px;height:4px;border-radius:4px;background:#7296a7}
  #sidebarContent{display:block;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 16px calc(24px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
  body[data-mobile-panel=collapsed] #sidebarContent{visibility:hidden}
- #sidebar h2{font-size:24px}#sidebar #intro{font-size:14px}.layers{display:grid;grid-template-columns:1fr;gap:6px}.layers select{width:100%}
+ #sidebar h2{font-size:24px}#sidebar #intro,#zvetlGloss{display:block;font-size:14px}.layers{display:grid;grid-template-columns:1fr;gap:6px}.layers select{width:100%}
  #sidebar input,#sidebar textarea,#sidebar select{font-size:16px;min-height:44px}
  #sidebar button:not(#mobilePanelToggle){min-height:44px}#sidebar input[type=checkbox]{min-height:20px;width:20px;height:20px}
  #sidebar label,#sidebar .small,#sidebar details,#sidebar details p{font-size:13px}.card-bottom{font-size:12px;flex-wrap:wrap}.card-place{font-size:13px}.card-top{font-size:11px}.list-heading{flex-wrap:wrap}
@@ -58,7 +60,7 @@
  body[data-mobile-orientation=landscape] .sheet-grip{width:4px;height:22px;flex-shrink:0}
  body[data-mobile-orientation=landscape] #sidebarContent{padding:0 max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) 14px}
  body[data-mobile-orientation=landscape] #sidebar h2{font-size:20px}
- body[data-mobile-orientation=landscape] #mapActions,body[data-mobile-orientation=landscape][data-mobile-panel=expanded] #mapActions{display:grid;top:auto;bottom:max(10px,env(safe-area-inset-bottom));left:max(10px,env(safe-area-inset-left));right:calc(var(--landscape-panel) + max(10px,env(safe-area-inset-right)));width:auto;max-width:410px;gap:4px;grid-template-columns:1fr 1.4fr 1fr}
+ body[data-mobile-orientation=landscape] #mapActions,body[data-mobile-orientation=landscape][data-mobile-panel=expanded] #mapActions{display:flex;top:auto;bottom:max(10px,env(safe-area-inset-bottom));left:auto;right:calc(var(--landscape-panel) + max(10px,env(safe-area-inset-right)));width:auto;max-width:none;gap:4px}
  body[data-mobile-orientation=landscape] #mapActions button{font-size:12px;min-height:44px}
  body[data-mobile-orientation=landscape] .camera-controls,body[data-mobile-orientation=landscape][data-mobile-panel=expanded] .camera-controls{display:grid;top:calc(var(--landscape-top) + 70px);bottom:auto;right:calc(var(--landscape-panel) + max(10px,env(safe-area-inset-right)));grid-template-columns:44px 44px}
  body[data-mobile-orientation=landscape] #status{top:calc(var(--landscape-top) + 8px);left:max(10px,env(safe-area-inset-left));max-width:calc(100vw - var(--landscape-panel) - 260px);max-height:44px;overflow:hidden;font-size:10px}
@@ -90,9 +92,18 @@
 #zvetlView{font-weight:800;box-shadow:inset 0 0 0 2px #e3a008}
 .static-note{margin:0 0 10px;color:#ffe0a1;font-size:14px}
 .account-bar .static-note{margin:0;font-size:13px;line-height:1.35}
-#layerSwitch{position:fixed;z-index:40;top:148px;left:376px;display:flex;flex-direction:column;gap:6px;max-width:min(560px,calc(100vw - 400px));padding:8px;background:#102137f7;border:1px solid #ff5c00;border-radius:14px;box-shadow:0 10px 28px #0008}
-.layer-buttons{display:flex;gap:4px}
-#layerSwitch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 10px;font-weight:750}
+#layerMenu{position:fixed;z-index:40;top:148px;left:376px;display:flex;flex-direction:column;gap:6px;width:min(420px,calc(100vw - 400px));max-height:calc(100vh - 170px);padding:8px;background:#102137f7;border:1px solid #ff5c00;border-radius:14px;box-shadow:0 10px 28px #0008}
+#layerMenuBody{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:auto}
+#layerMenuToggle{align-self:flex-start;min-height:40px;padding:8px 12px;font-weight:750;background:#102137;border:1px solid #ff5c00;border-radius:10px}
+body[data-layers=collapsed] #layerMenuBody{display:none}
+.layer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.layer-buttons button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 10px;font-weight:750}
+#placeSearchForm{margin:0}
+#placeResults{list-style:none;margin:6px 0 0;padding:0;max-height:180px;overflow:auto}
+#placeResults li{margin:0}
+#placeResults button{display:block;width:100%;text-align:left;min-height:40px;padding:8px 10px;border-radius:8px}
+.menu-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#locateMe,#walkButton{min-height:44px;border:1px solid #78e0c5;color:#aff3df;font-size:13px}
 #layerZvetl.active{background:#ff5c00;color:#1a0d00}#layerOwnership.active{background:#159d69;color:#042018}#layerAnketa.active{background:#7b2cbf;color:#fff}#layerPlain.active{background:#d7e3ee;color:#102137}
 #anketaTopicWrap{display:block;font-size:12px;color:#d5e2ee}#anketaTopicWrap select{margin-top:4px}
 .anketa-card ol{list-style:none;margin:8px 0;padding:0}.anketa-card li{display:grid;grid-template-columns:14px 1fr auto;gap:6px;align-items:baseline;margin:4px 0;font-size:13px}.anketa-card li i{width:12px;height:12px;border-radius:2px;display:block}.anketa-merged{color:#ffe0a1}.anketa-missing{flex-basis:100%;margin:4px 0 0;color:#c5d4e2}
@@ -115,14 +126,21 @@
 .zvetl-glossary dl{margin:8px 0 0}
 .zvetl-glossary dt{font-weight:700}
 .zvetl-glossary dd{margin:0 0 8px}
-@media(max-width:1200px){#layerSwitch{left:365px;max-width:calc(100vw - 390px)}}
-@media(max-width:760px){#layerSwitch{top:auto;bottom:calc(var(--sheet-height, 45dvh) + 78px);left:8px;right:8px;max-width:none;padding:6px}#layerSwitch button{flex:1;font-size:13px;padding:8px 4px}#layerLegend{font-size:11px}}
-body[data-mobile-orientation=landscape] #layerSwitch{top:calc(var(--landscape-top, 52px) + 8px);bottom:auto;left:max(8px,env(safe-area-inset-left));right:auto;max-width:min(520px,calc(100vw - var(--landscape-panel, 240px) - 24px))}
-#infraSwitch{position:fixed;z-index:40;left:376px;bottom:28px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;max-width:min(640px,calc(100vw - 420px));padding:8px 10px;background:#102137f7;border:1px solid #4c6880;border-radius:12px;box-shadow:0 8px 24px #0007;font-size:13px}
-#infraSwitch label{display:flex;align-items:center;gap:6px;margin:0}
-#infraSwitch input{width:16px;height:16px}
-#infraLegend{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;color:#d5e2ee}
+@media(max-width:1200px){#layerMenu{left:365px;width:min(400px,calc(100vw - 390px))}}
+@media(max-width:760px){
+ #layerMenu{top:auto;bottom:calc(var(--sheet-height, 64px) + 36px);left:8px;right:8px;width:auto;max-width:none;max-height:none;padding:8px}
+ body[data-layers=collapsed] #layerMenu{top:calc(248px + env(safe-area-inset-top));bottom:auto;left:auto;right:10px;width:auto;padding:0;background:transparent;border:0;box-shadow:none}
+ #layerMenuBody{max-height:min(420px,calc(100dvh - var(--sheet-height, 64px) - 120px))}
+ .layer-buttons button{flex:1 1 45%;font-size:13px;padding:8px 4px}
+ #layerLegend{font-size:11px}
+}
+body[data-mobile-orientation=landscape] #layerMenu{top:calc(var(--landscape-top, 52px) + 8px);bottom:auto;left:max(8px,env(safe-area-inset-left));right:auto;width:min(360px,calc(100vw - var(--landscape-panel, 0px) - 24px));max-height:calc(100dvh - var(--landscape-top, 52px) - 16px)}
+body[data-mobile-orientation=landscape][data-layers=collapsed] #layerMenu{width:auto;background:transparent;border:0;box-shadow:none;padding:0}
+#infraSwitch{display:flex;flex-direction:column;gap:6px;margin:0;padding:8px 0 0;border-top:1px solid #4c6880;background:transparent;font-size:13px}
+#infraSwitch label{display:flex;align-items:center;gap:8px;margin:0}
+#infraSwitch input{width:18px;height:18px}
+#infraLegend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;color:#d5e2ee}
 #infraLegend i{width:14px;height:8px;border-radius:2px;display:inline-block;margin-right:4px}
 #infraLegend p{flex-basis:100%;margin:0;font-size:11px;color:#b7c7d6}
-@media(max-width:760px){#infraSwitch{left:8px;right:8px;bottom:calc(var(--sheet-height, 45dvh) + 150px);max-width:none;font-size:12px}}
+#zvetlGloss{margin:0 0 12px;color:#9eb4c8}
 

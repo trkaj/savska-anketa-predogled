@@ -1,4 +1,5 @@
 export const ANKETA_FOOTER = 'Vir: Savska anketa, N = 559, presek 20. 11. 2026 ob 13.05; prikazane so enote z vsaj 10 odgovori';
+export const ANKETA_SHARE_NOTE = 'Delež je od odgovorov, ki so izbrali vsaj eno temo.';
 export const GJI_SOURCE = 'Vir: GURS, zbirni kataster gospodarske javne infrastrukture, CC BY 4.0, stanje 20. 11. 2026';
 
 export function streetName(props) {
@@ -142,4 +143,15 @@ export function streetColor(props, topic) {
 export function answerCount(props) {
   const n = num(props?.N ?? props?.n);
   return n == null ? 0 : Math.round(n);
+}
+
+export function selectionBasis(props) {
+  const total = answerCount(props);
+  const picked = num(props?.n_izbor);
+  const fromTopic = num(pick(props, ['top_teza_imenovalec', 'parkiranje_imenovalec']));
+  const izbor = picked == null ? fromTopic : Math.round(picked);
+  if (izbor == null) return total ? total + ' odgovorov' : 'Zbirni deleži ankete';
+  const who = izbor + ' odgovorov, ki so izbrali vsaj eno temo';
+  if (total && total !== izbor) return 'Na ulici je ' + total + ' odgovorov. Deleži so od ' + who + '.';
+  return 'Deleži so od ' + who + '.';
 }
