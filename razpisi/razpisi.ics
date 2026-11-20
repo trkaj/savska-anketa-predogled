@@ -1479,5 +1479,33 @@ DESCRIPTION:Rok: Erasmus+ Mladina 2027
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:nzc-ect2-2026@anketa.savska.org
+DTSTAMP:20261120T054500Z
+DTSTART;TZID=Europe/Brussels:20261203T120000
+DTEND;TZID=Europe/Brussels:20261203T121500
+SUMMARY:NetZeroCities: Enabling City Transformation 2 (ECT2) – podpora mi
+ sijskim mestom pri odpravi sistemskih ovir za podnebno nevtralnost
+DESCRIPTION:NetZeroCities ECT2 (misijska mesta)\nRok: Rok za oddajo predlog
+ ov 3. 12. 2026 ob 12.00 (CET). Odločitev 5. 2. 2027\, izvedba 1. 4. 2027
+ –31. 1. 2029 (22 mesecev).\nZnesek: Skupaj 8 mio €\; pavšalne ovojnic
+ e 500.000 € (1 misijsko mesto + vsaj 1 partner)\, 1.000.000 € (2 misij
+ ski mesti) ali 1.500.000 € (3 misijska mesta). Infrastruktura ni upravi
+ čena\, le oprema za testiranje/merjenje (amortizacija).\nKdo: Samo lokaln
+ e oblasti mest\, izbranih v misiji EU »100 podnebno nevtralnih in pametni
+ h mest do 2030« (Ljubljana je misijsko mesto od 2022)\; konzorcij vsaj 2 
+ organizaciji\, vodi mesto.\nKorist za Savsko: Če MOL Savsko vključi kot 
+ testno sosesko\, bi naselje dobilo preizkušen model upravljanja parkiranj
+ a in prometa ter merjenja zraka\, ki zmanjša promet in izpuste med bloki.
+URL:https://netzerocities.eu/enabling-city-transformation/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: NetZeroCities ECT2 (misijska mesta)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
