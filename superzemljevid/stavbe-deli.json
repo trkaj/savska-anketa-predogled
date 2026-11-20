@@ -1,0 +1,173 @@
+{
+ "2636-3083": {
+  "naslov": "Luize Pesjakove ulica 9",
+  "vsi_lastniki_pravne_osebe": true,
+  "pripadajoce_zemljisce": [
+   "1625/2"
+  ],
+  "neviden_del": [
+   13
+  ],
+  "opomba_del_13": "del 13 ni vpisan v zemljiško knjigo",
+  "zaznambe": "ni",
+  "hipoteke": "ni",
+  "plombe": "ni",
+  "vir": "redni izpisi e-ZK 20. 11. 2026 ob 14.50",
+  "povzetek": [
+   {
+    "lastnik": "Mestna občina Ljubljana",
+    "delez_skupnih": "2217/2500",
+    "odstotek": 88.7,
+    "st_delov": 19
+   },
+   {
+    "lastnik": "ČESALNICE LJUBLJANA d.d.",
+    "delez_skupnih": "283/2500",
+    "odstotek": 11.3,
+    "st_delov": 1
+   }
+  ],
+  "deli": [
+   {
+    "del": 1,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "963/10000"
+   },
+   {
+    "del": 2,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "157/10000"
+   },
+   {
+    "del": 3,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "203/10000"
+   },
+   {
+    "del": 4,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "167/1000"
+   },
+   {
+    "del": 5,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "151/1250"
+   },
+   {
+    "del": 6,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "139/5000"
+   },
+   {
+    "del": 7,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "977/10000"
+   },
+   {
+    "del": 8,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "417/5000"
+   },
+   {
+    "del": 9,
+    "lastnik": "ČESALNICE LJUBLJANA d.d.",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "283/2500"
+   },
+   {
+    "del": 10,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "787/10000"
+   },
+   {
+    "del": 11,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "373/10000"
+   },
+   {
+    "del": 12,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "107/5000"
+   },
+   {
+    "del": 14,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "23/2000"
+   },
+   {
+    "del": 15,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "29/2500"
+   },
+   {
+    "del": 16,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "227/10000"
+   },
+   {
+    "del": 17,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "183/10000"
+   },
+   {
+    "del": 18,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "89/5000"
+   },
+   {
+    "del": 19,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "23/1250"
+   },
+   {
+    "del": 20,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "131/10000"
+   },
+   {
+    "del": 21,
+    "lastnik": "Mestna občina Ljubljana",
+    "vrsta_lastnika": "pravna oseba",
+    "delez_lastnine": "1/1",
+    "delez_skupnih": "7/1000"
+   }
+  ]
+ }
+}
