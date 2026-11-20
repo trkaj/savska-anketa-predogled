@@ -22,7 +22,7 @@ for k,v in P.items():
   out[k]={"kaj_se_dogaja":" ".join(kaj),"zakaj_je_pomembno":zakaj,"stavbe":stavbe,"postopki":podr,
    "oznaka":"Samodejni povzetek v preprostem jeziku, narejen iz rednega izpisa zemljiške knjige (20. 11. 2026), brez osebnih podatkov. Ni pravni nasvet.",
    "kako_preveriti":f"Izvirnik si lahko vsak brezplačno ogleda na esodisce.si (e-ZK, javni izpisi, redni izpis): katastrska občina 2636 Bežigrad, parcela {parc}."}
-json.dump({"vir":"redni izpisi e-ZK 20. 11. 2026","povezave":{"ezk":"https://www.esodisce.si/","zvetl1":"https://pisrs.si/pregledPredpisa?id=ZAKO8263"},
+json.dump({"vir":"redni izpisi e-ZK 20. 11. 2026","povezave":{"ezk":"https://www.esodisce.si/","zvetl1":"https://pisrs.si/pregledPredpisa?id=ZAKO7090"},
  "slovar":{"ZVEtL":"Zakon o vzpostavitvi etažne lastnine in določanju pripadajočega zemljišča: z njim sodišče uredi, katero zemljišče pripada bloku in kdo je lastnik stanovanj, kadar to ob gradnji ni bilo vpisano.","zaznamba":"opomba v zemljiški knjigi, ki vsem pove, da za parcelo teče sodni postopek","pripadajoče zemljišče":"zemljišče okoli bloka, ki ga stanovalci potrebujejo za normalno uporabo (dostop, dvorišče, zelenica)"},
  "parcels":out},open(dst,'w'),ensure_ascii=False,indent=1)
 print(len(out))
