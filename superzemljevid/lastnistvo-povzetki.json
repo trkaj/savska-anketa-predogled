@@ -1654,7 +1654,7 @@
    ],
    "faza": "ni_postopka",
    "faza_besedilo": "Faza: postopka ni",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Postopka ZVEtL v zemljiški knjigi ni. V zemljiški knjigi je plomba (Dn 25471/2025): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Postopka ZVEtL v zemljiški knjigi ni. V zemljiški knjigi je plomba (Dn 25471/2025, predlog vložen 11. 2. 2025): gre za predlog za vknjižbo lastninske pravice; v izpisu je ugovor predložen sodniku, hkrati pa je označeno, da je vpis dovoljen. Lastniki te parcele imajo pravico prehoda ali podobno služnost na parcele 1385/72, 1380/4.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "plomba: Dn 25471/2025",
@@ -1857,8 +1857,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). O urejanju in vzdrževanju odloča lastnik. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -1873,8 +1873,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). O urejanju in vzdrževanju odloča lastnik. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -2066,8 +2066,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -2083,8 +2083,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -2484,8 +2484,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -2501,8 +2501,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -2553,8 +2553,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -3247,8 +3247,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
@@ -3264,8 +3264,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del stavbe 2928. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del stavbe 2928. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
@@ -3281,8 +3281,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
@@ -3332,8 +3332,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 1–5. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 1–5. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
@@ -3349,8 +3349,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del blokov Belokranjska ulica 1–5 in stavbe 2928. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Belokranjska ulica 1–5 in stavbe 2928. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
@@ -3366,15 +3366,15 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imajo Elektro Ljubljana, Telekom Slovenije, VOKA Snaga in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Elektro Ljubljana; Telekom Slovenije; VOKA Snaga; Telemach Slovenija"
    ]
   },
   "2636:1409/2": {
-   "lastnik_kratko": "Gambit trade globalni marketing d.o.o., 1/2; zasebni lastniki (1 fizična oseba), skupaj 1/2",
+   "lastnik_kratko": "Gambit trade globalni marketing d.o.o., 1/2; tudi zasebni lastnik",
    "lastniki": [
     {
      "kdo": "Gambit trade globalni marketing d.o.o.",
@@ -3382,14 +3382,14 @@
      "delez": "1/2"
     },
     {
-     "kdo": "zasebni lastniki (1 fizična oseba)",
+     "kdo": "tudi zasebni lastnik",
      "tip": "fizicne",
-     "delez": "1/2"
+     "delez": ""
     }
    ],
    "faza": "ni_postopka",
    "faza_besedilo": "Faza: postopka ni",
-   "po_domace": "Lastništvo je deljeno: Gambit trade globalni marketing d.o.o. (1/2); zasebni lastniki (1 fizična oseba) (1/2). O urejanju in vzdrževanju se morajo dogovoriti vsi vpisani imetniki, vsak v okviru svojega deleža. Postopka ZVEtL v zemljiški knjigi ni. Čez to parcelo ima EuroTeleSites pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "po_domace": "Lastništvo je deljeno: Gambit trade globalni marketing d.o.o. (1/2); tudi zasebni lastnik. O urejanju in vzdrževanju se morajo dogovoriti vsi vpisani imetniki. Postopka ZVEtL v zemljiški knjigi ni. Čez to parcelo ima EuroTeleSites pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: EuroTeleSites"
@@ -3944,7 +3944,7 @@
    ]
   },
   "2636:1409/47": {
-   "lastnik_kratko": "Gambit trade globalni marketing d.o.o., 1/2; zasebni lastniki (1 fizična oseba), skupaj 1/2",
+   "lastnik_kratko": "Gambit trade globalni marketing d.o.o., 1/2; tudi zasebni lastnik",
    "lastniki": [
     {
      "kdo": "Gambit trade globalni marketing d.o.o.",
@@ -3952,14 +3952,14 @@
      "delez": "1/2"
     },
     {
-     "kdo": "zasebni lastniki (1 fizična oseba)",
+     "kdo": "tudi zasebni lastnik",
      "tip": "fizicne",
-     "delez": "1/2"
+     "delez": ""
     }
    ],
    "faza": "ni_postopka",
    "faza_besedilo": "Faza: postopka ni",
-   "po_domace": "Lastništvo je deljeno: Gambit trade globalni marketing d.o.o. (1/2); zasebni lastniki (1 fizična oseba) (1/2). O urejanju in vzdrževanju se morajo dogovoriti vsi vpisani imetniki, vsak v okviru svojega deleža. Postopka ZVEtL v zemljiški knjigi ni.",
+   "po_domace": "Lastništvo je deljeno: Gambit trade globalni marketing d.o.o. (1/2); tudi zasebni lastnik. O urejanju in vzdrževanju se morajo dogovoriti vsi vpisani imetniki. Postopka ZVEtL v zemljiški knjigi ni.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -4008,8 +4008,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -4098,8 +4098,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana",
@@ -4561,8 +4561,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2026",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2026 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2026, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2026. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -4844,8 +4844,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del stavb 3268, 3233, 3208 in 3297. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del stavb 3268, 3233, 3208 in 3297. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -4861,8 +4861,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). O urejanju in vzdrževanju odloča lastnik. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastniki so zasebni lastniki (1 fizična oseba), in sicer v celoti (1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -4878,8 +4878,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -4946,8 +4946,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imajo Telekom Slovenije, Mestna občina Ljubljana in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imajo Telekom Slovenije, Mestna občina Ljubljana in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Mestna občina Ljubljana; Telemach Slovenija",
@@ -4964,8 +4964,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imajo Telekom Slovenije, Mestna občina Ljubljana in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imajo Telekom Slovenije, Mestna občina Ljubljana in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Mestna občina Ljubljana; Telemach Slovenija",
@@ -4982,8 +4982,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5025,8 +5025,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče pripada vsakokratnim lastnikom parcel 1616/1–4 in 1617/1–2. O urejanju in vzdrževanju odločajo lastniki navedenih parcel, praviloma vsak v okviru svojega deleža. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče pripada vsakokratnim lastnikom parcel 1616/1–4 in 1617/1–2. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "deleži etažnih enot so sešteti po stavbah (6 vpisov v izpisu)",
@@ -5044,8 +5044,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5096,8 +5096,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5130,8 +5130,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5147,8 +5147,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5164,8 +5164,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5198,8 +5198,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3268, 3297, 3208 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5349,8 +5349,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3297, 3208, 3268 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3297, 3208, 3268 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5366,8 +5366,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3297, 3208, 3268 in 3233. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Topniška ulica 43–45 in stavb 3297, 3208, 3268 in 3233. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5415,8 +5415,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Topniška ulica 43. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Topniška ulica 43. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora: 303"
@@ -5432,8 +5432,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2026",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2026 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2026, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2026. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5518,8 +5518,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5536,8 +5536,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 13–19. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 13–19. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5554,8 +5554,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5572,8 +5572,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5590,8 +5590,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del blokov Luize Pesjakove ulica 13–19 in Šerkova ulica 9–13. Lastniki so etažni lastniki teh stavb (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del blokov Luize Pesjakove ulica 13–19 in Šerkova ulica 9–13. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5608,8 +5608,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 13–19. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 13–19. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2016.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -5626,8 +5626,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imajo Telekom Slovenije, Telemach Slovenija in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2022.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija; Elektro Ljubljana",
@@ -5783,8 +5783,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Sodišče ureja tudi vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2022.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -5850,8 +5850,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije",
@@ -5868,8 +5868,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imajo Telekom Slovenije, Telemach Slovenija in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo imajo Telekom Slovenije, Telemach Slovenija in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija; Elektro Ljubljana",
@@ -5886,8 +5886,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 8–12. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 8–12. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "stvarna služnost / nujna pot v korist: imetnik, ki v javnem povzetku ni poimenovan",
@@ -5921,8 +5921,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -5955,8 +5955,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -6230,8 +6230,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastniki so zasebni lastniki (16 fizičnih oseb), in sicer v celoti (1/1). O urejanju in vzdrževanju odločajo lastniki. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastniki so zasebni lastniki (16 fizičnih oseb), in sicer v celoti (1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -6263,8 +6263,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 2–6. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -6280,8 +6280,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -6297,8 +6297,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 8–12. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Majaronova ulica 8–12. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -6527,8 +6527,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2022",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2022 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2022, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2022. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -7545,7 +7545,7 @@
    ],
    "faza": "ni_postopka",
    "faza_besedilo": "Faza: postopka ni",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Postopka ZVEtL v zemljiški knjigi ni. V zemljiški knjigi je plomba (Dn 194283/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Postopka ZVEtL v zemljiški knjigi ni. V zemljiški knjigi je plomba (Dn 194283/2026, predlog vložen 29. 10. 2026): gre za predlog za vknjižbo lastninske pravice; v izpisu je sklep o vpisu odpravljen, hkrati pa je označeno, da je vpis dovoljen. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "plomba: Dn 194283/2026",
@@ -7715,8 +7715,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 19–21. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 19–21. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -7732,8 +7732,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -7749,8 +7749,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 14. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 14. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -7766,8 +7766,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 14. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Luize Pesjakove ulica 14. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -7783,8 +7783,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -8696,8 +8696,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "Lastnik te parcele je Kolinska, prehrambena industrija d. d. (celota, 1/1). O urejanju in vzdrževanju odloča ta pravna oseba kot lastnik. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Kolinska, prehrambena industrija d. d. (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -8712,8 +8712,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -8728,8 +8728,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 8–10. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 8–10. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -8795,8 +8795,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -8811,8 +8811,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 12–14. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 12–14. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -9150,8 +9150,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 13–15. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 13–15. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -9166,8 +9166,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 17–19. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 17–19. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9184,8 +9184,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9202,8 +9202,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9220,8 +9220,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9238,8 +9238,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9256,8 +9256,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6–8. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9274,8 +9274,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 8. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 8. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9292,8 +9292,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 6. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9310,8 +9310,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. V zemljiški knjigi je plomba (Dn 203929/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. V zemljiški knjigi je plomba (Dn 203929/2026, predlog vložen 12. 11. 2026): gre za vpis spremembe v vrstnem redu zaznambe (povezano z III N 590/2021); v izpisu je sklep o vpisu odpravljen, hkrati pa je označeno, da je vpis dovoljen.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "plomba: Dn 203929/2026",
@@ -9329,8 +9329,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. V zemljiški knjigi je plomba (Dn 203929/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. V zemljiški knjigi je plomba (Dn 203929/2026, predlog vložen 12. 11. 2026): gre za vpis spremembe v vrstnem redu zaznambe (povezano z III N 590/2021); v izpisu je sklep o vpisu odpravljen, hkrati pa je označeno, da je vpis dovoljen.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "plomba: Dn 203929/2026",
@@ -9348,8 +9348,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. V zemljiški knjigi je plomba (Dn 203929/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. V zemljiški knjigi je plomba (Dn 203929/2026, predlog vložen 12. 11. 2026): gre za vpis spremembe v vrstnem redu zaznambe (povezano z III N 590/2021); v izpisu je sklep o vpisu odpravljen, hkrati pa je označeno, da je vpis dovoljen.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "plomba: Dn 203929/2026",
@@ -9367,8 +9367,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. V zemljiški knjigi je plomba (Dn 203937/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. V zemljiški knjigi je plomba (Dn 203937/2026, predlog vložen 12. 11. 2026): gre za vpis spremembe v vrstnem redu zaznambe (povezano z III N 590/2021); zadeva še ni dodeljena in o vpisu še ni odločeno.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "plomba: Dn 203937/2026",
@@ -9386,8 +9386,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. V zemljiški knjigi je plomba (Dn 203937/2026): vložen je nov zemljiškoknjižni predlog, o katerem še ni odločeno.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. V zemljiški knjigi je plomba (Dn 203937/2026, predlog vložen 12. 11. 2026): gre za vpis spremembe v vrstnem redu zaznambe (povezano z III N 590/2021); zadeva še ni dodeljena in o vpisu še ni odločeno.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "plomba: Dn 203937/2026",
@@ -9405,8 +9405,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9423,8 +9423,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9441,8 +9441,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9459,8 +9459,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 14–16. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9477,8 +9477,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 12–14. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Belokranjska ulica 12–14. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Vpisan je tudi spor o lastništvu ali o tem, kateri stavbi zemljišče pripada; izid iz izpisa še ni razviden.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "zaznamba spora (304) v zvezi z: stavba 7750",
@@ -9643,8 +9643,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 17–19. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Endliherjeva ulica 17–19. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -9687,8 +9687,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2017",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2017 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2017, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2017. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -9704,8 +9704,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2017",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2017 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2017, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2017. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -9721,8 +9721,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2017",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2017 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2017, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2017. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -9837,8 +9837,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "Lastnik te parcele je Slovenske Železnice, d.o.o. (celota, 1/1). O urejanju in vzdrževanju odloča ta pravna oseba kot lastnik. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Slovenske Železnice, d.o.o. (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica"
    ]
@@ -9853,8 +9853,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Dokler se postopek ne konča, je težje dobiti soglasja za ureditev (npr. parkirišča, igrala, klopi, zelenice).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 11–15. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe"
    ]
@@ -10009,8 +10009,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija",
@@ -10695,8 +10695,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Čez to parcelo imajo Telekom Slovenije, Telemach Slovenija, Energetika Ljubljana in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Čez to parcelo imajo Telekom Slovenije, Telemach Slovenija, Energetika Ljubljana in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija; Energetika Ljubljana; Elektro Ljubljana",
@@ -11393,8 +11393,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -11487,8 +11487,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2023",
-   "po_domace": "Lastništvo je deljeno: Mediogradnja Inženiring, gradbeništvo, d.o.o. (93/100); družbena lastnina (nekdanja občina Ljubljana Bežigrad) (7/100). O urejanju in vzdrževanju se morajo dogovoriti vsi vpisani imetniki, vsak v okviru svojega deleža; kjer je vpisana družbena lastnina, iz izpisa ni povsem jasno, kdo danes odloča. Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov; postopek teče od leta 2023 in še ni končan. Na parceli je vpisana hipoteka v korist Addiko Bank d.d.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2023, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastništvo je deljeno: Mediogradnja Inženiring, gradbeništvo, d.o.o. (93/100); družbena lastnina (nekdanja občina Ljubljana Bežigrad) (7/100). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2023. Na parceli je vpisana hipoteka v korist Addiko Bank d.d.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "hipoteka: Addiko Bank d.d",
@@ -11547,8 +11547,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2023",
-   "po_domace": "Lastnik te parcele je Mediogradnja Inženiring, gradbeništvo, d.o.o. (celota, 1/1). O urejanju in vzdrževanju odloča ta pravna oseba kot lastnik. Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov; postopek teče od leta 2023 in še ni končan. Čez to parcelo ima zasebni imetnik pravico prehoda (nujno pot).",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2023, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mediogradnja Inženiring, gradbeništvo, d.o.o. (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Sodišče ureja vpis stanovanj v zemljiško knjigo: nekateri deli stavbe še niso pravilno vpisani kot last posameznih lastnikov. Zaznamba postopka je vpisana od leta 2023. Čez to parcelo ima zasebni imetnik pravico prehoda (nujno pot).",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "stvarna služnost / nujna pot v korist: imetnik, ki v javnem povzetku ni poimenovan",
@@ -11566,8 +11566,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Linhartova cesta 68. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Čez to parcelo imata Energetika Ljubljana in Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Linhartova cesta 68. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Čez to parcelo imata Energetika Ljubljana in Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Energetika Ljubljana; Telekom Slovenije"
@@ -11617,8 +11617,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2018",
-   "po_domace": "To zemljišče je skupni del bloka Matjaževa ulica 13–17. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2018 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2018, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Matjaževa ulica 13–17. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2018. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -11634,8 +11634,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -11651,8 +11651,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije"
@@ -11668,8 +11668,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -11685,8 +11685,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2020",
-   "po_domace": "To zemljišče je skupni del bloka Matjaževa ulica 7–11. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2020 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2020, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Matjaževa ulica 7–11. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2020. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -11702,8 +11702,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2016",
-   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. To je ostanek stare ureditve, zato iz izpisa ni povsem jasno, kdo danes o zemljišču odloča in kdo ga vzdržuje. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2016 in še ni končan. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2016, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "V zemljiški knjigi je kot lastnik še vedno vpisana družbena lastnina (nekdanja občina Ljubljana Bežigrad), 1/1. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2016. Čez to parcelo imata Telekom Slovenije in Telemach Slovenija pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Telemach Slovenija"
@@ -11719,8 +11719,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2019",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2019 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2019, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2019. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -11736,8 +11736,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2019",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 43–47. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2019 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2019, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 43–47. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2019. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -11753,8 +11753,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2019",
-   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). O urejanju in vzdrževanju odloča mestna občina. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2019 in še ni končan. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2019, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "Lastnik te parcele je Mestna občina Ljubljana (celota, 1/1). Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2019. Čez to parcelo imata Telekom Slovenije in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujeta svoje omrežje.",
    "opombe": [
     "vrsta položaja: 101 vknjižena lastninska pravica",
     "služnost v korist: Telekom Slovenije; Elektro Ljubljana"
@@ -11770,8 +11770,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2023",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2023 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2023, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2023. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
@@ -11804,8 +11804,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2025",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2025 in še ni končan. Čez to parcelo imajo Energetika Ljubljana, Telekom Slovenije, Telemach Slovenija in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2025, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2025. Čez to parcelo imajo Energetika Ljubljana, Telekom Slovenije, Telemach Slovenija in Elektro Ljubljana pravico za vod ali cev (služnost), da lahko vzdržujejo svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Energetika Ljubljana; Telekom Slovenije; Telemach Slovenija; Elektro Ljubljana"
@@ -11838,8 +11838,8 @@
     }
    ],
    "faza": "postopek_tece",
-   "faza_besedilo": "Faza: postopek pri sodišču teče od leta 2023",
-   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastniki so etažni lastniki te stavbe (lastniki stanovanj), ki o zemljišču odločajo in ga vzdržujejo, praviloma prek upravnika. Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada; postopek teče od leta 2023 in še ni končan. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
+   "faza_besedilo": "Faza: vpisana zaznamba postopka ZVEtL od leta 2023, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026)",
+   "po_domace": "To zemljišče je skupni del bloka Fabianijeva ulica 37–41. Lastništvo še ni dokončno urejeno: vpisana zaznamba postopka ZVEtL, čaka se sklep Okrajnega sodišča v Ljubljani (stanje e-ZK 20. 11. 2026). Za to zemljišče na sodišču še ni dokončno odločeno, kateri stavbi pripada. Zaznamba postopka je vpisana od leta 2023. Čez to parcelo ima Telekom Slovenije pravico za vod ali cev (služnost), da lahko vzdržuje svoje omrežje.",
    "opombe": [
     "vrsta položaja: 106 lastnina na skupnem delu stavbe",
     "služnost v korist: Telekom Slovenije"
