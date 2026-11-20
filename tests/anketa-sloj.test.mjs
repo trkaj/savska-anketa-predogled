@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {drawOrder, featureArea, formatShare, hasGeometry, mergedWith, missingGeometryNote, sequentialColor, shareOf, streetColor, streetName, topicRows} from '../superzemljevid/anketa-logika.mjs';
+import {drawOrder, featureArea, formatShare, hasGeometry, mergedWith, missingGeometryNote, selectionBasis, sequentialColor, shareOf, streetColor, streetName, topicRows} from '../superzemljevid/anketa-logika.mjs';
 
 function fakeStreet(ulica, geometry, extra = {}) {
   return {
@@ -25,6 +25,13 @@ function fakeStreet(ulica, geometry, extra = {}) {
 
 const big = {type: 'Polygon', coordinates: [[[14.52, 46.06], [14.525, 46.06], [14.525, 46.065], [14.52, 46.065], [14.52, 46.06]]]};
 const small = {type: 'Polygon', coordinates: [[[14.521, 46.061], [14.522, 46.061], [14.522, 46.062], [14.521, 46.062], [14.521, 46.061]]]};
+
+test('imenovalec je število odgovorov z vsaj eno temo', () => {
+  const props = fakeStreet('Testna ulica', big).properties;
+  assert.equal(selectionBasis(props), 'Na ulici je 129 odgovorov. Deleži so od 107 odgovorov, ki so izbrali vsaj eno temo.');
+  assert.equal(selectionBasis({...props, N: 107, n_izbor: 107}), 'Deleži so od 107 odgovorov, ki so izbrali vsaj eno temo.');
+  assert.match(formatShare(82.9, 107, 129), /107 od 129/);
+});
 
 test('delež je vedno izpisan s števcem in imenovalcem', () => {
   assert.equal(formatShare(82.9, 107, 129), '82,9 % (107 od 129)');

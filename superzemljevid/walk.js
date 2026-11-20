@@ -1,6 +1,6 @@
 'use strict';
 (()=>{
- const C=Cesium,map=window.savsko,button=document.getElementById('locateMe');
+ const C=Cesium,map=window.savsko,button=document.getElementById('walkButton');
  let watch=null,active=false,following=true,last=null,layer=null,marker=null,accuracyRing=null,generation=0;
  const panel=document.createElement('section');panel.id='walkPanel';panel.hidden=true;panel.setAttribute('aria-label','Sprehod v živo');panel.innerHTML='<b>Sprehod v živo</b><p id="walkStatus" role="status">Iščem GPS …</p><p class="small">Krog kaže negotovost GPS. Meje so orientacijske.</p><div class="dialog-actions"><button id="walkFollow">Sledi mi</button><button id="walkStop">Končaj</button></div>';document.body.append(panel);
  const status=document.getElementById('walkStatus'),followButton=document.getElementById('walkFollow');
