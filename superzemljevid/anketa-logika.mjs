@@ -1,4 +1,10 @@
-export const ANKETA_FOOTER = 'Zbirni podatki Savske ankete, presek 20. 11. 2026. Ulice z manj kot 10 odgovori so združene s sosednjimi.';
+export const ANKETA_FOOTER = 'Vir: Savska anketa, N = 559, presek 20. 11. 2026 ob 13.05; prikazane so enote z vsaj 10 odgovori';
+export const GJI_SOURCE = 'Vir: GURS, zbirni kataster gospodarske javne infrastrukture, CC BY 4.0, stanje 20. 11. 2026';
+
+export function streetName(props) {
+  const name = props?.ulica || props?.ime;
+  return name ? String(name) : '';
+}
 
 export const TEME = [
   {id: 'parkiranje', label: 'Parkiranje', color: '#e4572e'},
@@ -98,7 +104,7 @@ export function drawOrder(features) {
 export function missingGeometryNote(features) {
   const missing = (features || []).filter(feature => !hasGeometry(feature));
   if (!missing.length) return '';
-  const names = missing.map(feature => feature.properties?.ulica || 'brez imena');
+  const names = missing.map(feature => streetName(feature.properties) || 'brez imena');
   return missing.length + ' ' + (missing.length === 1 ? 'zapis' : 'zapisov') + ' brez območja na zemljevidu (' + names.join(', ') + ').';
 }
 

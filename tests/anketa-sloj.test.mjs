@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {drawOrder, featureArea, formatShare, hasGeometry, mergedWith, missingGeometryNote, sequentialColor, shareOf, streetColor, topicRows} from '../superzemljevid/anketa-logika.mjs';
+import {drawOrder, featureArea, formatShare, hasGeometry, mergedWith, missingGeometryNote, sequentialColor, shareOf, streetColor, streetName, topicRows} from '../superzemljevid/anketa-logika.mjs';
 
 function fakeStreet(ulica, geometry, extra = {}) {
   return {
@@ -59,6 +59,8 @@ test('manjša poligona sta zgoraj, zapisi brez geometrije se ne rišejo in se š
   assert.ok(order[1].zIndex > order[0].zIndex);
   assert.equal(missingGeometryNote(features), '1 zapis brez območja na zemljevidu (Testno drugo).');
   assert.equal(hasGeometry(features[2]), false);
+  assert.equal(streetName({ime: 'Samo ime'}), 'Samo ime');
+  assert.equal(streetName({ulica: 'Ulica', ime: 'Ime'}), 'Ulica');
 });
 
 test('združena ulica dobi opombo, posameznih odgovorov ni', () => {

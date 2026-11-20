@@ -118,4 +118,11 @@
 @media(max-width:1200px){#layerSwitch{left:365px;max-width:calc(100vw - 390px)}}
 @media(max-width:760px){#layerSwitch{top:auto;bottom:calc(var(--sheet-height, 45dvh) + 78px);left:8px;right:8px;max-width:none;padding:6px}#layerSwitch button{flex:1;font-size:13px;padding:8px 4px}#layerLegend{font-size:11px}}
 body[data-mobile-orientation=landscape] #layerSwitch{top:calc(var(--landscape-top, 52px) + 8px);bottom:auto;left:max(8px,env(safe-area-inset-left));right:auto;max-width:min(520px,calc(100vw - var(--landscape-panel, 240px) - 24px))}
+#infraSwitch{position:fixed;z-index:40;left:376px;bottom:28px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;max-width:min(640px,calc(100vw - 420px));padding:8px 10px;background:#102137f7;border:1px solid #4c6880;border-radius:12px;box-shadow:0 8px 24px #0007;font-size:13px}
+#infraSwitch label{display:flex;align-items:center;gap:6px;margin:0}
+#infraSwitch input{width:16px;height:16px}
+#infraLegend{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;color:#d5e2ee}
+#infraLegend i{width:14px;height:8px;border-radius:2px;display:inline-block;margin-right:4px}
+#infraLegend p{flex-basis:100%;margin:0;font-size:11px;color:#b7c7d6}
+@media(max-width:760px){#infraSwitch{left:8px;right:8px;bottom:calc(var(--sheet-height, 45dvh) + 150px);max-width:none;font-size:12px}}
 
