@@ -20,15 +20,16 @@ const toast=message=>{el('toast').textContent=message;el('toast').hidden=false;c
 async function api(){throw Error(STATIC_NOTE);}
 const options=(values,selected='')=>values.map(v=>`<option value="${esc(v)}" ${v===selected?'selected':''}>${esc(v)}</option>`).join('');
 function applyDimension(){
- if(map.ready){map.setMode((view==='ownership'||view==='zvetl'||view==='plain')?view:'photo',dimension);dimension=map.dimension;}
+ if(map.ready){map.setMode((view==='ownership'||view==='zvetl'||view==='plain'||view==='anketa')?view:'photo',dimension);dimension=map.dimension;}
  const button=el('dimensionToggle');button.textContent=dimension==='3d'?'Preklopi na 2D':'Preklopi na 3D';button.setAttribute('aria-label',(dimension==='3d'?'Trenutni pogled: 3D. Preklopi na 2D.':'Trenutni pogled: 2D. Preklopi na 3D.'));button.disabled=map.ready&&!map.has3D;button.title=button.disabled?'3D-posnetek trenutno ni dosegljiv. Osveži stran za ponovni poskus.':'Preklop velja za vse zavihke';
 }
-function setView(next){view=next;placing=false;el('mapHint').hidden=true;el('propertyPanel').hidden=!(next==='ownership'||next==='zvetl'||next==='plain');el('civicPanel').hidden=!el('propertyPanel').hidden;
+function setView(next){view=next;placing=false;el('mapHint').hidden=true;el('propertyPanel').hidden=!(next==='ownership'||next==='zvetl'||next==='plain'||next==='anketa');el('civicPanel').hidden=!el('propertyPanel').hidden;
  applyDimension();
- for(const [id,v] of [['pobudeView','initiatives'],['ownershipView','ownership'],['zvetlView','zvetl'],['businessView','business'],['layerZvetl','zvetl'],['layerOwnership','ownership'],['layerPlain','plain']])el(id)?.classList.toggle('active',next===v);
+ for(const [id,v] of [['pobudeView','initiatives'],['ownershipView','ownership'],['zvetlView','zvetl'],['businessView','business'],['layerZvetl','zvetl'],['layerOwnership','ownership'],['layerAnketa','anketa'],['layerPlain','plain']])el(id)?.classList.toggle('active',next===v);
  if(next==='initiatives'){el('heading').innerHTML='Od nas.<br>Za naše Savsko.';el('intro').textContent='Savčani označimo kraj, predlagamo izboljšavo in skupaj spremljamo napredek.';renderInitiatives();}
  else if(next==='business'){el('heading').textContent='Kdo deluje v soseski?';el('intro').textContent='Poslovni subjekti in njihove enote po uradnem registriranem naslovu.';renderBusinesses();}
  else if(next==='zvetl'){el('heading').textContent='Kakšno je stanje zemljišča?';el('intro').textContent='Klikni parcelo: vidiš, ali je v zemljiški knjigi vpisana zaznamba ZVEtL, kdo je tip lastnika in kdo skrbi za prostor.';}
+ else if(next==='anketa'){el('heading').textContent='Kaj pravi anketa?';el('intro').textContent='Izberi temo in klikni ulico. Prikazani so samo zbirni deleži, brez posameznih odgovorov.';}
  else if(next==='plain'){el('heading').textContent='Samo fotografija';el('intro').textContent='Brez barvnega sloja. Vklopi ZVEtL ali lastništvo, če želiš obarvana zemljišča.';}
  else{el('heading').textContent=next==='ownership'?'Čigav je ta prostor?':next==='photo'?'Soseska v treh dimenzijah.':'Savsko naselje od zgoraj.';el('intro').textContent='Klikni zemljišče ali stavbo za podatke in vir lastništva.';}
  drawMarkers();window.dispatchEvent(new CustomEvent('savsko-view-change',{detail:next}));
@@ -118,7 +119,7 @@ function exportData(){
  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='savsko-pobude-za-cetrtne-svetnike.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Izvoz je pripravljen. Pobude še niso poslane; predajo zabeleži skrbnik.');
 }
 window.civicControls={refresh,mine:()=>{filter.mine=true;setView('initiatives');window.mobilePanel?.expand();},admin:async()=>{filter={q:'',category:'',status:'',source:'',review:true,mine:false};setView('initiatives');await refresh();window.mobilePanel?.expand();}};
-for(const [id,v] of [['pobudeView','initiatives'],['ownershipView','ownership'],['zvetlView','zvetl'],['businessView','business'],['layerZvetl','zvetl'],['layerOwnership','ownership'],['layerPlain','plain']])el(id).onclick=()=>setView(v);
+for(const [id,v] of [['pobudeView','initiatives'],['ownershipView','ownership'],['zvetlView','zvetl'],['businessView','business'],['layerZvetl','zvetl'],['layerOwnership','ownership'],['layerAnketa','anketa'],['layerPlain','plain']])if(el(id))el(id).onclick=()=>setView(v);
 el('dimensionToggle').onclick=()=>{dimension=dimension==='3d'?'2d':'3d';applyDimension();};el('newProposal').onclick=startPin;el('locateMe').onclick=()=>locate(false);window.addEventListener('savsko-map-ready',()=>setView(view));
 window.addEventListener('offline',()=>toast('Ni povezave. Oddajo nadaljuj, ko bo internet spet na voljo. Vnosa ne zapiraj.'));
 (async()=>{el('newProposal').hidden=true;setView('zvetl');const results=await Promise.allSettled([fetch('businesses.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json();}),fetch('addresses.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json();})]);if(results[0].status==='fulfilled'){businessData=results[0].value;businesses=businessData.items.sort((a,b)=>a.name.localeCompare(b.name,'sl'));}else toast('Poslovnih subjektov ni bilo mogoče naložiti. Osveži stran.');if(results[1].status==='fulfilled')addresses=results[1].value;await refresh();})();

@@ -93,7 +93,10 @@
 #layerSwitch{position:fixed;z-index:40;top:148px;left:376px;display:flex;flex-direction:column;gap:6px;max-width:min(560px,calc(100vw - 400px));padding:8px;background:#102137f7;border:1px solid #ff5c00;border-radius:14px;box-shadow:0 10px 28px #0008}
 .layer-buttons{display:flex;gap:4px}
 #layerSwitch button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 10px;font-weight:750}
-#layerZvetl.active{background:#ff5c00;color:#1a0d00}#layerOwnership.active{background:#159d69;color:#042018}#layerPlain.active{background:#d7e3ee;color:#102137}
+#layerZvetl.active{background:#ff5c00;color:#1a0d00}#layerOwnership.active{background:#159d69;color:#042018}#layerAnketa.active{background:#7b2cbf;color:#fff}#layerPlain.active{background:#d7e3ee;color:#102137}
+#anketaTopicWrap{display:block;font-size:12px;color:#d5e2ee}#anketaTopicWrap select{margin-top:4px}
+.anketa-card ol{list-style:none;margin:8px 0;padding:0}.anketa-card li{display:grid;grid-template-columns:14px 1fr auto;gap:6px;align-items:baseline;margin:4px 0;font-size:13px}.anketa-card li i{width:12px;height:12px;border-radius:2px;display:block}.anketa-merged{color:#ffe0a1}.anketa-missing{flex-basis:100%;margin:4px 0 0;color:#c5d4e2}
+.seq-scale{display:inline-flex;align-items:center;gap:6px}.seq-scale i{width:88px;height:12px;border-radius:2px;display:inline-block}
 .swatches{display:inline-flex;gap:2px;align-items:center}
 .swatches i{width:11px;height:11px;border-radius:2px;display:block;box-shadow:inset 0 0 0 1px #0006}
 .swatches i.plain{background:#213b46;box-shadow:inset 0 0 0 1px #9eb4c6}
