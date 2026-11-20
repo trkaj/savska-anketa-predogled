@@ -1,0 +1,62 @@
+{
+  "boundary": [
+    [
+      14.52094,
+      46.0599
+    ],
+    [
+      14.52215,
+      46.0606
+    ],
+    [
+      14.52418,
+      46.06212
+    ],
+    [
+      14.52502,
+      46.06338
+    ],
+    [
+      14.52639,
+      46.06655
+    ],
+    [
+      14.51838,
+      46.06492
+    ],
+    [
+      14.51948,
+      46.06274
+    ],
+    [
+      14.52094,
+      46.0599
+    ]
+  ],
+  "bbox": [
+    14.5178,
+    46.0597,
+    14.5268,
+    46.0668
+  ],
+  "center": [
+    14.5223,
+    46.0635
+  ],
+  "boundary_description": "Približen izrez po Topniški, Linhartovi, Savski in Šmartinski cesti; ni uradna upravna meja.",
+  "mesh_url": "https://ipi.eprostor.gov.si/terrain-api/file/models/public/3Dmreza/tileset_lj.json",
+  "terrain_url": "https://ipi.eprostor.gov.si/terrain-api/cts",
+  "retrieved": "2026-09-07",
+  "capture_date": null,
+  "ownership_checked": "2026-09-06",
+  "parcels_count": 712,
+  "ownership_counts": {
+    "other": 370,
+    "unknown": 221,
+    "mol_gis_only": 20,
+    "mol": 86,
+    "mol_unspecified": 15
+  },
+  "buildings_count": 303,
+  "bounds_source": "Road locations from OpenStreetMap; aerial context checked against GURS DOF025."
+}
