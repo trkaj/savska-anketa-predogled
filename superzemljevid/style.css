@@ -125,4 +125,23 @@ body[data-mobile-orientation=landscape] #layerSwitch{top:calc(var(--landscape-to
 #infraLegend i{width:14px;height:8px;border-radius:2px;display:inline-block;margin-right:4px}
 #infraLegend p{flex-basis:100%;margin:0;font-size:11px;color:#b7c7d6}
 @media(max-width:760px){#infraSwitch{left:8px;right:8px;bottom:calc(var(--sheet-height, 45dvh) + 150px);max-width:none;font-size:12px}}
+.stavba-deli{margin:14px 0;padding:0;border:1px solid #4c6880;border-radius:10px;background:#1b3146}
+.stavba-deli summary{cursor:pointer;padding:12px 14px;font-weight:750;color:#edf4fc}
+.stavba-deli p{margin:0 14px 10px}
+.stavba-povzetek{color:#d5e6f4}
+.stavba-deli .table-wrap{overflow-x:auto;margin:0 8px 8px;-webkit-overflow-scrolling:touch}
+.stavba-deli table{width:100%;border-collapse:collapse;font-size:13px}
+.stavba-deli th,.stavba-deli td{text-align:left;padding:7px 8px;border-bottom:1px solid #34506a;vertical-align:top}
+.stavba-deli td:nth-child(2){overflow-wrap:anywhere}
+.stavba-deli th{color:#9eb6cc;font-weight:650}
+.stavba-manjka td{color:#c5d4e2}
+@media(max-width:760px){
+ .stavba-deli summary{min-height:44px}
+ .stavba-deli table,.stavba-deli tbody,.stavba-deli tr,.stavba-deli td{display:block;width:100%}
+ .stavba-deli thead{display:none}
+ .stavba-deli tr{padding:8px 6px;border-bottom:1px solid #34506a}
+ .stavba-deli td{border:0;padding:1px 8px}
+ .stavba-deli td::before{content:attr(data-label);display:block;color:#9eb6cc;font-size:11px}
+ .stavba-deli td:first-child{font-weight:750}
+}
 
