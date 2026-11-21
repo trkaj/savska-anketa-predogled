@@ -349,28 +349,6 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:nipp-ejn-80821@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;TZID=Europe/Ljubljana:20261113T120000
-DTEND;TZID=Europe/Ljubljana:20261113T121500
-SUMMARY:MOL javno naročilo NIPP (eJN 80821 / JN008062/2026)
-DESCRIPTION:MOL NIPP (storitvena pogodba)\nRok: Rok za ponudbe je bil 13. 1
- 1. 2026 ob 12.00. To ni razpis za nepovratna sredstva\, temveč storitvena
-  pogodba za izdelavo načrta parkiranja za celotno MOL.\nZnesek: ni grant\
- nSofinanciranje: ni grant\nKo bo znan izvajalec\, lahko pripravimo gradivo
-  o zasedenosti\, dovoljenjih in prebivalskem parkiranju v Savskem.\nZnano 
- dejstvo\; ni razpis za sofinanciranje projektov prebivalcev.
-URL:https://www.ljubljana.si/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: MOL NIPP (storitvena pogodba)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:euro-med-call-8@anketa.savska.org
 DTSTAMP:20261117T110000Z
 DTSTART;VALUE=DATE:20261113
@@ -389,48 +367,6 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rok razpisa: Interreg Euro-MED call 8
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:eit-um-startups-2026@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;TZID=Europe/Ljubljana:20261116T170000
-DTEND;TZID=Europe/Ljubljana:20261116T171500
-SUMMARY:EIT Urban Mobility: Financial Support to Startups
-DESCRIPTION:EIT UM start-up call\nRok: Rok 16. 11. 2026 ob 17.00 CET.\nZnes
- ek: ni ponovno povzet\nSofinanciranje: ni ponovno povzet\nRok je potekel\;
-  namenjen je startupom.\nZnano dejstvo.
-URL:https://www.eiturbanmobility.eu/call-for-proposals/financial-support-to
- -startups-open-call-3/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: EIT UM start-up call
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:eit-enhance-neb-2027@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;TZID=Europe/Ljubljana:20261117T170000
-DTEND;TZID=Europe/Ljubljana:20261117T171500
-SUMMARY:EIT Community NEB: Enhance NEB 2027
-DESCRIPTION:Enhance NEB 2027\nRok: Rok 17. 11. 2026 ob 17.00 CET. Odprt sam
- o za partnerje prejšnjih projektov Connect/Co-create NEB.\nZnesek: Do 92.
- 500 € EIT sredstev na projekt\, 20 % lastne udeležbe.\nSofinanciranje: 
- 80 % EIT / 20 % lastna udeležba\nČe nismo bili partnerji prejšnjega NEB
-  projekta\, nismo upravičeni.\nRok je danes\; razpis ni splošno odprt.
-URL:https://www.eiturbanmobility.eu/call-for-proposals/enhance-neb-2027-ope
- n-call/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: Enhance NEB 2027
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -456,145 +392,6 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rok razpisa: DUT 2026
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:iclei-tap-2026@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20261115
-DTEND;VALUE=DATE:20261116
-SUMMARY:ICLEI Transformative Actions Program (TAP) Call for Projects 2026
-DESCRIPTION:ICLEI TAP 2026\nRok: Rok 15. 11. 2026. TAP je predvsem vstopnic
- a do financerjev\, ne nujno neposredna dotacija.\nZnesek: ni neposredno pr
- everjen znesek dotacije\nSofinanciranje: ni klasičen grant\nRok je poteke
- l dva dni pred tem pregledom.\nZaprt 15. 11. 2026.
-URL:https://iclei.org/tap/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: ICLEI TAP 2026
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:interreg-ce@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20251127
-DTEND;VALUE=DATE:20251128
-SUMMARY:Interreg Central Europe
-DESCRIPTION:Interreg Central Europe\nRok: Zadnji\, kapitalizacijski razpis 
- programa 2021–2027 se je zaprl 27. 11. 2025. Novih razpisov v tem obdobj
- u ni.\nProgram v tem finančnem obdobju nima več odprtih razpisov.\nPreve
- rjeno na uradni strani programa.
-URL:https://www.interreg-central.eu/calls-for-proposals/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: Interreg Central Europe
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:interreg-alpine@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20260630
-DTEND;VALUE=DATE:20260701
-SUMMARY:Interreg Alpine Space
-DESCRIPTION:Interreg Alpine Space\nRok: Zadnji kapitalizacijski razpis se j
- e zaprl 30. 6. 2026. Odbor programa se sestane 17.–18. 11. 2026 za odlo
- čitev o že prejetih vlogah.\nNi odprtega razpisa.\nPreverjeno na uradni 
- strani programa.
-URL:https://www.alpine-space.eu/how-to-apply/
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: Interreg Alpine Space
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:interreg-danube@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20251215
-DTEND;VALUE=DATE:20251216
-SUMMARY:Interreg Danube Region\, 3. razpis
-DESCRIPTION:Interreg Danube\nRok: Tretji razpis se je zaprl 15. 12. 2025. N
- ov razpis ni objavljen. Projekti 3. razpisa naj bi se začeli 1. 12. 2026.
- \nNi odprtega razpisa.\nPreverjeno na uradni strani programa.
-URL:https://interreg-danube.eu/calls-for-proposals
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: Interreg Danube
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:eui-ia-call-4@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20260615
-DTEND;VALUE=DATE:20260616
-SUMMARY:EUI Innovative Actions\, 4. razpis
-DESCRIPTION:EUI Innovative Actions 4\nRok: Rok 15. 6. 2026 ob 14.00 CEST. N
- aslednji razpis ni objavljen.\nZaprt. Za naslednji krog je potrebna mestna
-  prijava inovativnega ukrepa.
-URL:https://www.urban-initiative.eu/news/eui-launches-innovative-actions-ca
- ll-4-support-local-led-innovation
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: EUI Innovative Actions 4
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:urbact-an-2026@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20260617
-DTEND;VALUE=DATE:20260618
-SUMMARY:URBACT IV: Action Networks
-DESCRIPTION:URBACT Action Networks\nRok: Rok 17. 6. 2026 ob 15.00 CEST. Nas
- lednji razpis ni objavljen.\nZaprt.
-URL:https://urbact.eu/call-action-networks-closed
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: URBACT Action Networks
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:las-sozitje-2026@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;VALUE=DATE:20260323
-DTEND;VALUE=DATE:20260324
-SUMMARY:LAS Sožitje med mestom in podeželjem\, 2. javni poziv 2026 (RRA L
- UR)
-DESCRIPTION:LAS Sožitje 2026\nRok: Zaprt 23. 3. 2026. Nov poziv za 2027 ni
-  objavljen.\nZnesek: V 2. pozivu je bilo na voljo približno 236.198 € (
- EKSRP) in 234.411 € (ESRR).\nObmočje LAS vključuje MOL\, a je namenjen
- o razvoju podeželja. Savsko kot gosto mestno naselje verjetno ni v jedru.
-  Spremljamo morebitni 3. poziv.
-URL:https://www.las-sozitje.si/Pozivi
-LOCATION:Savsko naselje / razpis
-STATUS:CANCELLED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: LAS Sožitje 2026
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1680,6 +1477,190 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rok: Obzorje Evropa: living labi za obnovo ekosistemov
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:crea-cme-hosts-2026-2027@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20270118T235900
+DTEND;TZID=Europe/Brussels:20270119T001400
+SUMMARY:Kultura premika Evropo (Culture Moves Europe): poziv za gostitelje 
+ rezidenc 2026–2027
+DESCRIPTION:Culture Moves Europe – gostitelji rezidenc\nRok: Prijave od 1
+ 5. 10. 2026 do 18. 1. 2027 ob 23.59.59 po srednjeevropskem času\, prek Go
+ ethe Application Portal. Rezultati do 9. 3. 2027\; izbira rezidentov (2. s
+ topnja) od 9. 3. do 31. 7. 2027. Najzgodnejši začetek rezidence 12. 4. 2
+ 027.\nZnesek: Gostitelj: 50 € na dan na rezidenta (1–5 rezidentov\, 21
+ –90 dni). Rezident: 30 € dnevnice ter potni dodatek 400 € (do 5.000 
+ km) ali 800 € (od 5.000 km)\; možni dodatki za zeleno pot\, družino\, 
+ vizum in dostopnost.\nKdo: Pravne osebe s sedežem v državi programa Ustv
+ arjalna Evropa (tudi Slovenija)\, ki lahko gostijo rezidenčni projekt in 
+ so dejavne na področju glasbe\, uprizoritvenih\, vizualnih umetnosti\, kn
+ jige\, dediščine\, arhitekture ali oblikovanja.\nKorist za Savsko: Tuji 
+ glasbeniki ali umetniki lahko v studiu v Savskem vodijo delavnice in nasto
+ pajo\, tudi za starejše in medgeneracijske skupine.
+URL:https://culture.ec.europa.eu/culture-moves-europe/call-for-residency-ho
+ sts
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Culture Moves Europe – gostitelji rezidenc
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:crea-cme-mobility-2026-2027@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20270430T235900
+DTEND;TZID=Europe/Brussels:20270501T001400
+SUMMARY:Kultura premika Evropo (Culture Moves Europe): poziv za individualn
+ o mobilnost 2026–2027
+DESCRIPTION:Culture Moves Europe – individualna mobilnost\nRok: Tekoči m
+ esečni roki: 31. 1.\, 28. 2.\, 31. 3. in 30. 4. 2027 (v 2026 sta bila 31.
+  10. in 30. 11.\; decembra roka ni). Prijava posameznika ali skupine do 5 
+ oseb prek Goethe Application Portal. Rezultat v osmih tednih po roku.\nZne
+ sek: Dnevnica 85 € na dan izvedbe projekta\; potni dodatek 400 € (do 5
+ .000 km) ali 800 € (od 5.000 km)\; možni dodatki za zeleno pot\, druži
+ no\, vizum in dostopnost.\nKdo: Umetniki in kulturni delavci\, stari vsaj 
+ 18 let\, z zakonitim prebivališčem v državi programa Ustvarjalna Evropa
+  (tudi Slovenija)\, na področjih glasbe\, uprizoritvenih\, vizualnih umet
+ nosti\, knjige\, dediščine\, arhitekture ali oblikovanja.\nKorist za Sav
+ sko: Lokalni glasbeniki in kulturni delavci lahko na izmenjavi pridobijo z
+ nanja in jih prenesejo v studio ter delavnice v naselju.
+URL:https://culture.ec.europa.eu/culture-moves-europe/call-for-individual-m
+ obility
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Culture Moves Europe – individualna mobilnost
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-neb-2026-01@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20261201T170000
+DTEND;TZID=Europe/Brussels:20261201T171500
+SUMMARY:Obzorje Evropa: Novi evropski Bauhaus (HORIZON-NEB-2026-01) – pre
+ obrazba sosesk v lepša\, trajnostna in vključujoča okolja
+DESCRIPTION:Novi evropski Bauhaus 2026 – soseske\nRok: Odprtje 5. 5. 2026
+ \, rok 1. 12. 2026 ob 17.00 po bruseljskem času. Devet tem v treh sklopih
+  (sodelovanje\, krožno grajenje\, poslovni modeli). Prijava prek portala 
+ Funding & Tenders\, oznaka HORIZON-NEB-2026-01.\nZnesek: Skupni proračun 
+ sklopa 101\,1 mio €. Pričakovani prispevek EU na projekt približno 5
+ –6\,3 mio € (odvisno od teme\; npr. prostorsko načrtovanje sosesk oko
+ li 5 mio €\, izkušnje prebivalcev in dobro počutje okoli 5 mio €).\n
+ Kdo: Pravne osebe iz držav članic EU (tudi Slovenija) in držav\, pridru
+ ženih Obzorju Evropa. Projekti v mednarodnih konzorcijih po pravilih Obzo
+ rja Evropa (običajno vsaj tri neodvisne osebe iz treh držav\, od tega vs
+ aj ena iz EU).\nKorist za Savsko: Savsko kot preizkusna soseska za vključ
+ ujočo in zeleno prenovo javnega prostora\, z merjenjem izkušenj prebival
+ cev in sodelovanjem MOL.
+URL:https://cinea.ec.europa.eu/funding-opportunities/calls-proposals/horizo
+ n-europe-eur-1011-million-under-new-european-bauhaus-facility_en
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Novi evropski Bauhaus 2026 – soseske
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-miss-2026-07-cross-04@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20270113T170000
+DTEND;TZID=Europe/Brussels:20270113T171500
+SUMMARY:Obzorje Evropa: HORIZON-MISS-2026-07-CROSS-04\, krajevni preizkusi 
+ upravljanja in financiranja za izvajanje misij EU
+DESCRIPTION:Obzorje Evropa: krajevni modeli za misije EU\nRok: Odprtje 6. 1
+ 0. 2026\, rok 13. 1. 2027 ob 17.00 po bruseljskem času. Konzorcij naj vod
+ i lokalna oblast. Prijava prek portala Funding & Tenders.\nZnesek: Skupni 
+ proračun teme 3\,62 mio €. Predvideni trije projekti\; pričakovani pri
+ spevek EU na projekt približno 1–1\,5 mio €.\nKdo: Mednarodni konzorc
+ iji po pravilih Obzorja Evropa\; temo naj vodijo lokalne oblasti iz držav
+  članic EU ali pridruženih držav (Slovenija je upravičena). Partnerji 
+ so lahko tudi NVO\, raziskovalne organizacije in podjetja.\nKorist za Savs
+ ko: MOL lahko s partnerji preizkusi\, kako v Savskem združiti javno in za
+ sebno financiranje za zeleno mobilnost\, čistejši zrak in podnebno prila
+ gajanje.
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/HORIZON-MISS-2026-07-CROSS-04
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Obzorje Evropa: krajevni modeli za misije EU
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-neb-2027-01-participation-02@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20271201T170000
+DTEND;TZID=Europe/Brussels:20271201T171500
+SUMMARY:Obzorje Evropa: HORIZON-NEB-2027-01-PARTICIPATION-02\, medgeneracij
+ ske soseske in skupnosti po načelih Novega evropskega Bauhausa
+DESCRIPTION:Novi evropski Bauhaus 2027 – medgeneracijske soseske\nRok: Od
+ prtje 5. 5. 2027\, rok 1. 12. 2027 ob 17.00 po srednjeevropskem času. Del
+  sklopa HORIZON-NEB-2027-01. Prijava prek portala Funding & Tenders\, ko s
+ e razpis odpre.\nZnesek: Za to temo je v delovnem programu predvidenih 10\
+ ,50 mio €\; pričakovani prispevek EU okoli 5\,25 mio € na projekt\, p
+ redvidena dva projekta. Demonstrirati je treba vsaj tri rešitve v vsaj tr
+ eh soseskah (mestna\, obmestna in podeželska) v različnih državah EU al
+ i pridruženih državah.\nKdo: Pravne osebe iz držav članic EU (tudi Slo
+ venija) in držav\, pridruženih Obzorju Evropa\, v mednarodnem konzorciju
+  po pravilih Obzorja Evropa.\nKorist za Savsko: Savsko kot preizkusna medg
+ eneracijska soseska: skupni prostori\, poti za starejše in otroke ter zel
+ ena prenova\, merjena skupaj s partnerji iz drugih držav.
+URL:https://new-european-bauhaus.europa.eu/calls-proposals/intergenerationa
+ l-neighbourhoods-and-communities-aligned-new-european-bauhaus_en
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Novi evropski Bauhaus 2027 – medgeneracijske soseske
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:catalyse-neb-2027@anketa.savska.org
+DTSTAMP:20261121T142000Z
+DTSTART;TZID=Europe/Brussels:20270115T170000
+DTEND;TZID=Europe/Brussels:20270115T171500
+SUMMARY:EIT Community New European Bauhaus: Catalyse NEB 2027 (akcelerator 
+ za startupe)
+DESCRIPTION:Catalyse NEB 2027 (startupi)\nRok: Odprtje 26. oziroma 29. 10. 
+ 2026\, rok 15. 1. 2027 ob 17.00 po srednjeevropskem času. Program traja o
+ d 31. 5. do 31. 12. 2027. Prijava v angleščini na platformi Awards (neb.
+ awardsplatform.com). Izbranci podpišejo tudi sporazum SAFE.\nZnesek: Izbr
+ ani startup prejme 22.000 € nepovratnih sredstev (v dveh obrokih po 11.0
+ 00 €) in mentorske storitve akceleratorja. V programu je 20 mest\; po ra
+ zpisnem priročniku je na startup namenjenih 50.000 € (subvencija in sto
+ ritve v naravi)\, skupaj 1.000.000 €.\nKdo: Dobičkonosni startupi\, ust
+ anovljeni po 1. 1. 2022 v upravičeni državi (tudi Slovenija)\, z PIC\, T
+ RL/BRL vsaj 4 ali predhodno udeležbo v Ignite NEB\, več kot 50 % deleže
+ m ustanoviteljev\, največ 1 mio € zbranega kapitala\, ter vsaj 15.000 
+ € prihodkov v 2026 ali 40.000 € naložbe ali udeležbo v Ignite NEB. U
+ smerjeni morajo biti v vrednote NEB in vsaj eno področje Climate KIC\, EI
+ T Food ali EIT Urban Mobility.\nKorist za Savsko: Lokalni startup z rešit
+ vijo za zrak\, mobilnost ali zeleno infrastrukturo v naselju lahko vstopi 
+ v akcelerator NEB (22.000 € in mentorstvo).
+URL:https://neb.eitcommunity.eu/catalyse-neb-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Catalyse NEB 2027 (startupi)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
