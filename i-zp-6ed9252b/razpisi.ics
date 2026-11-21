@@ -1507,5 +1507,94 @@ DESCRIPTION:Rok: NetZeroCities ECT2 (misijska mesta)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:openair-community-grants-fall-2026@anketa.savska.org
+DTSTAMP:20261121T055000Z
+DTSTART;TZID=Europe/Ljubljana:20261130T235900
+DTEND;TZID=Europe/Ljubljana:20261201T001400
+SUMMARY:Open Air Foundation: Community Grants\, jesenski krog 2026 – brez
+ plačni zunanji merilniki PM2\,5 za skupnosti
+DESCRIPTION:Open Air Foundation – merilniki zraka za skupnosti\nRok: Prij
+ ave 1.–30. 11. 2026 (ura zaprtja na strani ni navedena\; oddati prej kot
+  30. 11.). Prijava prek portala fundacije\, potreben je tudi približno dv
+ ominutni video predstavitve.\nZnesek: Pretežno v naravi: zunanji merilnik
+ i PM2\,5 (AirGradient)\, mednarodna dostava in carina\; omejena dodatna sr
+ edstva v USD za lokalni prevoz in namestitev. Tipični projekti 20–60 me
+ rilnikov\, brez fiksne zgornje meje.\nKdo: Skupnostne skupine\, šole in i
+ zobraževalne ustanove\, občanski znanstveniki\, raziskovalne ustanove\; 
+ tudi posamezniki z lokalno mrežo. Država ni izrecno izključena\, fundac
+ ija pa daje prednost projektom na globalnem jugu.\nKorist za Savsko: Savsk
+ o bi dobilo mrežo merilnikov PM2\,5 ob cestah in šoli z javnimi podatki\
+ , ki pokažejo\, kje je zrak najslabši in ali ukrepi (živa meja\, umirja
+ nje prometa) delujejo.
+URL:https://openair.foundation/community-grants
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Open Air Foundation – merilniki zraka za skupnosti
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:jr-ddk-2027-2028@anketa.savska.org
+DTSTAMP:20261121T055000Z
+DTSTART;TZID=Europe/Ljubljana:20270108T120000
+DTEND;TZID=Europe/Ljubljana:20270108T121500
+SUMMARY:Javni razpis za financiranje neformalnih izobraževanj za odrasle n
+ a področju digitalnih kompetenc za leti 2027 in 2028 (JR DDK 2027–2028\
+ , ESS+)
+DESCRIPTION:JR DDK 2027–2028 (digitalne veščine 30+)\nRok: Objavljen 20
+ . 11. 2026 (MNZJU\, št. 430-35/2025-3150). Rok za prijavo 8. 1. 2027 do 1
+ 2.00. Vprašanja do 4. 1. 2027 do 15.00. Spletni informativni dan 9. 12. 2
+ 026 ob 10.00 (prijava prek dogodki.vlada.si).\nZnesek: Na strani objave zn
+ esek ni naveden\; po napovedi na evropskasredstva.si 6.513.654\,99 € (pr
+ ispevek EU 4.088.914\,35 €) – preveriti v besedilu razpisa.\nKdo: S. p
+ . ter pravne osebe zasebnega in javnega prava (zavodi\, društva\, zveze d
+ ruštev\, ustanove\, zadruge) z glavno dejavnostjo neformalnega izobražev
+ anja (85.590) ali srednje-\, višje- ali visokošolskega izobraževanja\; 
+ samostojno ali v konzorciju. Udeleženci: prebivalci\, stari 30 let ali ve
+ č.\nKorist za Savsko: Digitalni tečaji za starejše v naselju\, kjer je 
+ veliko enočlanskih gospodinjstev\, da lažje ostanejo v stiku in pridejo 
+ do storitev.
+URL:https://www.gov.si/zbirke/javne-objave/dodaj-javna-objava-261120131112/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: JR DDK 2027–2028 (digitalne veščine 30+)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esc-2027@anketa.savska.org
+DTSTAMP:20261121T055000Z
+DTSTART;TZID=Europe/Brussels:20270218T120000
+DTEND;TZID=Europe/Brussels:20270218T121500
+SUMMARY:Evropska solidarnostna enota 2027 (EAC/A12/2026) – solidarnostni 
+ in prostovoljski projekti (MOVIT)
+DESCRIPTION:ESE / ESC 2027\nRok: Razpis objavljen 19. 11. 2026 (UL EU C/202
+ 6/6150). Solidarnostni projekti: 18. 2. 2027 (neobvezni krog)\, 5. 5. 2027
+  in 5. 10. 2027\, vsakič do 12.00 (bruseljski čas). Prostovoljski projek
+ ti: 18. 2. 2027 (neobvezni krog) in 5. 10. 2027. Znak kakovosti: 30. 9. 20
+ 27.\nZnesek: Ocenjen skupni proračun razpisa 145.400.000 € (UL EU)\; MO
+ VIT v novici navaja 194 mio €. Višine dotacij določa Vodnik ESE 2027.\
+ nKdo: Solidarnostni projekti: skupine mladih (18–30 let)\, registrirane 
+ na portalu ESE\; prostovoljski projekti: organizacije z znakom kakovosti. 
+ Nacionalna agencija: MOVIT.\nKorist za Savsko: Mladi prostovoljci v naselj
+ u (npr. pomoč starejšim\, urejanje zelenja).
+URL:https://www.movit.si/objavljen-razpis-za-program-evropska-solidarnostna
+ -enota-za-leto-2027/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: ESE / ESC 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
