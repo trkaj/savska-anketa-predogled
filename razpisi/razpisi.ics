@@ -1596,5 +1596,92 @@ DESCRIPTION:Rok: ESE / ESC 2027
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:srrs-lokalno-obcine-2026@anketa.savska.org
+DTSTAMP:20261121T133000Z
+DTSTART;TZID=Europe/Ljubljana:20271231T160000
+DTEND;TZID=Europe/Ljubljana:20271231T161500
+SUMMARY:SRRS: javni razpis za finančna produkta LOKALNO OBČINE Obmejna in
+  LOKALNO OBČINE (posojila občinam za zeleni prehod)
+DESCRIPTION:SRRS LOKALNO OBČINE (posojila občinam)\nRok: Oddaja od 3. 9. 
+ 2026 od 8.00 do 31. 12. 2027 do 16.00 oziroma do porabe sredstev\, izklju
+ čno prek e-Rsklad. Za Ljubljano pride v poštev sklop LOKALNO OBČINE (ne
+  Obmejna).\nZnesek: Skupaj 15.000.000 € posojil (5.000.000 € Obmejna\,
+  10.000.000 € LOKALNO OBČINE za vso Slovenijo). Za Ljubljano (LOKALNO O
+ BČINE): posojilo od 50.000 do 4.000.000 €\; fiksna obrestna mera od 1\,
+ 71 % do največ 3\,30 % ali 6-mesečni EURIBOR + pribitek od 0\,47 % do na
+ jveč 1\,59 %. Doba vračanja 60–300 mesecev.\nKdo: Občine v Republiki 
+ Sloveniji. Ljubljana je upravičena v sklopu LOKALNO OBČINE (celotna Slov
+ enija)\, ne v sklopu Obmejna.\nKorist za Savsko: Ugodno posojilo MOL za ze
+ leno-modro infrastrukturo\, trajnostno mobilnost ali prilagajanje na vroč
+ ino in padavine v naselju.
+URL:https://www.srrs.si/javni-razpisi/lokalno-obcine-3/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: SRRS LOKALNO OBČINE (posojila občinam)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pact2school-2026-27@anketa.savska.org
+DTSTAMP:20261121T133000Z
+DTSTART;TZID=Europe/Brussels:20270115T120000
+DTEND;TZID=Europe/Brussels:20270115T121500
+SUMMARY:European Climate Pact: Pact2School Challenge 2026–2027 (spomladan
+ sko okno)
+DESCRIPTION:Pact2School (Climate Pact)\nRok: Spomladansko okno do 15. 1. 20
+ 27 ob 12.00 CET za dejavnosti februar–marec 2027. Jesensko okno (9. 10. 
+ 2026) je zaprto. Pred izzivom je treba izvesti vsaj eno ozaveščevalno ur
+ o z ambasadorjem ali partnerjem Climate Pact in jo registrirati.\nZnesek: 
+ Do 1.000 € za izvedbo dijaskega ali študentskega podnebnega projekta.\n
+ Kdo: Šole in univerze v EU v partnerstvu z ambasadorjem ali partnerjem Eu
+ ropean Climate Pact.\nKorist za Savsko: OŠ Savsko naselje ali vrtec lahko
+  z ambasadorjem Pacta izvede meritev zraka\, zeleni odmor ali odprtje igri
+ šča popoldne in za to dobi manjši znesek.
+URL:https://climate-pact.europa.eu/join-our-new-pact2school-campaign_en
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Pact2School (Climate Pact)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-nature-2027-02-02@anketa.savska.org
+DTSTAMP:20261121T133000Z
+DTSTART;TZID=Europe/Brussels:20270114T170000
+DTEND;TZID=Europe/Brussels:20270114T171500
+SUMMARY:Obzorje Evropa: living labi za obnovo ekosistemov (HORIZON-NATURE-2
+ 027-02-02) v razpisu o naravi 2027
+DESCRIPTION:Obzorje Evropa: living labi za obnovo ekosistemov\nRok: Odprtje
+  13. 10. 2026\, rok 14. 1. 2027 ob 17.00 po bruseljskem času. To je tema 
+ living labov v vodoravnem razpisu o naravi (HORIZON-NATURE-2027-02). Druge
+  teme istega sklopa imajo isti rok\; HORIZON-NATURE-2027-04 ima rok 16. 2.
+  2027\, HORIZON-NATURE-2027-03 pa 16. 9. 2027.\nZnesek: Za temo living lab
+ ov (HORIZON-NATURE-2027-02-02) 60 mio €\, pričakovano okoli 10 mio € 
+ na projekt (okoli 6 projektov). Celoten vodoravni razpis o naravi ima okvi
+ rno 230 mio €.\nKdo: Mednarodni raziskovalni konzorcij po pravilih Obzor
+ ja Evropa (običajno vsaj trije neodvisni partnerji iz treh držav\, od te
+ ga vsaj ena iz EU). Tema living labov zahteva več preizkusnih mest v več
+  državah.\nKorist za Savsko: Če je univerza v konzorciju living laba\, l
+ ahko naselje postane preizkusno mesto za obnovo zelenja in merjenje učink
+ ov ob Savi.
+URL:https://rea.ec.europa.eu/funding-and-grants/horizon-europe-cluster-6-fo
+ od-bioeconomy-natural-resources-agriculture-and-environment/transformative
+ -change-towards-nature-positive-economy-and-society_en
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: Obzorje Evropa: living labi za obnovo ekosistemov
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
