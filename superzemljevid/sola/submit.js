@@ -1,5 +1,13 @@
 import {api,upload,preparePhoto,download} from './data.mjs';
 import {recordText,surveyUrl} from './core.mjs';
+
+/* Oddaja v zasebno tabelo ostane izklopljena, dokler skrbnik ne potrdi vklopa.
+   RECEIVER_URL je URL spletne aplikacije Apps Script (po namestitvi). */
+const ODDAJA_VKLOPLJENA = false;
+const RECEIVER_URL = '';
+const RECEIVER_TOKEN = '';
+const MOOD_MARK = {veselo: '😊', srednje: '😐', zalostno: '☹️'};
+
 const $=id=>document.getElementById(id);
 export function attachSubmission({getRecord,validate,resetMap,toast}){
  let id=crypto.randomUUID(),photo=null,photoUrl=null,photoSequence=0,photoBusy=false,busy=false,saved=null,pending=null;
@@ -8,7 +16,7 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
   for(const e of $('proposalForm').querySelectorAll('input,select,textarea,button'))e.disabled=busy||!!saved||!!pending;
   for(const name of ['reset','newProposal','downloadCard','openSurvey','copyText','deleteProposal'])$(name).disabled=busy||photoBusy;
   $('submitProposal').disabled=busy||photoBusy||!!saved;
-  $('submitProposal').hidden=!!saved;
+  $('submitProposal').hidden=!!saved||!ODDAJA_VKLOPLJENA;
  }
  function clearPhoto(){++photoSequence;photo=null;photoBusy=false;if(photoUrl)URL.revokeObjectURL(photoUrl);photoUrl=null;$('photoPreview').removeAttribute('src');$('photoPreview').hidden=true;$('removePhoto').hidden=true;$('photoConsentLabel').hidden=true;$('photoConsent').required=false;$('photoConsent').checked=false;$('aiRequested').checked=false;$('photoStatus').textContent='';$('cameraPhoto').value='';$('galleryPhoto').value='';lock();}
  async function addPhoto(file){
@@ -17,18 +25,48 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
   catch(e){if(sequence===photoSequence){error(e.message);$('photoStatus').textContent='Fotografija ni dodana.';}}
   finally{if(sequence===photoSequence){photoBusy=false;lock();}}
  }
+ function sheetPayload(record){
+  const point=record.point;
+  return{
+   id,
+   vrsta:'predlog',
+   razred:record.grade||'',
+   kategorija:record.topic||'',
+   smesko:MOOD_MARK[record.mood]||record.mood||'',
+   besedilo:String(record.text||'').slice(0,140),
+   lon:point?point[0]:'',
+   lat:point?point[1]:'',
+   geometrija:point?{type:'Point',coordinates:point}:'',
+   token:RECEIVER_TOKEN,
+   website:($('website')&&$('website').value)||''
+  };
+ }
+ async function postToSheet(payload){
+  if(!RECEIVER_URL)throw new Error('Naslov sprejemnika še ni nastavljen.');
+  const res=await fetch(RECEIVER_URL,{
+   method:'POST',
+   redirect:'follow',
+   headers:{'Content-Type':'text/plain;charset=utf-8'},
+   body:JSON.stringify(payload)
+  });
+  const text=await res.text();
+  let data={};
+  try{data=JSON.parse(text);}catch{throw new Error('Sprejemnik ni vrnil veljavnega odgovora.');}
+  if(!data.ok)throw new Error('Oddaja ni uspela.');
+  return{id:data.id||payload.id,created_at:new Date().toISOString()};
+ }
  $('cameraPhoto').onchange=e=>addPhoto(e.target.files[0]);$('galleryPhoto').onchange=e=>addPhoto(e.target.files[0]);$('removePhoto').onclick=clearPhoto;
  $('proposalForm').onsubmit=async e=>{
-  e.preventDefault();error('Oddaja v zasebno zbirko še ni vklopljena.');return;if(busy||photoBusy||saved||!validate())return;
+  e.preventDefault();
+  if(!ODDAJA_VKLOPLJENA){error('Oddaja v zasebno zbirko še ni vklopljena.');return;}
+  if(busy||photoBusy||saved||!validate())return;
   if(!pending&&$('aiRequested').checked&&!photo){error('Za fotomontažo dodaj fotografijo prostora. Predlog lahko oddaš tudi brez te želje.');return;}
   if(!pending&&(!$('consent').checked||(photo&&!$('photoConsent').checked))){error('Preberi in potrdi oddajo predloga ter fotografije.');return;}
   busy=true;lock();error('');$('submitProposal').textContent='Shranjujem …';
   try{
-   // Establish the session cookie before the first write, so a lost response can be retried safely.
-   await api('/session');
-   if(!pending){const r=getRecord();pending={...r,id,longitude:r.point[0],latitude:r.point[1],location:r.place,description:r.text,residence:$('residence').value||null,safety:$('safety').value?Number($('safety').value):null,ai_requested:$('aiRequested').checked,consent:true,photo_consent:$('photoConsent').checked,website:$('website').value};}
-   const form=new FormData();form.set('proposal',JSON.stringify(pending));if(photo)form.set('photo',photo,'izvirnik.jpg');
-   saved=await upload('/school/proposals',form,n=>{$('submitProposal').textContent=n<100?`Nalagam ${n} % …`:'Potrjujem shranjevanje …';});
+   if(!pending){const r=getRecord();pending=sheetPayload(r);}
+   /* Fotografije se v tabelo ne pošiljajo. */
+   saved=await postToSheet(pending);
    $('saveReceipt').textContent=`Oznaka: ${saved.id} · ${new Date(saved.created_at).toLocaleString('sl-SI')}`;
    $('saveResult').hidden=false;$('stepIdea').classList.remove('current');$('stepSave').classList.add('current');$('saveResult').focus();toast('Hvala! Predlog je shranjen.');
   }catch(e){error(e.message+(pending?' Ob ponovitvi se pošlje isti predlog; za novo vsebino izberi »Začni znova«.':''));$('formError').scrollIntoView({block:'nearest'});}
@@ -47,7 +85,9 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
  $('openSurvey').onclick=()=>{if(!validate())return;const url=surveyUrl(pending||getRecord(),location.origin);$('retrySurvey').href=url;$('handoffResult').hidden=false;window.open(url,'_blank','noopener,noreferrer');};
  $('copyText').onclick=async()=>{try{await navigator.clipboard.writeText(recordText(pending||getRecord(),location.origin));toast('Besedilo je kopirano.');}catch{toast('Kopiranje ni uspelo. Prenesi besedilno kartico.');}};
  $('privacyOpen').onclick=()=>$('aboutDialog').showModal();
- $('submitProposal').hidden=true;$('deleteProposal').hidden=true;/* fotografija ostane vidna kot neobvezna; oddaja ostane izklopljena */
- const staticNote=document.createElement('p');staticNote.className='notice';staticNote.textContent='Oddaja v zasebno zbirko še ni vklopljena. Ko jo skrbnik potrdi (kam se shranjuje in kdo vidi), bo gumb Shrani predlog znova na voljo.';$('proposalForm').prepend(staticNote);
+ $('submitProposal').hidden=!ODDAJA_VKLOPLJENA;$('deleteProposal').hidden=true;/* fotografija ostane vidna kot neobvezna; oddaja ostane izklopljena */
+ if(!ODDAJA_VKLOPLJENA){
+  const staticNote=document.createElement('p');staticNote.className='notice';staticNote.textContent='Oddaja v zasebno zbirko še ni vklopljena. Ko jo skrbnik potrdi (kam se shranjuje in kdo vidi), bo gumb Shrani predlog znova na voljo.';$('proposalForm').prepend(staticNote);
+ }
  return {isLocked:()=>busy||!!saved||!!pending};
 }
