@@ -32,6 +32,11 @@
     drugo: 'Drugo'
   };
   const CELL_M = 50;
+  /* Prag za javni prikaz odseka poti. 5 = stari filter, 1 = pokaži tudi redke odseke. */
+  const MIN_POTI = 1;
+  /* Če >0, pri odsekih z manj kot 5 potmi skrij prvih N metrov od začetka poti (dom). Kompromis: 100. */
+  const SKRIJ_ZACETEK_M = 0;
+  const MIN_POTI_POLNI_ZACETEK = 5;
   const LAT0 = 46.0635, LON0 = 14.5223;
   const M_PER_LAT = 111320;
   const M_PER_LON = 111320 * Math.cos(LAT0 * Math.PI / 180);
@@ -251,7 +256,30 @@
   }
 
   /* Poti ne obrezujemo in jih ne začenjamo pri križišču.
-     Anonimnost: javno samo zbirni prikaz, odseki z manj kot 5 potmi ostanejo skriti. */
+     Anonimnost: javno samo zbirni prikaz (brez imen, razreda in časa oddaje).
+     Prag in skriti začetek: MIN_POTI in SKRIJ_ZACETEK_M. */
+  function lineLengthM(coords) {
+    let n = 0;
+    for (let i = 1; i < (coords || []).length; i++) {
+      const a = toMeters(coords[i - 1][0], coords[i - 1][1]);
+      const b = toMeters(coords[i][0], coords[i][1]);
+      n += Math.hypot(b[0] - a[0], b[1] - a[1]);
+    }
+    return n;
+  }
+  function pointAlong(a, b, t) {
+    return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+  }
+  /* Odreži začetek odseka, če je od izhodišča poti bližje od hideM metrov. */
+  function clipSegmentAfter(coords, fromStart, toStart, hideM) {
+    if (!coords || coords.length < 2) return null;
+    if (!(hideM > 0) || toStart <= hideM) return null;
+    if (fromStart >= hideM) return coords;
+    const span = (toStart - fromStart) || 1e-9;
+    const t = (hideM - fromStart) / span;
+    const a = coords[0], b = coords[coords.length - 1];
+    return [pointAlong(a, b, Math.max(0, Math.min(1, t))), b];
+  }
   function trimPath(coords, meters) {
     return coords || [];
   }
@@ -313,12 +341,21 @@
       if (!isReviewed(p)) continue;
       const primer = !!p.primer;
       const pid = p.id || ('pot-' + out.length);
+      let along = 0;
+      function pushPair(a, b, safety) {
+        const d = (function () {
+          const A = toMeters(a[0], a[1]), B = toMeters(b[0], b[1]);
+          return Math.hypot(B[0] - A[0], B[1] - A[1]);
+        })();
+        out.push({id: pid, coords: [a, b], safety, primer, fromStart: along, toStart: along + d});
+        along += d;
+      }
       if (Array.isArray(p.odseki) && p.odseki.length) {
         for (const od of p.odseki) {
           const coords = od.coordinates || od.coords;
           const safety = PATH_SAFETY[od.safety] ? od.safety : 'varno';
           if (!coords || coords.length < 2) continue;
-          out.push({id: pid, coords, safety, primer});
+          for (let i = 0; i < coords.length - 1; i++) pushPair(coords[i], coords[i + 1], safety);
         }
         continue;
       }
@@ -336,11 +373,10 @@
         if (!c || !Number.isFinite(c[0])) continue;
         marks.push({lon: c[0], lat: c[1], safety: 'pazi'});
       }
-      /* Razreži na kratke odseke in pobarvaj po najbližji oznaki. */
       for (let i = 0; i < coords.length - 1; i++) {
         const a = coords[i], b = coords[i + 1];
         const mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-        out.push({id: pid, coords: [a, b], safety: safetyOfPoint(mid[0], mid[1], marks), primer});
+        pushPair(a, b, safetyOfPoint(mid[0], mid[1], marks));
       }
     }
     return out;
@@ -352,25 +388,33 @@
     segs.forEach(s => {
       const mid = s.coords[0];
       const key = cellKey(mid[0], mid[1], CELL_M) + '|' + s.safety;
-      if (!buckets.has(key)) buckets.set(key, {safety: s.safety, segs: [], ids: new Set(), primer: false, coords: []});
+      if (!buckets.has(key)) buckets.set(key, {safety: s.safety, segs: [], ids: new Set(), primer: false});
       const b = buckets.get(key);
       b.segs.push(s);
       b.ids.add(s.id);
       b.primer = b.primer || s.primer;
-      b.coords.push(s.coords);
     });
     const out = [];
     for (const b of buckets.values()) {
-      if (b.ids.size < 5) continue; /* javno skrij odseke z manj kot 5 potmi */
+      if (b.ids.size < MIN_POTI) continue;
+      const hideStart = SKRIJ_ZACETEK_M > 0 && b.ids.size < MIN_POTI_POLNI_ZACETEK;
+      const coords = [];
+      b.segs.forEach(s => {
+        const clipped = hideStart
+          ? clipSegmentAfter(s.coords, s.fromStart, s.toStart, SKRIJ_ZACETEK_M)
+          : s.coords;
+        if (clipped && clipped.length >= 2) coords.push(clipped);
+      });
+      if (!coords.length) continue;
       let slon = 0, slat = 0, n = 0;
-      b.coords.forEach(pair => pair.forEach(c => { slon += c[0]; slat += c[1]; n++; }));
+      coords.forEach(pair => pair.forEach(c => { slon += c[0]; slat += c[1]; n++; }));
       out.push({
         safety: b.safety,
         color: PATH_SAFETY[b.safety],
         count: b.ids.size,
         lon: slon / n,
         lat: slat / n,
-        coords: b.coords[0],
+        coords: coords[0],
         primer: b.primer,
         wide: false
       });
@@ -387,7 +431,7 @@
 
   root.SolaPristojnost = {
     SHOW_ZVETL_IN_SCHOOL_VIEW,
-    REVIEWED, CATEGORIES, TOPIC_MAP, COLORS, MOODS, PATH_SAFETY, PATH_SAFETY_LABEL, UNSAFE_REASONS, CELL_M, KNOWN_KRAJI,
+    REVIEWED, CATEGORIES, TOPIC_MAP, COLORS, MOODS, PATH_SAFETY, PATH_SAFETY_LABEL, UNSAFE_REASONS, CELL_M, MIN_POTI, SKRIJ_ZACETEK_M, MIN_POTI_POLNI_ZACETEK, KNOWN_KRAJI,
     mapTopic, stanceFromKind, stanceLabel, stripProps, isReviewed,
     contains, findParcel, kamGrePredlog, kamGreJavno, hasZvetlAnnotation, opravilne, parcelZvetl,
     reviewedPoints, clusterPoints, clusterCollection, attachKam,

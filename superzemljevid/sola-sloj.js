@@ -161,7 +161,7 @@
       ).join('');
       html += `<div class="sola-legend">` +
         (on ? `<span><b>Predlogi učencev</b> — zbirno, najmanj 5</span>${swatches}` : '') +
-        (unsafeOn ? `<span>Pot v šolo (zbirno, najmanj 5): <i style="background:#22c55e"></i>Varno <i style="background:#eab308"></i>Pazi <i style="background:#dc2626"></i>Nevarno</span>` : '') +
+        (unsafeOn ? `<span>Pot v šolo (zbirno): <i style="background:#22c55e"></i>Varno <i style="background:#eab308"></i>Pazi <i style="background:#dc2626"></i>Nevarno</span>` : '') +
         (pobudeOn ? `<span>Pobude meščanov ob igriščih</span>` : '') +
         (usingPrimer || usingPrimerPoti ? `<p class="primer-flag">PRIMER podatki — izmišljeni, niso pravi vnosi.</p>` : '') +
         `<p>Hvala šolskemu parlamentu in vsem, ki so dali predloge. <a href="${FORM_URL}" target="_blank" rel="noopener">Google obrazec</a></p>` +
