@@ -21,7 +21,7 @@ function setTab(next) {
   if (hint) {
     hint.textContent = pred
       ? 'Za svoj predlog označi mesto na zemljevidu.'
-      : 'Nariši pot s kliki po zemljevidu. Za zasebnost jo začnemo pri vogalu, ne pri hišnih vratih.';
+      : 'Nariši pot s kliki po zemljevidu. Javno se vidi samo zbirno, kje hodijo otroci v šolo; odseki z manj kot 5 potmi ostanejo skriti.';
   }
   drawPathPreview();
 }
@@ -113,7 +113,7 @@ function toast(msg) {
 function finishPath() {
   if (path.length < 2) { toast('Najprej nariši pot z vsaj dvema točkama.'); return; }
   const P = window.SolaPristojnost;
-  if (P && P.preparePath) path = P.preparePath(path, window.solaCorners || []);
+  /* Poti ne obrezujemo; anonimnost je v zbirnem prikazu (najmanj 5 poti). */
   $('pathDone').dataset.done = '1';
   const box = $('pathMarks');
   if (box) box.hidden = false;

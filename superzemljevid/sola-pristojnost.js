@@ -250,68 +250,17 @@
     return clusterPoints(reviewedPoints(collection), parcels, zvetl);
   }
 
-  /* Pot: odštrij prvih in zadnjih ~100 m (da se ne vidi domačih vrat).
-     Če je v 80 m vogal/križišče, začni/končaj tam. */
-  function lineLengthM(coords) {
-    let n = 0;
-    for (let i = 1; i < coords.length; i++) {
-      const a = toMeters(coords[i - 1][0], coords[i - 1][1]);
-      const b = toMeters(coords[i][0], coords[i][1]);
-      n += Math.hypot(b[0] - a[0], b[1] - a[1]);
-    }
-    return n;
-  }
+  /* Poti ne obrezujemo in jih ne začenjamo pri križišču.
+     Anonimnost: javno samo zbirni prikaz, odseki z manj kot 5 potmi ostanejo skriti. */
   function trimPath(coords, meters) {
-    if (!coords || coords.length < 2) return coords || [];
-    const total = lineLengthM(coords);
-    if (total <= meters * 2 + 20) {
-      /* Prekratka pot: ohrani srednji del, če je kaj ostalo. */
-      meters = Math.max(10, total / 4);
-    }
-    function cut(fromStart) {
-      const pts = fromStart ? coords.slice() : coords.slice().reverse();
-      let left = meters;
-      const out = [];
-      for (let i = 0; i < pts.length - 1; i++) {
-        const a = toMeters(pts[i][0], pts[i][1]);
-        const b = toMeters(pts[i + 1][0], pts[i + 1][1]);
-        const d = Math.hypot(b[0] - a[0], b[1] - a[1]) || 0.0001;
-        if (left <= 0) {
-          out.push(pts[i]);
-        } else if (left < d) {
-          const t = left / d;
-          const p = fromMeters(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t);
-          out.push(p);
-          left = 0;
-        } else {
-          left -= d;
-        }
-      }
-      out.push(pts[pts.length - 1]);
-      return fromStart ? out : out.reverse();
-    }
-    return cut(true);
+    return coords || [];
   }
   function nearestCorner(lon, lat, corners, maxM) {
-    if (!corners || !corners.length) return null;
-    const a = toMeters(lon, lat);
-    let best = null, bestD = maxM;
-    for (const c of corners) {
-      const b = toMeters(c[0], c[1]);
-      const d = Math.hypot(b[0] - a[0], b[1] - a[1]);
-      if (d < bestD) { bestD = d; best = c; }
-    }
-    return best;
+    return null;
   }
   function preparePath(coords, corners) {
     if (!coords || coords.length < 2) return coords || [];
-    let pts = coords.map(c => [c[0], c[1]]);
-    const start = nearestCorner(pts[0][0], pts[0][1], corners, 80);
-    const end = nearestCorner(pts[pts.length - 1][0], pts[pts.length - 1][1], corners, 80);
-    if (start) pts[0] = start;
-    if (end) pts[pts.length - 1] = end;
-    if (!start || !end) pts = trimPath(pts, 100);
-    return pts;
+    return coords.map(c => [c[0], c[1]]);
   }
 
   function reviewedUnsafe(pathCollection) {
