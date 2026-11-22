@@ -166,3 +166,4 @@ body[data-mobile-orientation=landscape][data-layers=collapsed] #layerMenu{width:
 .sola-legend{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:6px}
 .sola-legend .primer-flag,.primer-flag{flex-basis:100%;margin:4px 0 0;font-size:12px;font-weight:700;color:#b45309}
 .sola-card .primer-flag{color:#9a3412;background:#fff7ed;padding:4px 8px;border-radius:4px}
+.glas-legend{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:6px}

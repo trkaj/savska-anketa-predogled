@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "sloj": "Glas učencev",
+    "status": "kmalu",
+    "opis": "Zbirni prikaz ankete učencev. Plast je prazna, dokler šola ne pošlje anonimnega izvoza.",
+    "povzetek": "",
+    "n": 0,
+    "min_odgovorov": 1,
+    "ulice": [],
+    "razredi": [],
+    "stranski_okvir": {
+      "dogodki": {},
+      "pomoc": {},
+      "pomoc_pri": {},
+      "manjka": {},
+      "obvescanje": {}
+    },
+    "besedila": []
+  },
+  "features": []
+}
