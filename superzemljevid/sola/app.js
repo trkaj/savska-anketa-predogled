@@ -77,10 +77,13 @@ $('zoomIn').onclick=()=>zoom(.72);$('zoomOut').onclick=()=>zoom(1.4);$('home').o
 $('selectCenter').onclick=()=>{if(!state.scene)return;if(state.mode==='3d'){if(!state.viewer)return;const C=window.Cesium,v=state.viewer,p=new C.Cartesian2(v.canvas.clientWidth/2,v.canvas.clientHeight/2);select3D(p);}else selectPoint(ll([state.view.x+state.view.w/2,state.view.y+state.view.h/2]));};
 
 
+window.solaLonLatFromClient=(x,y)=>{if(!state.scene)return null;const p=screenPoint(x,y);return ll([p.x,p.y]);};
+window.solaMapMode=()=>state.mode;
+window.solaSwitchTo2d=()=>{if(state.mode!=='2d')mode('2d');};
 const svg=$('mapSvg'),pointers=new Map();let drag=null,pinch=null,moved=false;
-svg.addEventListener('pointerdown',e=>{if(e.target.closest('.import-pin,.landmark-marker'))return;svg.focus({preventScroll:true});svg.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===1){drag={x:e.clientX,y:e.clientY,v:{...state.view}};moved=false;}else{const p=[...pointers.values()];pinch=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);moved=true;}});
-svg.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2){const p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);if(pinch&&d>0)zoom(pinch/d,[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2]);pinch=d;return;}if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5)moved=true;const scale=svg.getScreenCTM().a;state.view={...drag.v,x:drag.v.x-dx/scale,y:drag.v.y-dy/scale};refreshView();}});
-function pointerEnd(e){if(!pointers.has(e.pointerId))return;const click=!moved&&pointers.size===1&&e.type==='pointerup';pointers.delete(e.pointerId);if(click){const p=screenPoint(e.clientX,e.clientY);selectPoint(ll([p.x,p.y]));}if(pointers.size===1){const p=[...pointers.values()][0];drag={x:p[0],y:p[1],v:{...state.view}};moved=true;}else drag=null;pinch=null;}
+svg.addEventListener('pointerdown',e=>{if(window.solaPathPointer?.(e))return;if(e.target.closest('.import-pin,.landmark-marker'))return;svg.focus({preventScroll:true});svg.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===1){drag={x:e.clientX,y:e.clientY,v:{...state.view}};moved=false;}else{const p=[...pointers.values()];pinch=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);moved=true;}});
+svg.addEventListener('pointermove',e=>{if(window.solaPathPointer?.(e))return;if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2){const p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);if(pinch&&d>0)zoom(pinch/d,[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2]);pinch=d;return;}if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5)moved=true;const scale=svg.getScreenCTM().a;state.view={...drag.v,x:drag.v.x-dx/scale,y:drag.v.y-dy/scale};refreshView();}});
+function pointerEnd(e){if(window.solaPathPointer?.(e))return;if(!pointers.has(e.pointerId))return;const click=!moved&&pointers.size===1&&e.type==='pointerup';pointers.delete(e.pointerId);if(click){const p=screenPoint(e.clientX,e.clientY);selectPoint(ll([p.x,p.y]));}if(pointers.size===1){const p=[...pointers.values()][0];drag={x:p[0],y:p[1],v:{...state.view}};moved=true;}else drag=null;pinch=null;}
 svg.addEventListener('pointerup',pointerEnd);svg.addEventListener('pointercancel',pointerEnd);svg.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(e.deltaY*.0015),[e.clientX,e.clientY]);},{passive:false});
 svg.addEventListener('keydown',e=>{const v=state.view,s=v.w*.08;if(e.key==='+'||e.key==='=')zoom(.72);else if(e.key==='-')zoom(1.4);else if(e.key==='Enter')$('selectCenter').click();else if(e.key==='ArrowLeft')v.x-=s;else if(e.key==='ArrowRight')v.x+=s;else if(e.key==='ArrowUp')v.y-=s;else if(e.key==='ArrowDown')v.y+=s;else return;e.preventDefault();refreshView();});
 new ResizeObserver(()=>{if(state.scene&&state.mode==='2d')refreshView();}).observe(document.querySelector('.map-stage'));
@@ -218,7 +221,7 @@ async function mode(which,userAction=false){
   }
  }
 }
-$('mode2d').onclick=()=>mode('2d');$('mode3d').onclick=()=>mode('3d',true);
+$('mode2d').onclick=()=>mode('2d');$('mode3d').onclick=()=>{if(window.solaBlock3d?.())return;mode('3d',true);};
 async function init(){try{const data=await Promise.all(['scene.json','addresses.json'].map(async n=>{const r=await fetch('../'+n);if(!r.ok)throw Error(n);return r.json();}));[state.scene,state.addresses]=data;const b=state.scene.bbox;state.H=1000*(b[3]-b[1])/((b[2]-b[0])*Math.cos(state.scene.center[1]*Math.PI/180));$('ortho').setAttribute('height',state.H);
  const boundary=state.scene.boundary.map((p,i)=>(i?'L':'M')+xy(p).join(' ')).join(' ')+' Z';
  $('areaBoundary').setAttribute('d',boundary);$('photoClipPath').setAttribute('d',boundary);

@@ -15,3 +15,6 @@
 .popravljeno{margin:20px 0;padding:12px;border:1px dashed #9bb5a8;border-radius:10px;background:#fbfefc}
 .popravljeno ul:empty{display:none}
 .path-legend i{display:inline-block;width:14px;height:8px;border-radius:2px;margin:0 4px 0 8px}
+.map-pane.drawing-path,.map-stage.drawing-path,#map2d.drawing-path,#mapSvg.drawing-path{touch-action:none}
+#mapSvg.drawing-path{cursor:crosshair}
+#pathPreview{pointer-events:none}

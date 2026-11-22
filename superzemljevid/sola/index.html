@@ -42,7 +42,7 @@
 </section>
 <aside class="idea-panel" id="idea"><h1>Moje naselje,<br><em>moj predlog.</em></h1><p class="intro">Kaj bi v Savskem naselju spremenil/a? Kaj naj ostane? Izberi mesto in povej, zakaj.</p>
 <div class="sola-tabs" role="tablist">
-<button type="button" id="tabPredlogi" role="tab" aria-selected="true">Predlogi za igrišča</button>
+<button type="button" id="tabPredlogi" role="tab" aria-selected="true">Predlogi za naselje</button>
 <button type="button" id="tabPot" role="tab" aria-selected="false">Moja pot v šolo</button>
 </div>
 <p id="playgroundHint" class="handoff-note" hidden></p>
@@ -71,11 +71,12 @@
 
 <section id="pathPanel" hidden>
   <h2>Moja pot v šolo</h2>
-  <p class="handoff-note">Nariši pot s kliki po zemljevidu. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
-  <p id="pathStatus" role="status">Klikni začetek poti na zemljevidu.</p>
+  <p class="handoff-note">Nariši pot s prstom ali miško, kot s svinčnikom. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
+  <p id="pathStatus" role="status">Potegni črto s prstom ali miško, kot s svinčnikom. Zemljevid se med risanjem ne premika.</p>
   <div class="secondary-actions">
-    <button type="button" id="pathDone">Pot je narisana</button>
+    <button type="button" id="pathUndo" disabled>Razveljavi</button>
     <button type="button" id="pathReset">Začni znova</button>
+    <button type="button" id="pathDone">Končaj</button>
   </div>
   <div id="pathMarks" hidden>
     <fieldset><legend>Kje se ne počutiš varno? (največ 3 oznake)</legend>
