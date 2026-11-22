@@ -19,7 +19,7 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
  }
  $('cameraPhoto').onchange=e=>addPhoto(e.target.files[0]);$('galleryPhoto').onchange=e=>addPhoto(e.target.files[0]);$('removePhoto').onclick=clearPhoto;
  $('proposalForm').onsubmit=async e=>{
-  e.preventDefault();error('Oddaja pobud tukaj ni na voljo.');return;if(busy||photoBusy||saved||!validate())return;
+  e.preventDefault();error('Oddaja v zasebno zbirko še ni vklopljena.');return;if(busy||photoBusy||saved||!validate())return;
   if(!pending&&$('aiRequested').checked&&!photo){error('Za fotomontažo dodaj fotografijo prostora. Predlog lahko oddaš tudi brez te želje.');return;}
   if(!pending&&(!$('consent').checked||(photo&&!$('photoConsent').checked))){error('Preberi in potrdi oddajo predloga ter fotografije.');return;}
   busy=true;lock();error('');$('submitProposal').textContent='Shranjujem …';
@@ -47,7 +47,7 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
  $('openSurvey').onclick=()=>{if(!validate())return;const url=surveyUrl(pending||getRecord(),location.origin);$('retrySurvey').href=url;$('handoffResult').hidden=false;window.open(url,'_blank','noopener,noreferrer');};
  $('copyText').onclick=async()=>{try{await navigator.clipboard.writeText(recordText(pending||getRecord(),location.origin));toast('Besedilo je kopirano.');}catch{toast('Kopiranje ni uspelo. Prenesi besedilno kartico.');}};
  $('privacyOpen').onclick=()=>$('aboutDialog').showModal();
- $('submitProposal').hidden=true;$('deleteProposal').hidden=true;document.querySelector('.photo-section')?.setAttribute('hidden','');
- const staticNote=document.createElement('p');staticNote.className='notice';staticNote.textContent='Oddaja pobud tukaj ni na voljo.';$('proposalForm').prepend(staticNote);
+ $('submitProposal').hidden=true;$('deleteProposal').hidden=true;/* fotografija ostane vidna kot neobvezna; oddaja ostane izklopljena */
+ const staticNote=document.createElement('p');staticNote.className='notice';staticNote.textContent='Oddaja v zasebno zbirko še ni vklopljena. Ko jo skrbnik potrdi (kam se shranjuje in kdo vidi), bo gumb Shrani predlog znova na voljo.';$('proposalForm').prepend(staticNote);
  return {isLocked:()=>busy||!!saved||!!pending};
 }

@@ -1,0 +1,710 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRIMER — izmišljeni predlogi učencev, niso pravi podatki",
+  "properties": {
+    "primer": true,
+    "opomba": "Izmišljeni primeri za lokalni preizkus sloja. Niso pravi predlogi učencev. Polje primer: true."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5217244,
+          46.0620535
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-01",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5215562,
+          46.062208
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-02",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5215851,
+          46.0620499
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-03",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5216692,
+          46.0620905
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-04",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.521712,
+          46.06207
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-05",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "visual_ready",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5217246,
+          46.0620857
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1614-06",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za igrišče, ni pravi vnos.",
+        "place": "PRIMER Šerkovo igrišče",
+        "status": "visual_ready",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5219419,
+          46.0617443
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1623-1-01",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog ob robu igrišča.",
+        "place": "PRIMER ob Šerkovem igrišču",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5218801,
+          46.0617862
+        ]
+      },
+      "properties": {
+        "id": "primer-serkova-1623-1-02",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog ob robu igrišča.",
+        "place": "PRIMER ob Šerkovem igrišču",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "pobude_id": [
+          22018,
+          23594,
+          22287,
+          80333
+        ],
+        "kraj": "Šerkovo igrišče",
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5237437,
+          46.0649668
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-01",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5237317,
+          46.0649161
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-02",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5237412,
+          46.0649702
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-03",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "prepare_visual",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5237153,
+          46.0649106
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-04",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.523693,
+          46.0648537
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-05",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5237131,
+          46.0649072
+        ]
+      },
+      "properties": {
+        "id": "primer-filipovo-06",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Igrišča",
+        "text": "PRIMER: izmišljen predlog za Filipovo igrišče.",
+        "place": "PRIMER Filipovo igrišče",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "kraj": "Filipovo igrišče",
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5248134,
+          46.0655769
+        ]
+      },
+      "properties": {
+        "id": "primer-cistoca-01",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Čistoča",
+        "text": "PRIMER: izmišljen predlog o čistoči.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5248279,
+          46.0655862
+        ]
+      },
+      "properties": {
+        "id": "primer-cistoca-02",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Čistoča",
+        "text": "PRIMER: izmišljen predlog o čistoči.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5249589,
+          46.0655815
+        ]
+      },
+      "properties": {
+        "id": "primer-cistoca-03",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Čistoča",
+        "text": "PRIMER: izmišljen predlog o čistoči.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5248113,
+          46.0655315
+        ]
+      },
+      "properties": {
+        "id": "primer-cistoca-04",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Čistoča",
+        "text": "PRIMER: izmišljen predlog o čistoči.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5249835,
+          46.0655854
+        ]
+      },
+      "properties": {
+        "id": "primer-cistoca-05",
+        "grade": "7. razred",
+        "kind": "problem",
+        "topic": "Čistoča",
+        "text": "PRIMER: izmišljen predlog o čistoči.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.525,
+          46.063
+        ]
+      },
+      "properties": {
+        "id": "primer-osamljen-01",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Šport",
+        "text": "PRIMER: osamljen izmišljen predlog za preizkus združevanja.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5198,
+          46.0642
+        ]
+      },
+      "properties": {
+        "id": "primer-osamljen-02",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Druženje",
+        "text": "PRIMER: osamljen izmišljen predlog za preizkus združevanja.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "zalostno"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5248,
+          46.0658
+        ]
+      },
+      "properties": {
+        "id": "primer-osamljen-03",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Drugo",
+        "text": "PRIMER: osamljen izmišljen predlog za preizkus združevanja.",
+        "place": "PRIMER",
+        "status": "reviewed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5223,
+          46.0635
+        ]
+      },
+      "properties": {
+        "id": "primer-novo-01",
+        "grade": "7. razred",
+        "kind": "idea",
+        "topic": "Druženje",
+        "text": "PRIMER: še ni pregledan, se ne prikaže.",
+        "place": "PRIMER",
+        "status": "new",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "srednje"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.521,
+          46.062
+        ]
+      },
+      "properties": {
+        "id": "primer-novo-02",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Šport",
+        "text": "PRIMER: še ni pregledan, se ne prikaže.",
+        "place": "PRIMER",
+        "status": "new",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.520383768349912,
+          46.06382917812131
+        ]
+      },
+      "properties": {
+        "id": "primer-zelenje-01",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Zelenje",
+        "text": "PRIMER: stara tema Zelenje, preslika se v Drugo.",
+        "place": "PRIMER",
+        "status": "closed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.520410914033377,
+          46.063827225493036
+        ]
+      },
+      "properties": {
+        "id": "primer-zelenje-02",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Zelenje",
+        "text": "PRIMER: stara tema Zelenje, preslika se v Drugo.",
+        "place": "PRIMER",
+        "status": "closed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.52040405742142,
+          46.06379868205125
+        ]
+      },
+      "properties": {
+        "id": "primer-zelenje-03",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Zelenje",
+        "text": "PRIMER: stara tema Zelenje, preslika se v Drugo.",
+        "place": "PRIMER",
+        "status": "closed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.520384668281043,
+          46.06378594955605
+        ]
+      },
+      "properties": {
+        "id": "primer-zelenje-04",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Zelenje",
+        "text": "PRIMER: stara tema Zelenje, preslika se v Drugo.",
+        "place": "PRIMER",
+        "status": "closed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.520429622798245,
+          46.063818782420334
+        ]
+      },
+      "properties": {
+        "id": "primer-zelenje-05",
+        "grade": "7. razred",
+        "kind": "keep",
+        "topic": "Zelenje",
+        "text": "PRIMER: stara tema Zelenje, preslika se v Drugo.",
+        "place": "PRIMER",
+        "status": "closed",
+        "ai_requested": false,
+        "primer": true,
+        "mood": "veselo"
+      }
+    }
+  ]
+}

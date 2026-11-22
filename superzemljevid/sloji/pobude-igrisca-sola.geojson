@@ -1,0 +1,141 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.522169,
+     46.061767
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "21742",
+    "leto": "2018",
+    "status": "odprto / nejasno",
+    "naslov": "Nogometni goli"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.521951,
+     46.06146
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "22018",
+    "leto": "2018",
+    "status": "zavrnjeno / ni v pristojnosti MOL",
+    "naslov": "Igrišče Savsko naselje ob Šerkovi"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.521951,
+     46.06146
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "22287",
+    "leto": "2018",
+    "status": "obljubljeno",
+    "naslov": "Goli na igrišču Šerkova"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.522152,
+     46.062145
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "23594",
+    "leto": "2018",
+    "status": "odprto / nejasno",
+    "naslov": "Urejanje igrišča"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.521922,
+     46.061874
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "80040",
+    "leto": "2025",
+    "status": "obljubljeno",
+    "naslov": "Popravilo stebra za odbojkarsko mrežo"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.521611,
+     46.061918
+    ]
+   },
+   "properties": {
+    "igrisce": "Šerkovo igrišče",
+    "id_pobude": "80333",
+    "leto": "2025",
+    "status": "zavrnjeno / ni v pristojnosti MOL",
+    "naslov": "Ureditev igrišča Šerkec"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.523798,
+     46.064636
+    ]
+   },
+   "properties": {
+    "igrisce": "Filipovo igrišče",
+    "id_pobude": "50286",
+    "leto": "2022",
+    "status": "odprto / nejasno",
+    "naslov": "Obnova oziroma popravilo ograje"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.524149,
+     46.064511
+    ]
+   },
+   "properties": {
+    "igrisce": "Filipovo igrišče",
+    "id_pobude": "54405",
+    "leto": "2022",
+    "status": "obljubljeno",
+    "naslov": "Košenje trave"
+   }
+  }
+ ]
+}

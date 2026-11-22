@@ -1,12 +1,15 @@
 export const landmarks = [
   {id: 'school', name: 'OŠ Savsko naselje', short: 'Šola', address: 'Matjaževa ulica 4', icon: 'school', side: -1, offset: -20},
   {id: 'things', name: 'Knjižnica Reči', short: 'Knjižnica Reči', address: 'Belokranjska ulica 6', icon: 'things', side: -1, offset: 26},
-  {id: 'library', name: 'Knjižnica Savsko naselje (MKL)', short: 'Knjižnica MKL', address: 'Belokranjska ulica 2', icon: 'book', side: 1, offset: -26}
+  {id: 'library', name: 'Knjižnica Savsko naselje (MKL)', short: 'Knjižnica MKL', address: 'Belokranjska ulica 2', icon: 'book', side: 1, offset: -26},
+  {id: 'serkovo', name: 'Igrišče na Šerkovi', short: 'Šerkova', icon: 'pin', side: 1, offset: 28, point: [14.52195, 46.06177], hint: 'Učenci pogosto predlagajo prijaznejšo podlago in nove gole.', primer: true},
+  {id: 'filipovo', name: 'Filipovo igrišče', short: 'Filipovo', icon: 'pin', side: -1, offset: 30, point: [14.52397, 46.06457], hint: 'Če predlagaš odbojkarsko mrežo, jo postavi ob igrišče, ne na pot.', primer: true}
 ];
 
 export function placeIndex(addresses) {
   const streets = addresses.map(a => ({name: a.label, address: '', point: [a.longitude, a.latitude]}));
   const known = landmarks.flatMap(place => {
+    if (place.point) return [place];
     const street = streets.find(a => a.name === place.address);
     return street ? [{...place, point: street.point}] : [];
   });

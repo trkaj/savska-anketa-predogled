@@ -6,7 +6,7 @@ import {writingPrompt,scaleBar} from './places.mjs';
 import {attachClassroom} from './classroom.mjs';
 const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
 const state={scene:null,addresses:[],point:null,place:'',mode:'2d',requestedMode:'3d',tileset:null,photoReady:false,tileFailure:false,records:[],view:{x:0,y:0,w:1000,h:1100},H:1100,viewer:null,threeReady:false};
-const places=attachPlaces({choose:selectPoint,xy});
+const places=attachPlaces({choose:selectPoint,xy});window.placesXy=xy;
 const classroom=attachClassroom({download,toast});
 let toastTimer,threePromise;
 function toast(t){$('toast').textContent=t;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,5000);}
@@ -33,7 +33,7 @@ function zoom(f,client){if(state.mode==='3d'&&state.viewer){const c=state.viewer
 function goHome(){if(!state.scene)return;if(state.mode==='3d'){fly3D(state.scene.center,1050);return;}state.view={x:-25,y:-state.H*.025,w:1050,h:state.H*1.05};refreshView();}
 function focusPoint(p){if(!state.scene)return;if(state.mode==='3d')fly3D(p,420);else setView(p,360);}
 function distance(a,b){return Math.hypot((a[0]-b[0])*111320*Math.cos(a[1]*Math.PI/180),(a[1]-b[1])*111320);}
-function selectPoint(p,{focus=false,label=''}={}){
+function selectPoint(p,{focus=false,label='',playground=null}={}){if(window.solaHandleMapClick?.(p,{focus,label,playground}))return;
  if(!state.scene)return false;
  if(submission.isLocked()){toast('Za novo lokacijo izberi »Dodaj nov predlog« ali »Začni znova«.');return false;}
  if(!validPoint(p,state.scene.boundary)){toast('Izberi mesto znotraj označenega izreza naselja.');return false;}
@@ -50,10 +50,10 @@ function selectPoint(p,{focus=false,label=''}={}){
  $('formError').hidden=true;$('handoffResult').hidden=true;refreshView();update3DPin();
  if(focus)focusPoint(p);return true;
 }
-function getRecord(){return {point:state.point,place:state.place,grade:$('grade').value,kind:document.querySelector('[name=kind]:checked').value,topic:document.querySelector('input[name=topic]:checked').value,text:$('proposal').value.trim()};}
-function validate(){let msg='';if(!state.point)msg='Najprej označi mesto na zemljevidu.';else if(!$('grade').value)msg='Izberi svoj razred.';else if($('proposal').value.trim().length<10)msg='Napiši vsaj kratek stavek: kaj predlagaš in zakaj.';$('formError').textContent=msg;$('formError').hidden=!msg;if(msg){$('formError').scrollIntoView({block:'nearest',behavior:'smooth'});return false;}return true;}
+function getRecord(){return {point:state.point,place:state.place,grade:$('grade').value,kind:document.querySelector('[name=kind]:checked').value,topic:document.querySelector('input[name=topic]:checked')?.value||'Drugo',mood:document.querySelector('input[name=mood]:checked')?.value||'',text:$('proposal').value.trim()};}
+function validate(){let msg='';if(!state.point)msg='Najprej označi mesto na zemljevidu.';else if(!$('grade').value)msg='Izberi svoj razred.';$('formError').textContent=msg;$('formError').hidden=!msg;if(msg){$('formError').scrollIntoView({block:'nearest',behavior:'smooth'});return false;}return true;}
 function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}
-function updateDraft(){$('charCount').textContent=`${$('proposal').value.length} / 700`;$('handoffResult').hidden=true;}
+function updateDraft(){$('charCount').textContent=`${$('proposal').value.length} / 140`;$('handoffResult').hidden=true;}
 function resetMap(){
  state.point=null;state.place='';$('chosenPin').setAttribute('hidden','');
  $('placeHeading').textContent='Kje je tvoja ideja?';$('placeLabel').textContent='Klikni na zemljevid ali poišči naslov.';
@@ -222,5 +222,5 @@ $('mode2d').onclick=()=>mode('2d');$('mode3d').onclick=()=>mode('3d',true);
 async function init(){try{const data=await Promise.all(['scene.json','addresses.json'].map(async n=>{const r=await fetch('../'+n);if(!r.ok)throw Error(n);return r.json();}));[state.scene,state.addresses]=data;const b=state.scene.bbox;state.H=1000*(b[3]-b[1])/((b[2]-b[0])*Math.cos(state.scene.center[1]*Math.PI/180));$('ortho').setAttribute('height',state.H);
  const boundary=state.scene.boundary.map((p,i)=>(i?'L':'M')+xy(p).join(' ')).join(' ')+' Z';
  $('areaBoundary').setAttribute('d',boundary);$('photoClipPath').setAttribute('d',boundary);
- places.fill(state.addresses);goHome();const q=new URLSearchParams(location.search);if(q.has('lat')&&q.has('lon')){const p=[Number(q.get('lon')),Number(q.get('lat'))];if(validPoint(p,state.scene.boundary))selectPoint(p,{focus:true});else toast('Povezava ne vsebuje veljavnega mesta v tem izrezu.');}await mode(state.requestedMode);}catch{$('mapStatus').hidden=false;$('mapStatus').textContent='Podatkov zemljevida ni bilo mogoče naložiti. Osveži stran ali odpri Larsovo anketo.';const a=document.createElement('a');a.href=FORM;a.textContent='Odpri anketo';a.style.display='block';$('mapStatus').append(a);}}
+ places.fill(state.addresses);goHome();window.solaInitUi?.();const q=new URLSearchParams(location.search);if(q.has('lat')&&q.has('lon')){const p=[Number(q.get('lon')),Number(q.get('lat'))];if(validPoint(p,state.scene.boundary))selectPoint(p,{focus:true});else toast('Povezava ne vsebuje veljavnega mesta v tem izrezu.');}await mode(state.requestedMode);}catch{$('mapStatus').hidden=false;$('mapStatus').textContent='Podatkov zemljevida ni bilo mogoče naložiti. Osveži stran ali odpri Google obrazec.';const a=document.createElement('a');a.href=FORM;a.textContent='Odpri anketo';a.style.display='block';$('mapStatus').append(a);}}
 init();

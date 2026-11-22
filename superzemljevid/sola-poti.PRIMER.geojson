@@ -1,0 +1,368 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRIMER — izmišljene poti v šolo, niso pravi podatki",
+  "properties": {
+    "primer": true
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.521206,
+            46.061182
+          ],
+          [
+            14.521637,
+            46.061625
+          ],
+          [
+            14.521997,
+            46.06201
+          ],
+          [
+            14.522177,
+            46.062483
+          ],
+          [
+            14.521883,
+            46.063112
+          ],
+          [
+            14.521377,
+            46.063728
+          ],
+          [
+            14.520866,
+            46.064082
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-01",
+        "status": "reviewed",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.521997,
+              46.06201
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          },
+          {
+            "coordinates": [
+              14.521377,
+              46.063728
+            ],
+            "reason": "tema",
+            "safety": "nevarno"
+          }
+        ],
+        "pazi": [
+          {
+            "coordinates": [
+              14.521883,
+              46.063112
+            ],
+            "safety": "pazi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.521172,
+            46.061207
+          ],
+          [
+            14.521574,
+            46.061613
+          ],
+          [
+            14.522009,
+            46.061993
+          ],
+          [
+            14.522209,
+            46.062504
+          ],
+          [
+            14.521863,
+            46.063102
+          ],
+          [
+            14.52141,
+            46.063701
+          ],
+          [
+            14.52093,
+            46.064114
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-02",
+        "status": "reviewed",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.522009,
+              46.061993
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          },
+          {
+            "coordinates": [
+              14.52141,
+              46.063701
+            ],
+            "reason": "tema",
+            "safety": "nevarno"
+          }
+        ],
+        "pazi": [
+          {
+            "coordinates": [
+              14.521863,
+              46.063102
+            ],
+            "safety": "pazi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.521238,
+            46.061197
+          ],
+          [
+            14.521618,
+            46.061614
+          ],
+          [
+            14.521977,
+            46.061975
+          ],
+          [
+            14.522208,
+            46.062477
+          ],
+          [
+            14.521891,
+            46.063123
+          ],
+          [
+            14.52143,
+            46.063677
+          ],
+          [
+            14.520867,
+            46.064083
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-03",
+        "status": "reviewed",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.521977,
+              46.061975
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          },
+          {
+            "coordinates": [
+              14.52143,
+              46.063677
+            ],
+            "reason": "tema",
+            "safety": "nevarno"
+          }
+        ],
+        "pazi": [
+          {
+            "coordinates": [
+              14.521891,
+              46.063123
+            ],
+            "safety": "pazi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.521237,
+            46.061222
+          ],
+          [
+            14.521619,
+            46.061584
+          ],
+          [
+            14.521986,
+            46.062013
+          ],
+          [
+            14.522225,
+            46.062471
+          ],
+          [
+            14.521873,
+            46.063124
+          ],
+          [
+            14.521369,
+            46.063709
+          ],
+          [
+            14.520886,
+            46.064109
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-04",
+        "status": "reviewed",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.521986,
+              46.062013
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          }
+        ],
+        "pazi": [
+          {
+            "coordinates": [
+              14.521873,
+              46.063124
+            ],
+            "safety": "pazi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.52123,
+            46.061191
+          ],
+          [
+            14.521623,
+            46.061627
+          ],
+          [
+            14.521985,
+            46.062016
+          ],
+          [
+            14.522187,
+            46.06248
+          ],
+          [
+            14.521888,
+            46.063115
+          ],
+          [
+            14.521372,
+            46.06371
+          ],
+          [
+            14.520888,
+            46.06408
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-05",
+        "status": "reviewed",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.521985,
+              46.062016
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          }
+        ],
+        "pazi": [
+          {
+            "coordinates": [
+              14.521888,
+              46.063115
+            ],
+            "safety": "pazi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.5199,
+            46.0608
+          ],
+          [
+            14.5205,
+            46.0618
+          ],
+          [
+            14.5208,
+            46.0628
+          ]
+        ]
+      },
+      "properties": {
+        "id": "primer-pot-novo",
+        "status": "new",
+        "primer": true,
+        "unsafe": [
+          {
+            "coordinates": [
+              14.5205,
+              46.0618
+            ],
+            "reason": "promet",
+            "safety": "nevarno"
+          }
+        ]
+      }
+    }
+  ]
+}

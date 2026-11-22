@@ -16,7 +16,7 @@ export function attachPlaces({choose, xy}) {
   const list = $('searchList');
 
   function select(place) {
-    if (choose(place.point, {focus: true, label: [place.name, place.address].filter(Boolean).join(' · ')})) {
+    if (choose(place.point, {focus: true, label: [place.name, place.address].filter(Boolean).join(' · '), playground: place.hint ? {hint: place.hint, id: place.id, name: place.name} : null}) !== false) {
       input.value = place.name;
       popup.hidden = true;
       if (list.contains(document.activeElement)) input.focus({preventScroll: true});
@@ -80,7 +80,7 @@ export function attachPlaces({choose, xy}) {
       const chip = document.createElement('button');
       chip.type = 'button';
       chip.dataset.place = place.id;
-      chip.title = place.name + ' · ' + place.address;
+      chip.title = place.hint ? (place.name + ' · ' + place.hint) : (place.name + (place.address ? ' · ' + place.address : ''));
       chip.setAttribute('aria-label', 'Izberi kraj ' + chip.title);
       chip.setAttribute('aria-pressed', 'false');
       const icon = svgElement('svg', {class: 'ui-icon', 'aria-hidden': 'true'});
