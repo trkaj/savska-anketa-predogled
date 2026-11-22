@@ -80,6 +80,71 @@ $('selectCenter').onclick=()=>{if(!state.scene)return;if(state.mode==='3d'){if(!
 window.solaLonLatFromClient=(x,y)=>{if(!state.scene)return null;const p=screenPoint(x,y);return ll([p.x,p.y]);};
 window.solaMapMode=()=>state.mode;
 window.solaSwitchTo2d=()=>{if(state.mode!=='2d')mode('2d');};
+window.solaCesiumCanvas=()=>state.viewer&&!state.viewer.isDestroyed()?state.viewer.canvas:null;
+window.sola3dReady=()=>!!(state.threeReady&&state.viewer&&!state.viewer.isDestroyed());
+window.solaCameraLocked=()=>{const v=state.viewer;return !!(v&&!v.isDestroyed()&&v.scene.screenSpaceCameraController.enableInputs===false);};
+window.solaLockCamera=(lock)=>{const v=state.viewer;if(!v||v.isDestroyed())return;v.scene.screenSpaceCameraController.enableInputs=!lock;v.scene.requestRender();};
+window.solaLonLatFromClient3D=(clientX,clientY)=>{
+ if(!state.viewer||state.viewer.isDestroyed()||!state.threeReady)return null;
+ const C=window.Cesium,v=state.viewer,canvas=v.canvas,rect=canvas.getBoundingClientRect();
+ const pos=new C.Cartesian2(clientX-rect.left,clientY-rect.top);
+ let world;
+ if(v.scene.pickPositionSupported)world=v.scene.pickPosition(pos);
+ if(!C.defined(world)){const ray=v.camera.getPickRay(pos);if(ray)world=v.scene.globe.pick(ray,v.scene);}
+ if(!C.defined(world))return null;
+ const c=C.Cartographic.fromCartesian(world);
+ return [C.Math.toDegrees(c.longitude),C.Math.toDegrees(c.latitude)];
+};
+function attachPathCanvas(canvas){
+ if(!canvas||canvas.dataset.solaPath)return;
+ canvas.dataset.solaPath='1';
+ const wrap=e=>{if(window.solaPathPointer?.(e))e.preventDefault();};
+ for(const type of ['pointerdown','pointermove','pointerup','pointercancel'])canvas.addEventListener(type,wrap);
+}
+function pathDegrees(pts){
+ const flat=[];
+ for(const p of pts||[]){if(p&&p.length>=2)flat.push(p[0],p[1]);}
+ return flat;
+}
+window.solaRenderPath3D=({path=[],live=[],marks=[]}={})=>{
+ const v=state.viewer,C=window.Cesium;
+ if(!v||v.isDestroyed()||!C)return;
+ const ds=v.dataSources.getByName('sola-pot-predogled')[0];
+ const source=ds||new C.CustomDataSource('sola-pot-predogled');
+ if(!ds)v.dataSources.add(source);
+ source.entities.removeAll();
+ const line=(id,pts,color,width)=>{
+  const flat=pathDegrees(pts);
+  if(flat.length<4)return;
+  source.entities.add({
+   id,
+   polyline:{
+    positions:C.Cartesian3.fromDegreesArray(flat),
+    width,
+    clampToGround:true,
+    classificationType:C.ClassificationType.BOTH,
+    material:C.Color.fromCssColorString(color),
+    arcType:C.ArcType.GEODESIC
+   }
+  });
+ };
+ line('pot',path,'#22c55e',12);
+ line('pot-live',live,'#16a34a',12);
+ if(live.length===1){
+  source.entities.add({
+   position:C.Cartesian3.fromDegrees(live[0][0],live[0][1]),
+   point:{pixelSize:14,color:C.Color.fromCssColorString('#16a34a'),outlineColor:C.Color.WHITE,outlineWidth:2,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
+  });
+ }
+ for(const [i,m] of (marks||[]).entries()){
+  if(!m?.point)continue;
+  source.entities.add({
+   position:C.Cartesian3.fromDegrees(m.point[0],m.point[1]),
+   point:{pixelSize:22,color:C.Color.fromCssColorString(m.safety==='pazi'?'#eab308':'#dc2626'),outlineColor:C.Color.WHITE,outlineWidth:3,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
+  });
+ }
+ v.scene.requestRender();
+};
 const svg=$('mapSvg'),pointers=new Map();let drag=null,pinch=null,moved=false;
 svg.addEventListener('pointerdown',e=>{if(window.solaPathPointer?.(e))return;if(e.target.closest('.import-pin,.landmark-marker'))return;svg.focus({preventScroll:true});svg.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===1){drag={x:e.clientX,y:e.clientY,v:{...state.view}};moved=false;}else{const p=[...pointers.values()];pinch=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);moved=true;}});
 svg.addEventListener('pointermove',e=>{if(window.solaPathPointer?.(e))return;if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2){const p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);if(pinch&&d>0)zoom(pinch/d,[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2]);pinch=d;return;}if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5)moved=true;const scale=svg.getScreenCTM().a;state.view={...drag.v,x:drag.v.x-dx/scale,y:drag.v.y-dy/scale};refreshView();}});
@@ -132,6 +197,7 @@ function update3DImported(){
 }
 function select3D(position){
  const C=window.Cesium,v=state.viewer;if(!v||!state.threeReady)return;
+ if(window.solaIsDrawingPath?.())return;
  const picked=v.scene.pick(position);
  if(places.pickGlobe(picked?.id?.id))return;
  if(picked?.id?.id?.startsWith('import-')){const r=state.records.find(r=>'import-'+r.id===picked.id.id);if(r)showRecord(r);return;}
@@ -193,7 +259,7 @@ async function init3D(){
  tileset.tileFailed.addEventListener(()=>{state.tileFailure=true;refresh3DNotice();});
  const handler=new C.ScreenSpaceEventHandler(v.scene.canvas);
  handler.setInputAction(e=>select3D(e.position),C.ScreenSpaceEventType.LEFT_CLICK);
- state.threeReady=true;places.addToGlobe(C,v);update3DPin();update3DImported();v.scene.requestRender();
+ state.threeReady=true;places.addToGlobe(C,v);update3DPin();update3DImported();attachPathCanvas(v.canvas);window.solaOnMapMode?.('3d');v.scene.requestRender();
 }
 function showMode(which){
  state.mode=which;$('map2d').hidden=which!=='2d';$('map3d').hidden=which!=='3d';
@@ -202,6 +268,7 @@ function showMode(which){
  $('northCue').hidden=which!=='2d';$('scaleCue').hidden=which!=='2d';
  if(which==='2d'){$('mapStatus').hidden=true;$('mapCredit').textContent='Ortofoto GURS · september 2026';refreshView();}
  else refresh3DNotice();
+ window.solaOnMapMode?.(which);
 }
 async function mode(which,userAction=false){
  state.requestedMode=which;if(!state.scene)return;
@@ -221,7 +288,7 @@ async function mode(which,userAction=false){
   }
  }
 }
-$('mode2d').onclick=()=>mode('2d');$('mode3d').onclick=()=>{if(window.solaBlock3d?.())return;mode('3d',true);};
+$('mode2d').onclick=()=>mode('2d');$('mode3d').onclick=()=>mode('3d',true);
 async function init(){try{const data=await Promise.all(['scene.json','addresses.json'].map(async n=>{const r=await fetch('../'+n);if(!r.ok)throw Error(n);return r.json();}));[state.scene,state.addresses]=data;const b=state.scene.bbox;state.H=1000*(b[3]-b[1])/((b[2]-b[0])*Math.cos(state.scene.center[1]*Math.PI/180));$('ortho').setAttribute('height',state.H);
  const boundary=state.scene.boundary.map((p,i)=>(i?'L':'M')+xy(p).join(' ')).join(' ')+' Z';
  $('areaBoundary').setAttribute('d',boundary);$('photoClipPath').setAttribute('d',boundary);

@@ -15,6 +15,11 @@
 .popravljeno{margin:20px 0;padding:12px;border:1px dashed #9bb5a8;border-radius:10px;background:#fbfefc}
 .popravljeno ul:empty{display:none}
 .path-legend i{display:inline-block;width:14px;height:8px;border-radius:2px;margin:0 4px 0 8px}
-.map-pane.drawing-path,.map-stage.drawing-path,#map2d.drawing-path,#mapSvg.drawing-path{touch-action:none}
-#mapSvg.drawing-path{cursor:crosshair}
+.map-pane.drawing-path,.map-stage.drawing-path,#map2d.drawing-path,#mapSvg.drawing-path,#map3d.drawing-path,#map3d.drawing-path canvas{touch-action:none}
+#mapSvg.drawing-path,#map3d.drawing-path, #map3d.drawing-path canvas{cursor:crosshair}
 #pathPreview{pointer-events:none}
+.path-actions{margin:10px 0 14px}
+#pathDraw{width:100%;min-height:52px;padding:14px 18px;font-size:18px;font-weight:800;background:#173f34;color:#fff;border:0;border-radius:12px}
+#pathDraw:hover{background:#0b4b40}
+#pathDraw[aria-pressed="true"]{box-shadow:inset 0 0 0 3px #dfff8f}
+.path-edit-actions button{min-height:52px;min-width:52px;padding:12px 16px;font-size:16px}

@@ -1,11 +1,13 @@
-/* Izboljšave šolskega vnosa: zavihki, bližnjice, smeško, pot v šolo (prostooročno),
+/* Izboljšave šolskega vnosa: zavihki, bližnjice, smeško, pot v šolo (prostooročno v 2D in 3D),
    kam gre predlog (samo k ČS / k upravniku), rubrika Popravljeno. Oddaja ostane izklopljena. */
 import {SIMPLIFY_M, MIN_STROKE_M, SAMPLE_M, distM, douglasPeucker, strokeLengthM, flattenStrokes} from './path-draw.mjs';
 
 const FORM_URL = 'https://forms.gle/yue9bRAvcCxCYcj16';
 const $ = id => document.getElementById(id);
+const HINT = 'Vleci s prstom od doma do šole';
 
 let tab = 'predlogi';
+let drawingActive = false;
 let strokes = [];
 let liveStroke = null;
 let drawingPointerId = null;
@@ -17,19 +19,12 @@ function pathPoints() {
   return flattenStrokes(strokes);
 }
 
-function pathDone() {
+function pathIsDone() {
   return $('pathDone') && $('pathDone').dataset.done === '1';
 }
 
 function isDrawingMode() {
-  return tab === 'pot' && !pathDone();
-}
-
-function setDrawingClass(on) {
-  document.querySelector('.map-pane')?.classList.toggle('drawing-path', on);
-  document.querySelector('.map-stage')?.classList.toggle('drawing-path', on);
-  $('map2d')?.classList.toggle('drawing-path', on);
-  $('mapSvg')?.classList.toggle('drawing-path', on);
+  return tab === 'pot' && drawingActive && !pathIsDone();
 }
 
 function is3dView() {
@@ -38,17 +33,19 @@ function is3dView() {
   return !!(m3 && !m3.hidden) || !!(m2 && m2.hidden);
 }
 
-function ensure2dForPath() {
-  if (!is3dView()) return false;
-  if (typeof window.solaSwitchTo2d === 'function') window.solaSwitchTo2d();
-  else $('mode2d')?.click();
-  const hint = $('mapHint');
-  if (hint) hint.textContent = 'Pot se riše na 2D zemljevidu. Potegni črto s prstom ali miško, kot s svinčnikom.';
-  toast('Za risanje poti sem preklopil na 2D zemljevid.');
-  return true;
+function setDrawingClass(on) {
+  document.querySelector('.map-pane')?.classList.toggle('drawing-path', on);
+  document.querySelector('.map-stage')?.classList.toggle('drawing-path', on);
+  $('map2d')?.classList.toggle('drawing-path', on);
+  $('mapSvg')?.classList.toggle('drawing-path', on);
+  $('map3d')?.classList.toggle('drawing-path', on);
+  window.solaLockCamera?.(on && is3dView());
 }
 
 function pointFromEvent(e) {
+  if (is3dView() && typeof window.solaLonLatFromClient3D === 'function') {
+    return window.solaLonLatFromClient3D(e.clientX, e.clientY);
+  }
   if (typeof window.solaLonLatFromClient === 'function') {
     return window.solaLonLatFromClient(e.clientX, e.clientY);
   }
@@ -69,8 +66,8 @@ function startStroke(e) {
   drawingPointerId = e.pointerId;
   liveStroke = [];
   addLivePoint(e);
-  const svg = $('mapSvg');
-  try { svg?.setPointerCapture(e.pointerId); } catch (err) { /* ni nujno */ }
+  const target = e.currentTarget || (is3dView() ? window.solaCesiumCanvas?.() : $('mapSvg'));
+  try { target?.setPointerCapture?.(e.pointerId); } catch (err) { /* ni nujno */ }
 }
 
 function endStroke() {
@@ -89,51 +86,76 @@ function endStroke() {
 }
 
 function updatePathButtons() {
+  const draw = $('pathDraw');
+  if (draw) {
+    draw.hidden = pathIsDone();
+    draw.disabled = pathIsDone();
+    draw.setAttribute('aria-pressed', String(isDrawingMode()));
+    draw.textContent = isDrawingMode() ? 'Rišem …' : 'Riši';
+  }
   const undo = $('pathUndo');
-  if (undo) undo.disabled = pathDone() || strokes.length === 0;
+  if (undo) undo.disabled = pathIsDone() || (strokes.length === 0 && !liveStroke);
   const done = $('pathDone');
-  if (done) done.disabled = pathDone() || pathPoints().length < 2;
+  if (done) done.disabled = pathIsDone() || pathPoints().length < 2;
 }
 
 function updatePathStatus() {
   const st = $('pathStatus');
   if (!st) return;
-  if (pathDone()) {
+  if (pathIsDone()) {
     st.textContent = 'Označi, kje paziti (rumeno) ali je nevarno (rdeče). Največ 3 oznake. Ostalo ostane zeleno (varno).' +
       (marks.length ? ' Oznak: ' + marks.length + ' / ' + MAX_MARKS + '.' : '');
     return;
   }
+  if (!drawingActive) {
+    st.textContent = 'Pritisni Riši, nato vleci s prstom od doma do šole. Deluje v 2D in 3D.';
+    return;
+  }
   const n = pathPoints().length;
   const k = strokes.length;
-  if (!k && !liveStroke) st.textContent = 'Potegni črto s prstom ali miško, kot s svinčnikom. Zemljevid se med risanjem ne premika.';
+  if (!k && !liveStroke) st.textContent = HINT + '. Zemljevid se med risanjem ne premika.';
   else st.textContent = (k ? ('Potez: ' + k + '. ') : '') + (n ? 'Točk na črti: ' + n + '. ' : '') + 'Lahko dodaš še eno potezo, razveljaviš zadnjo ali pritisneš »Končaj«.';
+}
+
+function setMapHint() {
+  const hint = $('mapHint');
+  if (!hint) return;
+  if (tab !== 'pot') {
+    hint.textContent = 'Za svoj predlog označi mesto na zemljevidu.';
+    return;
+  }
+  if (pathIsDone()) hint.textContent = 'Na narisani poti označi, kje paziti ali je nevarno (največ 3 oznake).';
+  else if (drawingActive) hint.textContent = HINT + '. Javno se vidi samo zbirno — brez imen, razreda in časa oddaje.';
+  else hint.textContent = HINT + '. Najprej pritisni Riši (deluje v 2D in 3D).';
 }
 
 function setTab(next) {
   tab = next;
   const pred = next === 'predlogi';
   const tabP = $('tabPredlogi'), tabT = $('tabPot');
-  if (tabP) { tabP.setAttribute('aria-selected', String(pred)); }
-  if (tabT) { tabT.setAttribute('aria-selected', String(!pred)); }
+  if (tabP) tabP.setAttribute('aria-selected', String(pred));
+  if (tabT) tabT.setAttribute('aria-selected', String(!pred));
   const form = $('proposalForm'), panel = $('pathPanel');
   if (form) form.hidden = !pred;
   if (panel) panel.hidden = pred;
-  const hint = $('mapHint');
   if (pred) {
+    drawingActive = false;
     setDrawingClass(false);
-    if (hint) hint.textContent = 'Za svoj predlog označi mesto na zemljevidu.';
-  } else {
-    setDrawingClass(isDrawingMode());
-    ensure2dForPath();
-    if (hint) {
-      hint.textContent = pathDone()
-        ? 'Na narisani poti označi, kje paziti ali je nevarno (največ 3 oznake).'
-        : 'Potegni črto s prstom ali miško, kot s svinčnikom. Javno se vidi samo zbirno — brez imen, razreda in časa oddaje.';
-    }
-    updatePathStatus();
   }
+  setMapHint();
+  updatePathStatus();
   updatePathButtons();
   drawPathPreview();
+}
+
+function startDrawing() {
+  if (tab !== 'pot' || pathIsDone()) return;
+  drawingActive = true;
+  setDrawingClass(true);
+  setMapHint();
+  updatePathStatus();
+  updatePathButtons();
+  toast(HINT + '. Zemljevid se med risanjem ne premika.');
 }
 
 function showKam(point) {
@@ -161,8 +183,8 @@ export function handleMapClick(point, opts) {
     }
     return false;
   }
-  /* Med risanjem točk ne dodajamo s tapanjem — samo poteze s potezom. */
-  if (!pathDone()) return true;
+  if (isDrawingMode()) return true;
+  if (!pathIsDone()) return true;
   if (marks.length >= MAX_MARKS) {
     toast('Največ 3 oznake (pazi ali nevarno).');
     return true;
@@ -181,41 +203,49 @@ export function handleMapClick(point, opts) {
 
 function drawPathPreview() {
   const g = $('pathPreview');
-  if (!g || !window.placesXy) { if (g) g.replaceChildren(); return; }
-  g.replaceChildren();
-  const NS = 'http://www.w3.org/2000/svg';
-  function line(pts, color, width, dash) {
-    if (!pts || pts.length < 2) return;
-    const pl = document.createElementNS(NS, 'polyline');
-    pl.setAttribute('fill', 'none');
-    pl.setAttribute('stroke', color);
-    pl.setAttribute('stroke-width', String(width));
-    pl.setAttribute('stroke-linecap', 'round');
-    pl.setAttribute('stroke-linejoin', 'round');
-    pl.setAttribute('pointer-events', 'none');
-    if (dash) pl.setAttribute('stroke-dasharray', dash);
-    pl.setAttribute('points', pts.map(p => window.placesXy(p).join(',')).join(' '));
-    g.append(pl);
+  if (g && window.placesXy) {
+    g.replaceChildren();
+    const NS = 'http://www.w3.org/2000/svg';
+    function line(pts, color, width, dash) {
+      if (!pts || pts.length < 2) return;
+      const pl = document.createElementNS(NS, 'polyline');
+      pl.setAttribute('fill', 'none');
+      pl.setAttribute('stroke', color);
+      pl.setAttribute('stroke-width', String(width));
+      pl.setAttribute('stroke-linecap', 'round');
+      pl.setAttribute('stroke-linejoin', 'round');
+      pl.setAttribute('pointer-events', 'none');
+      if (dash) pl.setAttribute('stroke-dasharray', dash);
+      pl.setAttribute('points', pts.map(p => window.placesXy(p).join(',')).join(' '));
+      g.append(pl);
+    }
+    const done = pathPoints();
+    if (done.length >= 2) line(done, '#22c55e', 6);
+    if (liveStroke && liveStroke.length >= 2) line(liveStroke, '#16a34a', 6, '8 6');
+    else if (liveStroke && liveStroke.length === 1) {
+      const [x, y] = window.placesXy(liveStroke[0]);
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', '5');
+      c.setAttribute('fill', '#16a34a');
+      c.setAttribute('pointer-events', 'none');
+      g.append(c);
+    }
+    marks.forEach(m => {
+      const [x, y] = window.placesXy(m.point);
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', '9');
+      c.setAttribute('fill', m.safety === 'pazi' ? '#eab308' : '#dc2626');
+      c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', '2');
+      c.setAttribute('pointer-events', 'none');
+      g.append(c);
+    });
+  } else if (g) {
+    g.replaceChildren();
   }
-  const done = pathPoints();
-  if (done.length >= 2) line(done, '#22c55e', 6);
-  if (liveStroke && liveStroke.length >= 2) line(liveStroke, '#16a34a', 6, '8 6');
-  else if (liveStroke && liveStroke.length === 1 && window.placesXy) {
-    const [x, y] = window.placesXy(liveStroke[0]);
-    const c = document.createElementNS(NS, 'circle');
-    c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', '5');
-    c.setAttribute('fill', '#16a34a');
-    c.setAttribute('pointer-events', 'none');
-    g.append(c);
-  }
-  marks.forEach(m => {
-    const [x, y] = window.placesXy(m.point);
-    const c = document.createElementNS(NS, 'circle');
-    c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', '9');
-    c.setAttribute('fill', m.safety === 'pazi' ? '#eab308' : '#dc2626');
-    c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', '2');
-    c.setAttribute('pointer-events', 'none');
-    g.append(c);
+  window.solaRenderPath3D?.({
+    path: pathPoints(),
+    live: liveStroke || [],
+    marks
   });
 }
 
@@ -227,18 +257,20 @@ function toast(msg) {
 }
 
 function finishPath() {
-  if (pathPoints().length < 2) { toast('Najprej nariši pot s potezom po zemljevidu.'); return; }
+  if (pathPoints().length < 2) { toast('Najprej nariši pot: pritisni Riši in vleci od doma do šole.'); return; }
   $('pathDone').dataset.done = '1';
+  drawingActive = false;
+  setDrawingClass(false);
   const box = $('pathMarks');
   if (box) box.hidden = false;
-  setDrawingClass(false);
+  setMapHint();
   updatePathButtons();
   updatePathStatus();
   drawPathPreview();
 }
 
 function undoStroke() {
-  if (pathDone()) return;
+  if (pathIsDone()) return;
   if (liveStroke) { liveStroke = null; drawingPointerId = null; }
   else if (strokes.length) strokes.pop();
   updatePathButtons();
@@ -248,9 +280,11 @@ function undoStroke() {
 
 function resetPath() {
   strokes = []; marks = []; liveStroke = null; drawingPointerId = null;
+  drawingActive = false;
   if ($('pathDone')) $('pathDone').dataset.done = '';
   if ($('pathMarks')) $('pathMarks').hidden = true;
-  setDrawingClass(tab === 'pot');
+  setDrawingClass(false);
+  setMapHint();
   updatePathButtons();
   updatePathStatus();
   drawPathPreview();
@@ -258,10 +292,6 @@ function resetPath() {
 
 export function pathPointer(e) {
   if (!isDrawingMode()) return false;
-  if (is3dView()) {
-    if (e.type === 'pointerdown') ensure2dForPath();
-    return true;
-  }
   if (e.type === 'pointerdown') {
     if (e.button != null && e.button !== 0) return false;
     if (e.isPrimary === false) return true;
@@ -284,16 +314,10 @@ export function pathPointer(e) {
   return false;
 }
 
-function block3d() {
-  if (tab !== 'pot') return false;
-  toast('Pot se riše na 2D zemljevidu. Ostani na pogledu 2D zemljevid.');
-  const hint = $('mapHint');
-  if (hint) hint.textContent = 'Za risanje poti uporabi 2D zemljevid (ne 3D makete).';
-  if (is3dView()) {
-    if (typeof window.solaSwitchTo2d === 'function') window.solaSwitchTo2d();
-    else $('mode2d')?.click();
-  }
-  return true;
+function onMapMode() {
+  if (isDrawingMode()) setDrawingClass(true);
+  else window.solaLockCamera?.(false);
+  drawPathPreview();
 }
 
 async function loadLand() {
@@ -312,6 +336,7 @@ export async function initSolaUi() {
   await loadLand();
   $('tabPredlogi')?.addEventListener('click', () => setTab('predlogi'));
   $('tabPot')?.addEventListener('click', () => setTab('pot'));
+  $('pathDraw')?.addEventListener('click', startDrawing);
   $('pathDone')?.addEventListener('click', finishPath);
   $('pathReset')?.addEventListener('click', resetPath);
   $('pathUndo')?.addEventListener('click', undoStroke);
@@ -328,8 +353,17 @@ export async function initSolaUi() {
   window.solaHandleMapClick = handleMapClick;
   window.solaDrawPathPreview = drawPathPreview;
   window.solaPathPointer = pathPointer;
-  window.solaBlock3d = block3d;
   window.solaIsDrawingPath = isDrawingMode;
+  window.solaOnMapMode = onMapMode;
+  window.solaPathState = () => ({
+    tab,
+    drawing: isDrawingMode(),
+    done: !!pathIsDone(),
+    strokes: strokes.length,
+    points: pathPoints().length,
+    marks: marks.length,
+    path: pathPoints()
+  });
   updatePathButtons();
 }
 
@@ -337,8 +371,8 @@ if (typeof window !== 'undefined') {
   window.solaInitUi = initSolaUi;
   window.solaHandleMapClick = handleMapClick;
   window.solaPathPointer = pathPointer;
-  window.solaBlock3d = block3d;
   window.solaIsDrawingPath = isDrawingMode;
+  window.solaOnMapMode = onMapMode;
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initSolaUi());

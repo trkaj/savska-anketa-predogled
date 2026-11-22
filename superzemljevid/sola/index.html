@@ -71,12 +71,15 @@
 
 <section id="pathPanel" hidden>
   <h2>Moja pot v šolo</h2>
-  <p class="handoff-note">Nariši pot s prstom ali miško, kot s svinčnikom. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
-  <p id="pathStatus" role="status">Potegni črto s prstom ali miško, kot s svinčnikom. Zemljevid se med risanjem ne premika.</p>
-  <div class="secondary-actions">
-    <button type="button" id="pathUndo" disabled>Razveljavi</button>
-    <button type="button" id="pathReset">Začni znova</button>
-    <button type="button" id="pathDone">Končaj</button>
+  <p class="handoff-note">Vleci s prstom od doma do šole. Risanje deluje v 2D in v 3D. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
+  <p id="pathStatus" role="status">Pritisni Riši, nato vleci s prstom od doma do šole.</p>
+  <div class="path-actions">
+    <button type="button" id="pathDraw" class="path-draw" aria-pressed="false">Riši</button>
+    <div class="secondary-actions path-edit-actions">
+      <button type="button" id="pathUndo" disabled>Razveljavi</button>
+      <button type="button" id="pathReset">Začni znova</button>
+      <button type="button" id="pathDone" disabled>Končaj</button>
+    </div>
   </div>
   <div id="pathMarks" hidden>
     <fieldset><legend>Kje se ne počutiš varno? (največ 3 oznake)</legend>
