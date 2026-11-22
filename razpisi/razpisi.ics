@@ -1664,5 +1664,31 @@ DESCRIPTION:Rok: Catalyse NEB 2027 (startupi)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:eit-um-startups-2026@anketa.savska.org
+DTSTAMP:20261122T055500Z
+DTSTART;TZID=Europe/Brussels:20270111T170000
+DTEND;TZID=Europe/Brussels:20270111T171500
+SUMMARY:EIT Urban Mobility: Financial Support to Startups
+DESCRIPTION:EIT UM start-up call\nRok: Sprotni razpis z več roki: 4. rok 1
+ 6. 11. 2026 je mimo\; 5. rok 11. 1. 2027 ob 17.00 CET\, nato 12. 4. 2027\,
+  30. 8. 2027\, 15. 11. 2027\, 10. 1. 2028 in 13. 3. 2028. Preverjeno 22. 1
+ 1. 2026.\nZnesek: Do 2\,5 mio € finančne podpore na podjetje (uradna st
+ ran).\nKdo: Startupi s sedežem v EU (tudi Slovenija) ali v državi\, prid
+ ruženi Obzorju Evropa\, ki so v aktivnem krogu zbiranja kapitala (pre-see
+ d/seed ali serija A) in razvijajo rešitve za urbano mobilnost.\nKorist za
+  Savsko: Startup z rešitvijo za mobilnost (souporaba\, parkiranje\, polnj
+ enje) lahko pridobi sredstva in Savsko uporabi kot preizkusno okolje.
+URL:https://www.eiturbanmobility.eu/call-for-proposals/financial-support-to
+ -startups-open-call-3/
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: EIT UM start-up call
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
