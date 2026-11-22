@@ -9,6 +9,7 @@
       <button id="mode3d" class="active" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#i-cube"/></svg>3D maketa</button>
       <button id="mode2d" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#i-layers"/></svg>2D zemljevid</button>
     </div>
+    <button type="button" id="pathFullscreen" class="map-fs-btn" aria-pressed="false" title="Cel zaslon">Cel zaslon</button>
   </div>
   <div class="map-stage">
     <div id="map2d" class="map-surface" hidden>
@@ -39,6 +40,20 @@
   </div>
   <div class="place-strip"><b>Izberi znani kraj</b><div id="quickPlaces" class="quick-places"></div></div>
   <div class="map-guidance"><span id="mapHint" role="status">Za svoj predlog označi mesto na zemljevidu.</span><button id="toIdea" type="button" hidden>K predlogu <svg class="ui-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+  <div id="pathHud" class="path-hud" hidden>
+    <div class="path-hud-top">
+      <p id="pathHudStatus" class="path-hud-status">Pritisni Riši, nato vleci s prstom od doma do šole.</p>
+      <button type="button" id="pathExitFs" class="path-exit-fs" hidden>Zapri cel zaslon</button>
+    </div>
+    <div class="path-hud-row">
+      <button type="button" id="pathHudDraw" aria-pressed="false">Riši</button>
+      <button type="button" id="pathHudUndo" disabled>Razveljavi</button>
+      <button type="button" id="pathHudReset">Začni znova</button>
+      <button type="button" id="pathHudDone" disabled>Končaj</button>
+    </div>
+    <button type="button" id="pathHudSubmit" class="path-submit" hidden>Oddaj</button>
+    <p id="pathHudResult" class="notice path-submit-result" hidden></p>
+  </div>
 </section>
 <aside class="idea-panel" id="idea"><h1>Moje naselje,<br><em>moj predlog.</em></h1><p class="intro">Kaj bi v Savskem naselju spremenil/a? Kaj naj ostane? Izberi mesto in povej, zakaj.</p>
 <div class="sola-tabs" role="tablist">
@@ -71,8 +86,8 @@
 
 <section id="pathPanel" hidden>
   <h2>Moja pot v šolo</h2>
-  <p class="handoff-note">Vleci s prstom od doma do šole. Risanje deluje v 2D in v 3D. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
-  <p id="pathStatus" role="status">Pritisni Riši, nato vleci s prstom od doma do šole.</p>
+  <p class="handoff-note">Vleci s prstom od doma do šole. Risanje deluje v 2D in v 3D, tudi na telefonu. Za lažje risanje odpri cel zaslon. Ko končaš, pritisni Končaj in nato Oddaj. Javno se vidi samo zbirno, kje hodijo otroci v šolo — brez imen, razreda in časa oddaje.</p>
+  <p id="pathStatus" role="status">Pritisni Riši, nato vleci s prstom od doma do šole. Ko končaš, pritisni Končaj in nato Oddaj.</p>
   <div class="path-actions">
     <button type="button" id="pathDraw" class="path-draw" aria-pressed="false">Riši</button>
     <div class="secondary-actions path-edit-actions">
@@ -80,6 +95,8 @@
       <button type="button" id="pathReset">Začni znova</button>
       <button type="button" id="pathDone" disabled>Končaj</button>
     </div>
+    <button type="button" id="pathSubmit" class="path-submit" hidden>Oddaj</button>
+    <p id="pathSubmitResult" class="notice path-submit-result" hidden></p>
   </div>
   <div id="pathMarks" hidden>
     <fieldset><legend>Kje se ne počutiš varno? (največ 3 oznake)</legend>

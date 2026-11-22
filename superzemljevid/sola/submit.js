@@ -1,14 +1,94 @@
 import {api,upload,preparePhoto,download} from './data.mjs';
 import {recordText,surveyUrl} from './core.mjs';
 
-/* Oddaja v zasebno tabelo ostane izklopljena, dokler skrbnik ne potrdi vklopa.
-   RECEIVER_URL je URL spletne aplikacije Apps Script (po namestitvi). */
-const ODDAJA_VKLOPLJENA = false;
+/* Oddaja v zasebno tabelo: vstavi /exec URL in oddaja se vklopi sama. */
 const RECEIVER_URL = '';
+const ODDAJA_VKLOPLJENA = Boolean(RECEIVER_URL);
 const RECEIVER_TOKEN = '';
 const MOOD_MARK = {veselo: '😊', srednje: '😐', zalostno: '☹️'};
+const PATH_STORAGE_KEY = 'sola-pot-lokalno';
+export const PATH_DISABLED_MSG = 'Pot je shranjena na tej napravi. Oddaja bo kmalu vklopljena.';
+export {ODDAJA_VKLOPLJENA, RECEIVER_URL};
 
 const $=id=>document.getElementById(id);
+
+export async function postToSheet(payload){
+  if(!RECEIVER_URL)throw new Error('Naslov sprejemnika še ni nastavljen.');
+  const res=await fetch(RECEIVER_URL,{
+   method:'POST',
+   redirect:'follow',
+   headers:{'Content-Type':'text/plain;charset=utf-8'},
+   body:JSON.stringify(payload)
+  });
+  const text=await res.text();
+  let data={};
+  try{data=JSON.parse(text);}catch{throw new Error('Sprejemnik ni vrnil veljavnega odgovora.');}
+  if(!data.ok)throw new Error('Oddaja ni uspela.');
+  return{id:data.id||payload.id,created_at:new Date().toISOString()};
+}
+
+function pathFeatureCollection(path, marks){
+  const features=[{
+    type:'Feature',
+    geometry:{type:'LineString',coordinates:path},
+    properties:{vrsta:'pot'}
+  }];
+  for(const m of marks||[]){
+    if(!m||!m.point)continue;
+    features.push({
+      type:'Feature',
+      geometry:{type:'Point',coordinates:m.point},
+      properties:{vrsta:'oznaka',safety:m.safety||'',reason:m.reason||''}
+    });
+  }
+  return {type:'FeatureCollection',features};
+}
+
+function savePathLocally(payload){
+  let list=[];
+  try{list=JSON.parse(localStorage.getItem(PATH_STORAGE_KEY)||'[]');}catch{list=[];}
+  if(!Array.isArray(list))list=[];
+  list.push({
+    id:payload.id,
+    cas:new Date().toISOString(),
+    vrsta:'pot',
+    lon:payload.lon,
+    lat:payload.lat,
+    geometrija:payload.geometrija
+  });
+  if(list.length>20)list=list.slice(-20);
+  try{localStorage.setItem(PATH_STORAGE_KEY,JSON.stringify(list));}catch{/* zasebni način ali poln prostor */}
+}
+
+export function pathPayload(path, marks){
+  const first=path&&path[0];
+  return{
+    id:(crypto.randomUUID&&crypto.randomUUID())||('pot-'+Date.now()),
+    vrsta:'pot',
+    razred:'',
+    kategorija:'',
+    smesko:'',
+    besedilo:'',
+    lon:first?first[0]:'',
+    lat:first?first[1]:'',
+    geometrija:pathFeatureCollection(path, marks),
+    token:RECEIVER_TOKEN,
+    website:''
+  };
+}
+
+/** Oddaja poti: če je prejemnik vklopljen, POST; sicer samo localStorage. */
+export async function submitSchoolPath(path, marks){
+  if(!path||path.length<2)throw new Error('Najprej nariši pot in pritisni Končaj.');
+  const payload=pathPayload(path, marks);
+  savePathLocally(payload);
+  if(!ODDAJA_VKLOPLJENA||!RECEIVER_URL){
+    return{ok:true,local:true,id:payload.id,message:PATH_DISABLED_MSG};
+  }
+  const saved=await postToSheet(payload);
+  return{ok:true,local:false,id:saved.id,message:'Hvala! Pot je oddana.'};
+}
+
 export function attachSubmission({getRecord,validate,resetMap,toast}){
  let id=crypto.randomUUID(),photo=null,photoUrl=null,photoSequence=0,photoBusy=false,busy=false,saved=null,pending=null;
  const error=message=>{$('formError').textContent=message;$('formError').hidden=!message;};
@@ -41,20 +121,7 @@ export function attachSubmission({getRecord,validate,resetMap,toast}){
    website:($('website')&&$('website').value)||''
   };
  }
- async function postToSheet(payload){
-  if(!RECEIVER_URL)throw new Error('Naslov sprejemnika še ni nastavljen.');
-  const res=await fetch(RECEIVER_URL,{
-   method:'POST',
-   redirect:'follow',
-   headers:{'Content-Type':'text/plain;charset=utf-8'},
-   body:JSON.stringify(payload)
-  });
-  const text=await res.text();
-  let data={};
-  try{data=JSON.parse(text);}catch{throw new Error('Sprejemnik ni vrnil veljavnega odgovora.');}
-  if(!data.ok)throw new Error('Oddaja ni uspela.');
-  return{id:data.id||payload.id,created_at:new Date().toISOString()};
- }
+ /* postToSheet je v skupni rabi z oddajo poti. */
  $('cameraPhoto').onchange=e=>addPhoto(e.target.files[0]);$('galleryPhoto').onchange=e=>addPhoto(e.target.files[0]);$('removePhoto').onclick=clearPhoto;
  $('proposalForm').onsubmit=async e=>{
   e.preventDefault();

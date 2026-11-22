@@ -168,3 +168,100 @@
   .map-legend { gap: 3px; }
 }
 @media print { .school-page .workspace { display: block; height: auto; } .map-pane { height: 85vh; } .place-strip,.map-guidance,.map-bar,.search-wrap { display: none; } }
+
+/* Telefon: risanje s prstom, cel zaslon, varno območje, gumb Oddaj */
+.map-fs-btn{min-height:44px;min-width:44px;padding:8px 12px;font-size:14px;font-weight:700;white-space:nowrap;border-radius:10px;background:#eef3e3;border:1px solid #b2c0a8}
+.map-fs-btn[aria-pressed="true"]{background:#173f34;color:#fff;border-color:#173f34}
+.path-hud{display:flex;flex-direction:column;gap:8px;padding:8px 12px;background:#f6f8f1f5;border-top:1px solid #cdd8c4;z-index:6}
+.path-hud-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.path-hud-status{margin:0;font-size:14px;font-weight:650;line-height:1.35;color:#173a32}
+.path-exit-fs{flex:none;min-height:44px;min-width:44px;padding:8px 12px;font-size:14px;font-weight:700;border-radius:10px;background:#fff;border:1px solid #b2c0a8}
+.path-hud-row{display:flex;flex-wrap:wrap;gap:8px}
+.path-hud-row button{flex:1 1 calc(50% - 8px);min-height:48px;min-width:44px;padding:10px 12px;font-size:16px;font-weight:700}
+#pathHudDraw{background:#173f34;color:#fff;border:0;flex:1 1 100%}
+#pathHudDraw[aria-pressed="true"]{box-shadow:inset 0 0 0 3px #dfff8f}
+#pathHudSubmit{width:100%}
+.map-pane.drawing-path .map-stage,
+.map-pane.drawing-path .map-stage *,
+.map-stage.drawing-path,
+#map2d.drawing-path,#mapSvg.drawing-path,#map3d.drawing-path,
+#map3d.drawing-path canvas{
+  touch-action:none !important;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+}
+body.sola-drawing,body.sola-map-fullscreen{
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+body.sola-map-fullscreen .topbar,
+body.sola-map-fullscreen .idea-panel{
+  display:none !important;
+}
+body.sola-map-fullscreen .workspace{
+  display:block;
+  height:100dvh;
+  max-height:100dvh;
+  min-height:0;
+  padding:0;
+  margin:0;
+  gap:0;
+}
+body.sola-map-fullscreen .map-pane,
+.map-pane.is-fullscreen{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  width:100%;
+  height:100dvh;
+  max-height:none;
+  min-height:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto auto;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:#8fa783;
+}
+body.sola-map-fullscreen .place-strip{display:none}
+body.sola-map-fullscreen .path-hud,
+.map-pane.is-fullscreen .path-hud{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+body.sola-map-fullscreen .map-stage,
+.map-pane.is-fullscreen .map-stage{min-height:0;height:auto}
+@media(max-width:740px){
+  .map-bar{flex-wrap:wrap}
+  .map-fs-btn{margin-left:auto;min-height:44px}
+  .map-side-controls button{width:44px;height:44px;min-height:44px}
+  .path-edit-actions{display:flex;flex-wrap:wrap;gap:8px}
+  .path-edit-actions button{flex:1 1 auto;min-height:48px}
+  /* Na telefonu je zemljevid višji, da je prostor za risanje, preden odpreš cel zaslon. */
+  .map-pane{height:clamp(460px,70svh,720px)}
+}
+@supports not (height:100dvh){
+  body.sola-map-fullscreen .workspace,
+  body.sola-map-fullscreen .map-pane,
+  .map-pane.is-fullscreen{height:100vh}
+}
+
+body.sola-map-fullscreen .search-wrap,
+.map-pane.drawing-path .search-wrap,
+body.sola-drawing .search-wrap{display:none}
+body.sola-map-fullscreen .path-hud,
+.map-pane.is-fullscreen .path-hud{
+  padding:6px 10px calc(8px + env(safe-area-inset-bottom,0px));
+  gap:6px;
+}
+body.sola-map-fullscreen .path-hud-status{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body.sola-map-fullscreen .path-hud-row button{min-height:44px;padding:8px 10px;font-size:15px}
+body.sola-map-fullscreen .map-bar{padding:6px 10px}
+/* Zapri je že v vrstici zemljevida; v HUD ga ne podvajamo, ko je map-bar viden. */
+body.sola-map-fullscreen #pathExitFs{display:none}
+@media(max-width:740px){
+  body.sola-map-fullscreen .map-pane,
+  .map-pane.is-fullscreen{grid-template-rows:auto minmax(0,1fr) auto auto}
+}
+body.sola-map-fullscreen .map-guidance{display:none}

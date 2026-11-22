@@ -1,8 +1,9 @@
 /* Izboljšave šolskega vnosa: zavihki, bližnjice, smeško, pot v šolo (prostooročno v 2D in 3D),
-   kam gre predlog (samo k ČS / k upravniku), rubrika Popravljeno. Oddaja ostane izklopljena. */
+   kam gre predlog (samo k ČS / k upravniku), rubrika Popravljeno. Oddaja ostane izklopljena,
+   dokler ni nastavljen RECEIVER_URL. */
 import {SIMPLIFY_M, MIN_STROKE_M, SAMPLE_M, distM, douglasPeucker, strokeLengthM, flattenStrokes} from './path-draw.mjs';
+import {submitSchoolPath} from './submit.js';
 
-const FORM_URL = 'https://forms.gle/yue9bRAvcCxCYcj16';
 const $ = id => document.getElementById(id);
 const HINT = 'Vleci s prstom od doma do šole';
 
@@ -14,6 +15,8 @@ let drawingPointerId = null;
 let marks = [];
 const MAX_MARKS = 3;
 let parcels = null, zvetl = null;
+let pathSubmitted = false;
+let fullscreenWanted = false;
 
 function pathPoints() {
   return flattenStrokes(strokes);
@@ -33,7 +36,18 @@ function is3dView() {
   return !!(m3 && !m3.hidden) || !!(m2 && m2.hidden);
 }
 
+function isNarrow() {
+  return window.matchMedia('(max-width: 740px)').matches;
+}
+
+function isUiEvent(e) {
+  const t = e.target;
+  if (!t || !t.closest) return false;
+  return !!t.closest('button, a, input, select, textarea, label, .path-hud, .map-bar, .search-wrap, .map-search, .map-side-controls, .place-strip, .map-guidance, .quick-places, #searchChoices');
+}
+
 function setDrawingClass(on) {
+  document.body.classList.toggle('sola-drawing', on);
   document.querySelector('.map-pane')?.classList.toggle('drawing-path', on);
   document.querySelector('.map-stage')?.classList.toggle('drawing-path', on);
   $('map2d')?.classList.toggle('drawing-path', on);
@@ -42,31 +56,114 @@ function setDrawingClass(on) {
   window.solaLockCamera?.(on && is3dView());
 }
 
+function resizeMapsSoon() {
+  const run = () => window.solaResizeMaps?.();
+  run();
+  requestAnimationFrame(run);
+  setTimeout(run, 120);
+  setTimeout(run, 350);
+}
+
+function isNativeFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement);
+}
+
+function isFullscreen() {
+  return document.body.classList.contains('sola-map-fullscreen') || isNativeFullscreen();
+}
+
+function enterFullscreen() {
+  fullscreenWanted = true;
+  const pane = document.querySelector('.map-pane');
+  document.body.classList.add('sola-map-fullscreen');
+  pane?.classList.add('is-fullscreen');
+  const btn = $('pathFullscreen');
+  if (btn) {
+    btn.setAttribute('aria-pressed', 'true');
+    btn.textContent = 'Zapri cel zaslon';
+  }
+  if (pane && !isNativeFullscreen()) {
+    const req = pane.requestFullscreen || pane.webkitRequestFullscreen;
+    if (typeof req === 'function' && document.fullscreenEnabled !== false) {
+      try {
+        const out = req.call(pane);
+        if (out && typeof out.catch === 'function') out.catch(() => { /* iPhone nima Fullscreen API; ostane CSS */ });
+      } catch (err) { /* CSS nadomestek */ }
+    }
+  }
+  updateHudVisibility();
+  resizeMapsSoon();
+}
+
+function exitFullscreen() {
+  fullscreenWanted = false;
+  const pane = document.querySelector('.map-pane');
+  document.body.classList.remove('sola-map-fullscreen');
+  pane?.classList.remove('is-fullscreen');
+  const btn = $('pathFullscreen');
+  if (btn) {
+    btn.setAttribute('aria-pressed', 'false');
+    btn.textContent = 'Cel zaslon';
+  }
+  if (isNativeFullscreen()) {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    try { exit?.call(document); } catch (err) { /* ignoriraj */ }
+  }
+  updateHudVisibility();
+  resizeMapsSoon();
+}
+
+function toggleFullscreen() {
+  if (isFullscreen() && fullscreenWanted) exitFullscreen();
+  else enterFullscreen();
+}
+
+function onFullscreenChange() {
+  if (!isNativeFullscreen() && !fullscreenWanted) {
+    document.body.classList.remove('sola-map-fullscreen');
+    document.querySelector('.map-pane')?.classList.remove('is-fullscreen');
+    const btn = $('pathFullscreen');
+    if (btn) {
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = 'Cel zaslon';
+    }
+  }
+  updateHudVisibility();
+  resizeMapsSoon();
+}
+
 function pointFromEvent(e) {
+  const x = e.clientX, y = e.clientY;
+  if (x == null || y == null) return null;
   if (is3dView() && typeof window.solaLonLatFromClient3D === 'function') {
-    return window.solaLonLatFromClient3D(e.clientX, e.clientY);
+    return window.solaLonLatFromClient3D(x, y);
   }
   if (typeof window.solaLonLatFromClient === 'function') {
-    return window.solaLonLatFromClient(e.clientX, e.clientY);
+    return window.solaLonLatFromClient(x, y);
   }
   return null;
 }
 
+const MAX_STEP_M = 150;
 function addLivePoint(e) {
   const p = pointFromEvent(e);
   if (!p) return;
+  if (typeof window.solaInMap === 'function' && !window.solaInMap(p)) return;
   const last = liveStroke && liveStroke[liveStroke.length - 1];
   if (last && distM(last, p) < SAMPLE_M) return;
+  if (last && distM(last, p) > MAX_STEP_M) return;
   if (!liveStroke) liveStroke = [];
   liveStroke.push(p);
   drawPathPreview();
 }
 
 function startStroke(e) {
+  if (drawingPointerId != null && e.pointerId !== drawingPointerId) return;
   drawingPointerId = e.pointerId;
   liveStroke = [];
   addLivePoint(e);
-  const target = e.currentTarget || (is3dView() ? window.solaCesiumCanvas?.() : $('mapSvg'));
+  const stage = document.querySelector('.map-stage');
+  const target = stage || e.currentTarget || (is3dView() ? window.solaCesiumCanvas?.() : $('mapSvg'));
   try { target?.setPointerCapture?.(e.pointerId); } catch (err) { /* ni nujno */ }
 }
 
@@ -85,36 +182,62 @@ function endStroke() {
   drawPathPreview();
 }
 
+function setBtn(id, {hidden, disabled, pressed, text} = {}) {
+  const el = $(id);
+  if (!el) return;
+  if (hidden != null) el.hidden = hidden;
+  if (disabled != null) el.disabled = disabled;
+  if (pressed != null) el.setAttribute('aria-pressed', String(pressed));
+  if (text != null) el.textContent = text;
+}
+
 function updatePathButtons() {
-  const draw = $('pathDraw');
-  if (draw) {
-    draw.hidden = pathIsDone();
-    draw.disabled = pathIsDone();
-    draw.setAttribute('aria-pressed', String(isDrawingMode()));
-    draw.textContent = isDrawingMode() ? 'Rišem …' : 'Riši';
+  const drawing = isDrawingMode();
+  const done = pathIsDone();
+  const canFinish = !done && pathPoints().length >= 2;
+  const canUndo = !done && (strokes.length > 0 || !!liveStroke);
+  const drawLabel = drawing ? 'Rišem …' : 'Riši';
+  for (const id of ['pathDraw', 'pathHudDraw']) {
+    setBtn(id, {hidden: done, disabled: done, pressed: drawing, text: drawLabel});
   }
-  const undo = $('pathUndo');
-  if (undo) undo.disabled = pathIsDone() || (strokes.length === 0 && !liveStroke);
-  const done = $('pathDone');
-  if (done) done.disabled = pathIsDone() || pathPoints().length < 2;
+  for (const id of ['pathUndo', 'pathHudUndo']) setBtn(id, {disabled: !canUndo});
+  for (const id of ['pathDone', 'pathHudDone']) setBtn(id, {disabled: !canFinish, hidden: done});
+  const showSubmit = done && !pathSubmitted;
+  for (const id of ['pathSubmit', 'pathHudSubmit']) {
+    setBtn(id, {hidden: !done, disabled: !showSubmit, text: pathSubmitted ? 'Oddano' : 'Oddaj'});
+  }
+  updateHudVisibility();
+}
+
+function updateHudVisibility() {
+  const hud = $('pathHud');
+  if (!hud) return;
+  const fs = isFullscreen() || document.body.classList.contains('sola-map-fullscreen');
+  const show = tab === 'pot' && (fs || isNarrow() || drawingActive || pathIsDone());
+  hud.hidden = !show;
+  const exit = $('pathExitFs');
+  if (exit) exit.hidden = !fs;
 }
 
 function updatePathStatus() {
-  const st = $('pathStatus');
-  if (!st) return;
-  if (pathIsDone()) {
-    st.textContent = 'Označi, kje paziti (rumeno) ali je nevarno (rdeče). Največ 3 oznake. Ostalo ostane zeleno (varno).' +
+  let text = '';
+  if (pathSubmitted) {
+    text = ($('pathSubmitResult') && $('pathSubmitResult').textContent) || 'Pot je shranjena.';
+  } else if (pathIsDone()) {
+    text = 'Pot je narisana. Pritisni Oddaj. Lahko še označiš, kje paziti (rumeno) ali je nevarno (rdeče), največ 3 oznake.' +
       (marks.length ? ' Oznak: ' + marks.length + ' / ' + MAX_MARKS + '.' : '');
-    return;
+  } else if (!drawingActive) {
+    text = 'Pritisni Riši, nato vleci s prstom od doma do šole. Ko končaš, pritisni Končaj in nato Oddaj.';
+  } else {
+    const n = pathPoints().length;
+    const k = strokes.length;
+    if (!k && !liveStroke) text = HINT + '. Zemljevid se med risanjem ne premika.';
+    else text = (k ? ('Potez: ' + k + '. ') : '') + (n ? 'Točk na črti: ' + n + '. ' : '') + 'Lahko dodaš še eno potezo, razveljaviš zadnjo ali pritisneš »Končaj«.';
   }
-  if (!drawingActive) {
-    st.textContent = 'Pritisni Riši, nato vleci s prstom od doma do šole. Deluje v 2D in 3D.';
-    return;
+  for (const id of ['pathStatus', 'pathHudStatus']) {
+    const st = $(id);
+    if (st) st.textContent = text;
   }
-  const n = pathPoints().length;
-  const k = strokes.length;
-  if (!k && !liveStroke) st.textContent = HINT + '. Zemljevid se med risanjem ne premika.';
-  else st.textContent = (k ? ('Potez: ' + k + '. ') : '') + (n ? 'Točk na črti: ' + n + '. ' : '') + 'Lahko dodaš še eno potezo, razveljaviš zadnjo ali pritisneš »Končaj«.';
 }
 
 function setMapHint() {
@@ -124,7 +247,7 @@ function setMapHint() {
     hint.textContent = 'Za svoj predlog označi mesto na zemljevidu.';
     return;
   }
-  if (pathIsDone()) hint.textContent = 'Na narisani poti označi, kje paziti ali je nevarno (največ 3 oznake).';
+  if (pathIsDone()) hint.textContent = 'Pritisni Oddaj. Na poti lahko označiš, kje paziti ali je nevarno (največ 3 oznake).';
   else if (drawingActive) hint.textContent = HINT + '. Javno se vidi samo zbirno — brez imen, razreda in časa oddaje.';
   else hint.textContent = HINT + '. Najprej pritisni Riši (deluje v 2D in 3D).';
 }
@@ -141,6 +264,7 @@ function setTab(next) {
   if (pred) {
     drawingActive = false;
     setDrawingClass(false);
+    if (isFullscreen()) exitFullscreen();
   }
   setMapHint();
   updatePathStatus();
@@ -152,6 +276,7 @@ function startDrawing() {
   if (tab !== 'pot' || pathIsDone()) return;
   drawingActive = true;
   setDrawingClass(true);
+  if (isNarrow() && !isFullscreen()) enterFullscreen();
   setMapHint();
   updatePathStatus();
   updatePathButtons();
@@ -267,6 +392,7 @@ function finishPath() {
   updatePathButtons();
   updatePathStatus();
   drawPathPreview();
+  toast('Pot je narisana. Pritisni Oddaj.');
 }
 
 function undoStroke() {
@@ -278,11 +404,20 @@ function undoStroke() {
   drawPathPreview();
 }
 
+function clearSubmitResult() {
+  for (const id of ['pathSubmitResult', 'pathHudResult']) {
+    const el = $(id);
+    if (el) { el.hidden = true; el.textContent = ''; }
+  }
+}
+
 function resetPath() {
   strokes = []; marks = []; liveStroke = null; drawingPointerId = null;
   drawingActive = false;
+  pathSubmitted = false;
   if ($('pathDone')) $('pathDone').dataset.done = '';
   if ($('pathMarks')) $('pathMarks').hidden = true;
+  clearSubmitResult();
   setDrawingClass(false);
   setMapHint();
   updatePathButtons();
@@ -290,34 +425,95 @@ function resetPath() {
   drawPathPreview();
 }
 
+function showSubmitResult(msg) {
+  for (const id of ['pathSubmitResult', 'pathHudResult']) {
+    const el = $(id);
+    if (!el) continue;
+    el.hidden = false;
+    el.textContent = msg;
+  }
+  updatePathStatus();
+}
+
+async function submitPath() {
+  if (!pathIsDone() || pathPoints().length < 2) {
+    toast('Najprej nariši pot in pritisni Končaj.');
+    return;
+  }
+  if (pathSubmitted) {
+    toast('Ta pot je že shranjena.');
+    return;
+  }
+  const btns = ['pathSubmit', 'pathHudSubmit'].map($).filter(Boolean);
+  btns.forEach(b => { b.disabled = true; b.textContent = 'Shranjujem …'; });
+  try {
+    const result = await submitSchoolPath(pathPoints(), marks);
+    pathSubmitted = true;
+    showSubmitResult(result.message);
+    toast(result.message);
+    updatePathButtons();
+  } catch (err) {
+    const msg = (err && err.message) ? err.message : 'Oddaja ni uspela.';
+    showSubmitResult(msg);
+    toast(msg);
+    btns.forEach(b => { b.disabled = false; b.textContent = 'Oddaj'; });
+  }
+}
+
 export function pathPointer(e) {
   if (!isDrawingMode()) return false;
+  if (isUiEvent(e)) return false;
   if (e.type === 'pointerdown') {
     if (e.button != null && e.button !== 0) return false;
     if (e.isPrimary === false) return true;
-    e.preventDefault();
+    if (drawingPointerId != null && e.pointerId !== drawingPointerId) return true;
+    if (typeof e.preventDefault === 'function') e.preventDefault();
     startStroke(e);
     return true;
   }
   if (e.type === 'pointermove') {
     if (drawingPointerId == null || e.pointerId !== drawingPointerId) return drawingPointerId != null;
-    e.preventDefault();
+    if (typeof e.preventDefault === 'function') e.preventDefault();
     addLivePoint(e);
     return true;
   }
-  if (e.type === 'pointerup' || e.type === 'pointercancel') {
-    if (drawingPointerId == null || e.pointerId !== drawingPointerId) return false;
-    e.preventDefault();
+  if (e.type === 'pointerup' || e.type === 'pointercancel' || e.type === 'lostpointercapture') {
+    if (drawingPointerId == null || (e.pointerId != null && e.pointerId !== drawingPointerId)) return false;
+    if (typeof e.preventDefault === 'function') e.preventDefault();
     endStroke();
     return true;
   }
   return false;
 }
 
+function bindDrawSurface() {
+  const stage = document.querySelector('.map-stage');
+  if (!stage || stage.dataset.pathBound) return;
+  stage.dataset.pathBound = '1';
+  const opts = {passive: false, capture: true};
+  const wrap = e => {
+    if (pathPointer(e)) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+  for (const type of ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'lostpointercapture']) {
+    stage.addEventListener(type, wrap, opts);
+  }
+  const guard = e => {
+    if (!isDrawingMode() || isUiEvent(e)) return;
+    e.preventDefault();
+  };
+  for (const type of ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'gesturestart']) {
+    stage.addEventListener(type, guard, opts);
+  }
+}
+
 function onMapMode() {
   if (isDrawingMode()) setDrawingClass(true);
   else window.solaLockCamera?.(false);
   drawPathPreview();
+  resizeMapsSoon();
 }
 
 async function loadLand() {
@@ -334,12 +530,25 @@ let started = false;
 export async function initSolaUi() {
   if (started) return; started = true;
   await loadLand();
+  bindDrawSurface();
   $('tabPredlogi')?.addEventListener('click', () => setTab('predlogi'));
   $('tabPot')?.addEventListener('click', () => setTab('pot'));
   $('pathDraw')?.addEventListener('click', startDrawing);
+  $('pathHudDraw')?.addEventListener('click', startDrawing);
   $('pathDone')?.addEventListener('click', finishPath);
+  $('pathHudDone')?.addEventListener('click', finishPath);
   $('pathReset')?.addEventListener('click', resetPath);
+  $('pathHudReset')?.addEventListener('click', resetPath);
   $('pathUndo')?.addEventListener('click', undoStroke);
+  $('pathHudUndo')?.addEventListener('click', undoStroke);
+  $('pathSubmit')?.addEventListener('click', submitPath);
+  $('pathHudSubmit')?.addEventListener('click', submitPath);
+  $('pathFullscreen')?.addEventListener('click', toggleFullscreen);
+  $('pathExitFs')?.addEventListener('click', exitFullscreen);
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+  window.addEventListener('resize', () => { updateHudVisibility(); resizeMapsSoon(); });
+  window.visualViewport?.addEventListener('resize', resizeMapsSoon);
   $('primerOpen')?.addEventListener('click', () => $('primerDialog')?.showModal());
   document.querySelectorAll('[data-goto]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -359,12 +568,15 @@ export async function initSolaUi() {
     tab,
     drawing: isDrawingMode(),
     done: !!pathIsDone(),
+    submitted: pathSubmitted,
     strokes: strokes.length,
     points: pathPoints().length,
     marks: marks.length,
-    path: pathPoints()
+    path: pathPoints(),
+    fullscreen: isFullscreen()
   });
   updatePathButtons();
+  updatePathStatus();
 }
 
 if (typeof window !== 'undefined') {
