@@ -134,53 +134,177 @@ function onFullscreenChange() {
   resizeMapsSoon();
 }
 
-function pointFromEvent(e) {
-  const x = e.clientX, y = e.clientY;
-  if (x == null || y == null) return null;
-  if (is3dView() && typeof window.solaLonLatFromClient3D === 'function') {
-    return window.solaLonLatFromClient3D(x, y);
+const MAX_STEP_M = 150;
+const SCREEN_STEP_PX = 2.5;
+const GEO_SAMPLE_PX = 14;
+const MAX_GEO_SAMPLES = 50;
+let liveStageRect = null;
+let liveRaf = 0;
+let overlayCtx = null;
+let overlaySize = {w: 0, h: 0, dpr: 1};
+
+function ensureOverlay() {
+  const c = $('drawOverlay');
+  const stage = document.querySelector('.map-stage');
+  if (!c || !stage) return null;
+  const r = stage.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = Math.max(1, Math.round(r.width));
+  const h = Math.max(1, Math.round(r.height));
+  if (overlaySize.w !== w || overlaySize.h !== h || overlaySize.dpr !== dpr) {
+    c.width = Math.round(w * dpr);
+    c.height = Math.round(h * dpr);
+    overlaySize = {w, h, dpr};
+    overlayCtx = c.getContext('2d', {desynchronized: true}) || c.getContext('2d');
   }
-  if (typeof window.solaLonLatFromClient === 'function') {
-    return window.solaLonLatFromClient(x, y);
-  }
-  return null;
+  if (!overlayCtx) overlayCtx = c.getContext('2d', {desynchronized: true}) || c.getContext('2d');
+  if (overlayCtx) overlayCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return overlayCtx;
 }
 
-const MAX_STEP_M = 150;
-function addLivePoint(e) {
-  const p = pointFromEvent(e);
-  if (!p) return;
-  if (typeof window.solaInMap === 'function' && !window.solaInMap(p)) return;
-  const last = liveStroke && liveStroke[liveStroke.length - 1];
-  if (last && distM(last, p) < SAMPLE_M) return;
-  if (last && distM(last, p) > MAX_STEP_M) return;
-  if (!liveStroke) liveStroke = [];
-  liveStroke.push(p);
-  drawPathPreview();
+function clearOverlay() {
+  if (liveRaf) { cancelAnimationFrame(liveRaf); liveRaf = 0; }
+  const c = $('drawOverlay');
+  if (!c || !overlayCtx) return;
+  overlayCtx.setTransform(1, 0, 0, 1, 0, 0);
+  overlayCtx.clearRect(0, 0, c.width, c.height);
+}
+
+function renderOverlayNow() {
+  liveRaf = 0;
+  const pts = liveStroke;
+  if (!pts || !pts.length) { clearOverlay(); return; }
+  const ctx = ensureOverlay();
+  if (!ctx) return;
+  ctx.clearRect(0, 0, overlaySize.w, overlaySize.h);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  if (pts.length === 1) {
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(pts[0].x, pts[0].y, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#16a34a';
+    ctx.beginPath();
+    ctx.arc(pts[0].x, pts[0].y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    return;
+  }
+  const trace = () => {
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  };
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+  ctx.lineWidth = 11;
+  trace();
+  ctx.stroke();
+  ctx.strokeStyle = '#16a34a';
+  ctx.lineWidth = 7;
+  trace();
+  ctx.stroke();
+}
+
+function scheduleOverlay() {
+  if (!liveRaf) liveRaf = requestAnimationFrame(renderOverlayNow);
+}
+
+function pushScreenPoint(e) {
+  if (!liveStroke) return;
+  if (!liveStageRect) {
+    const stage = document.querySelector('.map-stage');
+    liveStageRect = stage ? stage.getBoundingClientRect() : {left: 0, top: 0};
+  }
+  const cx = e.clientX, cy = e.clientY;
+  if (cx == null || cy == null) return;
+  const x = cx - liveStageRect.left;
+  const y = cy - liveStageRect.top;
+  const last = liveStroke[liveStroke.length - 1];
+  if (last && Math.hypot(x - last.x, y - last.y) < SCREEN_STEP_PX) return;
+  liveStroke.push({x, y, cx, cy});
+}
+
+function addLiveSamples(e) {
+  const list = typeof e.getCoalescedEvents === 'function' ? e.getCoalescedEvents() : null;
+  if (list && list.length) {
+    for (const ev of list) pushScreenPoint(ev);
+  } else {
+    pushScreenPoint(e);
+  }
+  if (liveStroke && liveStroke.length) scheduleOverlay();
+}
+
+function sampleScreenForGeo(pts) {
+  if (!pts || !pts.length) return [];
+  const picked = [pts[0]];
+  let last = pts[0];
+  for (let i = 1; i < pts.length - 1; i++) {
+    if (Math.hypot(pts[i].x - last.x, pts[i].y - last.y) >= GEO_SAMPLE_PX) {
+      picked.push(pts[i]);
+      last = pts[i];
+    }
+  }
+  if (pts.length > 1) picked.push(pts[pts.length - 1]);
+  if (picked.length <= MAX_GEO_SAMPLES) return picked;
+  const step = (picked.length - 1) / (MAX_GEO_SAMPLES - 1);
+  const out = [];
+  for (let i = 0; i < MAX_GEO_SAMPLES - 1; i++) out.push(picked[Math.round(i * step)]);
+  out.push(picked[picked.length - 1]);
+  return out;
+}
+
+function screenToGeoStroke(pts) {
+  const sampled = sampleScreenForGeo(pts);
+  if (!sampled.length) return [];
+  let coords;
+  if (is3dView() && typeof window.solaLonLatBatch3D === 'function') {
+    coords = window.solaLonLatBatch3D(sampled.map(p => ({x: p.cx, y: p.cy})));
+  } else if (is3dView() && typeof window.solaLonLatFromClient3D === 'function') {
+    coords = sampled.map(p => window.solaLonLatFromClient3D(p.cx, p.cy));
+  } else if (typeof window.solaLonLatFromClient === 'function') {
+    coords = sampled.map(p => window.solaLonLatFromClient(p.cx, p.cy));
+  } else {
+    return [];
+  }
+  const out = [];
+  for (const p of coords) {
+    if (!p) continue;
+    if (typeof window.solaInMap === 'function' && !window.solaInMap(p)) continue;
+    const prev = out[out.length - 1];
+    if (prev && distM(prev, p) < SAMPLE_M) continue;
+    if (prev && distM(prev, p) > MAX_STEP_M) continue;
+    out.push(p);
+  }
+  return out;
 }
 
 function startStroke(e) {
   if (drawingPointerId != null && e.pointerId !== drawingPointerId) return;
   drawingPointerId = e.pointerId;
-  liveStroke = [];
-  addLivePoint(e);
   const stage = document.querySelector('.map-stage');
-  const target = stage || e.currentTarget || (is3dView() ? window.solaCesiumCanvas?.() : $('mapSvg'));
-  try { target?.setPointerCapture?.(e.pointerId); } catch (err) { /* ni nujno */ }
+  liveStageRect = stage ? stage.getBoundingClientRect() : {left: 0, top: 0};
+  liveStroke = [];
+  pushScreenPoint(e);
+  renderOverlayNow();
+  try { stage?.setPointerCapture?.(e.pointerId); } catch (err) { /* ni nujno */ }
 }
 
 function cancelLiveStroke() {
   liveStroke = null;
+  liveStageRect = null;
   drawingPointerId = null;
-  drawPathPreview();
+  clearOverlay();
   updatePathButtons();
   updatePathStatus();
 }
 
 function endStroke() {
-  const raw = liveStroke || [];
+  const screenPts = liveStroke || [];
   liveStroke = null;
+  liveStageRect = null;
   drawingPointerId = null;
+  clearOverlay();
+  const raw = screenToGeoStroke(screenPts);
   const simple = douglasPeucker(raw, SIMPLIFY_M);
   if (simple.length >= 2 && strokeLengthM(simple) >= MIN_STROKE_M) {
     strokes.push(simple);
@@ -338,33 +462,23 @@ export function handleMapClick(point, opts) {
 
 function drawPathPreview() {
   const g = $('pathPreview');
+  const done = pathPoints();
   if (g && window.placesXy) {
-    g.replaceChildren();
     const NS = 'http://www.w3.org/2000/svg';
-    function line(pts, color, width, dash) {
-      if (!pts || pts.length < 2) return;
-      const pl = document.createElementNS(NS, 'polyline');
+    let pl = $('pathSvgDone');
+    if (!pl) {
+      pl = document.createElementNS(NS, 'polyline');
+      pl.id = 'pathSvgDone';
       pl.setAttribute('fill', 'none');
-      pl.setAttribute('stroke', color);
-      pl.setAttribute('stroke-width', String(width));
+      pl.setAttribute('stroke', '#22c55e');
+      pl.setAttribute('stroke-width', '6');
       pl.setAttribute('stroke-linecap', 'round');
       pl.setAttribute('stroke-linejoin', 'round');
       pl.setAttribute('pointer-events', 'none');
-      if (dash) pl.setAttribute('stroke-dasharray', dash);
-      pl.setAttribute('points', pts.map(p => window.placesXy(p).join(',')).join(' '));
       g.append(pl);
     }
-    const done = pathPoints();
-    if (done.length >= 2) line(done, '#22c55e', 6);
-    if (liveStroke && liveStroke.length >= 2) line(liveStroke, '#16a34a', 6, '8 6');
-    else if (liveStroke && liveStroke.length === 1) {
-      const [x, y] = window.placesXy(liveStroke[0]);
-      const c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', '5');
-      c.setAttribute('fill', '#16a34a');
-      c.setAttribute('pointer-events', 'none');
-      g.append(c);
-    }
+    pl.setAttribute('points', done.length >= 2 ? done.map(pt => window.placesXy(pt).join(',')).join(' ') : '');
+    for (const old of [...g.querySelectorAll('circle')]) old.remove();
     marks.forEach(m => {
       const [x, y] = window.placesXy(m.point);
       const c = document.createElementNS(NS, 'circle');
@@ -379,7 +493,7 @@ function drawPathPreview() {
   }
   window.solaRenderPath3D?.({
     path: pathPoints(),
-    live: liveStroke || [],
+    live: [],
     marks
   });
 }
@@ -407,7 +521,7 @@ function finishPath() {
 
 function undoStroke() {
   if (pathIsDone()) return;
-  if (liveStroke) { liveStroke = null; drawingPointerId = null; }
+  if (liveStroke) { liveStroke = null; liveStageRect = null; drawingPointerId = null; clearOverlay(); }
   else if (strokes.length) strokes.pop();
   updatePathButtons();
   updatePathStatus();
@@ -422,7 +536,7 @@ function clearSubmitResult() {
 }
 
 function resetPath() {
-  strokes = []; marks = []; liveStroke = null; drawingPointerId = null;
+  strokes = []; marks = []; liveStroke = null; liveStageRect = null; drawingPointerId = null; clearOverlay();
   activePointers.clear(); pinch = null; window.solaClearOrbitPivot?.();
   drawingActive = false;
   pathSubmitted = false;
@@ -573,7 +687,7 @@ export function pathPointer(e) {
     if (isNavPointer(e)) return !is3dView();
     if (drawingPointerId == null || e.pointerId !== drawingPointerId) return false;
     if (typeof e.preventDefault === 'function') e.preventDefault();
-    addLivePoint(e);
+    addLiveSamples(e);
     return true;
   }
 
@@ -639,6 +753,7 @@ function bindDrawSurface() {
 }
 
 function onMapMode() {
+  clearOverlay();
   if (isDrawingMode()) setDrawingClass(true);
   else window.solaLockCamera?.(false);
   drawPathPreview();

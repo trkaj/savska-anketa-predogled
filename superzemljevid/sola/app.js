@@ -156,7 +156,10 @@ window.solaNudge3D=(kind)=>{
 window.solaLonLatFromClient3D=(clientX,clientY)=>{
  if(!state.viewer||state.viewer.isDestroyed()||!state.threeReady)return null;
  const C=window.Cesium,v=state.viewer,canvas=v.canvas,rect=canvas.getBoundingClientRect();
- const pos=new C.Cartesian2(clientX-rect.left,clientY-rect.top);
+ return pickLonLat3D(C,v,clientX-rect.left,clientY-rect.top);
+};
+function pickLonLat3D(C,v,lx,ly){
+ const pos=new C.Cartesian2(lx,ly);
  let world;
  if(v.scene.pickPositionSupported)world=v.scene.pickPosition(pos);
  if(!C.defined(world)){const ray=v.camera.getPickRay(pos);if(ray)world=v.scene.globe.pick(ray,v.scene);}
@@ -164,6 +167,13 @@ window.solaLonLatFromClient3D=(clientX,clientY)=>{
  if(!C.defined(world))return null;
  const c=C.Cartographic.fromCartesian(world);
  return [C.Math.toDegrees(c.longitude),C.Math.toDegrees(c.latitude)];
+}
+window.solaLonLatBatch3D=(clients)=>{
+ if(!state.viewer||state.viewer.isDestroyed()||!state.threeReady||!clients?.length)return [];
+ const C=window.Cesium,v=state.viewer,rect=v.canvas.getBoundingClientRect();
+ const out=[];
+ for(const pt of clients)out.push(pickLonLat3D(C,v,pt.x-rect.left,pt.y-rect.top));
+ return out;
 };
 function attachPathCanvas(canvas){
  if(!canvas||canvas.dataset.solaPath)return;
@@ -180,42 +190,52 @@ function pathDegrees(pts){
  for(const p of pts||[]){if(p&&p.length>=2)flat.push(p[0],p[1]);}
  return flat;
 }
+let last3DPathKey='';
 window.solaRenderPath3D=({path=[],live=[],marks=[]}={})=>{
  const v=state.viewer,C=window.Cesium;
  if(!v||v.isDestroyed()||!C)return;
+ const mid=path[Math.floor(path.length/2)];const key=JSON.stringify([path.length,path[0],mid,path[path.length-1],live.length,marks.length,marks.map(m=>m.safety)]);
+ if(key===last3DPathKey)return;
+ last3DPathKey=key;
  const ds=v.dataSources.getByName('sola-pot-predogled')[0];
  const source=ds||new C.CustomDataSource('sola-pot-predogled');
  if(!ds)v.dataSources.add(source);
- source.entities.removeAll();
- const line=(id,pts,color,width)=>{
-  const flat=pathDegrees(pts);
-  if(flat.length<4)return;
-  source.entities.add({
-   id,
-   polyline:{
-    positions:C.Cartesian3.fromDegreesArray(flat),
-    width,
-    clampToGround:true,
-    classificationType:C.ClassificationType.BOTH,
-    material:C.Color.fromCssColorString(color),
-    arcType:C.ArcType.GEODESIC
-   }
-  });
- };
- line('pot',path,'#22c55e',12);
- line('pot-live',live,'#16a34a',12);
- if(live.length===1){
-  source.entities.add({
-   position:C.Cartesian3.fromDegrees(live[0][0],live[0][1]),
-   point:{pixelSize:14,color:C.Color.fromCssColorString('#16a34a'),outlineColor:C.Color.WHITE,outlineWidth:2,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
-  });
- }
- for(const [i,m] of (marks||[]).entries()){
-  if(!m?.point)continue;
-  source.entities.add({
-   position:C.Cartesian3.fromDegrees(m.point[0],m.point[1]),
-   point:{pixelSize:22,color:C.Color.fromCssColorString(m.safety==='pazi'?'#eab308':'#dc2626'),outlineColor:C.Color.WHITE,outlineWidth:3,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
-  });
+ source.entities.suspendEvents();
+ try{
+  source.entities.removeAll();
+  const line=(id,pts,color,width)=>{
+   const flat=pathDegrees(pts);
+   if(flat.length<4)return;
+   source.entities.add({
+    id,
+    polyline:{
+     positions:C.Cartesian3.fromDegreesArray(flat),
+     width,
+     clampToGround:true,
+     classificationType:C.ClassificationType.BOTH,
+     material:C.Color.fromCssColorString(color),
+     arcType:C.ArcType.GEODESIC
+    }
+   });
+  };
+  line('pot',path,'#22c55e',12);
+  line('pot-live',live,'#16a34a',12);
+  if(live.length===1){
+   source.entities.add({
+    position:C.Cartesian3.fromDegrees(live[0][0],live[0][1]),
+    point:{pixelSize:14,color:C.Color.fromCssColorString('#16a34a'),outlineColor:C.Color.WHITE,outlineWidth:2,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
+   });
+  }
+  for(const [i,m] of (marks||[]).entries()){
+   if(!m?.point)continue;
+   source.entities.add({
+    id:'pot-mark-'+i,
+    position:C.Cartesian3.fromDegrees(m.point[0],m.point[1]),
+    point:{pixelSize:22,color:C.Color.fromCssColorString(m.safety==='pazi'?'#eab308':'#dc2626'),outlineColor:C.Color.WHITE,outlineWidth:3,heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY}
+   });
+  }
+ }finally{
+  source.entities.resumeEvents();
  }
  v.scene.requestRender();
 };
