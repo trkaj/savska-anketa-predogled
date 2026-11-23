@@ -1,13 +1,15 @@
 import {api,upload,preparePhoto,download} from './data.mjs';
 import {recordText,surveyUrl} from './core.mjs';
 
-/* Oddaja v zasebno tabelo: vstavi /exec URL in oddaja se vklopi sama. */
-const RECEIVER_URL = '';
+/* Oddaja v zasebno tabelo: URL spletne aplikacije (samo zapis). text/plain prepreči CORS preflight; brskalnik 302 spremeni v GET. */
+const RECEIVER_URL = 'https://script.google.com/macros/s/AKfycbw3yCV1pUCkirPhYSb44Ll45AP2Ctmt1qFTFTwy2EhvDdqhbolZDH4KGblVC3RKhsSZhQ/exec';
 const ODDAJA_VKLOPLJENA = Boolean(RECEIVER_URL);
 const RECEIVER_TOKEN = '';
 const MOOD_MARK = {veselo: '😊', srednje: '😐', zalostno: '☹️'};
 const PATH_STORAGE_KEY = 'sola-pot-lokalno';
 export const PATH_DISABLED_MSG = 'Pot je shranjena na tej napravi. Oddaja bo kmalu vklopljena.';
+export const PATH_OK_MSG = 'Hvala! Tvoja pot je oddana.';
+export const PATH_OFFLINE_MSG = 'Povezava ni uspela. Pot je shranjena na tej napravi; poskusi oddajo znova, ko bo povezava spet na voljo.';
 export {ODDAJA_VKLOPLJENA, RECEIVER_URL};
 
 const $=id=>document.getElementById(id);
@@ -60,6 +62,13 @@ function savePathLocally(payload){
   try{localStorage.setItem(PATH_STORAGE_KEY,JSON.stringify(list));}catch{/* zasebni način ali poln prostor */}
 }
 
+function testBesedilo(){
+  try{
+    if(typeof location!=='undefined'&&new URLSearchParams(location.search).get('test')==='izbrisi')return 'TEST – izbriši';
+  }catch(e){/* ni brskalnika */}
+  return '';
+}
+
 export function pathPayload(path, marks){
   const first=path&&path[0];
   return{
@@ -68,7 +77,7 @@ export function pathPayload(path, marks){
     razred:'',
     kategorija:'',
     smesko:'',
-    besedilo:'',
+    besedilo:testBesedilo(),
     lon:first?first[0]:'',
     lat:first?first[1]:'',
     geometrija:pathFeatureCollection(path, marks),
@@ -77,7 +86,7 @@ export function pathPayload(path, marks){
   };
 }
 
-/** Oddaja poti: če je prejemnik vklopljen, POST; sicer samo localStorage. */
+/** Oddaja poti: če je prejemnik vklopljen, POST; ob napaki omrežja ostane v localStorage. */
 export async function submitSchoolPath(path, marks){
   if(!path||path.length<2)throw new Error('Najprej nariši pot in pritisni Končaj.');
   const payload=pathPayload(path, marks);
@@ -85,8 +94,12 @@ export async function submitSchoolPath(path, marks){
   if(!ODDAJA_VKLOPLJENA||!RECEIVER_URL){
     return{ok:true,local:true,id:payload.id,message:PATH_DISABLED_MSG};
   }
-  const saved=await postToSheet(payload);
-  return{ok:true,local:false,id:saved.id,message:'Hvala! Pot je oddana.'};
+  try{
+    const saved=await postToSheet(payload);
+    return{ok:true,local:false,id:saved.id,message:PATH_OK_MSG};
+  }catch(err){
+    return{ok:true,local:true,id:payload.id,message:PATH_OFFLINE_MSG};
+  }
 }
 
 export function attachSubmission({getRecord,validate,resetMap,toast}){
