@@ -1690,5 +1690,35 @@ DESCRIPTION:Rok: EIT UM start-up call
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:sozialmarie-2027@anketa.savska.org
+DTSTAMP:20261123T055000Z
+DTSTART;TZID=Europe/Vienna:20270107T235500
+DTEND;TZID=Europe/Vienna:20270107T235900
+SUMMARY:SozialMarie 2027 – nagrada za družbene inovacije (srednja in vzh
+ odna Evropa\, tudi Slovenija)
+DESCRIPTION:SozialMarie 2027 (nagrada za družbene inovacije)\nRok: Razpis 
+ odprt od 6. 11. 2026 do 7. 1. 2027 (oddaja do 23.55). Nominacije 26. 2. 20
+ 27\, javno glasovanje 14.–21. 4. 2027\, podelitev 10. 5. 2027 na Dunaju.
+  Prijava v slovenščini in angleščini prek spletnega mesta sozialmarie.
+ org.\nZnesek: 15 nagrad: 15.000 €\, 10.000 € in 5.000 € za prva tri 
+ mesta ter 12 nagrad po 3.000 €.\nKdo: Posamezniki\, podjetja\, akterji s
+ ocialne ekonomije\, civilnodružbene iniciative\, NVO\, društva in javna 
+ uprava s projekti\, ki se izvajajo v Avstriji\, na Hrvaškem\, Češkem\, 
+ Madžarskem\, Slovaškem ali v Sloveniji. Projekt mora biti že zadostno i
+ zveden in še v teku\; ideje in zaključeni projekti niso upravičeni.\nKo
+ rist za Savsko: Denarna nagrada (3.000–15.000 €) in mednarodna prepozn
+ avnost za že delujoč skupnostni program v Savskem\, kar olajša nadaljnj
+ e financiranje.
+URL:https://www.sozialmarie.org/sl/razpis
+LOCATION:Savsko naselje / razpis
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rok: SozialMarie 2027 (nagrada za družbene inovacije)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
 END:VCALENDAR
 
