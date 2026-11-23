@@ -74,6 +74,7 @@ $('toIdea').onclick=()=>{const field=$('grade').disabled?$('saveResult'):$('grad
 $('backToMap').onclick=()=>{$('addressSearch').focus();$('searchForm').scrollIntoView({block:'center'});};
 updateKind();
 $('zoomIn').onclick=()=>zoom(.72);$('zoomOut').onclick=()=>zoom(1.4);$('home').onclick=goHome;
+$('rotateLeft')&&($('rotateLeft').onclick=()=>window.solaNudge3D('left'));$('rotateRight')&&($('rotateRight').onclick=()=>window.solaNudge3D('right'));$('tiltUp')&&($('tiltUp').onclick=()=>window.solaNudge3D('tiltUp'));$('tiltDown')&&($('tiltDown').onclick=()=>window.solaNudge3D('tiltDown'));
 $('selectCenter').onclick=()=>{if(!state.scene)return;if(state.mode==='3d'){if(!state.viewer)return;const C=window.Cesium,v=state.viewer,p=new C.Cartesian2(v.canvas.clientWidth/2,v.canvas.clientHeight/2);select3D(p);}else selectPoint(ll([state.view.x+state.view.w/2,state.view.y+state.view.h/2]));};
 
 
@@ -88,17 +89,69 @@ window.solaMapMode=()=>state.mode;
 window.solaSwitchTo2d=()=>{if(state.mode!=='2d')mode('2d');};
 window.solaCesiumCanvas=()=>state.viewer&&!state.viewer.isDestroyed()?state.viewer.canvas:null;
 window.sola3dReady=()=>!!(state.threeReady&&state.viewer&&!state.viewer.isDestroyed());
-window.solaCameraLocked=()=>{const v=state.viewer;return !!(v&&!v.isDestroyed()&&v.scene.screenSpaceCameraController.enableInputs===false);};
+window.solaCameraLocked=()=>{const v=state.viewer;return !!(v&&!v.isDestroyed()&&v.scene.screenSpaceCameraController.enableTranslate===false);};
 window.solaLockCamera=(lock)=>{
  const v=state.viewer;if(!v||v.isDestroyed())return;
  const c=v.scene.screenSpaceCameraController;
- c.enableInputs=!lock;c.enableTranslate=!lock;c.enableZoom=!lock;c.enableRotate=!lock;c.enableTilt=!lock;c.enableLook=!lock;
- if(v.canvas){v.canvas.style.touchAction=lock?'none':'';v.canvas.style.userSelect=lock?'none':'';}
+ /* Med risanjem ostanejo zoom, zasuk in nagib; izklopimo samo premik (translate). */
+ c.enableInputs=true;c.enableTranslate=!lock;c.enableZoom=true;c.enableRotate=true;c.enableTilt=true;c.enableLook=true;
+ if(v.canvas){v.canvas.style.touchAction='none';v.canvas.style.userSelect=lock?'none':'';}
  v.scene.requestRender();
 };
+window.solaZoom=(f,client)=>{zoom(f,client);};
 window.solaResizeMaps=()=>{
  if(state.scene&&state.mode==='2d')refreshView();
  const v=state.viewer;if(v&&!v.isDestroyed()){v.resize();v.scene.requestRender();}
+};
+window.solaViewSnapshot=()=>{
+ if(state.mode==='3d'&&state.viewer&&!state.viewer.isDestroyed()){
+  const c=state.viewer.camera,cart=c.positionCartographic;
+  return{mode:'3d',height:cart?cart.height:null,heading:c.heading,pitch:c.pitch};
+ }
+ const v=state.view;return{mode:'2d',x:v.x,y:v.y,w:v.w,h:v.h};
+};
+function pickWorld3D(clientX,clientY){
+ const v=state.viewer,C=window.Cesium;
+ if(!v||v.isDestroyed()||!C)return null;
+ const rect=v.canvas.getBoundingClientRect();
+ const pos=new C.Cartesian2(clientX-rect.left,clientY-rect.top);
+ let world;
+ if(v.scene.pickPositionSupported)world=v.scene.pickPosition(pos);
+ if(!C.defined(world)){const ray=v.camera.getPickRay(pos);if(ray)world=v.scene.globe.pick(ray,v.scene);}
+ if(!C.defined(world))world=v.camera.pickEllipsoid(pos,v.scene.globe.ellipsoid);
+ return C.defined(world)?world:null;
+}
+let orbitPivot=null;
+window.solaClearOrbitPivot=()=>{orbitPivot=null;};
+window.solaNavigate3D=({heading=0,pitch=0,zoom=1,clientX,clientY,fresh=false}={})=>{
+ const v=state.viewer,C=window.Cesium;
+ if(!v||v.isDestroyed()||!C||state.mode!=='3d')return;
+ const cam=v.camera;
+ const cx=clientX,cy=clientY;
+ if(fresh||!orbitPivot){
+  orbitPivot= (cx!=null&&cy!=null?pickWorld3D(cx,cy):null)
+   || pickWorld3D(v.canvas.clientWidth/2+v.canvas.getBoundingClientRect().left,v.canvas.clientHeight/2+v.canvas.getBoundingClientRect().top)
+   || (state.scene?C.Cartesian3.fromDegrees(...state.scene.center,0):null);
+ }
+ if(!orbitPivot)return;
+ const range0=C.Cartesian3.distance(cam.positionWC,orbitPivot);
+ const range=Math.max(30,Math.min(4000,range0*(zoom||1)));
+ const h=cam.heading+heading;
+ const p=C.Math.clamp(cam.pitch+pitch,C.Math.toRadians(-89),C.Math.toRadians(-8));
+ cam.lookAt(orbitPivot,new C.HeadingPitchRange(h,p,range));
+ cam.lookAtTransform(C.Matrix4.IDENTITY);
+ v.scene.requestRender();
+};
+window.solaNudge3D=(kind)=>{
+ const v=state.viewer,C=window.Cesium;
+ if(!v||v.isDestroyed()||!C||state.mode!=='3d')return;
+ const rect=v.canvas.getBoundingClientRect();
+ const cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+ const step=C.Math.toRadians(14);
+ if(kind==='left')window.solaNavigate3D({heading:-step,clientX:cx,clientY:cy,fresh:true});
+ else if(kind==='right')window.solaNavigate3D({heading:step,clientX:cx,clientY:cy,fresh:true});
+ else if(kind==='tiltUp')window.solaNavigate3D({pitch:step,clientX:cx,clientY:cy,fresh:true});
+ else if(kind==='tiltDown')window.solaNavigate3D({pitch:-step,clientX:cx,clientY:cy,fresh:true});
 };
 window.solaLonLatFromClient3D=(clientX,clientY)=>{
  if(!state.viewer||state.viewer.isDestroyed()||!state.threeReady)return null;
@@ -287,6 +340,7 @@ function showMode(which){
  $('mode2d').classList.toggle('active',which==='2d');$('mode3d').classList.toggle('active',which==='3d');
  $('mode2d').setAttribute('aria-pressed',which==='2d');$('mode3d').setAttribute('aria-pressed',which==='3d');
  $('northCue').hidden=which!=='2d';$('scaleCue').hidden=which!=='2d';
+ if($('orbitControls'))$('orbitControls').hidden=which!=='3d';
  if(which==='2d'){$('mapStatus').hidden=true;$('mapCredit').textContent='Ortofoto GURS · september 2026';refreshView();}
  else refresh3DNotice();
  window.solaOnMapMode?.(which);

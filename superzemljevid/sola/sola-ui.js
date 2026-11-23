@@ -5,13 +5,15 @@ import {SIMPLIFY_M, MIN_STROKE_M, SAMPLE_M, distM, douglasPeucker, strokeLengthM
 import {submitSchoolPath} from './submit.js';
 
 const $ = id => document.getElementById(id);
-const HINT = 'Vleci s prstom od doma do šole';
+const HINT = 'En prst riše, z dvema prstoma povečaš in obračaš';
 
 let tab = 'predlogi';
 let drawingActive = false;
 let strokes = [];
 let liveStroke = null;
 let drawingPointerId = null;
+const activePointers = new Map();
+let pinch = null;
 let marks = [];
 const MAX_MARKS = 3;
 let parcels = null, zvetl = null;
@@ -167,6 +169,14 @@ function startStroke(e) {
   try { target?.setPointerCapture?.(e.pointerId); } catch (err) { /* ni nujno */ }
 }
 
+function cancelLiveStroke() {
+  liveStroke = null;
+  drawingPointerId = null;
+  drawPathPreview();
+  updatePathButtons();
+  updatePathStatus();
+}
+
 function endStroke() {
   const raw = liveStroke || [];
   liveStroke = null;
@@ -231,7 +241,7 @@ function updatePathStatus() {
   } else {
     const n = pathPoints().length;
     const k = strokes.length;
-    if (!k && !liveStroke) text = HINT + '. Zemljevid se med risanjem ne premika.';
+    if (!k && !liveStroke) text = HINT + '.';
     else text = (k ? ('Potez: ' + k + '. ') : '') + (n ? 'Točk na črti: ' + n + '. ' : '') + 'Lahko dodaš še eno potezo, razveljaviš zadnjo ali pritisneš »Končaj«.';
   }
   for (const id of ['pathStatus', 'pathHudStatus']) {
@@ -280,7 +290,7 @@ function startDrawing() {
   setMapHint();
   updatePathStatus();
   updatePathButtons();
-  toast(HINT + '. Zemljevid se med risanjem ne premika.');
+  toast(HINT + '.');
 }
 
 function showKam(point) {
@@ -413,6 +423,7 @@ function clearSubmitResult() {
 
 function resetPath() {
   strokes = []; marks = []; liveStroke = null; drawingPointerId = null;
+  activePointers.clear(); pinch = null; window.solaClearOrbitPivot?.();
   drawingActive = false;
   pathSubmitted = false;
   if ($('pathDone')) $('pathDone').dataset.done = '';
@@ -460,28 +471,137 @@ async function submitPath() {
   }
 }
 
+function isNavPointer(e) {
+  if (e.pointerType === 'mouse' || e.pointerType === 'pen') {
+    if (e.button === 1 || e.button === 2) return true;
+    if (e.buttons === 2 || e.buttons === 4 || e.buttons === 6) return true;
+    if (e.ctrlKey || e.shiftKey || e.metaKey || e.altKey) return true;
+  }
+  return false;
+}
+
+function pinchMetrics() {
+  const pts = [...activePointers.values()];
+  if (pts.length < 2) return null;
+  const a = pts[0], b = pts[1];
+  return {
+    dist: Math.hypot(b.x - a.x, b.y - a.y),
+    angle: Math.atan2(b.y - a.y, b.x - a.x),
+    midX: (a.x + b.x) / 2,
+    midY: (a.y + b.y) / 2
+  };
+}
+
+function beginPinch() {
+  cancelLiveStroke();
+  const m = pinchMetrics();
+  pinch = m ? {...m, started: true} : {started: true};
+  window.solaClearOrbitPivot?.();
+}
+
+function applyPinch() {
+  const m = pinchMetrics();
+  if (!m || !pinch) return;
+  if (pinch.dist) {
+    const factor = pinch.dist / m.dist;
+    if (is3dView()) {
+      const heading = isFinite(pinch.angle) ? m.angle - pinch.angle : 0;
+      const pitch = (m.midY - pinch.midY) * -0.006;
+      const zoomF = (Math.abs(1 - factor) > 0.002) ? factor : 1;
+      window.solaNavigate3D?.({
+        heading,
+        pitch,
+        zoom: zoomF,
+        clientX: m.midX,
+        clientY: m.midY,
+        fresh: !orbitFreshUsed()
+      });
+      markOrbitUsed();
+    } else if (Math.abs(1 - factor) > 0.002) {
+      window.solaZoom?.(factor, [m.midX, m.midY]);
+    }
+  }
+  pinch = {...m, started: true, used: true};
+}
+
+let pinchOrbitStarted = false;
+function orbitFreshUsed() { return pinchOrbitStarted; }
+function markOrbitUsed() { pinchOrbitStarted = true; }
+
+function endPinchIfNeeded() {
+  if (activePointers.size < 2) {
+    pinch = null;
+    pinchOrbitStarted = false;
+    window.solaClearOrbitPivot?.();
+  }
+}
+
 export function pathPointer(e) {
   if (!isDrawingMode()) return false;
   if (isUiEvent(e)) return false;
+
   if (e.type === 'pointerdown') {
+    const nav = isNavPointer(e);
+    activePointers.set(e.pointerId, {x: e.clientX, y: e.clientY, nav});
+    if (nav) {
+      cancelLiveStroke();
+      /* V 3D prepustimo desni/srednji/Ctrl-Shift vlek Cesiumu (zasuk, nagib, zoom). */
+      return !is3dView();
+    }
+    if (activePointers.size >= 2) {
+      beginPinch();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      return true;
+    }
     if (e.button != null && e.button !== 0) return false;
-    if (e.isPrimary === false) return true;
-    if (drawingPointerId != null && e.pointerId !== drawingPointerId) return true;
     if (typeof e.preventDefault === 'function') e.preventDefault();
     startStroke(e);
     return true;
   }
+
   if (e.type === 'pointermove') {
-    if (drawingPointerId == null || e.pointerId !== drawingPointerId) return drawingPointerId != null;
+    if (activePointers.has(e.pointerId)) {
+      const prev = activePointers.get(e.pointerId);
+      activePointers.set(e.pointerId, {...prev, x: e.clientX, y: e.clientY});
+    }
+    if (activePointers.size >= 2) {
+      if (!pinch) beginPinch();
+      applyPinch();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      return true;
+    }
+    if (isNavPointer(e)) return !is3dView();
+    if (drawingPointerId == null || e.pointerId !== drawingPointerId) return false;
     if (typeof e.preventDefault === 'function') e.preventDefault();
     addLivePoint(e);
     return true;
   }
-  if (e.type === 'pointerup' || e.type === 'pointercancel' || e.type === 'lostpointercapture') {
-    if (drawingPointerId == null || (e.pointerId != null && e.pointerId !== drawingPointerId)) return false;
-    if (typeof e.preventDefault === 'function') e.preventDefault();
-    endStroke();
-    return true;
+
+  if (e.type === 'lostpointercapture') {
+    /* Med prehodom na dve prsta capture odpade; poteze ne prekinemo. */
+    if (pinch || activePointers.size >= 2) return true;
+    if (drawingPointerId != null && e.pointerId === drawingPointerId) {
+      endStroke();
+      activePointers.delete(e.pointerId);
+      return true;
+    }
+    return false;
+  }
+  if (e.type === 'pointerup' || e.type === 'pointercancel') {
+    const wasDraw = drawingPointerId != null && e.pointerId === drawingPointerId;
+    const wasPinch = !!pinch;
+    activePointers.delete(e.pointerId);
+    if (wasPinch) {
+      endPinchIfNeeded();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      return true;
+    }
+    if (wasDraw) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      endStroke();
+      return true;
+    }
+    return false;
   }
   return false;
 }
@@ -507,6 +627,15 @@ function bindDrawSurface() {
   for (const type of ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'gesturestart']) {
     stage.addEventListener(type, guard, opts);
   }
+  stage.addEventListener('wheel', e => {
+    if (!isDrawingMode() || isUiEvent(e)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.solaZoom?.(Math.exp(e.deltaY * 0.0015), [e.clientX, e.clientY]);
+  }, {passive: false, capture: true});
+  stage.addEventListener('contextmenu', e => {
+    if (isDrawingMode() && is3dView()) e.preventDefault();
+  });
 }
 
 function onMapMode() {
@@ -573,7 +702,9 @@ export async function initSolaUi() {
     points: pathPoints().length,
     marks: marks.length,
     path: pathPoints(),
-    fullscreen: isFullscreen()
+    fullscreen: isFullscreen(),
+    pointers: activePointers.size,
+    pinching: !!pinch
   });
   updatePathButtons();
   updatePathStatus();

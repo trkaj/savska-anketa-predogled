@@ -265,3 +265,12 @@ body.sola-map-fullscreen #pathExitFs{display:none}
   .map-pane.is-fullscreen{grid-template-rows:auto minmax(0,1fr) auto auto}
 }
 body.sola-map-fullscreen .map-guidance{display:none}
+
+#home{border-top:1px solid var(--line)}
+.map-orbit-controls{display:grid;grid-template-columns:1fr 1fr;gap:1px;border-top:1px solid var(--line);margin-top:3px;padding-top:3px}
+#orbitControls[hidden]{display:none!important}
+.map-orbit-controls button{width:39px;height:40px;min-height:40px}
+@media(max-width:740px){
+  .map-orbit-controls button{width:44px;height:44px;min-height:44px}
+  .map-side-controls{width:auto}
+}
