@@ -43,33 +43,6 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:mol-kultura-2027@anketa.savska.org
-DTSTAMP:20261117T110000Z
-DTSTART;TZID=Europe/Ljubljana:20261124T235900
-DTEND;TZID=Europe/Ljubljana:20261125T001400
-SUMMARY:MOL: Javni razpis za izbor kulturnih projektov za leto 2027
-DESCRIPTION:MOL kultura 2027\nRok: Oddaja v aplikaciji in natisnjena vloga 
- v Glavno pisarno ali priporočeno pošto najkasneje 24. 11. 2026.\nZnesek:
-  Okvirno 600.000 € skupaj za razpis. Največ 70 % vrednosti projekta\; z
- gornje meje po področjih (npr. 15.000 € produkcija\, 8.000 € vizualne
- /intermedijske\, 3.000 € kulturno-umetnostna vzgoja\, 3.000 € mladike)
- .\nSofinanciranje: do 70 %\nSodi predvsem v kulturno produkcijo\, ne v pro
- met ali garaže. Pride v poštev le\, če imamo kulturni dogodek ali umetn
- iški poseg v javnem prostoru.\nPreverjeno na uradni strani MOL in v razpi
- sni dokumentaciji (okvirna vrednost\, točka 10).
-URL:https://www.ljubljana.si/sl/mestni-servis/razpisi-razgrnitve-in-javne-o
- bjave/javni-razpis-za-izbor-kulturnih-projektov-ki-jih-bo-v-letu-2027-sofi
- nancirala-mestna-obcina-ljubljana
-LOCATION:Savsko naselje / razpis
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Rok razpisa: MOL kultura 2027
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:mol-mladina-2027@anketa.savska.org
 DTSTAMP:20261117T110000Z
 DTSTART;TZID=Europe/Ljubljana:20261201T235900
