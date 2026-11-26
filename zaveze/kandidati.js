@@ -323,9 +323,38 @@ function escHtml(s) {
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+const IZVOLJENE_LISTE = [1, 4, 5, 7, 11, 13, 15];
+
+function jeIzvoljeniPogled() {
+  try {
+    return new URLSearchParams(location.search).get("izvoljeni") === "1";
+  } catch (e) {
+    return false;
+  }
+}
+
+function jeStranIzvoljenih() {
+  const pot = location.pathname || "";
+  return /\/izvoljeni\/?(?:index\.html)?$/.test(pot);
+}
+
+function zIzvoljeniParam(href) {
+  if (!href || !jeIzvoljeniPogled() && !jeStranIzvoljenih()) return href;
+  if (/[?&]izvoljeni=/.test(href)) return href;
+  if (href.charAt(0) === "#" || /^(https?:|mailto:|tel:)/i.test(href)) return href;
+  return href + (href.indexOf("?") >= 0 ? "&" : "?") + "izvoljeni=1";
+}
+
+function seznamListZaNav() {
+  if (jeIzvoljeniPogled()) return IZVOLJENE_LISTE.slice();
+  const vse = [];
+  for (let i = 1; i <= 15; i++) vse.push(i);
+  return vse;
+}
+
 function stranListe(n) {
   const map = {1: "lista-1.html", 2: "lista-2.html", 4: "lista-4.html", 5: "lista-5.html", 6: "lista-6.html", 7: "lista-7.html", 8: "lista-8.html", 9: "lista-9.html", 10: "lista-10.html", 11: "lista-11.html", 12: "lista-12.html", 13: "lista-13.html", 15: "lista-15.html"};
-  return map[n] || ("lista.html?n=" + n);
+  return zIzvoljeniParam(map[n] || ("lista.html?n=" + n));
 }
 
 function stevilkaListeIzUrl() {
@@ -361,12 +390,18 @@ function vstaviListniCta(n) {
   wrap.id = "lista-cta";
   if (n === "glas") {
     wrap.innerHTML = '<a class="btn-zacetek next" href="index.html#primerjava">Nazaj na primerjavo</a>';
-  } else if (n >= 15) {
-    wrap.innerHTML = '<a class="btn-zacetek next" href="glas.html">Sedaj je čas za tvoj glas</a>' +
-      '<a class="btn-zacetek btn-drugi next" href="index.html#primerjava">Nazaj na primerjavo</a>';
   } else {
-    const nasl = n + 1;
-    wrap.innerHTML = '<a class="btn-zacetek next" href="' + escHtml(stranListe(nasl)) + '">Naslednja lista → ' + escHtml(imeListe(nasl)) + "</a>";
+    const niz = seznamListZaNav();
+    const ix = niz.indexOf(n);
+    const nasl = ix >= 0 && ix < niz.length - 1 ? niz[ix + 1] : null;
+    if (nasl != null) {
+      wrap.innerHTML = '<a class="btn-zacetek next" href="' + escHtml(stranListe(nasl)) + '">Naslednja lista → ' + escHtml(imeListe(nasl)) + "</a>";
+    } else if (jeIzvoljeniPogled()) {
+      wrap.innerHTML = '<a class="btn-zacetek" href="izvoljeni/">Nazaj na izvoljene liste</a>';
+    } else {
+      wrap.innerHTML = '<a class="btn-zacetek next" href="glas.html">Sedaj je čas za tvoj glas</a>' +
+        '<a class="btn-zacetek btn-drugi next" href="index.html#primerjava">Nazaj na primerjavo</a>';
+    }
   }
   main.appendChild(wrap);
 }
@@ -387,15 +422,21 @@ function vstaviPlavajociPas(n) {
     desno = '<a class="lista-pas-gumb next" href="index.html#primerjava">Primerjava →</a>';
     sredina = "Čas za tvoj glas";
   } else {
-    const prev = n > 1 ? n - 1 : null;
-    const next = n < 15 ? n + 1 : "glas";
+    const niz = seznamListZaNav();
+    const ix = niz.indexOf(n);
+    const prev = ix > 0 ? niz[ix - 1] : null;
+    const next = ix >= 0 && ix < niz.length - 1 ? niz[ix + 1] : null;
+    const skupaj = niz.length;
+    const mesto = ix >= 0 ? ix + 1 : n;
     levo = prev
       ? '<a class="lista-pas-gumb" href="' + escHtml(stranListe(prev)) + '">← Prejšnja</a>'
       : '<span class="lista-pas-gumb je-konec" aria-disabled="true">← Prejšnja</span>';
-    desno = next === "glas"
-      ? '<a class="lista-pas-gumb next" href="glas.html">Čas za glas →</a>'
-      : '<a class="lista-pas-gumb next" href="' + escHtml(stranListe(next)) + '">Naslednja →</a>';
-    sredina = n + " / 15 · " + imeListeKratko(n);
+    desno = next != null
+      ? '<a class="lista-pas-gumb next" href="' + escHtml(stranListe(next)) + '">Naslednja →</a>'
+      : (jeIzvoljeniPogled()
+        ? '<span class="lista-pas-gumb je-konec" aria-disabled="true">Naslednja →</span>'
+        : '<a class="lista-pas-gumb next" href="glas.html">Čas za glas →</a>');
+    sredina = mesto + " / " + skupaj + " · " + imeListeKratko(n);
   }
   const pas = document.createElement("nav");
   pas.id = "lista-pas";
@@ -412,9 +453,28 @@ function vstaviPlavajociPas(n) {
   window.addEventListener("resize", meriListniPas);
 }
 
+function urediListnavIzvoljeni(n) {
+  if (!jeIzvoljeniPogled() || n === "glas") return;
+  const niz = IZVOLJENE_LISTE;
+  const ix = niz.indexOf(n);
+  if (ix === -1) return;
+  const prev = ix > 0 ? niz[ix - 1] : null;
+  const next = ix < niz.length - 1 ? niz[ix + 1] : null;
+  document.querySelectorAll("nav.listnav").forEach(function (nav) {
+    nav.innerHTML =
+      (prev ? '<a href="' + escHtml(stranListe(prev)) + '">← ' + escHtml(imeListe(prev)) + "</a>" : "<span></span>") +
+      (next ? '<a class="next" href="' + escHtml(stranListe(next)) + '">' + escHtml(imeListe(next)) + " →</a>" : "<span></span>");
+  });
+}
+
 function zagonListnegaPasu(n) {
   if (n == null || n === undefined) n = stevilkaListeIzUrl();
   if (n == null) return;
+  if (n !== "glas" && jeIzvoljeniPogled() && IZVOLJENE_LISTE.indexOf(n) === -1) {
+    location.replace(stranListe(IZVOLJENE_LISTE[0]));
+    return;
+  }
+  urediListnavIzvoljeni(n);
   vstaviPlavajociPas(n);
   vstaviListniCta(n);
   setTimeout(postaviCtaNaKonec, 0);

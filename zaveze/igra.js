@@ -148,17 +148,44 @@
     osveziPas(false);
   }
 
+  function jeIzvoljeniPogledLokalno() {
+    if (typeof jeIzvoljeniPogled === "function") return jeIzvoljeniPogled();
+    try {
+      return new URLSearchParams(location.search).get("izvoljeni") === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function izvoljeneListe() {
+    if (typeof IZVOLJENE_LISTE !== "undefined") return IZVOLJENE_LISTE;
+    return [1, 4, 5, 7, 11, 13, 15];
+  }
+
+  function prebraneZaPrikaz() {
+    if (!jeIzvoljeniPogledLokalno()) return stanje.prebrane;
+    var dovoljene = izvoljeneListe();
+    return stanje.prebrane.filter(function (n) { return dovoljene.indexOf(n) !== -1; });
+  }
+
+  function skupajZaPrikaz() {
+    return jeIzvoljeniPogledLokalno() ? izvoljeneListe().length : SKUPAJ;
+  }
+
   function osveziPas(najavi) {
-    var st = stanje.prebrane.length;
-    var txt = "Prebral/a si " + st + " od " + SKUPAJ + " list";
+    var st = prebraneZaPrikaz().length;
+    var skupaj = skupajZaPrikaz();
+    var txt = "Prebral/a si " + st + " od " + skupaj + " list";
     var meter = document.getElementById("igra-meter");
     var fill = document.getElementById("igra-fill");
     var p = document.getElementById("igra-txt");
     if (meter) {
+      meter.setAttribute("aria-valuemin", "0");
+      meter.setAttribute("aria-valuemax", String(skupaj));
       meter.setAttribute("aria-valuenow", String(st));
       meter.setAttribute("aria-label", txt);
     }
-    if (fill) fill.style.width = (100 * st / SKUPAJ) + "%";
+    if (fill) fill.style.width = (skupaj ? 100 * st / skupaj : 0) + "%";
     if (p) p.textContent = txt;
     var ul = document.getElementById("igra-znacke");
     if (ul) {
@@ -205,7 +232,7 @@
     t.setAttribute("role", "status");
     t.innerHTML = '<p class="igra-toast-k">Nova značka</p><p class="igra-toast-i">' + imena + "</p>";
     document.body.appendChild(t);
-    sporoci("Prebral/a si " + stanje.prebrane.length + " od " + SKUPAJ + " list. Nova značka: " + imena + ".");
+    sporoci("Prebral/a si " + prebraneZaPrikaz().length + " od " + skupajZaPrikaz() + " list. Nova značka: " + imena + ".");
     if (!zeliManjGibanja()) konfeti();
     setTimeout(function () {
       t.classList.add("skrij");
