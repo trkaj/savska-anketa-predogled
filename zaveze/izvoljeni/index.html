@@ -146,7 +146,33 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
 .zacnimo-seznam .zacnimo-vprasanje{margin:.45rem 0 .3rem;max-width:42rem;color:#1a2a22}
 .zacnimo-seznam .zacnimo-povezava{margin:.2rem 0 .45rem}
 .zaveza-cilj{outline:2px solid #8a6700;outline-offset:2px;background:#fff8e0}
-.zeli-sodelovanje{margin-top:1rem}
+#informacije{scroll-margin-top:12px;margin:0 0 1.8rem}
+.seje-poudarki{margin:.2rem 0 .85rem;max-width:44rem;font-size:1.06rem;line-height:1.45}
+.seje-poudarki strong{color:#1f4d2b}
+.seje-graf{margin:.4rem 0 .7rem;padding:0;border:0}
+.seje-legenda{display:flex;flex-wrap:wrap;gap:.45rem 1.15rem;list-style:none;margin:0 0 .85rem;padding:0;font-size:.92rem}
+.seje-legenda li{display:flex;align-items:center;gap:.4rem}
+.seje-legenda i{width:.9rem;height:.9rem;border-radius:2px;flex:none;display:inline-block}
+.seje-legenda .barva-ze{background:#1f4d2b}
+.seje-legenda .barva-bi{background:#f2c200;box-shadow:inset 0 0 0 1px #1a1a1a}
+.seje-legenda .barva-ne{background:#5a5a5a}
+.seje-vrsta{margin:0 0 1.05rem}
+.seje-oznaka{margin:0 0 .35rem;font-size:.98rem;font-weight:700;color:#1a2a22}
+.seje-n{font-weight:500;color:#3d4f44}
+.seje-stolpec{display:flex;align-items:stretch;width:100%;min-height:2.55rem;border-radius:7px;overflow:hidden}
+.seje-del{display:flex;align-items:center;justify-content:center;align-self:stretch;padding:.35rem .35rem;box-sizing:border-box;min-width:0;text-align:center;font-size:.82rem;font-weight:700;line-height:1.2}
+.seje-del.ze{background:#1f4d2b;color:#fff}
+.seje-del.bi{background:#f2c200;color:#1a1a1a;box-shadow:inset 0 0 0 2px #1a1a1a;font-weight:800;z-index:1}
+.seje-del.ne{background:#5a5a5a;color:#fff}
+.seje-opis{margin:.35rem 0 0;font-size:.88rem;color:#3d4f44;max-width:46rem}
+.seje-pomagalo{margin:.7rem 0 .45rem;max-width:46rem}
+.seje-vir{margin:.2rem 0 0;font-size:.88rem;color:#3d4f44;max-width:46rem}
+.zacnimo-seznam details{scroll-margin-top:16px}
+@media (max-width:700px){
+  .seje-stolpec{min-height:3.1rem;flex-direction:row}
+  .seje-del{font-size:.75rem;padding:.4rem .22rem}
+  .seje-poudarki{font-size:1rem}
+}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -178,6 +204,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
+      <li><a href="#informacije">Ali informacije pridejo do ljudi?</a></li>
       <li><a href="#zeli">Kaj prebivalci najbolj želijo</a></li>
       <li><a href="#izidi">Liste z mandatom</a></li>
       <li><a href="#skupne">Skupne točke</a></li>
@@ -187,6 +214,38 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li><a href="#kaj-zdaj">Kaj zdaj</a></li>
     </ol>
   </nav>
+  <section id="informacije" class="skupne">
+    <h2 class="sekcija">Ali informacije pridejo do ljudi?</h2>
+    <p class="seje-poudarki"><strong>Skoraj 3 od 4 prebivalcev sej ČS ne spremlja (318 od 414).</strong> <strong>Vsak četrti bi o spremembah OPPN rad izvedel, a informacij ne dobi (102 od 418).</strong> To je priložnost, da informacije pridejo bliže ljudem.</p>
+    <figure class="seje-graf">
+      <figcaption class="sr-only">Odgovori o spremljanju sej ČS Bežigrad (n = 414) in o obveščenosti o spremembah OPPN (n = 418). Vsak stolpec je 100 odstotkov odgovorov.</figcaption>
+      <ul class="seje-legenda">
+        <li><i class="barva-ze" aria-hidden="true"></i> Že spremlja oziroma je obveščen</li>
+        <li><i class="barva-bi" aria-hidden="true"></i> Ne, a bi želel(a)</li>
+        <li><i class="barva-ne" aria-hidden="true"></i> Ne</li>
+      </ul>
+      <div class="seje-vrsta">
+        <p class="seje-oznaka" id="seje-oznaka-cs">Seje ČS Bežigrad <span class="seje-n">(n = 414)</span></p>
+        <div class="seje-stolpec" role="img" aria-labelledby="seje-oznaka-cs seje-opis-cs">
+          <span class="seje-del ze" style="flex:96 0 0">23,2&nbsp;% · 96</span>
+          <span class="seje-del bi" style="flex:68 0 0">16,4&nbsp;% · 68</span>
+          <span class="seje-del ne" style="flex:250 0 0">60,4&nbsp;% · 250</span>
+        </div>
+        <p class="seje-opis" id="seje-opis-cs">Že spremlja 96 (23,2&nbsp;%; 10 redno, 86 občasno). Ne spremlja, a bi želel(a), 68 (16,4&nbsp;%). Ne spremlja 250 (60,4&nbsp;%).</p>
+      </div>
+      <div class="seje-vrsta">
+        <p class="seje-oznaka" id="seje-oznaka-oppn">Spremembe OPPN <span class="seje-n">(n = 418)</span></p>
+        <div class="seje-stolpec" role="img" aria-labelledby="seje-oznaka-oppn seje-opis-oppn">
+          <span class="seje-del ze" style="flex:106 0 0">25,4&nbsp;% · 106</span>
+          <span class="seje-del bi" style="flex:102 0 0">24,4&nbsp;% · 102</span>
+          <span class="seje-del ne" style="flex:210 0 0">50,2&nbsp;% · 210</span>
+        </div>
+        <p class="seje-opis" id="seje-opis-oppn">Že je obveščen 106 (25,4&nbsp;%; 13 dobro, 93 delno). Ni obveščen, a bi želel(a), 102 (24,4&nbsp;%). Ni obveščen 210 (50,2&nbsp;%).</p>
+      </div>
+    </figure>
+    <p class="seje-pomagalo">Pomagalo bi, da so seje in gradiva javno objavljeni, da prebivalci dobijo <a href="#zacnimo-maladela-2">obvestilo pred rokom</a> in <a href="#zacnimo-obvescanje-3">sprotno obveščanje</a>, ter da je <a href="#zacnimo-obvescanje-4">vključevanje pred sejo</a> v navadi. To so točke 12 do 14 v razdelku <a href="#zacnimo">Začnimo tu</a>.</p>
+    <p class="seje-vir">Ločen zavihek Sodelovanje (vnosi z datumi do 18.&nbsp;11.&nbsp;2026; ta vprašanja niso povezana z vrsticami glavne ankete N = 559). Vprašanja o spremljanju sej MOL v tem izpisu ni. Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>.</p>
+  </section>
   <section id="zeli" class="skupne">
     <h2 class="sekcija">Kaj prebivalci najbolj želijo</h2>
     <p>Pet tem, ki so jih prebivalci v anketi najpogosteje označili kot nujne. Vmesni presek 19.&nbsp;11.&nbsp;2026, <strong>N = 559</strong>, samoizbran vzorec. Anketo še zbiramo. Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>.</p>
@@ -205,20 +264,6 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
     </table>
     </div>
     <p>Štetje sedežev izhaja iz prioritet, kot so jih liste same oddale. Za večino v svetu je potrebnih 9 sedežev.</p>
-    <div class="zeli-sodelovanje">
-    <p>Na ločenem zavihku Sodelovanje (vnosi z datumi do 18.&nbsp;11.&nbsp;2026; ta vprašanja niso povezana z vrsticami glavne ankete N = 559) so prebivalci odgovorili tudi, ali spremljajo seje in ali so obveščeni o OPPN. Vprašanja o spremljanju sej MOL v tem izpisu ni. Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>.</p>
-    <div class="primerjava-scroll" tabindex="0">
-    <table class="podatki">
-      <thead>
-        <tr><th>Vprašanje</th><th class="num">n</th><th>Že spremlja oziroma je obveščen</th><th class="num">Ne, a bi želel(a)</th><th class="num">Ne</th></tr>
-      </thead>
-      <tbody>
-        <tr><th scope="row">Seje ČS Bežigrad</th><td class="num">414</td><td>96 (10 redno, 86 občasno)</td><td class="num">68</td><td class="num">250</td></tr>
-        <tr><th scope="row">Spremembe OPPN</th><td class="num">418</td><td>106 (13 dobro, 93 delno)</td><td class="num">102</td><td class="num">210</td></tr>
-      </tbody>
-    </table>
-    </div>
-    </div>
   </section>
   <h2 id="izidi" style="color:#0b3d24">Liste z mandatom in neuradno izvoljeni</h2>
   <ul class="povzetek-mandati">
@@ -297,15 +342,15 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
         <p class="zacnimo-vprasanje">Ali se zavežete, da boste skupaj s civilno družbo poiskali, kje v Savskem naselju so potrebni predlogi iz ankete (klopi, koši, drevesa, oprema igrišč, kolesarska stojala), in da jih boste predlagali v plan malih del 2028–2029?</p>
         <p class="zacnimo-povezava"><a href="#zaveza-maladela-1">Odgovori izvoljenih list pri tej zavezi</a></p>
       </details></li>
-      <li><details><summary>Obvestilo pred rokom</summary>
+      <li><details id="zacnimo-maladela-2"><summary>Obvestilo pred rokom</summary>
         <p class="zacnimo-vprasanje">Ali se zavežete, da boste prebivalce in upravnike v naselju o pozivu za mala dela 2028–2029 obvestili vsaj 3 tedne pred rokom (oglasne deske, e-obvestila, družbena omrežja)?</p>
         <p class="zacnimo-povezava"><a href="#zaveza-maladela-2">Odgovori izvoljenih list pri tej zavezi</a></p>
       </details></li>
-      <li><details><summary>Sprotno obveščanje</summary>
+      <li><details id="zacnimo-obvescanje-3"><summary>Sprotno obveščanje</summary>
         <p class="zacnimo-vprasanje">Sprotno obveščanje: Ali boste kot člani sveta ČS odprli lastne družbene kanale, dali pobudo, da se naročanje na novice MOL uredi po ČS, in s pomočjo upravnikov in predstavnikov vhodov obveščali tudi prek oglasnih desk in tiskanih obvestil, s soglasjem prejemnikov?</p>
         <p class="zacnimo-povezava"><a href="#zaveza-obvescanje-3">Odgovori izvoljenih list pri tej zavezi</a></p>
       </details></li>
-      <li><details><summary>Vključevanje pred sejo</summary>
+      <li><details id="zacnimo-obvescanje-4"><summary>Vključevanje pred sejo</summary>
         <p class="zacnimo-vprasanje">Vključevanje pred sejo: Ali boste zagotovili, da sta dnevni red in gradivo objavljena vsaj 7 dni pred sejo in da je na seji čas za vprašanja občanov?</p>
         <p class="zacnimo-povezava"><a href="#zaveza-obvescanje-4">Odgovori izvoljenih list pri tej zavezi</a></p>
       </details></li>
