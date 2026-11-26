@@ -32,9 +32,6 @@ body.izvoljeni-stran .primerjava{min-width:38rem}
 .graf-delez{margin:0 0 1rem;padding:12px 14px;border:1px solid #dde6df;border-radius:10px;background:#fff}
 .graf-delez figcaption h3{margin:0;color:var(--g);font-size:1.08rem}
 .graf-oznaka{margin:.1rem 0 .5rem;font-size:.82rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:.02em}
-.graf-razvrsti{font:inherit;font-size:.9rem;font-weight:750;padding:6px 12px;border-radius:8px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer;margin:0 0 .6rem}
-.graf-razvrsti[aria-pressed=true]{background:var(--y2);border-color:var(--y)}
-.graf-razvrsti:focus-visible{outline:3px solid var(--y);outline-offset:2px}
 .graf-seznam{list-style:none;margin:0;padding:0}
 .graf-seznam li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ime vr" "pas pas";column-gap:10px;row-gap:3px;padding:6px 0;border-top:1px solid #eef3ef;min-width:0}
 .graf-seznam li:first-child{border-top:0}
@@ -45,7 +42,7 @@ body.izvoljeni-stran .primerjava{min-width:38rem}
 .graf-stolpec{display:block;height:100%;background:#5b7a68;border-radius:4px;min-width:2px}
 .graf-opomba{margin:.5rem 0 0;font-size:.82rem;color:#4a5a50}
 @media (min-width:700px){.graf-seznam li{grid-template-columns:11.5rem minmax(0,1fr) 10.5rem;grid-template-areas:"ime pas vr";align-items:center}.graf-vr{text-align:right}}
-@media print{.graf-razvrsti{display:none}.graf-stolpec{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media print{.graf-stolpec{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 .tema-filter{margin:0 0 1rem;padding:12px 14px;border:1px solid #dde6df;border-radius:10px;background:#fff}
 .tema-filter h3{margin:0 0 .3rem;color:var(--g);font-size:1.08rem}
 .tf-uvod{margin:0 0 .6rem;font-size:.92rem}
@@ -171,14 +168,34 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
   <nav class="kazalo" aria-label="Kazalo">
     <h2>Kazalo</h2>
     <ol>
+      <li><a href="#zeli">Kaj prebivalci najbolj želijo</a></li>
       <li><a href="#izidi">Liste z mandatom</a></li>
       <li><a href="#skupne">Skupne točke</a></li>
       <li><a href="#filter-izvoljeni">Zaveze po temah</a></li>
       <li><a href="#primerjava">Primerjava odgovorov</a></li>
       <li><a href="#kartice">Izvoljene liste</a></li>
-      <li><a href="#vecine">Večinske kombinacije</a></li>
+      <li><a href="#kaj-zdaj">Kaj zdaj</a></li>
     </ol>
   </nav>
+  <section id="zeli" class="skupne">
+    <h2 class="sekcija">Kaj prebivalci najbolj želijo</h2>
+    <p>Pet tem, ki so jih prebivalci v anketi najpogosteje označili kot nujne. Vmesni presek 19.&nbsp;11.&nbsp;2026, <strong>N = 559</strong>, samoizbran vzorec. Anketo še zbiramo. Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>.</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <thead>
+        <tr><th>Tema</th><th class="num">Delež v anketi</th><th>Sedeži, ki so temo izbrali med petimi prioritetami</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Parkiranje</th><td class="num">75&nbsp;%</td><td>15 od 17</td></tr>
+        <tr><th scope="row">Promet skozi naselje</th><td class="num">58&nbsp;%</td><td>11 od 17</td></tr>
+        <tr><th scope="row">Igle in droge, varnost</th><td class="num">36&nbsp;%</td><td>8 od 17, kje še ni dogovora</td></tr>
+        <tr><th scope="row">Več klopi</th><td class="num">33&nbsp;%</td><td>2 od 17, kje še ni dogovora</td></tr>
+        <tr><th scope="row">Čistoča in pasji iztrebki</th><td class="num">29&nbsp;%</td><td>4 od 17, kje še ni dogovora</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Štetje sedežev izhaja iz prioritet, kot so jih liste same oddale. Za večino v svetu je potrebnih 9 sedežev.</p>
+  </section>
   <h2 id="izidi" style="color:#0b3d24">Liste z mandatom in neuradno izvoljeni</h2>
   <ul class="povzetek-mandati">
     <li><span class="nr">1.</span> <a href="lista-1.html">Gibanje Svoboda</a> <span class="mandati-st">2 mandata</span> <span class="mandati-glasovi">— dr. Simona Gerenčer, Lars Arrigler Demirović</span></li>
@@ -194,7 +211,6 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <h3 id="graf-izvoljeni-nasl">Delež glasov izvoljenih list</h3>
       <p class="graf-oznaka">Neuradni izid, 18.&nbsp;11.&nbsp;2026 ob 8.00</p>
     </figcaption>
-    <button type="button" class="graf-razvrsti" aria-controls="graf-izvoljeni-sez" aria-pressed="false" hidden>Razvrsti po deležu</button>
     <ol class="graf-seznam" id="graf-izvoljeni-sez" aria-label="Delež glasov izvoljenih list: glasovi in delež po listah">
       <li data-ve="1" data-glasovi="1422"><span class="graf-ime"><span class="nr">1.</span> Svoboda</span><span class="graf-vr">1.422 glasov · <strong>11,3&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:46.8%"></span></span></li>
       <li data-ve="4" data-glasovi="845"><span class="graf-ime"><span class="nr">4.</span> Pirati</span><span class="graf-vr">845 glasov · <strong>6,7&nbsp;%</strong></span><span class="graf-pas" aria-hidden="true"><span class="graf-stolpec" style="width:27.8%"></span></span></li>
@@ -209,11 +225,9 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
   <section id="skupne" class="skupne">
     <h2 class="sekcija">Skupne točke</h2>
     <p>Štetje sedežev v tem razdelku izhaja iz odgovorov, kot so jih liste same oddale na <a href="https://anketa.savska.org/zaveze/izvoljeni/">javni strani zavez</a>. Oznake so take, kot so jih liste same izbrale. To ni naša ocena. Mandati: Gibanje Svoboda 2, Pirati 1, Levica 5, SDS 3, Cilj – Bežigrad 1, Ljubljana smo vsi 1, Lista Zorana Jankovića 4 (skupaj 17).</p>
-    <p>Nobeno od 31 vprašanj niso vse liste brez izjeme podprle z »da«, ker je SDS na vseh 31 vprašanjih označila »delno«.</p>
-
-    <h3 class="sek">20 vprašanj, na katera so odgovorile vse liste z da ali delno</h3>
-    <p>Na <strong>20 vprašanj</strong> so vse sedem list odgovorile z »da« ali »delno« (nihče »ne«, nihče brez odgovora). To pomeni podporo vseh <strong>17 sedežev</strong> v smislu da ali delno.</p>
-    <p>Od teh 20 jih ima <strong>15 vprašanj po 14 sedežev »da«</strong>: vse liste, ki niso SDS, so odgovorile »da«, SDS pa »delno«. To so:</p>
+    <p>Vsaka lista lahko razlage k svojim odgovorom kadarkoli dopolni. Pišite na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> ali pokličite 070 205 595.</p>
+    <h3 class="sek" id="zacnimo">Začnimo tu</h3>
+    <p>Na teh 15 vprašanjih so vse izvoljene liste odgovorile z »da« ali »delno« (vseh 17 sedežev), od tega 14 sedežev z »da«. To je lahko skupen program za prvih 100 dni sveta.</p>
     <ol>
       <li>Varne poti ob šoli in vrtcu</li>
       <li>Preverjanje motenj s prebivalci</li>
@@ -231,7 +245,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li>Vključevanje pred sejo</li>
       <li>Delo tudi, če ne bodo izvoljeni</li>
     </ol>
-    <p>Preostalih pet od teh 20 ima manj kot 14 sedežev »da«, ker je poleg SDS »delno« označila še Gibanje Svoboda ali Lista Zorana Jankovića:</p>
+    <p>Na 20 vprašanjih so vse sedem list odgovorile z »da« ali »delno«. Preostalih pet od teh 20 ima manj kot 14 sedežev »da«:</p>
     <div class="primerjava-scroll" tabindex="0">
     <table class="podatki">
       <thead>
@@ -284,12 +298,12 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
     </div>
     <p>Ostale izbrane teme imajo po 4 ali manj sedežev (mala dela; boljši zrak in hrup; čistoča in pasji iztrebki; več klopi).</p>
 
-    <h3 class="sek">Razkoraki, ki jih velja imeti pred očmi</h3>
+    <h3 class="sek">Odprta vprašanja, kjer razlage še manjkajo</h3>
     <ul>
-      <li><strong>Gibanje Svoboda</strong> ni odgovorilo na 10 od 31 vprašanj (parkiranje, storitve, čistoča, dom skupnosti, zrak in hrup). Na odgovorjenih 21 vprašanjih ima 20-krat da in enkrat delno.</li>
-      <li><strong>Lista Zorana Jankovića</strong> je edina lista z mandatom z oznako »ne« (prenos in posnetki sej).</li>
-      <li><strong>Levica</strong> je čistilne akcije označila z »delno«, v razlagi pa piše »Absolutno«.</li>
-      <li><strong>SDS</strong> je vsa 31 vprašanj označila z »delno«; v tem izvozu k tem oznakam ni razlag.</li>
+      <li>Pri 10 od 31 vprašanj (parkiranje, storitve, čistoča, dom skupnosti, zrak in hrup) ene izvoljene liste ni odgovora. Kjer je ta lista odgovorila (21 vprašanj), je 20-krat »da« in enkrat »delno«.</li>
+      <li>Edina oznaka »ne« med izvoljenimi listami je pri prenosu in posnetkih sej.</li>
+      <li>Čistilne akcije so pri eni listi označene z »delno«, v razlagi pa piše »Absolutno«.</li>
+      <li>Ena lista je vsa 31 vprašanj označila z »delno«; v tem izvozu k tem oznakam ni razlag.</li>
     </ul>
 
     <h3 class="sek" id="preglednica-odgovorov">Preglednica odgovorov (31 × 7)</h3>
@@ -1369,22 +1383,11 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
 </article>
   </div>
   <a class="btn-zacetek" href="lista-1.html">Začni s podrobnim pogledom zavez</a>
-  <section id="vecine">
-    <div class="vecina-box">
-      <h3>Možne večinske kombinacije (samo aritmetika)</h3>
-      <p>Spodnje kombinacije so zgolj seštevek sedežev, ne ocena, ali je takšna koalicija politično verjetna. Vse naštete kombinacije imajo natanko 9 sedežev (brez rezerve), razen kjer je to izrecno navedeno; za sklep se morajo strinjati vse liste v kombinaciji.</p>
-      <p><strong>Edina dvojica z večino:</strong> Levica (5) in Lista Zorana Jankovića (4) = 9.</p>
-      <p><strong>Trojice in četverice z natanko 9 sedeži:</strong></p>
-      <ul>
-        <li>Levica (5) + SDS (3) + ena od list s po enim sedežem (Pirati, Cilj – Bežigrad ali Ljubljana smo vsi)</li>
-        <li>Levica (5) + Gibanje Svoboda (2) + katerikoli dve od list s po enim sedežem</li>
-        <li>Lista Zorana Jankovića (4) + SDS (3) + Gibanje Svoboda (2)</li>
-        <li>Lista Zorana Jankovića (4) + SDS (3) + katerikoli dve od list s po enim sedežem</li>
-        <li>Lista Zorana Jankovića (4) + Gibanje Svoboda (2) + vse tri liste s po enim sedežem</li>
-      </ul>
-      <p>Brez Levice ima vsaka večina med temi listami tudi Listo Zorana Jankovića. Brez Liste Zorana Jankovića ima vsaka večina tudi Levico. SDS, Gibanje Svoboda in vse tri liste s po enim sedežem skupaj pridejo do 8 in do večine ne zadostujejo.</p>
-      <p>Štetje sedežev je po neuradnem izidu, 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
-    </div>
+  <section id="kaj-zdaj">
+    <h2 class="sekcija">Kaj zdaj</h2>
+    <p>To ni uradna stran MOL ali Četrtne skupnosti Bežigrad. Pregled pripravlja Civilna iniciativa prebivalcev Savskega naselja.</p>
+    <p>Pobudo ali predlog lahko zapišete v <a href="https://anketa.savska.org/">Savsko anketo</a>. Pišete nam lahko tudi na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> ali pokličite 070 205 595.</p>
+    <p>Dnevni red sej sveta ČS Bežigrad objavlja Mestna občina Ljubljana na uradni strani <a href="https://www.ljubljana.si/sl/mestna-obcina/cetrtne-skupnosti/bezigrad/seje-cetrtne-skupnosti-bezigrad">Seje Četrtne skupnosti Bežigrad</a>.</p>
   </section>
 </main>
 <footer>Civilna iniciativa prebivalcev Savskega naselja · <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> · 070 205 595 · <a class="igra-anketa" href="https://anketa.savska.org/">Izpolni anketo</a></footer>
@@ -1451,24 +1454,6 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
   vstaviPovezaveNaKartice();
   vstaviLogotipeNaKartice();
   vstaviPrimerjavo();
-})();
-</script>
-<script>
-(function(){
-  [].forEach.call(document.querySelectorAll('.graf-delez'),function(f){
-    var b=f.querySelector('.graf-razvrsti'),ol=f.querySelector('.graf-seznam'),st=f.querySelector('.graf-stanje');
-    if(!b||!ol)return;
-    b.hidden=false;
-    b.addEventListener('click',function(){
-      var po=b.getAttribute('aria-pressed')!=='true';
-      var li=[].slice.call(ol.children);
-      li.sort(po?function(a,c){return c.dataset.glasovi-a.dataset.glasovi;}:function(a,c){return a.dataset.ve-c.dataset.ve;});
-      li.forEach(function(x){ol.appendChild(x);});
-      b.setAttribute('aria-pressed',po?'true':'false');
-      b.textContent=po?'Po vrstnem redu na glasovnici':'Razvrsti po deležu';
-      if(st)st.textContent=po?'Vrstni red: po deležu, od največjega.':'Vrstni red: po glasovnici.';
-    });
-  });
 })();
 </script>
 <script>
