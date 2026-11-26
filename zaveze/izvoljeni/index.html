@@ -137,6 +137,16 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
 .tv-p.tv-da .prio-zvezda{color:#fff4c2;text-shadow:0 0 1px #0b3d24}
 .tf-tema h5 .prio-zvezda{margin-left:.35em;color:#8a6700}
 .prio-zvezda-legenda{margin:.35rem 0 .6rem;font-size:.92rem;color:#3d4f44}
+
+.zacnimo-seznam{margin:.35rem 0 1rem;padding-left:1.35rem}
+.zacnimo-seznam li{margin:.2rem 0}
+.zacnimo-seznam summary{cursor:pointer}
+.zacnimo-seznam summary:hover{text-decoration:underline}
+.zacnimo-seznam details[open] summary{font-weight:600}
+.zacnimo-seznam .zacnimo-vprasanje{margin:.45rem 0 .3rem;max-width:42rem;color:#1a2a22}
+.zacnimo-seznam .zacnimo-povezava{margin:.2rem 0 .45rem}
+.zaveza-cilj{outline:2px solid #8a6700;outline-offset:2px;background:#fff8e0}
+.zeli-sodelovanje{margin-top:1rem}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -195,6 +205,20 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
     </table>
     </div>
     <p>Štetje sedežev izhaja iz prioritet, kot so jih liste same oddale. Za večino v svetu je potrebnih 9 sedežev.</p>
+    <div class="zeli-sodelovanje">
+    <p>Na ločenem zavihku Sodelovanje (vnosi z datumi do 18.&nbsp;11.&nbsp;2026; ta vprašanja niso povezana z vrsticami glavne ankete N = 559) so prebivalci odgovorili tudi, ali spremljajo seje in ali so obveščeni o OPPN. Vprašanja o spremljanju sej MOL v tem izpisu ni. Vir: <a href="https://anketa.savska.org/pregled/">pregled ankete</a>.</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <thead>
+        <tr><th>Vprašanje</th><th class="num">n</th><th>Že spremlja oziroma je obveščen</th><th class="num">Ne, a bi želel(a)</th><th class="num">Ne</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Seje ČS Bežigrad</th><td class="num">414</td><td>96 (10 redno, 86 občasno)</td><td class="num">68</td><td class="num">250</td></tr>
+        <tr><th scope="row">Spremembe OPPN</th><td class="num">418</td><td>106 (13 dobro, 93 delno)</td><td class="num">102</td><td class="num">210</td></tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
   </section>
   <h2 id="izidi" style="color:#0b3d24">Liste z mandatom in neuradno izvoljeni</h2>
   <ul class="povzetek-mandati">
@@ -227,23 +251,68 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
     <p>Štetje sedežev v tem razdelku izhaja iz odgovorov, kot so jih liste same oddale na <a href="https://anketa.savska.org/zaveze/izvoljeni/">javni strani zavez</a>. Oznake so take, kot so jih liste same izbrale. To ni naša ocena. Mandati: Gibanje Svoboda 2, Pirati 1, Levica 5, SDS 3, Cilj – Bežigrad 1, Ljubljana smo vsi 1, Lista Zorana Jankovića 4 (skupaj 17).</p>
     <p>Vsaka lista lahko razlage k svojim odgovorom kadarkoli dopolni. Pišite na <a href="mailto:savskonaselje1@gmail.com">savskonaselje1@gmail.com</a> ali pokličite 070 205 595.</p>
     <h3 class="sek" id="zacnimo">Začnimo tu</h3>
-    <p>Na teh 15 vprašanjih so vse izvoljene liste odgovorile z »da« ali »delno« (vseh 17 sedežev), od tega 14 sedežev z »da«. To je lahko skupen program za prvih 100 dni sveta.</p>
-    <ol>
-      <li>Varne poti ob šoli in vrtcu</li>
-      <li>Preverjanje motenj s prebivalci</li>
-      <li>Srečanja s policijo in redarstvom</li>
-      <li>Odstranjevanje igel</li>
-      <li>Predlogi mest za klopi</li>
-      <li>Pomoč lastnikom pri klopeh</li>
-      <li>Pregled dreves in zasaditve</li>
-      <li>Izbira mest z prebivalci</li>
-      <li>Odprtost šolskega igrišča</li>
-      <li>Pregled igrišč z mladimi</li>
-      <li>Predlogi za mala dela</li>
-      <li>Obvestilo pred rokom</li>
-      <li>Sprotno obveščanje</li>
-      <li>Vključevanje pred sejo</li>
-      <li>Delo tudi, če ne bodo izvoljeni</li>
+    <p>Na teh 15 vprašanjih so vse izvoljene liste odgovorile z »da« ali »delno« (vseh 17 sedežev), od tega 14 sedežev z »da«. To je lahko skupen program za prvih 100 dni sveta. Odpri točko za celotno besedilo zaveze, kot so ga dobile liste.</p>
+    <ol class="zacnimo-seznam">
+      <li><details><summary>Varne poti ob šoli in vrtcu</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste do začetka šolskega leta 2027/28 dali pobudo MOL za varne prehode in umirjanje prometa ob šoli in vrtcu?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-promet-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Preverjanje motenj s prebivalci</summary>
+        <p class="zacnimo-vprasanje">Ali se kot člani sveta ČS zavežete, da boste s prebivalci, ustreznimi strokovnjaki in odločevalci preverili, kaj jih pri cestah in prometnih ureditvah moti, in poiskali rešitve?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-promet-3">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Srečanja s policijo in redarstvom</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da bo svet ČS vsaj dvakrat na leto sklical srečanje s policijo, Mestnim redarstvom in prebivalci, prvo v 6 mesecih?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-varnost-1">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Odstranjevanje igel</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste v prvih 3 mesecih dali pobudo MOL za redne obhode in hitro odstranjevanje igel na mestih, ki jih navajajo prebivalci, in o odgovoru poročali?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-varnost-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Predlogi mest za klopi</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste pred rokom poziva za mala dela 2028–2029 prebivalce javno povabili, da predlagajo mesta za nove klopi (tudi v senci in ob poteh za starejše)?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-klopi-1">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Pomoč lastnikom pri klopeh</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste lastnikom in upravnikom, ki želijo klop na zemljišču ob bloku, v prvem letu mandata ponudili pomoč z informacijami (npr. vzorec sklepa zbora lastnikov)?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-klopi-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Pregled dreves in zasaditve</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL, da pregleda drevesa v naselju (katera so zdrava, katera ne in katera so primerna za posek), predvidi nove zasaditve, za vsako posekano drevo na javni površini zasadi novo in prebivalce o poseku obvesti vnaprej?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-zelenje-1">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Izbira mest z prebivalci</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste prebivalce vključili pri izbiri mest za nova drevesa, preden jih predlagate v plan malih del 2028–2029?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-zelenje-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Odprtost šolskega igrišča</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste v prvih 6 mesecih dali pobudo MOL in šoli za popoldansko odprtost šolskega igrišča ter za prostor pod streho za mlade?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-mladi-1">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Pregled igrišč z mladimi</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste pred novo ureditvijo pregledali igrala, igrišča in možne prostore za mlade v naselju, se pogovorili z otroki in mladimi ter njihove želje in pobude upoštevali pri načrtu, tudi da se poišče prostor za mlade, na primer v Domu skupnosti ali drugem javnem prostoru?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-mladi-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Predlogi za mala dela</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste skupaj s civilno družbo poiskali, kje v Savskem naselju so potrebni predlogi iz ankete (klopi, koši, drevesa, oprema igrišč, kolesarska stojala), in da jih boste predlagali v plan malih del 2028–2029?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-maladela-1">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Obvestilo pred rokom</summary>
+        <p class="zacnimo-vprasanje">Ali se zavežete, da boste prebivalce in upravnike v naselju o pozivu za mala dela 2028–2029 obvestili vsaj 3 tedne pred rokom (oglasne deske, e-obvestila, družbena omrežja)?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-maladela-2">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Sprotno obveščanje</summary>
+        <p class="zacnimo-vprasanje">Sprotno obveščanje: Ali boste kot člani sveta ČS odprli lastne družbene kanale, dali pobudo, da se naročanje na novice MOL uredi po ČS, in s pomočjo upravnikov in predstavnikov vhodov obveščali tudi prek oglasnih desk in tiskanih obvestil, s soglasjem prejemnikov?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-obvescanje-3">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Vključevanje pred sejo</summary>
+        <p class="zacnimo-vprasanje">Vključevanje pred sejo: Ali boste zagotovili, da sta dnevni red in gradivo objavljena vsaj 7 dni pred sejo in da je na seji čas za vprašanja občanov?</p>
+        <p class="zacnimo-povezava"><a href="#zaveza-obvescanje-4">Odgovori izvoljenih list pri tej zavezi</a></p>
+      </details></li>
+      <li><details><summary>Delo tudi, če ne bodo izvoljeni</summary>
+        <p class="zacnimo-vprasanje">Če ne boste izvoljeni v svet ČS, se boste še vseeno trudili za Savsko naselje — in kaj boste naredili v tem primeru?</p>
+        <p class="zacnimo-povezava"><a href="#pregled-zakaj-3">Odgovori izvoljenih list so v preglednici 31 × 7</a> (to vprašanje ni med temami v razdelku Zaveze po temah).</p>
+      </details></li>
     </ol>
     <p>Na 20 vprašanjih so vse sedem list odgovorile z »da« ali »delno«. Preostalih pet od teh 20 ima manj kot 14 sedežev »da«:</p>
     <div class="primerjava-scroll" tabindex="0">
@@ -309,7 +378,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
     <h3 class="sek" id="preglednica-odgovorov">Preglednica odgovorov (31 × 7)</h3>
     <p class="meta primerjava-uvod">Oznake: Da / delno / ne / – (ni odgovora). Vrstni red list je enak glasovnici. To ni naša ocena: prikazujemo oznake, kot so jih liste same izbrale.</p>
     <p class="primerjava-legenda"><span><span class="odg da">Da</span> Da</span><span><span class="odg delno">Delno</span> Delno</span><span><span class="odg ne">Ne</span> Ne</span><span><span class="celica-prazna">–</span> odgovora ni</span></p>
-    <p class="prio-zvezda-legenda">★ = lista je temo izbrala med svojih pet prioritet.</p>
+    <p class="prio-zvezda-legenda">! = lista je temo izbrala med svojih pet prioritet.</p>
     <div class="primerjava-scroll" tabindex="0">
     <table class="primerjava">
       <thead>
@@ -325,37 +394,37 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
         </tr>
       </thead>
       <tbody>
-<tr><th scope="row">Lastništvo parkirišč</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Ureditev parkiranja za stanovalce</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Pismo Pošti in bankam</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Umestitev storitev v naselje</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Strokovna prometna presoja</th><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Varne poti ob šoli in vrtcu</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Preverjanje motenj s prebivalci</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Srečanja s policijo in redarstvom</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Odstranjevanje igel</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Predlogi mest za klopi</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Pomoč lastnikom pri klopeh</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Čistilne akcije</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Koši za pasje iztrebke</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Pregled dreves in zasaditve</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Izbira mest z prebivalci</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Prostori za skupne dejavnosti</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Obnova Belokranjske 6</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td></tr>
-<tr><th scope="row">Meritve zraka in hrupa</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Hrup ob železnici in cestah</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Odprtost šolskega igrišča</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Pregled igrišč z mladimi</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Predlogi za mala dela</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Obvestilo pred rokom</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Zemljišča, ki niso MOL</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
-<tr><th scope="row">Prenos in posnetki sej</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg ne">Ne</span></td></tr>
-<tr><th scope="row">Jasni zapisniki in povzetki</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
-<tr><th scope="row">Sprotno obveščanje</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Vključevanje pred sejo</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
-<tr><th scope="row">Odgovor na pobude in OPPN</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
-<tr><th scope="row">Oseba za stik s prebivalci</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
-<tr><th scope="row">Delo tudi, če ne bodo izvoljeni</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-parkiranje-1"><th scope="row">Lastništvo parkirišč</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-parkiranje-2"><th scope="row">Ureditev parkiranja za stanovalce</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-storitve-1"><th scope="row">Pismo Pošti in bankam</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-storitve-2"><th scope="row">Umestitev storitev v naselje</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-promet-1"><th scope="row">Strokovna prometna presoja</th><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-promet-2"><th scope="row">Varne poti ob šoli in vrtcu</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-promet-3"><th scope="row">Preverjanje motenj s prebivalci</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-varnost-1"><th scope="row">Srečanja s policijo in redarstvom</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-varnost-2"><th scope="row">Odstranjevanje igel</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-klopi-1"><th scope="row">Predlogi mest za klopi</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-klopi-2"><th scope="row">Pomoč lastnikom pri klopeh</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-cistoca-1"><th scope="row">Čistilne akcije</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-cistoca-2"><th scope="row">Koši za pasje iztrebke</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-zelenje-1"><th scope="row">Pregled dreves in zasaditve</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-zelenje-2"><th scope="row">Izbira mest z prebivalci</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-dom-1"><th scope="row">Prostori za skupne dejavnosti</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-dom-2"><th scope="row">Obnova Belokranjske 6</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td></tr>
+<tr id="pregled-zrak-1"><th scope="row">Meritve zraka in hrupa</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-zrak-2"><th scope="row">Hrup ob železnici in cestah</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-mladi-1"><th scope="row">Odprtost šolskega igrišča</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-mladi-2"><th scope="row">Pregled igrišč z mladimi</th><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg delno">Delno</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-maladela-1"><th scope="row">Predlogi za mala dela</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-maladela-2"><th scope="row">Obvestilo pred rokom</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-maladela-3"><th scope="row">Zemljišča, ki niso MOL</th><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg da">Da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td class="ima-prio"><span class="odg delno">Delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr id="pregled-obvescanje-1"><th scope="row">Prenos in posnetki sej</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg ne">Ne</span></td></tr>
+<tr id="pregled-obvescanje-2"><th scope="row">Jasni zapisniki in povzetki</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr id="pregled-obvescanje-3"><th scope="row">Sprotno obveščanje</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-obvescanje-4"><th scope="row">Vključevanje pred sejo</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr id="pregled-obvescanje-5"><th scope="row">Odgovor na pobude in OPPN</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr id="pregled-obvescanje-6"><th scope="row">Oseba za stik s prebivalci</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr id="pregled-zakaj-3"><th scope="row">Delo tudi, če ne bodo izvoljeni</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
       </tbody>
     </table>
     </div>
@@ -364,7 +433,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
   <section class="tema-filter" id="filter-izvoljeni" aria-labelledby="filter-izvoljeni-nasl" data-skupaj="7">
     <h3 id="filter-izvoljeni-nasl">Zaveze po temah</h3>
     <p class="tf-uvod">Izberi eno ali več tem. Prikazane so izvoljene liste, ki so pri vsaj enem vprašanju te teme označile »da« ali »delno«, in njihove zaveze, kot so jih liste same napisale. Vrstni red je enak glasovnici.</p>
-    <p class="prio-zvezda-legenda">★ = lista je temo izbrala med svojih pet prioritet.</p>
+    <p class="prio-zvezda-legenda">! = lista je temo izbrala med svojih pet prioritet.</p>
     <fieldset class="tf-izbor" hidden>
       <legend>Teme iz ankete</legend>
       <div class="tf-cbs">
@@ -392,47 +461,47 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <p class="tv-legenda"><span class="tv-p tv-da tv-mini">da</span> vsa vprašanja teme »da« · <span class="tv-p tv-delno tv-mini">delno</span> vsaj eno »da« ali »delno« · <span class="tv-p tv-ne tv-mini">brez zaveze</span> ni »da« ali »delno« (odgovor »ne« ali lista ni odgovorila) · <span class="tv-p tv-proti tv-mini">ne</span> lista je vsaj na eno vprašanje teme odgovorila »ne« (rdeča oznaka na ploščici)</p>
       <div class="tv-vrsta" data-tema="parkiranje" data-da="4" data-delno="2" data-ne="1">
         <h5>Parkiranje <span class="tv-sest">da 4 · delno 2 · brez zaveze 1</span></h5>
-        <ul class="tv-ploscice" aria-label="Parkiranje: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Parkiranje: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="storitve" data-da="5" data-delno="1" data-ne="1">
         <h5>Pošta, banka in druge storitve <span class="tv-sest">da 5 · delno 1 · brez zaveze 1</span></h5>
-        <ul class="tv-ploscice" aria-label="Pošta, banka in druge storitve: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Pošta, banka in druge storitve: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="promet" data-da="5" data-delno="2" data-ne="0">
         <h5>Promet skozi naselje <span class="tv-sest">da 5 · delno 2 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Promet skozi naselje: vse liste"><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Promet skozi naselje: vse liste"><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="varnost" data-da="6" data-delno="1" data-ne="0">
         <h5>Igle in droge, varnost <span class="tv-sest">da 6 · delno 1 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Igle in droge, varnost: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Igle in droge, varnost: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="klopi" data-da="6" data-delno="1" data-ne="0">
         <h5>Več klopi <span class="tv-sest">da 6 · delno 1 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Več klopi: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Več klopi: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="cistoca" data-da="3" data-delno="3" data-ne="1">
         <h5>Čistoča in pasji iztrebki <span class="tv-sest">da 3 · delno 3 · brez zaveze 1</span></h5>
-        <ul class="tv-ploscice" aria-label="Čistoča in pasji iztrebki: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">delno</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Čistoča in pasji iztrebki: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">delno</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="zelenje" data-da="6" data-delno="1" data-ne="0">
         <h5>Drevesa in zelenice <span class="tv-sest">da 6 · delno 1 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Drevesa in zelenice: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Drevesa in zelenice: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="dom" data-da="5" data-delno="1" data-ne="1">
         <h5>Dom skupnosti, prostor za druženje <span class="tv-sest">da 5 · delno 1 · brez zaveze 1</span></h5>
-        <ul class="tv-ploscice" aria-label="Dom skupnosti, prostor za druženje: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Dom skupnosti, prostor za druženje: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="zrak" data-da="5" data-delno="1" data-ne="1">
         <h5>Boljši zrak in hrup <span class="tv-sest">da 5 · delno 1 · brez zaveze 1</span></h5>
-        <ul class="tv-ploscice" aria-label="Boljši zrak in hrup: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Boljši zrak in hrup: vse liste"><li class="tv-p tv-ne"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">brez zaveze</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="mladi" data-da="6" data-delno="1" data-ne="0">
         <h5>Igrišča in prostor za mlade <span class="tv-sest">da 6 · delno 1 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Igrišča in prostor za mlade: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Igrišča in prostor za mlade: vse liste"><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">da</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="maladela" data-da="5" data-delno="2" data-ne="0">
         <h5>Mala dela ČS in prijave poškodb <span class="tv-sest">da 5 · delno 2 · brez zaveze 0</span></h5>
-        <ul class="tv-ploscice" aria-label="Mala dela ČS in prijave poškodb: vse liste"><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span></li></ul>
+        <ul class="tv-ploscice" aria-label="Mala dela ČS in prijave poškodb: vse liste"><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">1.</span> Svoboda</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-da"><span class="tv-ime"><span class="tv-nr">4.</span> Pirati</span><span class="tv-st">da</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">5.</span> Levica</span><span class="tv-st">da</span></li><li class="tv-p ima-prio tv-delno"><span class="tv-ime"><span class="tv-nr">7.</span> SDS</span><span class="tv-st">delno</span><span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">11.</span> Cilj</span><span class="tv-st">da</span></li><li class="tv-p tv-da"><span class="tv-ime"><span class="tv-nr">13.</span> Ljubljana smo vsi</span><span class="tv-st">da</span></li><li class="tv-p tv-delno"><span class="tv-ime"><span class="tv-nr">15.</span> LZJ</span><span class="tv-st">delno</span></li></ul>
       </div>
       <div class="tv-vrsta" data-tema="obvescanje" data-da="5" data-delno="2" data-ne="0">
         <h5>Obveščanje in komunikacija s ČS <span class="tv-sest">da 5 · delno 2 · brez zaveze 0 · <span class="tv-sest-ne">vsaj en »ne« 1</span></span></h5>
@@ -443,46 +512,46 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="1" data-teme="promet varnost klopi zelenje mladi maladela obvescanje">
         <h4><span class="nr">1.</span> Svoboda</h4>
         <div class="tf-tema" data-tema="promet">
-          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">S pobudo se delno strinjamo.</span></li>
-            <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Zavezujemo se k pripravi pobude MOL za umirjanje prometa ob šolah, vrtcih in glavnih poteh, ki jih naredimo peš.</span></li>
-            <li><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Zavzemamo se za sodelovanje s prebivalci, strokovnjaki in odločevalci.</span></li>
+            <li id="zaveza-promet-2"><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Zavezujemo se k pripravi pobude MOL za umirjanje prometa ob šolah, vrtcih in glavnih poteh, ki jih naredimo peš.</span></li>
+            <li id="zaveza-promet-3"><span class="odg da">Da</span> <strong>Preverjanje motenj s prebivalci</strong><span class="tf-razlaga">Zavzemamo se za sodelovanje s prebivalci, strokovnjaki in odločevalci.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="varnost">
-          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
-            <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Podpiramo redna srečanja s policijo in mestnim redarstvom.</span></li>
-            <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Se strinjamo z odstranjevanjem igel na mestnih, ki jih navajajo prebivalci.</span></li>
+            <li id="zaveza-varnost-1"><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Podpiramo redna srečanja s policijo in mestnim redarstvom.</span></li>
+            <li id="zaveza-varnost-2"><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Se strinjamo z odstranjevanjem igel na mestnih, ki jih navajajo prebivalci.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="klopi">
-          <h5>Več klopi<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Več klopi<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
-            <li><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
-            <li><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Zavezo podpiramo, pa ne samo na začetku mandata, temveč tudi za naprej.</span></li>
+            <li id="zaveza-klopi-1"><span class="odg da">Da</span> <strong>Predlogi mest za klopi</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+            <li id="zaveza-klopi-2"><span class="odg da">Da</span> <strong>Pomoč lastnikom pri klopeh</strong><span class="tf-razlaga">Zavezo podpiramo, pa ne samo na začetku mandata, temveč tudi za naprej.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="zelenje">
-          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
-            <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
-            <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+            <li id="zaveza-zelenje-1"><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
+            <li id="zaveza-zelenje-2"><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">Zavezo podpiramo.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="mladi">
-          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
-            <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Z zavezo se strinjamo, saj je prav, da imajo mladi čim več možnosti za preživljanje časa na odprtem oz. v njim dostopnih prostorih.</span></li>
-            <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Z zavezo se strinjamo.</span></li>
+            <li id="zaveza-mladi-1"><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Z zavezo se strinjamo, saj je prav, da imajo mladi čim več možnosti za preživljanje časa na odprtem oz. v njim dostopnih prostorih.</span></li>
+            <li id="zaveza-mladi-2"><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Z zavezo se strinjamo.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="maladela">
           <h5>Mala dela ČS in prijave poškodb</h5>
           <ul>
-            <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
-            <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
+            <li id="zaveza-maladela-1"><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
+            <li id="zaveza-maladela-2"><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
             <li><span class="odg da">Da</span> <strong>Zemljišča, ki niso MOL</strong></li>
           </ul>
         </div>
@@ -491,8 +560,8 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           <ul>
             <li><span class="odg da">Da</span> <strong>Prenos in posnetki sej</strong><span class="tf-razlaga">Se strinjamo s snemanjem in prenosom sej, saj imajo občanke in občani pravico biti informirani o tem, kaj se odloča v Svetu Četrtne skupnosti.</span></li>
             <li><span class="odg da">Da</span> <strong>Jasni zapisniki in povzetki</strong><span class="tf-razlaga">Zavzemamo se za jasen zapis predlogov in objavo povzetkov po vsaki seji.</span></li>
-            <li><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Zavzemamo se za obveščaje tako prek tiskanih kot digitalnih medijev in, v kolikor finančni viri to dopuščajo, za pogostejše obveščanje prek tiskanih obvestil in drugih kanalov.</span></li>
-            <li><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Da.</span></li>
+            <li id="zaveza-obvescanje-3"><span class="odg da">Da</span> <strong>Sprotno obveščanje</strong><span class="tf-razlaga">Zavzemamo se za obveščaje tako prek tiskanih kot digitalnih medijev in, v kolikor finančni viri to dopuščajo, za pogostejše obveščanje prek tiskanih obvestil in drugih kanalov.</span></li>
+            <li id="zaveza-obvescanje-4"><span class="odg da">Da</span> <strong>Vključevanje pred sejo</strong><span class="tf-razlaga">Da.</span></li>
             <li><span class="odg da">Da</span> <strong>Odgovor na pobude in OPPN</strong><span class="tf-razlaga">Zavzemamo se za čim večjo transparentnost in sprotno obveščanje prebivalcev o spremembah OPPN, pri čemer izpostavljamo, da imajo četrtni svetniki predvsem posvetovalno vlogo.</span></li>
             <li><span class="odg da">Da</span> <strong>Oseba za stik s prebivalci</strong><span class="tf-razlaga">Pobudo podpiramo.</span></li>
           </ul>
@@ -501,7 +570,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="4" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">4.</span> Pirati</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong></li>
             <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
@@ -515,7 +584,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="promet">
-          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong></li>
             <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
@@ -544,14 +613,14 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="zelenje">
-          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Da, a le pod pogojem da se sajenje novih dreves izvede strokovno, da imajo nova mlada drevesa v svoji okolici dovolj zelene površine, da ne gre le za majhno luknjo skozi betonsko ali jekleno konstrukcijo, ki drevo v poletnem času povsem izsuži.</span></li>
             <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="dom">
-          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Predlagali bomo bolj pravično razdelitev časovnih blokov uporabe in tudi možnost brezplačnega najema za pomembne družbene aktivnosti.</span></li>
             <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">Zavzeli se bomo za popolno prenovo vseh prostorov četrtnih skupnosti v MOL z izjemo ČS Golovec, ki je edina dobila prenovljene prostore po dolgem času, medtem ko velika večina drugih počasi razpada.</span></li>
@@ -572,7 +641,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="maladela">
-          <h5>Mala dela ČS in prijave poškodb<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Mala dela ČS in prijave poškodb<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Predlogi za mala dela</strong></li>
             <li><span class="odg da">Da</span> <strong>Obvestilo pred rokom</strong></li>
@@ -594,14 +663,14 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="5" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">5.</span> Levica</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong></li>
             <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="storitve">
-          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Da, to sem storil že večkrat. Lahko ponovno.</span></li>
             <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong></li>
@@ -616,7 +685,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="varnost">
-          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong></li>
             <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Sam sem na to temo prejšnji mandat že dal predlog za sklic in podobno seja je zaradi pritožb krajanov prejšnji mandat že bila in  lahko ponovno dam predlog, da vidimo ali se je od zadnje seje na to temo kaj spremenilo. Važno je spremeniti odnos MOL do tega vprašanja v celoti</span></li>
@@ -637,7 +706,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="zelenje">
-          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong></li>
             <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
@@ -658,7 +727,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="mladi">
-          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong></li>
             <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong></li>
@@ -687,21 +756,21 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="7" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">7.</span> SDS</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong></li>
             <li><span class="odg delno">Delno</span> <strong>Ureditev parkiranja za stanovalce</strong></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="storitve">
-          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Pismo Pošti in bankam</strong></li>
             <li><span class="odg delno">Delno</span> <strong>Umestitev storitev v naselje</strong></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="promet">
-          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Strokovna prometna presoja</strong></li>
             <li><span class="odg delno">Delno</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
@@ -744,7 +813,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="zrak">
-          <h5>Boljši zrak in hrup<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Boljši zrak in hrup<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Meritve zraka in hrupa</strong></li>
             <li><span class="odg delno">Delno</span> <strong>Hrup ob železnici in cestah</strong></li>
@@ -758,7 +827,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="maladela">
-          <h5>Mala dela ČS in prijave poškodb<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Mala dela ČS in prijave poškodb<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Predlogi za mala dela</strong></li>
             <li><span class="odg delno">Delno</span> <strong>Obvestilo pred rokom</strong></li>
@@ -780,14 +849,14 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="11" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">11.</span> Cilj</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Parkiranje je eden od najbolj pogosto navedenih problemov, s katerim se soočajo prebivalci Bežigrada. Osnova za rešitev na tem področju so informacije o statusu vseh potencialnih parkirnih mest. CILJ je že dosegel zmago z referendumom o parkiriščih in naprej bomo zagotavljali boljšo parkirno politiko za prebivalce celotne Ljubljane.</span></li>
             <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Prebivalci Savskega naselja so ekstremno angažirani in najbolje vedo kako bi morala izgledati dobra parkirna politika v njihovi soseski. Zagotovili bomo, da bodo oni v ospredju katerekoli nove ureditve, ki pa je nujna čim prej.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="storitve">
-          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Pošta, banka in druge storitve<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pismo Pošti in bankam</strong><span class="tf-razlaga">Volja prebivalcev soseske je jasna. V svetu četrtne skupnosti bomo poskusili zagotoviti odgovore v imenu ČS Bežigrad. V kolikor ostali svetniki ne odobrijo našega predloga, bomo odgovore od pošte in banke terjali kot CILJ. Tematiko bomo naslovili že na prvi seji.</span></li>
             <li><span class="odg da">Da</span> <strong>Umestitev storitev v naselje</strong><span class="tf-razlaga">Pomanjkanje storitev v Savske naselju je nujno nasloviti. Vse predloge iz ankete bomo izpostavili na sejah ČS Bežigrad.</span></li>
@@ -823,14 +892,14 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="zelenje">
-          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Več zelenja in sence je eden od temeljev našega programa. Zato bomo skupaj s prebicalvi identificirali najbolj kritične točke in na ravni MOL zagovarjali bolj zeleno politiko.</span></li>
             <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="dom">
-          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Potreba po tovrstnih prostorih je visoka, vendar prebivalci sploh niso seznanjeni o vseh možnostih, ki so jim na to na voljo. Pomapirali bomo vse skupnostne prostore in prebivalce obvestili o možnosti njihove rabe in primernosti za razne aktivnosti.</span></li>
             <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong></li>
@@ -844,7 +913,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
           </ul>
         </div>
         <div class="tf-tema" data-tema="mladi">
-          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igrišča in prostor za mlade<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Odprtost šolskega igrišča</strong><span class="tf-razlaga">Mladi v soseski vedno bolj poudarjajo, da nimajo svojih prostorov. Nujno jih je čim prej zagotoviti na vse možne načine.</span></li>
             <li><span class="odg da">Da</span> <strong>Pregled igrišč z mladimi</strong><span class="tf-razlaga">Prostore lahko zagotovimo tudi s prenovo in začasno rabo zapuščenih prostorov.</span></li>
@@ -873,7 +942,7 @@ h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;p
       <li class="tf-lista" data-ve="13" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">13.</span> Ljubljana smo vsi</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Da. Težav s parkiranjem v Savskem naselju ne bomo rešili, dokler ne razčistimo osnovnih vprašanj glede lastništva zemljišč. Zato bom v prvih šestih mesecih zagotovil javno dostopen pregled parkirišč, iz katerega bo jasno razvidno, katera so v lasti MOL, katera pripadajo etažnim lastnikom in za katera potekajo postopki po ZVEtL. Mestna uprava bo v sodelovanju s prebivalci pristopila tudi k razreševanju odprtih lastniških vprašanj. Šele na tej podlagi bomo lahko pripravili dolgoročne rešitve za parkiranje, ki ne bodo šle na račun zelenih površin in kakovosti življenja v naselju.</span></li>
             <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Da. V prvem letu bomo za Savsko naselje pripravili konkreten načrt ureditve parkiranja, ki bo stanovalcem zagotovil prednost, pločnike in zelenice pa vrnil pešcem. Toda zgolj spreminjanje parkirnega režima ne bo rešilo pomanjkanja parkirnih mest. Zato bomo preverili možnosti obnove obstoječih garaž in gradnje novih garažnih hiš v soseski.
@@ -889,7 +958,7 @@ Za Ljubljano smo pripravili program 5.000 novih garažnih mest, tudi z možnostj
           </ul>
         </div>
         <div class="tf-tema" data-tema="promet">
-          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong><span class="tf-razlaga">Da. Prometnih težav Savskega naselja ne moremo reševati ločeno od razvoja širšega območja Bežigrada. V prvem letu bomo zagotovili celovito strokovno prometno presojo, ki bo upoštevala načrtovano širitev Šmartinske ceste, prometno povezavo na Vilharjevi pri Orto Baru ter vpliv morebitne nove stanovanjske pozidave. Preverili bomo različne prometne scenarije, njihove posledice za pretočnost, varnost, hrup in kakovost zraka. Nobena rešitev ne sme pomeniti, da bomo prometne zastoje z ene ceste preprosto preselili med stanovanjske bloke. Pred sprejetjem odločitev bomo prebivalcem predstavili variante in njihove strokovne utemeljitve ter upoštevali njihovo mnenje. Naš cilj ni zgolj večja pretočnost avtomobilov, temveč manj tranzitnega prometa skozi naselje, učinkovitejši javni prevoz in zdravo bivalno okolje.</span></li>
             <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong><span class="tf-razlaga">Da. Varnost otrok na poti v šolo in vrtec mora imeti absolutno prednost.  Do začetka šolskega leta 2027/28 bomo pregledali in uredili najbolj nevarne prometne točke v okolici šole in vrtca v Savskem naselju. Kjer bo potrebno, bomo uredili varnejše prehode za pešce, izboljšali preglednost križišč, uvedli ukrepe za umirjanje prometa in preprečili nevarno parkiranje. Pri določanju prednostnih ukrepov bomo sodelovali s šolo, vrtcem in starši. Ne potrebujemo še ene prometne študije, ki bo obležala v predalu, temveč konkretne izboljšave, ki jih bodo otroci in starši občutili že na začetku naslednjega šolskega leta.</span></li>
@@ -897,7 +966,7 @@ Za Ljubljano smo pripravili program 5.000 novih garažnih mest, tudi z možnostj
           </ul>
         </div>
         <div class="tf-tema" data-tema="varnost">
-          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Igle in droge, varnost<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Srečanja s policijo in redarstvom</strong><span class="tf-razlaga">Da. Odvržene injekcijske igle, uživanje drog na javnih površinah in občutek ogroženosti niso težave, ki bi jih smeli prepustiti prebivalcem, da jih rešujejo sami. Zagotovil bomo redno sodelovanje policije, Mestnega redarstva, četrtne skupnosti in prebivalcev, prvo srečanje najpozneje v šestih mesecih, nato pa najmanj dvakrat letno. Na podlagi prijav in ugotovljenih razmer bomo določili kritične lokacije, okrepili nadzor in zagotovili hitro ter varno odstranjevanje odvrženih igel. Hkrati bomo vključili pristojne socialne in zdravstvene službe, saj samo represija problema odvisnosti ne rešuje. Javne površine morajo biti varne za otroke, starejše in vse prebivalce, pomoč ljudem z odvisnostjo pa mora biti strokovna in dostopna.</span></li>
             <li><span class="odg da">Da</span> <strong>Odstranjevanje igel</strong><span class="tf-razlaga">Da. Odvržene injekcijske igle na otroških igriščih, zelenicah in drugih javnih površinah zahtevajo takojšnje ukrepanje. V prvih treh mesecih bomo zagotovili vzpostavitev sistema rednih pregledov izpostavljenih lokacij v Savskem naselju ter jasen protokol za nujno odstranjevanje nevarnih odpadkov. Prebivalcem bomo omogočili enostavno prijavo, brez prelaganja odgovornosti med različnimi občinskimi službami. Za vsako prijavo mora biti jasno, kdo je odgovoren za ukrepanje in v kakšnem času bo nevarnost odpravljena. O izvedenih ukrepih bomo redno in javno poročali. Varnost in čistoča javnega prostora sta osnovni nalogi občine, ne nekaj, za kar bi morali občani vedno znova prositi.</span></li>
@@ -933,7 +1002,7 @@ Kot sem poudaril že v odgovoru iniciativi Urbani gozd, ozelenjevanje ne sme bit
           </ul>
         </div>
         <div class="tf-tema" data-tema="dom">
-          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Da. V prvem letu bomo zagotovili pregled razpoložljivih prostorov v Savskem naselju in pripravil pogoje, da dom skupnosti ponovno postane prostor srečevanja, druženja in skupnih dejavnosti prebivalcev. Pri tem bomo upoštevali potrebe različnih generacij, od otrok in mladih do starejših, ter omogočili uporabo prostorov lokalnim društvom in civilnim iniciativam.
 
@@ -946,7 +1015,7 @@ To je bistvo drugačnega načina vodenja Ljubljane, za katerega se zavzemamo. Me
           </ul>
         </div>
         <div class="tf-tema" data-tema="zrak">
-          <h5>Boljši zrak in hrup<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Boljši zrak in hrup<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Meritve zraka in hrupa</strong><span class="tf-razlaga">Da. V prvih šestih mesecih bomo zagotovili izvedbo meritev kakovosti zraka in prometnega hrupa na najbolj obremenjenih območjih Savskega naselja ter javno objavo rezultatov. Že v svojem programu smo predvideli spremljanje kakovosti zraka po posameznih četrtnih skupnostih, saj povprečni podatki za celotno Ljubljano ne povedo dovolj o razmerah, v katerih ljudje dejansko živijo.
 
@@ -1010,7 +1079,7 @@ Pri prostorskem načrtovanju pa želimo narediti še korak dlje. Prebivalci mora
       <li class="tf-lista" data-ve="15" data-teme="parkiranje storitve promet varnost klopi cistoca zelenje dom zrak mladi maladela obvescanje">
         <h4><span class="nr">15.</span> LZJ</h4>
         <div class="tf-tema" data-tema="parkiranje">
-          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Parkiranje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg delno">Delno</span> <strong>Lastništvo parkirišč</strong><span class="tf-razlaga">Zemljiška knjiga je javna in do nje lahko že sedaj dostopa vsak občan. Zato je javno dostopna tudi informacija o lastništvu parcel, označeno pa je tudi, ali je parcela s čim obremenjena (npr. teče postopek po ZVEtL). Poleg tega je ZK »živa« in se ves čas spreminja.  Podobno velja za zahtevke po ZVEtL, saj je moč te vložiti kadarkoli. Posledično nekaj, kar velja danes, nujno ne bo veljalo tudi jutri.</span></li>
             <li><span class="odg da">Da</span> <strong>Ureditev parkiranja za stanovalce</strong><span class="tf-razlaga">Za to si ČS prizadeva ves čas, a iskanje rešitve zahteva sodelovanje številnih deležnikov.</span></li>
@@ -1024,7 +1093,7 @@ Pri prostorskem načrtovanju pa želimo narediti še korak dlje. Prebivalci mora
           </ul>
         </div>
         <div class="tf-tema" data-tema="promet">
-          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Promet skozi naselje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Strokovna prometna presoja</strong></li>
             <li><span class="odg da">Da</span> <strong>Varne poti ob šoli in vrtcu</strong></li>
@@ -1046,21 +1115,21 @@ Pri prostorskem načrtovanju pa želimo narediti še korak dlje. Prebivalci mora
           </ul>
         </div>
         <div class="tf-tema" data-tema="cistoca">
-          <h5>Čistoča in pasji iztrebki<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Čistoča in pasji iztrebki<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Čistilne akcije</strong><span class="tf-razlaga">Svet ČS je v okviru akcije za lepšo Ljubljana je v Savskem naselju (in drugod) zmeraj podprla čistilne akcije, če je prišla za njih pobuda ali s strani svetnika ali strani občana (poskrbeli smo objavo na spletni strani in FB, zagotovili rokavice, vrečka, pobiralke smeti/tudi drugo orodje, če je bila želja, poskrbeli za odvoz zbranih odpadkov in za malico.</span></li>
             <li><span class="odg delno">Delno</span> <strong>Koši za pasje iztrebke</strong><span class="tf-razlaga">Že do sedaj smo aktivno sodelovali v akcijah Človek čuvaj svoje mesto in tako bo tudi v prihodnje. Ob tem računamo na lastnike psov, da za njimi res pospravijo. Spominjamo, da je pasje iztrebke moč odlagati v vse koše za mešane odpadke!</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="zelenje">
-          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Drevesa in zelenice<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Pregled dreves in zasaditve</strong><span class="tf-razlaga">Tovrstne pobude smo podpirali že do sedaj in jih bomo tudi v prihodnje. MOL sicer to že počne, je pa tudi tu odvisno od lastništva zemljišča, na katerem drevo stoji.</span></li>
             <li><span class="odg da">Da</span> <strong>Izbira mest z prebivalci</strong><span class="tf-razlaga">To smo počeli že v tem mandatu, s tem bomo nadaljevali tudi v prihodnje. Ob tem naj spomnimo, da posaditev drevesa zahteva ustrezno strokovno oceno vseh dejavnikov in tveganj, zato zgolj predlog občanov za postavitev drevesa na točno določeni lokaciji ni vedno dovolj.</span></li>
           </ul>
         </div>
         <div class="tf-tema" data-tema="dom">
-          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span></h5>
+          <h5>Dom skupnosti, prostor za druženje<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span></h5>
           <ul>
             <li><span class="odg da">Da</span> <strong>Prostori za skupne dejavnosti</strong><span class="tf-razlaga">Svet ČS, v sodelovanju z Oddelkom za ravnanje z nepremičninami MOL in Službo za lokalno samoupravo MOL, že sedaj vodi preglednico prostorov. Skupaj si prizadevamo za njihovo polno zasedenost in ob tem veliko pozornost namenjamo vsebinam, s katerimi se zapolnjujejo ti prostori. Brezplačna uporaba prostorov je odvisna od vsebine aktivnosti.</span></li>
             <li><span class="odg da">Da</span> <strong>Obnova Belokranjske 6</strong><span class="tf-razlaga">V skladu s pristojnostmi sveta ČS.</span></li>
@@ -1113,7 +1182,7 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
   <h2 id="primerjava" style="color:#0b3d24">Primerjava odgovorov</h2>
   <p class="meta primerjava-uvod">Kako so liste odgovorile na posamezna vprašanja. To ni naša ocena — prikazujemo oznake, kot so jih liste same izbrale. Celotno vprašanje se prikaže, če se zadržite na kratkem naslovu vrstice.</p>
   <p class="primerjava-legenda"><span><span class="odg da">Da</span> Da</span><span><span class="odg delno">Delno</span> Delno</span><span><span class="odg ne">Ne</span> Ne</span><span><span class="celica-prazna">–</span> odgovora še ni</span><span class="prio-legenda"><span class="prio-st" aria-hidden="true">1</span>–<span class="prio-st" aria-hidden="true">5</span> = mesto teme med petimi prioritetami liste</span></p>
-  <p class="prio-zvezda-legenda">★ = lista je temo izbrala med svojih pet prioritet.</p>
+  <p class="prio-zvezda-legenda">! = lista je temo izbrala med svojih pet prioritet.</p>
   <a class="btn-zacetek" href="lista-1.html">Začni s podrobnim pogledom zavez</a>
   <div id="primerjava-wrap"></div>
   <p class="opomba-vrstni-red">Vrstni red list je enak zaporednim številkam na glasovnici za volitve v svet Četrtne skupnosti Bežigrad (volilna enota 01), 15.&nbsp;11.&nbsp;2026. Liste so prikazane enakovredno.</p>
@@ -1418,7 +1487,7 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
         ? '<span class="prio-st" aria-hidden="true">' + prioN + "</span>"
         : '<span class="prio-st prio-st-prazno" aria-hidden="true"></span>';
       const star = prio
-        ? '<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">★</span>'
+        ? '<span class="prio-zvezda" title="prioriteta liste" aria-label="prioriteta liste">!</span>'
         : "";
       return { prio: !!prio, prioN: prioN, html: '<button type="button" class="celica-tip" aria-expanded="false" aria-haspopup="dialog" data-lista="' + n + '" data-qid="' + escHtml(q.id) + '" aria-label="' + escHtml(label) + '">' + st + pill + star + "</button>" };
     }
@@ -1482,6 +1551,28 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
     cbs.concat(rad).forEach(function(c){c.addEventListener('change',osvezi);});
     f.querySelector('.tf-pocisti').addEventListener('click',function(){cbs.forEach(function(c){c.checked=false;});osvezi();cbs[0].focus();});
     osvezi();
+    function temaIzZaveze(id){
+      var m = (id||'').match(/^zaveza-([a-z]+)-\d+$/);
+      return m ? m[1] : '';
+    }
+    function odpriZavezoIzHasha(){
+      var id = (location.hash||'').replace(/^#/,'');
+      var tema = temaIzZaveze(id);
+      if(!tema) return;
+      var cb = f.querySelector('input[name=tema][value="'+tema+'"]');
+      if(cb){
+        if(!cb.checked) cb.checked = true;
+        osvezi();
+      }
+      var el = document.getElementById(id);
+      if(el){
+        [].forEach.call(f.querySelectorAll('.zaveza-cilj'),function(x){x.classList.remove('zaveza-cilj');});
+        el.classList.add('zaveza-cilj');
+        el.scrollIntoView({block:'start'});
+      }
+    }
+    window.addEventListener('hashchange', odpriZavezoIzHasha);
+    odpriZavezoIzHasha();
   });
 })();
 </script>
