@@ -115,6 +115,25 @@ details.celotni>summary:focus-visible{outline:3px solid #f5c400;outline-offset:2
 .tv-ne-q{font-weight:650}
 .tv-sest-ne{color:var(--odg-ne);font-weight:800}
 li.tf-ne{border-left:3px solid var(--odg-ne);padding-left:6px}
+#vecine,#skupne{scroll-margin-top:12px}
+h2.sekcija{color:#0b3d24;margin:1.8rem 0 .6rem;border-bottom:3px solid #f5c400;padding-bottom:.25rem;scroll-margin-top:12px}
+.podatki{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.2rem}
+.podatki th,.podatki td{border-bottom:1px solid #e5ece7;padding:6px 8px;text-align:left;vertical-align:top}
+.podatki td.num,.podatki th.num{text-align:right;white-space:nowrap}
+.podatki thead th{background:#f4f7f5;color:#0b3d24;font-weight:700;border-bottom:3px solid #f5c400}
+.podatki tbody th{font-weight:650;color:#0b3d24}
+.vecina-box{background:#f4f7f5;border:1px solid #c5d4cb;border-left:6px solid #0b3d24;border-radius:12px;padding:12px 16px;margin:1rem 0 1.2rem}
+.vecina-box h3{margin:.1rem 0 .5rem;color:#0b3d24;font-size:1.05rem}
+.vecina-box ul{margin:.2rem 0 .6rem;padding-left:1.2rem}
+.vecina-box li{margin:.25rem 0}
+.skupne .podatki{font-size:.9rem}
+.skupne ol{margin:.3rem 0 1rem;padding-left:1.3rem}
+.kazalo{background:#f4f7f5;border:1px solid #dde6df;border-radius:12px;padding:12px 16px;margin:0 0 1.4rem}
+.kazalo h2{margin:0 0 .45rem;font-size:1.05rem;color:#0b3d24}
+.kazalo ol{margin:0;padding-left:1.3rem}
+.kazalo li{margin:.15rem 0}
+.kazalo a{font-weight:700}
+@media (max-width:700px){.podatki{font-size:.88rem}.podatki th,.podatki td{padding:8px 6px}}
 </style>
 </head>
 <body class="izvoljeni-stran">
@@ -143,6 +162,17 @@ li.tf-ne{border-left:3px solid var(--odg-ne);padding-left:6px}
   <p class="meta">Odgovori 7 list z mandatom, v uradnem vrstnem redu VE&nbsp;01, kot so jih liste oddale. Vse liste z mandatom so zaveze oddale.</p>
   <p class="opomba-vrstni-red">Vrstni red list je enak zaporednim številkam na glasovnici za volitve v svet Četrtne skupnosti Bežigrad (volilna enota 01), 15.&nbsp;11.&nbsp;2026. Liste so prikazane enakovredno.</p>
   <p class="povezava-vse">Zaveze vseh 15 list, tudi tistih brez mandata, so na strani <a href="./">anketa.savska.org/zaveze/</a>.</p>
+  <nav class="kazalo" aria-label="Kazalo">
+    <h2>Kazalo</h2>
+    <ol>
+      <li><a href="#izidi">Liste z mandatom</a></li>
+      <li><a href="#vecine">Večinske kombinacije</a></li>
+      <li><a href="#filter-izvoljeni">Zaveze po temah</a></li>
+      <li><a href="#skupne">Skupne točke</a></li>
+      <li><a href="#primerjava">Primerjava odgovorov</a></li>
+      <li><a href="#kartice">Izvoljene liste</a></li>
+    </ol>
+  </nav>
   <h2 id="izidi" style="color:#0b3d24">Liste z mandatom in neuradno izvoljeni</h2>
   <ul class="povzetek-mandati">
     <li><span class="nr">1.</span> <a href="lista-1.html">Gibanje Svoboda</a> <span class="mandati-st">2 mandata</span> <span class="mandati-glasovi">— dr. Simona Gerenčer, Lars Arrigler Demirović</span></li>
@@ -170,6 +200,23 @@ li.tf-ne{border-left:3px solid var(--odg-ne);padding-left:6px}
     </ol>
     <p class="graf-opomba">Delež vseh glasov za liste v VE&nbsp;01; dolžina stolpca glede na največji delež v skupini. <span class="graf-stanje" aria-live="polite">Vrstni red: po glasovnici.</span></p>
   </figure>
+  <section id="vecine">
+    <div class="vecina-box">
+      <h3>Možne večinske kombinacije (samo aritmetika)</h3>
+      <p>Spodnje kombinacije so zgolj seštevek sedežev, ne ocena, ali je takšna koalicija politično verjetna. Vse naštete kombinacije imajo natanko 9 sedežev (brez rezerve), razen kjer je to izrecno navedeno; za sklep se morajo strinjati vse liste v kombinaciji.</p>
+      <p><strong>Edina dvojica z večino:</strong> Levica (5) in Lista Zorana Jankovića (4) = 9.</p>
+      <p><strong>Trojice in četverice z natanko 9 sedeži:</strong></p>
+      <ul>
+        <li>Levica (5) + SDS (3) + ena od list s po enim sedežem (Pirati, Cilj – Bežigrad ali Ljubljana smo vsi)</li>
+        <li>Levica (5) + Gibanje Svoboda (2) + katerikoli dve od list s po enim sedežem</li>
+        <li>Lista Zorana Jankovića (4) + SDS (3) + Gibanje Svoboda (2)</li>
+        <li>Lista Zorana Jankovića (4) + SDS (3) + katerikoli dve od list s po enim sedežem</li>
+        <li>Lista Zorana Jankovića (4) + Gibanje Svoboda (2) + vse tri liste s po enim sedežem</li>
+      </ul>
+      <p>Brez Levice ima vsaka večina med temi listami tudi Listo Zorana Jankovića. Brez Liste Zorana Jankovića ima vsaka večina tudi Levico. SDS, Gibanje Svoboda in vse tri liste s po enim sedežem skupaj pridejo do 8 in do večine ne zadostujejo.</p>
+      <p>Štetje sedežev je po neuradnem izidu, 18.&nbsp;11.&nbsp;2026 ob 8.00.</p>
+    </div>
+  </section>
   <section class="tema-filter" id="filter-izvoljeni" aria-labelledby="filter-izvoljeni-nasl" data-skupaj="7">
     <h3 id="filter-izvoljeni-nasl">Zaveze po temah</h3>
     <p class="tf-uvod">Izberi eno ali več tem. Prikazane so izvoljene liste, ki so pri vsaj enem vprašanju te teme označile »da« ali »delno«, in njihove zaveze, kot so jih liste same napisale. Vrstni red je enak glasovnici.</p>
@@ -917,6 +964,146 @@ Kar zadeva ožje dele znotraj posamezne ČS, kot so na primer soseske, pa naj om
       </li>
     </ol>
     <p class="graf-opomba">Vir: oddane zaveze list (31 vprašanj), objavljene na <a href="https://anketa.savska.org/zaveze/">straneh zavez</a>. Upoštevani sta oznaki »da« in »delno«; odgovori »ne« in vprašanja brez odgovora niso prikazani.</p>
+  </section>
+  <section id="skupne" class="skupne">
+    <h2 class="sekcija">3. Skupne točke</h2>
+    <p>Štetje sedežev v tem razdelku izhaja iz odgovorov, kot so jih liste same oddale na <a href="https://anketa.savska.org/zaveze/izvoljeni/">javni strani zavez</a>. Oznake so take, kot so jih liste same izbrale. To ni naša ocena. Mandati: Gibanje Svoboda 2, Pirati 1, Levica 5, SDS 3, Cilj – Bežigrad 1, Ljubljana smo vsi 1, Lista Zorana Jankovića 4 (skupaj 17).</p>
+    <p>Nobeno od 31 vprašanj niso vse liste brez izjeme podprle z »da«, ker je SDS na vseh 31 vprašanjih označila »delno«.</p>
+
+    <h3 class="sek">20 vprašanj, na katera so odgovorile vse liste z da ali delno</h3>
+    <p>Na <strong>20 vprašanj</strong> so vse sedem list odgovorile z »da« ali »delno« (nihče »ne«, nihče brez odgovora). To pomeni podporo vseh <strong>17 sedežev</strong> v smislu da ali delno.</p>
+    <p>Od teh 20 jih ima <strong>15 vprašanj po 14 sedežev »da«</strong>: vse liste, ki niso SDS, so odgovorile »da«, SDS pa »delno«. To so:</p>
+    <ol>
+      <li>Varne poti ob šoli in vrtcu</li>
+      <li>Preverjanje motenj s prebivalci</li>
+      <li>Srečanja s policijo in redarstvom</li>
+      <li>Odstranjevanje igel</li>
+      <li>Predlogi mest za klopi</li>
+      <li>Pomoč lastnikom pri klopeh</li>
+      <li>Pregled dreves in zasaditve</li>
+      <li>Izbira mest z prebivalci</li>
+      <li>Odprtost šolskega igrišča</li>
+      <li>Pregled igrišč z mladimi</li>
+      <li>Predlogi za mala dela</li>
+      <li>Obvestilo pred rokom</li>
+      <li>Sprotno obveščanje</li>
+      <li>Vključevanje pred sejo</li>
+      <li>Delo tudi, če ne bodo izvoljeni</li>
+    </ol>
+    <p>Preostalih pet od teh 20 ima manj kot 14 sedežev »da«, ker je poleg SDS »delno« označila še Gibanje Svoboda ali Lista Zorana Jankovića:</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <thead>
+        <tr><th>Vprašanje</th><th class="num">Da</th><th class="num">Delno</th><th>Kdo poleg SDS »delno«</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Strokovna prometna presoja</th><td class="num">12</td><td class="num">5</td><td>Gibanje Svoboda</td></tr>
+        <tr><th scope="row">Zemljišča, ki niso MOL</th><td class="num">10</td><td class="num">7</td><td>Lista Zorana Jankovića</td></tr>
+        <tr><th scope="row">Jasni zapisniki in povzetki</th><td class="num">10</td><td class="num">7</td><td>Lista Zorana Jankovića</td></tr>
+        <tr><th scope="row">Odgovor na pobude in OPPN</th><td class="num">10</td><td class="num">7</td><td>Lista Zorana Jankovića</td></tr>
+        <tr><th scope="row">Oseba za stik s prebivalci</th><td class="num">10</td><td class="num">7</td><td>Lista Zorana Jankovića</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sek">Vprašanja brez večine za »da«</h3>
+    <p>Za večino je potrebnih 9 sedežev »da«. Teh 9 ne dosežejo tri vprašanja (pri vseh treh Gibanje Svoboda ni odgovorila, zato 2 sedeža ostaneta brez odgovora):</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <thead>
+        <tr><th>Vprašanje</th><th class="num">Da</th><th class="num">Delno</th><th class="num">Brez odgovora</th><th>Kdo ni »da«</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Lastništvo parkirišč</th><td class="num">8</td><td class="num">7</td><td class="num">2</td><td>SDS in LZJ delno; GS brez odgovora</td></tr>
+        <tr><th scope="row">Čistilne akcije</th><td class="num">7</td><td class="num">8</td><td class="num">2</td><td>Levica in SDS delno; GS brez odgovora</td></tr>
+        <tr><th scope="row">Koši za pasje iztrebke</th><td class="num">8</td><td class="num">7</td><td class="num">2</td><td>SDS in LZJ delno; GS brez odgovora</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Pri več drugih vprašanjih, na katera Gibanje Svoboda ni odgovorila (ureditev parkiranja za stanovalce, pošta in banka, dom skupnosti, zrak in hrup), je »da« vseeno 12 sedežev, kar za aritmetično večino zadošča.</p>
+    <p>Prenos in posnetki sej niso med vprašanji brez večine za »da« (10 sedežev »da«), so pa edino vprašanje z oznako »ne«: Lista Zorana Jankovića (4 sedeži), SDS »delno« (3), ostale »da«.</p>
+
+    <h3 class="sek">Prioritete</h3>
+    <p>Liste so izbrale po pet prioritet. Štetje po sedežih (ista tema, če jo je lista uvrstila med svojih pet):</p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="podatki">
+      <thead>
+        <tr><th>Tema</th><th class="num">Sedeži</th><th>Število list</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Parkiranje</th><td class="num">15</td><td>6 (vse razen Gibanja Svoboda)</td></tr>
+        <tr><th scope="row">Drevesa in zelenice</th><td class="num">13</td><td>5 (GS, Pirati, Levica, Cilj – Bežigrad, LZJ)</td></tr>
+        <tr><th scope="row">Promet skozi naselje</th><td class="num">11</td><td>5 (GS, Pirati, SDS, Ljubljana smo vsi, LZJ)</td></tr>
+        <tr><th scope="row">Pošta, banka in druge storitve</th><td class="num">9</td><td>3 (Levica, SDS, Cilj – Bežigrad)</td></tr>
+        <tr><th scope="row">Igle in droge, varnost</th><td class="num">8</td><td>3 (GS, Levica, Ljubljana smo vsi)</td></tr>
+        <tr><th scope="row">Igrišča in prostor za mlade</th><td class="num">8</td><td>3 (GS, Levica, Cilj – Bežigrad)</td></tr>
+        <tr><th scope="row">Dom skupnosti, prostor za druženje</th><td class="num">7</td><td>4 (Pirati, Cilj – Bežigrad, Ljubljana smo vsi, LZJ)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Ostale izbrane teme imajo po 4 ali manj sedežev (mala dela; boljši zrak in hrup; čistoča in pasji iztrebki; več klopi).</p>
+
+    <h3 class="sek">Razkoraki, ki jih velja imeti pred očmi</h3>
+    <ul>
+      <li><strong>Gibanje Svoboda</strong> ni odgovorilo na 10 od 31 vprašanj (parkiranje, storitve, čistoča, dom skupnosti, zrak in hrup). Na odgovorjenih 21 vprašanjih ima 20-krat da in enkrat delno.</li>
+      <li><strong>Lista Zorana Jankovića</strong> je edina lista z mandatom z oznako »ne« (prenos in posnetki sej).</li>
+      <li><strong>Levica</strong> je čistilne akcije označila z »delno«, v razlagi pa piše »Absolutno«.</li>
+      <li><strong>SDS</strong> je vsa 31 vprašanj označila z »delno«; v tem izvozu k tem oznakam ni razlag.</li>
+    </ul>
+
+    <h3 class="sek" id="preglednica-odgovorov">Preglednica odgovorov (31 × 7)</h3>
+    <p class="meta primerjava-uvod">Oznake: Da / delno / ne / – (ni odgovora). Vrstni red list je enak glasovnici. To ni naša ocena: prikazujemo oznake, kot so jih liste same izbrale.</p>
+    <p class="primerjava-legenda"><span><span class="odg da">Da</span> Da</span><span><span class="odg delno">Delno</span> Delno</span><span><span class="odg ne">Ne</span> Ne</span><span><span class="celica-prazna">–</span> odgovora ni</span></p>
+    <div class="primerjava-scroll" tabindex="0">
+    <table class="primerjava">
+      <thead>
+        <tr>
+          <th scope="col">Vprašanje</th>
+          <th scope="col" class="colhead"><span class="nr">1.</span><br>GS<br><span class="mandati-st">2 mandata</span></th>
+          <th scope="col" class="colhead"><span class="nr">4.</span><br>Pirati<br><span class="mandati-st">1 mandat</span></th>
+          <th scope="col" class="colhead"><span class="nr">5.</span><br>Levica<br><span class="mandati-st">5 mandatov</span></th>
+          <th scope="col" class="colhead"><span class="nr">7.</span><br>SDS<br><span class="mandati-st">3 mandati</span></th>
+          <th scope="col" class="colhead"><span class="nr">11.</span><br>Cilj<br><span class="mandati-st">1 mandat</span></th>
+          <th scope="col" class="colhead"><span class="nr">13.</span><br>LSV<br><span class="mandati-st">1 mandat</span></th>
+          <th scope="col" class="colhead"><span class="nr">15.</span><br>LZJ<br><span class="mandati-st">4 mandati</span></th>
+        </tr>
+      </thead>
+      <tbody>
+<tr><th scope="row">Lastništvo parkirišč</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Ureditev parkiranja za stanovalce</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Pismo Pošti in bankam</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Umestitev storitev v naselje</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Strokovna prometna presoja</th><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Varne poti ob šoli in vrtcu</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Preverjanje motenj s prebivalci</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Srečanja s policijo in redarstvom</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Odstranjevanje igel</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Predlogi mest za klopi</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Pomoč lastnikom pri klopeh</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Čistilne akcije</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Koši za pasje iztrebke</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Pregled dreves in zasaditve</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Izbira mest z prebivalci</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Prostori za skupne dejavnosti</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Obnova Belokranjske 6</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Meritve zraka in hrupa</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Hrup ob železnici in cestah</th><td><span class="celica-prazna" aria-label="ni odgovora">–</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Odprtost šolskega igrišča</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Pregled igrišč z mladimi</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Predlogi za mala dela</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Obvestilo pred rokom</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Zemljišča, ki niso MOL</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Prenos in posnetki sej</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg ne">Ne</span></td></tr>
+<tr><th scope="row">Jasni zapisniki in povzetki</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Sprotno obveščanje</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Vključevanje pred sejo</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+<tr><th scope="row">Odgovor na pobude in OPPN</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Oseba za stik s prebivalci</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td></tr>
+<tr><th scope="row">Delo tudi, če ne bodo izvoljeni</th><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg delno">Delno</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td><td><span class="odg da">Da</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="opomba-vrstni-red">Vrstni red list je enak zaporednim številkam na glasovnici za volitve v svet Četrtne skupnosti Bežigrad (volilna enota 01), 15.&nbsp;11.&nbsp;2026. Liste so prikazane enakovredno.</p>
   </section>
   <h2 id="primerjava" style="color:#0b3d24">Primerjava odgovorov</h2>
   <p class="meta primerjava-uvod">Kako so liste odgovorile na posamezna vprašanja. To ni naša ocena — prikazujemo oznake, kot so jih liste same izbrale. Celotno vprašanje se prikaže, če se zadržite na kratkem naslovu vrstice.</p>
