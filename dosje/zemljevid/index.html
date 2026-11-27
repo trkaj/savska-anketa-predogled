@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zemljevid zemljišč in ZVEtL – Savsko naselje (za svetnike ČS Bežigrad)</title>
+<link rel="stylesheet" href="lib/leaflet.css">
+<link rel="stylesheet" href="slog.css">
+</head>
+<body>
+<header>
+  <h1>Zemljevid zemljišč in ZVEtL – Savsko naselje (za svetnike ČS Bežigrad)</h1>
+  <p class="sub">Katastrska občina 2636 Bežigrad · klikni parcelo, stavbo ali pobudo za podrobnosti</p>
+</header>
+<div id="wrap">
+  <main id="map" aria-label="Zemljevid parcel in stavb Savskega naselja"></main>
+  <aside id="panel">
+    <section id="povzetek"></section>
+    <section>
+      <h2>Legenda</h2>
+      <div id="legenda"></div>
+      <div class="controls">
+        <label><input type="checkbox" id="chkZvetl" checked> Oznaka ZVEtL (šrafura)</label>
+        <label><input type="checkbox" id="chkStavbe" checked> Stavbe</label>
+        <label><input type="checkbox" id="chkPobude" checked> Pobude MOL</label>
+        <label><input type="checkbox" id="chkOrto"> Ortofoto GURS (podlaga)</label>
+      </div>
+    </section>
+    <section id="iskanje">
+      <label for="isci">Poišči parcelo, stavbo ali naslov</label>
+      <input id="isci" type="search" placeholder="npr. 1622/25, 7735 ali Topniška ulica 45" autocomplete="off">
+      <ul id="zadetki"></ul>
+    </section>
+    <section id="podrobno"><p class="prazno">Klikni na zemljevid.</p></section>
+    <section class="pojasnilo">
+      <h2>Kaj pomeni oznaka ZVEtL</h2>
+      <p>ZVEtL-1 je zakon, po katerem sodišče določi, katero zemljišče pripada bloku (pripadajoče zemljišče) in kdo so etažni lastniki, kadar to ob gradnji ni bilo vpisano. Oznaka »zaznana povezava s postopkom ZVEtL« pomeni, da je bil v javnih podatkih zaznan nekončan postopek ZVEtL na parceli. Dokler postopek ni končan, lastništvo zemljišča ni dokončno urejeno, kar lahko ovira urejanje (klopi, igrala, poti, zelenice).</p>
+      <p>Barva parcele kaže vpisano vrsto lastnika, ne lastništva stanovanj.</p>
+    </section>
+  </aside>
+</div>
+<footer>Vir: javni kataster GURS (CC BY 4.0), zemljiška knjiga (povzeto brez osebnih podatkov), pobude MOL. Stanje 27. 11. 2026. Ni uradni sodni status parcel.</footer>
+<script src="lib/leaflet.js"></script>
+<script src="podatki.js"></script>
+<script src="zemljevid.js"></script>
+</body>
+</html>

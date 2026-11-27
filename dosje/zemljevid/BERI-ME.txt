@@ -1,0 +1,12 @@
+Zemljevid zemljišč in ZVEtL – Savsko naselje (za svetnike ČS Bežigrad)
+
+Odpiranje: v tej mapi zaženi preprost strežnik, npr.
+  python3 -m http.server 8000
+in v brskalniku odpri http://localhost:8000/ . Deluje tudi z dvoklikom na index.html.
+
+Vsebuje samo javne podatke: geometrija parcel in stavb (GURS), vrsta lastnika po zemljiški knjigi
+(povzeto brez osebnih podatkov), upravnik (javni register upravnikov JSS MOL, samo pravne osebe),
+oznaka zaznane povezave s postopkom ZVEtL in pobude meščanov MOL (brez pobudnikov).
+Ni uradni sodni status parcel. Stanje 27. 11. 2026.
+
+Knjižnica Leaflet 1.9.4 (BSD-2), lib/LICENSE-leaflet.txt.
