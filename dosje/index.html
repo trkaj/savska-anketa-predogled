@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="sl_SI">
 <meta property="og:url" content="https://anketa.savska.org/dosje/">
-<link rel="icon" href="/favicon.png">
+<link rel="icon" href="https://anketa.savska.org/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
@@ -92,9 +92,9 @@ tr:target td { background: #fff8d6; }
   border-radius: 999px;
   white-space: nowrap;
 }
-.s-narejeno { background: #d7eedc; color: #0b3d24; }
-.s-teku { background: #d9e8fb; color: #0b2a6b; }
-.s-zastalo { background: #ffe3b8; color: #6a3b00; }
+.s-narejeno { background: #c9e8cf; color: #0b3d24; }
+.s-teku { background: #ffe9a6; color: #5c4500; }
+.s-zastalo { background: #f7c9c9; color: #8a1515; }
 .s-nic { background: #e8e8e8; color: #444; }
 details.tema {
   border: 1px solid #dce6df;
@@ -125,13 +125,61 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
   h1 { font-size: 1.35rem; }
   table { font-size: 0.88rem; }
 }
+
+.uvod { font-size: 1.08rem; margin: 0.85rem 0 1rem; line-height: 1.45; }
+.cakamo {
+  background: #fffdf5;
+  border: 2px solid #f5c400;
+  border-radius: 8px;
+  padding: 0.85rem 1rem 0.95rem;
+  margin: 1rem 0 1.5rem;
+}
+.cakamo h2 { margin: 0 0 0.45rem; font-size: 1.15rem; }
+.cakamo ol { margin: 0.2rem 0 0; padding-left: 1.25rem; }
+.cakamo li { margin: 0.35rem 0; }
+.cakamo .dni { font-weight: 800; color: #8a1515; }
+@media (max-width: 40rem) {
+  .scroll { overflow: visible; }
+  table.kartice { display: block; width: 100%; min-width: 0; }
+  .kartice thead { display: none; }
+  .kartice tbody { display: block; width: 100%; }
+  .kartice tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 0.8rem;
+    padding: 0.55rem 0.75rem 0.35rem;
+    border: 1px solid #dce6df;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(11,61,36,.06);
+  }
+  .kartice td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #eef2ef;
+    padding: 0.38rem 0;
+    text-align: right;
+  }
+  .kartice td:last-child { border-bottom: 0; }
+  .kartice td::before {
+    content: attr(data-label);
+    font-weight: 650;
+    color: #0b3d24;
+    text-align: left;
+    flex: 0 0 38%;
+  }
+}
 </style>
 </head>
 <body>
-<p class="webar"><a href="https://anketa.savska.org/">savska.org</a> · <a href="/pregled/">Pregled ankete</a> · <a href="/zapisnik/">Savski zapisnik</a> · <a href="/">Anketa</a></p>
+<p class="webar"><a href="https://anketa.savska.org/">savska.org</a> · <a href="https://anketa.savska.org/pregled/">Pregled ankete</a> · <a href="https://anketa.savska.org/zapisnik/">Savski zapisnik</a> · <a href="https://anketa.savska.org/">Anketa</a></p>
 
 <div class="cover">
-  <img class="logo" src="/pregled/logo.png" alt="">
+  <img class="logo" src="https://anketa.savska.org/pregled/logo.png" alt="">
   <div>
     <h1>Pregled stanja za svetnike ČS Bežigrad, stanje 27. 11. 2026</h1>
     <p class="h1sub">Savsko naselje in Bežigrad — anketa, sklepi in predlogi</p>
@@ -139,6 +187,7 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
   </div>
 </div>
 
+<p class="uvod">Pregled zbira, kaj prebivalci Savskega naselja odpirajo in kje stvari stojijo; predlagamo, da svet ČS Bežigrad teh 8 točk obravnava na eni od prihodnjih sej. Točke so v razdelku <a href="#predlogi">Predlogi za svet</a>.</p>
 <p class="meta">Številke ankete so iz izvoza z dnem preseka <strong>24. 11. 2026</strong> (zadnja veljavna oddaja 23. 11. 2026). Veljavnih odgovorov je <strong>N = 563</strong> (560 po spletu, 3 na papirju). Gre za <strong>samoizbran spletni vzorec</strong>, ne za sliko vseh prebivalcev. Vprašanje o temah dovoljuje več izbir. Pri odstotkih je navedeno tudi število odgovorov.</p>
 
 <h2>Povzetek</h2>
@@ -151,59 +200,69 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 </ul>
 
 
+
+<div class="cakamo" id="najdlje">
+<h2>Najdlje čakamo</h2>
+<ol>
+<li><strong>Sklep 7/6</strong> (predstavitev ureditve na svetu ČS): od 10.&nbsp;10.&nbsp;2023, <span class="dni">1144 dni</span> do 27.&nbsp;11.&nbsp;2026. V pregledu odgovor ni potrjen; ali je predstavitev pozneje potekala, je v preverjanju. <a href="#roki">Roki</a></li>
+<li><strong>Dom skupnosti:</strong> pri Domu skupnosti pobudnik od prve zahteve 8.&nbsp;3.&nbsp;2024 čaka <span class="dni">994 dni</span>; vmesni odgovori so bili, časovnice odločitve ni. <a href="#dom">razdelek</a> · <a href="#roki">roki</a></li>
+<li><strong>Pripombe k OPPN 16</strong> (Oddelek za urejanje prostora): od 1.&nbsp;5.&nbsp;2026, če odgovora ni, <span class="dni">210 dni</span>. V pregledani pošti vsebinskega odgovora nismo odprli; ali je odgovor prispel, je v preverjanju. <a href="#roki">Roki</a></li>
+<li><strong>Meritve pretočnosti (Linhartova):</strong> od 5.&nbsp;6.&nbsp;2026 samo avtomatska povratnica, <span class="dni">175 dni</span>, predpisani rok 15 dni je prekoračen. <a href="#promet">razdelek</a></li>
+</ol>
+</div>
 <h2 id="kaj-smo-naredili">Kaj smo naredili</h2>
 
 <h3>1. Zahteve za dostop do informacij javnega značaja (ZDIJZ)</h3>
 <p>Zahteve so bile pripravljene v <strong>standardnem formatu</strong> (dostop in nekomercialna ponovna uporaba podatkov). Osnutek iste predloge je bil 12.&nbsp;11.&nbsp;2026 posredovan v pregled; v predlogi sta bili v vednost predvideni tudi glavna pisarna MOL in Služba za lokalno samoupravo. Uradno so bile zahteve poslane 18., 24. in 25.&nbsp;11.&nbsp;2026. Do 27.&nbsp;11.&nbsp;2026 so prispele samo avtomatske povratnice; vsebinskega odgovora še ni.</p>
-<div class="scroll"><table class="tl">
+<div class="scroll"><table class="tl kartice">
 <thead><tr><th>Poslano</th><th>Komu</th><th>Kaj zahteva</th><th>Odgovor</th><th>Dni do 27.&nbsp;11.</th></tr></thead>
 <tbody>
-<tr><td>18.&nbsp;11.&nbsp;2026</td><td>Glavna pisarna MOL</td><td>Seznam obvestil, ki jih je MOL prejel od sodišč o postopkih po ZVEtL in ZVEtL-1 na območju Savskega naselja (k.&nbsp;o. 2636 Bežigrad) od leta 2008</td><td>Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td>9 (rok po zakonu še teče)</td></tr>
-<tr><td>24.&nbsp;11.&nbsp;2026</td><td>Glavna pisarna MOL</td><td>Podatki in zapisniki sej Mestnega sveta MOL od leta 2022, za javni pregledovalnik sklepov</td><td>Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td>3</td></tr>
-<tr><td>24.&nbsp;11.&nbsp;2026</td><td>ČS Bežigrad</td><td>Podatki in zapisniki sej Sveta ČS Bežigrad od leta 2022</td><td>Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td>3</td></tr>
-<tr><td>25.&nbsp;11.&nbsp;2026</td><td>ČS Bežigrad (v vednost Služba za lokalno samoupravo in predsednik sveta)</td><td>Dopolnitev: zapisniki štirih sej, za katere so v javnem arhivu že sklici in dnevni redi</td><td>Vsebinskega odgovora ni</td><td>2</td></tr>
+<tr><td data-label="Poslano">18.&nbsp;11.&nbsp;2026</td><td data-label="Komu">Glavna pisarna MOL</td><td data-label="Kaj zahteva">Seznam obvestil, ki jih je MOL prejel od sodišč o postopkih po ZVEtL in ZVEtL-1 na območju Savskega naselja (k.&nbsp;o. 2636 Bežigrad) od leta 2008</td><td data-label="Odgovor">Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td data-label="Dni do 27. 11.">9 (rok po zakonu še teče)</td></tr>
+<tr><td data-label="Poslano">24.&nbsp;11.&nbsp;2026</td><td data-label="Komu">Glavna pisarna MOL</td><td data-label="Kaj zahteva">Podatki in zapisniki sej Mestnega sveta MOL od leta 2022, za javni pregledovalnik sklepov</td><td data-label="Odgovor">Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td data-label="Dni do 27. 11.">3</td></tr>
+<tr><td data-label="Poslano">24.&nbsp;11.&nbsp;2026</td><td data-label="Komu">ČS Bežigrad</td><td data-label="Kaj zahteva">Podatki in zapisniki sej Sveta ČS Bežigrad od leta 2022</td><td data-label="Odgovor">Istega dne avtomatska povratnica; vsebinskega odgovora ni</td><td data-label="Dni do 27. 11.">3</td></tr>
+<tr><td data-label="Poslano">25.&nbsp;11.&nbsp;2026</td><td data-label="Komu">ČS Bežigrad (v vednost Služba za lokalno samoupravo in predsednik sveta)</td><td data-label="Kaj zahteva">Dopolnitev: zapisniki štirih sej, za katere so v javnem arhivu že sklici in dnevni redi</td><td data-label="Odgovor">Vsebinskega odgovora ni</td><td data-label="Dni do 27. 11.">2</td></tr>
 </tbody>
 </table></div>
 
 <h3>2. Korespondenca po naslovnikih</h3>
 <p>Uradniki so navedeni samo s funkcijo. Števila pomenijo evidentirane uradne dopise v tem pregledu (predvsem 2024–2026), ne nujno vseh sporočil.</p>
-<div class="scroll"><table>
+<div class="scroll"><table class="kartice">
 <thead><tr><th>Naslovnik</th><th>Št. dopisov</th><th>Zadnji odgovor</th><th>Odprto</th></tr></thead>
 <tbody>
-<tr><td>Glavna pisarna MOL</td><td>2 zahtevi ZDIJZ (18. in 24.&nbsp;11.&nbsp;2026) ter posredovanje dopisov</td><td>Avtomatske povratnice 18. in 24.&nbsp;11.&nbsp;2026</td><td>Vsebinski odgovori na ZDIJZ</td></tr>
-<tr><td>Kabinet župana</td><td>1 pisna zahteva za skupnostni prostor (8.&nbsp;3.&nbsp;2024); župan je bil 5.&nbsp;6.&nbsp;2026 seznanjen z zahtevo o Linhartovi (tako je navedla Služba za lokalno samoupravo)</td><td>Po zahtevi 2024 je 28.&nbsp;3.&nbsp;2024 sledil sestanek s Službo za lokalno samoupravo</td><td>Časovnica Doma; meritve o Linhartovi</td></tr>
-<tr><td>ČS Bežigrad (tajništvo)</td><td>Najmanj 6 v letih 2025–2026 (Linhartova, prostori, ZDIJZ)</td><td>Vsebinski odgovori 24.&nbsp;4. in 5.&nbsp;6.&nbsp;2026; ZDIJZ: povratnica 24.&nbsp;11.&nbsp;2026</td><td>ZDIJZ; pisni viri meritev o Linhartovi</td></tr>
-<tr><td>Predsednik Sveta ČS Bežigrad</td><td>Najmanj 4 v letu 2026 (obravnava pripomb, stik s svetom)</td><td>26.&nbsp;11.&nbsp;2026: navedel je, da bo stik s člani vzpostavil po sklicu ustanovne seje</td><td>Sodelovanje po konstituiranju sveta</td></tr>
-<tr><td>Vodja Službe za lokalno samoupravo</td><td>Najmanj 5 (prostor in Dom, 2024 in 21.&nbsp;8.–9.&nbsp;9.&nbsp;2026; tudi 18.&nbsp;5.&nbsp;2026 z Oddelkom za ravnanje z nepremičninami)</td><td>9.&nbsp;9.&nbsp;2026: predlog srečanja s svetom ČS po oblikovanju ožje skupine prebivalcev</td><td>Časovnica prenove Doma in skupnostni prostor</td></tr>
-<tr><td>Oddelek za gospodarske dejavnosti in promet</td><td>1 prošnja 24.&nbsp;11.&nbsp;2026 za časovnico obnove igrišča ob Šerkovi; 5.&nbsp;6.&nbsp;2026 je Služba za lokalno samoupravo navedla, da je oddelek seznanjen z zahtevo o Linhartovi</td><td>24.&nbsp;11.&nbsp;2026 samo avtomatska povratnica (do 27.&nbsp;11. 3 dni brez vsebinskega odgovora)</td><td>Časovnica obnove igrišča; meritve o Linhartovi</td></tr>
+<tr><td data-label="Naslovnik">Glavna pisarna MOL</td><td data-label="Št. dopisov">2 zahtevi ZDIJZ (18. in 24.&nbsp;11.&nbsp;2026) ter posredovanje dopisov</td><td data-label="Zadnji odgovor">Avtomatske povratnice 18. in 24.&nbsp;11.&nbsp;2026</td><td data-label="Odprto">Vsebinski odgovori na ZDIJZ</td></tr>
+<tr><td data-label="Naslovnik">Kabinet župana</td><td data-label="Št. dopisov">1 pisna zahteva za skupnostni prostor (8.&nbsp;3.&nbsp;2024); župan je bil 5.&nbsp;6.&nbsp;2026 seznanjen z zahtevo o Linhartovi (tako je navedla Služba za lokalno samoupravo)</td><td data-label="Zadnji odgovor">Po zahtevi 2024 je 28.&nbsp;3.&nbsp;2024 sledil sestanek s Službo za lokalno samoupravo</td><td data-label="Odprto">Časovnica Doma; meritve o Linhartovi</td></tr>
+<tr><td data-label="Naslovnik">ČS Bežigrad (tajništvo)</td><td data-label="Št. dopisov">Najmanj 6 v letih 2025–2026 (Linhartova, prostori, ZDIJZ)</td><td data-label="Zadnji odgovor">Vsebinski odgovori 24.&nbsp;4. in 5.&nbsp;6.&nbsp;2026; ZDIJZ: povratnica 24.&nbsp;11.&nbsp;2026</td><td data-label="Odprto">ZDIJZ; pisni viri meritev o Linhartovi</td></tr>
+<tr><td data-label="Naslovnik">Predsednik Sveta ČS Bežigrad</td><td data-label="Št. dopisov">Najmanj 4 v letu 2026 (obravnava pripomb, stik s svetom)</td><td data-label="Zadnji odgovor">26.&nbsp;11.&nbsp;2026: navedel je, da bo stik s člani vzpostavil po sklicu ustanovne seje</td><td data-label="Odprto">Sodelovanje po konstituiranju sveta</td></tr>
+<tr><td data-label="Naslovnik">Vodja Službe za lokalno samoupravo</td><td data-label="Št. dopisov">Najmanj 5 (prostor in Dom, 2024 in 21.&nbsp;8.–9.&nbsp;9.&nbsp;2026; tudi 18.&nbsp;5.&nbsp;2026 z Oddelkom za ravnanje z nepremičninami)</td><td data-label="Zadnji odgovor">9.&nbsp;9.&nbsp;2026: predlog srečanja s svetom ČS po oblikovanju ožje skupine prebivalcev</td><td data-label="Odprto">Časovnica prenove Doma in skupnostni prostor</td></tr>
+<tr><td data-label="Naslovnik">Oddelek za gospodarske dejavnosti in promet</td><td data-label="Št. dopisov">1 prošnja 24.&nbsp;11.&nbsp;2026 za časovnico obnove igrišča ob Šerkovi; 5.&nbsp;6.&nbsp;2026 je Služba za lokalno samoupravo navedla, da je oddelek seznanjen z zahtevo o Linhartovi</td><td data-label="Zadnji odgovor">24.&nbsp;11.&nbsp;2026 samo avtomatska povratnica (do 27.&nbsp;11. 3 dni brez vsebinskega odgovora)</td><td data-label="Odprto">Časovnica obnove igrišča; meritve o Linhartovi</td></tr>
 </tbody>
 </table></div>
 <p>Podrobnejše časovnice so pri temah Linhartova, Dom, pošta in igrišča. Roki odgovorov so v razdelku <a href="#roki">Roki odgovorov in pravni vidiki</a>.</p>
 
 <h2>Stanje po temah</h2>
-<p class="meta">Oznake: <span class="stanje s-narejeno">narejeno</span> <span class="stanje s-teku">v teku</span> <span class="stanje s-zastalo">zastalo</span> <span class="stanje s-nic">še nič</span>. »Povezava« vodi na razdelek te strani in, kjer je smiselno, na iskanje v Savskem zapisniku.</p>
-<div class="scroll">
-<table>
+<p class="meta">Tabela je razvrščena od najbolj zastalega. Oznake: <span class="stanje s-narejeno">narejeno</span> <span class="stanje s-teku">v teku</span> <span class="stanje s-zastalo">zastalo</span> <span class="stanje s-nic">še nič</span>. »Povezava« vodi na razdelek te strani in, kjer je smiselno, na iskanje v S<table class="kartice">
 <thead>
 <tr><th>Tema</th><th>Delež v anketi</th><th>Kaj smo naredili</th><th>Stanje</th><th>Povezava</th></tr>
 </thead>
 <tbody>
-<tr id="t-parkiranje"><td>Parkiranje</td><td>75&nbsp;% (422)</td><td>Anketa o zanimanju za garažo in ceni najema; sklepa ČS 2/15 in 3/22</td><td><span class="stanje s-zastalo">zastalo</span></td><td><a href="#parkiranje">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=parkiranje">zapisnik</a></td></tr>
-<tr><td>Promet skozi naselje</td><td>59&nbsp;% (330)</td><td>Dopisi MOL o ureditvi Linhartove (2025–2026); sklepi 7/6, 5/14, 3/9</td><td><span class="stanje s-zastalo">zastalo</span></td><td><a href="#promet">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=Linhartova">zapisnik</a></td></tr>
-<tr><td>Igle in droge, varnost</td><td>36&nbsp;% (203)</td><td>Tema je v letnih prioritetah ČS za policijo</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#varnost">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=varnost">zapisnik</a></td></tr>
-<tr><td>Več klopi</td><td>33&nbsp;% (183)</td><td>Predlogi za opremo ob igrišču posredovani MOL</td><td><span class="stanje s-zastalo">zastalo</span></td><td><a href="#klopi">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=klopi">zapisnik</a></td></tr>
-<tr><td>Čistoča in pasji iztrebki</td><td>29&nbsp;% (165)</td><td>Sklep 9/8 o podpori čistilni akciji; akcija 29. 11. 2026 zaradi vremena odpadla</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#cistoca">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=9%2F8">zapisnik</a></td></tr>
-<tr><td>Drevesa in zelenice</td><td>22&nbsp;% (125)</td><td>Opozorila ob Linhartovi; sklep 2/7 (Matjažev park); sadike ČS 2022 in 2023</td><td><span class="stanje s-zastalo">zastalo</span></td><td><a href="#drevesa">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=2%2F7">zapisnik</a></td></tr>
-<tr><td>Boljši zrak</td><td>20&nbsp;% (113)</td><td>Svet o tem še ni odločal (posredno sklep 7/6)</td><td><span class="stanje s-nic">še nič</span></td><td><a href="#zrak">razdelek</a></td></tr>
-<tr><td>Dom skupnosti</td><td>20&nbsp;% (112)</td><td>Zahteva za prostor (2024), sestanek 28. 3. 2024, dopisi MOL 2026</td><td><span class="stanje s-zastalo">zastalo</span></td><td><a href="#dom">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=prostor">zapisnik</a></td></tr>
-<tr><td>Skupen koledar</td><td>19&nbsp;% (107)</td><td>Obveščanje, Savski zapisnik; sklep 4/4 o posvetovalni skupini</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#koledar">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=4%2F4">zapisnik</a></td></tr>
-<tr><td>Igrišča in mladi</td><td>18&nbsp;%</td><td>Dopisi o igrišču ob Šerkovi (11/2026); sklep 5/6 (igrala, izvedeno 2025)</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#igrisca">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=5%2F6">zapisnik</a></td></tr>
-<tr><td>Hrup</td><td>16&nbsp;% (88)</td><td>Razprava o hrupu pri mizi za namizni tenis (2024); miza zamenjana 2025</td><td><span class="stanje s-nic">še nič</span></td><td><a href="#hrup">razdelek</a></td></tr>
-<tr><td>Stanovanja brez dvigala</td><td>14&nbsp;% (81)</td><td>Svet o tem še ni odločal</td><td><span class="stanje s-nic">še nič</span></td><td><a href="#dvigala">razdelek</a></td></tr>
-<tr><td>Druženje za starejše</td><td>9&nbsp;% (48)</td><td>Posredno: pošta in Dom; sklep 7/8 (bankomat)</td><td><span class="stanje s-nic">še nič</span></td><td><a href="#starejsi">razdelek</a></td></tr>
-<tr><td>Zdravstvene storitve</td><td>7&nbsp;% (42)</td><td>Svet o tem še ni odločal</td><td><span class="stanje s-nic">še nič</span></td><td><a href="#zdravstvo">razdelek</a></td></tr>
-<tr><td>Pošta (storitve)</td><td>79&nbsp;% (353 od 445)</td><td>Dopisovanje s Pošto Slovenije od 9. 10. 2026; predlog pogodbene pošte</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#posta">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=po%C5%A1t">zapisnik</a></td></tr>
-<tr><td>Upravniki in zemljišča</td><td>glej razdelek</td><td>Prošnja upravnikom za mrežo hišnikov (11/2026); zemljevid parcel</td><td><span class="stanje s-teku">v teku</span></td><td><a href="#upravniki">razdelek</a> · <a href="/dosje/zemljevid/">zemljevid</a></td></tr>
+<tr id="t-parkiranje"><td data-label="Tema">Parkiranje</td><td data-label="Delež v anketi">75&nbsp;% (422)</td><td data-label="Kaj smo naredili">Anketa o zanimanju za garažo in ceni najema; sklepa ČS 2/15 in 3/22</td><td data-label="Stanje"><span class="stanje s-zastalo">zastalo</span></td><td data-label="Povezava"><a href="#parkiranje">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=parkiranje">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Promet skozi naselje</td><td data-label="Delež v anketi">59&nbsp;% (330)</td><td data-label="Kaj smo naredili">Dopisi MOL o ureditvi Linhartove (2025–2026); sklepi 7/6, 5/14, 3/9</td><td data-label="Stanje"><span class="stanje s-zastalo">zastalo</span></td><td data-label="Povezava"><a href="#promet">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=Linhartova">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Več klopi</td><td data-label="Delež v anketi">33&nbsp;% (183)</td><td data-label="Kaj smo naredili">Predlogi za opremo ob igrišču posredovani MOL</td><td data-label="Stanje"><span class="stanje s-zastalo">zastalo</span></td><td data-label="Povezava"><a href="#klopi">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=klopi">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Drevesa in zelenice</td><td data-label="Delež v anketi">22&nbsp;% (125)</td><td data-label="Kaj smo naredili">Opozorila ob Linhartovi; sklep 2/7 (Matjažev park); sadike ČS 2022 in 2023</td><td data-label="Stanje"><span class="stanje s-zastalo">zastalo</span></td><td data-label="Povezava"><a href="#drevesa">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=2%2F7">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Dom skupnosti</td><td data-label="Delež v anketi">20&nbsp;% (112)</td><td data-label="Kaj smo naredili">Zahteva za prostor (2024), sestanek 28. 3. 2024, dopisi MOL 2026</td><td data-label="Stanje"><span class="stanje s-zastalo">zastalo</span></td><td data-label="Povezava"><a href="#dom">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=prostor">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Boljši zrak</td><td data-label="Delež v anketi">20&nbsp;% (113)</td><td data-label="Kaj smo naredili">Svet o tem še ni odločal (posredno sklep 7/6)</td><td data-label="Stanje"><span class="stanje s-nic">še nič</span></td><td data-label="Povezava"><a href="#zrak">razdelek</a></td></tr>
+<tr><td data-label="Tema">Hrup</td><td data-label="Delež v anketi">16&nbsp;% (88)</td><td data-label="Kaj smo naredili">Razprava o hrupu pri mizi za namizni tenis (2024); miza zamenjana 2025</td><td data-label="Stanje"><span class="stanje s-nic">še nič</span></td><td data-label="Povezava"><a href="#hrup">razdelek</a></td></tr>
+<tr><td data-label="Tema">Stanovanja brez dvigala</td><td data-label="Delež v anketi">14&nbsp;% (81)</td><td data-label="Kaj smo naredili">Svet o tem še ni odločal</td><td data-label="Stanje"><span class="stanje s-nic">še nič</span></td><td data-label="Povezava"><a href="#dvigala">razdelek</a></td></tr>
+<tr><td data-label="Tema">Druženje za starejše</td><td data-label="Delež v anketi">9&nbsp;% (48)</td><td data-label="Kaj smo naredili">Posredno: pošta in Dom; sklep 7/8 (bankomat)</td><td data-label="Stanje"><span class="stanje s-nic">še nič</span></td><td data-label="Povezava"><a href="#starejsi">razdelek</a></td></tr>
+<tr><td data-label="Tema">Zdravstvene storitve</td><td data-label="Delež v anketi">7&nbsp;% (42)</td><td data-label="Kaj smo naredili">Svet o tem še ni odločal</td><td data-label="Stanje"><span class="stanje s-nic">še nič</span></td><td data-label="Povezava"><a href="#zdravstvo">razdelek</a></td></tr>
+<tr><td data-label="Tema">Igle in droge, varnost</td><td data-label="Delež v anketi">36&nbsp;% (203)</td><td data-label="Kaj smo naredili">Tema je v letnih prioritetah ČS za policijo</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#varnost">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=varnost">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Čistoča in pasji iztrebki</td><td data-label="Delež v anketi">29&nbsp;% (165)</td><td data-label="Kaj smo naredili">Sklep 9/8 o podpori čistilni akciji; akcija 29. 11. 2026 zaradi vremena odpadla</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#cistoca">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=9%2F8">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Skupen koledar</td><td data-label="Delež v anketi">19&nbsp;% (107)</td><td data-label="Kaj smo naredili">Obveščanje, Savski zapisnik; sklep 4/4 o posvetovalni skupini</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#koledar">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=4%2F4">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Igrišča in mladi</td><td data-label="Delež v anketi">18&nbsp;%</td><td data-label="Kaj smo naredili">Dopisi o igrišču ob Šerkovi (11/2026); sklep 5/6 (igrala, izvedeno 2025)</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#igrisca">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#sklepi-po-sejah?q=5%2F6">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Pošta (storitve)</td><td data-label="Delež v anketi">79&nbsp;% (353 od 445)</td><td data-label="Kaj smo naredili">Dopisovanje s Pošto Slovenije od 9. 10. 2026; predlog pogodbene pošte</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#posta">razdelek</a> · <a href="https://anketa.savska.org/zapisnik/#savsko?q=po%C5%A1t">zapisnik</a></td></tr>
+<tr><td data-label="Tema">Upravniki in zemljišča</td><td data-label="Delež v anketi">glej razdelek</td><td data-label="Kaj smo naredili">Prošnja upravnikom za mrežo hišnikov (11/2026); zemljevid parcel</td><td data-label="Stanje"><span class="stanje s-teku">v teku</span></td><td data-label="Povezava"><a href="#upravniki">razdelek</a> · <a href="https://anketa.savska.org/dosje/zemljevid/">zemljevid</a></td></tr>
+</tbody>
+</table>">zemljevid</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -250,7 +309,7 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <h3>Sklep ČS</h3>
 <p>Sklep <strong>7/6</strong> (10. 10. 2023): pripombe k širši prometni ureditvi in zahteva po predstavitvi na svetu. Sklep <strong>5/14</strong> (21. 1. 2025): prehodi, pasovi, proučitev enosmernega prometa. Sklep <strong>3/9</strong> (12. 3. 2024): količki pri vrtcu. Pripombe prebivalcev iz novembra 2025 je svet na 20. seji 3. 2. 2026 vzel na znanje, brez sklepa.</p>
 <h3>Kaj smo naredili</h3>
-<p>Koordinator je MOL in ČS v letih 2025–2026 posredoval pripombe prebivalcev in 17. 5. 2026 zahtevo za pregled ureditve (Rondo Žale / Linhartova). MOL je 5. 6. 2026, po 19 dneh, navedel, da veljavna ureditev ostaja v veljavi in da trenutni podatki kažejo ustrezno pretočnost. Pisnega odgovora na prošnjo za meritve ni bilo.</p>
+<p>Pobudnik je MOL in ČS v letih 2025–2026 posredoval pripombe prebivalcev in 17. 5. 2026 zahtevo za pregled ureditve (Rondo Žale / Linhartova). MOL je 5. 6. 2026, po 19 dneh, navedel, da veljavna ureditev ostaja v veljavi in da trenutni podatki kažejo ustrezno pretočnost. Pisnega odgovora na prošnjo za meritve ni bilo.</p>
 <h3>Predlog svetu</h3>
 <p>Linhartovo in dostop v naselje uvrstiti na dnevni red kot samostojno točko, s stališčem sveta za Oddelek za gospodarske dejavnosti in promet, in od MOL zahtevati meritve, na katere se sklicuje odgovor z 5. 6. 2026.</p>
 </div>
@@ -271,7 +330,7 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <h3>Sklep ČS</h3>
 <p>Varnostne prioritete za policijo z omembo Savskega naselja so se ponavljale (med drugim 1/3-izr. 2023, 1/8-izr. 2024, 3/10-izr. 2. 12. 2025). Odgovora policije v zapisnikih ni.</p>
 <h3>Kaj smo naredili</h3>
-<p>V tem pregledu ni zabeleženega posebnega dopisa koordinatorja samo o tej temi.</p>
+<p>V tem pregledu ni zabeleženega posebnega dopisa pobudnika samo o tej temi.</p>
 <h3>Predlog svetu</h3>
 <p>Svet lahko temo ohrani med letnimi prioritetami za policijo in zahteva pisni odziv.</p>
 </div>
@@ -373,14 +432,14 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <h3>Sklep ČS</h3>
 <p>Razprave na sejah (2023–2025); sklepa o skupnostnem prostoru ni.</p>
 <h3>Kaj smo naredili</h3>
-<div class="scroll"><table class="tl">
+<div class="scroll"><table class="tl kartice">
 <thead><tr><th>Kdaj</th><th>Kaj</th></tr></thead>
 <tbody>
-<tr><td>8. 3. 2024</td><td>Pisna zahteva Kabinetu župana za skupnostni prostor (200–300 m², najmanj 100 m²), po pogovoru na dnevu odprtih vrat pri županu.</td></tr>
-<tr><td>28. 3. 2024</td><td>Sestanek s Službo za lokalno samoupravo in predsednikom Sveta ČS. Dogovorjeno preverjanje prostih prostorov.</td></tr>
-<tr><td>24. 4. 2026</td><td>MOL je v odgovoru navedel, da ustreznega prostora ni na voljo in da časovnica prenove še ni predvidena.</td></tr>
-<tr><td>18. 5. 2026 (52 dni po vprašanju 27. 3.)</td><td>MOL je v odgovoru navedel, da povsem brezplačna raba prostorov ni dovoljena in da dolgoročni najem vodi Oddelek za ravnanje z nepremičninami.</td></tr>
-<tr><td>21. 8.–9. 9. 2026</td><td>Drugi krog pojasnil iste službe: tudi pri t. i. brezplačnem najemu se plačajo obratovalni stroški; cenik z DDV 22 %; predlog srečanja s svetom ČS po oblikovanju ožje skupine prebivalcev.</td></tr>
+<tr><td data-label="Kdaj">8. 3. 2024</td><td data-label="Kaj">Pisna zahteva Kabinetu župana za skupnostni prostor (200–300 m², najmanj 100 m²), po pogovoru na dnevu odprtih vrat pri županu.</td></tr>
+<tr><td data-label="Kdaj">28. 3. 2024</td><td data-label="Kaj">Sestanek s Službo za lokalno samoupravo in predsednikom Sveta ČS. Dogovorjeno preverjanje prostih prostorov.</td></tr>
+<tr><td data-label="Kdaj">24. 4. 2026</td><td data-label="Kaj">MOL je v odgovoru navedel, da ustreznega prostora ni na voljo in da časovnica prenove še ni predvidena.</td></tr>
+<tr><td data-label="Kdaj">18. 5. 2026 (52 dni po vprašanju 27. 3.)</td><td data-label="Kaj">MOL je v odgovoru navedel, da povsem brezplačna raba prostorov ni dovoljena in da dolgoročni najem vodi Oddelek za ravnanje z nepremičninami.</td></tr>
+<tr><td data-label="Kdaj">21. 8.–9. 9. 2026</td><td data-label="Kaj">Drugi krog pojasnil iste službe: tudi pri t. i. brezplačnem najemu se plačajo obratovalni stroški; cenik z DDV 22 %; predlog srečanja s svetom ČS po oblikovanju ožje skupine prebivalcev.</td></tr>
 </tbody>
 </table></div>
 <p>V zadnjih 12 mesecih ni nove uradne odločitve MOL o prihodnji rabi ali celoviti obnovi Doma.</p>
@@ -425,7 +484,7 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <h3>Sklep ČS</h3>
 <p>Sklep <strong>5/6</strong> (10. 10. 2023): 10.000 € za igrala (Savska / Linhartova / Mislejeva) — izvedeno 2025. Športni park Savsko naselje je bil odprt 18. 5. 2026. Predlog preplastitve igrišča ob Šerkovi na 3. seji 2023 je ostal brez sklepa.</p>
 <h3>Kaj smo naredili</h3>
-<p>24. 11. 2026 je šla na Oddelek za gospodarske dejavnosti in promet prošnja za časovnico obnove; do 27. 11. vsebinskega odgovora ni bilo. Istega tedna je koordinator vprašal tudi upravnika stavbe in sodišče o stanju vpisa v zemljiški knjigi. Odgovora sodišča v tem pregledu še ni. Stanje: v teku.</p>
+<p>24. 11. 2026 je šla na Oddelek za gospodarske dejavnosti in promet prošnja za časovnico obnove; do 27. 11. vsebinskega odgovora ni bilo. Istega tedna je pobudnik vprašal tudi upravnika stavbe in sodišče o stanju vpisa v zemljiški knjigi. Odgovora sodišča v tem pregledu še ni. Stanje: v teku.</p>
 <h3>Predlog svetu</h3>
 <p>Svetniki naj MOL vprašajo, ali urejanje lastništva vpliva na prenovo, načrtovano za 2027. ČS posegov na zemljišču, ki ni v lasti MOL, ne more financirati.</p>
 </div>
@@ -507,14 +566,14 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <h3>Sklep ČS</h3>
 <p>Na 2. seji (30. 1. 2023) je bil predlog o prostorih za pošto, brez sklepa.</p>
 <h3>Kaj smo naredili</h3>
-<div class="scroll"><table class="tl">
+<div class="scroll"><table class="tl kartice">
 <thead><tr><th>Kdaj</th><th>Kaj</th></tr></thead>
 <tbody>
-<tr><td>9. 10. 2026</td><td>Pobuda Pošti Slovenije za dostopnejše storitve in sestanek; na prevzemnem mestu je mogoč prevzem, zainteresiran izvajalec je pripravljen tudi na oddajo.</td></tr>
-<tr><td>19. 10. 2026 (10 dni)</td><td>Pošta je navedla, da bo preverila razširitev storitev pri partnerju.</td></tr>
-<tr><td>12.–16. 11. 2026</td><td>Poslani tedanji rezultati ankete. Pošta je navedla, da anketa ni sama po sebi podlaga za novo poslovalnico.</td></tr>
-<tr><td>24. 11. 2026</td><td>Pošta je navedla, da odločajo člani uprave in da dodatna oziroma pogodbena pošta za 2026 in 2027 trenutno ni planirana.</td></tr>
-<tr><td>25.–27. 11. 2026</td><td>Prošnja za pisne pogoje za pogodbeno pošto; odgovor v tem pregledu še ni.</td></tr>
+<tr><td data-label="Kdaj">9. 10. 2026</td><td data-label="Kaj">Pobuda Pošti Slovenije za dostopnejše storitve in sestanek; na prevzemnem mestu je mogoč prevzem, zainteresiran izvajalec je pripravljen tudi na oddajo.</td></tr>
+<tr><td data-label="Kdaj">19. 10. 2026 (10 dni)</td><td data-label="Kaj">Pošta je navedla, da bo preverila razširitev storitev pri partnerju.</td></tr>
+<tr><td data-label="Kdaj">12.–16. 11. 2026</td><td data-label="Kaj">Poslani tedanji rezultati ankete. Pošta je navedla, da anketa ni sama po sebi podlaga za novo poslovalnico.</td></tr>
+<tr><td data-label="Kdaj">24. 11. 2026</td><td data-label="Kaj">Pošta je navedla, da odločajo člani uprave in da dodatna oziroma pogodbena pošta za 2026 in 2027 trenutno ni planirana.</td></tr>
+<tr><td data-label="Kdaj">25.–27. 11. 2026</td><td data-label="Kaj">Prošnja za pisne pogoje za pogodbeno pošto; odgovor v tem pregledu še ni.</td></tr>
 </tbody>
 </table></div>
 <h3>Kako so to rešili drugje</h3>
@@ -557,28 +616,29 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <p>Stanje na dan 27.&nbsp;11.&nbsp;2026 (Europe/Ljubljana). Štetje je v koledarskih dneh od datuma oddaje do datuma vsebinskega odgovora oziroma do 27.&nbsp;11.&nbsp;2026. Avtomatska povratnica ni vsebinski odgovor. Točen datum prejema, če se razlikuje od oddaje, je v preverjanju. Uradniki so navedeni samo po funkciji oziroma službi. Sodnih opravilnih številk ni.</p>
 
 <h3>Pravna podlaga (preverjeno na uradnih virih, 27.&nbsp;11.&nbsp;2026)</h3>
-<p><strong>Zahteva po ZDIJZ.</strong> 23. člen Zakona o dostopu do informacij javnega značaja: organ je dolžan odločiti nemudoma, najkasneje pa v roku 20 delovnih dni od dneva prejema popolne zahteve. Rok je mogoče podaljšati za največ 30 delovnih dni, a le s sklepom. Vir: <a href="https://pisrs.si/pregledNpb?idPredpisa=ZAKO3336&amp;idPredpisaChng=ZAKO3336">ZDIJZ, PISRS</a>.</p>
+<p><strong>Zahteva po ZDIJZ.</strong> 23. člen Zakona o dostopu do informacij javnega značaja: organ je dolžan odločiti nemudoma, najkasneje pa v roku 20 delovnih dni od dneva prejema popolne zahteve. Rok je mogoče podaljšati za največ 30 delovnih dni, a le s sklepom. Vir: <a href="https://pisrs.si/pregledNpb?idPredpisa=ZAKO3336&idPredpisaChng=ZAKO3336">ZDIJZ, PISRS</a>.</p>
 <p><strong>Odgovor na dopis.</strong> 17. člen Uredbe o upravnem poslovanju: organ odgovori najpozneje v 15 dneh po prejemu dokumenta. Za zahtevnejše zadeve mora v tem roku vsaj sporočiti nadaljnji postopek in pričakovani rok odgovora. Uredba velja tudi za organe samoupravnih lokalnih skupnosti (1. člen); izjeme v 1. členu se ne nanašajo na 17. člen. Vir: <a href="https://pisrs.si/pregledPredpisa?sop=2018-01-0353">Uredba o upravnem poslovanju, PISRS</a>.</p>
 <p><strong>Pobude meščanov MOL.</strong> Na portalu in v pravnem obvestilu zavezujočega roka za odgovor ni. MOL navaja, da vse pobude prebere in nanje odgovori, a da lahko odgovor traja dlje. Storitev po navedbi portala ne nadomešča upravnih postopkov. Vir: <a href="https://pobude.ljubljana.si/PravnoObvestilo.aspx">pravno obvestilo portala</a> in <a href="https://www.ljubljana.si/sl">ljubljana.si</a>. Če je ista vsebina poslana MOL kot dopis z zahtevo po odgovoru, velja 15 dni po 17. členu uredbe.</p>
 <p><strong>Sklepi ČS do MOL.</strong> V Statutu MOL in Poslovniku Mestnega sveta MOL v objavljenih virih nismo našli posebnega roka, v katerem mora mestna uprava odgovoriti na sklep sveta ČS ali predložiti zahtevano predstavitev. Vira: <a href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2021-01-0669/statut-mestne-obcine-ljubljana-uradno-precisceno-besedilo">Statut MOL</a> in <a href="https://pisrs.si/pregledPredpisa?id=MP_POSL1687">Poslovnik MS MOL</a>. Če je sklep poslan MOL kot dopis z zahtevo po odgovoru, velja 15 dni po 17. členu uredbe.</p>
 <p><strong>Pošta Slovenije</strong> ni organ MOL. Istega 15-dnevnega roka za njen odgovor v tem pregledu nismo potrdili.</p>
 
 <h3>Skrajni primeri (od najdaljšega čakanja)</h3>
-<div class="scroll"><table class="tl">
+<div class="scroll"><table class="tl kartice">
 <thead><tr><th>Zadeva</th><th>Oddano</th><th>Odgovor</th><th>Čakanje</th><th>Predpisani rok</th><th>Stanje</th></tr></thead>
 <tbody>
-<tr><td>Sklep 7/6: odgovori, sestanek in predstavitev ureditve na svetu ČS</td><td>10.&nbsp;10.&nbsp;2023</td><td>v pregledu ni potrjeno</td><td>brez odgovora, 1144 dni do 27.&nbsp;11.&nbsp;2026</td><td>posebnega roka za izvedbo sklepa ČS ni; za dopis 15 dni (UUP 17)</td><td>v preverjanju, ali je predstavitev pozneje potekala</td></tr>
-<tr><td>Dom skupnosti: časovnica odločitve o prenovi ali novogradnji in skupnostni prostor</td><td>8.&nbsp;3.&nbsp;2024</td><td>vmesni odgovori so bili, časovnice odločitve ni</td><td>994 dni do 27.&nbsp;11.&nbsp;2026</td><td>15 dni velja za odgovor na dopis, ne za samo odločitev</td><td>odprto; glej <a href="#dom">razdelek o Domu</a></td></tr>
-<tr><td>Pripombe k OPPN 16, Oddelek za urejanje prostora</td><td>1.&nbsp;5.&nbsp;2026</td><td>v pregledani pošti vsebinskega odgovora nismo odprli</td><td>če odgovora ni, 210 dni do 27.&nbsp;11.&nbsp;2026</td><td>15 dni (UUP 17), če gre za dopis</td><td>v preverjanju, ali je odgovor prispel</td></tr>
-<tr><td>Prošnja za metodologijo in vire meritev pretočnosti (Linhartova)</td><td>5.&nbsp;6.&nbsp;2026</td><td>samo avtomatska povratnica</td><td>brez vsebinskega odgovora, 175 dni do 27.&nbsp;11.&nbsp;2026</td><td>15 dni (UUP 17); rok se je iztekel 20.&nbsp;6.&nbsp;2026</td><td>prekoračen rok</td></tr>
-<tr><td>Dom: vprašanje o statusu preveritve prostorov</td><td>27.&nbsp;3.&nbsp;2026</td><td>18.&nbsp;5.&nbsp;2026</td><td>52 dni</td><td>15 dni (UUP 17); rok se je iztekel 11.&nbsp;4.&nbsp;2026</td><td>prekoračen rok; odgovor je pozneje prispel</td></tr>
-<tr><td>Dom: prva zahteva za skupnostni prostor, pisna potrditev</td><td>8.&nbsp;3.&nbsp;2024</td><td>sestanek 28.&nbsp;3.&nbsp;2024 (20 dni), pisna potrditev 4.&nbsp;4.&nbsp;2024</td><td>27 dni do pisnega odgovora</td><td>15 dni (UUP 17); rok se je iztekel 23.&nbsp;3.&nbsp;2024</td><td>prekoračen rok; odgovor je prispel</td></tr>
-<tr><td>Vprašanje ministrstvu, pristojnemu za javno upravo, o nestrankarski tribuni</td><td>6.&nbsp;10.&nbsp;2026</td><td>26.&nbsp;10.&nbsp;2026</td><td>20 dni</td><td>15 dni (UUP 17), ker gre za organ državne uprave</td><td>prekoračen rok; odgovor je prispel</td></tr>
-<tr><td>Zahteva za pregled ureditve Linhartove / rondo Žale</td><td>17.&nbsp;5.&nbsp;2026</td><td>5.&nbsp;6.&nbsp;2026</td><td>19 dni</td><td>15 dni (UUP 17); rok se je iztekel 1.&nbsp;6.&nbsp;2026</td><td>prekoračen rok; odgovor je prispel</td></tr>
+<tr><td data-label="Zadeva">Sklep 7/6: odgovori, sestanek in predstavitev ureditve na svetu ČS</td><td data-label="Oddano">10.&nbsp;10.&nbsp;2023</td><td data-label="Odgovor">v pregledu ni potrjeno</td><td data-label="Čakanje">brez odgovora, 1144 dni do 27.&nbsp;11.&nbsp;2026</td><td data-label="Predpisani rok">posebnega roka za izvedbo sklepa ČS ni; za dopis 15 dni (UUP 17)</td><td data-label="Stanje">v preverjanju, ali je predstavitev pozneje potekala</td></tr>
+<tr><td data-label="Zadeva">Dom skupnosti: časovnica odločitve o prenovi ali novogradnji in skupnostni prostor</td><td data-label="Oddano">8.&nbsp;3.&nbsp;2024</td><td data-label="Odgovor">vmesni odgovori so bili, časovnice odločitve ni</td><td data-label="Čakanje">994 dni do 27.&nbsp;11.&nbsp;2026</td><td data-label="Predpisani rok">15 dni velja za odgovor na dopis, ne za samo odločitev</td><td data-label="Stanje">odprto; glej <a href="#dom">razdelek o Domu</a></td></tr>
+<tr><td data-label="Zadeva">Pripombe k OPPN 16, Oddelek za urejanje prostora</td><td data-label="Oddano">1.&nbsp;5.&nbsp;2026</td><td data-label="Odgovor">v pregledani pošti vsebinskega odgovora nismo odprli</td><td data-label="Čakanje">če odgovora ni, 210 dni do 27.&nbsp;11.&nbsp;2026</td><td data-label="Predpisani rok">15 dni (UUP 17), če gre za dopis</td><td data-label="Stanje">v preverjanju, ali je odgovor prispel</td></tr>
+<tr><td data-label="Zadeva">Prošnja za metodologijo in vire meritev pretočnosti (Linhartova)</td><td data-label="Oddano">5.&nbsp;6.&nbsp;2026</td><td data-label="Odgovor">samo avtomatska povratnica</td><td data-label="Čakanje">brez vsebinskega odgovora, 175 dni do 27.&nbsp;11.&nbsp;2026</td><td data-label="Predpisani rok">15 dni (UUP 17); rok se je iztekel 20.&nbsp;6.&nbsp;2026</td><td data-label="Stanje">prekoračen rok</td></tr>
+<tr><td data-label="Zadeva">Dom: vprašanje o statusu preveritve prostorov</td><td data-label="Oddano">27.&nbsp;3.&nbsp;2026</td><td data-label="Odgovor">18.&nbsp;5.&nbsp;2026</td><td data-label="Čakanje">52 dni</td><td data-label="Predpisani rok">15 dni (UUP 17); rok se je iztekel 11.&nbsp;4.&nbsp;2026</td><td data-label="Stanje">prekoračen rok; odgovor je pozneje prispel</td></tr>
+<tr><td data-label="Zadeva">Dom: prva zahteva za skupnostni prostor, pisna potrditev</td><td data-label="Oddano">8.&nbsp;3.&nbsp;2024</td><td data-label="Odgovor">sestanek 28.&nbsp;3.&nbsp;2024 (20 dni), pisna potrditev 4.&nbsp;4.&nbsp;2024</td><td data-label="Čakanje">27 dni do pisnega odgovora</td><td data-label="Predpisani rok">15 dni (UUP 17); rok se je iztekel 23.&nbsp;3.&nbsp;2024</td><td data-label="Stanje">prekoračen rok; odgovor je prispel</td></tr>
+<tr><td data-label="Zadeva">Vprašanje ministrstvu, pristojnemu za javno upravo, o nestrankarski tribuni</td><td data-label="Oddano">6.&nbsp;10.&nbsp;2026</td><td data-label="Odgovor">26.&nbsp;10.&nbsp;2026</td><td data-label="Čakanje">20 dni</td><td data-label="Predpisani rok">15 dni (UUP 17), ker gre za organ državne uprave</td><td data-label="Stanje">prekoračen rok; odgovor je prispel</td></tr>
+<tr><td data-label="Zadeva">Zahteva za pregled ureditve Linhartove / rondo Žale</td><td data-label="Oddano">17.&nbsp;5.&nbsp;2026</td><td data-label="Odgovor">5.&nbsp;6.&nbsp;2026</td><td data-label="Čakanje">19 dni</td><td data-label="Predpisani rok">15 dni (UUP 17); rok se je iztekel 1.&nbsp;6.&nbsp;2026</td><td data-label="Stanje">prekoračen rok; odgovor je prispel</td></tr>
 </tbody>
 </table></div>
 
-<h3>Koliko časa je koordinator čakal pri Domu skupnosti</h3>
+<h3>Koliko časa je pobudnik čakal pri Domu skupnosti</h3>
+<p>Pri Domu skupnosti pobudnik od prve zahteve 8.&nbsp;3.&nbsp;2024 čaka 994 dni; vmesni odgovori so bili, časovnice odločitve ni.</p>
 <p>Od prve pisne zahteve za skupnostni prostor (8.&nbsp;3.&nbsp;2024) do 27.&nbsp;11.&nbsp;2026 je minilo <strong>994 dni</strong>. MOL je vmes odgovarjal, a časovnice odločitve o prenovi ali novogradnji ni dal.</p>
 <p>Posamezni odgovori o Domu:</p>
 <ul>
@@ -592,13 +652,13 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 
 <h3>Druge vloge MOL, še v teku na dan 27.&nbsp;11.&nbsp;2026</h3>
 <p>Te vloge na presečni dan še niso prekoračile predpisanega roka.</p>
-<div class="scroll"><table class="tl">
+<div class="scroll"><table class="tl kartice">
 <thead><tr><th>Zadeva</th><th>Oddano</th><th>Stanje do 27.&nbsp;11.&nbsp;2026</th><th>Predpisani rok</th></tr></thead>
 <tbody>
-<tr><td>ZDIJZ: seznam postopkov ZVEtL</td><td>18.&nbsp;11.&nbsp;2026</td><td>brez vsebinskega odgovora, 9 dni</td><td>20 delovnih dni (ZDIJZ 23); predvidoma do 16.&nbsp;12.&nbsp;2026, točen izračun je v preverjanju (prazniki, ali rok teče od dneva prejema ali od naslednjega dne)</td></tr>
-<tr><td>ZDIJZ: zapisniki sej Mestnega sveta in sveta ČS; dopolnitev 25.&nbsp;11.</td><td>24.&nbsp;11.&nbsp;2026</td><td>brez vsebinskega odgovora, 3 dni</td><td>20 delovnih dni (ZDIJZ 23); predvidoma do 22.&nbsp;12.&nbsp;2026, točen izračun je v preverjanju</td></tr>
-<tr><td>Časovnica obnove igrišča na Šerkovi</td><td>24.&nbsp;11.&nbsp;2026</td><td>brez vsebinskega odgovora, 3 dni</td><td>15 dni (UUP 17); rok do 9.&nbsp;12.&nbsp;2026</td></tr>
-<tr><td>Pogoji za pogodbeno pošto (Pošta Slovenije, ni MOL)</td><td>25.&nbsp;11.&nbsp;2026, dopolnitev 27.&nbsp;11.&nbsp;2026</td><td>brez odgovora, 2 dni</td><td>istega zakonskega roka v tem pregledu nismo potrdili</td></tr>
+<tr><td data-label="Zadeva">ZDIJZ: seznam postopkov ZVEtL</td><td data-label="Oddano">18.&nbsp;11.&nbsp;2026</td><td data-label="Stanje do 27. 11. 2026">brez vsebinskega odgovora, 9 dni</td><td data-label="Predpisani rok">20 delovnih dni (ZDIJZ 23); predvidoma do 16.&nbsp;12.&nbsp;2026, točen izračun je v preverjanju (prazniki, ali rok teče od dneva prejema ali od naslednjega dne)</td></tr>
+<tr><td data-label="Zadeva">ZDIJZ: zapisniki sej Mestnega sveta in sveta ČS; dopolnitev 25.&nbsp;11.</td><td data-label="Oddano">24.&nbsp;11.&nbsp;2026</td><td data-label="Stanje do 27. 11. 2026">brez vsebinskega odgovora, 3 dni</td><td data-label="Predpisani rok">20 delovnih dni (ZDIJZ 23); predvidoma do 22.&nbsp;12.&nbsp;2026, točen izračun je v preverjanju</td></tr>
+<tr><td data-label="Zadeva">Časovnica obnove igrišča na Šerkovi</td><td data-label="Oddano">24.&nbsp;11.&nbsp;2026</td><td data-label="Stanje do 27. 11. 2026">brez vsebinskega odgovora, 3 dni</td><td data-label="Predpisani rok">15 dni (UUP 17); rok do 9.&nbsp;12.&nbsp;2026</td></tr>
+<tr><td data-label="Zadeva">Pogoji za pogodbeno pošto (Pošta Slovenije, ni MOL)</td><td data-label="Oddano">25.&nbsp;11.&nbsp;2026, dopolnitev 27.&nbsp;11.&nbsp;2026</td><td data-label="Stanje do 27. 11. 2026">brez odgovora, 2 dni</td><td data-label="Predpisani rok">istega zakonskega roka v tem pregledu nismo potrdili</td></tr>
 </tbody>
 </table></div>
 
@@ -614,7 +674,7 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
 <p>Na portalu Pobude meščanov je mediana dni do odgovora v letu 2026 znašala 22 dni (pregled 914 pobud, stanje september 2026). To je nad 15 dnevi iz uredbe, vendar portal sam zavezujočega roka ne določa. Izvedbe na terenu nismo preverjali.</p>
 <p><strong>Predlog za svet.</strong> Svet lahko predlaga, da MOL na pobude, ki jih posreduje svet, odgovori v določenem roku, na primer 30 dni, in naj odziv spremlja. Za dopise organov že velja 15 dni po 17. členu uredbe; za sklepe ČS v statutu in poslovniku posebnega roka v objavljenih virih nismo našli.</p>
 
-<h2>Predlogi za svet (na kratko)</h2>
+<h2 id="predlogi">Predlogi za svet (na kratko)</h2>
 <ol>
   <li>V program dela 2027 uvrstiti točke z visokim deležem v anketi, z navedbo, da gre za samoizbran vzorec in presek 24. 11. 2026.</li>
   <li>Linhartova: stališče sveta in zahteva po meritvah.</li>
@@ -640,6 +700,6 @@ details.tema .telo h3 { font-size: 0.95rem; margin-top: 0.7rem; }
   <li>Primeri iz tujine so navedeni pri posameznih temah z zveznimi povezavami (preverjeni 27. 11. 2026).</li>
 </ul>
 
-<p class="foot">Stanje dokumenta: 27. 11. 2026 (Europe/Ljubljana). Pripravil koordinator za Savsko naselje za svetnice in svetnike ČS Bežigrad. V besedilu so javni podatki z viri. Osebnih podatkov prebivalcev ni.</p>
+<p class="foot">Stanje dokumenta: 27. 11. 2026 (Europe/Ljubljana). Pripravil pobudnik za Savsko naselje za svetnice in svetnike ČS Bežigrad. V besedilu so javni podatki z viri. Osebnih podatkov prebivalcev ni.</p>
 </body>
 </html>
