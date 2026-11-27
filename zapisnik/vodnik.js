@@ -2,7 +2,7 @@
 
 const sectionNames = {
   seje:'Seje in prisotnost', 'sklepi-po-sejah':'Sklepi', savsko:'Savsko naselje',
-  sklepi:'Spremljanje sklepov', sled:'Sklepi',
+  sklepi:'Sklepi', sled:'Sklepi',
   zapisniki:'Zapisniki', finance:'Finance in delovanje',
   prakse:'Tuje prakse', metoda:'Kako smo šteli', vodnik:'Kako berem ta pregled?', iskanje:'Iskanje'
 };
@@ -35,7 +35,7 @@ function showHome() {
     '<section class="quick-section"><h2>Hitre poti</h2><div class="task-grid">'+
     taskLink('seje/aktualno','Kdaj je naslednja seja?',next?next.title+' · '+meetingTime(next):'V zadnjem pregledu še ni potrjenega prihodnjega termina.')+
     taskLink('savsko','O čem so govorili v Savskem naselju?','Obravnave v soseski od najnovejše do najstarejše.')+
-    taskLink('sklepi?izbor=dokazila','Kaj se je zgodilo po sprejetju sklepa?','Poiščite poznejše odgovore, dokumente in potrjeno izvedbo.')+
+    taskLink('sklepi-po-sejah?izbor=dokazila','Kaj se je zgodilo po sprejetju sklepa?','Poiščite poznejše odgovore, dokumente in potrjeno izvedbo.')+
     '</div></section><section class="school-example"><div><div class="kicker">SKLEP '+h(t.decision)+' · '+h(day(t.date))+'</div>'+
     '<h2>'+anchor(overviewRoute(t.date,t.decision),t.title)+'</h2><p>'+h(t.status)+'</p></div>'+
     anchor(overviewRoute(t.date,t.decision),'Poglejte predloge, odgovore in dokazila')+'</section>'+
@@ -69,14 +69,14 @@ function makeSearchRecords() {
   function add(type,title,path,date,summary,body='',aliases='',label='') {
     rows.push({type,title,path,date,summary,label,titleIndex:searchable(title+' '+aliases),bodyIndex:searchable([summary,body,date,day(date)].join(' '))});
   }
-  for(const {m,d,trail,extended} of getDecisionRows()) {
+  for(const {m,d,trail,extended,key} of getDecisionRows()) {
     const title=extended?.title||d.title;
     add('sklep',title,overviewRoute(m.date,d.id),m.date,extended?.status||decisionStatuses[trail.status],
-      [d.text,trail.owner,...trail.events.map(e=>e.title+' '+e.text),...(extended?.measures||[]).map(x=>x.title+' '+x.evidence)].join(' '),
+      [d.text,decisionBriefs[key]?.summary,decisionBriefs[key]?.outcome,trail.owner,...trail.events.map(e=>e.title+' '+e.text),...(extended?.measures||[]).map(x=>x.title+' '+x.evidence)].join(' '),
       'Sklep '+d.id+(extended?' šolska pot':''),'Sklep '+d.id);
   }
   for(const e of db.savsko) {
-    add('soseska',e.title,filteredRoute('savsko',new URLSearchParams({q:e.title,leto:e.date.slice(0,4)})),e.date,e.text,e.place+' '+e.topic+' '+(e.result?.text||''));
+    add('soseska',e.title,filteredRoute('savsko',new URLSearchParams({q:e.title,leto:e.date.slice(0,4)})),e.date,e.text,e.place+' '+e.topic+' '+reviewText(e)+' '+(e.result?.text||''));
   }
   for(const m of db.meetings) {
     add('seja',m.title,'seje/'+m.date,m.date,m.summary,m.agenda.join(' '));
@@ -94,7 +94,7 @@ function makeSearchRecords() {
   for(const [path,title,description,aliases] of [
     ['seje/aktualno','Naslednja seja','Napovedani termini, spremembe in novi zapisniki.','sklic kdaj aktualne seje'],
     ['seje/osebe','Prisotnost po svetnikih','Udeležba na sejah v mandatu 2022–2026.','navzočnost udeležba'],
-    ['sklepi?izbor=dokazila','Sklepi s poznejšimi dokazili','Spremljajte, kaj je bilo po odločitvi dokumentirano.','izvedba rezultat'],
+    ['sklepi-po-sejah?izbor=dokazila','Sklepi s poznejšimi dokazili','Spremljajte, kaj je bilo po odločitvi dokumentirano.','izvedba rezultat'],
     ...Object.entries(financeSections).map(([k,v])=>['finance/'+k,v,'Finance in delovanje ČS Bežigrad.','proračun denar finance '+(k==='sejnine'?'izplačila svetnikom':'')])
   ])add('vodilo',title,path,'',description,'',aliases);
   return rows;

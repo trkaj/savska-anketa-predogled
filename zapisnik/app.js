@@ -85,11 +85,14 @@ function showMethod(){app.innerHTML='<div class="method">'+head('Kako smo šteli
  '<p>Za leto 2025 letno poročilo navaja 48 sprejetih sklepov, 48 obravnavanih pobud občanov in 37 svetniških pobud. V enajstih zapisnikih za isto leto je bilo mogoče po številki potrditi 47 sprejetih sklepov. Razlike ene enote ni mogoče zanesljivo pojasniti. '+link(db.meetings.find(m=>m.date==="2026-02-03").pdf+"#page=6","Letno poročilo za 2025, str. 6")+'</p>'+
  '<p>Za prisotnost štejejo poimenska navedba v zapisniku in spremembe sestave sveta. Pri sejah v živo štejemo navzoče tudi, če so bili tam le del seje. Kadar je znano zgolj skupno število poznejših prihodov ali odhodov, ga navedemo v opombi. Pri korespondenčnih sejah štejemo oddane opredelitve. Osebe, zaposlene v mestni upravi, gosti in predstavniki javnosti niso v imenovalcu svetniške udeležbe. Stopnja navzočnosti meri udeležbo na dokumentiranih sejah; za obseg dela izven sej ni podatka.</p><div class="links">'+link(archive,'Celoten arhiv MOL')+anchor('seje/osebe','Poimenska evidenca')+'</div></div>'}
 function render(scroll, previousHash=''){
- const [route,sub]=(location.hash.slice(1).split('?')[0]||'domov').split('/');
+ let [route,sub]=(location.hash.slice(1).split('?')[0]||'domov').split('/');
+ if(route==='sklepi'&&!sub){route='sklepi-po-sejah';history.replaceState(null,'','#'+filteredRoute(route,new URLSearchParams(location.hash.split('?')[1]||'')));}
+ if(route==='casovnica'){route=Object.hasOwn(sectionNames,'zadeve')?'zadeve':'domov';history.replaceState(null,'','#'+route);}
+ if(route==='finance'&&sub==='model'){sub='pregled';history.replaceState(null,'','#finance/pregled');}
  tab=Object.hasOwn(sectionNames,route)?route:'domov';
  focusId=sub;
  const params=new URLSearchParams(location.hash.split('?')[1]||'');
- const parent=tab==='sled'||(tab==='sklepi'&&sub&&params.get('iz')==='seje')?'sklepi-po-sejah':tab;
+ const parent=tab==='sled'||tab==='sklepi'?'sklepi-po-sejah':tab;
  for(const a of document.querySelectorAll('#sections a')){
    if(a.hash==='#'+parent)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
  }

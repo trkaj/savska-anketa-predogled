@@ -1,7 +1,7 @@
 'use strict';
 
 const financeSections = {
-  pregled: 'Proračun po letih', dela: 'Mala dela', sejnine: 'Sejnine', model: 'Scenarij 5 %', preverjanje: 'Preverjene navedbe'
+  pregled: 'Proračun po letih', dela: 'Mala dela', sejnine: 'Sejnine', preverjanje: 'Preverjene navedbe'
 };
 function financeLink(s) {
   if(s.route)return anchor(s.route,s.label);
@@ -47,26 +47,9 @@ function financeFees(f) {
     '<p>Odlok posebej določa 25 € mesečnega povračila predsedniku za uporabo lastnega telefona. Podatki o udeležbi sami ne dokazujejo nakazanega bruto ali neto zneska, obdavčitve povračila ali trajanja upravičenosti posameznika.</p>'+
     financeLinks([f.rules[1],f.rules[2],{date:'2026-11-12',page:3},{route:'seje/osebe',label:'Poimenska evidenca udeležbe'}]);
 }
-function financeModel(f) {
-  const params=new URLSearchParams(location.hash.split('?')[1]||'');
-  const original=params.get('osnova')==='sprejeti';
-  const base=original?f.city.original:f.city.rebalanced;
-  const total=f.people.reduce((a,x)=>[a[0]+x.residents,a[1]+x.areaHa],[0,0]);
-  const b=f.people.find(x=>x.name==='Bežigrad'), res=b.residents/total[0], area=b.areaHa/total[1], equal=1/f.people.length;
-  const pot=base.amount*0.05;
-  return '<h3>Koliko bi pomenilo 5 % mestnih odhodkov?</h3><p>To je simulacija predloga za participativni proračun. Veljavni odlok letno maso za naloge ČS prepušča proračunu MOL. Za ponazoritev primerjamo tri različne načine delitve hipotetičnega sklada.</p>'+
-    '<div class="tools"><label>Osnova za leto 2026<select id="finance-base"><option value="rebalans"'+(!original?' selected':'')+'>Po rebalansu</option><option value="sprejeti"'+(original?' selected':'')+'>Prvotni proračun</option></select></label></div>'+
-    '<p>Mestni odhodki v izbrani različici znašajo <b>'+euros(base.amount,0)+'</b>. Pet odstotkov bi za vseh 17 četrti znašalo <b>'+euros(pot,2)+'</b>.</p>'+
-    financeTable(['Način delitve','Delež za Bežigrad','Ilustrativni znesek'],[['Po merilih iz 8. člena',.65*equal+.35*(.70*res+.30*area)],['Samo po številu prebivalcev',res],['Na 17 enakih delov',equal]].map(([name,r])=>[h(name),nf(r*100,3)+' %',euros(r*pot,2)]))+
-    '<p>Model uporabi primerljive opise vseh 17 četrti iz zaključnega računa 2025, ki skupaj navajajo '+total[0].toLocaleString('sl-SI')+' prebivalcev in '+total[1].toLocaleString('sl-SI')+' ha. Za Bežigrad opis navaja '+b.residents.toLocaleString('sl-SI')+' prebivalcev in '+b.areaHa+' ha. Referenčni datum prebivalstva v teh opisih ni naveden. Uradna delitev za 2026 bi zahtevala stalno prijavljene v centralnem registru na 1. januar 2025.</p>'+
-    '<p>Po 8. členu se 65 % mase razdeli enako. Od preostalih 35 % se 70 % deli po prebivalcih in 30 % po površini.</p>'+financeLinks([base.source,f.rules[0],f.party])+
-    '<details class="decision-guide"><summary>Podatki za vseh 17 četrti</summary>'+financeTable(['Četrt','Prebivalci v opisu','Površina (ha)','Stran zaključnega računa'],[...f.people].sort((a,b)=>b.residents-a.residents).map(x=>[h(x.name),x.residents.toLocaleString('sl-SI'),x.areaHa.toLocaleString('sl-SI'),link(f.demographicSource+'#page='+x.page,'Str. '+x.page)]))+'</details>';
-}
 function showFinance() {
   const f=db.finance, key=Object.hasOwn(financeSections,focusId)?focusId:'pregled';
-  const panes={pregled:financeOverview,dela:financeWork,sejnine:financeFees,model:financeModel,preverjanje:()=>'<h3>Katere navedbe lahko potrdimo?</h3>'+f.checks.map(x=>'<article class="fin-check"><span class="meta">'+h(x.status)+'</span><h4>'+h(x.title)+'</h4><p>'+h(x.text)+'</p>'+financeLinks(x.sources)+'</article>').join('')};
+  const panes={pregled:financeOverview,dela:financeWork,sejnine:financeFees,preverjanje:()=>'<h3>Katere navedbe lahko potrdimo?</h3>'+f.checks.filter(x=>x.title!=='Pet odstotkov za sodelovanje meščanov').map(x=>'<article class="fin-check"><span class="meta">'+h(x.status)+'</span><h4>'+h(x.title)+'</h4><p>'+h(x.text)+'</p>'+financeLinks(x.sources)+'</article>').join('')};
   app.innerHTML=head('Finance in delovanje','Proračun, sejnine in mala dela ČS Bežigrad v mandatu 2022–2026. Vsak znesek je povezan z listino, ki pove, kaj pomeni.')+
     '<div class="subtabs">'+Object.entries(financeSections).map(([k,label])=>'<a href="#finance/'+k+'"'+(key===k?' aria-current="page"':'')+'>'+h(label)+'</a>').join('')+'</div><section class="fin-content">'+panes[key](f)+'</section>';
-  const base=app.querySelector('#finance-base');
-  if(base)base.onchange=()=>{history.replaceState(null,'','#finance/model'+(base.value==='sprejeti'?'?osnova=sprejeti':''));showFinance();document.getElementById('finance-base').focus({preventScroll:true})};
 }
